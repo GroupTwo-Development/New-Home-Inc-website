@@ -140,8 +140,10 @@ add_action( 'widgets_init', 'newhomeinc_widgets_init' );
  * Enqueue scripts and styles.
  */
 function newhomeinc_scripts() {
-	wp_enqueue_style( 'newhomeinc-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'newhomeinc-style', 'rtl', 'replace' );
+	wp_enqueue_style( 'newhomeinc-style', get_template_directory_uri() . '/build/css/style.css', array(), _S_VERSION );
+	// wp_style_add_data( 'newhomeinc-style', 'rtl', 'replace' );
+
+	wp_enqueue_script( 'newhomeinc-app', get_template_directory_uri() . '/build/js/app.js', array(), _S_VERSION, true );
 
 	wp_enqueue_script( 'newhomeinc-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 

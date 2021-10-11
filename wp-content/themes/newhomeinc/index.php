@@ -16,7 +16,8 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
-
+		<div id="home-app">
+            <hello-world></hello-world>
 		<?php
 		if ( have_posts() ) :
 
@@ -49,7 +50,7 @@ get_header();
 
 		endif;
 		?>
-
+</div>
 	</main><!-- #main -->
 
 <?php
