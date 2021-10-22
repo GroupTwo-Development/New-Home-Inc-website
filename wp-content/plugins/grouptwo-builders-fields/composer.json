@@ -1,0 +1,19 @@
+{
+    "name": "grouptwodev/grouptwo-builders-fields",
+    "description": "G2 custom plugin for builder fields",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "AJ Jardiah",
+            "email": "ajardiahjr@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Inc\\": "./inc"
+        }
+    }
+}
