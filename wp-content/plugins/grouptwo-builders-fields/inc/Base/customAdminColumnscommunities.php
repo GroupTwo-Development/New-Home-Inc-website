@@ -169,5 +169,4 @@ class customAdminColumnsCommunities extends BaseController{
 			echo '</select>';
 		}
 	}
-
 }

@@ -38,7 +38,7 @@ class customAdminColumnsHomes extends BaseController{
 		return $columns;
 	}
 
-	function g2Builder_homes_column($column, $post_id ) {
+	public function g2Builder_homes_column($column, $post_id ) {
 
 
 	global $post;
@@ -103,7 +103,7 @@ class customAdminColumnsHomes extends BaseController{
 	}
 }
 
-	function g2builders_homes_sortable_columns( $columns ) {
+	public static function g2builders_homes_sortable_columns( $columns ) {
 		$columns['community'] = 'home-category';
 		$columns['price'] = 'base_price';
 		$columns['base_sqft'] = 'base_sqft';
@@ -113,7 +113,7 @@ class customAdminColumnsHomes extends BaseController{
 		return $columns;
 	}
 
-	function g2builders_posts_orderby($query){
+	public static function g2builders_posts_orderby($query){
 		if(!is_admin() || ! $query->is_main_query()){
 			return;
 		}
@@ -152,7 +152,7 @@ class customAdminColumnsHomes extends BaseController{
 		}
 	}
 
-	function filter_homes_by_taxonomies( $post_type, $which ) {
+	public static function filter_homes_by_taxonomies( $post_type, $which ) {
 
 		// Apply this only on a specific post type
 		if ( 'homes' !== $post_type )

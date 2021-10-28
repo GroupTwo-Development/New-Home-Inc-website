@@ -57,7 +57,7 @@ class CommunitiesRewritesRules extends BaseController{
 	}
 
 
-	function communities_article_permalink( $article_id, $section_id = false, $leavename = false, $only_permalink = false ) {
+	public static function communities_article_permalink( $article_id, $section_id = false, $leavename = false, $only_permalink = false ) {
 		$taxonomy = 'metro-area';
 		$article = get_post( $article_id );
 
