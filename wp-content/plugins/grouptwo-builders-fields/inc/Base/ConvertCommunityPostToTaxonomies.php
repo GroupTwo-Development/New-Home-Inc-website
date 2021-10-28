@@ -104,7 +104,6 @@ class ConvertCommunityPostToTaxonomies extends BaseController{
 				return;
 			}
 		}
-
 		/*
 		* If we didn't find a match above, this is a new post,
 		* so create a new term.
