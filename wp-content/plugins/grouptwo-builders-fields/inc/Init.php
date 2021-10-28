@@ -22,7 +22,7 @@ final class Init
 			Base\filterfloorplanTaxonomies::class,
 			Base\customAdminColumnsFloorplan::class,
 			Base\customAdminColumnsHomeDesigns::class,
-//			Base\customAdminColumnsHomes::class,
+			Base\customAdminColumnsHomes::class,
 			Base\CommunitiesRewritesRules::class,
 //			Base\customAdminColumnsCommunities::class,
 			Base\homesRewriteRules::class,
