@@ -20,11 +20,11 @@ final class Init
 			Base\Enqueue::class,
 			Base\CustomPostTypeController::class,
 			Base\filterfloorplanTaxonomies::class,
-			Base\customAdminColumnsFloorplan::class,
-			Base\customAdminColumnsHomeDesigns::class,
-			Base\customAdminColumnsHomes::class,
+//			Base\customAdminColumnsFloorplan::class,
+//			Base\customAdminColumnsHomeDesigns::class,
+//			Base\customAdminColumnsHomes::class,
 			Base\CommunitiesRewritesRules::class,
-			Base\customAdminColumnsCommunities::class,
+//			Base\customAdminColumnsCommunities::class,
 			Base\homesRewriteRules::class,
 			Base\ConvertCommunityPostToTaxonomies::class
 		];
