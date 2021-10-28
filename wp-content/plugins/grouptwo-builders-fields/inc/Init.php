@@ -18,14 +18,13 @@ final class Init
 			Base\plansRewriteRules::class,
 			Base\SettingLinks::class,
 			Base\Enqueue::class,
-
 			Base\CustomPostTypeController::class,
 			Base\filterfloorplanTaxonomies::class,
 			Base\customAdminColumnsFloorplan::class,
-			Base\customAdminColumnsCommunities::class,
 			Base\customAdminColumnsHomeDesigns::class,
 			Base\customAdminColumnsHomes::class,
 			Base\CommunitiesRewritesRules::class,
+			Base\customAdminColumnsCommunities::class,
 			Base\homesRewriteRules::class,
 			Base\ConvertCommunityPostToTaxonomies::class
 		];
