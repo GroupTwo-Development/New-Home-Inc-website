@@ -24,7 +24,7 @@ final class Init
 			Base\customAdminColumnsHomeDesigns::class,
 			Base\customAdminColumnsHomes::class,
 			Base\CommunitiesRewritesRules::class,
-//			Base\customAdminColumnsCommunities::class,
+			Base\customAdminColumnsCommunities::class,
 			Base\homesRewriteRules::class,
 			Base\ConvertCommunityPostToTaxonomies::class
 		];

@@ -30,7 +30,6 @@ class customAdminColumnsCommunities extends BaseController{
 
 	public function g2Builder_communities_column($column, $post_id ) {
 
-		global $post;
 		$featured_image_community = get_field('featured_image');
 		$featured_image_community = $featured_image_community['url'];
 		$base_price = get_field('base_price');
@@ -38,17 +37,8 @@ class customAdminColumnsCommunities extends BaseController{
 
 		$community_floorplans = get_field('community_floorplans');
 
-
 		$community_homes = get_field('community_homes');
 
-		$min_bedrooms = get_field('min_bedrooms');
-		$max_bedrooms = get_field('max_bedrooms');
-
-		$min_baths = get_field('min_baths');
-		$max_baths = get_field('max_baths');
-
-		$min_garage = get_field('min_garage');
-		$max_garage = get_field('max_garage');
 
 
 		switch ($column){
@@ -94,19 +84,6 @@ class customAdminColumnsCommunities extends BaseController{
 				endif;
 				break;
 
-
-
-			case 'min_max_baths' :
-				$min_baths_list = (isset($min_baths) && empty($min_baths)) ? ' - ' : $min_baths;
-				$max_baths_list = (isset($max_baths) && empty($max_baths)) ? ' - ' : $max_baths;
-				echo $min_baths_list . ' - ' . $max_baths_list;
-				break;
-
-			case 'min_max_garage' :
-				$min_garage_list = (!isset($min_garage)) ? ' - ' : $min_garage;
-				$max_garage_list = (!isset($max_garage)) ? ' - ' : $max_garage;
-				echo $min_garage_list . ' - ' . $max_garage_list;
-				break;
 		}
 }
 
