@@ -65,7 +65,9 @@ class plans
 				),
 				'public' => true,
 				'hierarchical' => true,
-				'meta_box_cb'  => false,
+//				'meta_box_cb'  => false,
+				'show_admin_column' => true,
+				'query_var' => true,
 				'show_ui' => true,
 				'rewrite' => array( 'slug' => 'floorplan-category', 'hierarchical' => true, 'with_front' => false ),
 			)

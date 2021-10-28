@@ -71,20 +71,38 @@ class subdivision
 			);
 
 				register_taxonomy( 'schools', array( 'communities' ),
-				array(
-					'labels' => array(
-						'name' => 'schools & districts',
-						'menu_name' => 'Schools & Districts',
-						'singular_name' => 'Schools',
-						'all_items' => 'All Schools & Districts'
-					),
-					'public' => true,
-					'hierarchical' => true,
-					'show_in_menu'      => true, // Hides the term edit page.
-					'show_ui' => true,
-					'rewrite' => array( 'slug' => 'schools', 'hierarchical' => true, 'with_front' => false ),
-				)
-			);
+					array(
+						'labels' => array(
+							'name' => 'schools & districts',
+							'menu_name' => 'Schools & Districts',
+							'singular_name' => 'Schools',
+							'all_items' => 'All Schools & Districts'
+						),
+						'public' => true,
+						'hierarchical' => true,
+						'show_in_menu'      => true, // Hides the term edit page.
+						'show_ui' => true,
+						'meta_box_cb'  => false,
+						'rewrite' => array( 'slug' => 'schools', 'hierarchical' => true, 'with_front' => false ),
+					)
+				);
+
+				register_taxonomy( 'features', array( 'communities' ),
+					array(
+						'labels' => array(
+							'name' => 'features',
+							'menu_name' => 'All Features',
+							'singular_name' => 'Feature',
+							'all_items' => 'All Features'
+						),
+						'public' => true,
+						'hierarchical' => true,
+						'show_in_menu'      => true, // Hides the term edit page.
+						'meta_box_cb'  => false,
+						'show_ui' => true,
+						'rewrite' => array( 'slug' => 'features', 'hierarchical' => true, 'with_front' => false ),
+					)
+				);
 		}
 }
 
