@@ -27,6 +27,11 @@ require get_template_directory() . '/inc/functions/register-widgets.php';
  */
 require get_template_directory() . '/inc/functions/enqueue-script-style.php';
 
+/**
+ * Customizer additions.
+ */
+require get_template_directory() . '/inc/functions/customLogin.php';
+
 
 /**
  * Implement the Custom Header feature.
@@ -48,12 +53,15 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
+
 /**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+
 
 
 

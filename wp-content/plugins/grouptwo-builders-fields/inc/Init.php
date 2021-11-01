@@ -15,14 +15,20 @@ final class Init
 	{
 		return [
 			Pages\Admin::class,
-			Base\plansRewriteRules::class,
 			Base\SettingLinks::class,
 			Base\Enqueue::class,
+			Base\CustomPostTypes::class,
 			Base\CustomPostTypeController::class,
+			Base\CptFields\CptFields::class,
+			Base\CommunityAdminColumn::class,
+
+
+			Base\plansRewriteRules::class,
+
 			Base\filterfloorplanTaxonomies::class,
 			Base\customAdminColumnsFloorplan::class,
 			Base\customAdminColumnsHomeDesigns::class,
-			Base\CommunityAdminColumn::class,
+
 			Base\customAdminColumnsHomes::class,
 			Base\CommunitiesRewritesRules::class,
 			Base\homesRewriteRules::class,

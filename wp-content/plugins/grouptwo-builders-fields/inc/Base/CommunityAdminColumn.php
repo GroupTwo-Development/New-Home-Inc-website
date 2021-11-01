@@ -21,14 +21,14 @@ class CommunityAdminColumn extends BaseController{
 			'image' => __( 'Image' ),
 			'title' => __( 'Title' ),
 			'metro_area' => __( 'Metro Areas', 'g2Builder' ),
-			'floorplan' => __( 'FloorPlans', 'g2Builder' ),
+			'floorplan' => __( 'Floorplans', 'g2Builder' ),
 			'qmi' => __( 'Available Homes', 'g2Builder' ),
 		);
 		return $columns;
 	}
 
 	public function g2Builder_communities_column($column, $post_id ) {
-
+        global $post;
 		$featured_image_community = get_field('featured_image');
 		$featured_image_community = $featured_image_community['url'];
 		$base_price = get_field('base_price');
@@ -59,7 +59,6 @@ class CommunityAdminColumn extends BaseController{
 			case 'floorplan' :
 				if($community_floorplans) :
 					foreach ($community_floorplans as $single_floorplan) :
-
 						$permalink = get_permalink( $single_floorplan->ID );
 						$link = get_edit_post_link($single_floorplan->ID, $context='display');
 						$title = get_the_title($single_floorplan->ID);
@@ -80,7 +79,6 @@ class CommunityAdminColumn extends BaseController{
 					endforeach;
 				endif;
 				break;
-
 		}
 	}
 

@@ -1,0 +1,54 @@
+body.login{
+    background-color: #000000;
+}
+
+#loginform {
+    border-color: #FC4F00;
+    border-radius: 1px;
+}
+body.login div#login form#loginform input#wp-submit {
+    background-color: #FC4F00;
+    border: medium none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0 36px 2px;
+    text-shadow: none;
+}
+
+body.login div#login p#nav {}
+body.login div#login p#nav a {
+    color: #fff;
+}
+
+body.login div#login p#backtoblog {
+    color: #fff;
+}
+body.login div#login p#backtoblog a {
+    color: #fff;
+}
+
+#loginform input[type="text"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="week"]:focus, select:focus, textarea:focus {
+    border-color: #FC4F00;
+    box-shadow: 0 0 0 1px #FC4F00;
+    outline: 2px solid transparent;
+}
+
+#loginform input{
+    border-radius: 0;
+}
+
+#loginform input[type="password"]:focus, input[type="radio"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="week"]:focus, select:focus, textarea:focus {
+    border-color: #FC4F00;
+    box-shadow: 0 0 0 1px #FC4F00;
+    outline: 2px solid transparent;
+}
+
+
+
+/*p#nav {*/
+/*    display: none;*/
+/*}*/
+
+/*p#backtoblog {*/
+/*    display: none;*/
+/*}*/

@@ -17,6 +17,7 @@ class subdivision
 					"new_item" => __( "New Community", "textdomains" ),
 					"view_item" => __( "View Community", "textdomains" ),
 					"view_items" => __( "View Communities", "textdomains" ),
+					"archives" => __( "communities archives", "newhomeinc" ),
 					"search_items" => __( "Search Community", "textdomains" ),
 					"not_found" => __( "No Communities Found", "textdomains" ),
 					"not_found_in_trash" => __( "No Communities Found in Trash", "textdomains" ),
