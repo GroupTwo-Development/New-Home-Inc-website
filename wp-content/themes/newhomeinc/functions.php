@@ -28,10 +28,14 @@ require get_template_directory() . '/inc/functions/register-widgets.php';
 require get_template_directory() . '/inc/functions/enqueue-script-style.php';
 
 /**
- * Customizer additions.
+ * Custom Login  additions.
  */
 require get_template_directory() . '/inc/functions/customLogin.php';
 
+/**
+ * Bootstrap Navwalker  additions.
+ */
+require get_template_directory() . '/inc/functions/class-wp-bootstrap-navwalker.php';
 
 /**
  * Implement the Custom Header feature.
@@ -49,10 +53,20 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/template-functions.php';
 
 /**
+ * Site ASKQuestionCTA.
+ */
+require get_template_directory() . '/inc/functions/customFunctions/AskAQuestionCTA.php';
+
+
+/**
+ * Site Core custom Function.
+ */
+require get_template_directory() . '/inc/functions/customFunctions/Corefunction.php';
+
+/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
-
 
 /**
  * Load Jetpack compatibility file.

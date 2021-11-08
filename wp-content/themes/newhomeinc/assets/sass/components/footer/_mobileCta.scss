@@ -1,0 +1,101 @@
+.ask-a-question-component{
+  position: fixed;
+  bottom: 0;
+  background-color: $primary_color_orange;
+  left: 0;
+  right: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1031;
+  .ask-a-question-component-inner{
+    position: relative;
+    ul.ask-a-question-component-inner-element{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      align-content: center;
+      align-items: center;
+      width: 100%;
+      height: 3rem;
+      li{
+        //height: 3rem;
+      }
+      li.aaq-icon-component{
+        border-right: 0.5px solid #fff;
+        padding: 0.5rem 0.4rem;
+        width: 45%;
+        div{
+
+          display: flex;
+          flex-flow: row;
+          justify-content: space-between;
+          align-content: center;
+          align-items: center;
+          width: 100%;
+          span{
+            display: block;
+            color: #fff;
+            font-weight: 400;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+          }
+          span.aaq-text{
+            padding: 0 0.3rem;
+            color: #fff;
+            font-size: 0.85rem;
+          }
+        }
+      }
+      li.aaq-talk-options{
+        width: 55%;
+        ul{
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-flow: row;
+          justify-content: space-between;
+          align-items: center;
+          align-content: center;
+          width: 100%;
+          li{
+            border-right: 0.5px solid #fff;
+            width: 33%;
+            a{
+              display: flex;
+              flex-flow: column;
+              justify-content: center;
+              align-content: center;
+              align-items: center;
+              text-align: center;
+              padding: 0.5rem 0.4rem;
+              color: #fff;
+              outline: none;
+              text-decoration: none;
+              text-transform: uppercase;
+              font-size: 0.85rem;
+              span{
+                display: block;
+                text-align: center;
+              }
+              span.phone-icon{
+                font-size: 1.1rem;
+              }
+              span.aaq-text{
+                font-size: 0.82rem;
+                letter-spacing: 1px;
+              }
+            }
+            &:last-child{
+              border-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

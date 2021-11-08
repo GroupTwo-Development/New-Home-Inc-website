@@ -1,8 +1,12 @@
-const { minify } = require('laravel-mix');
+// eslint-disable-next-line no-undef
+const { minify } = require( 'laravel-mix');
 const mix = require( 'laravel-mix' );
-require( 'laravel-mix-eslint' );
 const local = require( './local' );
+require( 'laravel-mix-eslint' );
 require( 'laravel-mix-versionhash' );
+require('laravel-mix-purgecss');
+
+
 
 mix.setPublicPath('./build');
 
@@ -11,6 +15,20 @@ mix.webpackConfig( {
 		"jquery":"jQuery",
 	},
 } );
+
+mix.options({
+	legacyNodePolyfills: true,
+});
+
+
+// mix.purgeCss({
+// 	enabled: true,
+// });
+
+if ( mix.inProduction() ) {
+	mix.versionHash();
+	mix.sourceMaps();
+}
 
 if ( local.proxy ) {
 	mix.browserSync( {
@@ -26,8 +44,4 @@ if ( local.proxy ) {
 
 mix.js( 'assets/js/app.js', 'js' ).vue();
 mix.sass( 'assets/sass/style.scss', 'css' );
-
-if ( mix.inProduction() ) {
-	mix.versionHash();
-	mix.sourceMaps();
-}
+mix.copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'build/fonts/webfonts');
