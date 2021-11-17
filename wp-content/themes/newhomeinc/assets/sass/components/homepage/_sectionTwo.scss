@@ -1,0 +1,232 @@
+section#sectionTwo{
+  position: relative;
+  header.section-header{
+    text-align: center;
+    padding-bottom: 1.3rem;
+    h2{
+      text-transform: capitalize;
+      color: $primary_color_black;
+      font-family: $font__main;
+      font-weight: 400;
+      @include media-breakpoint-down(sm){
+        font-size: 2rem;
+        padding: 0 1.5rem;
+      }
+    }
+  }
+
+  .splide{
+    padding-bottom: 1.5rem;
+    .splide__arrows{
+      .splide__arrow svg{
+        fill: $primary_color_orange;
+      }
+    }
+    ul.splide__pagination{
+      li{
+        button.splide__pagination__page{
+          border: 0.5px solid $primary_color_black;
+          background: $primary_color_black;
+        }
+        button.is-active{
+          border-color: $primary_color_orange;
+          background: $primary_color_orange;
+        }
+      }
+    }
+    .card{
+      border-radius: 0;
+      background: $primary_color_white;
+      box-shadow: 0px 3px 10px rgb(0 0 0 / 16%);
+      position: relative;
+      overflow: hidden;
+      border: 0;
+      margin-bottom: 1rem;
+      @include media-breakpoint-down(sm){
+        height: 30rem;
+      }
+       @include media-breakpoint-between(lg, xl){
+         height: 31rem;
+       }
+      @include media-breakpoint-up(xl){
+        height: 30rem;
+      }
+      a{
+        transition-property: background-color;
+        transition-duration: 1s;
+        transition-timing-function: linear;
+        display: block;
+        outline: none;
+        text-decoration: none;
+        position: relative;
+        @include media-breakpoint-down(sm){
+          height: 30rem;
+        }
+        @include media-breakpoint-between(lg, xl){
+          height: 31rem;
+        }
+        @include media-breakpoint-up(xl){
+          height: 30rem;
+        }
+        &:hover{
+          border: 0.8px solid $primary_color_orange;
+        }
+        color: $primary_color_black;
+        .featured-home-announcement-card-banner{
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
+          overflow: hidden;
+          z-index: 1;
+          background-color: $primary_color_orange;
+          height: 42px;
+          display: flex;
+          flex-flow: column;
+          justify-content: center;
+          align-items: center;
+          align-content: center;
+          span{
+            display: block;
+            color: $primary_color_white;
+            letter-spacing: 0.1em;
+            text-align: center;
+            font-weight: 400;
+          }
+        }
+        .card-container{
+          position: relative;
+          .featured-home-card-header{
+            .card-img{
+              position: relative;
+              img{
+                object-fit: cover;
+                height: 17.3rem;
+                @include media-breakpoint-up(xl){
+                  height: 17.8rem;
+                }
+              }
+            }
+          }
+          .card-body{
+            .card-body-title-price-area{
+              display: flex;
+              flex-flow: row;
+              justify-content: space-between;
+              align-content: center;
+              align-items: center;
+              width: 100%;
+              .card-title-area{
+                text-align: left;
+                width: 70%;
+                h6{
+                  text-transform: capitalize;
+                  font-weight: 600;
+                  margin-bottom: 0;
+                  @include media-breakpoint-between(sm, md){
+                    font-size: 0.90rem;
+                  }
+                  @include media-breakpoint-between(md, lg){
+                    font-size: 0.92rem;
+                  }
+                 @include media-breakpoint-between(lg, xl){
+                   font-size: 0.80rem;
+                 }
+                  @include media-breakpoint-up(xl){
+                    font-size: 1rem;
+                  }
+                }
+                span.featured-home-address{
+                  font-size: 0.95rem;
+                  @include media-breakpoint-between(lg, xl){
+                    font-size: 0.85rem;
+                  }
+                }
+              }
+              .featured-home-price{
+                width: 30%;
+                span.call-for-pricing{
+                  font-size: 0.80rem;
+                  text-align: right;
+                }
+                span{
+                  display: block;
+                  color: $primary_color_orange;
+                  font-weight: 600;
+                  text-transform: uppercase;
+                  text-align: right;
+                }
+              }
+            }
+            hr.featured-homes-hr{
+              opacity: 1;
+              //border: 1px solid #707070;
+              height: 2px;
+              background-color: #707070;
+              border-radius: 20px;
+            }
+            .card-body-homes-spec{
+              padding-top: 0.6rem;
+              ul{
+                list-style: none;
+                margin: 0;
+                padding: 0 2rem;
+                display: flex;
+                flex-flow: row;
+                justify-content: space-between;
+                align-items: center;
+                align-content: center;
+                li{
+                  display: flex;
+                  flex-flow: column;
+                  justify-content: center;
+                  align-content: center;
+                  align-items: center;
+                  color: $primary_color_black;
+                  span.spec-name{
+                    color: $primary_color_orange;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    text-align: center;
+                  }
+                  span.spec-data{
+                    display: block;
+                    text-align: center;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .section-btn-area{
+    text-align: center;
+    padding: 1rem 0;
+    @include media-breakpoint-up(lg){
+      padding: 1.5rem;
+    }
+    a{
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+}
+
+
+ul.splide__pagination{
+  li{
+    button.splide__pagination__page{
+      border: 0.5px solid $primary_color_black;
+      background: $primary_color_black;
+    }
+    button.is-active{
+      border-color: $primary_color_orange;
+      background: $primary_color_orange;
+    }
+  }
+}
+

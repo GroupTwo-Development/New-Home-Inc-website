@@ -9,10 +9,10 @@ use Inc\Base\BaseController;
 
 class CptFields extends BaseController{
 	public function register() {
-		add_action( 'init', array( $this, 'create_subdivision_fields' ) );
+//		add_action( 'init', array( $this, 'create_subdivision_fields' ) );
 		add_action( 'init', array( $this, 'create_floorplan_fields' ) );
 		add_action( 'init', array( $this, 'create_home_design_fields' ) );
-		add_action( 'init', array( $this, 'create_available_homes_fields' ) );
+//		add_action( 'init', array( $this, 'create_available_homes_fields' ) );
 		add_action( 'init', array( $this, 'create_sales_agent_fields' ) );
 	}
 

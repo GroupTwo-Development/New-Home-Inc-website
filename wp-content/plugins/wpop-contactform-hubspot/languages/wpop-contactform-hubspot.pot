@@ -1,0 +1,202 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WPOP Integration for Contact Form 7 to Hubspot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-30 11:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.0; wp-5.3.2"
+
+#. Description of the plugin
+msgid "Add Contact Form 7 Data to Hubspot Contact lists."
+msgstr ""
+
+#: includes/hbcf7-settings.php:225
+msgid "Add Custom Properties."
+msgstr ""
+
+#: includes/hbcf7-settings.php:228
+msgid "Add Field"
+msgstr ""
+
+#: includes/hbcf7-settings.php:103
+msgid "Add List"
+msgstr ""
+
+#: includes/hbcf7-settings.php:247
+msgid "Adds contacts in “Hubspot” through “Contact Form 7”."
+msgstr ""
+
+#: includes/hbcf7-settings.php:249
+msgid "Adds Contacts to unlimited List ID's."
+msgstr ""
+
+#: includes/hbcf7-settings.php:105 includes/hbcf7-settings.php:229
+msgid "Available in Premium Version."
+msgstr ""
+
+#: includes/hbcf7-settings.php:126
+msgid "Choose Status"
+msgstr ""
+
+#: includes/hbcf7-settings.php:210
+msgid "Company Field : "
+msgstr ""
+
+#: includes/hbcf7-settings.php:149
+msgid "Email Field* : "
+msgstr ""
+
+#: includes/hbcf7-settings.php:69
+msgid "Enable Hubspot for this form."
+msgstr ""
+
+#: includes/hbcf7-settings.php:165
+msgid "First Name Field : "
+msgstr ""
+
+#: includes/hbcf7-settings.php:163
+msgid ""
+"Following fields are optional select if available in form, otherwise leave "
+"unselected. Only email field is required."
+msgstr ""
+
+#: includes/hbcf7-settings.php:76
+msgid "Form Fields"
+msgstr ""
+
+#: includes/hbcf7-settings.php:73
+msgid "General Settings"
+msgstr ""
+
+#: includes/hbcf7-settings.php:106 includes/hbcf7-settings.php:230
+#: includes/hbcf7-settings.php:258
+msgid "Get Pro Version"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://wpoperation.com"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://wpoperation.com/plugins/hubspot-contactform7/"
+msgstr ""
+
+#: includes/hbcf7-settings.php:12
+msgid "Hubspot"
+msgstr ""
+
+#: includes/hbcf7-settings.php:91
+msgid "Hubspot API KEY"
+msgstr ""
+
+#: includes/hbcf7-settings.php:97
+msgid "Hubspot Contact List ID"
+msgstr ""
+
+#: includes/hbcf7-settings.php:86
+msgid "Hubspot Settings"
+msgstr ""
+
+#: includes/hbcf7-settings.php:67
+msgid "Hubspot Setttings"
+msgstr ""
+
+#: includes/hbcf7-settings.php:263
+msgid "If you are loving our plugin please give us nice rating."
+msgstr ""
+
+#: includes/hbcf7-settings.php:180
+msgid "Last Name Field : "
+msgstr ""
+
+#: includes/hbcf7-settings.php:124
+msgid "Lead Status"
+msgstr ""
+
+#: includes/hbcf7-settings.php:110
+msgid "Lifecycle Stage"
+msgstr ""
+
+#: includes/hbcf7-settings.php:251
+msgid "Option to add Unlimited Fields."
+msgstr ""
+
+#: includes/hbcf7-settings.php:250
+msgid "Option to select “Contact Form 7” fields for “Hubspot” list."
+msgstr ""
+
+#: includes/hbcf7-settings.php:195
+msgid "Phone Number Field : "
+msgstr ""
+
+#: includes/hbcf7-settings.php:237
+msgid "Please Add Contact Form Tags First!"
+msgstr ""
+
+#: includes/hbcf7-settings.php:262
+msgid "Please Spread Your Love With 5 Star Rating."
+msgstr ""
+
+#: includes/hbcf7-settings.php:244
+msgid "Pro Features"
+msgstr ""
+
+#: includes/hbcf7-settings.php:79
+msgid "Pro Version"
+msgstr ""
+
+#: includes/hbcf7-settings.php:265
+msgid "Rate Now"
+msgstr ""
+
+#: includes/hbcf7-settings.php:212
+msgid "Select field name for company"
+msgstr ""
+
+#: includes/hbcf7-settings.php:151
+msgid "Select field name for email"
+msgstr ""
+
+#: includes/hbcf7-settings.php:167
+msgid "Select field name for first name"
+msgstr ""
+
+#: includes/hbcf7-settings.php:182
+msgid "Select field name for last name"
+msgstr ""
+
+#: includes/hbcf7-settings.php:197
+msgid "Select field name for Phone"
+msgstr ""
+
+#: includes/hbcf7-settings.php:143
+msgid "Select form fields"
+msgstr ""
+
+#. Name of the plugin
+msgid "WPOP Integration for Contact Form 7 to Hubspot"
+msgstr ""
+
+#. Author of the plugin
+msgid "WPoperation"
+msgstr ""
+
+#: includes/hbcf7-settings.php:93
+#, php-format
+msgid "You can get API key like %s."
+msgstr ""
+
+#: includes/hbcf7-settings.php:99
+msgid ""
+"You Must Add List Id to add contacts in your Hubspot Lists. Works only for "
+"Static Lists."
+msgstr ""

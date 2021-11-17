@@ -1,0 +1,168 @@
+.modal{
+  .modal-dialog{
+    .modal-content{
+      border-radius: 0;
+      border: 0;
+      background-color: $primary_color_white;
+      button.modal-close-btn{
+        position: absolute;
+        top: 0;
+        right: 0.8rem;
+        font-size: 1.5rem;
+        background-color: transparent;
+        border: 0;
+        color: $primary_color_white;
+        padding: 0;
+        z-index: 33;
+      }
+      header.modal-header-inner{
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        width: 100%;
+        height: 9rem;
+        overflow: hidden;
+        .modal-header-left{
+          background-color: $primary_color_orange;
+          text-align: center;
+          width: 50%;
+          height: 9rem;
+          .modal-header-left-content{
+            padding: 0.8rem;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between;
+            align-content: center;
+            align-items: center;
+            i{
+              display: block;
+              svg{
+
+              }
+            }
+            span.talk-now-text{
+              display: block;
+              color: $primary_color_white;
+              font-size: 1.8rem;
+              text-transform: uppercase;
+              padding-top: 0.3rem;
+            }
+          }
+        }
+        .modal-header-right{
+          width: 50%;
+          position: relative;
+          height: 9rem;
+          display: flex;
+          flex-flow: column;
+          background-color: $primary_color_black;
+          justify-content: space-evenly;
+            .call-or-text-area{
+              height: 70%;
+              color: $primary_color_white;
+              span{
+                display: block;
+                text-transform: uppercase;
+                text-align: center;
+                font-weight: 200;
+                font-size: 1.375rem;
+                padding: 0.5rem 6.5rem 0.9rem 6.5rem;
+                @include media-breakpoint-down(lg){
+                  padding: 1.5rem 2rem 0.5rem 2rem;
+                  font-size: 1.1rem;
+                }
+              }
+            }
+            a.model-phone-area{
+              height: 30%;
+              display: block;
+              background-color: #E2E2E2;
+              padding: 0.6rem 5rem;
+              color: $primary_color_black;
+              text-align: center;
+              font-size: 1.2rem;
+              text-decoration: none;
+              @include media-breakpoint-down(lg){
+                padding: 0.6rem 1rem;
+              }
+            }
+        }
+      }
+      .modal-body{
+        text-align: center;
+        padding-top: 1.7rem;
+        form{
+          .contact-form-container{
+            position: relative;
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            align-content: center;
+            width: 100%;
+            flex-wrap: wrap;
+            .modal-contact-form{
+              width: 48%;
+              label{
+                text-transform: capitalize;
+                text-align: left;
+                font-weight: 500;
+                font-family: $font__main;
+                font-size: 0.90rem;
+                display: block;
+                width: 100%;
+                input{
+                  border: 1px solid #707070;
+                  height: 30px;
+                  border-radius: 0;
+                  color: $primary_color_black;
+                  &:focus-visible{
+                    outline: none;
+                  }
+                }
+                textarea{
+                  width: 342px;
+                  border: 1px solid #707070;
+                  height: 100px;
+                  border-radius: 0;
+                  @include media-breakpoint-up(md){
+                    width: 442px;
+                  }
+                  @include media-breakpoint-up(lg){
+                    width: 776px;
+                  }
+                }
+              }
+            }
+          }
+         p{
+           margin: 0;
+           padding: 0;
+           text-align: left;
+           input.wpcf7-submit{
+             border-radius: 25px;
+             background-color: $primary_color_black;
+             height: 50px;
+             width: 200px;
+             color: $primary_color_white;
+             text-transform: uppercase;
+           }
+         }
+        }
+      }
+    }
+  }
+}
+
+
+
+//width: 232px;
+//height: 50px;
+//border-radius: 25px;
+//background: #000;
+
+
+
+//width: 251px;
+//height: 39px;
+//background: #fff;
+

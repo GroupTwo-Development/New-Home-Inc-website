@@ -28,6 +28,22 @@ require get_template_directory() . '/inc/functions/register-widgets.php';
 require get_template_directory() . '/inc/functions/enqueue-script-style.php';
 
 /**
+ * Home page site data.
+ */
+require get_template_directory() . '/inc/functions/siteData/homepage.php';
+
+/**
+ * Site CTA
+ */
+require get_template_directory() . '/inc/functions/customFunctions/AskAQuestionCTA.php';
+
+
+/**
+ * Site Custom Function.
+ */
+require get_template_directory() . '/inc/functions/customFunctions/siteCustomFunction.php';
+
+/**
  * Custom Login  additions.
  */
 require get_template_directory() . '/inc/functions/customLogin.php';
@@ -52,11 +68,6 @@ require get_template_directory() . '/inc/template-tags.php';
  */
 require get_template_directory() . '/inc/template-functions.php';
 
-/**
- * Site ASKQuestionCTA.
- */
-require get_template_directory() . '/inc/functions/customFunctions/AskAQuestionCTA.php';
-
 
 /**
  * Site Core custom Function.
@@ -75,7 +86,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-
-
-
-
+//if ( is_admin_bar_showing() ) {     echo '<style type="text/css"> nav {margin-top: 32px;} </style>'; }
+//
+//
+//

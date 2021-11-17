@@ -1,0 +1,21 @@
+a.section-btn{
+  background-color: $primary_color_black;
+  border-radius: 25px;
+  display: block;
+  margin: 1.5rem auto;
+  line-height: 50px;
+  text-decoration: none;
+  outline: none;
+  text-transform: uppercase;
+  height: 50px;
+  width: 232px;
+  text-align: center;
+  color: $primary_color_white;
+  &:hover{
+    background-color: $primary_color_orange;
+    color: $primary_color_white;
+  }
+  @include media-breakpoint-up(lg){
+    margin: 0 auto 0 0;
+  }
+}

@@ -3,22 +3,28 @@
 import { createApp } from 'vue';
 import lozad from 'lozad';
 
+
 window.Popper = require( '@popperjs/core' );
 require( 'bootstrap' );
 
-const observer = lozad(); // lazy loads elements with default selector as ".lozad"
-observer.observe();
 
 //Some convenient tools to get you started…
 import HelloWorld from './components/HelloWorld';
 import globalScript from './script/globalScript';
 import progressBar from './script/progressBar';
-// import AnimateOnPageLinks from './components/AnimateOnPageLinks';
+import featuredHome from './script/featuredHome';
+
 
 // Initialise our components on jQuery.ready…
 // jQuery(function ($) {
 //     AnimateOnPageLinks.init();
 // });
+
+const observer = lozad(); // lazy loads elements with default selector as ".lozad"
+observer.observe();
+
+featuredHome.init();
+
 
 const homeApp = createApp({
     components: {

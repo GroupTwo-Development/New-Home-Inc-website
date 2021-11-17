@@ -1329,6 +1329,11 @@
   dependencies:
     type-detect "4.0.8"
 
+"@splidejs/splide@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@splidejs/splide/-/splide-3.3.1.tgz#9cc7fdcb7192d8549051b4acddf18793fafb67c9"
+  integrity sha512-wb2ZQ7R/7aEJrpC68QNAuPVpsrix9hz3/gTgwy4org+6S2Kf4sQHZzWzj9Yd7NFxlNGVtnvZJjWqPwsrAgTiZg==
+
 "@stylelint/postcss-css-in-js@^0.37.2":
   version "0.37.2"
   resolved "https://registry.yarnpkg.com/@stylelint/postcss-css-in-js/-/postcss-css-in-js-0.37.2.tgz#7e5a84ad181f4234a2480803422a47b8749af3d2"
@@ -9251,6 +9256,11 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+lightgallery@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/lightgallery/-/lightgallery-2.3.0.tgz#936f19d36105848fbbdbd7fbb1e43ab9b0605ebe"
+  integrity sha512-kdu+uQM2X4LUN2G2tTp72ZOLfwmGwZFjiVQBqYY2E2zL1ADibKwnxZUBEw2zI5zefDe/71IHg+6kBRTbr8CGyg==
+
 lilconfig@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/lilconfig/-/lilconfig-2.0.3.tgz#68f3005e921dafbd2a2afb48379986aa6d2579fd"
@@ -13204,6 +13214,11 @@ slice-ansi@^4.0.0:
     ansi-styles "^4.0.0"
     astral-regex "^2.0.0"
     is-fullwidth-code-point "^3.0.0"
+
+slick-carousel@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/slick-carousel/-/slick-carousel-1.8.1.tgz#a4bfb29014887bb66ce528b90bd0cda262cc8f8d"
+  integrity sha512-XB9Ftrf2EEKfzoQXt3Nitrt/IPbT+f1fgqBdoxO3W/+JYvtEOW6EgxnWfr9GH6nmULv7Y2tPmEX3koxThVmebA==
 
 snapdragon-node@^2.0.1:
   version "2.1.1"

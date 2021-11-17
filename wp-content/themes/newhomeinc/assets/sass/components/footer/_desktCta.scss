@@ -1,0 +1,60 @@
+#desktop-cta{
+  @include media-breakpoint-down(lg){
+    display: none;
+  }
+  background-color: $primary_color_orange;
+  position: fixed;
+  right: -2.25rem;
+  bottom: 9.25rem;
+  z-index: 1095;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.16);
+  border-radius: 2rem;
+  height: 4rem;
+  width: 16.188rem;
+  overflow: hidden;
+  ul.desktop-cta-container{
+   list-style: none;
+    margin: 0;
+    padding: 0.2rem 0 0.2rem 0.7rem;
+    height: 4rem;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    li{
+     padding-right: 0.9rem;
+      &:last-child{
+        padding-right: 0;
+      }
+      ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        li.desktop-cta-ask{
+          a{
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: left;
+            outline: none;
+            text-decoration: none;
+            color: #fff;
+          }
+        }
+        li.desktop-cta-call{
+          a{
+            color: #fff;
+            text-decoration: none;
+            text-align: left;
+            font-weight: 200;
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+}

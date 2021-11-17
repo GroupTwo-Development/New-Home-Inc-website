@@ -2,6 +2,9 @@
   background-color: $primary_color_black;
   padding: 1.5rem 0;
   color: #fff;
+  @include media-breakpoint-up(lg){
+    padding-top: 2.5rem;
+  }
   .site-footer-logo{
     text-align: center;
     padding-bottom: 0.30rem;
@@ -38,8 +41,14 @@
         font-size: 0.85rem;
         line-height: 9px;
         margin: 0.625rem 0;
+        @include media-breakpoint-between(lg, xl){
+          line-height: 0.95rem;
+        }
         &:last-child{
           border-right: 0;
+        }
+        span{
+          display: block;
         }
       }
     }
@@ -61,19 +70,32 @@
           font-size: 1.5rem;
           outline: none;
           text-decoration: none;
+          @include media-breakpoint-up(lg){
+            font-size: 1.8rem;
+          }
         }
       }
     }
   }
   .footer-copy-right-area{
+    @include media-breakpoint-up(lg){
+      padding: 0.9rem 0 0.5rem 0;
+    }
     ul{
       display: flex;
       flex-flow: column;
+      justify-content: center;
       list-style: none;
       margin: 0;
       padding: 0;
+      @include media-breakpoint-up(lg){
+        flex-flow: row;
+      }
       li{
         text-align: center;
+        @include media-breakpoint-up(lg){
+          padding-right: 0.8rem;
+        }
         a{
           color: #fff;
           outline: none;

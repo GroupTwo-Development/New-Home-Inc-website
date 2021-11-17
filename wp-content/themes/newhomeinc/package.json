@@ -47,6 +47,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@popperjs/core": "^2.10.2",
+    "@splidejs/splide": "^3.3.1",
     "@vue/compiler-sfc": "^3.2.20",
     "axios": "^0.22.0",
     "bootstrap": "^5.1.3",
@@ -59,12 +60,14 @@
     "laravel-mix": "^6.0.34",
     "laravel-mix-eslint": "^0.2.0",
     "laravel-mix-versionhash": "^2.0.1",
+    "lightgallery": "^2.3.0",
     "lodash": "^4.17.21",
     "lozad": "^1.16.0",
     "popper": "^1.0.1",
     "resolve-url-loader": "^4.0.0",
     "sass": "^1.42.1",
     "sass-loader": "^12.1.0",
+    "slick-carousel": "^1.8.1",
     "vue": "^3.2.20"
   }
 }

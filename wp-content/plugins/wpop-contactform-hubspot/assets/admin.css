@@ -1,0 +1,156 @@
+
+div#hbcf7-settings {
+    margin-top: 30px;
+    width: 98%;
+}
+.clear {
+    clear: both;
+}
+#hbcf7-settings .fleft{
+    float: left;
+}
+#hbcf7-settings em{
+    display: block;
+    padding-left: 5px;
+}
+#hbcf7-settings label{
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* Tabs */
+
+
+#hbcf7-settings .hbcf7-settings-tab {
+    display: block;
+}
+
+#hbcf7-settings .hbcf7-settings-tab ul {
+    margin: 0px;
+    padding: 0;
+    position: relative;
+    z-index: 2;
+}
+
+#hbcf7-settings .hbcf7-settings-tab ul li {
+    border: 1px solid #e2e2e2;
+    border-width: 1px 1px 0;
+    margin: 0 3px 0 0;
+    border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    background-color: #d5d5d5;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+#hbcf7-settings .hbcf7-settings-tab ul li.active {
+    background-color: #fff;
+}
+
+#hbcf7-settings .tab-pane {
+    padding: 30px 20px;
+    background-color: #fff;
+    border: 1px solid #e2e2e2;
+    border-width: 0 1px 1px;
+}
+
+
+
+#hbcf7-settings input[type=text],
+#hbcf7-settings input[type=number],
+#hbcf7-settings select,
+#hbcf7-settings textarea {
+    height: initial;
+    margin: 5px;
+    padding: 7px;
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 150px;
+}
+
+#hbcf7-settings input[type=number] {
+    width: 90px;
+    text-align: center;
+    min-width: initial;
+}
+
+#hbcf7-settings input[type=radio],
+#hbcf7-settings input[type=checkbox] {
+    min-width: initial;
+    width: 25px;
+    height: 25px;
+}
+
+#hbcf7-settings input[type=checkbox]:checked:before {
+    margin: 0;
+}
+
+.hbcf7-auto-settings .products-meta-section-wrapper h3 {
+    margin: 0 0 10px;
+}
+
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.hbcf7-main-settings .general-settings-section{
+    float: left;
+    width: 46%;
+}
+
+#hbcf7-settings .delet-btn{
+    padding-top: 25px;
+}
+#hbcf7-settings .delet-btn .button {
+    background: #c52929;
+    color: #fff;
+    border-color: #c52929;
+}
+#hbcf7-settings .delet-btn .button:hover {
+    background: #f30505;
+    color: #fff;
+    border-color: #f30505;
+}
+#hbcf7-settings .add-button{
+    display: block;
+    clear: both;
+    padding-top: 24px;
+}
+#hbcf7-settings .add-button .button{
+    background: #0085ba;
+    color: #fff;
+    border-color: #0085ba;
+}
+#hbcf7-settings .add-button .button:hover{
+    background: #00b1f7;
+    color: #fff;
+    border-color: #00b1f7;
+}
+#hbcf7-settings .contact-title{
+    padding-top: 12px;
+}
+#hbcf7-settings .single-contact, .single-section-title{
+    display: inline-block;
+    width: 100%;
+    padding-top: 12px;
+}
+#hbcf7-settings .form-fields{
+    display: inline-block;
+    width: 96%;
+}
+#hbcf7-settings .form-fields label {
+    width: 26%;
+    padding-top: 13px;
+    padding-right: 25px;
+}
+
+.pro{
+    color: red;
+}

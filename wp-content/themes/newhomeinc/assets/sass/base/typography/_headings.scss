@@ -11,24 +11,24 @@
 
 @include media-breakpoint-up(lg){
 	:root{
-		--text-multiplier: 1.75;
+		--text-multiplier: 1.40;
 	}
 }
 
 @include media-breakpoint-up(xl){
 	:root{
-		--text-multiplier: 2.0;
+		--text-multiplier: 1.60;
 	}
 }
 /* Declare text styles using calc() function and the multiplier */
 h1 {
-	font-size: calc(2.2em * var(--text-multiplier));
-}
-h2 {
 	font-size: calc(1.8em * var(--text-multiplier));
 }
-h3 {
+h2 {
 	font-size: calc(1.6em * var(--text-multiplier));
+}
+h3 {
+	font-size: calc(1.4em * var(--text-multiplier));
 }
 h4 {
 	font-size: calc(1.3em * var(--text-multiplier));
@@ -37,5 +37,5 @@ h5 {
 	font-size: calc(1.2em * var(--text-multiplier));
 }
 h6 {
-	font-size: calc(1.1em * var(--text-multiplier));
+	font-size: calc(1em * var(--text-multiplier));
 }

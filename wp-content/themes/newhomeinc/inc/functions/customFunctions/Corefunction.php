@@ -5,6 +5,13 @@ function localize_us_number($phone){
 	$formatted_phone_number = preg_replace("/^(\d{3})(\d{3})(\d{4})$/", "$1-$2-$3", $phone_number);
 }
 
+add_filter('wpcf7_form_elements', function($content) {
+	$content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
+
+	return $content;
+});
+
+
 /**
  * Use Lozad (lazy loading) for attachments/featured images
  */

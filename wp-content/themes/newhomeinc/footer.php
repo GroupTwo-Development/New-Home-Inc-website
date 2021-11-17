@@ -23,11 +23,11 @@
     $footer_address_city = $footer_address_group['footer_address_city'];
     $footer_address_state = $footer_address_group['footer_address_state'];
     $footer_address_zipcode = $footer_address_group['footer_address_zipcode'];
-     $footer_address_two = $footer_address_city  .' '.  $footer_address_state  . ', ' .  $footer_address_zipcode;
+     $footer_address_two = $footer_address_city  .' '. $footer_address_state  . ', ' . $footer_address_zipcode;
 
 
 ?>
-	<footer id="colophon" class="site-footer fixed-bottom">
+	<footer id="colophon" class="site-footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -43,8 +43,8 @@
                 <div class="col-lg-3">
                     <div class="site-footer-address-area">
                         <ul class="address-item">
-                            <li class="street-address"><?php echo $footer_address_one; ?></li>
-                            <li class="address-city-state"><?php echo esc_html($footer_address_two); ?></li>
+                            <li class="street-address"><span><?php echo $footer_address_one; ?></span></li>
+                            <li class="address-city-state"><span><?php echo esc_html($footer_address_two); ?></span></li>
                         </ul>
                     </div>
                 </div>
@@ -82,7 +82,9 @@
             </div>
         </div>
 	</footer><!-- #colophon -->
-    <?php MobileAaqCTA(); ?>
+
+
+
 </div><!-- #page -->
 <?php wp_footer(); ?>
 </body>

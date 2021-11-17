@@ -1,0 +1,113 @@
+section#sectionFour{
+  position: relative;
+  .section-four-inner-area{
+    background-color: $primary_color_gray;
+    position: relative;
+    overflow: hidden;
+    .pattern-bg{
+      position: relative;
+      svg{
+        position: absolute;
+        top: -210px;
+        left: -48px;
+        z-index: 0;
+        overflow: hidden;
+      }
+    }
+    .container{
+      position: relative;
+      .section-four-inner{
+        padding-top: 4rem;
+        .section-four-inner-left{
+          text-align: center;
+          padding: 1rem 0;
+          img{
+            object-fit: cover;
+          }
+        }
+        .section-four-inner-right{
+          position: relative;
+          text-align: center;
+          hr.section-top-hr{
+            opacity: 1;
+            background-color: $primary_color_black;
+            height: 4px;
+            width: 40%;
+            margin: 0.9rem auto;
+            border-radius: 20px;
+          }
+          span.section-title{
+            padding-top: 0.5rem;
+            padding-bottom: 1rem;
+            font-size: 4rem;
+            display: block;
+            text-align: center;
+            text-transform: uppercase;
+            -webkit-text-stroke: 2px $primary_color_orange;
+            color: $primary_color_gray;
+            font-family: $font__main;
+            line-height: 55px;
+            letter-spacing: 0.1px;
+          }
+          .section-content-area{
+            p{
+              color: $primary_color_black;
+              font-weight: normal;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+  .section-four-inner-content-area{
+    padding: 1rem 0;
+    .section-four-inner-content-left{
+      header{
+        span.subtitle{
+          text-align: center;
+          font-size: 1.5rem;
+          color: $primary_color_orange;
+          display: block;
+          padding-bottom: 0.8rem;
+          text-transform: uppercase;
+          font-weight: normal;
+        }
+        h6{
+          text-align: center;
+          text-transform: capitalize;
+          font-size: 1.3rem;
+          font-weight: normal;
+          margin-bottom: 0.6rem;
+        }
+        ol{
+          margin: 0;
+          list-style: none;
+          counter-reset: my-awesome-counter;
+          li{
+            padding-bottom: 0.9rem;
+            counter-increment: my-awesome-counter;
+            &:before{
+              content: "" counter(my-awesome-counter);
+              font-weight: bold;
+              font-size: 1.2rem;
+              margin-right: 0.5rem;
+              font-family: 'Abril Fatface', serif;
+              border: 1px solid $primary_color_orange;
+              border-radius: 50%;
+              padding: 5px;
+              height: 12px;
+              width: 20px;
+            }
+            &:last-child{
+              padding-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+

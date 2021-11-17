@@ -1,4 +1,7 @@
 .ask-a-question-component{
+  @include media-breakpoint-up(lg){
+    display: none;
+  }
   position: fixed;
   bottom: 0;
   background-color: $primary_color_orange;
@@ -7,6 +10,7 @@
   width: 100%;
   overflow: hidden;
   z-index: 1031;
+  border-top: 0.5px solid #fff;
   .ask-a-question-component-inner{
     position: relative;
     ul.ask-a-question-component-inner-element{
@@ -28,29 +32,36 @@
         padding: 0.5rem 0.4rem;
         width: 45%;
         div{
-
-          display: flex;
-          flex-flow: row;
-          justify-content: space-between;
-          align-content: center;
-          align-items: center;
-          width: 100%;
-          span{
-            display: block;
-            color: #fff;
-            font-weight: 400;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-          }
-          span.aaq-text{
-            padding: 0 0.3rem;
-            color: #fff;
-            font-size: 0.85rem;
+          a{
+            display: flex;
+            flex-flow: row;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            width: 100%;
+            outline: none;
+            text-decoration: none;
+            span{
+              display: block;
+              color: #fff;
+              font-weight: 400;
+              font-size: 0.85rem;
+              text-transform: uppercase;
+            }
+            .aaq-icon{
+              padding-right: 0.8rem;
+            }
+            span.aaq-text{
+              padding: 0 0.3rem;
+              color: #fff;
+              font-size: 0.85rem;
+            }
           }
         }
       }
       li.aaq-talk-options{
         width: 55%;
+        padding-bottom: 0.2rem;
         ul{
           list-style: none;
           margin: 0;
@@ -82,7 +93,7 @@
                 text-align: center;
               }
               span.phone-icon{
-                font-size: 1.1rem;
+                font-size: 1rem;
               }
               span.aaq-text{
                 font-size: 0.82rem;
