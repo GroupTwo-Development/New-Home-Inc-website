@@ -16,6 +16,7 @@ get_header();
 ?>
 	<main id="primary" class="site-main">
 		<?php get_template_part('template-parts/components/homepage/content/banner'); ?>
+
 		<?php while ( have_posts() ) : the_post(); ?>
 			<?php get_template_part('template-parts/components/homepage/homepageIndex'); ?>
 		<?php endwhile; // End of the loop. ?>
