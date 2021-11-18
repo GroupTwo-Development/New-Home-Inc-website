@@ -99,6 +99,15 @@ section#sectionThree{
             font-size: 0.90rem;
             font-weight: 500;
             display: block;
+            a.featured-community_call-for-price{
+              outline: none;
+              color: inherit;
+              text-transform: uppercase;
+              text-decoration: underline;
+              &:hover{
+                color: $primary_color_orange;
+              }
+            }
             @include media-breakpoint-between(md, lg){
               padding-top: 0.2rem;
               font-size: 1rem;

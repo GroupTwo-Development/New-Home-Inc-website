@@ -31,10 +31,16 @@
 	                        $max_price = max($community_price_range);
                         }
 
+
+
                     $plan_type_name = get_field('community_type');
                     $plan_type_options = ($plan_type_name) ? '' . esc_html($plan_type_name['value']) : 'homes';
                     $get_featured_community_image = get_field('featured_image');
 	                $comm_banner_announcement = get_field('comm_banner_announcement');
+	                $call_for_pricing_phone = get_field('phone_number', 'option');
+
+	                $display_average_price = ($min_price) ? '' . esc_html('Brand new '. $plan_type_options . ' from the ') . '$' . $average_price . esc_html('$') :
+                        esc_html('Brand new '. $plan_type_options . '. ')  . '<a class="featured-community_call-for-price" href="tel:'. $call_for_pricing_phone .'">Call for pricing</a>';
 
                 ?>
 
@@ -54,7 +60,7 @@
                             <div class="card-footer-area">
                                 <div class="card-title-price">
                                     <span class="title"><?php the_title(); ?></span>
-                                    <span class="price"><?php echo esc_html('Brand new '. $plan_type_options . ' from the ') ?><?php echo '$' . $average_price .esc_html('s'); ?></span>
+                                    <span class="price"><?php echo $display_average_price; ?></span>
                                 </div>
                                 <div class="card-cta-area">
                                     <a href="<?php the_permalink(); ?>" class="section-btn community-btn">Learn More</a>
