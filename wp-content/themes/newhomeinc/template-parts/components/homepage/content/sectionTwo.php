@@ -29,7 +29,7 @@
                                                 <div class="card-title-area">
                                                     <h6><?php the_title() ?></h6>
                                                     <span class="featured-home-address">
-                                                        <?php echo ($spec_data['spec_city']) ? '' . $spec_data['spec_city'] . esc_html(', ') : '' ?>
+                                                        <?php echo ($spec_data['spec_city']) ? '' . $spec_data['spec_city'] : '' ?>
                                                         <?php echo ($spec_data['spec_state']['SubState'] ) ? '' . $spec_data['spec_state']['SubState'] . esc_html(', ') : '' ?>
                                                         <?php echo ($spec_data['spec_zip']) ? '' . $spec_data['spec_zip'] : '' ?>
                                                     </span>
