@@ -33,6 +33,11 @@ require get_template_directory() . '/inc/functions/enqueue-script-style.php';
 require get_template_directory() . '/inc/functions/siteData/homepage.php';
 
 /**
+ * Home page site data.
+ */
+require get_template_directory() . '/inc/functions/siteData/global/siteglobaldata.php';
+
+/**
  * Site CTA
  */
 require get_template_directory() . '/inc/functions/customFunctions/AskAQuestionCTA.php';

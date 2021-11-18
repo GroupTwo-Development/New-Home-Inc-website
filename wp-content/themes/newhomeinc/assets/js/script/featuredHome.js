@@ -20,11 +20,12 @@ const featuredHome = {
             },
         });
 
+
         document.addEventListener( 'DOMContentLoaded', function () {
 			mainFeaturedHomesContent.mount();
-            // featureHomesGallerySlider.mount();
         } );
     }
 };
+
 
 export default featuredHome

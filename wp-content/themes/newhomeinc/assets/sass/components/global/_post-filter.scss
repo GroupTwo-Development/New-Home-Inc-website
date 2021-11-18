@@ -1,0 +1,40 @@
+#post-filter{
+  @include media-breakpoint-down(lg){
+    display: none;
+  }
+  background-color: $primary_color_black;
+  padding: 1rem 0;
+  .post-filter-inner{
+    position: relative;
+    .facetwp-facet{
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      align-items: center;
+      align-content: center;
+      width: 100%;
+      height: 1.5rem;
+      margin-bottom: 0;
+      .facetwp-checkbox{
+        margin-bottom: 0;
+        color: $primary_color_white;
+        letter-spacing: 0.01em;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: normal;
+        font-family: $font__main !important;
+        &:hover{
+          color: $primary_color_orange;
+        }
+        .facetwp-counter{
+          display: none;
+        }
+      }
+      .checked{
+        color: $primary_color_orange;
+      }
+    }
+  }
+}
+
+

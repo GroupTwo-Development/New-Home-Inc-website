@@ -1,0 +1,36 @@
+#blog-post-list{
+  position: relative;
+  padding-top: 1rem;
+  header.entry-header{
+    padding-bottom: 0.5rem;
+    h3{
+      text-transform: uppercase;
+      a{
+        color: $primary_color_black;
+        text-decoration: none;
+        outline: none;
+      }
+    }
+    .entry-meta{
+      color: $primary_color_black;
+      span.posted-on{
+        font-weight: 400;
+        color: $primary_color_black;
+        a{
+          color: $primary_color_black;
+          outline: none;
+          text-decoration: none;
+        }
+      }
+      span.cat-links{
+        a{
+          color: $primary_color_black;
+          text-transform: capitalize;
+          outline: none;
+          text-decoration: none;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

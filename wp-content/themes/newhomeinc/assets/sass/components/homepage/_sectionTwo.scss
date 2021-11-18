@@ -230,3 +230,23 @@ ul.splide__pagination{
   }
 }
 
+.splide{
+  .splide__arrows{
+    .splide__arrow svg{
+      fill: $primary_color_orange;
+    }
+  }
+  ul.splide__pagination{
+    li{
+      button.splide__pagination__page{
+        border: 0.5px solid $primary_color_black;
+        background: $primary_color_black;
+      }
+      button.is-active{
+        border-color: $primary_color_orange;
+        background: $primary_color_orange;
+      }
+    }
+  }
+}
+
