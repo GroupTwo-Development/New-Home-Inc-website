@@ -1,5 +1,6 @@
 section#sectionFour{
   position: relative;
+  overflow: hidden;
   .section-four-inner-area{
     background-color: $primary_color_gray;
     position: relative;
@@ -23,6 +24,10 @@ section#sectionFour{
           padding: 1rem 0;
           img{
             object-fit: cover;
+            @include media-breakpoint-up(lg){
+              display: block;
+              margin-left: 29px;
+            }
           }
         }
         .section-four-inner-right{
@@ -35,6 +40,9 @@ section#sectionFour{
             width: 40%;
             margin: 0.9rem auto;
             border-radius: 20px;
+            @include media-breakpoint-up(lg){
+              margin-right: 39px;
+            }
           }
           span.section-title{
             padding-top: 0.5rem;
@@ -48,66 +56,177 @@ section#sectionFour{
             font-family: $font__main;
             line-height: 55px;
             letter-spacing: 0.1px;
+            @include media-breakpoint-up(lg){
+             font-size: 5rem;
+              line-height: 70px;
+              text-align: right;
+              margin-right: 39px;
+            }
           }
           .section-content-area{
+            @include media-breakpoint-up(lg){
+              padding-right: 39px;
+            }
             p{
               color: $primary_color_black;
               font-weight: normal;
               text-align: center;
+              font-family: $font__main;
+              @include media-breakpoint-up(lg){
+                text-align: right;
+              }
+
+            }
+            .section-btn-area{
+              @include media-breakpoint-up(lg){
+                a{
+                 margin: auto 0 auto auto
+                }
+              }
             }
           }
         }
       }
     }
-  }
-  .section-four-inner-content-area{
-    padding: 1rem 0;
-    .section-four-inner-content-left{
-      header{
-        span.subtitle{
-          text-align: center;
-          font-size: 1.5rem;
-          color: $primary_color_orange;
-          display: block;
-          padding-bottom: 0.8rem;
-          text-transform: uppercase;
-          font-weight: normal;
-        }
-        h6{
-          text-align: center;
-          text-transform: capitalize;
-          font-size: 1.3rem;
-          font-weight: normal;
-          margin-bottom: 0.6rem;
-        }
-        ol{
-          margin: 0;
-          list-style: none;
-          counter-reset: my-awesome-counter;
-          li{
-            padding-bottom: 0.9rem;
-            counter-increment: my-awesome-counter;
-            &:before{
-              content: "" counter(my-awesome-counter);
-              font-weight: bold;
-              font-size: 1.2rem;
-              margin-right: 0.5rem;
-              font-family: 'Abril Fatface', serif;
-              border: 1px solid $primary_color_orange;
-              border-radius: 50%;
-              padding: 5px;
-              height: 12px;
-              width: 20px;
-            }
-            &:last-child{
-              padding-bottom: 0;
+    .section-four-inner-content-area{
+      padding: 1rem 0;
+      .section-four-inner-content-left{
+        header{
+          hr.process-hr{
+            background-color: $primary_color_black;
+            height: 3px;
+            opacity: 1;
+            width: 20%;
+            display: block;
+            padding-left: 39px;
+            margin-left: 39px;
+            @include media-breakpoint-down(md){
+              display: none;
             }
           }
+          span.subtitle{
+            text-align: center;
+            font-size: 1.5rem;
+            color: $primary_color_orange;
+            display: block;
+            padding-bottom: 0.8rem;
+            text-transform: uppercase;
+            font-weight: normal;
+            @include media-breakpoint-between(md, lg){
+              text-align: left;
+              padding-left: 39px;
+            }
+            @include media-breakpoint-up(lg){
+              text-align: left;
+              padding-left: 39px;
+              font-size: 1.9rem;
+            }
+          }
+          h6{
+            text-align: center;
+            text-transform: capitalize;
+            font-size: 1.3rem;
+            font-weight: normal;
+            @include media-breakpoint-between(md, lg){
+              text-align: left;
+              padding-left: 39px;
+            }
+            @include media-breakpoint-up(lg){
+              text-align: left;
+              padding-left: 39px;
+              font-size: 1.5rem;
+            }
+          }
+          ul.section-four-inner-content-list{
+            list-style: none;
+            margin: 0;
+            padding-left: 5px;
+            position: relative;
+            @include media-breakpoint-between(md, lg){
+              padding-left: 39px;
+              padding-top: 1.5rem;
+            }
+            @include media-breakpoint-up(lg){
+              text-align: left;
+              padding-left: 35px;
+              padding-top: 1rem;
+            }
+            li{
+              margin-bottom: 1.1rem;
+              display: flex;
+              flex-flow: row;
+              justify-content: flex-start;
+              align-items: center;
+              align-content: center;
+              position: relative;
+              i.count{
+                font-style: normal;
+                font-size: 1rem;
+                margin-right: 0.3rem;
+                border: 1px solid $primary_color_orange;
+                height: 2rem;
+                width: 2rem;
+                border-radius: 100%;
+                line-height: 2;
+                text-align: center;
+                position: absolute;
+              }
+              span.item{
+                margin-left: 40px;
+                display: block;
+              }
+            }
+          }
+          .section-btn-area{
+            padding-top: 0.1rem;
+            padding-bottom: 1rem;
+            @include media-breakpoint-between(md, lg){
+             a{
+               display: block;
+               margin-left: 39px;
+             }
+            }
+            @include media-breakpoint-up(lg){
+             a{
+               margin-left: 39px;
+               margin-top: 0.6rem;
+             }
+            }
+          }
+        }
+      }
+      .section-four-inner-content-right{
+        overflow: hidden;
+        text-align: center;
+        position: relative;
+        img{
+          object-fit: cover;
+          height: 13.313rem;
+          display: block;
+          margin: 0 auto;
+          z-index: 5;
+          @include media-breakpoint-up(lg){
+            height: 15rem;
+          }
+        }
+      }
+    }
+    .footer-pattern-bg{
+      position: relative;
+      svg{
+        position: absolute;
+        bottom: -258px;
+        z-index: 1;
+        @include media-breakpoint-between(md, lg){
+          bottom: -228px;
+          left: 308px;
+        }
+        @include media-breakpoint-up(lg){
+          right: -143px;
+          bottom: -208px;
         }
       }
     }
   }
 }
-
-
 

@@ -1,0 +1,130 @@
+section#newsletter{
+  position: relative;
+  background-color: $primary_color_black;
+  padding-top: 3rem;
+  padding-bottom: 0.1rem;
+  @include media-breakpoint-up(lg){
+    padding-top: 4rem;
+  }
+  .newsletter-content{
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    @include media-breakpoint-up(lg){
+      justify-content: flex-start;
+      align-items: baseline;
+    }
+    .newsletter-logo-area{
+      padding-bottom: 0.8rem;
+      img{
+        object-fit: cover;
+        height: 8.312rem;
+      }
+    }
+    .newsletters-form-area{
+      padding-top: 0.8rem;
+      @include media-breakpoint-up(lg){
+        padding-top: 1rem;
+      }
+      .newsletter-title{
+        padding-bottom: 2rem;
+        @include media-breakpoint-up(lg){
+          padding-bottom: 3rem;
+        }
+        span{
+          display: block;
+          color: $primary_color_orange;
+          text-transform: uppercase;
+          text-align: center;
+          font-size: 1.2rem;
+          font-weight: 300;
+          letter-spacing: 0.1em;
+          @include media-breakpoint-up(lg){
+            text-align: left;
+            font-size: 1.5rem;
+          }
+        }
+      }
+      .newsletter-form{
+        position: relative;
+        form{
+          .newsletter{
+            padding-bottom: 1rem;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between;
+            align-items: center;
+            align-content: center;
+            @include media-breakpoint-up(lg){
+              flex-flow: row;
+            }
+            .newsletter-item{
+              margin-bottom: 1.3rem;
+              @include media-breakpoint-up(lg){
+                width: 33.33%;
+                margin-right: 0.7rem;
+                &:last-child{
+                  margin-right: 0;
+                }
+              }
+              input{
+                border-radius: 0;
+                background-color: transparent;
+                border: 0;
+                border-bottom: 0.5px solid $primary_color_orange !important;
+                color: $primary_color_white;
+                @include media-breakpoint-up(lg){
+                  padding-bottom: 20px;
+                }
+                &::placeholder{
+                  color: $primary_color_white;
+                  text-transform: capitalize;
+                  font-family: $font__main;
+                  font-weight: 200;
+                }
+                &:focus{
+                  outline: none !important;
+                  border: 0;
+                  box-shadow: none;
+                  border-bottom: 1px solid $primary_color_orange !important;
+                }
+                &:focus-visible{
+                  outline: none;
+                  border: 0;
+                }
+              }
+            }
+          }
+          p{
+            display: block;
+            input.wpcf7-submit{
+              border: 2px solid $primary_color_orange;
+              background-color: transparent;
+              border-radius: 25px;
+              color: $primary_color_white;
+              text-align: center;
+              width: 127px;
+              height: 43px;
+              text-transform: uppercase;
+              margin: 0 auto;
+              display: block;
+              @include media-breakpoint-up(lg){
+                margin: auto 30px auto auto;
+                width: 160px;
+              }
+              &:hover{
+                background-color: $primary_color_white;
+                color: $primary_color_orange;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

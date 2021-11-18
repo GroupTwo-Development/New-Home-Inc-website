@@ -164,7 +164,7 @@ class autoGenerateUniqueId{
 			// Use ACF hooks to populate the field on load
 			// ==== YOU NEED TO UPDATE HERE ====
 			// Replace <code>invoice_id</code> with the name of your field.
-			add_filter( 'acf/load_value/name=plan_number_id', 'floorplan_auto_get_current_unique_id', 10, 3 );
+			add_filter( 'acf/load_value/name=plan_number', 'floorplan_auto_get_current_unique_id', 10, 3 );
 
 			/**
 			 * Registers function to check if the globally stored id needs to be updated after a post is saved.
@@ -190,7 +190,7 @@ class autoGenerateUniqueId{
 					 * If we found our field and the value of that field is the same as our currently "next available id" –
 					 * we need to increase this id, so the next post doesn't use the same id.
 					 */
-					if ( $field_object['name'] == "plan_number_id"
+					if ( $field_object['name'] == "plan_number"
 					     && floorplan_get_current_unique_id() == $value ) {
 						floorplan_increase_unique_id();
 
@@ -207,7 +207,7 @@ class autoGenerateUniqueId{
 			 * so it's easy to see which id you're on. The field is disabled to prevent easy tinkering with the id.
 			 */
 			function floorplan_load_current_document_ids_settingspage( $value, $postid, $field ) {
-				if ( $field['name'] == "plan_number_id" ) {
+				if ( $field['name'] == "plan_number" ) {
 					return floorplan_get_current_unique_id();
 				}
 				return $value;
@@ -221,7 +221,7 @@ class autoGenerateUniqueId{
 //
 //		add_filter('acf/load_field/name=subdivisionnumber_id', 'wfp_disable_acf_field');
 			add_filter( 'acf/load_value/name=floorplan_unique_id', 'floorplan_load_current_document_ids_settingspage', 10, 3 );
-			add_filter( 'acf/load_field/name=plan_number_id', 'floorplan_disable_acf_field', 10, 3 );
+			add_filter( 'acf/load_field/name=plan_number', 'floorplan_disable_acf_field', 10, 3 );
 
 
 		endif;

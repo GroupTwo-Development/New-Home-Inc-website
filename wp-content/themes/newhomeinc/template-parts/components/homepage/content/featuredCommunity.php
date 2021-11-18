@@ -18,12 +18,16 @@
 
                     foreach ($get_comm_floorplans as $get_comm_floorplan) :
 	                    $average_floorplan_price = get_field('base_price', $get_comm_floorplan->ID);
-                         array_push($community_price_range, $average_floorplan_price);
+
+                         if(!empty($average_floorplan_price)){
+	                         array_push($community_price_range, $average_floorplan_price);
+                         }
                         endforeach;
                         $community_price_range = array_unique($community_price_range);
                         sort($community_price_range);
                         if(!empty($community_price_range)){
                             $min_price = min($community_price_range);
+                            $average_price = number_format($min_price);
 	                        $max_price = max($community_price_range);
                         }
 
@@ -50,7 +54,7 @@
                             <div class="card-footer-area">
                                 <div class="card-title-price">
                                     <span class="title"><?php the_title(); ?></span>
-                                    <span class="price"><?php echo esc_html('Brand new '. $plan_type_options . ' from the ') ?><?php echo '$' . number_format($min_price).esc_html('s'); ?></span>
+                                    <span class="price"><?php echo esc_html('Brand new '. $plan_type_options . ' from the ') ?><?php echo '$' . $average_price .esc_html('s'); ?></span>
                                 </div>
                                 <div class="card-cta-area">
                                     <a href="<?php the_permalink(); ?>" class="section-btn community-btn">Learn More</a>

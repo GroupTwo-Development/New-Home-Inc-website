@@ -11,7 +11,7 @@
 
 ?>
 
-<!-- Progress Scroll Circle -->
+<?php get_template_part('template-parts/components/global/newsletter'); ?>
 
 <?php
     $footer_logo = get_field('footer_logo', 'option');
@@ -24,8 +24,6 @@
     $footer_address_state = $footer_address_group['footer_address_state'];
     $footer_address_zipcode = $footer_address_group['footer_address_zipcode'];
      $footer_address_two = $footer_address_city  .' '. $footer_address_state  . ', ' . $footer_address_zipcode;
-
-
 ?>
 	<footer id="colophon" class="site-footer">
         <div class="container">

@@ -13729,7 +13729,7 @@ nav#mobile-navbar .mobile-navbar-component .mobile-navbar-component-toggle .is-a
 }
 @media (min-width: 992px) {
   .modal .modal-dialog .modal-content .modal-body form .contact-form-container .modal-contact-form label textarea {
-    width: 776px;
+    width: 745px;
   }
 }
 .modal .modal-dialog .modal-content .modal-body form p {
@@ -14464,6 +14464,7 @@ section#sectionThree .sectionThree-content .card .card-footer-area .card-title-p
 
 section#sectionFour {
   position: relative;
+  overflow: hidden;
 }
 section#sectionFour .section-four-inner-area {
   background-color: #e2e2e2;
@@ -14494,6 +14495,12 @@ section#sectionFour .section-four-inner-area .container .section-four-inner .sec
   -o-object-fit: cover;
      object-fit: cover;
 }
+@media (min-width: 992px) {
+  section#sectionFour .section-four-inner-area .container .section-four-inner .section-four-inner-left img {
+    display: block;
+    margin-left: 29px;
+  }
+}
 section#sectionFour .section-four-inner-area .container .section-four-inner .section-four-inner-right {
   position: relative;
   text-align: center;
@@ -14505,6 +14512,11 @@ section#sectionFour .section-four-inner-area .container .section-four-inner .sec
   width: 40%;
   margin: 0.9rem auto;
   border-radius: 20px;
+}
+@media (min-width: 992px) {
+  section#sectionFour .section-four-inner-area .container .section-four-inner .section-four-inner-right hr.section-top-hr {
+    margin-right: 39px;
+  }
 }
 section#sectionFour .section-four-inner-area .container .section-four-inner .section-four-inner-right span.section-title {
   padding-top: 0.5rem;
@@ -14519,15 +14531,53 @@ section#sectionFour .section-four-inner-area .container .section-four-inner .sec
   line-height: 55px;
   letter-spacing: 0.1px;
 }
+@media (min-width: 992px) {
+  section#sectionFour .section-four-inner-area .container .section-four-inner .section-four-inner-right span.section-title {
+    font-size: 5rem;
+    line-height: 70px;
+    text-align: right;
+    margin-right: 39px;
+  }
+}
+@media (min-width: 992px) {
+  section#sectionFour .section-four-inner-area .container .section-four-inner .section-four-inner-right .section-content-area {
+    padding-right: 39px;
+  }
+}
 section#sectionFour .section-four-inner-area .container .section-four-inner .section-four-inner-right .section-content-area p {
   color: #000;
   font-weight: normal;
   text-align: center;
+  font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue";
 }
-section#sectionFour .section-four-inner-content-area {
+@media (min-width: 992px) {
+  section#sectionFour .section-four-inner-area .container .section-four-inner .section-four-inner-right .section-content-area p {
+    text-align: right;
+  }
+}
+@media (min-width: 992px) {
+  section#sectionFour .section-four-inner-area .container .section-four-inner .section-four-inner-right .section-content-area .section-btn-area a {
+    margin: auto 0 auto auto;
+  }
+}
+section#sectionFour .section-four-inner-area .section-four-inner-content-area {
   padding: 1rem 0;
 }
-section#sectionFour .section-four-inner-content-area .section-four-inner-content-left header span.subtitle {
+section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header hr.process-hr {
+  background-color: #000;
+  height: 3px;
+  opacity: 1;
+  width: 20%;
+  display: block;
+  padding-left: 39px;
+  margin-left: 39px;
+}
+@media (max-width: 767.98px) {
+  section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header hr.process-hr {
+    display: none;
+  }
+}
+section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header span.subtitle {
   text-align: center;
   font-size: 1.5rem;
   color: #fc4f00;
@@ -14536,36 +14586,135 @@ section#sectionFour .section-four-inner-content-area .section-four-inner-content
   text-transform: uppercase;
   font-weight: normal;
 }
-section#sectionFour .section-four-inner-content-area .section-four-inner-content-left header h6, section#sectionFour .section-four-inner-content-area .section-four-inner-content-left header .h6 {
+@media (min-width: 768px) and (max-width: 991.98px) {
+  section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header span.subtitle {
+    text-align: left;
+    padding-left: 39px;
+  }
+}
+@media (min-width: 992px) {
+  section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header span.subtitle {
+    text-align: left;
+    padding-left: 39px;
+    font-size: 1.9rem;
+  }
+}
+section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header h6, section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header .h6 {
   text-align: center;
   text-transform: capitalize;
   font-size: 1.3rem;
   font-weight: normal;
-  margin-bottom: 0.6rem;
 }
-section#sectionFour .section-four-inner-content-area .section-four-inner-content-left header ol {
-  margin: 0;
+@media (min-width: 768px) and (max-width: 991.98px) {
+  section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header h6, section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header .h6 {
+    text-align: left;
+    padding-left: 39px;
+  }
+}
+@media (min-width: 992px) {
+  section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header h6, section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header .h6 {
+    text-align: left;
+    padding-left: 39px;
+    font-size: 1.5rem;
+  }
+}
+section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header ul.section-four-inner-content-list {
   list-style: none;
-  counter-reset: my-awesome-counter;
+  margin: 0;
+  padding-left: 5px;
+  position: relative;
 }
-section#sectionFour .section-four-inner-content-area .section-four-inner-content-left header ol li {
-  padding-bottom: 0.9rem;
-  counter-increment: my-awesome-counter;
+@media (min-width: 768px) and (max-width: 991.98px) {
+  section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header ul.section-four-inner-content-list {
+    padding-left: 39px;
+    padding-top: 1.5rem;
+  }
 }
-section#sectionFour .section-four-inner-content-area .section-four-inner-content-left header ol li:before {
-  content: "" counter(my-awesome-counter);
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-right: 0.5rem;
-  font-family: "Abril Fatface", serif;
+@media (min-width: 992px) {
+  section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header ul.section-four-inner-content-list {
+    text-align: left;
+    padding-left: 35px;
+    padding-top: 1rem;
+  }
+}
+section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header ul.section-four-inner-content-list li {
+  margin-bottom: 1.1rem;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  position: relative;
+}
+section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header ul.section-four-inner-content-list li i.count {
+  font-style: normal;
+  font-size: 1rem;
+  margin-right: 0.3rem;
   border: 1px solid #fc4f00;
-  border-radius: 50%;
-  padding: 5px;
-  height: 12px;
-  width: 20px;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 100%;
+  line-height: 2;
+  text-align: center;
+  position: absolute;
 }
-section#sectionFour .section-four-inner-content-area .section-four-inner-content-left header ol li:last-child {
-  padding-bottom: 0;
+section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header ul.section-four-inner-content-list li span.item {
+  margin-left: 40px;
+  display: block;
+}
+section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header .section-btn-area {
+  padding-top: 0.1rem;
+  padding-bottom: 1rem;
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header .section-btn-area a {
+    display: block;
+    margin-left: 39px;
+  }
+}
+@media (min-width: 992px) {
+  section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header .section-btn-area a {
+    margin-left: 39px;
+    margin-top: 0.6rem;
+  }
+}
+section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-right {
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+}
+section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-right img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 13.313rem;
+  display: block;
+  margin: 0 auto;
+  z-index: 5;
+}
+@media (min-width: 992px) {
+  section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-right img {
+    height: 15rem;
+  }
+}
+section#sectionFour .section-four-inner-area .footer-pattern-bg {
+  position: relative;
+}
+section#sectionFour .section-four-inner-area .footer-pattern-bg svg {
+  position: absolute;
+  bottom: -258px;
+  z-index: 1;
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  section#sectionFour .section-four-inner-area .footer-pattern-bg svg {
+    bottom: -228px;
+    left: 308px;
+  }
+}
+@media (min-width: 992px) {
+  section#sectionFour .section-four-inner-area .footer-pattern-bg svg {
+    right: -143px;
+    bottom: -208px;
+  }
 }
 
 /* Posts and pages
@@ -14807,6 +14956,165 @@ section#sectionFour .section-four-inner-content-area .section-four-inner-content
 }
 .ask-a-question-component .ask-a-question-component-inner ul.ask-a-question-component-inner-element li.aaq-talk-options ul li:last-child {
   border-right: 0;
+}
+
+section#newsletter {
+  position: relative;
+  background-color: #000;
+  padding-top: 3rem;
+  padding-bottom: 0.1rem;
+}
+@media (min-width: 992px) {
+  section#newsletter {
+    padding-top: 4rem;
+  }
+}
+section#newsletter .newsletter-content {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+}
+@media (min-width: 992px) {
+  section#newsletter .newsletter-content {
+    justify-content: flex-start;
+    align-items: baseline;
+  }
+}
+section#newsletter .newsletter-content .newsletter-logo-area {
+  padding-bottom: 0.8rem;
+}
+section#newsletter .newsletter-content .newsletter-logo-area img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 8.312rem;
+}
+section#newsletter .newsletter-content .newsletters-form-area {
+  padding-top: 0.8rem;
+}
+@media (min-width: 992px) {
+  section#newsletter .newsletter-content .newsletters-form-area {
+    padding-top: 1rem;
+  }
+}
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-title {
+  padding-bottom: 2rem;
+}
+@media (min-width: 992px) {
+  section#newsletter .newsletter-content .newsletters-form-area .newsletter-title {
+    padding-bottom: 3rem;
+  }
+}
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-title span {
+  display: block;
+  color: #fc4f00;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+@media (min-width: 992px) {
+  section#newsletter .newsletter-content .newsletters-form-area .newsletter-title span {
+    text-align: left;
+    font-size: 1.5rem;
+  }
+}
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form {
+  position: relative;
+}
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter {
+  padding-bottom: 1rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+@media (min-width: 992px) {
+  section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter {
+    flex-flow: row;
+  }
+}
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item {
+  margin-bottom: 1.3rem;
+}
+@media (min-width: 992px) {
+  section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item {
+    width: 33.33%;
+    margin-right: 0.7rem;
+  }
+  section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item:last-child {
+    margin-right: 0;
+  }
+}
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item input {
+  border-radius: 0;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 0.5px solid #fc4f00 !important;
+  color: #fff;
+}
+@media (min-width: 992px) {
+  section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item input {
+    padding-bottom: 20px;
+  }
+}
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item input::-moz-placeholder {
+  color: #fff;
+  text-transform: capitalize;
+  font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue";
+  font-weight: 200;
+}
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item input:-ms-input-placeholder {
+  color: #fff;
+  text-transform: capitalize;
+  font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue";
+  font-weight: 200;
+}
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item input::placeholder {
+  color: #fff;
+  text-transform: capitalize;
+  font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue";
+  font-weight: 200;
+}
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item input:focus {
+  outline: none !important;
+  border: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #fc4f00 !important;
+}
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item input:focus-visible {
+  outline: none;
+  border: 0;
+}
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form p {
+  display: block;
+}
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form p input.wpcf7-submit {
+  border: 2px solid #fc4f00;
+  background-color: transparent;
+  border-radius: 25px;
+  color: #fff;
+  text-align: center;
+  width: 127px;
+  height: 43px;
+  text-transform: uppercase;
+  margin: 0 auto;
+  display: block;
+}
+@media (min-width: 992px) {
+  section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form p input.wpcf7-submit {
+    margin: auto 30px auto auto;
+    width: 160px;
+  }
+}
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form p input.wpcf7-submit:hover {
+  background-color: #fff;
+  color: #fc4f00;
 }
 
 #desktop-cta {
