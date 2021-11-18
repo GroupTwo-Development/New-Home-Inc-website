@@ -23119,8 +23119,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _script_globalScript__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_script_globalScript__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _script_progressBar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./script/progressBar */ "./assets/js/script/progressBar.js");
 /* harmony import */ var _script_progressBar__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_script_progressBar__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _script_footerCtaListing__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./script/footerCtaListing */ "./assets/js/script/footerCtaListing.js");
-/* harmony import */ var _script_featuredHome__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./script/featuredHome */ "./assets/js/script/featuredHome.js");
+/* harmony import */ var _script_featuredHome__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./script/featuredHome */ "./assets/js/script/featuredHome.js");
 // you can import modules from the theme lib or even from
 // NPM packages if they support it.
 
@@ -23132,18 +23131,18 @@ __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap
 
 
 
-
+ // import footerCtaListing from './script/footerCtaListing';
 
  // Initialise our components on jQuery.ready…
 // jQuery(function ($) {
 //     AnimateOnPageLinks.init();
 // });
 
+_script_featuredHome__WEBPACK_IMPORTED_MODULE_5__["default"].init();
 var observer = lozad__WEBPACK_IMPORTED_MODULE_1___default()(); // lazy loads elements with default selector as ".lozad"
 
-observer.observe();
-_script_footerCtaListing__WEBPACK_IMPORTED_MODULE_5__["default"].init();
-_script_featuredHome__WEBPACK_IMPORTED_MODULE_6__["default"].init();
+observer.observe(); // footerCtaListing.init();
+
 var homeApp = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
   components: {
     HelloWorld: _components_HelloWorld__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -23168,72 +23167,47 @@ __webpack_require__.r(__webpack_exports__);
 
 var featuredHome = {
   init: function init() {
-    var mainFeaturedHomesContent = new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#homepage-qmi-image-slider', {
-      perPage: 3,
-      type: 'loop',
-      arrows: true,
-      gap: '1.2rem',
-      breakpoints: {
-        992: {
-          perPage: 2
-        },
-        768: {
-          perPage: 2
-        },
-        640: {
-          perPage: 1
+    document.addEventListener('DOMContentLoaded', function () {
+      new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#card-slider', {
+        perPage: 3,
+        type: 'loop',
+        arrows: true,
+        gap: '2rem',
+        breakpoints: {
+          992: {
+            perPage: 2
+          },
+          768: {
+            perPage: 2
+          },
+          640: {
+            perPage: 1
+          }
         }
-      }
+      }).mount();
     });
     document.addEventListener('DOMContentLoaded', function () {
-      mainFeaturedHomesContent.mount();
+      new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#card-slider-2', {
+        perPage: 3,
+        type: 'loop',
+        arrows: true,
+        gap: '2rem',
+        breakpoints: {
+          992: {
+            perPage: 2
+          },
+          768: {
+            perPage: 2
+          },
+          640: {
+            perPage: 1
+          }
+        }
+      }).mount();
     });
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (featuredHome);
-
-/***/ }),
-
-/***/ "./assets/js/script/footerCtaListing.js":
-/*!**********************************************!*\
-  !*** ./assets/js/script/footerCtaListing.js ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @splidejs/splide */ "./node_modules/@splidejs/splide/dist/js/splide.esm.js");
-
-var footerCtaListing = {
-  init: function init() {
-    var footerListingSlider = new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#image-slider', {
-      perPage: 3,
-      type: 'slide',
-      arrows: false,
-      gap: '1rem',
-      breakpoints: {
-        992: {
-          perPage: 2
-        },
-        768: {
-          perPage: 2
-        },
-        640: {
-          perPage: 1,
-          type: 'loop',
-          arrows: true
-        }
-      }
-    });
-    document.addEventListener('DOMContentLoaded', function () {
-      footerListingSlider.mount();
-    });
-  }
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (footerCtaListing);
 
 /***/ }),
 

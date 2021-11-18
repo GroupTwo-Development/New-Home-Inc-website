@@ -12,7 +12,7 @@ require( 'bootstrap' );
 import HelloWorld from './components/HelloWorld';
 import globalScript from './script/globalScript';
 import progressBar from './script/progressBar';
-import footerCtaListing from './script/footerCtaListing';
+// import footerCtaListing from './script/footerCtaListing';
 import featuredHome from './script/featuredHome';
 
 
@@ -20,12 +20,13 @@ import featuredHome from './script/featuredHome';
 // jQuery(function ($) {
 //     AnimateOnPageLinks.init();
 // });
-
+featuredHome.init();
 const observer = lozad(); // lazy loads elements with default selector as ".lozad"
 observer.observe();
+// footerCtaListing.init();
 
-footerCtaListing.init();
-featuredHome.init();
+
+
 
 const homeApp = createApp({
     components: {

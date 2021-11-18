@@ -6,7 +6,7 @@
                 <h2><?php echo esc_html('Featured Showcase Homes'); ?></h2>
             </header>
 
-            <div id="homepage-qmi-image-slider" class="splide">
+            <div id="card-slider" class="splide">
                 <div class="splide__track">
                     <ul class="splide__list">
 	                    <?php foreach ($get_featured_homes as $post) :  setup_postdata($post); ?>

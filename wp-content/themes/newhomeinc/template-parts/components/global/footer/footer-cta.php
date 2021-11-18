@@ -3,7 +3,7 @@
 	<?php if( have_rows('communities_available_homes_floorplans', 'option') ): ?>
                 <section id="footer-cta-area" class="pt-5 pb-5">
                     <div class="container">
-                        <div id="image-slider" class="splide">
+                        <div id="card-slider-2" class="splide">
                             <div class="splide__track">
                                 <ul class="splide__list">
                                 <?php while( have_rows('communities_available_homes_floorplans', 'option') ) : the_row(); ?>

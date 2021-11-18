@@ -2,7 +2,7 @@ import Splide from '@splidejs/splide';
 
 const footerCtaListing = {
     init(){
-        const footerListingSlider = new Splide( '#image-slider', {
+        const footerListingSlider = new Splide( '#footer-cta-slider', {
             perPage: 3,
             type: 'slide',
             arrows: false,

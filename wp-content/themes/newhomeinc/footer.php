@@ -11,7 +11,6 @@
 
 ?>
 
-<?php //get_template_part('template-parts/components/homepage/content/sectionTwo'); ?>
 
 <?php get_template_part('template-parts/components/global/footer/footer-cta'); ?>
 
