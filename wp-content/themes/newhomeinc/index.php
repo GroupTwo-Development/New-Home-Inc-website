@@ -14,7 +14,6 @@
 
 get_header();
 ?>
-
 	<main id="primary" class="site-main">
 	        <?php if ( have_posts() ) : ?>
 		        <?php  get_template_part( 'template-parts/components/global/banner/interior-banner');  ?>
