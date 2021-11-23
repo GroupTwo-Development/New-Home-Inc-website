@@ -14,7 +14,7 @@
 
 get_header();
 ?>
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main blog-index">
 	        <?php if ( have_posts() ) : ?>
 		        <?php  get_template_part( 'template-parts/components/global/banner/interior-banner');  ?>
 		        <?php get_template_part( 'template-parts/components/global/banner/post-filter');  ?>
@@ -26,8 +26,11 @@ get_header();
                             </div>
                         </div>
                      </div>
-		        <?php endwhile;
-		        echo do_shortcode('[facetwp pager="true"]');
+		        <?php endwhile; ?>
+                <div class="container">
+                    <?php echo do_shortcode('[facetwp pager="true"]'); ?>
+                </div>
+            <?php
 	        else :
 		        get_template_part( 'template-parts/content', 'none' );
 	        endif;

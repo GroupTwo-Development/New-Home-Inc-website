@@ -56,6 +56,6 @@
             <a href="<?php the_permalink(); ?>" class="section-btn blog-post-btn"><?php echo esc_html('Read More')?></a>
         </div>
     </article><!-- #post-<?php the_ID(); ?> -->
-    <hr class="blog-post-hr">
+    <hr class="blog-post-hr section_bottom-hr">
 </div>
 

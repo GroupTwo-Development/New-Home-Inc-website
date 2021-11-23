@@ -1,36 +1,98 @@
-#blog-post-list{
+.blog-index{
   position: relative;
-  padding-top: 1rem;
-  header.entry-header{
-    padding-bottom: 0.5rem;
-    h3{
-      text-transform: uppercase;
-      a{
+  #blog-post-list{
+    position: relative;
+    padding-top: 1.5rem;
+    @include media-breakpoint-up(lg){
+      padding-top: 2.5rem;
+    }
+    header.entry-header{
+      padding-bottom: 0.5rem;
+      h3{
+        text-transform: uppercase;
+        a{
+          color: $primary_color_black;
+          text-decoration: none;
+          outline: none;
+        }
+      }
+      .entry-meta{
         color: $primary_color_black;
-        text-decoration: none;
-        outline: none;
+        font-family: $font__main;
+        span.posted-on{
+          font-weight: 400;
+          color: $primary_color_black;
+          a{
+            color: $primary_color_black;
+            outline: none;
+            text-decoration: none;
+          }
+        }
+        span.cat-links{
+          a{
+            color: $primary_color_black;
+            text-transform: capitalize;
+            outline: none;
+            text-decoration: none;
+            font-weight: 400;
+          }
+        }
       }
     }
-    .entry-meta{
+    .post-thumbnail{
+      outline: none;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      width: 100%;
+      @include media-breakpoint-up(lg){
+        text-align: left;
+      }
+      img{
+        object-fit: cover;
+        //width: 100vw;
+        //height: 20rem;
+        @include media-breakpoint-between(lg, xl){
+          width: 100vw;
+          height: 34.375rem;
+        }
+        @include media-breakpoint-up(xl){
+          width: 100vw;
+          height: 34.375rem;
+        }
+      }
+    }
+    .entry-content{
+      position: relative;
       color: $primary_color_black;
-      span.posted-on{
-        font-weight: 400;
-        color: $primary_color_black;
+      p{
+        font-family: $font__main;
+      }
+    }
+    .entry-content-footer{
+      text-align: center;
+      @include media-breakpoint-up(lg){
+        padding: 1rem 0;
+      }
+      @include media-breakpoint-up(lg){
         a{
-          color: $primary_color_black;
-          outline: none;
-          text-decoration: none;
+          margin: 0 auto;
         }
       }
-      span.cat-links{
-        a{
-          color: $primary_color_black;
-          text-transform: capitalize;
-          outline: none;
-          text-decoration: none;
-          font-weight: 500;
-        }
-      }
+    }
+  }
+  .facetwp-pager{
+    position: relative;
+    text-align: right;
+    a{
+      outline: none;
+      text-decoration: none;
+      color: $primary_color_orange;
+      font-weight: 400;
+      font-size: 1.1rem;
+    }
+    .active{
+      color: $primary_color_black;
     }
   }
 }

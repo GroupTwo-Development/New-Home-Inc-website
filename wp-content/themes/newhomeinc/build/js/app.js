@@ -23262,7 +23262,20 @@ window.addEventListener('DOMContentLoaded', function (event) {
   // 		}
   // 	});
   // });
-});
+}); // window.onscroll = function() {
+// 	interFilter();
+// };
+//
+// const postFilter = document.getElementById( 'post-filter');
+// const sticky = postFilter.offsetTop;
+//
+// function interFilter() {
+// 	if ( window.pageYOffset >= sticky ) {
+// 		postFilter.classList.add( 'sticky' );
+// 	} else {
+// 		postFilter.classList.remove( 'sticky' );
+// 	}
+// }
 
 /***/ }),
 

@@ -13894,7 +13894,7 @@ header#masthead {
   height: 1.5rem;
   margin-bottom: 0;
 }
-#post-filter .post-filter-inner .facetwp-facet .facetwp-checkbox {
+#post-filter .post-filter-inner .facetwp-facet .facetwp-radio {
   margin-bottom: 0;
   color: #fff;
   letter-spacing: 0.01em;
@@ -13903,10 +13903,10 @@ header#masthead {
   font-weight: normal;
   font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue" !important;
 }
-#post-filter .post-filter-inner .facetwp-facet .facetwp-checkbox:hover {
+#post-filter .post-filter-inner .facetwp-facet .facetwp-radio:hover {
   color: #fc4f00;
 }
-#post-filter .post-filter-inner .facetwp-facet .facetwp-checkbox .facetwp-counter {
+#post-filter .post-filter-inner .facetwp-facet .facetwp-radio .facetwp-counter {
   display: none;
 }
 #post-filter .post-filter-inner .facetwp-facet .checked {
@@ -14903,39 +14903,110 @@ section#sectionFour .section-four-inner-area .footer-pattern-bg svg {
 
 /* Posts
 --------------------------------------------- */
-#blog-post-list {
+.blog-index {
   position: relative;
-  padding-top: 1rem;
 }
-#blog-post-list header.entry-header {
+.blog-index #blog-post-list {
+  position: relative;
+  padding-top: 1.5rem;
+}
+@media (min-width: 992px) {
+  .blog-index #blog-post-list {
+    padding-top: 2.5rem;
+  }
+}
+.blog-index #blog-post-list header.entry-header {
   padding-bottom: 0.5rem;
 }
-#blog-post-list header.entry-header h3, #blog-post-list header.entry-header .h3 {
+.blog-index #blog-post-list header.entry-header h3, .blog-index #blog-post-list header.entry-header .h3 {
   text-transform: uppercase;
 }
-#blog-post-list header.entry-header h3 a, #blog-post-list header.entry-header .h3 a {
+.blog-index #blog-post-list header.entry-header h3 a, .blog-index #blog-post-list header.entry-header .h3 a {
   color: #000;
   text-decoration: none;
   outline: none;
 }
-#blog-post-list header.entry-header .entry-meta {
+.blog-index #blog-post-list header.entry-header .entry-meta {
   color: #000;
+  font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue";
 }
-#blog-post-list header.entry-header .entry-meta span.posted-on {
+.blog-index #blog-post-list header.entry-header .entry-meta span.posted-on {
   font-weight: 400;
   color: #000;
 }
-#blog-post-list header.entry-header .entry-meta span.posted-on a {
+.blog-index #blog-post-list header.entry-header .entry-meta span.posted-on a {
   color: #000;
   outline: none;
   text-decoration: none;
 }
-#blog-post-list header.entry-header .entry-meta span.cat-links a {
+.blog-index #blog-post-list header.entry-header .entry-meta span.cat-links a {
   color: #000;
   text-transform: capitalize;
   outline: none;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 400;
+}
+.blog-index #blog-post-list .post-thumbnail {
+  outline: none;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+@media (min-width: 992px) {
+  .blog-index #blog-post-list .post-thumbnail {
+    text-align: left;
+  }
+}
+.blog-index #blog-post-list .post-thumbnail img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .blog-index #blog-post-list .post-thumbnail img {
+    width: 100vw;
+    height: 34.375rem;
+  }
+}
+@media (min-width: 1200px) {
+  .blog-index #blog-post-list .post-thumbnail img {
+    width: 100vw;
+    height: 34.375rem;
+  }
+}
+.blog-index #blog-post-list .entry-content {
+  position: relative;
+  color: #000;
+}
+.blog-index #blog-post-list .entry-content p {
+  font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue";
+}
+.blog-index #blog-post-list .entry-content-footer {
+  text-align: center;
+}
+@media (min-width: 992px) {
+  .blog-index #blog-post-list .entry-content-footer {
+    padding: 1rem 0;
+  }
+}
+@media (min-width: 992px) {
+  .blog-index #blog-post-list .entry-content-footer a {
+    margin: 0 auto;
+  }
+}
+.blog-index .facetwp-pager {
+  position: relative;
+  text-align: right;
+}
+.blog-index .facetwp-pager a {
+  outline: none;
+  text-decoration: none;
+  color: #fc4f00;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+.blog-index .facetwp-pager .active {
+  color: #000;
 }
 
 /* Comments

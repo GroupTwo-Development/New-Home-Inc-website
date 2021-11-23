@@ -133,7 +133,7 @@ if ( ! function_exists( 'newhomeinc_post_thumbnail' ) ) :
 
 		<?php else : ?>
 
-			<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+			<div class="post-thumbnail img-fluid" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 				<?php
 					the_post_thumbnail(
 						'post-thumbnail',
@@ -146,7 +146,7 @@ if ( ! function_exists( 'newhomeinc_post_thumbnail' ) ) :
 						)
 					);
 				?>
-			</a>
+			</div>
 
 			<?php
 		endif; // End is_singular().
