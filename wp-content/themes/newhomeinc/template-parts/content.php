@@ -22,8 +22,12 @@
 			?>
 			<div class="entry-meta">
 				<?php
-				newhomeinc_posted_on();
-				newhomeinc_posted_by();
+                    newhomeinc_posted_on();
+                    $categories_list = get_the_category_list( esc_html__( ', ', 'newhomeinc' ) );
+                    if ( $categories_list ) {
+                        /* translators: 1: list of categories. */
+                        printf( '<span class="cat-links">' . esc_html__( ' in %1$s', 'newhomeinc' ) . '</span>', $categories_list );
+                    }
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
@@ -57,7 +61,5 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-		<?php newhomeinc_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
+<hr class="blog-post-hr section_bottom-hr">

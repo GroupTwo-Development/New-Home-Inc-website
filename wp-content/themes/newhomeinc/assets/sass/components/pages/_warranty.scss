@@ -1,0 +1,108 @@
+.section-banner{
+  position: relative;
+  img{
+    object-fit: cover;
+    display: block;
+    @include media-breakpoint-up(lg){
+      height: 30rem;
+      width: 100%;
+    }
+  }
+}
+
+#warranty-section{
+  position: relative;
+  overflow: hidden;
+  .pattern-bg{
+    position: relative;
+    svg{
+      position: absolute;
+      top: -171px;
+      left: -48px;
+      z-index: -1;
+      overflow: hidden;
+      @include media-breakpoint-between(md, lg){
+        top: -135px;
+        left: -38px;
+        width: 27rem;
+      }
+      @include media-breakpoint-between(lg, xl){
+        top: -170px;
+        left: -42px;
+        width: 25rem;
+      }
+      @include media-breakpoint-between(xl, xxl){
+        width: 28rem;
+        top: -150px;
+        left: -39px;
+      }
+      @include media-breakpoint-up(xxl){
+        width: 32rem;
+        top: -125px;
+        left: -45px;
+      }
+    }
+  }
+  .warranty-section-content{
+    padding-top: 7rem;
+    padding-bottom: 2rem;
+    position: relative;
+    text-align: center;
+    @include media-breakpoint-between(md, lg){
+      padding-top: 8rem;
+    }
+    @include media-breakpoint-up(lg){
+      padding-bottom: 4rem;
+    }
+    hr.site-hr{
+      opacity: 1;
+      background-color: #000;
+      height: 0.4rem;
+      width: 7.5rem;
+      display: block;
+      margin: 0.9rem auto;
+      border-radius: 12rem;
+      @include media-breakpoint-up(lg){
+        margin: 0.9rem auto 0.9rem  0;
+      }
+    }
+    h1{
+      text-transform: capitalize;
+      font-weight: 400;
+      color: $primary_color_black;
+      @include media-breakpoint-up(lg){
+        text-align: left;
+        margin: 0.30em 0;
+      }
+    }
+    .content{
+      text-align: center;
+      line-height: 24px;
+      font-weight: normal;
+      @include media-breakpoint-up(lg){
+        text-align: left;
+      }
+    }
+  }
+
+  .warranty-section-img{
+    padding-bottom: 1rem;
+    text-align: center;
+    @include media-breakpoint-between(xl, xxl){
+      padding-top: 6rem;
+    }
+
+    @include media-breakpoint-up(xxl){
+      padding-top: 7rem;
+    }
+    img{
+      object-fit: contain;
+      @include media-breakpoint-up(xl){
+        height: 37rem;
+        width: 30.625rem;
+      }
+    }
+  }
+
+}
+

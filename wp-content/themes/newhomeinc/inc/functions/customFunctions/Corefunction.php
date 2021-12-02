@@ -11,6 +11,15 @@ add_filter('wpcf7_form_elements', function($content) {
 	return $content;
 });
 
+/*
+ * Get all top-level categories
+ */
+
+//function get_top_level_categories(){
+//
+//}
+//
+
 
 /**
  * Use Lozad (lazy loading) for attachments/featured images

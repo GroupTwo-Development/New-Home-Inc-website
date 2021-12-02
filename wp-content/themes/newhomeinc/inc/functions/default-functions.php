@@ -38,6 +38,7 @@
 			register_nav_menus(
 				array(
 					'menu-1' => esc_html__( 'Primary', 'newhomeinc' ),
+					'menu-2' => esc_html__( 'Smart Techs', 'newhomeinc' ),
 				)
 			);
 

@@ -1,0 +1,106 @@
+.post-archive-area{
+  position: relative;
+  header.page-header{
+    text-align: center;
+    padding: 0.4rem 0;
+    border-bottom: 5px solid $primary_color_black;
+    @include media-breakpoint-between(lg, xl){
+      padding: 1rem 0;
+    }
+    @include media-breakpoint-up(xl){
+      padding: 1.6rem 0;
+    }
+    h1{
+      color: $primary_color_black;
+      text-transform: uppercase;
+      margin: 0.5rem 0;
+    }
+  }
+  article.post{
+    padding-top: 1.5rem;
+    @include media-breakpoint-between(lg, xl){
+      padding-top: 3rem;
+    }
+    @include media-breakpoint-up(xl){
+      padding-top: 3.5rem;
+    }
+
+    header.entry-header{
+      h2{
+        color: $primary_color_black;
+        text-transform: uppercase;
+        margin-bottom: 0.3rem;
+        a{
+          color: $primary_color_black;
+          outline: none;
+          text-decoration: none;
+        }
+      }
+      .entry-meta{
+        position: relative;
+        padding-bottom: 0.5rem;
+        span.posted-on{
+          font-weight: 400;
+          color: $primary_color_black;
+          a{
+            color: $primary_color_black;
+            text-decoration: underline;
+            outline: none;
+            &:hover{
+              color: $primary_color_orange;
+            }
+          }
+        }
+        span.cat-links{
+          color: $primary_color_black;
+          font-weight: 400;
+          a{
+            outline: none;
+            text-decoration: underline;
+            color: $primary_color_black;
+            &:hover{
+              color: $primary_color_orange;
+            }
+          }
+        }
+      }
+    }
+    .post-thumbnail{
+      img{
+        object-fit: cover;
+        //width: 100vw;
+        //height: 20rem;
+        @include media-breakpoint-between(lg, xl){
+          width: 100vw;
+          height: 34.375rem;
+        }
+        @include media-breakpoint-up(xl){
+          width: 100vw;
+          height: 34.375rem;
+        }
+      }
+    }
+    .entry-content-footer{
+      text-align: center;
+      padding-top: 1rem;
+      @include media-breakpoint-up(lg){
+        padding: 1.5rem 0;
+      }
+      @include media-breakpoint-up(lg){
+        a{
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+  .navigation{
+    .nav-links{
+      a{
+        color: $primary_color_black;
+        text-transform: uppercase;
+        outline: none;
+        text-decoration: none;
+      }
+    }
+  }
+}

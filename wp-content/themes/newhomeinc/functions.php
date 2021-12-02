@@ -30,7 +30,7 @@ require get_template_directory() . '/inc/functions/enqueue-script-style.php';
 /**
  * Home page site data.
  */
-require get_template_directory() . '/inc/functions/siteData/homepage.php';
+require get_template_directory() . '/inc/functions/siteData/export_data.php';
 
 /**
  * Home page site data.
@@ -95,3 +95,5 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 //
 //
 //
+
+

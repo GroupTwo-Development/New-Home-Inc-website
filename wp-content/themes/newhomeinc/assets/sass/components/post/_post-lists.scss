@@ -33,8 +33,11 @@
             color: $primary_color_black;
             text-transform: capitalize;
             outline: none;
-            text-decoration: none;
+            text-decoration: underline;
             font-weight: 400;
+            &:hover{
+              color: $primary_color_orange;
+            }
           }
         }
       }

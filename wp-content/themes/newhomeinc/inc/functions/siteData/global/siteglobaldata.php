@@ -1,10 +1,12 @@
 <?php
-//    function fwp_post_per_page($query){
-//		if($query->is_main_query() && is_post_type_archive('post')){}{
-//		    $query->set( 'posts_per_page', '3' );
-//		    $query->set( 'orderby', 'title' );
-//		    $query->set( 'order', 'DESC' );
-//		}
-//    }
-//add_filter( 'pre_get_posts', 'fwp_post_per_page' );
+// interior Hero Banner with background image
+
+function interior_hero_bg_image($acf_field){
+	$page_banner = get_field($acf_field);
+	?>
+	<div class="section-banner">
+		<img class="img-fluid" src="<?php echo $page_banner['url']; ?>" alt="<?php echo $page_banner['alt']; ?>">
+	</div>
+	<?php
+}
 

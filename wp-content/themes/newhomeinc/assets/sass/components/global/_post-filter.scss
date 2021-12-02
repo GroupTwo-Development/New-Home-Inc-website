@@ -1,9 +1,12 @@
 #post-filter{
-  @include media-breakpoint-down(lg){
-    display: none;
-  }
+  //@include media-breakpoint-down(lg){
+  //  display: none;
+  //}
   background-color: $primary_color_black;
   padding: 1rem 0;
+  @include media-breakpoint-down(lg){
+    padding: 0;
+  }
   .post-filter-inner{
     position: relative;
     .facetwp-facet{
@@ -32,6 +35,67 @@
       }
       .checked{
         color: $primary_color_orange;
+      }
+    }
+
+    .categories-menu{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      align-items: center;
+      align-content: center;
+      @include media-breakpoint-down(lg){
+        height: 40px;
+      }
+      li{
+        &:last-child{
+          margin-right: 0;
+        }
+        a{
+          color: $primary_color_white;
+          outline: none;
+          text-decoration: none;
+          &:hover{
+            color: $primary_color_orange;
+            transition: 0.3s;
+          }
+        }
+      }
+    }
+
+    @include media-breakpoint-down(lg){
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+      height: 40px;
+      width: 100%;
+      .facetwp-facet{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 40px;
+        .facetwp-radio{
+          margin-right: 0.8rem;
+          &:last-child{
+            margin-right: 0;
+          }
+        }
+      }
+
+      .categories-menu{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 40px;
+        li{
+          margin-right: 0.5rem;
+          &:last-child{
+            margin-right: 0;
+          }
+        }
       }
     }
   }

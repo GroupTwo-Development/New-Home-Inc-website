@@ -1,0 +1,89 @@
+section.meet-the-team{
+  position: relative;
+  header{
+    padding-bottom: 1.2rem;
+    text-align: center;
+
+    @include media-breakpoint-up(lg){
+      padding-bottom: 1.8rem;
+    }
+    h2{
+      color: $primary_color_orange;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+  }
+  .card{
+    border-radius: 0;
+    border: 0;
+    margin-bottom: 2rem;
+    text-align: center;
+    .teammate-bio-img{
+      img.card-img-top{
+        border: 0;
+        border-radius: 0;
+        object-fit: contain;
+        @include media-breakpoint-between(lg, xl){
+          height: 16.5rem;
+        }
+        @include media-breakpoint-up(xl){
+          object-fit: contain;
+          height: 19.5rem;
+          width: 100%;
+        }
+      }
+    }
+    .card-body{
+      h6{
+        color: $primary_color_black;
+        font-weight: 600;
+        margin-bottom: 0;
+      }
+      span.teammate-title{
+        color: $primary_color_orange;
+      }
+      .card-btn-link{
+        a{
+          color: $primary_color_black;
+          text-decoration: underline;
+          text-transform: uppercase;
+          outline: none;
+          &:hover{
+            color: $primary_color_orange;
+          }
+        }
+      }
+    }
+  }
+
+
+  header.modal-header-title{
+    padding-bottom: 0.8rem;
+    display: flex;
+    flex-flow: column !important;
+    border-bottom: 0.1rem solid $primary_color_black ;
+
+    h6.modal-name{
+      text-transform: uppercase;
+      display: block !important;
+      margin-bottom: 0;
+    }
+
+  }
+  .content{
+    padding-top: 0.6rem;
+  }
+}
+
+header.modal-header-title {
+  padding-bottom: 10px !important;
+  border-bottom: 0.5px solid #000 !important;
+  span.modal-teammate-title{
+    display: block;
+    color: $primary_color_orange;
+    font-size: 0.95rem;
+  }
+}
+#content{
+  padding-top: 10px !important;
+}

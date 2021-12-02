@@ -1,0 +1,55 @@
+#smart-tech-menu-area{
+  //@include media-breakpoint-down(lg){
+  //  display: none;
+  //}
+  background-color: $primary_color_black;
+  padding: 1rem 0;
+  .smart-tech-inner{
+    position: relative;
+    ul.smart-tech{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-flow: row;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      width: 100%;
+      li{
+        padding-right: 1rem;
+        @include media-breakpoint-between(lg, xl){
+          padding-right: 3.5rem;
+          &:last-child{
+            padding-right: 0;
+          }
+        }
+        @include media-breakpoint-up(xl){
+          padding-right: 4rem;
+          &:last-child{
+            padding-right: 0;
+          }
+        }
+        a{
+          color: $primary_color_white;
+          text-transform: uppercase;
+          outline: none;
+          text-decoration: none;
+          &:hover{
+            color: $primary_color_orange;
+            transition: 0.3s;
+          }
+        }
+        &:last-child{
+          padding-right: 0;
+        }
+      }
+      li.current-menu-item{
+        a{
+          color: $primary_color_orange;
+        }
+      }
+    }
+  }
+}
+

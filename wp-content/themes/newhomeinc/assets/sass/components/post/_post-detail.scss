@@ -1,0 +1,65 @@
+.single_post-area{
+  position: relative;
+  article.post{
+    h1{
+      color: $primary_color_black;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .entry-meta{
+      position: relative;
+      padding-bottom: 0.5rem;
+      span.posted-on{
+        font-weight: 400;
+        color: $primary_color_black;
+        a{
+          color: $primary_color_black;
+          text-decoration: underline;
+          outline: none;
+          &:hover{
+            color: $primary_color_orange;
+          }
+        }
+      }
+      span.cat-links{
+        color: $primary_color_black;
+        font-weight: 400;
+        a{
+          outline: none;
+          text-decoration: underline;
+          color: $primary_color_black;
+          &:hover{
+            color: $primary_color_orange;
+          }
+        }
+      }
+    }
+    .post-thumbnail{
+      img{
+        object-fit: cover;
+        //width: 100vw;
+        //height: 20rem;
+        @include media-breakpoint-between(lg, xl){
+          width: 100vw;
+          height: 34.375rem;
+        }
+        @include media-breakpoint-up(xl){
+          width: 100vw;
+          height: 34.375rem;
+        }
+      }
+    }
+  }
+  .post-navigation-area{
+    position: relative;
+    a{
+      outline: none;
+      text-decoration: none;
+      color: $primary_color_black;
+      text-transform: uppercase;
+      &:hover{
+        color: $primary_color_orange;
+      }
+    }
+  }
+}

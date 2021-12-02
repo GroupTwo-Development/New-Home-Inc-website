@@ -7,6 +7,8 @@ function newhomeinc_scripts() {
 
 	wp_enqueue_style('newhomeinc-unicon', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/unicons.css' );
 
+	wp_enqueue_style('newhomeinc-lightGalleryCss', 'https://cdn.jsdelivr.net/npm/lightgallery@2.3.0/css/lightgallery-bundle.min.css' );
+
 	wp_enqueue_style( 'newhomeinc-style', get_template_directory_uri() . '/build/css/style.css', array(), _S_VERSION );
 	// wp_style_add_data( 'newhomeinc-style', 'rtl', 'replace' );
 

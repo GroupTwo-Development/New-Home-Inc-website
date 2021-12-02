@@ -10,11 +10,11 @@
     flex-flow: column;
     justify-content: center;
     align-content: center;
-    align-items: center;
+    //align-items: center;
     @include media-breakpoint-up(lg){
       height: 7rem;
     }
-    span{
+    span.banner-title{
       display: block;
       text-align: center;
       color: $primary_color_black;
@@ -23,6 +23,27 @@
       font-size: 1.6rem;
       @include media-breakpoint-up(lg){
         font-size: 2.5rem;
+      }
+    }
+    span#breadcrumbs{
+      text-align: left;
+      display: inline-block;
+      margin-top: -10px;
+      padding-bottom: 0.5rem;
+      span{
+        span{
+          font-weight: 200;
+          font-size: 0.90rem;
+          a{
+            color: $primary_color_orange;
+            text-transform: uppercase;
+            outline: none;
+            text-decoration: none;
+          }
+          span.breadcrumb_last{
+            font-weight: 400;
+          }
+        }
       }
     }
   }
