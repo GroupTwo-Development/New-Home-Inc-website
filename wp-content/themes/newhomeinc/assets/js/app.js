@@ -2,6 +2,7 @@
 // NPM packages if they support it.
 import { createApp } from 'vue';
 import lozad from 'lozad';
+import AOS from 'aos';
 import {Fancybox} from "@fancyapps/ui";
 
 window.Popper = require( '@popperjs/core' );
@@ -10,19 +11,25 @@ require( 'bootstrap' );
 
 //Some convenient tools to get you started…
 import HelloWorld from './components/HelloWorld';
+import AnimateOnPageLinks from "./components/AnimateOnPageLinks";
+import SelectButton from "./components/SelectButtton";
 import globalScript from './script/globalScript';
 import progressBar from './script/progressBar';
 import videosPlayer from "./script/videosPlayer";
+import DropdownButtons from "./script/DropdownButtons";
 // import footerCtaListing from './script/footerCtaListing';
 import featuredHome from './script/featuredHome';
 
 
 // Initialise our components on jQuery.ready…
-// jQuery(function ($) {
-//     AnimateOnPageLinks.init();
-// });
+jQuery(function ($) {
+    AnimateOnPageLinks.init();
+    SelectButton.init();
+});
 featuredHome.init();
 videosPlayer.init();
+DropdownButtons.init();
+AOS.init();
 const observer = lozad(); // lazy loads elements with default selector as ".lozad"
 observer.observe();
 // footerCtaListing.init();

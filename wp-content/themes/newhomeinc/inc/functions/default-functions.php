@@ -39,6 +39,7 @@
 				array(
 					'menu-1' => esc_html__( 'Primary', 'newhomeinc' ),
 					'menu-2' => esc_html__( 'Smart Techs', 'newhomeinc' ),
+					'search-page-menu' => esc_html__( 'Search Pages Menu', 'newhomeinc' ),
 				)
 			);
 
@@ -103,3 +104,12 @@
 		$GLOBALS['content_width'] = apply_filters( 'newhomeinc_content_width', 640 );
 	}
 	add_action( 'after_setup_theme', 'newhomeinc_content_width', 0 );
+
+
+
+	function register_google_map_api( $api ){
+		$google_Api_key = get_field('google_maps_api_key', 'option');
+		$api['key'] = $google_Api_key;
+		return $api;
+	}
+	add_filter('acf/fields/google_map/api', 'register_google_map_api');

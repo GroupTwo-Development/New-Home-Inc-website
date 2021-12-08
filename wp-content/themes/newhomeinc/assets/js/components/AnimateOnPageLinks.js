@@ -51,6 +51,8 @@ const AnimateOnPageLinks = {
 
         });
 
+        $('.facetwp-sort-select').select2();
+
     },
 
     is_excluded ($selector) {

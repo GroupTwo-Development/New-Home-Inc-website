@@ -65,7 +65,7 @@ class CptFields extends BaseController{
 						'key' => 'field_616da5e8f6ff4',
 						'label' => 'Coming Soon Community',
 						'name' => 'coming_soon_community',
-						'type' => 'checkbox',
+						'type' => 'true_false',
 						'instructions' => 'Is this a coming soon Community
 If checkboxe is checked, open Resources the resources tab to complete coming soon content.',
 						'required' => 0,
@@ -75,17 +75,37 @@ If checkboxe is checked, open Resources the resources tab to complete coming soo
 							'class' => '',
 							'id' => '',
 						),
-						'choices' => array(
-							'Yes' => 'Yes',
-						),
-						'allow_custom' => 0,
-						'default_value' => array(
-						),
-						'layout' => 'vertical',
-						'toggle' => 0,
-						'return_format' => 'value',
-						'save_custom' => 0,
+						'message' => '',
+						'default_value' => 0,
+						'ui' => 1,
+						'ui_on_text' => 'Yes',
+						'ui_off_text' => 'NO',
 					),
+//					array(
+//						'key' => 'field_616da5e8f6ff4',
+//						'label' => 'Coming Soon Community',
+//						'name' => 'coming_soon_community',
+//						'type' => 'checkbox',
+//						'instructions' => 'Is this a coming soon Community
+//If checkboxe is checked, open Resources the resources tab to complete coming soon content.',
+//						'required' => 0,
+//						'conditional_logic' => 0,
+//						'wrapper' => array(
+//							'width' => '',
+//							'class' => '',
+//							'id' => '',
+//						),
+//						'choices' => array(
+//							'Yes' => 'Yes',
+//						),
+//						'allow_custom' => 0,
+//						'default_value' => array(
+//						),
+//						'layout' => 'vertical',
+//						'toggle' => 0,
+//						'return_format' => 'value',
+//						'save_custom' => 0,
+//					),
 					array(
 						'key' => 'field_61770ef921daf',
 						'label' => 'Featured Community',
@@ -409,9 +429,9 @@ provided for the subdivision. All other values for the status attribute, or not 
 					array(
 						'key' => 'field_616cef8e25ad5',
 						'label' => 'Google Map',
-						'name' => 'google_map',
+						'name' => 'subdivision_google_map',
 						'type' => 'google_map',
-						'instructions' => 'Enter subdivision address to auto generat the latitude and longitude.',
+						'instructions' => 'Enter subdivision address to auto generate the latitude and longitude.',
 						'required' => 0,
 						'conditional_logic' => 0,
 						'wrapper' => array(
@@ -738,7 +758,7 @@ Specifies if the sales office is outside the community. If it is, <SubAddress> i
 						'label' => 'Google Map',
 						'name' => 'google_map',
 						'type' => 'google_map',
-						'instructions' => 'Enter subdivision address to auto generat the latitude and longitude.',
+						'instructions' => 'Enter subdivision address to auto generate the latitude and longitude.',
 						'required' => 0,
 						'conditional_logic' => array(
 							array(
@@ -1604,7 +1624,7 @@ Specifies if the sales office is outside the community. If it is, <SubAddress> i
 								array(
 									'field' => 'field_616da5e8f6ff4',
 									'operator' => '==',
-									'value' => 'Yes',
+									'value' => '1',
 								),
 							),
 						),
@@ -1792,7 +1812,7 @@ Specifies if the sales office is outside the community. If it is, <SubAddress> i
 						'placeholder' => '',
 						'prepend' => '',
 						'append' => '',
-						'maxlength' => 20,
+						'maxlength' => 30,
 					),
 					array(
 						'key' => 'field_619cf25a67689',
@@ -4649,7 +4669,7 @@ The type of amenity.',
 						'label' => 'Spec Google Map',
 						'name' => 'spec_google_map',
 						'type' => 'google_map',
-						'instructions' => 'Add Spec address to Goolge Map to auto generate Latitude and Longtitude',
+						'instructions' => 'Add Spec address to Google Map to auto generate Latitude and Longtitude',
 						'required' => 0,
 						'conditional_logic' => 0,
 						'wrapper' => array(
@@ -6142,7 +6162,7 @@ provided for the subdivision. All other values for the status attribute, or not 
 						'label' => 'Google Map',
 						'name' => 'google_map',
 						'type' => 'google_map',
-						'instructions' => 'Enter subdivision address to auto generat the latitude and longitude.',
+						'instructions' => 'Enter subdivision address to auto generate the latitude and longitude.',
 						'required' => 0,
 						'conditional_logic' => 0,
 						'wrapper' => array(
@@ -6469,7 +6489,7 @@ Specifies if the sales office is outside the community. If it is, <SubAddress> i
 						'label' => 'Google Map',
 						'name' => 'google_map',
 						'type' => 'google_map',
-						'instructions' => 'Enter subdivision address to auto generat the latitude and longitude.',
+						'instructions' => 'Enter subdivision address to auto generate the latitude and longitude.',
 						'required' => 0,
 						'conditional_logic' => array(
 							array(
@@ -7523,7 +7543,7 @@ Specifies if the sales office is outside the community. If it is, <SubAddress> i
 						'placeholder' => '',
 						'prepend' => '',
 						'append' => '',
-						'maxlength' => 20,
+						'maxlength' => 30,
 					),
 				),
 				'location' => array(

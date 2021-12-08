@@ -11,8 +11,11 @@
 
 ?>
 
-
-<?php get_template_part('template-parts/components/global/footer/footer-cta'); ?>
+<?php
+    if(!is_post_type_archive('communities') && !is_post_type_archive('floorplans') && !is_archive()){
+	    get_template_part('template-parts/components/global/footer/footer-cta');
+    }
+?>
 
 
 <?php get_template_part('template-parts/components/global/newsletter'); ?>

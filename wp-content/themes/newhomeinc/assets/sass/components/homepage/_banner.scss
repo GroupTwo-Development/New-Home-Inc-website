@@ -4,135 +4,150 @@
   background-attachment: scroll;
   background-position: center center;
   background-size: cover;
-  height: 39rem;
-  @include media-breakpoint-between(lg, xl){
-    height: 44rem;
+  height: calc(100vh - 82px);
+  min-height: 450px;
+  @include media-breakpoint-between(md, lg){
+    height: calc(100vh - 125px);
   }
-  @include media-breakpoint-between(xl, xxl){
-    height: 44.2rem;
-  }
-  @include media-breakpoint-up(xxl){
-    height: 57rem;
-  }
-  .homepage-banner-content{
-    padding-top: 1.5rem;
-    height: 27rem;
+  //@include media-breakpoint-between(lg, xl){
+  //  height: 44rem;
+  //}
+  //@include media-breakpoint-between(xl, xxl){
+  //  height: 44.2rem;
+  //}
+  //@include media-breakpoint-up(xxl){
+  //  height: 57rem;
+  //}
+  .banner-inner{
     display: flex;
     flex-flow: column;
-    justify-content: flex-start;
-    align-content: center;
-    align-items: center;
-    @include media-breakpoint-between(lg, xl){
-      height: 33rem;
-      padding-top: 2.9rem;
+    justify-content: space-between;
+    height: 100%;
+    @include media-breakpoint-down(md){
+      height: calc(100vh - 145px);
     }
-    @include media-breakpoint-between(xl, xxl){
-      height: 35rem;
-      padding-top: 2rem;
+    @include media-breakpoint-between(md, lg){
+      height: calc(100vh - 260px);
     }
-
-    @include media-breakpoint-up(xxl){
-      height: 33rem;
-      padding-top: 2.3rem;
+    @include media-breakpoint-up(lg){
+      height: calc(100vh - 220px);
     }
-    span.banner-title{
-      text-align: center;
-      display: block;
-      font-size: 1.813rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: $primary_color_black;
-      @include media-breakpoint-between(md, lg){
-        font-size: 2.5rem;
-        text-shadow: 6px 6px 10px #fff;
-      }
+    .homepage-banner-content{
+      padding-top: 1.5rem;
+      height: 27rem;
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-start;
+      align-content: center;
+      align-items: center;
       @include media-breakpoint-between(lg, xl){
-        font-size: 3.5rem;
-        text-shadow: 6px 6px 10px #fff;
+        height: 33rem;
+        padding-top: 2.9rem;
       }
       @include media-breakpoint-between(xl, xxl){
-        font-size: 4.2rem;
-        text-shadow: 6px 6px 10px #fff;
-        margin-bottom: -0.5rem;
+        height: 35rem;
+        padding-top: 2rem;
       }
 
       @include media-breakpoint-up(xxl){
-        font-size: 4.2rem;
-        margin-bottom: -0.7rem;
-        text-shadow: 6px 6px 10px #fff;
+        height: 33rem;
+        padding-top: 2.3rem;
       }
-    }
-    span.banner-subtitle{
-      padding: 0.2rem 4rem 0.2rem 4rem;
-      display: block;
-      color: $primary_color_orange;
-      font-size: 1.125rem;
-      text-align: center;
-      font-weight: 300;
-      font-family: $font__main;
-      @include media-breakpoint-between(lg, xl){
-        font-size: 1.4rem;
-        padding: 0 4rem 0.2rem 4rem;
-      }
-      @include media-breakpoint-up(xl){
-        font-size: 1.8rem;
-        padding: 0 4rem 0.2rem 4rem;
-      }
+      span.banner-title{
+        text-align: center;
+        display: block;
+        font-size: 1.813rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $primary_color_black;
+        @include media-breakpoint-between(md, lg){
+          font-size: 2.9rem;
+          text-shadow: 6px 6px 10px #fff;
+        }
+        @include media-breakpoint-between(lg, xl){
+          font-size: 3.5rem;
+          text-shadow: 6px 6px 10px #fff;
+        }
+        @include media-breakpoint-between(xl, xxl){
+          font-size: 4.2rem;
+          text-shadow: 6px 6px 10px #fff;
+          margin-bottom: -0.5rem;
+        }
 
-      @include media-breakpoint-up(xxl){
-        font-size: 1.9rem;
-        padding: 0 4rem 0.2rem 4rem;
+        @include media-breakpoint-up(xxl){
+          font-size: 4.2rem;
+          margin-bottom: -0.7rem;
+          text-shadow: 6px 6px 10px #fff;
+        }
       }
+      span.banner-subtitle{
+        padding: 0.2rem 4rem 0.2rem 4rem;
+        display: block;
+        color: $primary_color_orange;
+        font-size: 1.125rem;
+        text-align: center;
+        font-weight: 300;
+        font-family: $font__main;
+        @include media-breakpoint-between(md, lg){
+          font-size: 1.3rem;
+          text-shadow: 6px 6px 10px #fff;
+        }
+        @include media-breakpoint-between(lg, xl){
+          font-size: 1.4rem;
+          padding: 0 4rem 0.2rem 4rem;
+        }
+        @include media-breakpoint-up(xl){
+          font-size: 1.8rem;
+          padding: 0 4rem 0.2rem 4rem;
+        }
 
-    }
-    a.homepage-banner-btn{
-      margin: 0.2rem 0;
-      background-color: $primary_color_black;
-      border-radius: 1.563rem;
-      display: block;
-      text-align: center;
-      height: 3.125rem;
-      width: 14.25rem;
-      line-height: 3.125rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: $primary_color_white;
-      text-decoration: none;
-      outline: none;
-      font-size: 0.90rem;
-      &:hover{
-        background-color: $primary_color_orange;
-        transition: 0.3s ease-in-out;
+        @include media-breakpoint-up(xxl){
+          font-size: 1.9rem;
+          padding: 0 4rem 0.2rem 4rem;
+        }
+
+      }
+      a.homepage-banner-btn{
+        margin: 0.2rem 0;
+        background-color: $primary_color_black;
+        border-radius: 1.563rem;
+        display: block;
+        text-align: center;
+        height: 3.125rem;
+        width: 14.25rem;
+        line-height: 3.125rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: $primary_color_white;
+        text-decoration: none;
+        outline: none;
+        font-size: 0.90rem;
+        &:hover{
+          background-color: $primary_color_orange;
+          transition: 0.3s ease-in-out;
+        }
       }
     }
-  }
-  .homepage-banner-logo{
-    text-align: right;
-    padding-right: 1.6rem;
-    @include media-breakpoint-up(lg){
-      text-align: left;
-      padding-left: 2rem;
-    }
-    img{
-      object-fit: cover;
-      width: 7rem;
+    .homepage-banner-logo{
+      text-align: right;
+      padding-right: 1.6rem;
       @include media-breakpoint-up(lg){
-        width: 8rem;
+        text-align: left;
+        padding-left: 2rem;
       }
-      @include media-breakpoint-up(xl){
-        width: 9rem;
+      img{
+        object-fit: cover;
+        width: 7rem;
+        @include media-breakpoint-between(md, lg){
+          width: 8rem;
+        }
+        @include media-breakpoint-up(lg){
+          width: 8rem;
+        }
+        @include media-breakpoint-up(xl){
+          width: 9rem;
+        }
       }
     }
   }
 }
-
-//width: 228px;
-//height: 50px;
-//border-radius: 25px;
-//background: #000;
-//font-family: Stolzl;
-//font-weight: bold;
-//font-size: 14px;
-//letter-spacing: 0.1em;
-//text-align: left;
-//color: #fff;

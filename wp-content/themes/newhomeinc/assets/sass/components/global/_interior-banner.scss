@@ -6,7 +6,7 @@
   }
   .interior-banner-inner{
     display: flex;
-    height: 5rem;
+    height: 5.5rem;
     flex-flow: column;
     justify-content: center;
     align-content: center;
@@ -20,7 +20,9 @@
       color: $primary_color_black;
       font-weight: 500;
       text-transform: uppercase;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
+      line-height: 1.1;
+      padding-bottom: 14px;
       @include media-breakpoint-up(lg){
         font-size: 2.5rem;
       }
@@ -28,7 +30,7 @@
     span#breadcrumbs{
       text-align: left;
       display: inline-block;
-      margin-top: -10px;
+      margin-top: 5px;
       padding-bottom: 0.5rem;
       span{
         span{

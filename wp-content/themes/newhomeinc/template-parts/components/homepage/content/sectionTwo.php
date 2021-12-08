@@ -1,6 +1,7 @@
 <?php $get_featured_homes = homepage_get_featured_post_types('homes', 'featured_home', '-1');?>
 <?php if($get_featured_homes) : ?>
-    <section id="sectionTwo" class="sectionTwo  pb-5">
+    <section id="sectionTwo" class="sectionTwo  pb-5" data-aos="fade-up"
+             data-aos-anchor-placement="top-bottom">
         <div class="container">
             <header class="section-header">
                 <h2><?php echo esc_html('Featured Showcase Homes'); ?></h2>
@@ -41,7 +42,7 @@
                                                             $price_empty = 'call-for-pricing';
                                                         endif;
                                                     ?>
-                                                        <span class="price <?php echo $price_empty; ?>"><?php echo (!empty($spec_data['price'])) ? '' . esc_html('$').number_format($spec_data['price'] ) : ' call for Pricing'?></span>
+                                                        <span class="price <?php echo $price_empty; ?>"><?php echo (!empty($spec_data['price'])) ? '' . esc_html('$').number_format($spec_data['price'] ) : ' Coming Soon'?></span>
 
                                                 </div>
                                             </div>

@@ -11,13 +11,13 @@
 
 @include media-breakpoint-up(lg){
 	:root{
-		--text-multiplier: 1.40;
+		--text-multiplier: 1.20;
 	}
 }
 
 @include media-breakpoint-up(xl){
 	:root{
-		--text-multiplier: 1.60;
+		--text-multiplier: 1.40;
 	}
 }
 /* Declare text styles using calc() function and the multiplier */

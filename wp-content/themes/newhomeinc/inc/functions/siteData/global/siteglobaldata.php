@@ -10,3 +10,15 @@ function interior_hero_bg_image($acf_field){
 	<?php
 }
 
+
+//add_filter( 'facetwp_sort_html', function( $html, $params ) {
+//	$html = '<div class="dropdown-toggle click-dropdown">DropDown Menu</div>';
+//
+//	$html = '<select class="facetwp-sort-select testing">';
+//	foreach ( $params['sort_options'] as $key => $atts ) {
+//		$html .= '<option value="' . $key . '">' . $atts['label'] . '</option>';
+//	}
+//	$html .= '</select>';
+//	return $html;
+//}, 10, 2 );
+

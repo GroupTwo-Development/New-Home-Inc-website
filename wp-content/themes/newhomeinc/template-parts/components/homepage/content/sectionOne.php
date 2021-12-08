@@ -9,7 +9,7 @@
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-lg-6">
-                <div class="homepage-sectionOne-content">
+                <div class="homepage-sectionOne-content" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500">
                     <hr class="site-hr sectionOne-hr">
                     <span class="section-subtitle"><?php echo $section_data['subtitle']; ?></span>
                     <h1><?php echo $section_data['title']; ?></h1>
@@ -19,7 +19,7 @@
                     <a href="<?php echo $section_data['cta']['url']; ?>" class="section-btn sectionOne-btn"><?php echo $section_data['cta']['title']; ?></a>
                 </div>
             </div>
-			<div class="col-lg-6">
+			<div class="col-lg-6" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
                 <div class="homepage-sectionOne-img">
                     <img data-src="<?php echo $section_data['image']['url']; ?>" alt="<?php echo $section_data['image']['alt']; ?>" class="lozad sectionOne-img">
                 </div>

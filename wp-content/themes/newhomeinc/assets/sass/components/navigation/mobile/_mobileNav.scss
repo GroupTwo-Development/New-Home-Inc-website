@@ -13,6 +13,8 @@ nav#mobile-navbar{
     justify-content: space-between;
     align-content: center;
     align-items: center;
+    padding: 0.5% 2%;
+    transition: margin 1s;
     width: 100%;
     .mobile-navbar-component-brand{
 
@@ -70,6 +72,8 @@ nav#mobile-navbar{
     }
   }
 }
+
+
 
 #mobiletoggle{
   @include media-breakpoint-up(lg){
@@ -152,16 +156,16 @@ nav#mobile-navbar{
           display: none;
         }
       }
+      .dropdown-menu.show {
+        //transform: unset;
+        transform: translate3d(0px, 0px, 0px) !important;
+        position: relative !important;
+        @include media-breakpoint-up(lg){
+          display: none;
+        }
+      }
     }
   }
 }
 
-.dropdown-menu.show {
-  //transform: unset;
-  transform: translate3d(0px, 0px, 0px) !important;
-  position: relative !important;
-  @include media-breakpoint-up(lg){
-    display: none;
-  }
-}
 

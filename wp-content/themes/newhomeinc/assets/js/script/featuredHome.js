@@ -41,6 +41,29 @@ const featuredHome = {
                 },
             }).mount();
         });
+
+        document.addEventListener( 'DOMContentLoaded', function() {
+            var elms = document.getElementsByClassName( 'community_img_slider' );
+            for ( var i = 0; i < elms.length; i++ ) {
+                var splideElement = elms[i];
+                var splideDefaultOptions =
+                    {
+                        type: 'loop',
+                        rewind: true,
+                        perPage: 1,
+                        autoplay: false,
+                        arrows:true,
+                        pagination: false,
+                        drag:true,
+                        keyboard:true,
+                        heightRatio: 0.7,
+                        cover: true,
+                    }
+                var splide = new Splide( splideElement, splideDefaultOptions );
+                // 3. mount/initialize this slider
+                splide.mount();
+            }
+        } );
     }
 
 };

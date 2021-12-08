@@ -1,5 +1,5 @@
 <nav id="mobile-navbar" class="navbar-expand fixed-top mobile-navbar">
-    <div class="container">
+
         <div class="mobile-navbar-component">
             <div class="navbar-brand mobile-navbar-component-brand">
 	            <?php if(function_exists('the_custom_logo')){
@@ -14,7 +14,7 @@
                 </button>
             </div>
         </div>
-    </div>
+
 </nav>
 
 <div  class="offcanvas offcanvas-start" tabindex="-1" id="mobiletoggle" aria-labelledby="mobiletoggle">
