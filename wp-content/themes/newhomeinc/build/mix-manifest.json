@@ -1,4 +1,5 @@
 {
+    "/js/app.js": "/js/app.js",
     "/css/style.css": "/css/style.css",
     "/fonts/webfonts/fa-brands-400.eot": "/fonts/webfonts/fa-brands-400.eot",
     "/fonts/webfonts/fa-brands-400.svg": "/fonts/webfonts/fa-brands-400.svg",
@@ -14,6 +15,5 @@
     "/fonts/webfonts/fa-solid-900.svg": "/fonts/webfonts/fa-solid-900.svg",
     "/fonts/webfonts/fa-solid-900.ttf": "/fonts/webfonts/fa-solid-900.ttf",
     "/fonts/webfonts/fa-solid-900.woff": "/fonts/webfonts/fa-solid-900.woff",
-    "/fonts/webfonts/fa-solid-900.woff2": "/fonts/webfonts/fa-solid-900.woff2",
-    "/js/app.js": "/js/app.js"
+    "/fonts/webfonts/fa-solid-900.woff2": "/fonts/webfonts/fa-solid-900.woff2"
 }
