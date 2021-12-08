@@ -23451,7 +23451,7 @@ var featuredHome = {
           pagination: false,
           drag: true,
           keyboard: true,
-          heightRatio: 0.7,
+          heightRatio: 0.6,
           cover: true
         };
         var splide = new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"](splideElement, splideDefaultOptions); // 3. mount/initialize this slider

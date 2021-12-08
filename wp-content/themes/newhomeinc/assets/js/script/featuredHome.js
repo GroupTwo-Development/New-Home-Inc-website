@@ -56,7 +56,7 @@ const featuredHome = {
                         pagination: false,
                         drag:true,
                         keyboard:true,
-                        heightRatio: 0.7,
+                        heightRatio: 0.6,
                         cover: true,
                     }
                 var splide = new Splide( splideElement, splideDefaultOptions );
