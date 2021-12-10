@@ -13,7 +13,14 @@
                     </div>
                 </div>
                 <div class="sorting-filter">
-					<?php echo facetwp_display( 'sort' ); ?>
+                    <div class="dropdown">
+                        <a class=" dropdown-toggle"  id="dropdownMenuSortButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sort Results
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuSortButton1">
+	                        <?php echo facetwp_display( 'sort' ); ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="main-map-view-component">

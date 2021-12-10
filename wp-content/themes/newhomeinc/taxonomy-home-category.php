@@ -11,17 +11,17 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
-		<?php  get_template_part( 'template-parts/components/global/banner/listing/communities/communities-taxonomy');  ?>
+		<?php  get_template_part( 'template-parts/components/global/banner/listing/communities/homes-taxonomy');  ?>
 		<?php get_template_part( 'template-parts/components/navigations/search-page-menu');  ?>
-		<?php get_template_part( 'template-parts/components/communities/mobile-filter');  ?>
-		<?php get_template_part( 'template-parts/components/communities/desktop-filter');  ?>
+		<?php get_template_part( 'template-parts/components/quick-move-in/qmi_mobile-filter');  ?>
+		<?php get_template_part( 'template-parts/components/quick-move-in/qmi_desktop-filter');  ?>
 		<?php get_template_part( 'template-parts/components/communities/filter_results');  ?>
 
 		<?php if ( have_posts() ) : ?>
             <div class="container">
                 <div class="row">
                     <?php while ( have_posts() ) : the_post(); ?>
-                        <?php get_template_part( 'template-parts/content', 'homes'); ?>
+                        <?php get_template_part( 'template-parts/content', 'community'); ?>
                     <?php  endwhile; ?>
 
                     <div class="container pt-3 pb-5">

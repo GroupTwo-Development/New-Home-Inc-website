@@ -4,57 +4,93 @@
   }
   background-color: $primary_color_orange;
   position: fixed;
-  right: -2.25rem;
-  bottom: 9.25rem;
+  right: 0;
+  bottom: 12.25rem;
   z-index: 1095;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.16);
-  border-radius: 2rem;
-  height: 4rem;
-  width: 16.188rem;
-  overflow: hidden;
+  width: 4rem;
+  min-height: 11rem;
   ul.desktop-cta-container{
    list-style: none;
     margin: 0;
-    padding: 0.2rem 0 0.2rem 0.7rem;
-    height: 4rem;
+    padding: 0;
     display: flex;
-    flex-flow: row;
-    justify-content: flex-start;
-    align-content: center;
-    align-items: center;
-    width: 100%;
+    flex-flow: column;
+    justify-content: space-between;
+    height: 100%;
     li{
-     padding-right: 0.9rem;
+      border-bottom: 2px solid $primary_color_white;
+      padding-bottom: 0.4rem;
+      padding-top: 0.4rem;
       &:last-child{
-        padding-right: 0;
+        border-bottom: 0;
+        padding-bottom: 0;
       }
-      ul{
-        list-style: none;
-        margin: 0;
-        padding: 0;
+      &:hover{
+        background-color: $primary_color_black;
+        transition: 0.3s ease-in-out;
+      }
+      a{
         display: flex;
         flex-flow: column;
+        align-content: center;
+        align-items: center;
         justify-content: space-between;
-        li.desktop-cta-ask{
-          a{
-            font-weight: 600;
-            text-transform: uppercase;
-            text-align: left;
-            outline: none;
-            text-decoration: none;
-            color: #fff;
+        color: $primary_color_white;
+        text-decoration: none;
+        outline: none;
+        padding-bottom: 0.3rem;
+        span{
+          display: block;
+          .fas{
+            font-size: 1.2rem;
           }
         }
-        li.desktop-cta-call{
-          a{
-            color: #fff;
-            text-decoration: none;
-            text-align: left;
-            font-weight: 200;
-            outline: none;
-          }
+        span.title{
+          font-size: 90%;
+          text-transform: uppercase;
+          text-align: center;
         }
+
       }
     }
+    li.phone{
+      padding-top: 0.5rem;
+    }
+
+
+    //li{
+    // padding-right: 0.9rem;
+    //  &:last-child{
+    //    padding-right: 0;
+    //  }
+    //  ul{
+    //    list-style: none;
+    //    margin: 0;
+    //    padding: 0;
+    //    display: flex;
+    //    flex-flow: column;
+    //    justify-content: space-between;
+    //    li.desktop-cta-ask{
+    //      a{
+    //        font-weight: 600;
+    //        text-transform: uppercase;
+    //        text-align: left;
+    //        outline: none;
+    //        text-decoration: none;
+    //        color: #fff;
+    //      }
+    //    }
+    //    li.desktop-cta-call{
+    //      a{
+    //        color: #fff;
+    //        text-decoration: none;
+    //        text-align: left;
+    //        font-weight: 200;
+    //        outline: none;
+    //      }
+    //    }
+    //  }
+    //}
   }
 }

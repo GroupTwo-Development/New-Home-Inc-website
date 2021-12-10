@@ -1,0 +1,73 @@
+#contact-section{
+  position: relative;
+  overflow: hidden;
+  .pattern-bg{
+    position: relative;
+    svg{
+      position: absolute;
+      top: -171px;
+      left: -48px;
+      z-index: -1;
+      overflow: hidden;
+      @include media-breakpoint-between(md, lg){
+        top: -135px;
+        left: -38px;
+        width: 27rem;
+      }
+      @include media-breakpoint-between(lg, xl){
+        top: -170px;
+        left: -42px;
+        width: 25rem;
+      }
+      @include media-breakpoint-between(xl, xxl){
+        width: 28rem;
+        top: -150px;
+        left: -39px;
+      }
+      @include media-breakpoint-up(xxl){
+        width: 32rem;
+        top: -125px;
+        left: -45px;
+      }
+    }
+  }
+  .warranty-section-content{
+    padding-top: 7rem;
+    padding-bottom: 2rem;
+    position: relative;
+    text-align: center;
+
+    hr.site-hr{
+      opacity: 1;
+      background-color: #000;
+      height: 0.4rem;
+      width: 7.5rem;
+      display: block;
+      margin: 0.9rem auto;
+      border-radius: 12rem;
+      @include media-breakpoint-up(lg){
+        margin: 2rem auto;
+      }
+    }
+    h2{
+      text-transform: capitalize;
+      font-weight: 400;
+      color: $primary_color_black;
+      @include media-breakpoint-up(lg){
+        margin: 0.8rem 0;
+      }
+    }
+    .content{
+      text-align: center;
+      line-height: 24px;
+      font-weight: normal;
+      @include media-breakpoint-up(lg){
+        text-align: left;
+      }
+    }
+  }
+}
+
+.contact-form{
+
+}

@@ -23283,13 +23283,12 @@ __webpack_require__.r(__webpack_exports__);
 var $ = window.jQuery;
 var $window = window.$window || $(window);
 var SelectButton = {
-  init: function init() {
-    $(document).ready(function () {
-      $('.facetwp-sort-select').select2({
-        minimumResultsForSearch: Infinity,
-        width: '100%'
-      });
-    });
+  init: function init() {// $(document).ready(function() {
+    //         $('.facetwp-sort-select').select2({
+    //             minimumResultsForSearch: Infinity,
+    //             width: '100%',
+    //         });
+    // });
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SelectButton);
@@ -23438,26 +23437,28 @@ var featuredHome = {
       }).mount();
     });
     document.addEventListener('DOMContentLoaded', function () {
-      var elms = document.getElementsByClassName('community_img_slider');
+      document.addEventListener('facetwp-loaded', function () {
+        var elms = document.getElementsByClassName('community_img_slider');
 
-      for (var i = 0; i < elms.length; i++) {
-        var splideElement = elms[i];
-        var splideDefaultOptions = {
-          type: 'loop',
-          rewind: true,
-          perPage: 1,
-          autoplay: false,
-          arrows: true,
-          pagination: false,
-          drag: true,
-          keyboard: true,
-          heightRatio: 0.6,
-          cover: true
-        };
-        var splide = new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"](splideElement, splideDefaultOptions); // 3. mount/initialize this slider
+        for (var i = 0; i < elms.length; i++) {
+          var splideElement = elms[i];
+          var splideDefaultOptions = {
+            type: 'loop',
+            rewind: true,
+            perPage: 1,
+            autoplay: false,
+            arrows: true,
+            pagination: false,
+            drag: true,
+            keyboard: true // heightRatio: 0.5,
+            // cover: true,
 
-        splide.mount();
-      }
+          };
+          var splide = new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"](splideElement, splideDefaultOptions); // 3. mount/initialize this slider
+
+          splide.mount();
+        }
+      });
     });
   }
 };

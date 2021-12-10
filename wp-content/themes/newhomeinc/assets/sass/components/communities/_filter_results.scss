@@ -8,6 +8,13 @@
       ul{
         padding: 0;
         margin: 0;
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: baseline;
+        width: 100%;
+        flex-wrap: wrap;
         li{
           display: flex;
           flex-flow: row;
@@ -15,13 +22,15 @@
           align-content: center;
           align-items: center;
           white-space: nowrap;
+          margin-bottom: 0.5rem;
+
           span.facetwp-selection-label{
             color: $primary_color_black;
             text-transform: capitalize;
             display: block;
           }
           span.facetwp-selection-value{
-            //background-color: $primary_color_gray;
+            background-color: $primary_color_gray;
             color: $primary_color_black;
             display: block;
             margin-left: 0.2rem;

@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/wp-content/plugins/grouptwo-builders-fields/acf-pro-installer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/wp-content/plugins/virtual-page-tutorial" vcs="Git" />
   </component>
 </project>

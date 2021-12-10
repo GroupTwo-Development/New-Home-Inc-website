@@ -60,7 +60,8 @@ section.mobile-filter{
         ul.dropdown-menu{
           border-radius: 0;
           border: 0;
-          padding-left: 10px;
+          padding-left: 20px;
+          padding-right: 20px;
           border-left: 2px solid $primary_color_orange;
           border-right: 2px solid $primary_color_orange;
           border-bottom: 2px solid $primary_color_orange;
@@ -81,7 +82,7 @@ section.mobile-filter{
           }
         }
         ul.show{
-          transform: translate3d(0px, 40px, 0px) !important;
+          transform: translate(0px, 40px) !important;
         }
       }
 
@@ -96,39 +97,29 @@ section.mobile-filter{
             margin-top: -7px;
           }
           .show{
-            transform: translate3d(-15px, 7px, 0px) !important;
+            transform: translate3d(0px, 0px, 0px);
+          }
+          ul.show{
+            transform: translate(0px, 40px) !important;
           }
         }
       }
       li.sorting-item{
-        .facetwp-sort{
-          border-radius: 0;
-          border: 0;
-          .select2-selection{
-            border-radius: 0;
-            border-color: transparent;
-            color: $primary_color_black;
-            .select2-selection__rendered{
-              color: $primary_color_black !important;
-              text-transform: capitalize;
-              font-family: $font__main;
-            }
+        overflow: hidden;
+        padding-top: 0.5rem;
+        .dropdown{
+          margin-top: 7px;
+          margin-left: -3px;
+          a{
+            margin-top: -7px;
           }
-          select.facetwp-sort-select{
-            border-radius: 0 !important;
-            border: 0;
-            width: 100%;
-            overflow: hidden;
-            outline: none;
-            color: $primary_color_black;
-            font-weight: 500;
-            text-transform: capitalize;
-            &:focus-visible{
-              outline: none;
-            }
+          .show{
+            transform: translate3d(0px, 0px, 0px);
+          }
+          ul.show{
+            transform: translate(0px, 40px) !important;
           }
         }
-
       }
       li.map-view-item{
         .fas{
@@ -137,4 +128,58 @@ section.mobile-filter{
       }
     }
   }
+
+  ul.qmi-filters{
+    position: relative;
+    li{
+      ul.qmi-filter-item{
+        li{
+          margin-bottom: 1rem;
+          &:last-child{
+            margin-bottom: 0;
+          }
+          span.title{
+            color: $primary_color_black;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+            font-size: 90%;
+          }
+          .facetwp-facet{
+            margin-bottom: 0;
+            .noUi-handle{
+              border-radius: 50%;
+              background-color: $primary_color_orange;
+            }
+          }
+          .facetwp-facet-home_beds{
+            display: flex;
+            flex-flow: row;
+            justify-content: flex-start;
+            .facetwp-radio{
+              margin-right: 10px;
+              &:last-child{
+                margin-right: 0;
+              }
+            }
+
+          }
+          .facetwp-facet-home_baths{
+            display: flex;
+            flex-flow: row;
+            justify-content: flex-start;
+            .facetwp-radio{
+              margin-right: 10px;
+              &:last-child{
+                margin-right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
+
+

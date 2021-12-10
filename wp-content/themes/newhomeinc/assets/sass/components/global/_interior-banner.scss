@@ -1,12 +1,14 @@
 .interior-page-banner{
   position: relative;
-  height: 5rem;
+  min-height: 5rem;
+  max-height: 6rem;
   @include media-breakpoint-up(lg){
     height: 7rem;
   }
   .interior-banner-inner{
     display: flex;
-    height: 5.5rem;
+    min-height: 5rem;
+    max-height: 6rem;
     flex-flow: column;
     justify-content: center;
     align-content: center;

@@ -20,18 +20,25 @@
     $array_baths_max = [];
     $array_price = [];
 
+$spec_data = get_featured_homes_spec();
+
     $coming_soon_community = get_field('coming_soon_community');
     $coming_soon_class = ($coming_soon_community == 'yes') ? ''.'coming_soon_community':'';
     $community_gallery = get_field('gallery');
     $featured_image = get_field('featured_image');
     $call_for_pricing_phone = get_field('phone_number', 'option');
-    $comm_banner_announcement = get_field('comm_banner_announcement');
-    $google_map = get_field('subdivision_google_map');
+    $comm_banner_announcement = get_field('announcement');
+    $google_map = get_field('spec_google_map');
       if($google_map) :
+
        $address = '';
-            foreach( array('street_number', 'street_name') as $i => $k ) {
+            foreach( array('city', 'state', 'post_code') as $i => $k ) {
+	            $state_name = $google_map['state'];
+
                 if( isset( $google_map[ $k ] ) ) {
-                    $address .= sprintf( '<span class="segment-%s">%s</span>, ', $k, $google_map[ $k ] );
+	                $address = $google_map['city'];
+	                $address .= ' '. convertState($state_name);
+	                $address .= ' '. $google_map['post_code'];
                 }
             }
 	      $address = trim( $address, ', ' );
@@ -72,7 +79,7 @@
     }
 
     $display_average_price = ($min_price) ? '' . esc_html('$') . number_format($average_price) . esc_html('s') :
-        '' . '<span class="call-for-pricing">Coming Soon</span>';
+        '' . '<span class="call-for-price">Call For Pricing</span>';
 
     //TODO  Get the min bedrooms
     $array_beds_min = array_unique($array_beds_min);
@@ -141,11 +148,17 @@
                                         <span class="card-body-location"><?php echo $address; ?></span>
                                     </div>
                                     <div class="card-body-price-area">
-                                       <?php  if ($average_price) : ?>
-                                           <span class="card-body-price-label">From</span>
-                                           <span class="card-body-price"><?php echo $display_average_price; ?></span>
-                                       <?php else : ?>
-                                           <span class="card-body-price"><?php echo $display_average_price; ?></span>
+	                                    <?php
+                                            $price = $spec_data['price'];
+                                            if(empty($price)) :
+                                                $price_empty = 'call-for-pricing';
+                                            endif;
+	                                    ?>
+                                        <?php if($price) : ?>
+                                            <span class="card-body-price-label">Price</span>
+                                            <span class="card-body-price <?php echo $price_empty; ?>"><?php echo (!empty($spec_data['price'])) ? '' . esc_html('$').number_format($spec_data['price'] ) : ' Coming Soon'?></span>
+                                        <?php else : ?>
+                                            <span class="card-body-price <?php echo $price_empty; ?>"><?php echo (!empty($spec_data['price'])) ? '' . esc_html('$').number_format($spec_data['price'] ) : ' Coming Soon'?></span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -154,15 +167,16 @@
                             <div class="card-body-bottom">
                                 <div class="card-body-bottom-spec">
                                     <span class="card-body-bottom-label"><?php echo esc_html('BEDS') ?></span>
-                                    <span class="card-body-bottom-data"><?php echo $display_min_beds; ?><?php echo $display_max_beds; ?></span>
+                                    <span class="card-body-bottom-data"><?php echo $spec_data['bedrooms'] ?></span>
                                 </div>
                                 <div class="card-body-bottom-spec">
+	                                <?php $half_bath = $spec_data['half_bath']; ?>
                                     <span class="card-body-bottom-label"><?php echo esc_html('BATHS') ?></span>
-                                    <span class="card-body-bottom-data"><?php echo $display_min_baths; ?><?php echo $display_max_baths; ?></span>
+                                    <span class="card-body-bottom-data"><?php echo $spec_data['baths'] ?><?php echo ($half_bath == 1) ? ''.esc_html('.5') : '' ?></span>
                                 </div>
                                 <div class="card-body-bottom-spec">
                                     <span class="card-body-bottom-label"><?php echo esc_html('SQ FT') ?></span>
-                                    <span class="card-body-bottom-data"><?php echo $display_sqft; ?></span>
+                                    <span class="card-body-bottom-data"><?php echo number_format($spec_data['sqft']) ?></span>
                                 </div>
                             </div>
                         </a>

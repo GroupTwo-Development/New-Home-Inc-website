@@ -9,11 +9,12 @@
     box-shadow: 0 3px 10px rgb(0 0 0 / 16%);
     border-radius: 0;
     height: 434px;
-    a.card-inner{
-      display: block;
-      text-decoration: none;
-      outline: none;
-      color: $primary_color_black;
+    &:hover{
+      border-bottom: 5px solid $primary_color_orange;
+      transition: 0.4s ease-in-out;
+      overflow: hidden;
+    }
+    .card-inner{
       height: 434px;
       .card-banner-announcement{
         position: absolute;
@@ -59,8 +60,16 @@
         }
       }
       .card-body{
+        a.inner-body{
+          display: block;
+          text-decoration: none;
+          outline: none;
+          height: 100%;
+          color: $primary_color_black;
+        }
           position: relative;
           padding-top: 1rem;
+          display: block;
           .card-body-top{
             .card-body-top-inner{
               display: flex;
@@ -72,15 +81,18 @@
               .card-body-title-area{
                 display: flex;
                 flex-flow: column;
+                text-align: left;
                 justify-content: flex-start;
-                align-content: center;
+                align-content: flex-start;
+                width: 70%;
                 span.card-body-title{
                   display: block;
                   text-transform: capitalize;
                   font-weight: 500;
+                  font-size: 90%;
                 }
                 span.card-body-location{
-                  font-size: 0.90rem;
+                  font-size: 85%;
                   white-space: nowrap;
                 }
               }
@@ -88,17 +100,28 @@
                 display: flex;
                 flex-flow: column;
                 justify-content: space-between;
-                align-content: center;
+                align-content: flex-end;
+                width: 30%;
                 .card-body-price-label{
                   display: block;
                   text-transform: uppercase;
                   font-weight: 500;
+                  text-align: right;
                   font-family: $font__main;
                 }
                 span.card-body-price{
                   display: block;
                   color: $primary_color_orange;
                   font-weight: 500;
+                  text-align: right;
+                }
+                span.call-for-price{
+                  display: block;
+                  color: #fc4f00;
+                  text-transform: uppercase;
+                  text-align: right;
+                  font-size: 78%;
+                  line-height: 20px;
                 }
               }
             }
@@ -134,6 +157,53 @@
           }
       }
     }
+    .card-body{
+      .inner-body{
+        .home_design{
+          span.card-body-title{
+            a{
+              color: $primary_color_black;
+              text-transform: capitalize;
+              font-size: 1.1rem;
+              text-decoration: none;
+              outline: none;
+              &:hover{
+                color: $primary_color_orange;
+              }
+            }
+          }
+          .community-dropdown{
+            position: relative;
+            .dropdown{
+              position: static;
+              a{
+                color: $primary_color_orange;
+                outline: none;
+                text-decoration: none;
+                text-transform: uppercase;
+                cursor: pointer;
+                letter-spacing: 0.3px;
+                font-weight: 400;
+              }
+              ul{
+                border-radius: 0;
+                border: 0;
+                li{
+                  margin-bottom: 0.3rem;
+                  &:last-child{
+                    margin-bottom: 0;
+                  }
+                  a{
+                    color: $primary_color_black;
+                    font-size: 90%;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
   .coming_soon_community{
     background-color: $primary_color_orange;
@@ -142,7 +212,7 @@
     box-shadow: 0 3px 10px rgb(0 0 0 / 16%);
     border-radius: 0;
     height: 434px;
-    a.card-inner{
+    .card-inner{
       display: block;
       color: $primary_color_black;
       .card-banner-announcement{

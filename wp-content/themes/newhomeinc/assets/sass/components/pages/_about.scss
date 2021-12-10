@@ -87,3 +87,51 @@ header.modal-header-title {
 #content{
   padding-top: 10px !important;
 }
+
+
+#trade-partners{
+  position: relative;
+  padding: 2rem 0;
+  @include media-breakpoint-up(lg){
+    padding: 3rem 0;
+  }
+  .trade-partner-section{
+    text-align: center;
+    color: $primary_color_black;
+    hr.site-hr{
+      opacity: 1;
+      background-color: #000;
+      height: 0.3rem;
+      width: 7.5rem;
+      display: block;
+      margin: 0.9rem auto;
+      border-radius: 12rem;
+      @include media-breakpoint-up(lg){
+        margin: 0.9rem auto 0.9rem  0;
+      }
+    }
+    h2{
+      color: $primary_color_black;
+      text-transform: capitalize;
+      padding: 0.5rem 1rem;
+      @include media-breakpoint-up(lg){
+        padding: 0.5rem 1rem 0.5rem 0;
+      }
+    };
+    @include media-breakpoint-up(lg){
+      text-align: left;
+    }
+  }
+  .trade-partner-section-img{
+    margin-bottom: 2rem;
+    img{
+      object-fit: cover;
+      height: 20rem;
+      display: block; margin: 0 auto;
+      @include media-breakpoint-up(lg){
+        margin: auto 0 auto auto;
+        height: 22rem;
+      }
+    }
+  }
+}
