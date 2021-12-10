@@ -13,9 +13,11 @@ get_header();
 	<main id="primary" class="site-main">
 		    <?php  get_template_part( 'template-parts/components/global/banner/listing/communities/communities');  ?>
 		    <?php get_template_part( 'template-parts/components/navigations/search-page-menu');  ?>
-		    <?php get_template_part( 'template-parts/components/communities/mobile-filter');  ?>
-		    <?php get_template_part( 'template-parts/components/communities/desktop-filter');  ?>
+		    <?php get_template_part( 'template-parts/components/floorplans/plans_mobile-filter');  ?>
+		    <?php get_template_part( 'template-parts/components/floorplans/plans_desktop-filter');  ?>
 		    <?php get_template_part( 'template-parts/components/communities/filter_results');  ?>
+
+
 
         <div class="container pt-3">
             <div class="row" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-offset=600" >

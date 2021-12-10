@@ -1,5 +1,5 @@
 <?php  $banner_data = homepage_banner_data(); ?>
-<section id="homepage-banner" class="homepage-banner" style="background-image: url('<?php echo get_image_src_from_id('home_page_banner_image'); ?>')" data-aos="zoom-out" data-aos-duration="900">
+<section id="homepage-banner" class="homepage-banner" style="background-image: url('<?php echo get_image_src_from_id('home_page_banner_image'); ?>')" data-aos="zoom-in" data-aos-duration="900">
   <div class="banner-inner">
       <div class="container">
           <!-- homepage-banner-title component -->
