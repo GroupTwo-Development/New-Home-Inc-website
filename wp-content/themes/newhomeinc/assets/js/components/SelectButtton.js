@@ -7,7 +7,7 @@ const $window = window.$window || $( window );
 
 const SelectButton = {
 	init() {
-		const getUrl = 'http://newhomeinc.test';
+		const getUrl = 'https://newhomeinc1dev.wpengine.com';
 		( function( $ ) {
 			$( '.detail-page-cta-options' ).on( 'click', function() {
 				$( '.detail-page-cta-slide-out' ).toggleClass( 'slidemodal-hidden' );
