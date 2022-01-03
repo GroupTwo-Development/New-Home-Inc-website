@@ -14,8 +14,8253 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Fancybox": () => (/* binding */ R),
 /* harmony export */   "Panzoom": () => (/* binding */ d)
 /* harmony export */ });
-// @fancyapps/ui/Fancybox v4.0.10
-const t=t=>"object"==typeof t&&null!==t&&t.constructor===Object&&"[object Object]"===Object.prototype.toString.call(t),e=(...i)=>{let s=!1;"boolean"==typeof i[0]&&(s=i.shift());let o=i[0];if(!o||"object"!=typeof o)throw new Error("extendee must be an object");const n=i.slice(1),a=n.length;for(let i=0;i<a;i++){const a=n[i];for(let i in a)if(a.hasOwnProperty(i)){const n=a[i];if(s&&(Array.isArray(n)||t(n))){const t=Array.isArray(n)?[]:{};o[i]=e(!0,o.hasOwnProperty(i)?o[i]:t,n)}else o[i]=n}}return o},i=(t,e=1e4)=>(t=parseFloat(t)||0,Math.round((t+Number.EPSILON)*e)/e),s="undefined"!=typeof window&&window.ResizeObserver||class{constructor(t){this.observables=[],this.boundCheck=this.check.bind(this),this.boundCheck(),this.callback=t}observe(t){if(this.observables.some((e=>e.el===t)))return;const e={el:t,size:{height:t.clientHeight,width:t.clientWidth}};this.observables.push(e)}unobserve(t){this.observables=this.observables.filter((e=>e.el!==t))}disconnect(){this.observables=[]}check(){const t=this.observables.filter((t=>{const e=t.el.clientHeight,i=t.el.clientWidth;if(t.size.height!==e||t.size.width!==i)return t.size.height=e,t.size.width=i,!0})).map((t=>t.el));t.length>0&&this.callback(t),window.requestAnimationFrame(this.boundCheck)}};class o{constructor(t){this.id=-1,this.id=t.pointerId||t.identifier||-1,this.pageX=t.pageX,this.pageY=t.pageY,this.clientX=t.clientX,this.clientY=t.clientY,this.nativePointer=t}}function n(t,e){return e?Math.sqrt((e.clientX-t.clientX)**2+(e.clientY-t.clientY)**2):0}function a(t,e){return e?{clientX:(t.clientX+e.clientX)/2,clientY:(t.clientY+e.clientY)/2}:t}class r{constructor(t,{start:e=(()=>!0),move:i=(()=>{}),end:s=(()=>{})}={}){this.element=t,this.startPointers=[],this.currentPointers=[],this.startCallback=e,this.moveCallback=i,this.endCallback=s,this.onStart=t=>{if(t.button&&0!==t.button)return;const e=new o(t);if(!1===this.startCallback(e,t))return!1;t.preventDefault(),(()=>{const t=window.getSelection?window.getSelection():document.selection;t&&t.rangeCount&&t.getRangeAt(0).getClientRects().length&&(t.removeAllRanges?t.removeAllRanges():t.empty&&t.empty())})(),this.currentPointers.push(e),this.startPointers.push(e);(t.target&&"setPointerCapture"in t.target?t.target:this.element).setPointerCapture(t.pointerId),this.element.addEventListener("pointermove",this.onMove),this.element.addEventListener("pointerup",this.onEnd),this.element.addEventListener("pointercancel",this.onEnd)},this.onMove=t=>{const e=this.currentPointers.slice(),i=[];for(const e of[new o(t)]){const t=this.currentPointers.findIndex((t=>t.id===e.id));t<0||(i.push(e),this.currentPointers[t]=e)}i.length&&this.moveCallback(e,this.currentPointers,t)},this.onEnd=t=>{const e=new o(t),i=this.currentPointers.findIndex((t=>t.id===e.id));if(-1===i)return!1;this.currentPointers.splice(i,1),this.startPointers.splice(i,1),this.endCallback(e,t),this.currentPointers.length||(this.element.removeEventListener("pointermove",this.onMove),this.element.removeEventListener("pointerup",this.onEnd),this.element.removeEventListener("pointercancel",this.onEnd))},this.element.addEventListener("pointerdown",this.onStart)}stop(){this.element.removeEventListener("pointerdown",this.onStart),this.element.removeEventListener("pointermove",this.onMove),this.element.removeEventListener("pointerup",this.onEnd),this.element.removeEventListener("pointercancel",this.onEnd)}}const l=function(t){return!!(t&&"object"==typeof t&&t instanceof Element&&t!==document.body)&&(function(t){const e=getComputedStyle(t)["overflow-y"],i=getComputedStyle(t)["overflow-x"],s=("scroll"===e||"auto"===e)&&Math.abs(t.scrollHeight-t.clientHeight)>1,o=("scroll"===i||"auto"===i)&&Math.abs(t.scrollWidth-t.clientWidth)>1;return s||o}(t)?t:l(t.parentNode))};class h{constructor(t={}){this.options=e(!0,{},t),this.plugins=[],this.events={};for(const t of["on","once"])for(const e of Object.entries(this.options[t]||{}))this[t](...e)}option(t,e,...i){t=String(t);let s=(o=t,n=this.options,o.split(".").reduce((function(t,e){return t&&t[e]}),n));var o,n;return"function"==typeof s&&(s=s.call(this,this,...i)),void 0===s?e:s}localize(t,e=[]){return String(t).replace(/\{\{(\w+).?(\w+)?\}\}/g,((t,i,s)=>{let o=!1;if(o=s?this.option(`${i[0]+i.toLowerCase().substring(1)}.l10n.${s}`):this.option(`l10n.${i}`),!o)return i;for(let t=0;t<e.length;t++)o=o.split(e[t][0]).join(e[t][1]);return o}))}on(e,i){if(t(e)){for(const t of Object.entries(e))this.on(...t);return this}return String(e).split(" ").forEach((t=>{const e=this.events[t]=this.events[t]||[];-1==e.indexOf(i)&&e.push(i)})),this}once(e,i){if(t(e)){for(const t of Object.entries(e))this.once(...t);return this}return String(e).split(" ").forEach((t=>{const e=(...s)=>{this.off(t,e),i.call(this,this,...s)};e._=i,this.on(t,e)})),this}off(e,i){if(!t(e))return e.split(" ").forEach((t=>{const e=this.events[t];if(!e||!e.length)return this;let s=-1;for(let t=0,o=e.length;t<o;t++){const o=e[t];if(o&&(o===i||o._===i)){s=t;break}}-1!=s&&e.splice(s,1)})),this;for(const t of Object.entries(e))this.off(...t)}trigger(t,...e){for(const i of[...this.events[t]||[]].slice())if(i&&!1===i.call(this,this,...e))return!1;for(const i of[...this.events["*"]||[]].slice())if(i&&!1===i.call(this,t,this,...e))return!1;return!0}attachPlugins(t){const i={};for(const[s,o]of Object.entries(t||{}))!1===this.options[s]||this.plugins[s]||(this.options[s]=e({},o.defaults||{},this.options[s]),i[s]=new o(this));for(const[t,e]of Object.entries(i))e.attach(this);return this.plugins=Object.assign({},this.plugins,i),this}detachPlugins(){for(const t in this.plugins){let e;(e=this.plugins[t])&&"function"==typeof e.detach&&e.detach(this)}return this.plugins={},this}}const c={touch:!0,zoom:!0,pinchToZoom:!0,panOnlyZoomed:!1,lockAxis:!1,friction:.64,decelFriction:.88,zoomFriction:.74,bounceForce:.2,baseScale:1,minScale:1,maxScale:2,step:.5,textSelection:!1,click:"toggleZoom",wheel:"zoom",wheelFactor:42,wheelLimit:5,draggableClass:"is-draggable",draggingClass:"is-dragging",ratio:1};class d extends h{constructor(t,i={}){super(e(!0,{},c,i)),this.state="init",this.$container=t;for(const t of["onLoad","onWheel","onClick"])this[t]=this[t].bind(this);this.initLayout(),this.resetValues(),this.attachPlugins(d.Plugins),this.trigger("init"),this.updateMetrics(),this.attachEvents(),this.trigger("ready"),!1===this.option("centerOnStart")?this.state="ready":this.panTo({friction:0})}initLayout(){const t=this.$container;if(!(t instanceof HTMLElement))throw new Error("Panzoom: Container not found");const e=this.option("content")||t.querySelector(".panzoom__content");if(!e)throw new Error("Panzoom: Content not found");this.$content=e;let i=this.option("viewport")||t.querySelector(".panzoom__viewport");i||!1===this.option("wrapInner")||(i=document.createElement("div"),i.classList.add("panzoom__viewport"),i.append(...t.childNodes),t.appendChild(i)),this.$viewport=i||e.parentNode}resetValues(){this.updateRate=this.option("updateRate",/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)?250:24),this.container={width:0,height:0},this.viewport={width:0,height:0},this.content={origHeight:0,origWidth:0,width:0,height:0,x:this.option("x",0),y:this.option("y",0),scale:this.option("baseScale")},this.transform={x:0,y:0,scale:1},this.resetDragPosition()}onLoad(t){this.updateMetrics(),this.panTo({scale:this.option("baseScale"),friction:0}),this.trigger("load",t)}onClick(t){if(t.defaultPrevented)return;if(this.option("textSelection")&&window.getSelection().toString().length)return void t.stopPropagation();const e=this.$content.getClientRects()[0];if("ready"!==this.state&&(this.dragPosition.midPoint||Math.abs(e.top-this.dragStart.rect.top)>1||Math.abs(e.left-this.dragStart.rect.left)>1))return t.preventDefault(),void t.stopPropagation();!1!==this.trigger("click",t)&&this.option("zoom")&&"toggleZoom"===this.option("click")&&(t.preventDefault(),t.stopPropagation(),this.zoomWithClick(t))}onWheel(t){!1!==this.trigger("wheel",t)&&this.option("zoom")&&this.option("wheel")&&this.zoomWithWheel(t)}zoomWithWheel(t){void 0===this.changedDelta&&(this.changedDelta=0);const e=Math.max(-1,Math.min(1,-t.deltaY||-t.deltaX||t.wheelDelta||-t.detail)),i=this.content.scale;let s=i*(100+e*this.option("wheelFactor"))/100;if(e<0&&Math.abs(i-this.option("minScale"))<.01||e>0&&Math.abs(i-this.option("maxScale"))<.01?(this.changedDelta+=Math.abs(e),s=i):(this.changedDelta=0,s=Math.max(Math.min(s,this.option("maxScale")),this.option("minScale"))),this.changedDelta>this.option("wheelLimit"))return;if(t.preventDefault(),s===i)return;const o=this.$content.getBoundingClientRect(),n=t.clientX-o.left,a=t.clientY-o.top;this.zoomTo(s,{x:n,y:a})}zoomWithClick(t){const e=this.$content.getClientRects()[0],i=t.clientX-e.left,s=t.clientY-e.top;this.toggleZoom({x:i,y:s})}attachEvents(){this.$content.addEventListener("load",this.onLoad),this.$container.addEventListener("wheel",this.onWheel,{passive:!1}),this.$container.addEventListener("click",this.onClick,{passive:!1}),this.initObserver();const t=new r(this.$container,{start:(e,i)=>{if(!this.option("touch"))return!1;if(!(this.velocity.scale<0)){if(!t.currentPointers.length){if(-1!==["BUTTON","TEXTAREA","OPTION","INPUT","SELECT","VIDEO"].indexOf(i.target.nodeName))return!1;if(this.option("textSelection")&&((t,e,i)=>{const s=t.childNodes,o=document.createRange();for(let t=0;t<s.length;t++){const n=s[t];if(n.nodeType!==Node.TEXT_NODE)continue;o.selectNodeContents(n);const a=o.getBoundingClientRect();if(e>=a.left&&i>=a.top&&e<=a.right&&i<=a.bottom)return n}return!1})(i.target,i.clientX,i.clientY))return!1;if(l(i.target))return!1}return!1!==this.trigger("touchStart",i)&&(this.state="pointerdown",this.resetDragPosition(),this.dragPosition.midPoint=null,this.dragPosition.time=Date.now(),!0)}},move:(e,i,s)=>{if("pointerdown"!==this.state)return;if(0==this.trigger("touchMove",s))return void s.preventDefault();if(i.length<2&&1==this.option("panOnlyZoomed")&&this.content.width<=this.viewport.width&&this.content.height<=this.viewport.height&&this.transform.scale<=this.option("baseScale"))return;if(i.length>1&&(!this.option("zoom")||!1===this.option("pinchToZoom")))return;s.preventDefault(),s.stopPropagation();const o=a(e[0],e[1]),r=a(i[0],i[1]),l=r.clientX-o.clientX,h=r.clientY-o.clientY,c=n(e[0],e[1]),d=n(i[0],i[1]),u=c?d/c:1;this.dragOffset.x+=l,this.dragOffset.y+=h,this.dragOffset.scale*=u,this.dragOffset.time=Date.now()-this.dragPosition.time;const f=1===this.dragStart.scale&&this.option("lockAxis");if(f&&!this.lockAxis){if(Math.abs(this.dragOffset.x)<6&&Math.abs(this.dragOffset.y)<6)return;if("xy"===f){const t=Math.abs(180*Math.atan2(this.dragOffset.y,this.dragOffset.x)/Math.PI);this.lockAxis=t>45&&t<135?"y":"x"}else this.lockAxis=f}if(this.lockAxis&&(this.dragOffset["x"===this.lockAxis?"y":"x"]=0),this.$container.classList.add(this.option("draggingClass")),this.transform.scale===this.option("baseScale")&&"y"===this.lockAxis||(this.dragPosition.x=this.dragStart.x+this.dragOffset.x),this.transform.scale===this.option("baseScale")&&"x"===this.lockAxis||(this.dragPosition.y=this.dragStart.y+this.dragOffset.y),this.dragPosition.scale=this.dragStart.scale*this.dragOffset.scale,i.length>1){const e=a(t.startPointers[0],t.startPointers[1]),i=e.clientX-this.dragStart.rect.x,s=e.clientY-this.dragStart.rect.y,{deltaX:o,deltaY:n}=this.getZoomDelta(this.content.scale*this.dragOffset.scale,i,s);this.dragPosition.x-=o,this.dragPosition.y-=n,this.dragPosition.midPoint=r}else this.setDragResistance();this.transform={x:this.dragPosition.x,y:this.dragPosition.y,scale:this.dragPosition.scale},this.startAnimation()},end:(e,i)=>{if("pointerdown"!==this.state)return;if(this._dragOffset={...this.dragOffset},t.currentPointers.length)return void this.resetDragPosition();if(this.state="decel",this.friction=this.option("decelFriction"),this.recalculateTransform(),this.$container.classList.remove(this.option("draggingClass")),!1===this.trigger("touchEnd",i))return;if("decel"!==this.state)return;const s=this.option("minScale");if(this.transform.scale<s)return void this.zoomTo(s,{friction:.64});const o=this.option("maxScale");if(this.transform.scale-o>.01){const t=this.dragPosition.midPoint||e,i=this.$content.getClientRects()[0];this.zoomTo(o,{friction:.64,x:t.clientX-i.left,y:t.clientY-i.top})}else;}});this.pointerTracker=t}initObserver(){this.resizeObserver||(this.resizeObserver=new s((()=>{this.updateTimer||(this.updateTimer=setTimeout((()=>{const t=this.$container.getBoundingClientRect();t.width&&t.height?((Math.abs(t.width-this.container.width)>1||Math.abs(t.height-this.container.height)>1)&&(this.isAnimating()&&this.endAnimation(!0),this.updateMetrics(),this.panTo({x:this.content.x,y:this.content.y,scale:this.option("baseScale"),friction:0})),this.updateTimer=null):this.updateTimer=null}),this.updateRate))})),this.resizeObserver.observe(this.$container))}resetDragPosition(){this.lockAxis=null,this.friction=this.option("friction"),this.velocity={x:0,y:0,scale:0};const{x:t,y:e,scale:i}=this.content;this.dragStart={rect:this.$content.getBoundingClientRect(),x:t,y:e,scale:i},this.dragPosition={...this.dragPosition,x:t,y:e,scale:i},this.dragOffset={x:0,y:0,scale:1,time:0}}updateMetrics(t){!0!==t&&this.trigger("beforeUpdate");const e=this.$container,s=this.$content,o=this.$viewport,n=this.$content instanceof HTMLImageElement,a=this.option("zoom"),r=this.option("resizeParent",a);let l=(h=this.$content,Math.max(parseFloat(h.naturalWidth||0),parseFloat(h.width&&h.width.baseVal&&h.width.baseVal.value||0),parseFloat(h.offsetWidth||0),parseFloat(h.scrollWidth||0)));var h;let c=(t=>Math.max(parseFloat(t.naturalHeight||0),parseFloat(t.height&&t.height.baseVal&&t.height.baseVal.value||0),parseFloat(t.offsetHeight||0),parseFloat(t.scrollHeight||0)))(this.$content);Object.assign(s.style,{width:"",height:"",maxWidth:"",maxHeight:""}),r&&Object.assign(o.style,{width:"",height:""});const d=this.option("ratio");l=i(l*d),c=i(c*d);let u=l,f=c;const g=s.getBoundingClientRect(),p=o.getBoundingClientRect(),m=o==e?p:e.getBoundingClientRect();let y=Math.max(o.offsetWidth,i(p.width)),b=Math.max(o.offsetHeight,i(p.height)),v=window.getComputedStyle(o);if(y-=parseFloat(v.paddingLeft)+parseFloat(v.paddingRight),b-=parseFloat(v.paddingTop)+parseFloat(v.paddingBottom),this.viewport.width=y,this.viewport.height=b,a){if(Math.abs(l-g.width)>.1||Math.abs(c-g.height)>.1){const t=((t,e,i,s)=>{const o=Math.min(i/t||0,s/e);return{width:t*o||0,height:e*o||0}})(l,c,Math.min(l,g.width),Math.min(c,g.height));u=i(t.width),f=i(t.height)}Object.assign(s.style,{width:`${u}px`,height:`${f}px`,transform:""})}if(r&&(Object.assign(o.style,{width:`${u}px`,height:`${f}px`}),this.viewport={...this.viewport,width:u,height:f}),n&&a&&"function"!=typeof this.options.maxScale){const t=this.option("maxScale");this.options.maxScale=function(){return this.content.origWidth>0&&this.content.fitWidth>0?this.content.origWidth/this.content.fitWidth:t}}this.content={...this.content,origWidth:l,origHeight:c,fitWidth:u,fitHeight:f,width:u,height:f,scale:1,isZoomable:a},this.container={width:m.width,height:m.height},!0!==t&&this.trigger("afterUpdate")}zoomIn(t){this.zoomTo(this.content.scale+(t||this.option("step")))}zoomOut(t){this.zoomTo(this.content.scale-(t||this.option("step")))}toggleZoom(t={}){const e=this.option("maxScale"),i=this.option("baseScale"),s=this.content.scale>i+.5*(e-i)?i:e;this.zoomTo(s,t)}zoomTo(t=this.option("baseScale"),{x:e=null,y:s=null}={}){t=Math.max(Math.min(t,this.option("maxScale")),this.option("minScale"));const o=i(this.content.scale/(this.content.width/this.content.fitWidth),1e7);null===e&&(e=this.content.width*o*.5),null===s&&(s=this.content.height*o*.5);const{deltaX:n,deltaY:a}=this.getZoomDelta(t,e,s);e=this.content.x-n,s=this.content.y-a,this.panTo({x:e,y:s,scale:t,friction:this.option("zoomFriction")})}getZoomDelta(t,e=0,i=0){const s=this.content.fitWidth*this.content.scale,o=this.content.fitHeight*this.content.scale,n=e>0&&s?e/s:0,a=i>0&&o?i/o:0;return{deltaX:(this.content.fitWidth*t-s)*n,deltaY:(this.content.fitHeight*t-o)*a}}panTo({x:t=this.content.x,y:e=this.content.y,scale:i,friction:s=this.option("friction"),ignoreBounds:o=!1}={}){if(i=i||this.content.scale||1,!o){const{boundX:s,boundY:o}=this.getBounds(i);s&&(t=Math.max(Math.min(t,s.to),s.from)),o&&(e=Math.max(Math.min(e,o.to),o.from))}this.friction=s,this.transform={...this.transform,x:t,y:e,scale:i},s?(this.state="panning",this.velocity={x:(1/this.friction-1)*(t-this.content.x),y:(1/this.friction-1)*(e-this.content.y),scale:(1/this.friction-1)*(i-this.content.scale)},this.startAnimation()):this.endAnimation()}startAnimation(){this.rAF?cancelAnimationFrame(this.rAF):this.trigger("startAnimation"),this.rAF=requestAnimationFrame((()=>this.animate()))}animate(){if(this.setEdgeForce(),this.setDragForce(),this.velocity.x*=this.friction,this.velocity.y*=this.friction,this.velocity.scale*=this.friction,this.content.x+=this.velocity.x,this.content.y+=this.velocity.y,this.content.scale+=this.velocity.scale,this.isAnimating())this.setTransform();else if("pointerdown"!==this.state)return void this.endAnimation();this.rAF=requestAnimationFrame((()=>this.animate()))}getBounds(t){let e=this.boundX,s=this.boundY;if(void 0!==e&&void 0!==s)return{boundX:e,boundY:s};e={from:0,to:0},s={from:0,to:0},t=t||this.transform.scale;const o=this.content.fitWidth,n=this.content.fitHeight,a=o*t,r=n*t,l=this.viewport.width,h=this.viewport.height;if(o<=l){const t=.5*(l-a),s=.5*(a-o);e.from=i(t-s),e.to=i(t+s)}else e.from=i(l-a);if(n<=h){const t=.5*(h-r),e=.5*(r-n);s.from=i(t-e),s.to=i(t+e)}else s.from=i(h-a);return{boundX:e,boundY:s}}setEdgeForce(){if("decel"!==this.state)return;const t=this.option("bounceForce"),{boundX:e,boundY:i}=this.getBounds(Math.max(this.transform.scale,this.content.scale));let s,o,n,a;if(e&&(s=this.content.x<e.from,o=this.content.x>e.to),i&&(n=this.content.y<i.from,a=this.content.y>i.to),s||o){let i=((s?e.from:e.to)-this.content.x)*t;const o=this.content.x+(this.velocity.x+i)/this.friction;o>=e.from&&o<=e.to&&(i+=this.velocity.x),this.velocity.x=i,this.recalculateTransform()}if(n||a){let e=((n?i.from:i.to)-this.content.y)*t;const s=this.content.y+(e+this.velocity.y)/this.friction;s>=i.from&&s<=i.to&&(e+=this.velocity.y),this.velocity.y=e,this.recalculateTransform()}}setDragResistance(){if("pointerdown"!==this.state)return;const{boundX:t,boundY:e}=this.getBounds(this.dragPosition.scale);let i,s,o,n;if(t&&(i=this.dragPosition.x<t.from,s=this.dragPosition.x>t.to),e&&(o=this.dragPosition.y<e.from,n=this.dragPosition.y>e.to),(i||s)&&(!i||!s)){const e=i?t.from:t.to,s=e-this.dragPosition.x;this.dragPosition.x=e-.3*s}if((o||n)&&(!o||!n)){const t=o?e.from:e.to,i=t-this.dragPosition.y;this.dragPosition.y=t-.3*i}}setDragForce(){"pointerdown"===this.state&&(this.velocity.x=this.dragPosition.x-this.content.x,this.velocity.y=this.dragPosition.y-this.content.y,this.velocity.scale=this.dragPosition.scale-this.content.scale)}recalculateTransform(){this.transform.x=this.content.x+this.velocity.x/(1/this.friction-1),this.transform.y=this.content.y+this.velocity.y/(1/this.friction-1),this.transform.scale=this.content.scale+this.velocity.scale/(1/this.friction-1)}isAnimating(){return!(!this.friction||!(Math.abs(this.velocity.x)>.05||Math.abs(this.velocity.y)>.05||Math.abs(this.velocity.scale)>.05))}setTransform(t){let e,s,o;if(t?(e=i(this.transform.x),s=i(this.transform.y),o=this.transform.scale,this.content={...this.content,x:e,y:s,scale:o}):(e=i(this.content.x),s=i(this.content.y),o=this.content.scale/(this.content.width/this.content.fitWidth),this.content={...this.content,x:e,y:s}),this.trigger("beforeTransform"),e=i(this.content.x),s=i(this.content.y),t&&this.option("zoom")){let t,n;t=i(this.content.fitWidth*o),n=i(this.content.fitHeight*o),this.content.width=t,this.content.height=n,this.transform={...this.transform,width:t,height:n,scale:o},Object.assign(this.$content.style,{width:`${t}px`,height:`${n}px`,maxWidth:"none",maxHeight:"none",transform:`translate3d(${e}px, ${s}px, 0) scale(1)`})}else this.$content.style.transform=`translate3d(${e}px, ${s}px, 0) scale(${o})`;this.trigger("afterTransform")}endAnimation(t){cancelAnimationFrame(this.rAF),this.rAF=null,this.velocity={x:0,y:0,scale:0},this.setTransform(!0),this.state="ready",this.handleCursor(),!0!==t&&this.trigger("endAnimation")}handleCursor(){const t=this.option("draggableClass");t&&this.option("touch")&&(1==this.option("panOnlyZoomed")&&this.content.width<=this.viewport.width&&this.content.height<=this.viewport.height&&this.transform.scale<=this.option("baseScale")?this.$container.classList.remove(t):this.$container.classList.add(t))}detachEvents(){this.$content.removeEventListener("load",this.onLoad),this.$container.removeEventListener("wheel",this.onWheel,{passive:!1}),this.$container.removeEventListener("click",this.onClick,{passive:!1}),this.pointerTracker&&(this.pointerTracker.stop(),this.pointerTracker=null),this.resizeObserver&&(this.resizeObserver.disconnect(),this.resizeObserver=null)}destroy(){"destroy"!==this.state&&(this.state="destroy",clearTimeout(this.updateTimer),this.updateTimer=null,cancelAnimationFrame(this.rAF),this.rAF=null,this.detachEvents(),this.detachPlugins(),this.resetDragPosition())}}d.version="4.0.10",d.Plugins={};const u=(t,e)=>{let i=0;return function(...s){const o=(new Date).getTime();if(!(o-i<e))return i=o,t(...s)}};class f{constructor(t){this.$container=null,this.$prev=null,this.$next=null,this.carousel=t,this.onRefresh=this.onRefresh.bind(this)}option(t){return this.carousel.option(`Navigation.${t}`)}createButton(t){const e=document.createElement("button");e.setAttribute("title",this.carousel.localize(`{{${t.toUpperCase()}}}`));const i=this.option("classNames.button")+" "+this.option(`classNames.${t}`);return e.classList.add(...i.split(" ")),e.setAttribute("tabindex","0"),e.innerHTML=this.carousel.localize(this.option(`${t}Tpl`)),e.addEventListener("click",(e=>{e.preventDefault(),e.stopPropagation(),this.carousel["slide"+("next"===t?"Next":"Prev")]()})),e}build(){this.$container||(this.$container=document.createElement("div"),this.$container.classList.add(this.option("classNames.main")),this.carousel.$container.appendChild(this.$container)),this.$next||(this.$next=this.createButton("next"),this.$container.appendChild(this.$next)),this.$prev||(this.$prev=this.createButton("prev"),this.$container.appendChild(this.$prev))}onRefresh(){const t=this.carousel.pages.length;t<=1||t>1&&this.carousel.elemDimWidth<this.carousel.wrapDimWidth&&!Number.isInteger(this.carousel.option("slidesPerPage"))?this.cleanup():(this.build(),this.$prev.removeAttribute("disabled"),this.$next.removeAttribute("disabled"),this.carousel.option("infiniteX",this.carousel.option("infinite"))||(this.carousel.page<=0&&this.$prev.setAttribute("disabled",""),this.carousel.page>=t-1&&this.$next.setAttribute("disabled","")))}cleanup(){this.$prev&&this.$prev.remove(),this.$prev=null,this.$next&&this.$next.remove(),this.$next=null,this.$container&&this.$container.remove(),this.$container=null}attach(){this.carousel.on("refresh change",this.onRefresh)}detach(){this.carousel.off("refresh change",this.onRefresh),this.cleanup()}}f.defaults={prevTpl:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M15 3l-9 9 9 9"/></svg>',nextTpl:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M9 3l9 9-9 9"/></svg>',classNames:{main:"carousel__nav",button:"carousel__button",next:"is-next",prev:"is-prev"}};class g{constructor(t){this.carousel=t,this.selectedIndex=null,this.friction=0,this.onNavReady=this.onNavReady.bind(this),this.onNavClick=this.onNavClick.bind(this),this.onNavCreateSlide=this.onNavCreateSlide.bind(this),this.onTargetChange=this.onTargetChange.bind(this)}addAsTargetFor(t){this.target=this.carousel,this.nav=t,this.attachEvents()}addAsNavFor(t){this.target=t,this.nav=this.carousel,this.attachEvents()}attachEvents(){this.nav.options.initialSlide=this.target.options.initialPage,this.nav.on("ready",this.onNavReady),this.nav.on("createSlide",this.onNavCreateSlide),this.nav.on("Panzoom.click",this.onNavClick),this.target.on("change",this.onTargetChange),this.target.on("Panzoom.afterUpdate",this.onTargetChange)}onNavReady(){this.onTargetChange(!0)}onNavClick(t,e,i){const s=i.target.closest(".carousel__slide");if(!s)return;i.stopPropagation();const o=parseInt(s.dataset.index,10),n=this.target.findPageForSlide(o);this.target.page!==n&&this.target.slideTo(n,{friction:this.friction}),this.markSelectedSlide(o)}onNavCreateSlide(t,e){e.index===this.selectedIndex&&this.markSelectedSlide(e.index)}onTargetChange(){const t=this.target.pages[this.target.page].indexes[0],e=this.nav.findPageForSlide(t);this.nav.slideTo(e),this.markSelectedSlide(t)}markSelectedSlide(t){this.selectedIndex=t,[...this.nav.slides].filter((t=>t.$el&&t.$el.classList.remove("is-nav-selected")));const e=this.nav.slides[t];e&&e.$el&&e.$el.classList.add("is-nav-selected")}attach(t){const e=t.options.Sync;(e.target||e.nav)&&(e.target?this.addAsNavFor(e.target):e.nav&&this.addAsTargetFor(e.nav),this.friction=e.friction)}detach(){this.nav&&(this.nav.off("ready",this.onNavReady),this.nav.off("Panzoom.click",this.onNavClick),this.nav.off("createSlide",this.onNavCreateSlide)),this.target&&(this.target.off("Panzoom.afterUpdate",this.onTargetChange),this.target.off("change",this.onTargetChange))}}g.defaults={friction:.92};const p={Navigation:f,Dots:class{constructor(t){this.carousel=t,this.$list=null,this.events={change:this.onChange.bind(this),refresh:this.onRefresh.bind(this)}}buildList(){if(this.carousel.pages.length<this.carousel.option("Dots.minSlideCount"))return;const t=document.createElement("ol");return t.classList.add("carousel__dots"),t.addEventListener("click",(t=>{if(!("page"in t.target.dataset))return;t.preventDefault(),t.stopPropagation();const e=parseInt(t.target.dataset.page,10),i=this.carousel;e!==i.page&&(i.pages.length<3&&i.option("infinite")?i[0==e?"slidePrev":"slideNext"]():i.slideTo(e))})),this.$list=t,this.carousel.$container.appendChild(t),this.carousel.$container.classList.add("has-dots"),t}removeList(){this.$list&&(this.$list.parentNode.removeChild(this.$list),this.$list=null),this.carousel.$container.classList.remove("has-dots")}rebuildDots(){let t=this.$list;const e=!!t,i=this.carousel.pages.length;if(i<2)return void(e&&this.removeList());e||(t=this.buildList());const s=this.$list.children.length;if(s>i)for(let t=i;t<s;t++)this.$list.removeChild(this.$list.lastChild);else{for(let t=s;t<i;t++){const e=document.createElement("li");e.classList.add("carousel__dot"),e.dataset.page=t,e.setAttribute("role","button"),e.setAttribute("tabindex","0"),e.setAttribute("title",this.carousel.localize("{{GOTO}}",[["%d",t+1]])),e.addEventListener("keydown",(t=>{const i=t.code;let s;"Enter"===i||"NumpadEnter"===i?s=e:"ArrowRight"===i?s=e.nextSibling:"ArrowLeft"===i&&(s=e.previousSibling),s&&s.click()})),this.$list.appendChild(e)}this.setActiveDot()}}setActiveDot(){if(!this.$list)return;this.$list.childNodes.forEach((t=>{t.classList.remove("is-selected")}));const t=this.$list.childNodes[this.carousel.page];t&&t.classList.add("is-selected")}onChange(){this.setActiveDot()}onRefresh(){this.rebuildDots()}attach(){this.carousel.on(this.events)}detach(){this.removeList(),this.carousel.off(this.events),this.carousel=null}},Sync:g};const m={slides:[],preload:0,slidesPerPage:"auto",initialPage:null,initialSlide:null,friction:.92,center:!0,infinite:!0,fill:!0,dragFree:!1,prefix:"",classNames:{viewport:"carousel__viewport",track:"carousel__track",slide:"carousel__slide",slideSelected:"is-selected"},l10n:{NEXT:"Next slide",PREV:"Previous slide",GOTO:"Go to slide #%d"}};class y extends h{constructor(t,i={}){if(super(i=e(!0,{},m,i)),this.state="init",this.$container=t,!(this.$container instanceof HTMLElement))throw new Error("No root element provided");this.slideNext=u(this.slideNext.bind(this),250),this.slidePrev=u(this.slidePrev.bind(this),250),this.init()}init(){this.pages=[],this.page=this.pageIndex=null,this.prevPage=this.prevPageIndex=null,this.attachPlugins(y.Plugins),this.trigger("init"),this.initLayout(),this.initSlides(),this.updateMetrics(),this.$track&&this.pages.length&&(this.$track.style.transform=`translate3d(${-1*this.pages[this.page].left}px, 0px, 0) scale(1)`),this.manageSlideVisiblity(),this.initPanzoom(),this.state="ready",this.trigger("ready")}initLayout(){const t=this.option("prefix"),e=this.option("classNames");this.$viewport=this.option("viewport")||this.$container.querySelector(`.${t}${e.viewport}`),this.$viewport||(this.$viewport=document.createElement("div"),this.$viewport.classList.add(t+e.viewport),this.$viewport.append(...this.$container.childNodes),this.$container.appendChild(this.$viewport)),this.$track=this.option("track")||this.$container.querySelector(`.${t}${e.track}`),this.$track||(this.$track=document.createElement("div"),this.$track.classList.add(t+e.track),this.$track.append(...this.$viewport.childNodes),this.$viewport.appendChild(this.$track))}initSlides(){this.slides=[];this.$viewport.querySelectorAll(`.${this.option("prefix")}${this.option("classNames.slide")}`).forEach((t=>{const e={$el:t,isDom:!0};this.slides.push(e),this.trigger("createSlide",e,this.slides.length)})),Array.isArray(this.options.slides)&&(this.slides=e(!0,[...this.slides],this.options.slides))}updateMetrics(){let t,e=0,s=[];this.slides.forEach(((i,o)=>{const n=i.$el,a=i.isDom||!t?this.getSlideMetrics(n):t;i.index=o,i.width=a,i.left=e,t=a,e+=a,s.push(o)}));let o=Math.max(this.$track.offsetWidth,i(this.$track.getBoundingClientRect().width)),n=getComputedStyle(this.$track);o-=parseFloat(n.paddingLeft)+parseFloat(n.paddingRight),this.contentWidth=e,this.viewportWidth=o;const a=[],r=this.option("slidesPerPage");if(Number.isInteger(r)&&e>o)for(let t=0;t<this.slides.length;t+=r)a.push({indexes:s.slice(t,t+r),slides:this.slides.slice(t,t+r)});else{let t=0,e=0;for(let i=0;i<this.slides.length;i+=1){let s=this.slides[i];(!a.length||e+s.width>o)&&(a.push({indexes:[],slides:[]}),t=a.length-1,e=0),e+=s.width,a[t].indexes.push(i),a[t].slides.push(s)}}const l=this.option("center"),h=this.option("fill");a.forEach(((t,i)=>{t.index=i,t.width=t.slides.reduce(((t,e)=>t+e.width),0),t.left=t.slides[0].left,l&&(t.left+=.5*(o-t.width)*-1),h&&!this.option("infiniteX",this.option("infinite"))&&e>o&&(t.left=Math.max(t.left,0),t.left=Math.min(t.left,e-o))}));const c=[];let d;a.forEach((t=>{const e={...t};d&&e.left===d.left?(d.width+=e.width,d.slides=[...d.slides,...e.slides],d.indexes=[...d.indexes,...e.indexes]):(e.index=c.length,d=e,c.push(e))})),this.pages=c;let u=this.page;if(null===u){const t=this.option("initialSlide");u=null!==t?this.findPageForSlide(t):this.option("initialPage",0),c[u]||(u=c.length&&u>c.length?c[c.length-1].index:0),this.page=u,this.pageIndex=u}this.updatePanzoom(),this.trigger("refresh")}getSlideMetrics(t){if(!t){const e=this.slides[0];(t=document.createElement("div")).dataset.isTestEl=1,t.style.visibility="hidden",t.classList.add(this.option("prefix")+this.option("classNames.slide")),e.customClass&&t.classList.add(...e.customClass.split(" ")),this.$track.prepend(t)}let e=Math.max(t.offsetWidth,i(t.getBoundingClientRect().width));const s=t.currentStyle||window.getComputedStyle(t);return e=e+(parseFloat(s.marginLeft)||0)+(parseFloat(s.marginRight)||0),t.dataset.isTestEl&&t.remove(),e}findPageForSlide(t){const e=this.pages.find((e=>e.indexes.indexOf(t)>-1));return e?e.index:null}slideNext(){this.slideTo(this.pageIndex+1)}slidePrev(){this.slideTo(this.pageIndex-1)}slideTo(t,e={}){const{x:i=-1*this.setPage(t,!0),y:s=0,friction:o=this.option("friction")}=e;this.Panzoom.content.x===i&&!this.Panzoom.velocity.x&&o||(this.Panzoom.panTo({x:i,y:s,friction:o,ignoreBounds:!0}),"ready"===this.state&&"ready"===this.Panzoom.state&&this.trigger("settle"))}initPanzoom(){this.Panzoom&&this.Panzoom.destroy();const t=e(!0,{},{content:this.$track,wrapInner:!1,resizeParent:!1,zoom:!1,click:!1,lockAxis:"x",x:this.pages.length?-1*this.pages[this.page].left:0,centerOnStart:!1,textSelection:()=>this.option("textSelection",!1),panOnlyZoomed:function(){return this.content.width<=this.viewport.width}},this.option("Panzoom"));this.Panzoom=new d(this.$container,t),this.Panzoom.on({"*":(t,...e)=>this.trigger(`Panzoom.${t}`,...e),afterUpdate:()=>{this.updatePage()},beforeTransform:this.onBeforeTransform.bind(this),touchEnd:this.onTouchEnd.bind(this),endAnimation:()=>{this.trigger("settle")}}),this.updateMetrics(),this.manageSlideVisiblity()}updatePanzoom(){this.Panzoom&&(this.Panzoom.content={...this.Panzoom.content,fitWidth:this.contentWidth,origWidth:this.contentWidth,width:this.contentWidth},this.pages.length>1&&this.option("infiniteX",this.option("infinite"))?this.Panzoom.boundX=null:this.pages.length&&(this.Panzoom.boundX={from:-1*this.pages[this.pages.length-1].left,to:-1*this.pages[0].left}),this.option("infiniteY",this.option("infinite"))?this.Panzoom.boundY=null:this.Panzoom.boundY={from:0,to:0},this.Panzoom.handleCursor())}manageSlideVisiblity(){const t=this.contentWidth,e=this.viewportWidth;let i=this.Panzoom?-1*this.Panzoom.content.x:this.pages.length?this.pages[this.page].left:0;const s=this.option("preload"),o=this.option("infiniteX",this.option("infinite")),n=parseFloat(getComputedStyle(this.$viewport,null).getPropertyValue("padding-left")),a=parseFloat(getComputedStyle(this.$viewport,null).getPropertyValue("padding-right"));this.slides.forEach((r=>{let l,h,c=0;l=i-n,h=i+e+a,l-=s*(e+n+a),h+=s*(e+n+a);const d=r.left+r.width>l&&r.left<h;l=i+t-n,h=i+t+e+a,l-=s*(e+n+a);const u=o&&r.left+r.width>l&&r.left<h;l=i-t-n,h=i-t+e+a,l-=s*(e+n+a);const f=o&&r.left+r.width>l&&r.left<h;u||d||f?(this.createSlideEl(r),d&&(c=0),u&&(c=-1),f&&(c=1),r.left+r.width>i&&r.left<=i+e+a&&(c=0)):this.removeSlideEl(r),r.hasDiff=c}));let r=0,l=0;this.slides.forEach(((e,i)=>{let s=0;e.$el?(i!==r||e.hasDiff?s=l+e.hasDiff*t:l=0,e.$el.style.left=Math.abs(s)>.1?`${l+e.hasDiff*t}px`:"",r++):l+=e.width})),this.markSelectedSlides()}createSlideEl(t){if(!t)return;if(t.$el){if(parseInt(t.$el.dataset.index,10)!==t.index){t.$el.dataset.index=t.index;let e;t.$el.querySelectorAll("[data-lazy-src]").forEach((t=>{let e=t.dataset.lazySrc;t instanceof HTMLImageElement?t.src=e:t.style.backgroundImage=`url('${e}')`})),(e=t.$el.dataset.lazySrc)&&(t.$el.style.backgroundImage=`url('${e}')`),t.state="ready"}return}const e=document.createElement("div");e.dataset.index=t.index,e.classList.add(this.option("prefix")+this.option("classNames.slide")),t.customClass&&e.classList.add(...t.customClass.split(" ")),t.html&&(e.innerHTML=t.html);const i=[];this.slides.forEach(((t,e)=>{t.$el&&i.push(e)}));const s=t.index;let o=null;if(i.length){let t=i.reduce(((t,e)=>Math.abs(e-s)<Math.abs(t-s)?e:t));o=this.slides[t]}return this.$track.insertBefore(e,o&&o.$el?o.index<t.index?o.$el.nextSibling:o.$el:null),t.$el=e,this.trigger("createSlide",t,s),t}removeSlideEl(t){t.$el&&!t.isDom&&(this.trigger("removeSlide",t),t.$el.remove(),t.$el=null)}markSelectedSlides(){const t=this.option("classNames.slideSelected"),e="aria-hidden";this.slides.forEach(((i,s)=>{const o=i.$el;if(!o)return;const n=this.pages[this.page];n&&n.indexes&&n.indexes.indexOf(s)>-1?(t&&!o.classList.contains(t)&&(o.classList.add(t),this.trigger("selectSlide",i)),o.removeAttribute(e)):(t&&o.classList.contains(t)&&(o.classList.remove(t),this.trigger("unselectSlide",i)),o.setAttribute(e,!0))}))}updatePage(){this.updateMetrics(),this.slideTo(this.page,{friction:0})}onBeforeTransform(){this.option("infiniteX",this.option("infinite"))&&this.manageInfiniteTrack(),this.manageSlideVisiblity()}manageInfiniteTrack(){const t=this.contentWidth,e=this.viewportWidth;if(!this.option("infiniteX",this.option("infinite"))||this.pages.length<2||t<e)return;const i=this.Panzoom;let s=!1;return i.content.x<-1*(t-e)&&(i.content.x+=t,this.pageIndex=this.pageIndex-this.pages.length,s=!0),i.content.x>e&&(i.content.x-=t,this.pageIndex=this.pageIndex+this.pages.length,s=!0),s&&"pointerdown"===i.state&&i.resetDragPosition(),s}onTouchEnd(t,e){const i=this.option("dragFree");if(!i&&this.pages.length>1&&t.dragOffset.time<350&&Math.abs(t.dragOffset.y)<1&&Math.abs(t.dragOffset.x)>5)this[t.dragOffset.x<0?"slideNext":"slidePrev"]();else if(i){const[,e]=this.getPageFromPosition(-1*t.transform.x);this.setPage(e)}else this.slideToClosest()}slideToClosest(t={}){let[,e]=this.getPageFromPosition(-1*this.Panzoom.content.x);this.slideTo(e,t)}getPageFromPosition(t){const e=this.pages.length;this.option("center")&&(t+=.5*this.viewportWidth);const i=Math.floor(t/this.contentWidth);t-=i*this.contentWidth;let s=this.slides.find((e=>e.left<=t&&e.left+e.width>t));if(s){let t=this.findPageForSlide(s.index);return[t,t+i*e]}return[0,0]}setPage(t,e){let i=0,s=parseInt(t,10)||0;const o=this.page,n=this.pageIndex,a=this.pages.length,r=this.contentWidth,l=this.viewportWidth;if(t=(s%a+a)%a,this.option("infiniteX",this.option("infinite"))&&r>l){const o=Math.floor(s/a)||0,n=r;if(i=this.pages[t].left+o*n,!0===e&&a>2){let t=-1*this.Panzoom.content.x;const e=i-n,o=i+n,r=Math.abs(t-i),l=Math.abs(t-e),h=Math.abs(t-o);h<r&&h<=l?(i=o,s+=a):l<r&&l<h&&(i=e,s-=a)}}else t=s=Math.max(0,Math.min(s,a-1)),i=this.pages.length?this.pages[t].left:0;return this.page=t,this.pageIndex=s,null!==o&&t!==o&&(this.prevPage=o,this.prevPageIndex=n,this.trigger("change",t,o)),i}destroy(){this.state="destroy",this.slides.forEach((t=>{this.removeSlideEl(t)})),this.slides=[],this.Panzoom.destroy(),this.detachPlugins()}}y.version="4.0.10",y.Plugins=p;const b=!("undefined"==typeof window||!window.document||!window.document.createElement);let v=null;const x=["a[href]","area[href]",'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',"select:not([disabled]):not([aria-hidden])","textarea:not([disabled]):not([aria-hidden])","button:not([disabled]):not([aria-hidden])","iframe","object","embed","video","audio","[contenteditable]",'[tabindex]:not([tabindex^="-"]):not([disabled]):not([aria-hidden])'],w=t=>{if(t&&b){null===v&&document.createElement("div").focus({get preventScroll(){return v=!0,!1}});try{if(t.setActive)t.setActive();else if(v)t.focus({preventScroll:!0});else{const e=window.pageXOffset||document.body.scrollTop,i=window.pageYOffset||document.body.scrollLeft;t.focus(),document.body.scrollTo({top:e,left:i,behavior:"auto"})}}catch(t){}}};class ${constructor(t){this.fancybox=t,this.$container=null,this.state="init";for(const t of["onPrepare","onClosing","onKeydown"])this[t]=this[t].bind(this);this.events={prepare:this.onPrepare,closing:this.onClosing,keydown:this.onKeydown}}onPrepare(){this.getSlides().length<this.fancybox.option("Thumbs.minSlideCount")?this.state="disabled":!0===this.fancybox.option("Thumbs.autoStart")&&this.fancybox.Carousel.Panzoom.content.height>=this.fancybox.option("Thumbs.minScreenHeight")&&this.build()}onClosing(){this.Carousel&&this.Carousel.Panzoom.detachEvents()}onKeydown(t,e){e===t.option("Thumbs.key")&&this.toggle()}build(){if(this.$container)return;const t=document.createElement("div");t.classList.add("fancybox__thumbs"),this.fancybox.$carousel.parentNode.insertBefore(t,this.fancybox.$carousel.nextSibling),this.Carousel=new y(t,e(!0,{Dots:!1,Navigation:!1,Sync:{friction:0},infinite:!1,center:!0,fill:!0,dragFree:!0,slidesPerPage:1,preload:1},this.fancybox.option("Thumbs.Carousel"),{Sync:{target:this.fancybox.Carousel},slides:this.getSlides()})),this.Carousel.Panzoom.on("wheel",((t,e)=>{e.preventDefault(),this.fancybox[e.deltaY<0?"prev":"next"]()})),this.$container=t,this.state="visible"}getSlides(){const t=[];for(const e of this.fancybox.items){const i=e.thumb;i&&t.push({html:`<div class="fancybox__thumb" style="background-image:url('${i}')"></div>`,customClass:`has-thumb has-${e.type||"image"}`})}return t}toggle(){"visible"===this.state?this.hide():"hidden"===this.state?this.show():this.build()}show(){"hidden"===this.state&&(this.$container.style.display="",this.Carousel.Panzoom.attachEvents(),this.state="visible")}hide(){"visible"===this.state&&(this.Carousel.Panzoom.detachEvents(),this.$container.style.display="none",this.state="hidden")}cleanup(){this.Carousel&&(this.Carousel.destroy(),this.Carousel=null),this.$container&&(this.$container.remove(),this.$container=null),this.state="init"}attach(){this.fancybox.on(this.events)}detach(){this.fancybox.off(this.events),this.cleanup()}}$.defaults={minSlideCount:2,minScreenHeight:500,autoStart:!0,key:"t",Carousel:{}};const C=t=>Object.entries(t).map((t=>t.map(encodeURIComponent).join("="))).join("&"),S={video:{autoplay:!0,ratio:16/9},youtube:{autohide:1,fs:1,rel:0,hd:1,wmode:"transparent",enablejsapi:1,html5:1},vimeo:{hd:1,show_title:1,show_byline:1,show_portrait:0,fullscreen:1},html5video:{tpl:'<video class="fancybox__html5video" playsinline controls controlsList="nodownload" poster="{{poster}}">\n  <source src="{{src}}" type="{{format}}" />Sorry, your browser doesn\'t support embedded videos.</video>',format:""}};class E{constructor(t){this.fancybox=t;for(const t of["onInit","onReady","onCreateSlide","onRemoveSlide","onSelectSlide","onUnselectSlide","onRefresh","onMessage"])this[t]=this[t].bind(this);this.events={init:this.onInit,ready:this.onReady,"Carousel.createSlide":this.onCreateSlide,"Carousel.removeSlide":this.onRemoveSlide,"Carousel.selectSlide":this.onSelectSlide,"Carousel.unselectSlide":this.onUnselectSlide,"Carousel.refresh":this.onRefresh}}onInit(){for(const t of this.fancybox.items)this.processType(t)}processType(t){if(t.html)return t.src=t.html,t.type="html",void delete t.html;const i=t.src||"";let s=t.type||this.fancybox.options.type,o=null;if(!i||"string"==typeof i){if(o=i.match(/(?:youtube\.com|youtu\.be|youtube\-nocookie\.com)\/(?:watch\?(?:.*&)?v=|v\/|u\/|embed\/?)?(videoseries\?list=(?:.*)|[\w-]{11}|\?listType=(?:.*)&list=(?:.*))(?:.*)/i)){const e=C(this.fancybox.option("Html.youtube")),i=encodeURIComponent(o[1]);t.videoId=i,t.src=`https://www.youtube-nocookie.com/embed/${i}?${e}`,t.thumb=t.thumb||`https://i.ytimg.com/vi/${i}/mqdefault.jpg`,t.vendor="youtube",s="video"}else if(o=i.match(/^.+vimeo.com\/(?:\/)?([\d]+)(.*)?/)){const e=C(this.fancybox.option("Html.vimeo")),i=encodeURIComponent(o[1]);t.videoId=i,t.src=`https://player.vimeo.com/video/${i}?${e}`,t.vendor="vimeo",s="video"}else(o=i.match(/(?:maps\.)?google\.([a-z]{2,3}(?:\.[a-z]{2})?)\/(?:(?:(?:maps\/(?:place\/(?:.*)\/)?\@(.*),(\d+.?\d+?)z))|(?:\?ll=))(.*)?/i))?(t.src=`//maps.google.${o[1]}/?ll=${(o[2]?o[2]+"&z="+Math.floor(o[3])+(o[4]?o[4].replace(/^\//,"&"):""):o[4]+"").replace(/\?/,"&")}&output=${o[4]&&o[4].indexOf("layer=c")>0?"svembed":"embed"}`,s="map"):(o=i.match(/(?:maps\.)?google\.([a-z]{2,3}(?:\.[a-z]{2})?)\/(?:maps\/search\/)(.*)/i))&&(t.src=`//maps.google.${o[1]}/maps?q=${o[2].replace("query=","q=").replace("api=1","")}&output=embed`,s="map");s||("#"===i.charAt(0)?s="inline":(o=i.match(/\.(mp4|mov|ogv|webm)((\?|#).*)?$/i))?(s="html5video",t.format=t.format||"video/"+("ogv"===o[1]?"ogg":o[1])):i.match(/(^data:image\/[a-z0-9+\/=]*,)|(\.(jp(e|g|eg)|gif|png|bmp|webp|svg|ico)((\?|#).*)?$)/i)?s="image":i.match(/\.(pdf)((\?|#).*)?$/i)&&(s="pdf")),t.type=s||this.fancybox.option("defaultType","image"),"html5video"!==s&&"video"!==s||(t.video=e({},this.fancybox.option("Html.video"),t.video),t._width&&t._height?t.ratio=parseFloat(t._width)/parseFloat(t._height):t.ratio=t.ratio||t.video.ratio||S.video.ratio)}}onReady(){this.fancybox.Carousel.slides.forEach((t=>{t.$el&&(this.setContent(t),t.index===this.fancybox.getSlide().index&&this.playVideo(t))}))}onCreateSlide(t,e,i){"ready"===this.fancybox.state&&this.setContent(i)}loadInlineContent(t){let e;if(t.src instanceof HTMLElement)e=t.src;else if("string"==typeof t.src){const i=t.src.split("#",2),s=2===i.length&&""===i[0]?i[1]:i[0];e=document.getElementById(s)}if(e){if("clone"===t.type||e.$placeHolder){e=e.cloneNode(!0);let i=e.getAttribute("id");i=i?`${i}--clone`:`clone-${this.fancybox.id}-${t.index}`,e.setAttribute("id",i)}else{const t=document.createElement("div");t.classList.add("fancybox-placeholder"),e.parentNode.insertBefore(t,e),e.$placeHolder=t}this.fancybox.setContent(t,e)}else this.fancybox.setError(t,"{{ELEMENT_NOT_FOUND}}")}loadAjaxContent(t){const e=this.fancybox,i=new XMLHttpRequest;e.showLoading(t),i.onreadystatechange=function(){i.readyState===XMLHttpRequest.DONE&&"ready"===e.state&&(e.hideLoading(t),200===i.status?e.setContent(t,i.responseText):e.setError(t,404===i.status?"{{AJAX_NOT_FOUND}}":"{{AJAX_FORBIDDEN}}"))},i.open("GET",t.src),i.setRequestHeader("X-Requested-With","XMLHttpRequest"),i.send(t.ajax||null),t.xhr=i}loadIframeContent(t){const e=this.fancybox,i=document.createElement("iframe");if(i.className="fancybox__iframe",i.setAttribute("id",`fancybox__iframe_${e.id}_${t.index}`),i.setAttribute("allow","autoplay; fullscreen"),i.setAttribute("scrolling","auto"),t.$iframe=i,"iframe"!==t.type||!1===t.preload)return i.setAttribute("src",t.src),this.fancybox.setContent(t,i),void this.resizeIframe(t);e.showLoading(t);const s=document.createElement("div");s.style.visibility="hidden",this.fancybox.setContent(t,s),s.appendChild(i),i.onerror=()=>{e.setError(t,"{{IFRAME_ERROR}}")},i.onload=()=>{e.hideLoading(t);let s=!1;i.isReady||(i.isReady=!0,s=!0),i.src.length&&(i.parentNode.style.visibility="",this.resizeIframe(t),s&&e.revealContent(t))},i.setAttribute("src",t.src)}setAspectRatio(t){const e=t.$content,i=t.ratio;if(!e)return;let s=t._width,o=t._height;if(i||s&&o){Object.assign(e.style,{width:s&&o?"100%":"",height:s&&o?"100%":"",maxWidth:"",maxHeight:""});let t=e.offsetWidth,n=e.offsetHeight;if(s=s||t,o=o||n,s>t||o>n){let e=Math.min(t/s,n/o);s*=e,o*=e}Math.abs(s/o-i)>.01&&(i<s/o?s=o*i:o=s/i),Object.assign(e.style,{width:`${s}px`,height:`${o}px`})}}resizeIframe(t){const e=t.$iframe;if(!e)return;let i=t._width||0,s=t._height||0;i&&s&&(t.autoSize=!1);const o=e.parentNode,n=o.style;if(!1!==t.preload&&!1!==t.autoSize)try{const t=window.getComputedStyle(o),a=parseFloat(t.paddingLeft)+parseFloat(t.paddingRight),r=parseFloat(t.paddingTop)+parseFloat(t.paddingBottom),l=e.contentWindow.document,h=l.getElementsByTagName("html")[0],c=l.body;c.style.overflow="hidden",i=i||h.scrollWidth+a,n.width=`${i}px`,c.style.overflow="",n.flex="0 0 auto",n.height=`${c.scrollHeight}px`,s=h.scrollHeight+r}catch(t){}if(i||s){const t={flex:"0 1 auto"};i&&(t.width=`${i}px`),s&&(t.height=`${s}px`),Object.assign(n,t)}}onRefresh(t,e){e.slides.forEach((t=>{t.$el&&(t.$iframe&&this.resizeIframe(t),t.ratio&&this.setAspectRatio(t))}))}setContent(t){if(t&&!t.isDom){switch(t.type){case"html":this.fancybox.setContent(t,t.src);break;case"html5video":this.fancybox.setContent(t,this.fancybox.option("Html.html5video.tpl").replace(/\{\{src\}\}/gi,t.src).replace("{{format}}",t.format||t.html5video&&t.html5video.format||"").replace("{{poster}}",t.poster||t.thumb||""));break;case"inline":case"clone":this.loadInlineContent(t);break;case"ajax":this.loadAjaxContent(t);break;case"iframe":case"pdf":case"video":case"map":this.loadIframeContent(t)}t.ratio&&this.setAspectRatio(t)}}onSelectSlide(t,e,i){"ready"===t.state&&this.playVideo(i)}playVideo(t){if("html5video"===t.type&&t.video.autoplay)try{const e=t.$el.querySelector("video");if(e){const t=e.play();void 0!==t&&t.then((()=>{})).catch((t=>{e.muted=!0,e.play()}))}}catch(t){}if("video"!==t.type||!t.$iframe||!t.$iframe.contentWindow)return;const e=()=>{if("done"===t.state&&t.$iframe&&t.$iframe.contentWindow){let e;if(t.$iframe.isReady)return t.video&&t.video.autoplay&&(e="youtube"==t.vendor?{event:"command",func:"playVideo"}:{method:"play",value:"true"}),void(e&&t.$iframe.contentWindow.postMessage(JSON.stringify(e),"*"));"youtube"===t.vendor&&(e={event:"listening",id:t.$iframe.getAttribute("id")},t.$iframe.contentWindow.postMessage(JSON.stringify(e),"*"))}t.poller=setTimeout(e,250)};e()}onUnselectSlide(t,e,i){if("html5video"===i.type){try{i.$el.querySelector("video").pause()}catch(t){}return}let s=!1;"vimeo"==i.vendor?s={method:"pause",value:"true"}:"youtube"===i.vendor&&(s={event:"command",func:"pauseVideo"}),s&&i.$iframe&&i.$iframe.contentWindow&&i.$iframe.contentWindow.postMessage(JSON.stringify(s),"*"),clearTimeout(i.poller)}onRemoveSlide(t,e,i){i.xhr&&(i.xhr.abort(),i.xhr=null),i.$iframe&&(i.$iframe.onload=i.$iframe.onerror=null,i.$iframe.src="//about:blank",i.$iframe=null);const s=i.$content;"inline"===i.type&&s&&(s.classList.remove("fancybox__content"),"none"!==s.style.display&&(s.style.display="none")),i.$closeButton&&(i.$closeButton.remove(),i.$closeButton=null);const o=s&&s.$placeHolder;o&&(o.parentNode.insertBefore(s,o),o.remove(),s.$placeHolder=null)}onMessage(t){try{let e=JSON.parse(t.data);if("https://player.vimeo.com"===t.origin){if("ready"===e.event)for(let e of document.getElementsByClassName("fancybox__iframe"))e.contentWindow===t.source&&(e.isReady=1)}else"https://www.youtube-nocookie.com"===t.origin&&"onReady"===e.event&&(document.getElementById(e.id).isReady=1)}catch(t){}}attach(){this.fancybox.on(this.events),window.addEventListener("message",this.onMessage,!1)}detach(){this.fancybox.off(this.events),window.removeEventListener("message",this.onMessage,!1)}}E.defaults=S;class P{constructor(t){this.fancybox=t;for(const t of["onReady","onClosing","onDone","onPageChange","onCreateSlide","onRemoveSlide","onImageStatusChange"])this[t]=this[t].bind(this);this.events={ready:this.onReady,closing:this.onClosing,done:this.onDone,"Carousel.change":this.onPageChange,"Carousel.createSlide":this.onCreateSlide,"Carousel.removeSlide":this.onRemoveSlide}}onReady(){this.fancybox.Carousel.slides.forEach((t=>{t.$el&&this.setContent(t)}))}onDone(t,e){this.handleCursor(e)}onClosing(t){clearTimeout(this.clickTimer),this.clickTimer=null,t.Carousel.slides.forEach((t=>{t.$image&&(t.state="destroy"),t.Panzoom&&t.Panzoom.detachEvents()})),"closing"===this.fancybox.state&&this.canZoom(t.getSlide())&&this.zoomOut()}onCreateSlide(t,e,i){"ready"===this.fancybox.state&&this.setContent(i)}onRemoveSlide(t,e,i){i.$image&&(i.$el.classList.remove(t.option("Image.canZoomInClass")),i.$image.remove(),i.$image=null),i.Panzoom&&(i.Panzoom.destroy(),i.Panzoom=null),i.$el&&i.$el.dataset&&delete i.$el.dataset.imageFit}setContent(t){if(t.isDom||t.html||t.type&&"image"!==t.type)return;if(t.$image)return;t.type="image",t.state="loading";const e=document.createElement("div");e.style.visibility="hidden";const i=document.createElement("img");i.addEventListener("load",(e=>{e.stopImmediatePropagation(),this.onImageStatusChange(t)})),i.addEventListener("error",(()=>{this.onImageStatusChange(t)})),i.src=t.src,i.alt="",i.draggable=!1,i.classList.add("fancybox__image"),t.srcset&&i.setAttribute("srcset",t.srcset),t.sizes&&i.setAttribute("sizes",t.sizes),t.$image=i;const s=this.fancybox.option("Image.wrap");if(s){const o=document.createElement("div");o.classList.add("string"==typeof s?s:"fancybox__image-wrap"),o.appendChild(i),e.appendChild(o),t.$wrap=o}else e.appendChild(i);t.$el.dataset.imageFit=this.fancybox.option("Image.fit"),this.fancybox.setContent(t,e),i.complete||i.error?this.onImageStatusChange(t):this.fancybox.showLoading(t)}onImageStatusChange(t){const e=t.$image;e&&"loading"===t.state&&(e.complete&&e.naturalWidth&&e.naturalHeight?(this.fancybox.hideLoading(t),"contain"===this.fancybox.option("Image.fit")&&this.initSlidePanzoom(t),t.$el.addEventListener("wheel",(e=>this.onWheel(t,e)),{passive:!1}),t.$content.addEventListener("click",(e=>this.onClick(t,e)),{passive:!1}),this.revealContent(t)):this.fancybox.setError(t,"{{IMAGE_ERROR}}"))}initSlidePanzoom(t){t.Panzoom||(t.Panzoom=new d(t.$el,e(!0,this.fancybox.option("Image.Panzoom",{}),{viewport:t.$wrap,content:t.$image,wrapInner:!1,textSelection:!0,touch:this.fancybox.option("Image.touch"),panOnlyZoomed:!0,click:!1,wheel:!1})),t.Panzoom.on("startAnimation",(()=>{this.fancybox.trigger("Image.startAnimation",t)})),t.Panzoom.on("endAnimation",(()=>{"zoomIn"===t.state&&this.fancybox.done(t),this.handleCursor(t),this.fancybox.trigger("Image.endAnimation",t)})),t.Panzoom.on("afterUpdate",(()=>{this.handleCursor(t),this.fancybox.trigger("Image.afterUpdate",t)})))}revealContent(t){null===this.fancybox.Carousel.prevPage&&t.index===this.fancybox.options.startIndex&&this.canZoom(t)?this.zoomIn():this.fancybox.revealContent(t)}getZoomInfo(t){const e=t.$thumb.getBoundingClientRect(),i=e.width,s=e.height,o=t.$content.getBoundingClientRect(),n=o.width,a=o.height,r=o.top-e.top,l=o.left-e.left;let h=this.fancybox.option("Image.zoomOpacity");return"auto"===h&&(h=Math.abs(i/s-n/a)>.1),{top:r,left:l,scale:e.width/n,opacity:h}}canZoom(t){const e=this.fancybox,i=e.$container;if(window.visualViewport&&1!==window.visualViewport.scale)return!1;if(!e.option("Image.zoom")||"contain"!==e.option("Image.fit"))return!1;const s=t.$thumb;if(!s||"loading"===t.state)return!1;i.classList.add("fancybox__no-click");const o=s.getBoundingClientRect();let n;if(this.fancybox.option("Image.ignoreCoveredThumbnail")){const t=document.elementFromPoint(o.left+1,o.top+1)===s,e=document.elementFromPoint(o.right-1,o.bottom-1)===s;n=t&&e}else n=document.elementFromPoint(o.left+.5*o.width,o.top+.5*o.height)===s;return i.classList.remove("fancybox__no-click"),n}zoomIn(){const t=this.fancybox,e=t.getSlide(),i=e.Panzoom,{top:s,left:o,scale:n,opacity:a}=this.getZoomInfo(e);e.state="zoomIn",t.trigger("reveal",e),i.panTo({x:-1*o,y:-1*s,scale:n,friction:0,ignoreBounds:!0}),e.$content.style.visibility="",!0===a&&i.on("afterTransform",(t=>{"zoomIn"!==e.state&&"zoomOut"!==e.state||(t.$content.style.opacity=Math.min(1,1-(1-t.content.scale)/(1-n)))})),i.panTo({x:0,y:0,scale:1,friction:this.fancybox.option("Image.zoomFriction")})}zoomOut(){const t=this.fancybox,e=t.getSlide(),i=e.Panzoom;if(!i)return;e.state="zoomOut",t.state="customClosing",e.$caption&&(e.$caption.style.visibility="hidden");let s=this.fancybox.option("Image.zoomFriction");const o=t=>{const{top:o,left:n,scale:a,opacity:r}=this.getZoomInfo(e);t||r||(s*=.82),i.panTo({x:-1*n,y:-1*o,scale:a,friction:s,ignoreBounds:!0}),s*=.98};window.addEventListener("scroll",o),i.once("endAnimation",(()=>{window.removeEventListener("scroll",o),t.destroy()})),o()}handleCursor(t){if("image"!==t.type||!t.$el)return;const e=t.Panzoom,i=this.fancybox.option("Image.click",!1,t),s=this.fancybox.option("Image.touch"),o=t.$el.classList,n=this.fancybox.option("Image.canZoomInClass"),a=this.fancybox.option("Image.canZoomOutClass");if(e&&"toggleZoom"===i){e&&1===e.content.scale&&e.option("maxScale")-e.content.scale>.01?(o.remove(a),o.add(n)):e.content.scale>1&&!s&&o.add(a)}else"close"===i&&o.add(a)}onWheel(t,e){if("ready"===this.fancybox.state&&!1!==this.fancybox.trigger("Image.wheel",e))switch(this.fancybox.option("Image.wheel")){case"zoom":t.Panzoom&&t.Panzoom.zoomWithWheel(e);break;case"close":this.fancybox.close();break;case"slide":this.fancybox[e.deltaY<0?"prev":"next"]()}}onClick(t,e){if("ready"!==this.fancybox.state)return;const i=t.Panzoom;if(i&&(i.dragPosition.midPoint||0!==i.dragOffset.x||0!==i.dragOffset.y||1!==i.dragOffset.scale))return;if(this.fancybox.Carousel.Panzoom.lockAxis)return!1;const s=i=>{switch(i){case"toggleZoom":e.stopPropagation(),t.Panzoom&&t.Panzoom.zoomWithClick(e);break;case"close":this.fancybox.close();break;case"next":e.stopPropagation(),this.fancybox.next()}},o=this.fancybox.option("Image.click"),n=this.fancybox.option("Image.doubleClick");n?this.clickTimer?(clearTimeout(this.clickTimer),this.clickTimer=null,s(n)):this.clickTimer=setTimeout((()=>{this.clickTimer=null,s(o)}),300):s(o)}onPageChange(t,e){const i=t.getSlide();e.slides.forEach((t=>{t.Panzoom&&"done"===t.state&&t.index!==i.index&&t.Panzoom.panTo({x:0,y:0,scale:1,friction:.8})}))}attach(){this.fancybox.on(this.events)}detach(){this.fancybox.off(this.events)}}P.defaults={canZoomInClass:"can-zoom_in",canZoomOutClass:"can-zoom_out",zoom:!0,zoomOpacity:"auto",zoomFriction:.82,ignoreCoveredThumbnail:!1,touch:!0,click:"toggleZoom",doubleClick:null,wheel:"zoom",fit:"contain",wrap:!1,Panzoom:{ratio:1}};const T=function(){const t=window.location.hash.substr(1),e=t.split("-"),i=e.length>1&&/^\+?\d+$/.test(e[e.length-1])&&parseInt(e.pop(-1),10)||null;return{hash:t,slug:e.join("-"),index:i}};class L{constructor(t){this.fancybox=t;for(const t of["onChange","onClosing"])this[t]=this[t].bind(this);this.events={initCarousel:this.onChange,"Carousel.change":this.onChange,closing:this.onClosing},this.hasCreatedHistory=!1,this.origHash="",this.timer=null}onChange(){const t=this.fancybox,e=t.Carousel;this.timer&&clearTimeout(this.timer);const i=null===e.prevPage,s=t.getSlide(),o=s.$trigger&&s.$trigger.dataset,n=window.location.hash.substr(1);let a=!1;if(s.slug)a=s.slug;else{let t=o&&o.fancybox;t&&t.length&&"true"!==t&&(a=t+(e.slides.length>1?"-"+(s.index+1):""))}i&&(this.origHash=n!==a?this.origHash:""),a&&n!==a&&(this.timer=setTimeout((()=>{try{window.history[i?"pushState":"replaceState"]({},document.title,window.location.pathname+window.location.search+"#"+a),i&&(this.hasCreatedHistory=!0)}catch(t){}}),300))}onClosing(){if(this.timer&&clearTimeout(this.timer),!0!==this.hasSilentClose){if(!this.hasCreatedHistory)try{return void window.history.replaceState({},document.title,window.location.pathname+window.location.search+(this.origHash?"#"+this.origHash:""))}catch(t){}window.history.back()}}attach(t){t.on(this.events)}detach(t){t.off(this.events)}static startFromUrl(){if(!L.Fancybox||L.Fancybox.getInstance())return;const{hash:t,slug:e,index:i}=T();if(!e)return;let s=document.querySelector(`[data-slug="${t}"]`);if(s&&s.dispatchEvent(new CustomEvent("click",{bubbles:!0,cancelable:!0})),L.Fancybox.getInstance())return;const o=document.querySelectorAll(`[data-fancybox="${e}"]`);o.length&&(null===i&&1===o.length?s=o[0]:i&&(s=o[i-1]),s&&s.dispatchEvent(new CustomEvent("click",{bubbles:!0,cancelable:!0})))}static onHashChange(){const{slug:t,index:e}=T(),i=L.Fancybox.getInstance();if(i){if(t){const s=i.Carousel;for(let e of s.slides)if(e.slug&&e.slug===t)return s.slideTo(e.index);const o=i.getSlide(),n=o.$trigger&&o.$trigger.dataset;if(n&&n.fancybox===t)return s.slideTo(e-1)}i.plugins.Hash.hasSilentClose=!0,i.close()}L.startFromUrl()}static create(t){function e(){window.addEventListener("hashchange",L.onHashChange,!1),L.startFromUrl()}L.Fancybox=t,b&&window.requestAnimationFrame((()=>{/complete|interactive|loaded/.test(document.readyState)?e():document.addEventListener("DOMContentLoaded",e)}))}static destroy(){window.removeEventListener("hashchange",L.onHashChange,!1)}}const A={pageXOffset:0,pageYOffset:0,element:()=>document.fullscreenElement||document.mozFullScreenElement||document.webkitFullscreenElement,activate(t){A.pageXOffset=window.pageXOffset,A.pageYOffset=window.pageYOffset,t.requestFullscreen?t.requestFullscreen():t.mozRequestFullScreen?t.mozRequestFullScreen():t.webkitRequestFullscreen?t.webkitRequestFullscreen():t.msRequestFullscreen&&t.msRequestFullscreen()},deactivate(){document.exitFullscreen?document.exitFullscreen():document.mozCancelFullScreen?document.mozCancelFullScreen():document.webkitExitFullscreen&&document.webkitExitFullscreen()}};class k{constructor(t){this.fancybox=t,this.active=!1,this.handleVisibilityChange=this.handleVisibilityChange.bind(this)}isActive(){return this.active}setTimer(){if(!this.active||this.timer)return;const t=this.fancybox.option("slideshow.delay",3e3);this.timer=setTimeout((()=>{this.timer=null,this.fancybox.option("infinite")||this.fancybox.getSlide().index!==this.fancybox.Carousel.slides.length-1?this.fancybox.next():this.fancybox.jumpTo(0,{friction:0})}),t);let e=this.$progress;e||(e=document.createElement("div"),e.classList.add("fancybox__progress"),this.fancybox.$carousel.parentNode.insertBefore(e,this.fancybox.$carousel),this.$progress=e,e.offsetHeight),e.style.transitionDuration=`${t}ms`,e.style.transform="scaleX(1)"}clearTimer(){clearTimeout(this.timer),this.timer=null,this.$progress&&(this.$progress.style.transitionDuration="",this.$progress.style.transform="",this.$progress.offsetHeight)}activate(){this.active||(this.active=!0,this.fancybox.$container.classList.add("has-slideshow"),"done"===this.fancybox.getSlide().state&&this.setTimer(),document.addEventListener("visibilitychange",this.handleVisibilityChange,!1))}handleVisibilityChange(){this.deactivate()}deactivate(){this.active=!1,this.clearTimer(),this.fancybox.$container.classList.remove("has-slideshow"),document.removeEventListener("visibilitychange",this.handleVisibilityChange,!1)}toggle(){this.active?this.deactivate():this.fancybox.Carousel.slides.length>1&&this.activate()}}const z={display:["counter","zoom","slideshow","fullscreen","thumbs","close"],autoEnable:!0,items:{counter:{type:"div",class:"fancybox__counter",html:'<span data-fancybox-index=""></span>&nbsp;/&nbsp;<span data-fancybox-count=""></span>',tabindex:-1,position:"left"},prev:{type:"button",class:"fancybox__button--prev",label:"PREV",html:'<svg viewBox="0 0 24 24"><path d="M15 4l-8 8 8 8"/></svg>',click:function(t){t.preventDefault(),this.fancybox.prev()}},next:{type:"button",class:"fancybox__button--next",label:"NEXT",html:'<svg viewBox="0 0 24 24"><path d="M8 4l8 8-8 8"/></svg>',click:function(t){t.preventDefault(),this.fancybox.next()}},fullscreen:{type:"button",class:"fancybox__button--fullscreen",label:"TOGGLE_FULLSCREEN",html:'<svg viewBox="0 0 24 24">\n                <g><path d="M3 8 V3h5"></path><path d="M21 8V3h-5"></path><path d="M8 21H3v-5"></path><path d="M16 21h5v-5"></path></g>\n                <g><path d="M7 2v5H2M17 2v5h5M2 17h5v5M22 17h-5v5"/></g>\n            </svg>',click:function(t){t.preventDefault(),A.element()?A.deactivate():A.activate(this.fancybox.$container)}},slideshow:{type:"button",class:"fancybox__button--slideshow",label:"TOGGLE_SLIDESHOW",html:'<svg viewBox="0 0 24 24">\n                <g><path d="M6 4v16"/><path d="M20 12L6 20"/><path d="M20 12L6 4"/></g>\n                <g><path d="M7 4v15M17 4v15"/></g>\n            </svg>',click:function(t){t.preventDefault(),this.Slideshow.toggle()}},zoom:{type:"button",class:"fancybox__button--zoom",label:"TOGGLE_ZOOM",html:'<svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"></circle><path d="M16 16 L21 21"></svg>',click:function(t){t.preventDefault();const e=this.fancybox.getSlide().Panzoom;e&&e.toggleZoom()}},download:{type:"link",label:"DOWNLOAD",class:"fancybox__button--download",html:'<svg viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.62 2.48A2 2 0 004.56 21h14.88a2 2 0 001.94-1.51L22 17"/></svg>',click:function(t){t.stopPropagation()}},thumbs:{type:"button",label:"TOGGLE_THUMBS",class:"fancybox__button--thumbs",html:'<svg viewBox="0 0 24 24"><circle cx="4" cy="4" r="1" /><circle cx="12" cy="4" r="1" transform="rotate(90 12 4)"/><circle cx="20" cy="4" r="1" transform="rotate(90 20 4)"/><circle cx="4" cy="12" r="1" transform="rotate(90 4 12)"/><circle cx="12" cy="12" r="1" transform="rotate(90 12 12)"/><circle cx="20" cy="12" r="1" transform="rotate(90 20 12)"/><circle cx="4" cy="20" r="1" transform="rotate(90 4 20)"/><circle cx="12" cy="20" r="1" transform="rotate(90 12 20)"/><circle cx="20" cy="20" r="1" transform="rotate(90 20 20)"/></svg>',click:function(t){t.stopPropagation();const e=this.fancybox.plugins.Thumbs;e&&e.toggle()}},close:{type:"button",label:"CLOSE",class:"fancybox__button--close",html:'<svg viewBox="0 0 24 24"><path d="M20 20L4 4m16 0L4 20"></path></svg>',tabindex:0,click:function(t){t.stopPropagation(),t.preventDefault(),this.fancybox.close()}}}};class _{constructor(t){this.fancybox=t,this.$container=null,this.state="init";for(const t of["onInit","onPrepare","onDone","onKeydown","onClosing","onChange","onSettle","onRefresh"])this[t]=this[t].bind(this);this.events={init:this.onInit,prepare:this.onPrepare,done:this.onDone,keydown:this.onKeydown,closing:this.onClosing,"Carousel.change":this.onChange,"Carousel.settle":this.onSettle,"Carousel.Panzoom.touchStart":()=>this.onRefresh(),"Image.startAnimation":(t,e)=>this.onRefresh(e),"Image.afterUpdate":(t,e)=>this.onRefresh(e)}}onInit(){if(this.fancybox.option("Toolbar.autoEnable")){let t=!1;for(const e of this.fancybox.items)if("image"===e.type){t=!0;break}if(!t)return void(this.state="disabled")}for(const e of this.fancybox.option("Toolbar.display")){if("close"===(t(e)?e.id:e)){this.fancybox.options.closeButton=!1;break}}}onPrepare(){if("init"===this.state&&(this.build(),this.update(),this.Slideshow=new k(this.fancybox),!this.fancybox.Carousel.prevPage&&(this.fancybox.option("slideshow.autoStart")&&this.Slideshow.activate(),this.fancybox.option("fullscreen.autoStart")&&!A.element())))try{A.activate(this.fancybox.$container)}catch(t){}}onFsChange(){window.scrollTo(A.pageXOffset,A.pageYOffset)}onSettle(){this.Slideshow&&this.Slideshow.isActive()&&(this.fancybox.getSlide().index!==this.fancybox.Carousel.slides.length-1||this.fancybox.option("infinite")?"done"===this.fancybox.getSlide().state&&this.Slideshow.setTimer():this.Slideshow.deactivate())}onChange(){this.update(),this.Slideshow&&this.Slideshow.isActive()&&this.Slideshow.clearTimer()}onDone(t,e){e.index===t.getSlide().index&&(this.update(),this.Slideshow&&this.Slideshow.isActive()&&(this.fancybox.option("infinite")||e.index!==this.fancybox.Carousel.slides.length-1?this.Slideshow.setTimer():this.Slideshow.deactivate()))}onRefresh(t){t&&t.index!==this.fancybox.getSlide().index||(this.update(),!this.Slideshow||!this.Slideshow.isActive()||t&&"done"!==t.state||this.Slideshow.deactivate())}onKeydown(t,e,i){" "===e&&this.Slideshow&&(this.Slideshow.toggle(),i.preventDefault())}onClosing(){this.Slideshow&&this.Slideshow.deactivate(),document.removeEventListener("fullscreenchange",this.onFsChange)}createElement(t){let e;"div"===t.type?e=document.createElement("div"):(e=document.createElement("link"===t.type?"a":"button"),e.classList.add("carousel__button")),e.innerHTML=t.html,e.setAttribute("tabindex",t.tabindex||0),t.class&&e.classList.add(...t.class.split(" ")),t.label&&e.setAttribute("title",this.fancybox.localize(`{{${t.label}}}`)),t.click&&e.addEventListener("click",t.click.bind(this)),"prev"===t.id&&e.setAttribute("data-fancybox-prev",""),"next"===t.id&&e.setAttribute("data-fancybox-next","");const i=e.querySelector("svg");return i&&(i.setAttribute("role","img"),i.setAttribute("tabindex","-1"),i.setAttribute("xmlns","http://www.w3.org/2000/svg")),e}build(){this.cleanup();const i=this.fancybox.option("Toolbar.items"),s=[{position:"left",items:[]},{position:"center",items:[]},{position:"right",items:[]}],o=this.fancybox.plugins.Thumbs;for(const n of this.fancybox.option("Toolbar.display")){let a,r;if(t(n)?(a=n.id,r=e({},i[a],n)):(a=n,r=i[a]),["counter","next","prev","slideshow"].includes(a)&&this.fancybox.items.length<2)continue;if("fullscreen"===a){if(!document.fullscreenEnabled||window.fullScreen)continue;document.addEventListener("fullscreenchange",this.onFsChange)}if("thumbs"===a&&(!o||"disabled"===o.state))continue;if(!r)continue;let l=r.position||"right",h=s.find((t=>t.position===l));h&&h.items.push(r)}const n=document.createElement("div");n.classList.add("fancybox__toolbar");for(const t of s)if(t.items.length){const e=document.createElement("div");e.classList.add("fancybox__toolbar__items"),e.classList.add(`fancybox__toolbar__items--${t.position}`);for(const i of t.items)e.appendChild(this.createElement(i));n.appendChild(e)}this.fancybox.$carousel.parentNode.insertBefore(n,this.fancybox.$carousel),this.$container=n}update(){const t=this.fancybox.getSlide(),e=t.index,i=this.fancybox.items.length,s=t.downloadSrc||("image"!==t.type||t.error?null:t.src);for(const t of this.fancybox.$container.querySelectorAll("a.fancybox__button--download"))s?(t.removeAttribute("disabled"),t.removeAttribute("tabindex"),t.setAttribute("href",s),t.setAttribute("download",s),t.setAttribute("target","_blank")):(t.setAttribute("disabled",""),t.setAttribute("tabindex",-1),t.removeAttribute("href"),t.removeAttribute("download"));const o=t.Panzoom,n=o&&o.option("maxScale")>o.option("baseScale");for(const t of this.fancybox.$container.querySelectorAll(".fancybox__button--zoom"))n?t.removeAttribute("disabled"):t.setAttribute("disabled","");for(const e of this.fancybox.$container.querySelectorAll("[data-fancybox-index]"))e.innerHTML=t.index+1;for(const t of this.fancybox.$container.querySelectorAll("[data-fancybox-count]"))t.innerHTML=i;if(!this.fancybox.option("infinite")){for(const t of this.fancybox.$container.querySelectorAll("[data-fancybox-prev]"))0===e?t.setAttribute("disabled",""):t.removeAttribute("disabled");for(const t of this.fancybox.$container.querySelectorAll("[data-fancybox-next]"))e===i-1?t.setAttribute("disabled",""):t.removeAttribute("disabled")}}cleanup(){this.Slideshow&&this.Slideshow.isActive()&&this.Slideshow.clearTimer(),this.$container&&this.$container.remove(),this.$container=null}attach(){this.fancybox.on(this.events)}detach(){this.fancybox.off(this.events),this.cleanup()}}_.defaults=z;const O={ScrollLock:class{constructor(t){this.fancybox=t,this.viewport=null,this.pendingUpdate=null;for(const t of["onReady","onResize","onTouchstart","onTouchmove"])this[t]=this[t].bind(this)}onReady(){const t=window.visualViewport;t&&(this.viewport=t,this.startY=0,t.addEventListener("resize",this.onResize),this.updateViewport()),window.addEventListener("touchstart",this.onTouchstart,{passive:!1}),window.addEventListener("touchmove",this.onTouchmove,{passive:!1})}onResize(){this.updateViewport()}updateViewport(){const t=this.fancybox,e=this.viewport,i=e.scale||1,s=t.$container;if(!s)return;let o="",n="",a="";i-1>.1&&(o=e.width*i+"px",n=e.height*i+"px",a=`translate3d(${e.offsetLeft}px, ${e.offsetTop}px, 0) scale(${1/i})`),s.style.width=o,s.style.height=n,s.style.transform=a}onTouchstart(t){this.startY=t.touches?t.touches[0].screenY:t.screenY}onTouchmove(t){const e=this.startY,i=window.innerWidth/window.document.documentElement.clientWidth;if(!t.cancelable)return;if(t.touches.length>1||1!==i)return;const s=t.target,o=l(s);if(!o)return void t.preventDefault();const n=window.getComputedStyle(o),a=parseInt(n.getPropertyValue("height"),10),r=t.touches?t.touches[0].screenY:t.screenY,h=e<=r&&0===o.scrollTop,c=e>=r&&o.scrollHeight-o.scrollTop===a;(h||c)&&t.preventDefault()}cleanup(){this.pendingUpdate&&(cancelAnimationFrame(this.pendingUpdate),this.pendingUpdate=null);const t=this.viewport;t&&(t.removeEventListener("resize",this.onResize),this.viewport=null),window.removeEventListener("touchstart",this.onTouchstart,!1),window.removeEventListener("touchmove",this.onTouchmove,!1)}attach(){this.fancybox.on("initLayout",this.onReady)}detach(){this.fancybox.off("initLayout",this.onReady),this.cleanup()}},Thumbs:$,Html:E,Toolbar:_,Image:P,Hash:L};const M={startIndex:0,preload:1,infinite:!0,showClass:"fancybox-zoomInUp",hideClass:"fancybox-fadeOut",animated:!0,hideScrollbar:!0,parentEl:null,mainClass:null,autoFocus:!0,trapFocus:!0,placeFocusBack:!0,click:"close",closeButton:"inside",dragToClose:!0,keyboard:{Escape:"close",Delete:"close",Backspace:"close",PageUp:"next",PageDown:"prev",ArrowUp:"next",ArrowDown:"prev",ArrowRight:"next",ArrowLeft:"prev"},template:{closeButton:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M20 20L4 4m16 0L4 20"/></svg>',spinner:'<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="25 25 50 50" tabindex="-1"><circle cx="50" cy="50" r="20"/></svg>',main:null},l10n:{CLOSE:"Close",NEXT:"Next",PREV:"Previous",MODAL:"You can close this modal content with the ESC key",ERROR:"Something Went Wrong, Please Try Again Later",IMAGE_ERROR:"Image Not Found",ELEMENT_NOT_FOUND:"HTML Element Not Found",AJAX_NOT_FOUND:"Error Loading AJAX : Not Found",AJAX_FORBIDDEN:"Error Loading AJAX : Forbidden",IFRAME_ERROR:"Error Loading Page",TOGGLE_ZOOM:"Toggle zoom level",TOGGLE_THUMBS:"Toggle thumbnails",TOGGLE_SLIDESHOW:"Toggle slideshow",TOGGLE_FULLSCREEN:"Toggle full-screen mode",DOWNLOAD:"Download"}},I={};let F=0;class R extends h{constructor(t,i={}){super(e(!0,{},M,i)),this.bindHandlers(),this.state="init",this.setItems(t),this.attachPlugins(R.Plugins),this.trigger("init"),!0===this.option("hideScrollbar")&&this.hideScrollbar(),this.initLayout(),this.initCarousel(),this.attachEvents(),I[this.id]=this,this.trigger("prepare"),this.state="ready",this.trigger("ready"),this.$container.setAttribute("aria-hidden","false"),this.option("trapFocus")&&this.focus()}bindHandlers(){for(const t of["onMousedown","onKeydown","onClick","onFocus","onCreateSlide","onSettle","onTouchMove","onTouchEnd","onTransform"])this[t]=this[t].bind(this)}attachEvents(){document.addEventListener("mousedown",this.onMousedown),document.addEventListener("keydown",this.onKeydown,!0),this.option("trapFocus")&&document.addEventListener("focus",this.onFocus,!0),this.$container.addEventListener("click",this.onClick)}detachEvents(){document.removeEventListener("mousedown",this.onMousedown),document.removeEventListener("keydown",this.onKeydown,!0),document.removeEventListener("focus",this.onFocus,!0),this.$container.removeEventListener("click",this.onClick)}initLayout(){this.$root=this.option("parentEl")||document.body;let t=this.option("template.main");t&&(this.$root.insertAdjacentHTML("beforeend",this.localize(t)),this.$container=this.$root.querySelector(".fancybox__container")),this.$container||(this.$container=document.createElement("div"),this.$root.appendChild(this.$container)),this.$container.onscroll=()=>(this.$container.scrollLeft=0,!1),Object.entries({class:"fancybox__container",role:"dialog",tabIndex:"-1","aria-modal":"true","aria-hidden":"true","aria-label":this.localize("{{MODAL}}")}).forEach((t=>this.$container.setAttribute(...t))),this.option("animated")&&this.$container.classList.add("is-animated"),this.$backdrop=this.$container.querySelector(".fancybox__backdrop"),this.$backdrop||(this.$backdrop=document.createElement("div"),this.$backdrop.classList.add("fancybox__backdrop"),this.$container.appendChild(this.$backdrop)),this.$carousel=this.$container.querySelector(".fancybox__carousel"),this.$carousel||(this.$carousel=document.createElement("div"),this.$carousel.classList.add("fancybox__carousel"),this.$container.appendChild(this.$carousel)),this.$container.Fancybox=this,this.id=this.$container.getAttribute("id"),this.id||(this.id=this.options.id||++F,this.$container.setAttribute("id","fancybox-"+this.id));const e=this.options.mainClass;return e&&this.$container.classList.add(...e.split(" ")),document.documentElement.classList.add("with-fancybox"),this.trigger("initLayout"),this}setItems(t){const e=[];for(const i of t){const t=i.$trigger;if(t){const e=t.dataset||{};i.src=e.src||t.getAttribute("href")||i.src,i.type=e.type||i.type,!i.src&&t instanceof HTMLImageElement&&(i.src=t.currentSrc||i.$trigger.src)}let s=i.$thumb;if(!s){let t=i.$trigger&&i.$trigger.origTarget;t&&(s=t instanceof HTMLImageElement?t:t.querySelector("img")),!s&&i.$trigger&&(s=i.$trigger instanceof HTMLImageElement?i.$trigger:i.$trigger.querySelector("img"))}i.$thumb=s||null;let o=i.thumb;!o&&s&&(o=s.currentSrc||s.src,!o&&s.dataset&&(o=s.dataset.lazySrc||s.dataset.src)),o||"image"!==i.type||(o=i.src),i.thumb=o||null,i.caption=i.caption||"",e.push(i)}this.items=e}initCarousel(){return this.Carousel=new y(this.$carousel,e(!0,{},{prefix:"",classNames:{viewport:"fancybox__viewport",track:"fancybox__track",slide:"fancybox__slide"},textSelection:!0,preload:this.option("preload"),friction:.88,slides:this.items,initialPage:this.options.startIndex,slidesPerPage:1,infiniteX:this.option("infinite"),infiniteY:!0,l10n:this.option("l10n"),Dots:!1,Navigation:{classNames:{main:"fancybox__nav",button:"carousel__button",next:"is-next",prev:"is-prev"}},Panzoom:{textSelection:!0,panOnlyZoomed:()=>this.Carousel&&this.Carousel.pages&&this.Carousel.pages.length<2&&!this.options.dragToClose,lockAxis:()=>{if(this.Carousel){let t="x";return this.options.dragToClose&&(t+="y"),t}}},on:{"*":(t,...e)=>this.trigger(`Carousel.${t}`,...e),init:t=>this.Carousel=t,createSlide:this.onCreateSlide,settle:this.onSettle}},this.option("Carousel"))),this.option("dragToClose")&&this.Carousel.Panzoom.on({touchMove:this.onTouchMove,afterTransform:this.onTransform,touchEnd:this.onTouchEnd}),this.trigger("initCarousel"),this}onCreateSlide(t,e){let i=e.caption||"";if("function"==typeof this.options.caption&&(i=this.options.caption.call(this,this,this.Carousel,e)),"string"==typeof i&&i.length){const t=document.createElement("div"),s=`fancybox__caption_${this.id}_${e.index}`;t.className="fancybox__caption",t.innerHTML=i,t.setAttribute("id",s),e.$caption=e.$el.appendChild(t),e.$el.classList.add("has-caption"),e.$el.setAttribute("aria-labelledby",s)}}onSettle(){this.option("autoFocus")&&this.focus()}onFocus(t){this.focus(t)}onClick(t){if(t.defaultPrevented)return;if(t.target.closest(".fancybox__content"))return;if(getSelection().toString().length)return;if(!1===this.trigger("click",t))return;switch(this.option("click")){case"close":this.close();break;case"next":this.next()}}onTouchMove(){const t=this.getSlide().Panzoom;return!t||1===t.content.scale}onTouchEnd(t){const e=t.dragOffset.y;Math.abs(e)>=150||Math.abs(e)>=35&&t.dragOffset.time<350?(this.option("hideClass")&&(this.getSlide().hideClass="fancybox-throwOut"+(t.content.y<0?"Up":"Down")),this.close()):"y"===t.lockAxis&&t.panTo({y:0})}onTransform(t){if(this.$backdrop){const e=Math.abs(t.content.y),i=e<1?"":Math.max(.33,Math.min(1,1-e/t.content.fitHeight*1.5));this.$container.style.setProperty("--fancybox-ts",i?"0s":""),this.$container.style.setProperty("--fancybox-opacity",i)}}onMousedown(){"ready"===this.state&&document.body.classList.add("is-using-mouse")}onKeydown(t){if(R.getInstance().id!==this.id)return;document.body.classList.remove("is-using-mouse");const e=t.key,i=this.option("keyboard");if(!i||t.ctrlKey||t.altKey||t.shiftKey)return;const s=document.activeElement&&document.activeElement.classList,o=s&&s.contains("carousel__button");if("Escape"!==e&&!o){if(t.target.isContentEditable||-1!==["BUTTON","TEXTAREA","OPTION","INPUT","SELECT","VIDEO"].indexOf(t.target.nodeName))return}if(!1===this.trigger("keydown",e,t))return;const n=i[e];"function"==typeof this[n]&&this[n]()}getSlide(){const t=this.Carousel;if(!t)return null;const e=null===t.page?t.option("initialPage"):t.page,i=t.pages||[];return i.length&&i[e]?i[e].slides[0]:null}focus(t){if(R.ignoreFocusChange)return;if(["init","closing","customClosing","destroy"].indexOf(this.state)>-1)return;t&&t.preventDefault(),R.ignoreFocusChange=!0;const e=this.$container,i=this.getSlide(),s="done"===i.state?i.$el:null,o=Array.from(e.querySelectorAll(x));let n,a=[];for(let t of o){const e=t.offsetParent,i=s&&s.contains(t),o=!this.Carousel.$viewport.contains(t);e&&(i||o)?(a.push(t),void 0!==t.dataset.origTabindex&&(t.tabIndex=t.dataset.origTabindex,t.removeAttribute("data-orig-tabindex")),(t.hasAttribute("autoFocus")||!n&&i&&!t.classList.contains("carousel__button"))&&(n=t)):(t.dataset.origTabindex=void 0===t.dataset.origTabindex?t.getAttribute("tabindex"):t.dataset.origTabindex,t.tabIndex=-1)}t?a.indexOf(t.target)>-1?this.lastFocus=t.target:this.lastFocus===e?w(a[a.length-1]):w(e):this.option("autoFocus")&&n?w(n):a.indexOf(document.activeElement)<0&&w(e),this.lastFocus=document.activeElement,R.ignoreFocusChange=!1}hideScrollbar(){if(!b)return;const t=window.innerWidth-document.documentElement.getBoundingClientRect().width,e="fancybox-style-noscroll";let i=document.getElementById(e);i||t>0&&(i=document.createElement("style"),i.id=e,i.type="text/css",i.innerHTML=`.compensate-for-scrollbar {padding-right: ${t}px;}`,document.getElementsByTagName("head")[0].appendChild(i),document.body.classList.add("compensate-for-scrollbar"))}revealScrollbar(){document.body.classList.remove("compensate-for-scrollbar");const t=document.getElementById("fancybox-style-noscroll");t&&t.remove()}clearContent(t){this.Carousel.trigger("removeSlide",t),t.$content&&(t.$content.remove(),t.$content=null),t.$closeButton&&(t.$closeButton.remove(),t.$closeButton=null),t._className&&t.$el.classList.remove(t._className)}setContent(t,e,i={}){let s;const o=t.$el;if(e instanceof HTMLElement)["img","iframe","video","audio"].indexOf(e.nodeName.toLowerCase())>-1?(s=document.createElement("div"),s.appendChild(e)):s=e;else{const t=document.createRange().createContextualFragment(e);s=document.createElement("div"),s.appendChild(t)}if(t.filter&&!t.error&&(s=s.querySelector(t.filter)),s instanceof Element)return t._className=`has-${i.suffix||t.type||"unknown"}`,o.classList.add(t._className),s.classList.add("fancybox__content"),"none"!==s.style.display&&"none"!==getComputedStyle(s).getPropertyValue("display")||(s.style.display=t.display||this.option("defaultDisplay")||"flex"),t.id&&s.setAttribute("id",t.id),t.$content=s,o.prepend(s),this.manageCloseButton(t),"loading"!==t.state&&this.revealContent(t),s;this.setError(t,"{{ELEMENT_NOT_FOUND}}")}manageCloseButton(t){const e=void 0===t.closeButton?this.option("closeButton"):t.closeButton;if(!e||"top"===e&&this.$closeButton)return;const i=document.createElement("button");i.classList.add("carousel__button","is-close"),i.setAttribute("title",this.options.l10n.CLOSE),i.innerHTML=this.option("template.closeButton"),i.addEventListener("click",(t=>this.close(t))),"inside"===e?(t.$closeButton&&t.$closeButton.remove(),t.$closeButton=t.$content.appendChild(i)):this.$closeButton=this.$container.insertBefore(i,this.$container.firstChild)}revealContent(t){this.trigger("reveal",t),t.$content.style.visibility="";let e=!1;t.error||"loading"===t.state||null!==this.Carousel.prevPage||t.index!==this.options.startIndex||(e=void 0===t.showClass?this.option("showClass"):t.showClass),e?(t.state="animating",this.animateCSS(t.$content,e,(()=>{this.done(t)}))):this.done(t)}animateCSS(t,e,i){if(t&&t.dispatchEvent(new CustomEvent("animationend",{bubbles:!0,cancelable:!0})),!t||!e)return void("function"==typeof i&&i());const s=function(o){o.currentTarget===this&&(t.removeEventListener("animationend",s),i&&i(),t.classList.remove(e))};t.addEventListener("animationend",s),t.classList.add(e)}done(t){t.state="done",this.trigger("done",t);const e=this.getSlide();e&&t.index===e.index&&this.option("autoFocus")&&this.focus()}setError(t,e){t.error=e,this.hideLoading(t),this.clearContent(t);const i=document.createElement("div");i.classList.add("fancybox-error"),i.innerHTML=this.localize(e||"<p>{{ERROR}}</p>"),this.setContent(t,i,{suffix:"error"})}showLoading(t){t.state="loading",t.$el.classList.add("is-loading");let e=t.$el.querySelector(".fancybox__spinner");e||(e=document.createElement("div"),e.classList.add("fancybox__spinner"),e.innerHTML=this.option("template.spinner"),e.addEventListener("click",(()=>{this.Carousel.Panzoom.velocity||this.close()})),t.$el.prepend(e))}hideLoading(t){const e=t.$el&&t.$el.querySelector(".fancybox__spinner");e&&(e.remove(),t.$el.classList.remove("is-loading")),"loading"===t.state&&(this.trigger("load",t),t.state="ready")}next(){const t=this.Carousel;t&&t.pages.length>1&&t.slideNext()}prev(){const t=this.Carousel;t&&t.pages.length>1&&t.slidePrev()}jumpTo(...t){this.Carousel&&this.Carousel.slideTo(...t)}close(t){if(t&&t.preventDefault(),["closing","customClosing","destroy"].includes(this.state))return;if(!1===this.trigger("shouldClose",t))return;if(this.state="closing",this.Carousel.Panzoom.destroy(),this.detachEvents(),this.trigger("closing",t),"destroy"===this.state)return;this.$container.setAttribute("aria-hidden","true"),this.$container.classList.add("is-closing");const e=this.getSlide();if(this.Carousel.slides.forEach((t=>{t.$content&&t.index!==e.index&&this.Carousel.trigger("removeSlide",t)})),"closing"===this.state){const t=void 0===e.hideClass?this.option("hideClass"):e.hideClass;this.animateCSS(e.$content,t,(()=>{this.destroy()}),!0)}}destroy(){if("destroy"===this.state)return;this.state="destroy",this.trigger("destroy");const t=this.option("placeFocusBack")?this.getSlide().$trigger:null;this.Carousel.destroy(),this.detachPlugins(),this.Carousel=null,this.options={},this.events={},this.$container.remove(),this.$container=this.$backdrop=this.$carousel=null,t&&w(t),delete I[this.id];const e=R.getInstance();e?e.focus():(document.documentElement.classList.remove("with-fancybox"),document.body.classList.remove("is-using-mouse"),this.revealScrollbar())}static show(t,e={}){return new R(t,e)}static fromEvent(t,e={}){if(t.defaultPrevented)return;if(t.button&&0!==t.button)return;if(t.ctrlKey||t.metaKey||t.shiftKey)return;let i,s,o,n=t.target;if((n.matches("[data-fancybox-trigger]")||(n=n.closest("[data-fancybox-trigger]")))&&(i=n&&n.dataset&&n.dataset.fancyboxTrigger),i){const t=document.querySelectorAll(`[data-fancybox="${i}"]`),e=parseInt(n.dataset.fancyboxIndex,10)||0;n=t.length?t[e]:n}n||(n=t.target),Array.from(R.openers.keys()).reverse().some((e=>{o=n;let i=!1;try{o instanceof Element&&("string"==typeof e||e instanceof String)&&(i=o.matches(e)||(o=o.closest(e)))}catch(t){}return!!i&&(t.preventDefault(),s=e,!0)}));let a=!1;if(s){e.event=t,e.target=o,o.origTarget=t.target,a=R.fromOpener(s,e);const i=R.getInstance();i&&"ready"===i.state&&t.detail&&document.body.classList.add("is-using-mouse")}return a}static fromOpener(t,i={}){let s=[],o=i.startIndex||0,n=i.target||null;const a=void 0!==(i=e({},i,R.openers.get(t))).groupAll&&i.groupAll,r=void 0===i.groupAttr?"data-fancybox":i.groupAttr,l=r&&n?n.getAttribute(`${r}`):"";if((!n||l||a)&&(s=[].slice.call(document.querySelectorAll(t))),n&&!a&&(s=l?s.filter((t=>t.getAttribute(`${r}`)===l)):[n]),!s.length)return!1;const h=R.getInstance();return!(h&&s.indexOf(h.options.$trigger)>-1)&&(o=n?s.indexOf(n):o,s=s.map((function(t){const e=["false","0","no","null","undefined"],i=["true","1","yes"],s=Object.assign({},t.dataset),o={};for(let[t,n]of Object.entries(s))if("fancybox"!==t)if("width"===t||"height"===t)o[`_${t}`]=n;else if("string"==typeof n||n instanceof String)if(e.indexOf(n)>-1)o[t]=!1;else if(i.indexOf(o[t])>-1)o[t]=!0;else try{o[t]=JSON.parse(n)}catch(e){o[t]=n}else o[t]=n;return t instanceof Element&&(o.$trigger=t),o})),new R(s,e({},i,{startIndex:o,$trigger:n})))}static bind(t,e={}){function i(){document.body.addEventListener("click",R.fromEvent,!1)}b&&(R.openers.size||(/complete|interactive|loaded/.test(document.readyState)?i():document.addEventListener("DOMContentLoaded",i)),R.openers.set(t,e))}static unbind(t){R.openers.delete(t),R.openers.size||R.destroy()}static destroy(){let t;for(;t=R.getInstance();)t.destroy();R.openers=new Map,document.body.removeEventListener("click",R.fromEvent,!1)}static getInstance(t){if(t)return I[t];return Object.values(I).reverse().find((t=>!["closing","customClosing","destroy"].includes(t.state)&&t))||null}static close(t=!0){let e=null;for(;e=R.getInstance();)if(e.close(),!t)return}}R.version="4.0.10",R.defaults=M,R.openers=new Map,R.Plugins=O,R.bind("[data-fancybox]");for(const[t,e]of Object.entries(R.Plugins||{}))"function"==typeof e.create&&e.create(R);
+// @fancyapps/ui/Fancybox v4.0.12
+const t=t=>"object"==typeof t&&null!==t&&t.constructor===Object&&"[object Object]"===Object.prototype.toString.call(t),e=(...i)=>{let s=!1;"boolean"==typeof i[0]&&(s=i.shift());let o=i[0];if(!o||"object"!=typeof o)throw new Error("extendee must be an object");const n=i.slice(1),a=n.length;for(let i=0;i<a;i++){const a=n[i];for(let i in a)if(a.hasOwnProperty(i)){const n=a[i];if(s&&(Array.isArray(n)||t(n))){const t=Array.isArray(n)?[]:{};o[i]=e(!0,o.hasOwnProperty(i)?o[i]:t,n)}else o[i]=n}}return o},i=(t,e=1e4)=>(t=parseFloat(t)||0,Math.round((t+Number.EPSILON)*e)/e),s="undefined"!=typeof window&&window.ResizeObserver||class{constructor(t){this.observables=[],this.boundCheck=this.check.bind(this),this.boundCheck(),this.callback=t}observe(t){if(this.observables.some((e=>e.el===t)))return;const e={el:t,size:{height:t.clientHeight,width:t.clientWidth}};this.observables.push(e)}unobserve(t){this.observables=this.observables.filter((e=>e.el!==t))}disconnect(){this.observables=[]}check(){const t=this.observables.filter((t=>{const e=t.el.clientHeight,i=t.el.clientWidth;if(t.size.height!==e||t.size.width!==i)return t.size.height=e,t.size.width=i,!0})).map((t=>t.el));t.length>0&&this.callback(t),window.requestAnimationFrame(this.boundCheck)}};class o{constructor(t){this.id=-1,this.id=t.pointerId||t.identifier||-1,this.pageX=t.pageX,this.pageY=t.pageY,this.clientX=t.clientX,this.clientY=t.clientY,this.nativePointer=t}}function n(t,e){return e?Math.sqrt((e.clientX-t.clientX)**2+(e.clientY-t.clientY)**2):0}function a(t,e){return e?{clientX:(t.clientX+e.clientX)/2,clientY:(t.clientY+e.clientY)/2}:t}class r{constructor(t,{start:e=(()=>!0),move:i=(()=>{}),end:s=(()=>{})}={}){this.element=t,this.startPointers=[],this.currentPointers=[],this.startCallback=e,this.moveCallback=i,this.endCallback=s,this.onStart=t=>{if(t.button&&0!==t.button)return;const e=new o(t);if(!1===this.startCallback(e,t))return!1;t.preventDefault(),(()=>{const t=window.getSelection?window.getSelection():document.selection;t&&t.rangeCount&&t.getRangeAt(0).getClientRects().length&&(t.removeAllRanges?t.removeAllRanges():t.empty&&t.empty())})(),this.currentPointers.push(e),this.startPointers.push(e);(t.target&&"setPointerCapture"in t.target?t.target:this.element).setPointerCapture(t.pointerId),this.element.addEventListener("pointermove",this.onMove),this.element.addEventListener("pointerup",this.onEnd),this.element.addEventListener("pointercancel",this.onEnd)},this.onMove=t=>{const e=this.currentPointers.slice(),i=[];for(const e of[new o(t)]){const t=this.currentPointers.findIndex((t=>t.id===e.id));t<0||(i.push(e),this.currentPointers[t]=e)}i.length&&this.moveCallback(e,this.currentPointers,t)},this.onEnd=t=>{const e=new o(t),i=this.currentPointers.findIndex((t=>t.id===e.id));if(-1===i)return!1;this.currentPointers.splice(i,1),this.startPointers.splice(i,1),this.endCallback(e,t),this.currentPointers.length||(this.element.removeEventListener("pointermove",this.onMove),this.element.removeEventListener("pointerup",this.onEnd),this.element.removeEventListener("pointercancel",this.onEnd))},this.element.addEventListener("pointerdown",this.onStart)}stop(){this.element.removeEventListener("pointerdown",this.onStart),this.element.removeEventListener("pointermove",this.onMove),this.element.removeEventListener("pointerup",this.onEnd),this.element.removeEventListener("pointercancel",this.onEnd)}}const l=function(t){return!!(t&&"object"==typeof t&&t instanceof Element&&t!==document.body)&&(function(t){const e=getComputedStyle(t)["overflow-y"],i=getComputedStyle(t)["overflow-x"],s=("scroll"===e||"auto"===e)&&Math.abs(t.scrollHeight-t.clientHeight)>1,o=("scroll"===i||"auto"===i)&&Math.abs(t.scrollWidth-t.clientWidth)>1;return s||o}(t)?t:l(t.parentNode))};class h{constructor(t={}){this.options=e(!0,{},t),this.plugins=[],this.events={};for(const t of["on","once"])for(const e of Object.entries(this.options[t]||{}))this[t](...e)}option(t,e,...i){t=String(t);let s=(o=t,n=this.options,o.split(".").reduce((function(t,e){return t&&t[e]}),n));var o,n;return"function"==typeof s&&(s=s.call(this,this,...i)),void 0===s?e:s}localize(t,e=[]){return t=(t=String(t).replace(/\{\{(\w+).?(\w+)?\}\}/g,((t,i,s)=>{let o="";s?o=this.option(`${i[0]+i.toLowerCase().substring(1)}.l10n.${s}`):i&&(o=this.option(`l10n.${i}`)),o||(o=t);for(let t=0;t<e.length;t++)o=o.split(e[t][0]).join(e[t][1]);return o}))).replace(/\{\{(.*)\}\}/,((t,e)=>e))}on(e,i){if(t(e)){for(const t of Object.entries(e))this.on(...t);return this}return String(e).split(" ").forEach((t=>{const e=this.events[t]=this.events[t]||[];-1==e.indexOf(i)&&e.push(i)})),this}once(e,i){if(t(e)){for(const t of Object.entries(e))this.once(...t);return this}return String(e).split(" ").forEach((t=>{const e=(...s)=>{this.off(t,e),i.call(this,this,...s)};e._=i,this.on(t,e)})),this}off(e,i){if(!t(e))return e.split(" ").forEach((t=>{const e=this.events[t];if(!e||!e.length)return this;let s=-1;for(let t=0,o=e.length;t<o;t++){const o=e[t];if(o&&(o===i||o._===i)){s=t;break}}-1!=s&&e.splice(s,1)})),this;for(const t of Object.entries(e))this.off(...t)}trigger(t,...e){for(const i of[...this.events[t]||[]].slice())if(i&&!1===i.call(this,this,...e))return!1;for(const i of[...this.events["*"]||[]].slice())if(i&&!1===i.call(this,t,this,...e))return!1;return!0}attachPlugins(t){const i={};for(const[s,o]of Object.entries(t||{}))!1===this.options[s]||this.plugins[s]||(this.options[s]=e({},o.defaults||{},this.options[s]),i[s]=new o(this));for(const[t,e]of Object.entries(i))e.attach(this);return this.plugins=Object.assign({},this.plugins,i),this}detachPlugins(){for(const t in this.plugins){let e;(e=this.plugins[t])&&"function"==typeof e.detach&&e.detach(this)}return this.plugins={},this}}const c={touch:!0,zoom:!0,pinchToZoom:!0,panOnlyZoomed:!1,lockAxis:!1,friction:.64,decelFriction:.88,zoomFriction:.74,bounceForce:.2,baseScale:1,minScale:1,maxScale:2,step:.5,textSelection:!1,click:"toggleZoom",wheel:"zoom",wheelFactor:42,wheelLimit:5,draggableClass:"is-draggable",draggingClass:"is-dragging",ratio:1};class d extends h{constructor(t,i={}){super(e(!0,{},c,i)),this.state="init",this.$container=t;for(const t of["onLoad","onWheel","onClick"])this[t]=this[t].bind(this);this.initLayout(),this.resetValues(),this.attachPlugins(d.Plugins),this.trigger("init"),this.updateMetrics(),this.attachEvents(),this.trigger("ready"),!1===this.option("centerOnStart")?this.state="ready":this.panTo({friction:0})}initLayout(){const t=this.$container;if(!(t instanceof HTMLElement))throw new Error("Panzoom: Container not found");const e=this.option("content")||t.querySelector(".panzoom__content");if(!e)throw new Error("Panzoom: Content not found");this.$content=e;let i=this.option("viewport")||t.querySelector(".panzoom__viewport");i||!1===this.option("wrapInner")||(i=document.createElement("div"),i.classList.add("panzoom__viewport"),i.append(...t.childNodes),t.appendChild(i)),this.$viewport=i||e.parentNode}resetValues(){this.updateRate=this.option("updateRate",/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)?250:24),this.container={width:0,height:0},this.viewport={width:0,height:0},this.content={origWidth:0,origHeight:0,width:0,height:0,x:this.option("x",0),y:this.option("y",0),scale:this.option("baseScale")},this.transform={x:0,y:0,scale:1},this.resetDragPosition()}onLoad(t){this.updateMetrics(),this.panTo({scale:this.option("baseScale"),friction:0}),this.trigger("load",t)}onClick(t){if(t.defaultPrevented)return;if(this.option("textSelection")&&window.getSelection().toString().length)return void t.stopPropagation();const e=this.$content.getClientRects()[0];if("ready"!==this.state&&(this.dragPosition.midPoint||Math.abs(e.top-this.dragStart.rect.top)>1||Math.abs(e.left-this.dragStart.rect.left)>1))return t.preventDefault(),void t.stopPropagation();!1!==this.trigger("click",t)&&this.option("zoom")&&"toggleZoom"===this.option("click")&&(t.preventDefault(),t.stopPropagation(),this.zoomWithClick(t))}onWheel(t){!1!==this.trigger("wheel",t)&&this.option("zoom")&&this.option("wheel")&&this.zoomWithWheel(t)}zoomWithWheel(t){void 0===this.changedDelta&&(this.changedDelta=0);const e=Math.max(-1,Math.min(1,-t.deltaY||-t.deltaX||t.wheelDelta||-t.detail)),i=this.content.scale;let s=i*(100+e*this.option("wheelFactor"))/100;if(e<0&&Math.abs(i-this.option("minScale"))<.01||e>0&&Math.abs(i-this.option("maxScale"))<.01?(this.changedDelta+=Math.abs(e),s=i):(this.changedDelta=0,s=Math.max(Math.min(s,this.option("maxScale")),this.option("minScale"))),this.changedDelta>this.option("wheelLimit"))return;if(t.preventDefault(),s===i)return;const o=this.$content.getBoundingClientRect(),n=t.clientX-o.left,a=t.clientY-o.top;this.zoomTo(s,{x:n,y:a})}zoomWithClick(t){const e=this.$content.getClientRects()[0],i=t.clientX-e.left,s=t.clientY-e.top;this.toggleZoom({x:i,y:s})}attachEvents(){this.$content.addEventListener("load",this.onLoad),this.$container.addEventListener("wheel",this.onWheel,{passive:!1}),this.$container.addEventListener("click",this.onClick,{passive:!1}),this.initObserver();const t=new r(this.$container,{start:(e,i)=>{if(!this.option("touch"))return!1;if(!(this.velocity.scale<0)){if(!t.currentPointers.length){if(-1!==["BUTTON","TEXTAREA","OPTION","INPUT","SELECT","VIDEO"].indexOf(i.target.nodeName))return!1;if(this.option("textSelection")&&((t,e,i)=>{const s=t.childNodes,o=document.createRange();for(let t=0;t<s.length;t++){const n=s[t];if(n.nodeType!==Node.TEXT_NODE)continue;o.selectNodeContents(n);const a=o.getBoundingClientRect();if(e>=a.left&&i>=a.top&&e<=a.right&&i<=a.bottom)return n}return!1})(i.target,i.clientX,i.clientY))return!1;if(l(i.target))return!1}return!1!==this.trigger("touchStart",i)&&(this.state="pointerdown",this.resetDragPosition(),this.dragPosition.midPoint=null,this.dragPosition.time=Date.now(),!0)}},move:(e,i,s)=>{if("pointerdown"!==this.state)return;if(0==this.trigger("touchMove",s))return void s.preventDefault();if(i.length<2&&1==this.option("panOnlyZoomed")&&this.content.width<=this.viewport.width&&this.content.height<=this.viewport.height&&this.transform.scale<=this.option("baseScale"))return;if(i.length>1&&(!this.option("zoom")||!1===this.option("pinchToZoom")))return;s.preventDefault(),s.stopPropagation();const o=a(e[0],e[1]),r=a(i[0],i[1]),l=r.clientX-o.clientX,h=r.clientY-o.clientY,c=n(e[0],e[1]),d=n(i[0],i[1]),u=c?d/c:1;this.dragOffset.x+=l,this.dragOffset.y+=h,this.dragOffset.scale*=u,this.dragOffset.time=Date.now()-this.dragPosition.time;const f=1===this.dragStart.scale&&this.option("lockAxis");if(f&&!this.lockAxis){if(Math.abs(this.dragOffset.x)<6&&Math.abs(this.dragOffset.y)<6)return;if("xy"===f){const t=Math.abs(180*Math.atan2(this.dragOffset.y,this.dragOffset.x)/Math.PI);this.lockAxis=t>45&&t<135?"y":"x"}else this.lockAxis=f}if(this.lockAxis&&(this.dragOffset["x"===this.lockAxis?"y":"x"]=0),this.$container.classList.add(this.option("draggingClass")),this.transform.scale===this.option("baseScale")&&"y"===this.lockAxis||(this.dragPosition.x=this.dragStart.x+this.dragOffset.x),this.transform.scale===this.option("baseScale")&&"x"===this.lockAxis||(this.dragPosition.y=this.dragStart.y+this.dragOffset.y),this.dragPosition.scale=this.dragStart.scale*this.dragOffset.scale,i.length>1){const e=a(t.startPointers[0],t.startPointers[1]),i=e.clientX-this.dragStart.rect.x,s=e.clientY-this.dragStart.rect.y,{deltaX:o,deltaY:n}=this.getZoomDelta(this.content.scale*this.dragOffset.scale,i,s);this.dragPosition.x-=o,this.dragPosition.y-=n,this.dragPosition.midPoint=r}else this.setDragResistance();this.transform={x:this.dragPosition.x,y:this.dragPosition.y,scale:this.dragPosition.scale},this.startAnimation()},end:(e,i)=>{if("pointerdown"!==this.state)return;if(this._dragOffset={...this.dragOffset},t.currentPointers.length)return void this.resetDragPosition();if(this.state="decel",this.friction=this.option("decelFriction"),this.recalculateTransform(),this.$container.classList.remove(this.option("draggingClass")),!1===this.trigger("touchEnd",i))return;if("decel"!==this.state)return;const s=this.option("minScale");if(this.transform.scale<s)return void this.zoomTo(s,{friction:.64});const o=this.option("maxScale");if(this.transform.scale-o>.01){const t=this.dragPosition.midPoint||e,i=this.$content.getClientRects()[0];this.zoomTo(o,{friction:.64,x:t.clientX-i.left,y:t.clientY-i.top})}else;}});this.pointerTracker=t}initObserver(){this.resizeObserver||(this.resizeObserver=new s((()=>{this.updateTimer||(this.updateTimer=setTimeout((()=>{const t=this.$container.getBoundingClientRect();t.width&&t.height?((Math.abs(t.width-this.container.width)>1||Math.abs(t.height-this.container.height)>1)&&(this.isAnimating()&&this.endAnimation(!0),this.updateMetrics(),this.panTo({x:this.content.x,y:this.content.y,scale:this.option("baseScale"),friction:0})),this.updateTimer=null):this.updateTimer=null}),this.updateRate))})),this.resizeObserver.observe(this.$container))}resetDragPosition(){this.lockAxis=null,this.friction=this.option("friction"),this.velocity={x:0,y:0,scale:0};const{x:t,y:e,scale:i}=this.content;this.dragStart={rect:this.$content.getBoundingClientRect(),x:t,y:e,scale:i},this.dragPosition={...this.dragPosition,x:t,y:e,scale:i},this.dragOffset={x:0,y:0,scale:1,time:0}}updateMetrics(t){!0!==t&&this.trigger("beforeUpdate");const e=this.$container,s=this.$content,o=this.$viewport,n=s instanceof HTMLImageElement,a=this.option("zoom"),r=this.option("resizeParent",a);let l=this.option("width"),h=this.option("height"),c=l||(d=s,Math.max(parseFloat(d.naturalWidth||0),parseFloat(d.width&&d.width.baseVal&&d.width.baseVal.value||0),parseFloat(d.offsetWidth||0),parseFloat(d.scrollWidth||0)));var d;let u=h||(t=>Math.max(parseFloat(t.naturalHeight||0),parseFloat(t.height&&t.height.baseVal&&t.height.baseVal.value||0),parseFloat(t.offsetHeight||0),parseFloat(t.scrollHeight||0)))(s);Object.assign(s.style,{width:l?`${l}px`:"",height:h?`${h}px`:"",maxWidth:"",maxHeight:""}),r&&Object.assign(o.style,{width:"",height:""});const f=this.option("ratio");c=i(c*f),u=i(u*f),l=c,h=u;const g=s.getBoundingClientRect(),p=o.getBoundingClientRect(),m=o==e?p:e.getBoundingClientRect();let y=Math.max(o.offsetWidth,i(p.width)),b=Math.max(o.offsetHeight,i(p.height)),v=window.getComputedStyle(o);if(y-=parseFloat(v.paddingLeft)+parseFloat(v.paddingRight),b-=parseFloat(v.paddingTop)+parseFloat(v.paddingBottom),this.viewport.width=y,this.viewport.height=b,a){if(Math.abs(c-g.width)>.1||Math.abs(u-g.height)>.1){const t=((t,e,i,s)=>{const o=Math.min(i/t||0,s/e);return{width:t*o||0,height:e*o||0}})(c,u,Math.min(c,g.width),Math.min(u,g.height));l=i(t.width),h=i(t.height)}Object.assign(s.style,{width:`${l}px`,height:`${h}px`,transform:""})}if(r&&(Object.assign(o.style,{width:`${l}px`,height:`${h}px`}),this.viewport={...this.viewport,width:l,height:h}),n&&a&&"function"!=typeof this.options.maxScale){const t=this.option("maxScale");this.options.maxScale=function(){return this.content.origWidth>0&&this.content.fitWidth>0?this.content.origWidth/this.content.fitWidth:t}}this.content={...this.content,origWidth:c,origHeight:u,fitWidth:l,fitHeight:h,width:l,height:h,scale:1,isZoomable:a},this.container={width:m.width,height:m.height},!0!==t&&this.trigger("afterUpdate")}zoomIn(t){this.zoomTo(this.content.scale+(t||this.option("step")))}zoomOut(t){this.zoomTo(this.content.scale-(t||this.option("step")))}toggleZoom(t={}){const e=this.option("maxScale"),i=this.option("baseScale"),s=this.content.scale>i+.5*(e-i)?i:e;this.zoomTo(s,t)}zoomTo(t=this.option("baseScale"),{x:e=null,y:s=null}={}){t=Math.max(Math.min(t,this.option("maxScale")),this.option("minScale"));const o=i(this.content.scale/(this.content.width/this.content.fitWidth),1e7);null===e&&(e=this.content.width*o*.5),null===s&&(s=this.content.height*o*.5);const{deltaX:n,deltaY:a}=this.getZoomDelta(t,e,s);e=this.content.x-n,s=this.content.y-a,this.panTo({x:e,y:s,scale:t,friction:this.option("zoomFriction")})}getZoomDelta(t,e=0,i=0){const s=this.content.fitWidth*this.content.scale,o=this.content.fitHeight*this.content.scale,n=e>0&&s?e/s:0,a=i>0&&o?i/o:0;return{deltaX:(this.content.fitWidth*t-s)*n,deltaY:(this.content.fitHeight*t-o)*a}}panTo({x:t=this.content.x,y:e=this.content.y,scale:i,friction:s=this.option("friction"),ignoreBounds:o=!1}={}){if(i=i||this.content.scale||1,!o){const{boundX:s,boundY:o}=this.getBounds(i);s&&(t=Math.max(Math.min(t,s.to),s.from)),o&&(e=Math.max(Math.min(e,o.to),o.from))}this.friction=s,this.transform={...this.transform,x:t,y:e,scale:i},s?(this.state="panning",this.velocity={x:(1/this.friction-1)*(t-this.content.x),y:(1/this.friction-1)*(e-this.content.y),scale:(1/this.friction-1)*(i-this.content.scale)},this.startAnimation()):this.endAnimation()}startAnimation(){this.rAF?cancelAnimationFrame(this.rAF):this.trigger("startAnimation"),this.rAF=requestAnimationFrame((()=>this.animate()))}animate(){if(this.setEdgeForce(),this.setDragForce(),this.velocity.x*=this.friction,this.velocity.y*=this.friction,this.velocity.scale*=this.friction,this.content.x+=this.velocity.x,this.content.y+=this.velocity.y,this.content.scale+=this.velocity.scale,this.isAnimating())this.setTransform();else if("pointerdown"!==this.state)return void this.endAnimation();this.rAF=requestAnimationFrame((()=>this.animate()))}getBounds(t){let e=this.boundX,s=this.boundY;if(void 0!==e&&void 0!==s)return{boundX:e,boundY:s};e={from:0,to:0},s={from:0,to:0},t=t||this.transform.scale;const o=this.content.fitWidth,n=this.content.fitHeight,a=o*t,r=n*t,l=this.viewport.width,h=this.viewport.height;if(o<=l){const t=.5*(l-a),s=.5*(a-o);e.from=i(t-s),e.to=i(t+s)}else e.from=i(l-a);if(n<=h){const t=.5*(h-r),e=.5*(r-n);s.from=i(t-e),s.to=i(t+e)}else s.from=i(h-a);return{boundX:e,boundY:s}}setEdgeForce(){if("decel"!==this.state)return;const t=this.option("bounceForce"),{boundX:e,boundY:i}=this.getBounds(Math.max(this.transform.scale,this.content.scale));let s,o,n,a;if(e&&(s=this.content.x<e.from,o=this.content.x>e.to),i&&(n=this.content.y<i.from,a=this.content.y>i.to),s||o){let i=((s?e.from:e.to)-this.content.x)*t;const o=this.content.x+(this.velocity.x+i)/this.friction;o>=e.from&&o<=e.to&&(i+=this.velocity.x),this.velocity.x=i,this.recalculateTransform()}if(n||a){let e=((n?i.from:i.to)-this.content.y)*t;const s=this.content.y+(e+this.velocity.y)/this.friction;s>=i.from&&s<=i.to&&(e+=this.velocity.y),this.velocity.y=e,this.recalculateTransform()}}setDragResistance(){if("pointerdown"!==this.state)return;const{boundX:t,boundY:e}=this.getBounds(this.dragPosition.scale);let i,s,o,n;if(t&&(i=this.dragPosition.x<t.from,s=this.dragPosition.x>t.to),e&&(o=this.dragPosition.y<e.from,n=this.dragPosition.y>e.to),(i||s)&&(!i||!s)){const e=i?t.from:t.to,s=e-this.dragPosition.x;this.dragPosition.x=e-.3*s}if((o||n)&&(!o||!n)){const t=o?e.from:e.to,i=t-this.dragPosition.y;this.dragPosition.y=t-.3*i}}setDragForce(){"pointerdown"===this.state&&(this.velocity.x=this.dragPosition.x-this.content.x,this.velocity.y=this.dragPosition.y-this.content.y,this.velocity.scale=this.dragPosition.scale-this.content.scale)}recalculateTransform(){this.transform.x=this.content.x+this.velocity.x/(1/this.friction-1),this.transform.y=this.content.y+this.velocity.y/(1/this.friction-1),this.transform.scale=this.content.scale+this.velocity.scale/(1/this.friction-1)}isAnimating(){return!(!this.friction||!(Math.abs(this.velocity.x)>.05||Math.abs(this.velocity.y)>.05||Math.abs(this.velocity.scale)>.05))}setTransform(t){let e,s,o;if(t?(e=i(this.transform.x),s=i(this.transform.y),o=this.transform.scale,this.content={...this.content,x:e,y:s,scale:o}):(e=i(this.content.x),s=i(this.content.y),o=this.content.scale/(this.content.width/this.content.fitWidth),this.content={...this.content,x:e,y:s}),this.trigger("beforeTransform"),e=i(this.content.x),s=i(this.content.y),t&&this.option("zoom")){let t,n;t=i(this.content.fitWidth*o),n=i(this.content.fitHeight*o),this.content.width=t,this.content.height=n,this.transform={...this.transform,width:t,height:n,scale:o},Object.assign(this.$content.style,{width:`${t}px`,height:`${n}px`,maxWidth:"none",maxHeight:"none",transform:`translate3d(${e}px, ${s}px, 0) scale(1)`})}else this.$content.style.transform=`translate3d(${e}px, ${s}px, 0) scale(${o})`;this.trigger("afterTransform")}endAnimation(t){cancelAnimationFrame(this.rAF),this.rAF=null,this.velocity={x:0,y:0,scale:0},this.setTransform(!0),this.state="ready",this.handleCursor(),!0!==t&&this.trigger("endAnimation")}handleCursor(){const t=this.option("draggableClass");t&&this.option("touch")&&(1==this.option("panOnlyZoomed")&&this.content.width<=this.viewport.width&&this.content.height<=this.viewport.height&&this.transform.scale<=this.option("baseScale")?this.$container.classList.remove(t):this.$container.classList.add(t))}detachEvents(){this.$content.removeEventListener("load",this.onLoad),this.$container.removeEventListener("wheel",this.onWheel,{passive:!1}),this.$container.removeEventListener("click",this.onClick,{passive:!1}),this.pointerTracker&&(this.pointerTracker.stop(),this.pointerTracker=null),this.resizeObserver&&(this.resizeObserver.disconnect(),this.resizeObserver=null)}destroy(){"destroy"!==this.state&&(this.state="destroy",clearTimeout(this.updateTimer),this.updateTimer=null,cancelAnimationFrame(this.rAF),this.rAF=null,this.detachEvents(),this.detachPlugins(),this.resetDragPosition())}}d.version="4.0.12",d.Plugins={};const u=(t,e)=>{let i=0;return function(...s){const o=(new Date).getTime();if(!(o-i<e))return i=o,t(...s)}};class f{constructor(t){this.$container=null,this.$prev=null,this.$next=null,this.carousel=t,this.onRefresh=this.onRefresh.bind(this)}option(t){return this.carousel.option(`Navigation.${t}`)}createButton(t){const e=document.createElement("button");e.setAttribute("title",this.carousel.localize(`{{${t.toUpperCase()}}}`));const i=this.option("classNames.button")+" "+this.option(`classNames.${t}`);return e.classList.add(...i.split(" ")),e.setAttribute("tabindex","0"),e.innerHTML=this.carousel.localize(this.option(`${t}Tpl`)),e.addEventListener("click",(e=>{e.preventDefault(),e.stopPropagation(),this.carousel["slide"+("next"===t?"Next":"Prev")]()})),e}build(){this.$container||(this.$container=document.createElement("div"),this.$container.classList.add(this.option("classNames.main")),this.carousel.$container.appendChild(this.$container)),this.$next||(this.$next=this.createButton("next"),this.$container.appendChild(this.$next)),this.$prev||(this.$prev=this.createButton("prev"),this.$container.appendChild(this.$prev))}onRefresh(){const t=this.carousel.pages.length;t<=1||t>1&&this.carousel.elemDimWidth<this.carousel.wrapDimWidth&&!Number.isInteger(this.carousel.option("slidesPerPage"))?this.cleanup():(this.build(),this.$prev.removeAttribute("disabled"),this.$next.removeAttribute("disabled"),this.carousel.option("infiniteX",this.carousel.option("infinite"))||(this.carousel.page<=0&&this.$prev.setAttribute("disabled",""),this.carousel.page>=t-1&&this.$next.setAttribute("disabled","")))}cleanup(){this.$prev&&this.$prev.remove(),this.$prev=null,this.$next&&this.$next.remove(),this.$next=null,this.$container&&this.$container.remove(),this.$container=null}attach(){this.carousel.on("refresh change",this.onRefresh)}detach(){this.carousel.off("refresh change",this.onRefresh),this.cleanup()}}f.defaults={prevTpl:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M15 3l-9 9 9 9"/></svg>',nextTpl:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M9 3l9 9-9 9"/></svg>',classNames:{main:"carousel__nav",button:"carousel__button",next:"is-next",prev:"is-prev"}};class g{constructor(t){this.carousel=t,this.selectedIndex=null,this.friction=0,this.onNavReady=this.onNavReady.bind(this),this.onNavClick=this.onNavClick.bind(this),this.onNavCreateSlide=this.onNavCreateSlide.bind(this),this.onTargetChange=this.onTargetChange.bind(this)}addAsTargetFor(t){this.target=this.carousel,this.nav=t,this.attachEvents()}addAsNavFor(t){this.target=t,this.nav=this.carousel,this.attachEvents()}attachEvents(){this.nav.options.initialSlide=this.target.options.initialPage,this.nav.on("ready",this.onNavReady),this.nav.on("createSlide",this.onNavCreateSlide),this.nav.on("Panzoom.click",this.onNavClick),this.target.on("change",this.onTargetChange),this.target.on("Panzoom.afterUpdate",this.onTargetChange)}onNavReady(){this.onTargetChange(!0)}onNavClick(t,e,i){const s=i.target.closest(".carousel__slide");if(!s)return;i.stopPropagation();const o=parseInt(s.dataset.index,10),n=this.target.findPageForSlide(o);this.target.page!==n&&this.target.slideTo(n,{friction:this.friction}),this.markSelectedSlide(o)}onNavCreateSlide(t,e){e.index===this.selectedIndex&&this.markSelectedSlide(e.index)}onTargetChange(){const t=this.target.pages[this.target.page].indexes[0],e=this.nav.findPageForSlide(t);this.nav.slideTo(e),this.markSelectedSlide(t)}markSelectedSlide(t){this.selectedIndex=t,[...this.nav.slides].filter((t=>t.$el&&t.$el.classList.remove("is-nav-selected")));const e=this.nav.slides[t];e&&e.$el&&e.$el.classList.add("is-nav-selected")}attach(t){const e=t.options.Sync;(e.target||e.nav)&&(e.target?this.addAsNavFor(e.target):e.nav&&this.addAsTargetFor(e.nav),this.friction=e.friction)}detach(){this.nav&&(this.nav.off("ready",this.onNavReady),this.nav.off("Panzoom.click",this.onNavClick),this.nav.off("createSlide",this.onNavCreateSlide)),this.target&&(this.target.off("Panzoom.afterUpdate",this.onTargetChange),this.target.off("change",this.onTargetChange))}}g.defaults={friction:.92};const p={Navigation:f,Dots:class{constructor(t){this.carousel=t,this.$list=null,this.events={change:this.onChange.bind(this),refresh:this.onRefresh.bind(this)}}buildList(){if(this.carousel.pages.length<this.carousel.option("Dots.minSlideCount"))return;const t=document.createElement("ol");return t.classList.add("carousel__dots"),t.addEventListener("click",(t=>{if(!("page"in t.target.dataset))return;t.preventDefault(),t.stopPropagation();const e=parseInt(t.target.dataset.page,10),i=this.carousel;e!==i.page&&(i.pages.length<3&&i.option("infinite")?i[0==e?"slidePrev":"slideNext"]():i.slideTo(e))})),this.$list=t,this.carousel.$container.appendChild(t),this.carousel.$container.classList.add("has-dots"),t}removeList(){this.$list&&(this.$list.parentNode.removeChild(this.$list),this.$list=null),this.carousel.$container.classList.remove("has-dots")}rebuildDots(){let t=this.$list;const e=!!t,i=this.carousel.pages.length;if(i<2)return void(e&&this.removeList());e||(t=this.buildList());const s=this.$list.children.length;if(s>i)for(let t=i;t<s;t++)this.$list.removeChild(this.$list.lastChild);else{for(let t=s;t<i;t++){const e=document.createElement("li");e.classList.add("carousel__dot"),e.dataset.page=t,e.setAttribute("role","button"),e.setAttribute("tabindex","0"),e.setAttribute("title",this.carousel.localize("{{GOTO}}",[["%d",t+1]])),e.addEventListener("keydown",(t=>{const i=t.code;let s;"Enter"===i||"NumpadEnter"===i?s=e:"ArrowRight"===i?s=e.nextSibling:"ArrowLeft"===i&&(s=e.previousSibling),s&&s.click()})),this.$list.appendChild(e)}this.setActiveDot()}}setActiveDot(){if(!this.$list)return;this.$list.childNodes.forEach((t=>{t.classList.remove("is-selected")}));const t=this.$list.childNodes[this.carousel.page];t&&t.classList.add("is-selected")}onChange(){this.setActiveDot()}onRefresh(){this.rebuildDots()}attach(){this.carousel.on(this.events)}detach(){this.removeList(),this.carousel.off(this.events),this.carousel=null}},Sync:g};const m={slides:[],preload:0,slidesPerPage:"auto",initialPage:null,initialSlide:null,friction:.92,center:!0,infinite:!0,fill:!0,dragFree:!1,prefix:"",classNames:{viewport:"carousel__viewport",track:"carousel__track",slide:"carousel__slide",slideSelected:"is-selected"},l10n:{NEXT:"Next slide",PREV:"Previous slide",GOTO:"Go to slide #%d"}};class y extends h{constructor(t,i={}){if(super(i=e(!0,{},m,i)),this.state="init",this.$container=t,!(this.$container instanceof HTMLElement))throw new Error("No root element provided");this.slideNext=u(this.slideNext.bind(this),250),this.slidePrev=u(this.slidePrev.bind(this),250),this.init()}init(){this.pages=[],this.page=this.pageIndex=null,this.prevPage=this.prevPageIndex=null,this.attachPlugins(y.Plugins),this.trigger("init"),this.initLayout(),this.initSlides(),this.updateMetrics(),this.$track&&this.pages.length&&(this.$track.style.transform=`translate3d(${-1*this.pages[this.page].left}px, 0px, 0) scale(1)`),this.manageSlideVisiblity(),this.initPanzoom(),this.state="ready",this.trigger("ready")}initLayout(){const t=this.option("prefix"),e=this.option("classNames");this.$viewport=this.option("viewport")||this.$container.querySelector(`.${t}${e.viewport}`),this.$viewport||(this.$viewport=document.createElement("div"),this.$viewport.classList.add(t+e.viewport),this.$viewport.append(...this.$container.childNodes),this.$container.appendChild(this.$viewport)),this.$track=this.option("track")||this.$container.querySelector(`.${t}${e.track}`),this.$track||(this.$track=document.createElement("div"),this.$track.classList.add(t+e.track),this.$track.append(...this.$viewport.childNodes),this.$viewport.appendChild(this.$track))}initSlides(){this.slides=[];this.$viewport.querySelectorAll(`.${this.option("prefix")}${this.option("classNames.slide")}`).forEach((t=>{const e={$el:t,isDom:!0};this.slides.push(e),this.trigger("createSlide",e,this.slides.length)})),Array.isArray(this.options.slides)&&(this.slides=e(!0,[...this.slides],this.options.slides))}updateMetrics(){let t,e=0,s=[];this.slides.forEach(((i,o)=>{const n=i.$el,a=i.isDom||!t?this.getSlideMetrics(n):t;i.index=o,i.width=a,i.left=e,t=a,e+=a,s.push(o)}));let o=Math.max(this.$track.offsetWidth,i(this.$track.getBoundingClientRect().width)),n=getComputedStyle(this.$track);o-=parseFloat(n.paddingLeft)+parseFloat(n.paddingRight),this.contentWidth=e,this.viewportWidth=o;const a=[],r=this.option("slidesPerPage");if(Number.isInteger(r)&&e>o)for(let t=0;t<this.slides.length;t+=r)a.push({indexes:s.slice(t,t+r),slides:this.slides.slice(t,t+r)});else{let t=0,e=0;for(let i=0;i<this.slides.length;i+=1){let s=this.slides[i];(!a.length||e+s.width>o)&&(a.push({indexes:[],slides:[]}),t=a.length-1,e=0),e+=s.width,a[t].indexes.push(i),a[t].slides.push(s)}}const l=this.option("center"),h=this.option("fill");a.forEach(((t,i)=>{t.index=i,t.width=t.slides.reduce(((t,e)=>t+e.width),0),t.left=t.slides[0].left,l&&(t.left+=.5*(o-t.width)*-1),h&&!this.option("infiniteX",this.option("infinite"))&&e>o&&(t.left=Math.max(t.left,0),t.left=Math.min(t.left,e-o))}));const c=[];let d;a.forEach((t=>{const e={...t};d&&e.left===d.left?(d.width+=e.width,d.slides=[...d.slides,...e.slides],d.indexes=[...d.indexes,...e.indexes]):(e.index=c.length,d=e,c.push(e))})),this.pages=c;let u=this.page;if(null===u){const t=this.option("initialSlide");u=null!==t?this.findPageForSlide(t):this.option("initialPage",0),c[u]||(u=c.length&&u>c.length?c[c.length-1].index:0),this.page=u,this.pageIndex=u}this.updatePanzoom(),this.trigger("refresh")}getSlideMetrics(t){if(!t){const e=this.slides[0];(t=document.createElement("div")).dataset.isTestEl=1,t.style.visibility="hidden",t.classList.add(this.option("prefix")+this.option("classNames.slide")),e.customClass&&t.classList.add(...e.customClass.split(" ")),this.$track.prepend(t)}let e=Math.max(t.offsetWidth,i(t.getBoundingClientRect().width));const s=t.currentStyle||window.getComputedStyle(t);return e=e+(parseFloat(s.marginLeft)||0)+(parseFloat(s.marginRight)||0),t.dataset.isTestEl&&t.remove(),e}findPageForSlide(t){const e=this.pages.find((e=>e.indexes.indexOf(t)>-1));return e?e.index:null}slideNext(){this.slideTo(this.pageIndex+1)}slidePrev(){this.slideTo(this.pageIndex-1)}slideTo(t,e={}){const{x:i=-1*this.setPage(t,!0),y:s=0,friction:o=this.option("friction")}=e;this.Panzoom.content.x===i&&!this.Panzoom.velocity.x&&o||(this.Panzoom.panTo({x:i,y:s,friction:o,ignoreBounds:!0}),"ready"===this.state&&"ready"===this.Panzoom.state&&this.trigger("settle"))}initPanzoom(){this.Panzoom&&this.Panzoom.destroy();const t=e(!0,{},{content:this.$track,wrapInner:!1,resizeParent:!1,zoom:!1,click:!1,lockAxis:"x",x:this.pages.length?-1*this.pages[this.page].left:0,centerOnStart:!1,textSelection:()=>this.option("textSelection",!1),panOnlyZoomed:function(){return this.content.width<=this.viewport.width}},this.option("Panzoom"));this.Panzoom=new d(this.$container,t),this.Panzoom.on({"*":(t,...e)=>this.trigger(`Panzoom.${t}`,...e),afterUpdate:()=>{this.updatePage()},beforeTransform:this.onBeforeTransform.bind(this),touchEnd:this.onTouchEnd.bind(this),endAnimation:()=>{this.trigger("settle")}}),this.updateMetrics(),this.manageSlideVisiblity()}updatePanzoom(){this.Panzoom&&(this.Panzoom.content={...this.Panzoom.content,fitWidth:this.contentWidth,origWidth:this.contentWidth,width:this.contentWidth},this.pages.length>1&&this.option("infiniteX",this.option("infinite"))?this.Panzoom.boundX=null:this.pages.length&&(this.Panzoom.boundX={from:-1*this.pages[this.pages.length-1].left,to:-1*this.pages[0].left}),this.option("infiniteY",this.option("infinite"))?this.Panzoom.boundY=null:this.Panzoom.boundY={from:0,to:0},this.Panzoom.handleCursor())}manageSlideVisiblity(){const t=this.contentWidth,e=this.viewportWidth;let i=this.Panzoom?-1*this.Panzoom.content.x:this.pages.length?this.pages[this.page].left:0;const s=this.option("preload"),o=this.option("infiniteX",this.option("infinite")),n=parseFloat(getComputedStyle(this.$viewport,null).getPropertyValue("padding-left")),a=parseFloat(getComputedStyle(this.$viewport,null).getPropertyValue("padding-right"));this.slides.forEach((r=>{let l,h,c=0;l=i-n,h=i+e+a,l-=s*(e+n+a),h+=s*(e+n+a);const d=r.left+r.width>l&&r.left<h;l=i+t-n,h=i+t+e+a,l-=s*(e+n+a);const u=o&&r.left+r.width>l&&r.left<h;l=i-t-n,h=i-t+e+a,l-=s*(e+n+a);const f=o&&r.left+r.width>l&&r.left<h;u||d||f?(this.createSlideEl(r),d&&(c=0),u&&(c=-1),f&&(c=1),r.left+r.width>i&&r.left<=i+e+a&&(c=0)):this.removeSlideEl(r),r.hasDiff=c}));let r=0,l=0;this.slides.forEach(((e,i)=>{let s=0;e.$el?(i!==r||e.hasDiff?s=l+e.hasDiff*t:l=0,e.$el.style.left=Math.abs(s)>.1?`${l+e.hasDiff*t}px`:"",r++):l+=e.width})),this.markSelectedSlides()}createSlideEl(t){if(!t)return;if(t.$el){if(parseInt(t.$el.dataset.index,10)!==t.index){let e;t.$el.dataset.index=t.index,t.$el.querySelectorAll("[data-lazy-src]").forEach((t=>{let e=t.dataset.lazySrc;t instanceof HTMLImageElement?t.src=e:t.style.backgroundImage=`url('${e}')`})),t.$el.querySelectorAll("[data-lazy-srcset]").forEach((t=>{t.srcset=t.dataset.lazySrcset})),(e=t.$el.dataset.lazySrc)&&(t.$el.style.backgroundImage=`url('${e}')`),t.state="ready"}return}const e=document.createElement("div");e.dataset.index=t.index,e.classList.add(this.option("prefix")+this.option("classNames.slide")),t.customClass&&e.classList.add(...t.customClass.split(" ")),t.html&&(e.innerHTML=t.html);const i=[];this.slides.forEach(((t,e)=>{t.$el&&i.push(e)}));const s=t.index;let o=null;if(i.length){let t=i.reduce(((t,e)=>Math.abs(e-s)<Math.abs(t-s)?e:t));o=this.slides[t]}return this.$track.insertBefore(e,o&&o.$el?o.index<t.index?o.$el.nextSibling:o.$el:null),t.$el=e,this.trigger("createSlide",t,s),t}removeSlideEl(t){t.$el&&!t.isDom&&(this.trigger("removeSlide",t),t.$el.remove(),t.$el=null)}markSelectedSlides(){const t=this.option("classNames.slideSelected"),e="aria-hidden";this.slides.forEach(((i,s)=>{const o=i.$el;if(!o)return;const n=this.pages[this.page];n&&n.indexes&&n.indexes.indexOf(s)>-1?(t&&!o.classList.contains(t)&&(o.classList.add(t),this.trigger("selectSlide",i)),o.removeAttribute(e)):(t&&o.classList.contains(t)&&(o.classList.remove(t),this.trigger("unselectSlide",i)),o.setAttribute(e,!0))}))}updatePage(){this.updateMetrics(),this.slideTo(this.page,{friction:0})}onBeforeTransform(){this.option("infiniteX",this.option("infinite"))&&this.manageInfiniteTrack(),this.manageSlideVisiblity()}manageInfiniteTrack(){const t=this.contentWidth,e=this.viewportWidth;if(!this.option("infiniteX",this.option("infinite"))||this.pages.length<2||t<e)return;const i=this.Panzoom;let s=!1;return i.content.x<-1*(t-e)&&(i.content.x+=t,this.pageIndex=this.pageIndex-this.pages.length,s=!0),i.content.x>e&&(i.content.x-=t,this.pageIndex=this.pageIndex+this.pages.length,s=!0),s&&"pointerdown"===i.state&&i.resetDragPosition(),s}onTouchEnd(t,e){const i=this.option("dragFree");if(!i&&this.pages.length>1&&t.dragOffset.time<350&&Math.abs(t.dragOffset.y)<1&&Math.abs(t.dragOffset.x)>5)this[t.dragOffset.x<0?"slideNext":"slidePrev"]();else if(i){const[,e]=this.getPageFromPosition(-1*t.transform.x);this.setPage(e)}else this.slideToClosest()}slideToClosest(t={}){let[,e]=this.getPageFromPosition(-1*this.Panzoom.content.x);this.slideTo(e,t)}getPageFromPosition(t){const e=this.pages.length;this.option("center")&&(t+=.5*this.viewportWidth);const i=Math.floor(t/this.contentWidth);t-=i*this.contentWidth;let s=this.slides.find((e=>e.left<=t&&e.left+e.width>t));if(s){let t=this.findPageForSlide(s.index);return[t,t+i*e]}return[0,0]}setPage(t,e){let i=0,s=parseInt(t,10)||0;const o=this.page,n=this.pageIndex,a=this.pages.length,r=this.contentWidth,l=this.viewportWidth;if(t=(s%a+a)%a,this.option("infiniteX",this.option("infinite"))&&r>l){const o=Math.floor(s/a)||0,n=r;if(i=this.pages[t].left+o*n,!0===e&&a>2){let t=-1*this.Panzoom.content.x;const e=i-n,o=i+n,r=Math.abs(t-i),l=Math.abs(t-e),h=Math.abs(t-o);h<r&&h<=l?(i=o,s+=a):l<r&&l<h&&(i=e,s-=a)}}else t=s=Math.max(0,Math.min(s,a-1)),i=this.pages.length?this.pages[t].left:0;return this.page=t,this.pageIndex=s,null!==o&&t!==o&&(this.prevPage=o,this.prevPageIndex=n,this.trigger("change",t,o)),i}destroy(){this.state="destroy",this.slides.forEach((t=>{this.removeSlideEl(t)})),this.slides=[],this.Panzoom.destroy(),this.detachPlugins()}}y.version="4.0.12",y.Plugins=p;const b=!("undefined"==typeof window||!window.document||!window.document.createElement);let v=null;const x=["a[href]","area[href]",'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',"select:not([disabled]):not([aria-hidden])","textarea:not([disabled]):not([aria-hidden])","button:not([disabled]):not([aria-hidden])","iframe","object","embed","video","audio","[contenteditable]",'[tabindex]:not([tabindex^="-"]):not([disabled]):not([aria-hidden])'],w=t=>{if(t&&b){null===v&&document.createElement("div").focus({get preventScroll(){return v=!0,!1}});try{if(t.setActive)t.setActive();else if(v)t.focus({preventScroll:!0});else{const e=window.pageXOffset||document.body.scrollTop,i=window.pageYOffset||document.body.scrollLeft;t.focus(),document.body.scrollTo({top:e,left:i,behavior:"auto"})}}catch(t){}}};class ${constructor(t){this.fancybox=t,this.$container=null,this.state="init";for(const t of["onPrepare","onClosing","onKeydown"])this[t]=this[t].bind(this);this.events={prepare:this.onPrepare,closing:this.onClosing,keydown:this.onKeydown}}onPrepare(){this.getSlides().length<this.fancybox.option("Thumbs.minSlideCount")?this.state="disabled":!0===this.fancybox.option("Thumbs.autoStart")&&this.fancybox.Carousel.Panzoom.content.height>=this.fancybox.option("Thumbs.minScreenHeight")&&this.build()}onClosing(){this.Carousel&&this.Carousel.Panzoom.detachEvents()}onKeydown(t,e){e===t.option("Thumbs.key")&&this.toggle()}build(){if(this.$container)return;const t=document.createElement("div");t.classList.add("fancybox__thumbs"),this.fancybox.$carousel.parentNode.insertBefore(t,this.fancybox.$carousel.nextSibling),this.Carousel=new y(t,e(!0,{Dots:!1,Navigation:!1,Sync:{friction:0},infinite:!1,center:!0,fill:!0,dragFree:!0,slidesPerPage:1,preload:1},this.fancybox.option("Thumbs.Carousel"),{Sync:{target:this.fancybox.Carousel},slides:this.getSlides()})),this.Carousel.Panzoom.on("wheel",((t,e)=>{e.preventDefault(),this.fancybox[e.deltaY<0?"prev":"next"]()})),this.$container=t,this.state="visible"}getSlides(){const t=[];for(const e of this.fancybox.items){const i=e.thumb;i&&t.push({html:`<div class="fancybox__thumb" style="background-image:url('${i}')"></div>`,customClass:`has-thumb has-${e.type||"image"}`})}return t}toggle(){"visible"===this.state?this.hide():"hidden"===this.state?this.show():this.build()}show(){"hidden"===this.state&&(this.$container.style.display="",this.Carousel.Panzoom.attachEvents(),this.state="visible")}hide(){"visible"===this.state&&(this.Carousel.Panzoom.detachEvents(),this.$container.style.display="none",this.state="hidden")}cleanup(){this.Carousel&&(this.Carousel.destroy(),this.Carousel=null),this.$container&&(this.$container.remove(),this.$container=null),this.state="init"}attach(){this.fancybox.on(this.events)}detach(){this.fancybox.off(this.events),this.cleanup()}}$.defaults={minSlideCount:2,minScreenHeight:500,autoStart:!0,key:"t",Carousel:{}};const C=t=>Object.entries(t).map((t=>t.map(encodeURIComponent).join("="))).join("&"),S={video:{autoplay:!0,ratio:16/9},youtube:{autohide:1,fs:1,rel:0,hd:1,wmode:"transparent",enablejsapi:1,html5:1},vimeo:{hd:1,show_title:1,show_byline:1,show_portrait:0,fullscreen:1},html5video:{tpl:'<video class="fancybox__html5video" playsinline controls controlsList="nodownload" poster="{{poster}}">\n  <source src="{{src}}" type="{{format}}" />Sorry, your browser doesn\'t support embedded videos.</video>',format:""}};class E{constructor(t){this.fancybox=t;for(const t of["onInit","onReady","onCreateSlide","onRemoveSlide","onSelectSlide","onUnselectSlide","onRefresh","onMessage"])this[t]=this[t].bind(this);this.events={init:this.onInit,ready:this.onReady,"Carousel.createSlide":this.onCreateSlide,"Carousel.removeSlide":this.onRemoveSlide,"Carousel.selectSlide":this.onSelectSlide,"Carousel.unselectSlide":this.onUnselectSlide,"Carousel.refresh":this.onRefresh}}onInit(){for(const t of this.fancybox.items)this.processType(t)}processType(t){if(t.html)return t.src=t.html,t.type="html",void delete t.html;const i=t.src||"";let s=t.type||this.fancybox.options.type,o=null;if(!i||"string"==typeof i){if(o=i.match(/(?:youtube\.com|youtu\.be|youtube\-nocookie\.com)\/(?:watch\?(?:.*&)?v=|v\/|u\/|embed\/?)?(videoseries\?list=(?:.*)|[\w-]{11}|\?listType=(?:.*)&list=(?:.*))(?:.*)/i)){const e=C(this.fancybox.option("Html.youtube")),i=encodeURIComponent(o[1]);t.videoId=i,t.src=`https://www.youtube-nocookie.com/embed/${i}?${e}`,t.thumb=t.thumb||`https://i.ytimg.com/vi/${i}/mqdefault.jpg`,t.vendor="youtube",s="video"}else if(o=i.match(/^.+vimeo.com\/(?:\/)?([\d]+)(.*)?/)){const e=C(this.fancybox.option("Html.vimeo")),i=encodeURIComponent(o[1]);t.videoId=i,t.src=`https://player.vimeo.com/video/${i}?${e}`,t.vendor="vimeo",s="video"}else(o=i.match(/(?:maps\.)?google\.([a-z]{2,3}(?:\.[a-z]{2})?)\/(?:(?:(?:maps\/(?:place\/(?:.*)\/)?\@(.*),(\d+.?\d+?)z))|(?:\?ll=))(.*)?/i))?(t.src=`//maps.google.${o[1]}/?ll=${(o[2]?o[2]+"&z="+Math.floor(o[3])+(o[4]?o[4].replace(/^\//,"&"):""):o[4]+"").replace(/\?/,"&")}&output=${o[4]&&o[4].indexOf("layer=c")>0?"svembed":"embed"}`,s="map"):(o=i.match(/(?:maps\.)?google\.([a-z]{2,3}(?:\.[a-z]{2})?)\/(?:maps\/search\/)(.*)/i))&&(t.src=`//maps.google.${o[1]}/maps?q=${o[2].replace("query=","q=").replace("api=1","")}&output=embed`,s="map");s||("#"===i.charAt(0)?s="inline":(o=i.match(/\.(mp4|mov|ogv|webm)((\?|#).*)?$/i))?(s="html5video",t.format=t.format||"video/"+("ogv"===o[1]?"ogg":o[1])):i.match(/(^data:image\/[a-z0-9+\/=]*,)|(\.(jp(e|g|eg)|gif|png|bmp|webp|svg|ico)((\?|#).*)?$)/i)?s="image":i.match(/\.(pdf)((\?|#).*)?$/i)&&(s="pdf")),t.type=s||this.fancybox.option("defaultType","image"),"html5video"!==s&&"video"!==s||(t.video=e({},this.fancybox.option("Html.video"),t.video),t._width&&t._height?t.ratio=parseFloat(t._width)/parseFloat(t._height):t.ratio=t.ratio||t.video.ratio||S.video.ratio)}}onReady(){this.fancybox.Carousel.slides.forEach((t=>{t.$el&&(this.setContent(t),t.index===this.fancybox.getSlide().index&&this.playVideo(t))}))}onCreateSlide(t,e,i){"ready"===this.fancybox.state&&this.setContent(i)}loadInlineContent(t){let e;if(t.src instanceof HTMLElement)e=t.src;else if("string"==typeof t.src){const i=t.src.split("#",2),s=2===i.length&&""===i[0]?i[1]:i[0];e=document.getElementById(s)}if(e){if("clone"===t.type||e.$placeHolder){e=e.cloneNode(!0);let i=e.getAttribute("id");i=i?`${i}--clone`:`clone-${this.fancybox.id}-${t.index}`,e.setAttribute("id",i)}else{const t=document.createElement("div");t.classList.add("fancybox-placeholder"),e.parentNode.insertBefore(t,e),e.$placeHolder=t}this.fancybox.setContent(t,e)}else this.fancybox.setError(t,"{{ELEMENT_NOT_FOUND}}")}loadAjaxContent(t){const e=this.fancybox,i=new XMLHttpRequest;e.showLoading(t),i.onreadystatechange=function(){i.readyState===XMLHttpRequest.DONE&&"ready"===e.state&&(e.hideLoading(t),200===i.status?e.setContent(t,i.responseText):e.setError(t,404===i.status?"{{AJAX_NOT_FOUND}}":"{{AJAX_FORBIDDEN}}"))},i.open("GET",t.src),i.setRequestHeader("X-Requested-With","XMLHttpRequest"),i.send(t.ajax||null),t.xhr=i}loadIframeContent(t){const e=this.fancybox,i=document.createElement("iframe");if(i.className="fancybox__iframe",i.setAttribute("id",`fancybox__iframe_${e.id}_${t.index}`),i.setAttribute("allow","autoplay; fullscreen"),i.setAttribute("scrolling","auto"),t.$iframe=i,"iframe"!==t.type||!1===t.preload)return i.setAttribute("src",t.src),this.fancybox.setContent(t,i),void this.resizeIframe(t);e.showLoading(t);const s=document.createElement("div");s.style.visibility="hidden",this.fancybox.setContent(t,s),s.appendChild(i),i.onerror=()=>{e.setError(t,"{{IFRAME_ERROR}}")},i.onload=()=>{e.hideLoading(t);let s=!1;i.isReady||(i.isReady=!0,s=!0),i.src.length&&(i.parentNode.style.visibility="",this.resizeIframe(t),s&&e.revealContent(t))},i.setAttribute("src",t.src)}setAspectRatio(t){const e=t.$content,i=t.ratio;if(!e)return;let s=t._width,o=t._height;if(i||s&&o){Object.assign(e.style,{width:s&&o?"100%":"",height:s&&o?"100%":"",maxWidth:"",maxHeight:""});let t=e.offsetWidth,n=e.offsetHeight;if(s=s||t,o=o||n,s>t||o>n){let e=Math.min(t/s,n/o);s*=e,o*=e}Math.abs(s/o-i)>.01&&(i<s/o?s=o*i:o=s/i),Object.assign(e.style,{width:`${s}px`,height:`${o}px`})}}resizeIframe(t){const e=t.$iframe;if(!e)return;let i=t._width||0,s=t._height||0;i&&s&&(t.autoSize=!1);const o=e.parentNode,n=o.style;if(!1!==t.preload&&!1!==t.autoSize)try{const t=window.getComputedStyle(o),a=parseFloat(t.paddingLeft)+parseFloat(t.paddingRight),r=parseFloat(t.paddingTop)+parseFloat(t.paddingBottom),l=e.contentWindow.document,h=l.getElementsByTagName("html")[0],c=l.body;c.style.overflow="hidden",i=i||h.scrollWidth+a,n.width=`${i}px`,c.style.overflow="",n.flex="0 0 auto",n.height=`${c.scrollHeight}px`,s=h.scrollHeight+r}catch(t){}if(i||s){const t={flex:"0 1 auto"};i&&(t.width=`${i}px`),s&&(t.height=`${s}px`),Object.assign(n,t)}}onRefresh(t,e){e.slides.forEach((t=>{t.$el&&(t.$iframe&&this.resizeIframe(t),t.ratio&&this.setAspectRatio(t))}))}setContent(t){if(t&&!t.isDom){switch(t.type){case"html":this.fancybox.setContent(t,t.src);break;case"html5video":this.fancybox.setContent(t,this.fancybox.option("Html.html5video.tpl").replace(/\{\{src\}\}/gi,t.src).replace("{{format}}",t.format||t.html5video&&t.html5video.format||"").replace("{{poster}}",t.poster||t.thumb||""));break;case"inline":case"clone":this.loadInlineContent(t);break;case"ajax":this.loadAjaxContent(t);break;case"iframe":case"pdf":case"video":case"map":this.loadIframeContent(t)}t.ratio&&this.setAspectRatio(t)}}onSelectSlide(t,e,i){"ready"===t.state&&this.playVideo(i)}playVideo(t){if("html5video"===t.type&&t.video.autoplay)try{const e=t.$el.querySelector("video");if(e){const t=e.play();void 0!==t&&t.then((()=>{})).catch((t=>{e.muted=!0,e.play()}))}}catch(t){}if("video"!==t.type||!t.$iframe||!t.$iframe.contentWindow)return;const e=()=>{if("done"===t.state&&t.$iframe&&t.$iframe.contentWindow){let e;if(t.$iframe.isReady)return t.video&&t.video.autoplay&&(e="youtube"==t.vendor?{event:"command",func:"playVideo"}:{method:"play",value:"true"}),void(e&&t.$iframe.contentWindow.postMessage(JSON.stringify(e),"*"));"youtube"===t.vendor&&(e={event:"listening",id:t.$iframe.getAttribute("id")},t.$iframe.contentWindow.postMessage(JSON.stringify(e),"*"))}t.poller=setTimeout(e,250)};e()}onUnselectSlide(t,e,i){if("html5video"===i.type){try{i.$el.querySelector("video").pause()}catch(t){}return}let s=!1;"vimeo"==i.vendor?s={method:"pause",value:"true"}:"youtube"===i.vendor&&(s={event:"command",func:"pauseVideo"}),s&&i.$iframe&&i.$iframe.contentWindow&&i.$iframe.contentWindow.postMessage(JSON.stringify(s),"*"),clearTimeout(i.poller)}onRemoveSlide(t,e,i){i.xhr&&(i.xhr.abort(),i.xhr=null),i.$iframe&&(i.$iframe.onload=i.$iframe.onerror=null,i.$iframe.src="//about:blank",i.$iframe=null);const s=i.$content;"inline"===i.type&&s&&(s.classList.remove("fancybox__content"),"none"!==s.style.display&&(s.style.display="none")),i.$closeButton&&(i.$closeButton.remove(),i.$closeButton=null);const o=s&&s.$placeHolder;o&&(o.parentNode.insertBefore(s,o),o.remove(),s.$placeHolder=null)}onMessage(t){try{let e=JSON.parse(t.data);if("https://player.vimeo.com"===t.origin){if("ready"===e.event)for(let e of document.getElementsByClassName("fancybox__iframe"))e.contentWindow===t.source&&(e.isReady=1)}else"https://www.youtube-nocookie.com"===t.origin&&"onReady"===e.event&&(document.getElementById(e.id).isReady=1)}catch(t){}}attach(){this.fancybox.on(this.events),window.addEventListener("message",this.onMessage,!1)}detach(){this.fancybox.off(this.events),window.removeEventListener("message",this.onMessage,!1)}}E.defaults=S;class P{constructor(t){this.fancybox=t;for(const t of["onReady","onClosing","onDone","onPageChange","onCreateSlide","onRemoveSlide","onImageStatusChange"])this[t]=this[t].bind(this);this.events={ready:this.onReady,closing:this.onClosing,done:this.onDone,"Carousel.change":this.onPageChange,"Carousel.createSlide":this.onCreateSlide,"Carousel.removeSlide":this.onRemoveSlide}}onReady(){this.fancybox.Carousel.slides.forEach((t=>{t.$el&&this.setContent(t)}))}onDone(t,e){this.handleCursor(e)}onClosing(t){clearTimeout(this.clickTimer),this.clickTimer=null,t.Carousel.slides.forEach((t=>{t.$image&&(t.state="destroy"),t.Panzoom&&t.Panzoom.detachEvents()})),"closing"===this.fancybox.state&&this.canZoom(t.getSlide())&&this.zoomOut()}onCreateSlide(t,e,i){"ready"===this.fancybox.state&&this.setContent(i)}onRemoveSlide(t,e,i){i.$image&&(i.$el.classList.remove(t.option("Image.canZoomInClass")),i.$image.remove(),i.$image=null),i.Panzoom&&(i.Panzoom.destroy(),i.Panzoom=null),i.$el&&i.$el.dataset&&delete i.$el.dataset.imageFit}setContent(t){if(t.isDom||t.html||t.type&&"image"!==t.type)return;if(t.$image)return;t.type="image",t.state="loading";const e=document.createElement("div");e.style.visibility="hidden";const i=document.createElement("img");i.addEventListener("load",(e=>{e.stopImmediatePropagation(),this.onImageStatusChange(t)})),i.addEventListener("error",(()=>{this.onImageStatusChange(t)})),i.src=t.src,i.alt="",i.draggable=!1,i.classList.add("fancybox__image"),t.srcset&&i.setAttribute("srcset",t.srcset),t.sizes&&i.setAttribute("sizes",t.sizes),t.$image=i;const s=this.fancybox.option("Image.wrap");if(s){const o=document.createElement("div");o.classList.add("string"==typeof s?s:"fancybox__image-wrap"),o.appendChild(i),e.appendChild(o),t.$wrap=o}else e.appendChild(i);t.$el.dataset.imageFit=this.fancybox.option("Image.fit"),this.fancybox.setContent(t,e),i.complete||i.error?this.onImageStatusChange(t):this.fancybox.showLoading(t)}onImageStatusChange(t){const e=t.$image;e&&"loading"===t.state&&(e.complete&&e.naturalWidth&&e.naturalHeight?(this.fancybox.hideLoading(t),"contain"===this.fancybox.option("Image.fit")&&this.initSlidePanzoom(t),t.$el.addEventListener("wheel",(e=>this.onWheel(t,e)),{passive:!1}),t.$content.addEventListener("click",(e=>this.onClick(t,e)),{passive:!1}),this.revealContent(t)):this.fancybox.setError(t,"{{IMAGE_ERROR}}"))}initSlidePanzoom(t){t.Panzoom||(t.Panzoom=new d(t.$el,e(!0,this.fancybox.option("Image.Panzoom",{}),{viewport:t.$wrap,content:t.$image,width:t._width,height:t._height,wrapInner:!1,textSelection:!0,touch:this.fancybox.option("Image.touch"),panOnlyZoomed:!0,click:!1,wheel:!1})),t.Panzoom.on("startAnimation",(()=>{this.fancybox.trigger("Image.startAnimation",t)})),t.Panzoom.on("endAnimation",(()=>{"zoomIn"===t.state&&this.fancybox.done(t),this.handleCursor(t),this.fancybox.trigger("Image.endAnimation",t)})),t.Panzoom.on("afterUpdate",(()=>{this.handleCursor(t),this.fancybox.trigger("Image.afterUpdate",t)})))}revealContent(t){null===this.fancybox.Carousel.prevPage&&t.index===this.fancybox.options.startIndex&&this.canZoom(t)?this.zoomIn():this.fancybox.revealContent(t)}getZoomInfo(t){const e=t.$thumb.getBoundingClientRect(),i=e.width,s=e.height,o=t.$content.getBoundingClientRect(),n=o.width,a=o.height,r=o.top-e.top,l=o.left-e.left;let h=this.fancybox.option("Image.zoomOpacity");return"auto"===h&&(h=Math.abs(i/s-n/a)>.1),{top:r,left:l,scale:n&&i?i/n:1,opacity:h}}canZoom(t){const e=this.fancybox,i=e.$container;if(window.visualViewport&&1!==window.visualViewport.scale)return!1;if(t.Panzoom&&!t.Panzoom.content.width)return!1;if(!e.option("Image.zoom")||"contain"!==e.option("Image.fit"))return!1;const s=t.$thumb;if(!s||"loading"===t.state)return!1;i.classList.add("fancybox__no-click");const o=s.getBoundingClientRect();let n;if(this.fancybox.option("Image.ignoreCoveredThumbnail")){const t=document.elementFromPoint(o.left+1,o.top+1)===s,e=document.elementFromPoint(o.right-1,o.bottom-1)===s;n=t&&e}else n=document.elementFromPoint(o.left+.5*o.width,o.top+.5*o.height)===s;return i.classList.remove("fancybox__no-click"),n}zoomIn(){const t=this.fancybox,e=t.getSlide(),i=e.Panzoom,{top:s,left:o,scale:n,opacity:a}=this.getZoomInfo(e);e.state="zoomIn",t.trigger("reveal",e),i.panTo({x:-1*o,y:-1*s,scale:n,friction:0,ignoreBounds:!0}),e.$content.style.visibility="",!0===a&&i.on("afterTransform",(t=>{"zoomIn"!==e.state&&"zoomOut"!==e.state||(t.$content.style.opacity=Math.min(1,1-(1-t.content.scale)/(1-n)))})),i.panTo({x:0,y:0,scale:1,friction:this.fancybox.option("Image.zoomFriction")})}zoomOut(){const t=this.fancybox,e=t.getSlide(),i=e.Panzoom;if(!i)return;e.state="zoomOut",t.state="customClosing",e.$caption&&(e.$caption.style.visibility="hidden");let s=this.fancybox.option("Image.zoomFriction");const o=t=>{const{top:o,left:n,scale:a,opacity:r}=this.getZoomInfo(e);t||r||(s*=.82),i.panTo({x:-1*n,y:-1*o,scale:a,friction:s,ignoreBounds:!0}),s*=.98};window.addEventListener("scroll",o),i.once("endAnimation",(()=>{window.removeEventListener("scroll",o),t.destroy()})),o()}handleCursor(t){if("image"!==t.type||!t.$el)return;const e=t.Panzoom,i=this.fancybox.option("Image.click",!1,t),s=this.fancybox.option("Image.touch"),o=t.$el.classList,n=this.fancybox.option("Image.canZoomInClass"),a=this.fancybox.option("Image.canZoomOutClass");if(e&&"toggleZoom"===i){e&&1===e.content.scale&&e.option("maxScale")-e.content.scale>.01?(o.remove(a),o.add(n)):e.content.scale>1&&!s&&o.add(a)}else"close"===i&&o.add(a)}onWheel(t,e){if("ready"===this.fancybox.state&&!1!==this.fancybox.trigger("Image.wheel",e))switch(this.fancybox.option("Image.wheel")){case"zoom":t.Panzoom&&t.Panzoom.zoomWithWheel(e);break;case"close":this.fancybox.close();break;case"slide":this.fancybox[e.deltaY<0?"prev":"next"]()}}onClick(t,e){if("ready"!==this.fancybox.state)return;const i=t.Panzoom;if(i&&(i.dragPosition.midPoint||0!==i.dragOffset.x||0!==i.dragOffset.y||1!==i.dragOffset.scale))return;if(this.fancybox.Carousel.Panzoom.lockAxis)return!1;const s=i=>{switch(i){case"toggleZoom":e.stopPropagation(),t.Panzoom&&t.Panzoom.zoomWithClick(e);break;case"close":this.fancybox.close();break;case"next":e.stopPropagation(),this.fancybox.next()}},o=this.fancybox.option("Image.click"),n=this.fancybox.option("Image.doubleClick");n?this.clickTimer?(clearTimeout(this.clickTimer),this.clickTimer=null,s(n)):this.clickTimer=setTimeout((()=>{this.clickTimer=null,s(o)}),300):s(o)}onPageChange(t,e){const i=t.getSlide();e.slides.forEach((t=>{t.Panzoom&&"done"===t.state&&t.index!==i.index&&t.Panzoom.panTo({x:0,y:0,scale:1,friction:.8})}))}attach(){this.fancybox.on(this.events)}detach(){this.fancybox.off(this.events)}}P.defaults={canZoomInClass:"can-zoom_in",canZoomOutClass:"can-zoom_out",zoom:!0,zoomOpacity:"auto",zoomFriction:.82,ignoreCoveredThumbnail:!1,touch:!0,click:"toggleZoom",doubleClick:null,wheel:"zoom",fit:"contain",wrap:!1,Panzoom:{ratio:1}};const T=function(){const t=window.location.hash.substr(1),e=t.split("-"),i=e.length>1&&/^\+?\d+$/.test(e[e.length-1])&&parseInt(e.pop(-1),10)||null;return{hash:t,slug:e.join("-"),index:i}};class L{constructor(t){this.fancybox=t;for(const t of["onChange","onClosing"])this[t]=this[t].bind(this);this.events={initCarousel:this.onChange,"Carousel.change":this.onChange,closing:this.onClosing},this.hasCreatedHistory=!1,this.origHash="",this.timer=null}onChange(){const t=this.fancybox,e=t.Carousel;this.timer&&clearTimeout(this.timer);const i=null===e.prevPage,s=t.getSlide(),o=s.$trigger&&s.$trigger.dataset,n=window.location.hash.substr(1);let a=!1;if(s.slug)a=s.slug;else{let t=o&&o.fancybox;t&&t.length&&"true"!==t&&(a=t+(e.slides.length>1?"-"+(s.index+1):""))}i&&(this.origHash=n!==a?this.origHash:""),a&&n!==a&&(this.timer=setTimeout((()=>{try{window.history[i?"pushState":"replaceState"]({},document.title,window.location.pathname+window.location.search+"#"+a),i&&(this.hasCreatedHistory=!0)}catch(t){}}),300))}onClosing(){if(this.timer&&clearTimeout(this.timer),!0!==this.hasSilentClose){if(!this.hasCreatedHistory)try{return void window.history.replaceState({},document.title,window.location.pathname+window.location.search+(this.origHash?"#"+this.origHash:""))}catch(t){}window.history.back()}}attach(t){t.on(this.events)}detach(t){t.off(this.events)}static startFromUrl(){if(!L.Fancybox||L.Fancybox.getInstance())return;const{hash:t,slug:e,index:i}=T();if(!e)return;let s=document.querySelector(`[data-slug="${t}"]`);if(s&&s.dispatchEvent(new CustomEvent("click",{bubbles:!0,cancelable:!0})),L.Fancybox.getInstance())return;const o=document.querySelectorAll(`[data-fancybox="${e}"]`);o.length&&(null===i&&1===o.length?s=o[0]:i&&(s=o[i-1]),s&&s.dispatchEvent(new CustomEvent("click",{bubbles:!0,cancelable:!0})))}static onHashChange(){const{slug:t,index:e}=T(),i=L.Fancybox.getInstance();if(i){if(t){const s=i.Carousel;for(let e of s.slides)if(e.slug&&e.slug===t)return s.slideTo(e.index);const o=i.getSlide(),n=o.$trigger&&o.$trigger.dataset;if(n&&n.fancybox===t)return s.slideTo(e-1)}i.plugins.Hash.hasSilentClose=!0,i.close()}L.startFromUrl()}static create(t){function e(){window.addEventListener("hashchange",L.onHashChange,!1),L.startFromUrl()}L.Fancybox=t,b&&window.requestAnimationFrame((()=>{/complete|interactive|loaded/.test(document.readyState)?e():document.addEventListener("DOMContentLoaded",e)}))}static destroy(){window.removeEventListener("hashchange",L.onHashChange,!1)}}const A={pageXOffset:0,pageYOffset:0,element:()=>document.fullscreenElement||document.mozFullScreenElement||document.webkitFullscreenElement,activate(t){A.pageXOffset=window.pageXOffset,A.pageYOffset=window.pageYOffset,t.requestFullscreen?t.requestFullscreen():t.mozRequestFullScreen?t.mozRequestFullScreen():t.webkitRequestFullscreen?t.webkitRequestFullscreen():t.msRequestFullscreen&&t.msRequestFullscreen()},deactivate(){document.exitFullscreen?document.exitFullscreen():document.mozCancelFullScreen?document.mozCancelFullScreen():document.webkitExitFullscreen&&document.webkitExitFullscreen()}};class z{constructor(t){this.fancybox=t,this.active=!1,this.handleVisibilityChange=this.handleVisibilityChange.bind(this)}isActive(){return this.active}setTimer(){if(!this.active||this.timer)return;const t=this.fancybox.option("slideshow.delay",3e3);this.timer=setTimeout((()=>{this.timer=null,this.fancybox.option("infinite")||this.fancybox.getSlide().index!==this.fancybox.Carousel.slides.length-1?this.fancybox.next():this.fancybox.jumpTo(0,{friction:0})}),t);let e=this.$progress;e||(e=document.createElement("div"),e.classList.add("fancybox__progress"),this.fancybox.$carousel.parentNode.insertBefore(e,this.fancybox.$carousel),this.$progress=e,e.offsetHeight),e.style.transitionDuration=`${t}ms`,e.style.transform="scaleX(1)"}clearTimer(){clearTimeout(this.timer),this.timer=null,this.$progress&&(this.$progress.style.transitionDuration="",this.$progress.style.transform="",this.$progress.offsetHeight)}activate(){this.active||(this.active=!0,this.fancybox.$container.classList.add("has-slideshow"),"done"===this.fancybox.getSlide().state&&this.setTimer(),document.addEventListener("visibilitychange",this.handleVisibilityChange,!1))}handleVisibilityChange(){this.deactivate()}deactivate(){this.active=!1,this.clearTimer(),this.fancybox.$container.classList.remove("has-slideshow"),document.removeEventListener("visibilitychange",this.handleVisibilityChange,!1)}toggle(){this.active?this.deactivate():this.fancybox.Carousel.slides.length>1&&this.activate()}}const k={display:["counter","zoom","slideshow","fullscreen","thumbs","close"],autoEnable:!0,items:{counter:{type:"div",class:"fancybox__counter",html:'<span data-fancybox-index=""></span>&nbsp;/&nbsp;<span data-fancybox-count=""></span>',tabindex:-1,position:"left"},prev:{type:"button",class:"fancybox__button--prev",label:"PREV",html:'<svg viewBox="0 0 24 24"><path d="M15 4l-8 8 8 8"/></svg>',attr:{"data-fancybox-prev":""}},next:{type:"button",class:"fancybox__button--next",label:"NEXT",html:'<svg viewBox="0 0 24 24"><path d="M8 4l8 8-8 8"/></svg>',attr:{"data-fancybox-next":""}},fullscreen:{type:"button",class:"fancybox__button--fullscreen",label:"TOGGLE_FULLSCREEN",html:'<svg viewBox="0 0 24 24">\n                <g><path d="M3 8 V3h5"></path><path d="M21 8V3h-5"></path><path d="M8 21H3v-5"></path><path d="M16 21h5v-5"></path></g>\n                <g><path d="M7 2v5H2M17 2v5h5M2 17h5v5M22 17h-5v5"/></g>\n            </svg>',click:function(t){t.preventDefault(),A.element()?A.deactivate():A.activate(this.fancybox.$container)}},slideshow:{type:"button",class:"fancybox__button--slideshow",label:"TOGGLE_SLIDESHOW",html:'<svg viewBox="0 0 24 24">\n                <g><path d="M6 4v16"/><path d="M20 12L6 20"/><path d="M20 12L6 4"/></g>\n                <g><path d="M7 4v15M17 4v15"/></g>\n            </svg>',click:function(t){t.preventDefault(),this.Slideshow.toggle()}},zoom:{type:"button",class:"fancybox__button--zoom",label:"TOGGLE_ZOOM",html:'<svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"></circle><path d="M16 16 L21 21"></svg>',click:function(t){t.preventDefault();const e=this.fancybox.getSlide().Panzoom;e&&e.toggleZoom()}},download:{type:"link",label:"DOWNLOAD",class:"fancybox__button--download",html:'<svg viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.62 2.48A2 2 0 004.56 21h14.88a2 2 0 001.94-1.51L22 17"/></svg>',click:function(t){t.stopPropagation()}},thumbs:{type:"button",label:"TOGGLE_THUMBS",class:"fancybox__button--thumbs",html:'<svg viewBox="0 0 24 24"><circle cx="4" cy="4" r="1" /><circle cx="12" cy="4" r="1" transform="rotate(90 12 4)"/><circle cx="20" cy="4" r="1" transform="rotate(90 20 4)"/><circle cx="4" cy="12" r="1" transform="rotate(90 4 12)"/><circle cx="12" cy="12" r="1" transform="rotate(90 12 12)"/><circle cx="20" cy="12" r="1" transform="rotate(90 20 12)"/><circle cx="4" cy="20" r="1" transform="rotate(90 4 20)"/><circle cx="12" cy="20" r="1" transform="rotate(90 12 20)"/><circle cx="20" cy="20" r="1" transform="rotate(90 20 20)"/></svg>',click:function(t){t.stopPropagation();const e=this.fancybox.plugins.Thumbs;e&&e.toggle()}},close:{type:"button",label:"CLOSE",class:"fancybox__button--close",html:'<svg viewBox="0 0 24 24"><path d="M20 20L4 4m16 0L4 20"></path></svg>',tabindex:0,attr:{"data-fancybox-close":""}}}};class _{constructor(t){this.fancybox=t,this.$container=null,this.state="init";for(const t of["onInit","onPrepare","onDone","onKeydown","onClosing","onChange","onSettle","onRefresh"])this[t]=this[t].bind(this);this.events={init:this.onInit,prepare:this.onPrepare,done:this.onDone,keydown:this.onKeydown,closing:this.onClosing,"Carousel.change":this.onChange,"Carousel.settle":this.onSettle,"Carousel.Panzoom.touchStart":()=>this.onRefresh(),"Image.startAnimation":(t,e)=>this.onRefresh(e),"Image.afterUpdate":(t,e)=>this.onRefresh(e)}}onInit(){if(this.fancybox.option("Toolbar.autoEnable")){let t=!1;for(const e of this.fancybox.items)if("image"===e.type){t=!0;break}if(!t)return void(this.state="disabled")}for(const e of this.fancybox.option("Toolbar.display")){if("close"===(t(e)?e.id:e)){this.fancybox.options.closeButton=!1;break}}}onPrepare(){const t=this.fancybox;if("init"===this.state&&(this.build(),this.update(),this.Slideshow=new z(t),!t.Carousel.prevPage&&(t.option("slideshow.autoStart")&&this.Slideshow.activate(),t.option("fullscreen.autoStart")&&!A.element())))try{A.activate(t.$container)}catch(t){}}onFsChange(){window.scrollTo(A.pageXOffset,A.pageYOffset)}onSettle(){const t=this.fancybox,e=this.Slideshow;e&&e.isActive()&&(t.getSlide().index!==t.Carousel.slides.length-1||t.option("infinite")?"done"===t.getSlide().state&&e.setTimer():e.deactivate())}onChange(){this.update(),this.Slideshow&&this.Slideshow.isActive()&&this.Slideshow.clearTimer()}onDone(t,e){const i=this.Slideshow;e.index===t.getSlide().index&&(this.update(),i&&i.isActive()&&(t.option("infinite")||e.index!==t.Carousel.slides.length-1?i.setTimer():i.deactivate()))}onRefresh(t){t&&t.index!==this.fancybox.getSlide().index||(this.update(),!this.Slideshow||!this.Slideshow.isActive()||t&&"done"!==t.state||this.Slideshow.deactivate())}onKeydown(t,e,i){" "===e&&this.Slideshow&&(this.Slideshow.toggle(),i.preventDefault())}onClosing(){this.Slideshow&&this.Slideshow.deactivate(),document.removeEventListener("fullscreenchange",this.onFsChange)}createElement(t){let e;"div"===t.type?e=document.createElement("div"):(e=document.createElement("link"===t.type?"a":"button"),e.classList.add("carousel__button")),e.innerHTML=t.html,e.setAttribute("tabindex",t.tabindex||0),t.class&&e.classList.add(...t.class.split(" "));for(let i in t.attr)e.setAttribute(i,t[i]);t.label&&e.setAttribute("title",this.fancybox.localize(`{{${t.label}}}`)),t.click&&e.addEventListener("click",t.click.bind(this)),"prev"===t.id&&e.setAttribute("data-fancybox-prev",""),"next"===t.id&&e.setAttribute("data-fancybox-next","");const i=e.querySelector("svg");return i&&(i.setAttribute("role","img"),i.setAttribute("tabindex","-1"),i.setAttribute("xmlns","http://www.w3.org/2000/svg")),e}build(){this.cleanup();const i=this.fancybox.option("Toolbar.items"),s=[{position:"left",items:[]},{position:"center",items:[]},{position:"right",items:[]}],o=this.fancybox.plugins.Thumbs;for(const n of this.fancybox.option("Toolbar.display")){let a,r;if(t(n)?(a=n.id,r=e({},i[a],n)):(a=n,r=i[a]),["counter","next","prev","slideshow"].includes(a)&&this.fancybox.items.length<2)continue;if("fullscreen"===a){if(!document.fullscreenEnabled||window.fullScreen)continue;document.addEventListener("fullscreenchange",this.onFsChange)}if("thumbs"===a&&(!o||"disabled"===o.state))continue;if(!r)continue;let l=r.position||"right",h=s.find((t=>t.position===l));h&&h.items.push(r)}const n=document.createElement("div");n.classList.add("fancybox__toolbar");for(const t of s)if(t.items.length){const e=document.createElement("div");e.classList.add("fancybox__toolbar__items"),e.classList.add(`fancybox__toolbar__items--${t.position}`);for(const i of t.items)e.appendChild(this.createElement(i));n.appendChild(e)}this.fancybox.$carousel.parentNode.insertBefore(n,this.fancybox.$carousel),this.$container=n}update(){const t=this.fancybox.getSlide(),e=t.index,i=this.fancybox.items.length,s=t.downloadSrc||("image"!==t.type||t.error?null:t.src);for(const t of this.fancybox.$container.querySelectorAll("a.fancybox__button--download"))s?(t.removeAttribute("disabled"),t.removeAttribute("tabindex"),t.setAttribute("href",s),t.setAttribute("download",s),t.setAttribute("target","_blank")):(t.setAttribute("disabled",""),t.setAttribute("tabindex",-1),t.removeAttribute("href"),t.removeAttribute("download"));const o=t.Panzoom,n=o&&o.option("maxScale")>o.option("baseScale");for(const t of this.fancybox.$container.querySelectorAll(".fancybox__button--zoom"))n?t.removeAttribute("disabled"):t.setAttribute("disabled","");for(const e of this.fancybox.$container.querySelectorAll("[data-fancybox-index]"))e.innerHTML=t.index+1;for(const t of this.fancybox.$container.querySelectorAll("[data-fancybox-count]"))t.innerHTML=i;if(!this.fancybox.option("infinite")){for(const t of this.fancybox.$container.querySelectorAll("[data-fancybox-prev]"))0===e?t.setAttribute("disabled",""):t.removeAttribute("disabled");for(const t of this.fancybox.$container.querySelectorAll("[data-fancybox-next]"))e===i-1?t.setAttribute("disabled",""):t.removeAttribute("disabled")}}cleanup(){this.Slideshow&&this.Slideshow.isActive()&&this.Slideshow.clearTimer(),this.$container&&this.$container.remove(),this.$container=null}attach(){this.fancybox.on(this.events)}detach(){this.fancybox.off(this.events),this.cleanup()}}_.defaults=k;const O={ScrollLock:class{constructor(t){this.fancybox=t,this.viewport=null,this.pendingUpdate=null;for(const t of["onReady","onResize","onTouchstart","onTouchmove"])this[t]=this[t].bind(this)}onReady(){const t=window.visualViewport;t&&(this.viewport=t,this.startY=0,t.addEventListener("resize",this.onResize),this.updateViewport()),window.addEventListener("touchstart",this.onTouchstart,{passive:!1}),window.addEventListener("touchmove",this.onTouchmove,{passive:!1})}onResize(){this.updateViewport()}updateViewport(){const t=this.fancybox,e=this.viewport,i=e.scale||1,s=t.$container;if(!s)return;let o="",n="",a="";i-1>.1&&(o=e.width*i+"px",n=e.height*i+"px",a=`translate3d(${e.offsetLeft}px, ${e.offsetTop}px, 0) scale(${1/i})`),s.style.width=o,s.style.height=n,s.style.transform=a}onTouchstart(t){this.startY=t.touches?t.touches[0].screenY:t.screenY}onTouchmove(t){const e=this.startY,i=window.innerWidth/window.document.documentElement.clientWidth;if(!t.cancelable)return;if(t.touches.length>1||1!==i)return;const s=t.target,o=l(s);if(!o)return void t.preventDefault();const n=window.getComputedStyle(o),a=parseInt(n.getPropertyValue("height"),10),r=t.touches?t.touches[0].screenY:t.screenY,h=e<=r&&0===o.scrollTop,c=e>=r&&o.scrollHeight-o.scrollTop===a;(h||c)&&t.preventDefault()}cleanup(){this.pendingUpdate&&(cancelAnimationFrame(this.pendingUpdate),this.pendingUpdate=null);const t=this.viewport;t&&(t.removeEventListener("resize",this.onResize),this.viewport=null),window.removeEventListener("touchstart",this.onTouchstart,!1),window.removeEventListener("touchmove",this.onTouchmove,!1)}attach(){this.fancybox.on("initLayout",this.onReady)}detach(){this.fancybox.off("initLayout",this.onReady),this.cleanup()}},Thumbs:$,Html:E,Toolbar:_,Image:P,Hash:L};const M={startIndex:0,preload:1,infinite:!0,showClass:"fancybox-zoomInUp",hideClass:"fancybox-fadeOut",animated:!0,hideScrollbar:!0,parentEl:null,mainClass:null,autoFocus:!0,trapFocus:!0,placeFocusBack:!0,click:"close",closeButton:"inside",dragToClose:!0,keyboard:{Escape:"close",Delete:"close",Backspace:"close",PageUp:"next",PageDown:"prev",ArrowUp:"next",ArrowDown:"prev",ArrowRight:"next",ArrowLeft:"prev"},template:{closeButton:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M20 20L4 4m16 0L4 20"/></svg>',spinner:'<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="25 25 50 50" tabindex="-1"><circle cx="50" cy="50" r="20"/></svg>',main:null},l10n:{CLOSE:"Close",NEXT:"Next",PREV:"Previous",MODAL:"You can close this modal content with the ESC key",ERROR:"Something Went Wrong, Please Try Again Later",IMAGE_ERROR:"Image Not Found",ELEMENT_NOT_FOUND:"HTML Element Not Found",AJAX_NOT_FOUND:"Error Loading AJAX : Not Found",AJAX_FORBIDDEN:"Error Loading AJAX : Forbidden",IFRAME_ERROR:"Error Loading Page",TOGGLE_ZOOM:"Toggle zoom level",TOGGLE_THUMBS:"Toggle thumbnails",TOGGLE_SLIDESHOW:"Toggle slideshow",TOGGLE_FULLSCREEN:"Toggle full-screen mode",DOWNLOAD:"Download"}},I={};let F=0;class R extends h{constructor(t,i={}){super(e(!0,{},M,i)),this.bindHandlers(),this.state="init",this.setItems(t),this.attachPlugins(R.Plugins),this.trigger("init"),!0===this.option("hideScrollbar")&&this.hideScrollbar(),this.initLayout(),this.initCarousel(),this.attachEvents(),I[this.id]=this,this.trigger("prepare"),this.state="ready",this.trigger("ready"),this.$container.setAttribute("aria-hidden","false"),this.option("trapFocus")&&this.focus()}bindHandlers(){for(const t of["onMousedown","onKeydown","onClick","onFocus","onCreateSlide","onSettle","onTouchMove","onTouchEnd","onTransform"])this[t]=this[t].bind(this)}attachEvents(){document.addEventListener("mousedown",this.onMousedown),document.addEventListener("keydown",this.onKeydown,!0),this.option("trapFocus")&&document.addEventListener("focus",this.onFocus,!0),this.$container.addEventListener("click",this.onClick)}detachEvents(){document.removeEventListener("mousedown",this.onMousedown),document.removeEventListener("keydown",this.onKeydown,!0),document.removeEventListener("focus",this.onFocus,!0),this.$container.removeEventListener("click",this.onClick)}initLayout(){this.$root=this.option("parentEl")||document.body;let t=this.option("template.main");t&&(this.$root.insertAdjacentHTML("beforeend",this.localize(t)),this.$container=this.$root.querySelector(".fancybox__container")),this.$container||(this.$container=document.createElement("div"),this.$root.appendChild(this.$container)),this.$container.onscroll=()=>(this.$container.scrollLeft=0,!1),Object.entries({class:"fancybox__container",role:"dialog",tabIndex:"-1","aria-modal":"true","aria-hidden":"true","aria-label":this.localize("{{MODAL}}")}).forEach((t=>this.$container.setAttribute(...t))),this.option("animated")&&this.$container.classList.add("is-animated"),this.$backdrop=this.$container.querySelector(".fancybox__backdrop"),this.$backdrop||(this.$backdrop=document.createElement("div"),this.$backdrop.classList.add("fancybox__backdrop"),this.$container.appendChild(this.$backdrop)),this.$carousel=this.$container.querySelector(".fancybox__carousel"),this.$carousel||(this.$carousel=document.createElement("div"),this.$carousel.classList.add("fancybox__carousel"),this.$container.appendChild(this.$carousel)),this.$container.Fancybox=this,this.id=this.$container.getAttribute("id"),this.id||(this.id=this.options.id||++F,this.$container.setAttribute("id","fancybox-"+this.id));const e=this.options.mainClass;return e&&this.$container.classList.add(...e.split(" ")),document.documentElement.classList.add("with-fancybox"),this.trigger("initLayout"),this}setItems(t){const e=[];for(const i of t){const t=i.$trigger;if(t){const e=t.dataset||{};i.src=e.src||t.getAttribute("href")||i.src,i.type=e.type||i.type,!i.src&&t instanceof HTMLImageElement&&(i.src=t.currentSrc||i.$trigger.src)}let s=i.$thumb;if(!s){let t=i.$trigger&&i.$trigger.origTarget;t&&(s=t instanceof HTMLImageElement?t:t.querySelector("img")),!s&&i.$trigger&&(s=i.$trigger instanceof HTMLImageElement?i.$trigger:i.$trigger.querySelector("img"))}i.$thumb=s||null;let o=i.thumb;!o&&s&&(o=s.currentSrc||s.src,!o&&s.dataset&&(o=s.dataset.lazySrc||s.dataset.src)),o||"image"!==i.type||(o=i.src),i.thumb=o||null,i.caption=i.caption||"",e.push(i)}this.items=e}initCarousel(){return this.Carousel=new y(this.$carousel,e(!0,{},{prefix:"",classNames:{viewport:"fancybox__viewport",track:"fancybox__track",slide:"fancybox__slide"},textSelection:!0,preload:this.option("preload"),friction:.88,slides:this.items,initialPage:this.options.startIndex,slidesPerPage:1,infiniteX:this.option("infinite"),infiniteY:!0,l10n:this.option("l10n"),Dots:!1,Navigation:{classNames:{main:"fancybox__nav",button:"carousel__button",next:"is-next",prev:"is-prev"}},Panzoom:{textSelection:!0,panOnlyZoomed:()=>this.Carousel&&this.Carousel.pages&&this.Carousel.pages.length<2&&!this.options.dragToClose,lockAxis:()=>{if(this.Carousel){let t="x";return this.options.dragToClose&&(t+="y"),t}}},on:{"*":(t,...e)=>this.trigger(`Carousel.${t}`,...e),init:t=>this.Carousel=t,createSlide:this.onCreateSlide,settle:this.onSettle}},this.option("Carousel"))),this.option("dragToClose")&&this.Carousel.Panzoom.on({touchMove:this.onTouchMove,afterTransform:this.onTransform,touchEnd:this.onTouchEnd}),this.trigger("initCarousel"),this}onCreateSlide(t,e){let i=e.caption||"";if("function"==typeof this.options.caption&&(i=this.options.caption.call(this,this,this.Carousel,e)),"string"==typeof i&&i.length){const t=document.createElement("div"),s=`fancybox__caption_${this.id}_${e.index}`;t.className="fancybox__caption",t.innerHTML=i,t.setAttribute("id",s),e.$caption=e.$el.appendChild(t),e.$el.classList.add("has-caption"),e.$el.setAttribute("aria-labelledby",s)}}onSettle(){this.option("autoFocus")&&this.focus()}onFocus(t){this.focus(t)}onClick(t){if(t.defaultPrevented)return;let e=t.target;if(e.matches("[data-fancybox-close]"))return t.preventDefault(),void R.close(!1);if(e.matches("[data-fancybox-next]"))return t.preventDefault(),void R.next();if(e.matches("[data-fancybox-prev]"))return t.preventDefault(),void R.prev();if(e.closest(".fancybox__content"))return;if(getSelection().toString().length)return;if(!1===this.trigger("click",t))return;switch(this.option("click")){case"close":this.close();break;case"next":this.next()}}onTouchMove(){const t=this.getSlide().Panzoom;return!t||1===t.content.scale}onTouchEnd(t){const e=t.dragOffset.y;Math.abs(e)>=150||Math.abs(e)>=35&&t.dragOffset.time<350?(this.option("hideClass")&&(this.getSlide().hideClass="fancybox-throwOut"+(t.content.y<0?"Up":"Down")),this.close()):"y"===t.lockAxis&&t.panTo({y:0})}onTransform(t){if(this.$backdrop){const e=Math.abs(t.content.y),i=e<1?"":Math.max(.33,Math.min(1,1-e/t.content.fitHeight*1.5));this.$container.style.setProperty("--fancybox-ts",i?"0s":""),this.$container.style.setProperty("--fancybox-opacity",i)}}onMousedown(){"ready"===this.state&&document.body.classList.add("is-using-mouse")}onKeydown(t){if(R.getInstance().id!==this.id)return;document.body.classList.remove("is-using-mouse");const e=t.key,i=this.option("keyboard");if(!i||t.ctrlKey||t.altKey||t.shiftKey)return;const s=document.activeElement&&document.activeElement.classList,o=s&&s.contains("carousel__button");if("Escape"!==e&&!o){if(t.target.isContentEditable||-1!==["BUTTON","TEXTAREA","OPTION","INPUT","SELECT","VIDEO"].indexOf(t.target.nodeName))return}if(!1===this.trigger("keydown",e,t))return;const n=i[e];"function"==typeof this[n]&&this[n]()}getSlide(){const t=this.Carousel;if(!t)return null;const e=null===t.page?t.option("initialPage"):t.page,i=t.pages||[];return i.length&&i[e]?i[e].slides[0]:null}focus(t){if(R.ignoreFocusChange)return;if(["init","closing","customClosing","destroy"].indexOf(this.state)>-1)return;t&&t.preventDefault(),R.ignoreFocusChange=!0;const e=this.$container,i=this.getSlide(),s="done"===i.state?i.$el:null,o=Array.from(e.querySelectorAll(x));let n,a=[];for(let t of o){const e=t.offsetParent,i=s&&s.contains(t),o=!this.Carousel.$viewport.contains(t);e&&(i||o)?(a.push(t),void 0!==t.dataset.origTabindex&&(t.tabIndex=t.dataset.origTabindex,t.removeAttribute("data-orig-tabindex")),(t.hasAttribute("autoFocus")||!n&&i&&!t.classList.contains("carousel__button"))&&(n=t)):(t.dataset.origTabindex=void 0===t.dataset.origTabindex?t.getAttribute("tabindex"):t.dataset.origTabindex,t.tabIndex=-1)}t?a.indexOf(t.target)>-1?this.lastFocus=t.target:this.lastFocus===e?w(a[a.length-1]):w(e):this.option("autoFocus")&&n?w(n):a.indexOf(document.activeElement)<0&&w(e),this.lastFocus=document.activeElement,R.ignoreFocusChange=!1}hideScrollbar(){if(!b)return;const t=window.innerWidth-document.documentElement.getBoundingClientRect().width,e="fancybox-style-noscroll";let i=document.getElementById(e);i||t>0&&(i=document.createElement("style"),i.id=e,i.type="text/css",i.innerHTML=`.compensate-for-scrollbar {padding-right: ${t}px;}`,document.getElementsByTagName("head")[0].appendChild(i),document.body.classList.add("compensate-for-scrollbar"))}revealScrollbar(){document.body.classList.remove("compensate-for-scrollbar");const t=document.getElementById("fancybox-style-noscroll");t&&t.remove()}clearContent(t){this.Carousel.trigger("removeSlide",t),t.$content&&(t.$content.remove(),t.$content=null),t.$closeButton&&(t.$closeButton.remove(),t.$closeButton=null),t._className&&t.$el.classList.remove(t._className)}setContent(t,e,i={}){let s;const o=t.$el;if(e instanceof HTMLElement)["img","iframe","video","audio"].indexOf(e.nodeName.toLowerCase())>-1?(s=document.createElement("div"),s.appendChild(e)):s=e;else{const t=document.createRange().createContextualFragment(e);s=document.createElement("div"),s.appendChild(t)}if(t.filter&&!t.error&&(s=s.querySelector(t.filter)),s instanceof Element)return t._className=`has-${i.suffix||t.type||"unknown"}`,o.classList.add(t._className),s.classList.add("fancybox__content"),"none"!==s.style.display&&"none"!==getComputedStyle(s).getPropertyValue("display")||(s.style.display=t.display||this.option("defaultDisplay")||"flex"),t.id&&s.setAttribute("id",t.id),t.$content=s,o.prepend(s),this.manageCloseButton(t),"loading"!==t.state&&this.revealContent(t),s;this.setError(t,"{{ELEMENT_NOT_FOUND}}")}manageCloseButton(t){const e=void 0===t.closeButton?this.option("closeButton"):t.closeButton;if(!e||"top"===e&&this.$closeButton)return;const i=document.createElement("button");i.classList.add("carousel__button","is-close"),i.setAttribute("title",this.options.l10n.CLOSE),i.innerHTML=this.option("template.closeButton"),i.addEventListener("click",(t=>this.close(t))),"inside"===e?(t.$closeButton&&t.$closeButton.remove(),t.$closeButton=t.$content.appendChild(i)):this.$closeButton=this.$container.insertBefore(i,this.$container.firstChild)}revealContent(t){this.trigger("reveal",t),t.$content.style.visibility="";let e=!1;t.error||"loading"===t.state||null!==this.Carousel.prevPage||t.index!==this.options.startIndex||(e=void 0===t.showClass?this.option("showClass"):t.showClass),e?(t.state="animating",this.animateCSS(t.$content,e,(()=>{this.done(t)}))):this.done(t)}animateCSS(t,e,i){if(t&&t.dispatchEvent(new CustomEvent("animationend",{bubbles:!0,cancelable:!0})),!t||!e)return void("function"==typeof i&&i());const s=function(o){o.currentTarget===this&&(t.removeEventListener("animationend",s),i&&i(),t.classList.remove(e))};t.addEventListener("animationend",s),t.classList.add(e)}done(t){t.state="done",this.trigger("done",t);const e=this.getSlide();e&&t.index===e.index&&this.option("autoFocus")&&this.focus()}setError(t,e){t.error=e,this.hideLoading(t),this.clearContent(t);const i=document.createElement("div");i.classList.add("fancybox-error"),i.innerHTML=this.localize(e||"<p>{{ERROR}}</p>"),this.setContent(t,i,{suffix:"error"})}showLoading(t){t.state="loading",t.$el.classList.add("is-loading");let e=t.$el.querySelector(".fancybox__spinner");e||(e=document.createElement("div"),e.classList.add("fancybox__spinner"),e.innerHTML=this.option("template.spinner"),e.addEventListener("click",(()=>{this.Carousel.Panzoom.velocity||this.close()})),t.$el.prepend(e))}hideLoading(t){const e=t.$el&&t.$el.querySelector(".fancybox__spinner");e&&(e.remove(),t.$el.classList.remove("is-loading")),"loading"===t.state&&(this.trigger("load",t),t.state="ready")}next(){const t=this.Carousel;t&&t.pages.length>1&&t.slideNext()}prev(){const t=this.Carousel;t&&t.pages.length>1&&t.slidePrev()}jumpTo(...t){this.Carousel&&this.Carousel.slideTo(...t)}close(t){if(t&&t.preventDefault(),["closing","customClosing","destroy"].includes(this.state))return;if(!1===this.trigger("shouldClose",t))return;if(this.state="closing",this.Carousel.Panzoom.destroy(),this.detachEvents(),this.trigger("closing",t),"destroy"===this.state)return;this.$container.setAttribute("aria-hidden","true"),this.$container.classList.add("is-closing");const e=this.getSlide();if(this.Carousel.slides.forEach((t=>{t.$content&&t.index!==e.index&&this.Carousel.trigger("removeSlide",t)})),"closing"===this.state){const t=void 0===e.hideClass?this.option("hideClass"):e.hideClass;this.animateCSS(e.$content,t,(()=>{this.destroy()}),!0)}}destroy(){if("destroy"===this.state)return;this.state="destroy",this.trigger("destroy");const t=this.option("placeFocusBack")?this.getSlide().$trigger:null;this.Carousel.destroy(),this.detachPlugins(),this.Carousel=null,this.options={},this.events={},this.$container.remove(),this.$container=this.$backdrop=this.$carousel=null,t&&w(t),delete I[this.id];const e=R.getInstance();e?e.focus():(document.documentElement.classList.remove("with-fancybox"),document.body.classList.remove("is-using-mouse"),this.revealScrollbar())}static show(t,e={}){return new R(t,e)}static fromEvent(t,e={}){if(t.defaultPrevented)return;if(t.button&&0!==t.button)return;if(t.ctrlKey||t.metaKey||t.shiftKey)return;let i,s,o,n=t.target;if((n.matches("[data-fancybox-trigger]")||(n=n.closest("[data-fancybox-trigger]")))&&(i=n&&n.dataset&&n.dataset.fancyboxTrigger),i){const t=document.querySelectorAll(`[data-fancybox="${i}"]`),e=parseInt(n.dataset.fancyboxIndex,10)||0;n=t.length?t[e]:n}n||(n=t.target),Array.from(R.openers.keys()).reverse().some((e=>{o=n;let i=!1;try{o instanceof Element&&("string"==typeof e||e instanceof String)&&(i=o.matches(e)||(o=o.closest(e)))}catch(t){}return!!i&&(t.preventDefault(),s=e,!0)}));let a=!1;if(s){e.event=t,e.target=o,o.origTarget=t.target,a=R.fromOpener(s,e);const i=R.getInstance();i&&"ready"===i.state&&t.detail&&document.body.classList.add("is-using-mouse")}return a}static fromOpener(t,i={}){let s=[],o=i.startIndex||0,n=i.target||null;const a=void 0!==(i=e({},i,R.openers.get(t))).groupAll&&i.groupAll,r=void 0===i.groupAttr?"data-fancybox":i.groupAttr,l=r&&n?n.getAttribute(`${r}`):"";if((!n||l||a)&&(s=[].slice.call(document.querySelectorAll(t))),n&&!a&&(s=l?s.filter((t=>t.getAttribute(`${r}`)===l)):[n]),!s.length)return!1;const h=R.getInstance();return!(h&&s.indexOf(h.options.$trigger)>-1)&&(o=n?s.indexOf(n):o,s=s.map((function(t){const e=["false","0","no","null","undefined"],i=["true","1","yes"],s=Object.assign({},t.dataset),o={};for(let[t,n]of Object.entries(s))if("fancybox"!==t)if("width"===t||"height"===t)o[`_${t}`]=n;else if("string"==typeof n||n instanceof String)if(e.indexOf(n)>-1)o[t]=!1;else if(i.indexOf(o[t])>-1)o[t]=!0;else try{o[t]=JSON.parse(n)}catch(e){o[t]=n}else o[t]=n;return t instanceof Element&&(o.$trigger=t),o})),new R(s,e({},i,{startIndex:o,$trigger:n})))}static bind(t,e={}){function i(){document.body.addEventListener("click",R.fromEvent,!1)}b&&(R.openers.size||(/complete|interactive|loaded/.test(document.readyState)?i():document.addEventListener("DOMContentLoaded",i)),R.openers.set(t,e))}static unbind(t){R.openers.delete(t),R.openers.size||R.destroy()}static destroy(){let t;for(;t=R.getInstance();)t.destroy();R.openers=new Map,document.body.removeEventListener("click",R.fromEvent,!1)}static getInstance(t){if(t)return I[t];return Object.values(I).reverse().find((t=>!["closing","customClosing","destroy"].includes(t.state)&&t))||null}static close(t=!0){let e=null;for(;e=R.getInstance();)if(e.close(),!t)return}static next(){const t=R.getInstance();t&&t.next()}static prev(){const t=R.getInstance();t&&t.prev()}}R.version="4.0.12",R.defaults=M,R.openers=new Map,R.Plugins=O,R.bind("[data-fancybox]");for(const[t,e]of Object.entries(R.Plugins||{}))"function"==typeof e.create&&e.create(R);
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Carousel/Carousel.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Carousel/Carousel.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Carousel": () => (/* binding */ Carousel)
+/* harmony export */ });
+/* harmony import */ var _shared_Base_Base_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/Base/Base.js */ "./node_modules/@fancyapps/ui/src/shared/Base/Base.js");
+/* harmony import */ var _Panzoom_Panzoom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Panzoom/Panzoom.js */ "./node_modules/@fancyapps/ui/src/Panzoom/Panzoom.js");
+/* harmony import */ var _shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/utils/extend.js */ "./node_modules/@fancyapps/ui/src/shared/utils/extend.js");
+/* harmony import */ var _shared_utils_round_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/utils/round.js */ "./node_modules/@fancyapps/ui/src/shared/utils/round.js");
+/* harmony import */ var _shared_utils_throttle_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shared/utils/throttle.js */ "./node_modules/@fancyapps/ui/src/shared/utils/throttle.js");
+/* harmony import */ var _plugins_index_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./plugins/index.js */ "./node_modules/@fancyapps/ui/src/Carousel/plugins/index.js");
+/* harmony import */ var _l10n_en_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./l10n/en.js */ "./node_modules/@fancyapps/ui/src/Carousel/l10n/en.js");
+
+
+
+
+
+
+
+
+
+// Default language
+
+
+const defaults = {
+  // Virtual slides. Each object should have at least `html` property that will be used to set content,
+  // example: `slides: [{html: 'First slide'}, {html: 'Second slide'}]`
+  slides: [],
+
+  // Number of slides to preload before/after visible slides
+  preload: 0,
+
+  // Number of slides to group into the page,
+  // if `auto` - group all slides that fit into the viewport
+  slidesPerPage: "auto",
+
+  // Index of initial page
+  initialPage: null,
+
+  // Index of initial slide
+  initialSlide: null,
+
+  // Panzoom friction while changing page
+  friction: 0.92,
+
+  // Should center active page
+  center: true,
+
+  // Should carousel scroll infinitely
+  infinite: true,
+
+  // Should the gap be filled before first and after last slide if `infinite: false`
+  fill: true,
+
+  // Should Carousel settle at any position after a swipe.
+  dragFree: false,
+
+  // Prefix for CSS classes, must be the same as the  SCSS `$carousel-prefix` variable
+  prefix: "",
+
+  // Class names for DOM elements (without prefix)
+  classNames: {
+    viewport: "carousel__viewport",
+    track: "carousel__track",
+    slide: "carousel__slide",
+
+    // Classname toggled for slides inside current page
+    slideSelected: "is-selected",
+  },
+
+  // Localization of strings
+  l10n: _l10n_en_js__WEBPACK_IMPORTED_MODULE_6__["default"],
+};
+
+class Carousel extends _shared_Base_Base_js__WEBPACK_IMPORTED_MODULE_0__.Base {
+  /**
+   * Carousel constructor
+   * @constructs Carousel
+   * @param {HTMLElement} $container - Carousel container
+   * @param {Object} [options] - Options for Carousel
+   */
+  constructor($container, options = {}) {
+    options = (0,_shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_2__.extend)(true, {}, defaults, options);
+
+    super(options);
+
+    this.state = "init";
+
+    this.$container = $container;
+
+    if (!(this.$container instanceof HTMLElement)) {
+      throw new Error("No root element provided");
+    }
+
+    this.slideNext = (0,_shared_utils_throttle_js__WEBPACK_IMPORTED_MODULE_4__.throttle)(this.slideNext.bind(this), 250, true);
+    this.slidePrev = (0,_shared_utils_throttle_js__WEBPACK_IMPORTED_MODULE_4__.throttle)(this.slidePrev.bind(this), 250, true);
+
+    this.init();
+  }
+
+  /**
+   * Perform initialization
+   */
+  init() {
+    this.pages = [];
+    this.page = this.pageIndex = null;
+    this.prevPage = this.prevPageIndex = null;
+
+    this.attachPlugins(Carousel.Plugins);
+
+    this.trigger("init");
+
+    this.initLayout();
+
+    this.initSlides();
+
+    this.updateMetrics();
+
+    if (this.$track && this.pages.length) {
+      this.$track.style.transform = `translate3d(${this.pages[this.page].left * -1}px, 0px, 0) scale(1)`;
+    }
+
+    this.manageSlideVisiblity();
+
+    this.initPanzoom();
+
+    this.state = "ready";
+
+    this.trigger("ready");
+  }
+
+  /**
+   * Initialize layout; create necessary elements
+   */
+  initLayout() {
+    const prefix = this.option("prefix");
+    const classNames = this.option("classNames");
+
+    this.$viewport = this.option("viewport") || this.$container.querySelector(`.${prefix}${classNames.viewport}`);
+
+    if (!this.$viewport) {
+      this.$viewport = document.createElement("div");
+      this.$viewport.classList.add(prefix + classNames.viewport);
+
+      this.$viewport.append(...this.$container.childNodes);
+
+      this.$container.appendChild(this.$viewport);
+    }
+
+    this.$track = this.option("track") || this.$container.querySelector(`.${prefix}${classNames.track}`);
+
+    if (!this.$track) {
+      this.$track = document.createElement("div");
+      this.$track.classList.add(prefix + classNames.track);
+
+      this.$track.append(...this.$viewport.childNodes);
+
+      this.$viewport.appendChild(this.$track);
+    }
+  }
+
+  /**
+   * Fill `slides` array with objects from existing nodes and/or `slides` option
+   */
+  initSlides() {
+    this.slides = [];
+
+    // Get existing slides from the DOM
+    const elems = this.$viewport.querySelectorAll(`.${this.option("prefix")}${this.option("classNames.slide")}`);
+
+    elems.forEach((el) => {
+      const slide = {
+        $el: el,
+        isDom: true,
+      };
+
+      this.slides.push(slide);
+
+      this.trigger("createSlide", slide, this.slides.length);
+    });
+
+    // Add virtual slides, but do not create DOM elements yet,
+    // because they will be created dynamically based on current carousel position
+    if (Array.isArray(this.options.slides)) {
+      this.slides = (0,_shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_2__.extend)(true, [...this.slides], this.options.slides);
+    }
+  }
+
+  /**
+   * Do all calculations related to slide size and paging
+   */
+  updateMetrics() {
+    // Calculate content width, viewport width
+    // ===
+    let contentWidth = 0;
+    let indexes = [];
+    let lastSlideWidth;
+
+    this.slides.forEach((slide, index) => {
+      const $el = slide.$el;
+      const slideWidth = slide.isDom || !lastSlideWidth ? this.getSlideMetrics($el) : lastSlideWidth;
+
+      slide.index = index;
+      slide.width = slideWidth;
+      slide.left = contentWidth;
+
+      lastSlideWidth = slideWidth;
+      contentWidth += slideWidth;
+
+      indexes.push(index);
+    });
+
+    let viewportWidth = Math.max(this.$track.offsetWidth, (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_3__.round)(this.$track.getBoundingClientRect().width));
+
+    let viewportStyles = getComputedStyle(this.$track);
+    viewportWidth = viewportWidth - (parseFloat(viewportStyles.paddingLeft) + parseFloat(viewportStyles.paddingRight));
+
+    this.contentWidth = contentWidth;
+    this.viewportWidth = viewportWidth;
+
+    // Split slides into pages
+    // ===
+    const pages = [];
+    const slidesPerPage = this.option("slidesPerPage");
+
+    if (Number.isInteger(slidesPerPage) && contentWidth > viewportWidth) {
+      // Fixed number of slides in the page
+      for (let i = 0; i < this.slides.length; i += slidesPerPage) {
+        pages.push({
+          indexes: indexes.slice(i, i + slidesPerPage),
+          slides: this.slides.slice(i, i + slidesPerPage),
+        });
+      }
+    } else {
+      // Slides that fit inside viewport
+      let currentPage = 0;
+      let currentWidth = 0;
+
+      for (let i = 0; i < this.slides.length; i += 1) {
+        let slide = this.slides[i];
+
+        // Add next page
+        if (!pages.length || currentWidth + slide.width > viewportWidth) {
+          pages.push({
+            indexes: [],
+            slides: [],
+          });
+
+          currentPage = pages.length - 1;
+          currentWidth = 0;
+        }
+
+        currentWidth += slide.width;
+
+        pages[currentPage].indexes.push(i);
+        pages[currentPage].slides.push(slide);
+      }
+    }
+
+    const shouldCenter = this.option("center");
+    const shouldFill = this.option("fill");
+
+    // Calculate width and start position for each page
+    // ===
+    pages.forEach((page, index) => {
+      page.index = index;
+      page.width = page.slides.reduce((sum, slide) => sum + slide.width, 0);
+
+      page.left = page.slides[0].left;
+
+      if (shouldCenter) {
+        page.left += (viewportWidth - page.width) * 0.5 * -1;
+      }
+
+      if (shouldFill && !this.option("infiniteX", this.option("infinite")) && contentWidth > viewportWidth) {
+        page.left = Math.max(page.left, 0);
+        page.left = Math.min(page.left, contentWidth - viewportWidth);
+      }
+    });
+
+    // Merge pages
+    // ===
+    const rez = [];
+    let prevPage;
+
+    pages.forEach((page2) => {
+      const page = { ...page2 };
+
+      if (prevPage && page.left === prevPage.left) {
+        prevPage.width += page.width;
+
+        prevPage.slides = [...prevPage.slides, ...page.slides];
+        prevPage.indexes = [...prevPage.indexes, ...page.indexes];
+      } else {
+        page.index = rez.length;
+
+        prevPage = page;
+
+        rez.push(page);
+      }
+    });
+
+    this.pages = rez;
+
+    let page = this.page;
+
+    if (page === null) {
+      const initialSlide = this.option("initialSlide");
+
+      if (initialSlide !== null) {
+        page = this.findPageForSlide(initialSlide);
+      } else {
+        page = this.option("initialPage", 0);
+      }
+
+      if (!rez[page]) {
+        page = rez.length && page > rez.length ? rez[rez.length - 1].index : 0;
+      }
+
+      this.page = page;
+      this.pageIndex = page;
+    }
+
+    this.updatePanzoom();
+
+    this.trigger("refresh");
+  }
+
+  /**
+   * Calculate slide element width (including left, right margins)
+   * @param {Object} node
+   * @returns {Number} Width in px
+   */
+  getSlideMetrics(node) {
+    if (!node) {
+      const firstSlide = this.slides[0];
+
+      node = document.createElement("div");
+
+      node.dataset.isTestEl = 1;
+      node.style.visibility = "hidden";
+      node.classList.add(this.option("prefix") + this.option("classNames.slide"));
+
+      // Assume all slides have the same custom class, if any
+      if (firstSlide.customClass) {
+        node.classList.add(...firstSlide.customClass.split(" "));
+      }
+
+      this.$track.prepend(node);
+    }
+
+    let width = Math.max(node.offsetWidth, (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_3__.round)(node.getBoundingClientRect().width));
+
+    // Add left/right margin
+    const style = node.currentStyle || window.getComputedStyle(node);
+    width = width + (parseFloat(style.marginLeft) || 0) + (parseFloat(style.marginRight) || 0);
+
+    if (node.dataset.isTestEl) {
+      node.remove();
+    }
+
+    return width;
+  }
+
+  /**
+   *
+   * @param {Integer} index Index of the slide
+   * @returns {Integer|null} Index of the page if found, or null
+   */
+  findPageForSlide(index) {
+    const page = this.pages.find((page) => {
+      return page.indexes.indexOf(index) > -1;
+    });
+
+    return page ? page.index : null;
+  }
+
+  /**
+   * Slide to next page, if possible
+   */
+  slideNext() {
+    this.slideTo(this.pageIndex + 1);
+  }
+
+  /**
+   * Slide to previous page, if possible
+   */
+  slidePrev() {
+    this.slideTo(this.pageIndex - 1);
+  }
+
+  /**
+   * Slides carousel to given page
+   * @param {Number} page - New index of active page
+   * @param {Object} [params] - Additional options
+   */
+  slideTo(page, params = {}) {
+    const { x = this.setPage(page, true) * -1, y = 0, friction = this.option("friction") } = params;
+
+    if (this.Panzoom.content.x === x && !this.Panzoom.velocity.x && friction) {
+      return;
+    }
+
+    this.Panzoom.panTo({
+      x,
+      y,
+      friction,
+      ignoreBounds: true,
+    });
+
+    if (this.state === "ready" && this.Panzoom.state === "ready") {
+      this.trigger("settle");
+    }
+  }
+
+  /**
+   * Initialise main Panzoom instance
+   */
+  initPanzoom() {
+    if (this.Panzoom) {
+      this.Panzoom.destroy();
+    }
+
+    // Create fresh object containing options for Pazoom instance
+    const options = (0,_shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_2__.extend)(
+      true,
+      {},
+      {
+        // Track element will be set as Panzoom $content
+        content: this.$track,
+        wrapInner: false,
+        resizeParent: false,
+
+        // Disable any user interaction
+        zoom: false,
+        click: false,
+
+        // Right now, only horizontal navigation is supported
+        lockAxis: "x",
+
+        x: this.pages.length ? this.pages[this.page].left * -1 : 0,
+        centerOnStart: false,
+
+        // Make `textSelection` option more easy to customize
+        textSelection: () => this.option("textSelection", false),
+
+        // Disable dragging if content (e.g. all slides) fits inside viewport
+        panOnlyZoomed: function () {
+          return this.content.width <= this.viewport.width;
+        },
+      },
+      this.option("Panzoom")
+    );
+
+    // Create new Panzoom instance
+    this.Panzoom = new _Panzoom_Panzoom_js__WEBPACK_IMPORTED_MODULE_1__.Panzoom(this.$container, options);
+
+    this.Panzoom.on({
+      // Bubble events
+      "*": (name, ...details) => this.trigger(`Panzoom.${name}`, ...details),
+      // The rest of events to be processed
+      afterUpdate: () => {
+        this.updatePage();
+      },
+      beforeTransform: this.onBeforeTransform.bind(this),
+      touchEnd: this.onTouchEnd.bind(this),
+      endAnimation: () => {
+        this.trigger("settle");
+      },
+    });
+
+    // The contents of the slides may cause the page scroll bar to appear, so the carousel width may change
+    // and slides have to be repositioned
+    this.updateMetrics();
+    this.manageSlideVisiblity();
+  }
+
+  updatePanzoom() {
+    if (!this.Panzoom) {
+      return;
+    }
+
+    this.Panzoom.content = {
+      ...this.Panzoom.content,
+      fitWidth: this.contentWidth,
+      origWidth: this.contentWidth,
+      width: this.contentWidth,
+    };
+
+    if (this.pages.length > 1 && this.option("infiniteX", this.option("infinite"))) {
+      this.Panzoom.boundX = null;
+    } else if (this.pages.length) {
+      this.Panzoom.boundX = {
+        from: this.pages[this.pages.length - 1].left * -1,
+        to: this.pages[0].left * -1,
+      };
+    }
+
+    if (this.option("infiniteY", this.option("infinite"))) {
+      this.Panzoom.boundY = null;
+    } else {
+      this.Panzoom.boundY = {
+        from: 0,
+        to: 0,
+      };
+    }
+
+    this.Panzoom.handleCursor();
+  }
+
+  manageSlideVisiblity() {
+    const contentWidth = this.contentWidth;
+    const viewportWidth = this.viewportWidth;
+
+    let currentX = this.Panzoom ? this.Panzoom.content.x * -1 : this.pages.length ? this.pages[this.page].left : 0;
+
+    const preload = this.option("preload");
+    const infinite = this.option("infiniteX", this.option("infinite"));
+
+    const paddingLeft = parseFloat(getComputedStyle(this.$viewport, null).getPropertyValue("padding-left"));
+    const paddingRight = parseFloat(getComputedStyle(this.$viewport, null).getPropertyValue("padding-right"));
+
+    // Check visibility of each slide
+    this.slides.forEach((slide) => {
+      let leftBoundary, rightBoundary;
+
+      let hasDiff = 0;
+
+      // #1 - slides in current viewport; this does not include infinite items
+      leftBoundary = currentX - paddingLeft;
+      rightBoundary = currentX + viewportWidth + paddingRight;
+
+      leftBoundary -= preload * (viewportWidth + paddingLeft + paddingRight);
+      rightBoundary += preload * (viewportWidth + paddingLeft + paddingRight);
+
+      const insideCurrentInterval = slide.left + slide.width > leftBoundary && slide.left < rightBoundary;
+
+      // #2 - infinite items inside current viewport; from previous interval
+      leftBoundary = currentX + contentWidth - paddingLeft;
+      rightBoundary = currentX + contentWidth + viewportWidth + paddingRight;
+
+      // Include slides that have to be preloaded
+      leftBoundary -= preload * (viewportWidth + paddingLeft + paddingRight);
+
+      const insidePrevInterval = infinite && slide.left + slide.width > leftBoundary && slide.left < rightBoundary;
+
+      // #2 - infinite items inside current viewport; from next interval
+      leftBoundary = currentX - contentWidth - paddingLeft;
+      rightBoundary = currentX - contentWidth + viewportWidth + paddingRight;
+
+      // Include slides that have to be preloaded
+      leftBoundary -= preload * (viewportWidth + paddingLeft + paddingRight);
+
+      const insideNextInterval = infinite && slide.left + slide.width > leftBoundary && slide.left < rightBoundary;
+
+      // Create virtual slides that should be visible or preloaded, remove others
+      if (insidePrevInterval || insideCurrentInterval || insideNextInterval) {
+        this.createSlideEl(slide);
+
+        if (insideCurrentInterval) {
+          hasDiff = 0;
+        }
+
+        if (insidePrevInterval) {
+          hasDiff = -1;
+        }
+
+        if (insideNextInterval) {
+          hasDiff = 1;
+        }
+
+        // Bring preloaded slides back to viewport, if needed
+        if (slide.left + slide.width > currentX && slide.left <= currentX + viewportWidth + paddingRight) {
+          hasDiff = 0;
+        }
+      } else {
+        this.removeSlideEl(slide);
+      }
+
+      slide.hasDiff = hasDiff;
+    });
+
+    // Reposition slides for continuity
+    let nextIndex = 0;
+    let nextPos = 0;
+
+    this.slides.forEach((slide, index) => {
+      let updatedX = 0;
+
+      if (slide.$el) {
+        if (index !== nextIndex || slide.hasDiff) {
+          updatedX = nextPos + slide.hasDiff * contentWidth;
+        } else {
+          nextPos = 0;
+        }
+
+        slide.$el.style.left = Math.abs(updatedX) > 0.1 ? `${nextPos + slide.hasDiff * contentWidth}px` : "";
+
+        nextIndex++;
+      } else {
+        nextPos += slide.width;
+      }
+    });
+
+    this.markSelectedSlides();
+  }
+
+  /**
+   * Creates main DOM element for virtual slides,
+   * lazy loads images inside regular slides
+   * @param {Object} slide
+   */
+  createSlideEl(slide) {
+    if (!slide) {
+      return;
+    }
+
+    if (slide.$el) {
+      let curentIndex = parseInt(slide.$el.dataset.index, 10);
+
+      if (curentIndex !== slide.index) {
+        slide.$el.dataset.index = slide.index;
+
+        // Lazy load images
+        // ===
+        slide.$el.querySelectorAll("[data-lazy-src]").forEach((node) => {
+          let lazySrc = node.dataset.lazySrc;
+
+          if (node instanceof HTMLImageElement) {
+            node.src = lazySrc;
+          } else {
+            node.style.backgroundImage = `url('${lazySrc}')`;
+          }
+        });
+
+        slide.$el.querySelectorAll("[data-lazy-srcset]").forEach((node) => {
+          node.srcset = node.dataset.lazySrcset;
+        });
+
+        // Lazy load slide background image
+        // ===
+        let lazySrc;
+
+        if ((lazySrc = slide.$el.dataset.lazySrc)) {
+          slide.$el.style.backgroundImage = `url('${lazySrc}')`;
+        }
+
+        slide.state = "ready";
+      }
+
+      return;
+    }
+
+    const div = document.createElement("div");
+
+    div.dataset.index = slide.index;
+    div.classList.add(this.option("prefix") + this.option("classNames.slide"));
+
+    if (slide.customClass) {
+      div.classList.add(...slide.customClass.split(" "));
+    }
+
+    if (slide.html) {
+      div.innerHTML = slide.html;
+    }
+
+    const allElelements = [];
+
+    this.slides.forEach((slide, index) => {
+      if (slide.$el) {
+        allElelements.push(index);
+      }
+    });
+
+    // Find a place in DOM to insert an element
+    const goal = slide.index;
+    let refSlide = null;
+
+    if (allElelements.length) {
+      let refIndex = allElelements.reduce((prev, curr) =>
+        Math.abs(curr - goal) < Math.abs(prev - goal) ? curr : prev
+      );
+      refSlide = this.slides[refIndex];
+    }
+
+    this.$track.insertBefore(
+      div,
+      refSlide && refSlide.$el ? (refSlide.index < slide.index ? refSlide.$el.nextSibling : refSlide.$el) : null
+    );
+
+    slide.$el = div;
+
+    this.trigger("createSlide", slide, goal);
+
+    return slide;
+  }
+
+  /**
+   * Removes main DOM element of given slide
+   * @param {Object} slide
+   */
+  removeSlideEl(slide) {
+    if (slide.$el && !slide.isDom) {
+      this.trigger("removeSlide", slide);
+
+      slide.$el.remove();
+      slide.$el = null;
+    }
+  }
+
+  /**
+   * Toggles selected class name and aria-hidden attribute for slides based on visibility
+   */
+  markSelectedSlides() {
+    const selectedClass = this.option("classNames.slideSelected");
+    const attr = "aria-hidden";
+
+    this.slides.forEach((slide, index) => {
+      const $el = slide.$el;
+
+      if (!$el) {
+        return;
+      }
+
+      const page = this.pages[this.page];
+
+      if (page && page.indexes && page.indexes.indexOf(index) > -1) {
+        if (selectedClass && !$el.classList.contains(selectedClass)) {
+          $el.classList.add(selectedClass);
+          this.trigger("selectSlide", slide);
+        }
+
+        $el.removeAttribute(attr);
+      } else {
+        if (selectedClass && $el.classList.contains(selectedClass)) {
+          $el.classList.remove(selectedClass);
+          this.trigger("unselectSlide", slide);
+        }
+
+        $el.setAttribute(attr, true);
+      }
+    });
+  }
+
+  /**
+   * Perform all calculations and center current page
+   */
+  updatePage() {
+    this.updateMetrics();
+
+    this.slideTo(this.page, { friction: 0 });
+  }
+
+  /**
+   * Process `Panzoom.beforeTransform` event to remove slides moved out of viewport and
+   * to create necessary ones
+   */
+  onBeforeTransform() {
+    if (this.option("infiniteX", this.option("infinite"))) {
+      this.manageInfiniteTrack();
+    }
+
+    this.manageSlideVisiblity();
+  }
+
+  /**
+   * Seamlessly flip position of infinite carousel, if needed; this way x position stays low
+   */
+  manageInfiniteTrack() {
+    const contentWidth = this.contentWidth;
+    const viewportWidth = this.viewportWidth;
+
+    if (!this.option("infiniteX", this.option("infinite")) || this.pages.length < 2 || contentWidth < viewportWidth) {
+      return;
+    }
+
+    const panzoom = this.Panzoom;
+
+    let isFlipped = false;
+
+    if (panzoom.content.x < (contentWidth - viewportWidth) * -1) {
+      panzoom.content.x += contentWidth;
+
+      this.pageIndex = this.pageIndex - this.pages.length;
+
+      isFlipped = true;
+    }
+
+    if (panzoom.content.x > viewportWidth) {
+      panzoom.content.x -= contentWidth;
+
+      this.pageIndex = this.pageIndex + this.pages.length;
+
+      isFlipped = true;
+    }
+
+    if (isFlipped && panzoom.state === "pointerdown") {
+      panzoom.resetDragPosition();
+    }
+
+    return isFlipped;
+  }
+
+  /**
+   * Process `Panzoom.touchEnd` event; slide to next/prev page if needed
+   * @param {object} panzoom
+   */
+  onTouchEnd(panzoom, event) {
+    const dragFree = this.option("dragFree");
+
+    // If this is a quick horizontal flick, slide to next/prev slide
+    if (
+      !dragFree &&
+      this.pages.length > 1 &&
+      panzoom.dragOffset.time < 350 &&
+      Math.abs(panzoom.dragOffset.y) < 1 &&
+      Math.abs(panzoom.dragOffset.x) > 5
+    ) {
+      this[panzoom.dragOffset.x < 0 ? "slideNext" : "slidePrev"]();
+      return;
+    }
+
+    // Set the slide at the end of the animation as the current one,
+    // or slide to closest page
+    if (dragFree) {
+      const [, nextPageIndex] = this.getPageFromPosition(panzoom.transform.x * -1);
+      this.setPage(nextPageIndex);
+    } else {
+      this.slideToClosest();
+    }
+  }
+
+  /**
+   * Slides to the closest page (useful, if carousel is changed manually)
+   * @param {Object} [params] - Object containing additional options
+   */
+  slideToClosest(params = {}) {
+    let [, nextPageIndex] = this.getPageFromPosition(this.Panzoom.content.x * -1);
+
+    this.slideTo(nextPageIndex, params);
+  }
+
+  /**
+   * Returns index of closest page to given x position
+   * @param {Number} xPos
+   */
+  getPageFromPosition(xPos) {
+    const pageCount = this.pages.length;
+    const center = this.option("center");
+
+    if (center) {
+      xPos += this.viewportWidth * 0.5;
+    }
+
+    const interval = Math.floor(xPos / this.contentWidth);
+
+    xPos -= interval * this.contentWidth;
+
+    let slide = this.slides.find((slide) => slide.left <= xPos && slide.left + slide.width > xPos);
+
+    if (slide) {
+      let pageIndex = this.findPageForSlide(slide.index);
+
+      return [pageIndex, pageIndex + interval * pageCount];
+    }
+
+    return [0, 0];
+  }
+
+  /**
+   * Changes active page
+   * @param {Number} page - New index of active page
+   * @param {Boolean} toClosest - to closest page based on scroll distance (for infinite navigation)
+   */
+  setPage(page, toClosest) {
+    let nextPosition = 0;
+    let pageIndex = parseInt(page, 10) || 0;
+
+    const prevPage = this.page,
+      prevPageIndex = this.pageIndex,
+      pageCount = this.pages.length;
+
+    const contentWidth = this.contentWidth;
+    const viewportWidth = this.viewportWidth;
+
+    page = ((pageIndex % pageCount) + pageCount) % pageCount;
+
+    if (this.option("infiniteX", this.option("infinite")) && contentWidth > viewportWidth) {
+      const nextInterval = Math.floor(pageIndex / pageCount) || 0,
+        elemDimWidth = contentWidth;
+
+      nextPosition = this.pages[page].left + nextInterval * elemDimWidth;
+
+      if (toClosest === true && pageCount > 2) {
+        let currPosition = this.Panzoom.content.x * -1;
+
+        // * Find closest interval
+        const decreasedPosition = nextPosition - elemDimWidth,
+          increasedPosition = nextPosition + elemDimWidth,
+          diff1 = Math.abs(currPosition - nextPosition),
+          diff2 = Math.abs(currPosition - decreasedPosition),
+          diff3 = Math.abs(currPosition - increasedPosition);
+
+        if (diff3 < diff1 && diff3 <= diff2) {
+          nextPosition = increasedPosition;
+          pageIndex += pageCount;
+        } else if (diff2 < diff1 && diff2 < diff3) {
+          nextPosition = decreasedPosition;
+          pageIndex -= pageCount;
+        }
+      }
+    } else {
+      page = pageIndex = Math.max(0, Math.min(pageIndex, pageCount - 1));
+
+      nextPosition = this.pages.length ? this.pages[page].left : 0;
+    }
+
+    this.page = page;
+    this.pageIndex = pageIndex;
+
+    if (prevPage !== null && page !== prevPage) {
+      this.prevPage = prevPage;
+      this.prevPageIndex = prevPageIndex;
+
+      this.trigger("change", page, prevPage);
+    }
+
+    return nextPosition;
+  }
+
+  /**
+   * Clean up
+   */
+  destroy() {
+    this.state = "destroy";
+
+    this.slides.forEach((slide) => {
+      this.removeSlideEl(slide);
+    });
+
+    this.slides = [];
+
+    this.Panzoom.destroy();
+
+    this.detachPlugins();
+  }
+}
+
+// Expose version
+Carousel.version = "__VERSION__";
+
+// Static properties are a recent addition that dont work in all browsers yet
+Carousel.Plugins = _plugins_index_js__WEBPACK_IMPORTED_MODULE_5__.Plugins;
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Carousel/l10n/en.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Carousel/l10n/en.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  NEXT: "Next slide",
+  PREV: "Previous slide",
+  GOTO: "Go to slide #%d",
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Carousel/plugins/Dots/Dots.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Carousel/plugins/Dots/Dots.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Dots": () => (/* binding */ Dots)
+/* harmony export */ });
+const defaults = {
+  // The minimum number of slides to display dots
+  minSlideCount: 2,
+};
+
+class Dots {
+  constructor(carousel) {
+    this.carousel = carousel;
+
+    this.$list = null;
+
+    this.events = {
+      change: this.onChange.bind(this),
+      refresh: this.onRefresh.bind(this),
+    };
+  }
+
+  /**
+   * Build wrapping DOM element containing all dots
+   */
+  buildList() {
+    if (this.carousel.pages.length < this.carousel.option("Dots.minSlideCount")) {
+      return;
+    }
+
+    const $list = document.createElement("ol");
+
+    $list.classList.add("carousel__dots");
+
+    $list.addEventListener("click", (e) => {
+      if (!("page" in e.target.dataset)) {
+        return;
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const page = parseInt(e.target.dataset.page, 10);
+      const carousel = this.carousel;
+
+      if (page === carousel.page) {
+        return;
+      }
+
+      if (carousel.pages.length < 3 && carousel.option("infinite")) {
+        carousel[page == 0 ? "slidePrev" : "slideNext"]();
+      } else {
+        carousel.slideTo(page);
+      }
+    });
+
+    this.$list = $list;
+
+    this.carousel.$container.appendChild($list);
+    this.carousel.$container.classList.add("has-dots");
+
+    return $list;
+  }
+
+  /**
+   * Remove wrapping DOM element
+   */
+  removeList() {
+    if (this.$list) {
+      this.$list.parentNode.removeChild(this.$list);
+      this.$list = null;
+    }
+
+    this.carousel.$container.classList.remove("has-dots");
+  }
+
+  /**
+   * Remove existing dots and create fresh ones
+   */
+  rebuildDots() {
+    let $list = this.$list;
+
+    const listExists = !!$list;
+    const pagesCount = this.carousel.pages.length;
+
+    if (pagesCount < 2) {
+      if (listExists) {
+        this.removeList();
+      }
+
+      return;
+    }
+
+    if (!listExists) {
+      $list = this.buildList();
+    }
+
+    // Remove existing dots
+    const dotCount = this.$list.children.length;
+
+    if (dotCount > pagesCount) {
+      for (let i = pagesCount; i < dotCount; i++) {
+        this.$list.removeChild(this.$list.lastChild);
+      }
+
+      return;
+    }
+
+    // Create fresh DOM elements (dots) for each page
+    for (let index = dotCount; index < pagesCount; index++) {
+      const $dot = document.createElement("li");
+
+      $dot.classList.add("carousel__dot");
+      $dot.dataset.page = index;
+
+      $dot.setAttribute("role", "button");
+      $dot.setAttribute("tabindex", "0");
+      $dot.setAttribute("title", this.carousel.localize("{{GOTO}}", [["%d", index + 1]]));
+
+      $dot.addEventListener("keydown", (event) => {
+        const code = event.code;
+
+        let $el;
+
+        if (code === "Enter" || code === "NumpadEnter") {
+          $el = $dot;
+        } else if (code === "ArrowRight") {
+          $el = $dot.nextSibling;
+        } else if (code === "ArrowLeft") {
+          $el = $dot.previousSibling;
+        }
+
+        $el && $el.click();
+      });
+
+      this.$list.appendChild($dot);
+    }
+
+    this.setActiveDot();
+  }
+
+  /**
+   * Mark active dot by toggling class name
+   */
+  setActiveDot() {
+    if (!this.$list) {
+      return;
+    }
+
+    this.$list.childNodes.forEach(($dot) => {
+      $dot.classList.remove("is-selected");
+    });
+
+    const $activeDot = this.$list.childNodes[this.carousel.page];
+
+    if ($activeDot) {
+      $activeDot.classList.add("is-selected");
+    }
+  }
+
+  /**
+   * Process carousel `change` event
+   */
+  onChange() {
+    this.setActiveDot();
+  }
+
+  /**
+   * Process carousel `refresh` event
+   */
+  onRefresh() {
+    this.rebuildDots();
+  }
+
+  attach() {
+    this.carousel.on(this.events);
+  }
+
+  detach() {
+    this.removeList();
+
+    this.carousel.off(this.events);
+    this.carousel = null;
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Carousel/plugins/Navigation/Navigation.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Carousel/plugins/Navigation/Navigation.js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Navigation": () => (/* binding */ Navigation)
+/* harmony export */ });
+const defaults = {
+  prevTpl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M15 3l-9 9 9 9"/></svg>',
+  nextTpl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M9 3l9 9-9 9"/></svg>',
+
+  classNames: {
+    main: "carousel__nav",
+    button: "carousel__button",
+
+    next: "is-next",
+    prev: "is-prev",
+  },
+};
+
+class Navigation {
+  constructor(carousel) {
+    this.$container = null;
+
+    this.$prev = null;
+    this.$next = null;
+
+    this.carousel = carousel;
+
+    this.onRefresh = this.onRefresh.bind(this);
+  }
+
+  /**
+   * Shortcut to get option for this plugin
+   * @param {String} name option name
+   * @returns option value
+   */
+  option(name) {
+    return this.carousel.option(`Navigation.${name}`);
+  }
+
+  /**
+   * Creates and returns new button element with default class names and click event
+   * @param {String} type
+   */
+  createButton(type) {
+    const $btn = document.createElement("button");
+
+    $btn.setAttribute("title", this.carousel.localize(`{{${type.toUpperCase()}}}`));
+
+    const classNames = this.option("classNames.button") + " " + this.option(`classNames.${type}`);
+
+    $btn.classList.add(...classNames.split(" "));
+    $btn.setAttribute("tabindex", "0");
+    $btn.innerHTML = this.carousel.localize(this.option(`${type}Tpl`));
+
+    $btn.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      this.carousel[`slide${type === "next" ? "Next" : "Prev"}`]();
+    });
+
+    return $btn;
+  }
+
+  /**
+   * Build necessary DOM elements
+   */
+  build() {
+    if (!this.$container) {
+      this.$container = document.createElement("div");
+      this.$container.classList.add(this.option("classNames.main"));
+
+      this.carousel.$container.appendChild(this.$container);
+    }
+
+    if (!this.$next) {
+      this.$next = this.createButton("next");
+
+      this.$container.appendChild(this.$next);
+    }
+
+    if (!this.$prev) {
+      this.$prev = this.createButton("prev");
+
+      this.$container.appendChild(this.$prev);
+    }
+  }
+
+  /**
+   *  Process carousel `refresh` and `change` events to enable/disable buttons if needed
+   */
+  onRefresh() {
+    const pageCount = this.carousel.pages.length;
+
+    if (
+      pageCount <= 1 ||
+      (pageCount > 1 &&
+        this.carousel.elemDimWidth < this.carousel.wrapDimWidth &&
+        !Number.isInteger(this.carousel.option("slidesPerPage")))
+    ) {
+      this.cleanup();
+
+      return;
+    }
+
+    this.build();
+
+    this.$prev.removeAttribute("disabled");
+    this.$next.removeAttribute("disabled");
+
+    if (this.carousel.option("infiniteX", this.carousel.option("infinite"))) {
+      return;
+    }
+
+    if (this.carousel.page <= 0) {
+      this.$prev.setAttribute("disabled", "");
+    }
+
+    if (this.carousel.page >= pageCount - 1) {
+      this.$next.setAttribute("disabled", "");
+    }
+  }
+
+  cleanup() {
+    if (this.$prev) {
+      this.$prev.remove();
+    }
+
+    this.$prev = null;
+
+    if (this.$next) {
+      this.$next.remove();
+    }
+
+    this.$next = null;
+
+    if (this.$container) {
+      this.$container.remove();
+    }
+
+    this.$container = null;
+  }
+
+  attach() {
+    this.carousel.on("refresh change", this.onRefresh);
+  }
+
+  detach() {
+    this.carousel.off("refresh change", this.onRefresh);
+
+    this.cleanup();
+  }
+}
+
+// Expose defaults
+Navigation.defaults = defaults;
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Carousel/plugins/Sync/Sync.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Carousel/plugins/Sync/Sync.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Sync": () => (/* binding */ Sync)
+/* harmony export */ });
+const defaults = {
+  friction: 0.92,
+};
+
+class Sync {
+  constructor(carousel) {
+    this.carousel = carousel;
+
+    this.selectedIndex = null;
+    this.friction = 0;
+
+    this.onNavReady = this.onNavReady.bind(this);
+    this.onNavClick = this.onNavClick.bind(this);
+    this.onNavCreateSlide = this.onNavCreateSlide.bind(this);
+
+    this.onTargetChange = this.onTargetChange.bind(this);
+  }
+
+  /**
+   * Make this one as main carousel and selected carousel as navigation
+   * @param {Object} nav Carousel
+   */
+  addAsTargetFor(nav) {
+    this.target = this.carousel;
+    this.nav = nav;
+
+    this.attachEvents();
+  }
+
+  /**
+   * Make this one as navigation carousel for selected carousel
+   * @param {Object} target
+   */
+  addAsNavFor(target) {
+    this.target = target;
+    this.nav = this.carousel;
+
+    this.attachEvents();
+  }
+
+  /**
+   * Attach event listeners on both carousels
+   */
+  attachEvents() {
+    this.nav.options.initialSlide = this.target.options.initialPage;
+
+    this.nav.on("ready", this.onNavReady);
+    this.nav.on("createSlide", this.onNavCreateSlide);
+    this.nav.on("Panzoom.click", this.onNavClick);
+
+    this.target.on("change", this.onTargetChange);
+    this.target.on("Panzoom.afterUpdate", this.onTargetChange);
+  }
+
+  /**
+   * Process main carousel `ready` event; bind events and set initial page
+   */
+  onNavReady() {
+    this.onTargetChange(true);
+  }
+
+  /**
+   * Process main carousel `click` event
+   * @param {Object} panzoom
+   * @param {Object} event
+   */
+  onNavClick(carousel, panzoom, event) {
+    const clickedNavSlide = event.target.closest(".carousel__slide");
+
+    if (!clickedNavSlide) {
+      return;
+    }
+
+    event.stopPropagation();
+
+    const selectedNavIndex = parseInt(clickedNavSlide.dataset.index, 10);
+    const selectedSyncPage = this.target.findPageForSlide(selectedNavIndex);
+
+    if (this.target.page !== selectedSyncPage) {
+      this.target.slideTo(selectedSyncPage, { friction: this.friction });
+    }
+
+    this.markSelectedSlide(selectedNavIndex);
+  }
+
+  /**
+   * Process main carousel `createSlide` event
+   * @param {Object} carousel
+   * @param {Object} slide
+   */
+  onNavCreateSlide(carousel, slide) {
+    if (slide.index === this.selectedIndex) {
+      this.markSelectedSlide(slide.index);
+    }
+  }
+
+  /**
+   * Process target carousel `change` event
+   * @param {Object} target
+   */
+  onTargetChange() {
+    const targetIndex = this.target.pages[this.target.page].indexes[0];
+    const selectedNavPage = this.nav.findPageForSlide(targetIndex);
+
+    this.nav.slideTo(selectedNavPage);
+
+    this.markSelectedSlide(targetIndex);
+  }
+
+  /**
+   * Toggle classname for slides that marks currently selected slides
+   * @param {Number} selectedIndex
+   */
+  markSelectedSlide(selectedIndex) {
+    this.selectedIndex = selectedIndex;
+
+    [...this.nav.slides].filter((slide) => slide.$el && slide.$el.classList.remove("is-nav-selected"));
+
+    const slide = this.nav.slides[selectedIndex];
+
+    if (slide && slide.$el) slide.$el.classList.add("is-nav-selected");
+  }
+
+  attach(carousel) {
+    const sync = carousel.options.Sync;
+
+    if (!sync.target && !sync.nav) {
+      return;
+    }
+
+    if (sync.target) {
+      this.addAsNavFor(sync.target);
+    } else if (sync.nav) {
+      this.addAsTargetFor(sync.nav);
+    }
+
+    this.friction = sync.friction;
+  }
+
+  detach() {
+    if (this.nav) {
+      this.nav.off("ready", this.onNavReady);
+      this.nav.off("Panzoom.click", this.onNavClick);
+      this.nav.off("createSlide", this.onNavCreateSlide);
+    }
+
+    if (this.target) {
+      this.target.off("Panzoom.afterUpdate", this.onTargetChange);
+      this.target.off("change", this.onTargetChange);
+    }
+  }
+}
+
+// Expose defaults
+Sync.defaults = defaults;
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Carousel/plugins/index.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Carousel/plugins/index.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Plugins": () => (/* binding */ Plugins)
+/* harmony export */ });
+/* harmony import */ var _Navigation_Navigation_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Navigation/Navigation.js */ "./node_modules/@fancyapps/ui/src/Carousel/plugins/Navigation/Navigation.js");
+/* harmony import */ var _Dots_Dots_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dots/Dots.js */ "./node_modules/@fancyapps/ui/src/Carousel/plugins/Dots/Dots.js");
+/* harmony import */ var _Sync_Sync_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Sync/Sync.js */ "./node_modules/@fancyapps/ui/src/Carousel/plugins/Sync/Sync.js");
+
+
+
+
+const Plugins = { Navigation: _Navigation_Navigation_js__WEBPACK_IMPORTED_MODULE_0__.Navigation, Dots: _Dots_Dots_js__WEBPACK_IMPORTED_MODULE_1__.Dots, Sync: _Sync_Sync_js__WEBPACK_IMPORTED_MODULE_2__.Sync };
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Fancybox/Fancybox.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Fancybox/Fancybox.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Fancybox": () => (/* binding */ Fancybox)
+/* harmony export */ });
+/* harmony import */ var _shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/utils/extend.js */ "./node_modules/@fancyapps/ui/src/shared/utils/extend.js");
+/* harmony import */ var _shared_utils_canUseDOM_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/utils/canUseDOM.js */ "./node_modules/@fancyapps/ui/src/shared/utils/canUseDOM.js");
+/* harmony import */ var _shared_utils_setFocusOn_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/utils/setFocusOn.js */ "./node_modules/@fancyapps/ui/src/shared/utils/setFocusOn.js");
+/* harmony import */ var _shared_Base_Base_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/Base/Base.js */ "./node_modules/@fancyapps/ui/src/shared/Base/Base.js");
+/* harmony import */ var _Carousel_Carousel_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Carousel/Carousel.js */ "./node_modules/@fancyapps/ui/src/Carousel/Carousel.js");
+/* harmony import */ var _plugins_index_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./plugins/index.js */ "./node_modules/@fancyapps/ui/src/Fancybox/plugins/index.js");
+/* harmony import */ var _l10n_en_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./l10n/en.js */ "./node_modules/@fancyapps/ui/src/Fancybox/l10n/en.js");
+
+
+
+
+
+
+
+
+
+
+// Default language
+
+
+// Default settings
+const defaults = {
+  // Index of active slide on the start
+  startIndex: 0,
+
+  // Number of slides to preload before and after active slide
+  preload: 1,
+
+  // Should navigation be infinite
+  infinite: true,
+
+  // Class name to be applied to the content to reveal it
+  showClass: "fancybox-zoomInUp", // "fancybox-fadeIn" | "fancybox-zoomInUp" | false
+
+  // Class name to be applied to the content to hide it
+  hideClass: "fancybox-fadeOut", // "fancybox-fadeOut" | "fancybox-zoomOutDown" | false
+
+  // Should backdrop and UI elements fade in/out on start/close
+  animated: true,
+
+  // If browser scrollbar should be hidden
+  hideScrollbar: true,
+
+  // Element containing main structure
+  parentEl: null,
+
+  // Custom class name or multiple space-separated class names for the container
+  mainClass: null,
+
+  // Set focus on first focusable element after displaying content
+  autoFocus: true,
+
+  // Trap focus inside Fancybox
+  trapFocus: true,
+
+  // Set focus back to trigger element after closing Fancybox
+  placeFocusBack: true,
+
+  // Action to take when the user clicks on the backdrop
+  click: "close", // "close" | "next" | null
+
+  // Position of the close button - over the content or at top right corner of viewport
+  closeButton: "inside", // "inside" | "outside"
+
+  // Allow user to drag content up/down to close instance
+  dragToClose: true,
+
+  // Enable keyboard navigation
+  keyboard: {
+    Escape: "close",
+    Delete: "close",
+    Backspace: "close",
+    PageUp: "next",
+    PageDown: "prev",
+    ArrowUp: "next",
+    ArrowDown: "prev",
+    ArrowRight: "next",
+    ArrowLeft: "prev",
+  },
+
+  // HTML templates for various elements
+  template: {
+    // Close button icon
+    closeButton:
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1"><path d="M20 20L4 4m16 0L4 20"/></svg>',
+    // Loading indicator icon
+    spinner:
+      '<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="25 25 50 50" tabindex="-1"><circle cx="50" cy="50" r="20"/></svg>',
+
+    // Main container element
+    main: null,
+  },
+
+  /* Note: If the `template.main` option is not provided, the structure is generated as follows by default:
+  <div class="fancybox__container" role="dialog" aria-modal="true" aria-hidden="true" aria-label="{{MODAL}}" tabindex="-1">
+    <div class="fancybox__backdrop"></div>
+    <div class="fancybox__carousel"></div>
+  </div>
+  */
+
+  // Localization of strings
+  l10n: _l10n_en_js__WEBPACK_IMPORTED_MODULE_6__["default"],
+};
+
+// Object that contains all active instances of Fancybox
+const instances = {};
+
+// Number of Fancybox instances created, it is used to generate new instance "id"
+let called = 0;
+
+class Fancybox extends _shared_Base_Base_js__WEBPACK_IMPORTED_MODULE_3__.Base {
+  /**
+   * Fancybox constructor
+   * @constructs Fancybox
+   * @param {Object} [options] - Options for Fancybox
+   */
+  constructor(items, options = {}) {
+    super((0,_shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_0__.extend)(true, {}, defaults, options));
+
+    this.bindHandlers();
+
+    this.state = "init";
+
+    this.setItems(items);
+
+    this.attachPlugins(Fancybox.Plugins);
+
+    // "init" event marks the start of initialization and is available to plugins
+    this.trigger("init");
+
+    if (this.option("hideScrollbar") === true) {
+      this.hideScrollbar();
+    }
+
+    this.initLayout();
+
+    this.initCarousel();
+
+    this.attachEvents();
+
+    instances[this.id] = this;
+
+    // "prepare" event will trigger the creation of additional layout elements, such as thumbnails and toolbar
+    this.trigger("prepare");
+
+    this.state = "ready";
+
+    // "ready" event will trigger the content to load
+    this.trigger("ready");
+
+    // Reveal container
+    this.$container.setAttribute("aria-hidden", "false");
+
+    // Set focus on the first focusable element inside this instance
+    if (this.option("trapFocus")) {
+      this.focus();
+    }
+  }
+
+  /**
+   * Bind event handlers for referencability
+   */
+  bindHandlers() {
+    for (const methodName of [
+      "onMousedown",
+      "onKeydown",
+      "onClick",
+
+      "onFocus",
+
+      "onCreateSlide",
+      "onSettle",
+
+      "onTouchMove",
+      "onTouchEnd",
+
+      "onTransform",
+    ]) {
+      this[methodName] = this[methodName].bind(this);
+    }
+  }
+
+  /**
+   * Set up a functions that will be called whenever the specified event is delivered
+   */
+  attachEvents() {
+    document.addEventListener("mousedown", this.onMousedown);
+    document.addEventListener("keydown", this.onKeydown, true);
+
+    // Trap keyboard focus inside of the modal
+    if (this.option("trapFocus")) {
+      document.addEventListener("focus", this.onFocus, true);
+    }
+
+    this.$container.addEventListener("click", this.onClick);
+  }
+
+  /**
+   * Removes previously registered event listeners
+   */
+  detachEvents() {
+    document.removeEventListener("mousedown", this.onMousedown);
+    document.removeEventListener("keydown", this.onKeydown, true);
+
+    document.removeEventListener("focus", this.onFocus, true);
+
+    this.$container.removeEventListener("click", this.onClick);
+  }
+
+  /**
+   * Initialize layout; create main container, backdrop nd layout for main carousel
+   */
+  initLayout() {
+    this.$root = this.option("parentEl") || document.body;
+
+    // Container
+    let mainTemplate = this.option("template.main");
+
+    if (mainTemplate) {
+      this.$root.insertAdjacentHTML("beforeend", this.localize(mainTemplate));
+
+      this.$container = this.$root.querySelector(".fancybox__container");
+    }
+
+    if (!this.$container) {
+      this.$container = document.createElement("div");
+      this.$root.appendChild(this.$container);
+    }
+
+    // Normally we would not need this, but Safari does not support `preventScroll:false` option for `focus` method
+    // and that causes layout issues
+    this.$container.onscroll = () => {
+      this.$container.scrollLeft = 0;
+      return false;
+    };
+
+    Object.entries({
+      class: "fancybox__container",
+      role: "dialog",
+      tabIndex: "-1",
+      "aria-modal": "true",
+      "aria-hidden": "true",
+      "aria-label": this.localize("{{MODAL}}"),
+    }).forEach((args) => this.$container.setAttribute(...args));
+
+    if (this.option("animated")) {
+      this.$container.classList.add("is-animated");
+    }
+
+    // Backdrop
+    this.$backdrop = this.$container.querySelector(".fancybox__backdrop");
+
+    if (!this.$backdrop) {
+      this.$backdrop = document.createElement("div");
+      this.$backdrop.classList.add("fancybox__backdrop");
+
+      this.$container.appendChild(this.$backdrop);
+    }
+
+    // Carousel
+    this.$carousel = this.$container.querySelector(".fancybox__carousel");
+
+    if (!this.$carousel) {
+      this.$carousel = document.createElement("div");
+      this.$carousel.classList.add("fancybox__carousel");
+
+      this.$container.appendChild(this.$carousel);
+    }
+
+    // Make instance reference accessible
+    this.$container.Fancybox = this;
+
+    // Make sure the container has an ID
+    this.id = this.$container.getAttribute("id");
+
+    if (!this.id) {
+      this.id = this.options.id || ++called;
+      this.$container.setAttribute("id", "fancybox-" + this.id);
+    }
+
+    // Add custom class name to main element
+    const mainClass = this.options.mainClass;
+
+    if (mainClass) {
+      this.$container.classList.add(...mainClass.split(" "));
+    }
+
+    // Add class name for <html> element
+    document.documentElement.classList.add("with-fancybox");
+
+    this.trigger("initLayout");
+
+    return this;
+  }
+
+  /**
+   * Prepares slides for the corousel
+   * @returns {Array} Slides
+   */
+  setItems(items) {
+    const slides = [];
+
+    for (const slide of items) {
+      const $trigger = slide.$trigger;
+
+      if ($trigger) {
+        const dataset = $trigger.dataset || {};
+
+        slide.src = dataset.src || $trigger.getAttribute("href") || slide.src;
+        slide.type = dataset.type || slide.type;
+
+        // Support items without `src`, e.g., when `data-fancybox` attribute added directly to `<img>` element
+        if (!slide.src && $trigger instanceof HTMLImageElement) {
+          slide.src = $trigger.currentSrc || slide.$trigger.src;
+        }
+      }
+
+      // Check for thumbnail element
+      let $thumb = slide.$thumb;
+
+      if (!$thumb) {
+        let origTarget = slide.$trigger && slide.$trigger.origTarget;
+
+        if (origTarget) {
+          if (origTarget instanceof HTMLImageElement) {
+            $thumb = origTarget;
+          } else {
+            $thumb = origTarget.querySelector("img");
+          }
+        }
+
+        if (!$thumb && slide.$trigger) {
+          $thumb = slide.$trigger instanceof HTMLImageElement ? slide.$trigger : slide.$trigger.querySelector("img");
+        }
+      }
+
+      slide.$thumb = $thumb || null;
+
+      // Get thumbnail image source
+      let thumb = slide.thumb;
+
+      if (!thumb && $thumb) {
+        thumb = $thumb.currentSrc || $thumb.src;
+
+        if (!thumb && $thumb.dataset) {
+          thumb = $thumb.dataset.lazySrc || $thumb.dataset.src;
+        }
+      }
+
+      // Assume we have image, then use it as thumbnail
+      if (!thumb && slide.type === "image") {
+        thumb = slide.src;
+      }
+
+      slide.thumb = thumb || null;
+
+      // Add empty caption to make things simpler
+      slide.caption = slide.caption || "";
+
+      slides.push(slide);
+    }
+
+    this.items = slides;
+  }
+
+  /**
+   * Initialize main Carousel that will be used to display the content
+   * @param {Array} slides
+   */
+  initCarousel() {
+    this.Carousel = new _Carousel_Carousel_js__WEBPACK_IMPORTED_MODULE_4__.Carousel(
+      this.$carousel,
+      (0,_shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_0__.extend)(
+        true,
+        {},
+        {
+          prefix: "",
+
+          classNames: {
+            viewport: "fancybox__viewport",
+            track: "fancybox__track",
+            slide: "fancybox__slide",
+          },
+
+          textSelection: true,
+          preload: this.option("preload"),
+
+          friction: 0.88,
+
+          slides: this.items,
+          initialPage: this.options.startIndex,
+          slidesPerPage: 1,
+
+          infiniteX: this.option("infinite"),
+          infiniteY: true,
+
+          l10n: this.option("l10n"),
+
+          Dots: false,
+          Navigation: {
+            classNames: {
+              main: "fancybox__nav",
+              button: "carousel__button",
+
+              next: "is-next",
+              prev: "is-prev",
+            },
+          },
+
+          Panzoom: {
+            textSelection: true,
+
+            panOnlyZoomed: () => {
+              return (
+                this.Carousel && this.Carousel.pages && this.Carousel.pages.length < 2 && !this.options.dragToClose
+              );
+            },
+
+            lockAxis: () => {
+              if (this.Carousel) {
+                let rez = "x";
+
+                if (this.options.dragToClose) {
+                  rez += "y";
+                }
+
+                return rez;
+              }
+            },
+          },
+
+          on: {
+            "*": (name, ...details) => this.trigger(`Carousel.${name}`, ...details),
+            init: (carousel) => (this.Carousel = carousel),
+            createSlide: this.onCreateSlide,
+            settle: this.onSettle,
+          },
+        },
+
+        this.option("Carousel")
+      )
+    );
+
+    if (this.option("dragToClose")) {
+      this.Carousel.Panzoom.on({
+        // Stop further touch event handling if content is scaled
+        touchMove: this.onTouchMove,
+
+        // Update backdrop opacity depending on vertical distance
+        afterTransform: this.onTransform,
+
+        // Close instance if drag distance exceeds limit
+        touchEnd: this.onTouchEnd,
+      });
+    }
+
+    this.trigger("initCarousel");
+
+    return this;
+  }
+
+  /**
+   * Process `createSlide` event to create caption element inside new slide
+   */
+  onCreateSlide(carousel, slide) {
+    let caption = slide.caption || "";
+
+    if (typeof this.options.caption === "function") {
+      caption = this.options.caption.call(this, this, this.Carousel, slide);
+    }
+
+    if (typeof caption === "string" && caption.length) {
+      const $caption = document.createElement("div");
+      const id = `fancybox__caption_${this.id}_${slide.index}`;
+
+      $caption.className = "fancybox__caption";
+      $caption.innerHTML = caption;
+      $caption.setAttribute("id", id);
+
+      slide.$caption = slide.$el.appendChild($caption);
+
+      slide.$el.classList.add("has-caption");
+      slide.$el.setAttribute("aria-labelledby", id);
+    }
+  }
+
+  /**
+   * Handle Carousel `settle` event
+   */
+  onSettle() {
+    if (this.option("autoFocus")) {
+      this.focus();
+    }
+  }
+
+  /**
+   * Handle focus event
+   * @param {Event} event - Focus event
+   */
+  onFocus(event) {
+    this.focus(event);
+  }
+
+  /**
+   * Handle click event on the container
+   * @param {Event} event - Click event
+   */
+  onClick(event) {
+    if (event.defaultPrevented) {
+      return;
+    }
+
+    let eventTarget = event.target;
+
+    if (eventTarget.matches("[data-fancybox-close]")) {
+      event.preventDefault();
+      Fancybox.close(false);
+
+      return;
+    }
+
+    if (eventTarget.matches("[data-fancybox-next]")) {
+      event.preventDefault();
+      Fancybox.next();
+
+      return;
+    }
+
+    if (eventTarget.matches("[data-fancybox-prev]")) {
+      event.preventDefault();
+      Fancybox.prev();
+
+      return;
+    }
+
+    // Skip if clicked inside content area
+    if (eventTarget.closest(".fancybox__content")) {
+      return;
+    }
+
+    // Skip if text is selected
+    if (getSelection().toString().length) {
+      return;
+    }
+
+    if (this.trigger("click", event) === false) {
+      return;
+    }
+
+    const action = this.option("click");
+
+    switch (action) {
+      case "close":
+        this.close();
+        break;
+      case "next":
+        this.next();
+        break;
+    }
+  }
+
+  /**
+   * Handle panzoom `touchMove` event; Disable dragging if content of current slide is scaled
+   */
+  onTouchMove() {
+    const panzoom = this.getSlide().Panzoom;
+
+    return panzoom && panzoom.content.scale !== 1 ? false : true;
+  }
+
+  /**
+   * Handle panzoom `touchEnd` event; close when quick flick up/down is detected
+   * @param {Object} panzoom - Panzoom instance
+   */
+  onTouchEnd(panzoom) {
+    const distanceY = panzoom.dragOffset.y;
+
+    if (Math.abs(distanceY) >= 150 || (Math.abs(distanceY) >= 35 && panzoom.dragOffset.time < 350)) {
+      if (this.option("hideClass")) {
+        this.getSlide().hideClass = `fancybox-throwOut${panzoom.content.y < 0 ? "Up" : "Down"}`;
+      }
+
+      this.close();
+    } else if (panzoom.lockAxis === "y") {
+      panzoom.panTo({ y: 0 });
+    }
+  }
+
+  /**
+   * Handle `afterTransform` event; change backdrop opacity based on current y position of panzoom
+   * @param {Object} panzoom - Panzoom instance
+   */
+  onTransform(panzoom) {
+    const $backdrop = this.$backdrop;
+
+    if ($backdrop) {
+      const yPos = Math.abs(panzoom.content.y);
+      const opacity = yPos < 1 ? "" : Math.max(0.33, Math.min(1, 1 - (yPos / panzoom.content.fitHeight) * 1.5));
+
+      this.$container.style.setProperty("--fancybox-ts", opacity ? "0s" : "");
+      this.$container.style.setProperty("--fancybox-opacity", opacity);
+    }
+  }
+
+  /**
+   * Handle `mousedown` event to mark that the mouse is in use
+   */
+  onMousedown() {
+    if (this.state === "ready") {
+      document.body.classList.add("is-using-mouse");
+    }
+  }
+
+  /**
+   * Handle `keydown` event; trap focus
+   * @param {Event} event Keydown event
+   */
+  onKeydown(event) {
+    if (Fancybox.getInstance().id !== this.id) {
+      return;
+    }
+
+    document.body.classList.remove("is-using-mouse");
+
+    const key = event.key;
+    const keyboard = this.option("keyboard");
+
+    if (!keyboard || event.ctrlKey || event.altKey || event.shiftKey) {
+      return;
+    }
+
+    const classList = document.activeElement && document.activeElement.classList;
+    const isUIElement = classList && classList.contains("carousel__button");
+
+    // Allow to close using Escape button
+    if (key !== "Escape" && !isUIElement) {
+      let ignoreElements =
+        event.target.isContentEditable ||
+        ["BUTTON", "TEXTAREA", "OPTION", "INPUT", "SELECT", "VIDEO"].indexOf(event.target.nodeName) !== -1;
+
+      if (ignoreElements) {
+        return;
+      }
+    }
+
+    if (this.trigger("keydown", key, event) === false) {
+      return;
+    }
+
+    const action = keyboard[key];
+
+    if (typeof this[action] === "function") {
+      this[action]();
+    }
+  }
+
+  /**
+   * Get the active slide. This will be the first slide from the current page of the main carousel.
+   */
+  getSlide() {
+    const carousel = this.Carousel;
+
+    if (!carousel) return null;
+
+    const page = carousel.page === null ? carousel.option("initialPage") : carousel.page;
+    const pages = carousel.pages || [];
+
+    if (pages.length && pages[page]) {
+      return pages[page].slides[0];
+    }
+
+    return null;
+  }
+
+  /**
+   * Place focus on the first focusable element inside current slide
+   * @param {Event} [event] - Focus event
+   */
+  focus(event) {
+    if (Fancybox.ignoreFocusChange) {
+      return;
+    }
+
+    if (["init", "closing", "customClosing", "destroy"].indexOf(this.state) > -1) {
+      return;
+    }
+
+    if (event) {
+      event.preventDefault();
+    }
+
+    Fancybox.ignoreFocusChange = true;
+
+    const $container = this.$container;
+    const currentSlide = this.getSlide();
+    const $currentSlide = currentSlide.state === "done" ? currentSlide.$el : null;
+
+    const allFocusableElems = Array.from($container.querySelectorAll(_shared_utils_setFocusOn_js__WEBPACK_IMPORTED_MODULE_2__.FOCUSABLE_ELEMENTS));
+
+    let enabledElems = [];
+    let $firstEl;
+
+    for (let node of allFocusableElems) {
+      // Enable element if it's visible and
+      // is inside the current slide or is outside main carousel (for example, inside the toolbar)
+      const isNodeVisible = node.offsetParent;
+      const isNodeInsideCurrentSlide = $currentSlide && $currentSlide.contains(node);
+      const isNodeOutsideCarousel = !this.Carousel.$viewport.contains(node);
+
+      if (isNodeVisible && (isNodeInsideCurrentSlide || isNodeOutsideCarousel)) {
+        enabledElems.push(node);
+
+        if (node.dataset.origTabindex !== undefined) {
+          node.tabIndex = node.dataset.origTabindex;
+          node.removeAttribute("data-orig-tabindex");
+        }
+
+        if (
+          node.hasAttribute("autoFocus") ||
+          (!$firstEl && isNodeInsideCurrentSlide && !node.classList.contains("carousel__button"))
+        ) {
+          $firstEl = node;
+        }
+      } else {
+        // Element is either hidden or is inside preloaded slide (e.g., not inside current slide, but next/prev)
+        node.dataset.origTabindex =
+          node.dataset.origTabindex === undefined ? node.getAttribute("tabindex") : node.dataset.origTabindex;
+
+        node.tabIndex = -1;
+      }
+    }
+
+    if (!event) {
+      if (this.option("autoFocus") && $firstEl) {
+        (0,_shared_utils_setFocusOn_js__WEBPACK_IMPORTED_MODULE_2__.setFocusOn)($firstEl);
+      } else if (enabledElems.indexOf(document.activeElement) < 0) {
+        (0,_shared_utils_setFocusOn_js__WEBPACK_IMPORTED_MODULE_2__.setFocusOn)($container);
+      }
+    } else {
+      if (enabledElems.indexOf(event.target) > -1) {
+        this.lastFocus = event.target;
+      } else {
+        if (this.lastFocus === $container) {
+          (0,_shared_utils_setFocusOn_js__WEBPACK_IMPORTED_MODULE_2__.setFocusOn)(enabledElems[enabledElems.length - 1]);
+        } else {
+          (0,_shared_utils_setFocusOn_js__WEBPACK_IMPORTED_MODULE_2__.setFocusOn)($container);
+        }
+      }
+    }
+
+    this.lastFocus = document.activeElement;
+
+    Fancybox.ignoreFocusChange = false;
+  }
+
+  /**
+   * Hide vertical page scrollbar and adjust right padding value of `body` element to prevent content from shifting
+   * (otherwise the `body` element may become wider and the content may expand horizontally).
+   */
+  hideScrollbar() {
+    if (!_shared_utils_canUseDOM_js__WEBPACK_IMPORTED_MODULE_1__.canUseDOM) {
+      return;
+    }
+
+    const scrollbarWidth = window.innerWidth - document.documentElement.getBoundingClientRect().width;
+    const id = "fancybox-style-noscroll";
+
+    let $style = document.getElementById(id);
+
+    if ($style) {
+      return;
+    }
+
+    if (scrollbarWidth > 0) {
+      $style = document.createElement("style");
+
+      $style.id = id;
+      $style.type = "text/css";
+      $style.innerHTML = `.compensate-for-scrollbar {padding-right: ${scrollbarWidth}px;}`;
+
+      document.getElementsByTagName("head")[0].appendChild($style);
+
+      document.body.classList.add("compensate-for-scrollbar");
+    }
+  }
+
+  /**
+   * Stop hiding vertical page scrollbar
+   */
+  revealScrollbar() {
+    document.body.classList.remove("compensate-for-scrollbar");
+
+    const el = document.getElementById("fancybox-style-noscroll");
+
+    if (el) {
+      el.remove();
+    }
+  }
+
+  /**
+   * Remove content for given slide
+   * @param {Object} slide - Carousel slide
+   */
+  clearContent(slide) {
+    // * Clear previously added content and class name
+    this.Carousel.trigger("removeSlide", slide);
+
+    if (slide.$content) {
+      slide.$content.remove();
+      slide.$content = null;
+    }
+
+    if (slide.$closeButton) {
+      slide.$closeButton.remove();
+      slide.$closeButton = null;
+    }
+
+    if (slide._className) {
+      slide.$el.classList.remove(slide._className);
+    }
+  }
+
+  /**
+   * Set new content for given slide
+   * @param {Object} slide - Carousel slide
+   * @param {HTMLElement|String} html - HTML element or string containing HTML code
+   * @param {Object} [opts] - Options
+   */
+  setContent(slide, html, opts = {}) {
+    let $content;
+
+    const $el = slide.$el;
+
+    if (html instanceof HTMLElement) {
+      if (["img", "iframe", "video", "audio"].indexOf(html.nodeName.toLowerCase()) > -1) {
+        $content = document.createElement("div");
+        $content.appendChild(html);
+      } else {
+        $content = html;
+      }
+    } else {
+      const $fragment = document.createRange().createContextualFragment(html);
+
+      $content = document.createElement("div");
+      $content.appendChild($fragment);
+    }
+
+    if (slide.filter && !slide.error) {
+      $content = $content.querySelector(slide.filter);
+    }
+
+    if (!($content instanceof Element)) {
+      this.setError(slide, "{{ELEMENT_NOT_FOUND}}");
+
+      return;
+    }
+
+    // * Add class name indicating content type, for example `has-image`
+    slide._className = `has-${opts.suffix || slide.type || "unknown"}`;
+
+    $el.classList.add(slide._className);
+
+    // * Set content
+    $content.classList.add("fancybox__content");
+
+    // Make sure that content is not hidden and will be visible
+    if ($content.style.display === "none" || getComputedStyle($content).getPropertyValue("display") === "none") {
+      $content.style.display = slide.display || this.option("defaultDisplay") || "flex";
+    }
+
+    if (slide.id) {
+      $content.setAttribute("id", slide.id);
+    }
+
+    slide.$content = $content;
+
+    $el.prepend($content);
+
+    this.manageCloseButton(slide);
+
+    if (slide.state !== "loading") {
+      this.revealContent(slide);
+    }
+
+    return $content;
+  }
+
+  /**
+   * Create close button if needed
+   * @param {Object} slide
+   */
+  manageCloseButton(slide) {
+    const position = slide.closeButton === undefined ? this.option("closeButton") : slide.closeButton;
+
+    if (!position || (position === "top" && this.$closeButton)) {
+      return;
+    }
+
+    const $btn = document.createElement("button");
+
+    $btn.classList.add("carousel__button", "is-close");
+    $btn.setAttribute("title", this.options.l10n.CLOSE);
+    $btn.innerHTML = this.option("template.closeButton");
+
+    $btn.addEventListener("click", (e) => this.close(e));
+
+    if (position === "inside") {
+      // Remove existing one to avoid scope issues
+      if (slide.$closeButton) {
+        slide.$closeButton.remove();
+      }
+
+      slide.$closeButton = slide.$content.appendChild($btn);
+    } else {
+      this.$closeButton = this.$container.insertBefore($btn, this.$container.firstChild);
+    }
+  }
+
+  /**
+   * Make content visible for given slide and optionally start CSS animation
+   * @param {Object} slide - Carousel slide
+   */
+  revealContent(slide) {
+    this.trigger("reveal", slide);
+
+    slide.$content.style.visibility = "";
+
+    // Add CSS class name that reveals content (default animation is "fadeIn")
+    let showClass = false;
+
+    if (
+      !(
+        slide.error ||
+        slide.state === "loading" ||
+        this.Carousel.prevPage !== null ||
+        slide.index !== this.options.startIndex
+      )
+    ) {
+      showClass = slide.showClass === undefined ? this.option("showClass") : slide.showClass;
+    }
+
+    if (!showClass) {
+      this.done(slide);
+
+      return;
+    }
+
+    slide.state = "animating";
+
+    this.animateCSS(slide.$content, showClass, () => {
+      this.done(slide);
+    });
+  }
+
+  /**
+   * Add class name to given HTML element and wait for `animationend` event to execute callback
+   * @param {HTMLElement} $el
+   * @param {String} className
+   * @param {Function} callback - A callback to run
+   */
+  animateCSS($element, className, callback) {
+    if ($element) {
+      $element.dispatchEvent(new CustomEvent("animationend", { bubbles: true, cancelable: true }));
+    }
+
+    if (!$element || !className) {
+      if (typeof callback === "function") {
+        callback();
+      }
+
+      return;
+    }
+
+    const handleAnimationEnd = function (event) {
+      if (event.currentTarget === this) {
+        $element.removeEventListener("animationend", handleAnimationEnd);
+
+        if (callback) {
+          callback();
+        }
+
+        $element.classList.remove(className);
+      }
+    };
+
+    $element.addEventListener("animationend", handleAnimationEnd);
+    $element.classList.add(className);
+  }
+
+  /**
+   * Mark given slide as `done`, e.g., content is loaded and displayed completely
+   * @param {Object} slide - Carousel slide
+   */
+  done(slide) {
+    slide.state = "done";
+
+    this.trigger("done", slide);
+
+    // Trigger focus for current slide (and ignore preloaded slides)
+    const currentSlide = this.getSlide();
+
+    if (currentSlide && slide.index === currentSlide.index && this.option("autoFocus")) {
+      this.focus();
+    }
+  }
+
+  /**
+   * Set error message as slide content
+   * @param {Object} slide - Carousel slide
+   * @param {String} message - Error message, can contain HTML code and template variables
+   */
+  setError(slide, message) {
+    slide.error = message;
+
+    this.hideLoading(slide);
+    this.clearContent(slide);
+
+    // Create new content
+    const div = document.createElement("div");
+    div.classList.add("fancybox-error");
+    div.innerHTML = this.localize(message || "<p>{{ERROR}}</p>");
+
+    this.setContent(slide, div, { suffix: "error" });
+  }
+
+  /**
+   * Create loading indicator inside given slide
+   * @param {Object} slide - Carousel slide
+   */
+  showLoading(slide) {
+    slide.state = "loading";
+
+    slide.$el.classList.add("is-loading");
+
+    let $spinner = slide.$el.querySelector(".fancybox__spinner");
+
+    if ($spinner) {
+      return;
+    }
+
+    $spinner = document.createElement("div");
+
+    $spinner.classList.add("fancybox__spinner");
+    $spinner.innerHTML = this.option("template.spinner");
+
+    $spinner.addEventListener("click", () => {
+      if (!this.Carousel.Panzoom.velocity) this.close();
+    });
+
+    slide.$el.prepend($spinner);
+  }
+
+  /**
+   * Remove loading indicator from given slide
+   * @param {Object} slide - Carousel slide
+   */
+  hideLoading(slide) {
+    const $spinner = slide.$el && slide.$el.querySelector(".fancybox__spinner");
+
+    if ($spinner) {
+      $spinner.remove();
+
+      slide.$el.classList.remove("is-loading");
+    }
+
+    if (slide.state === "loading") {
+      this.trigger("load", slide);
+
+      slide.state = "ready";
+    }
+  }
+
+  /**
+   * Slide carousel to next page
+   */
+  next() {
+    const carousel = this.Carousel;
+
+    if (carousel && carousel.pages.length > 1) {
+      carousel.slideNext();
+    }
+  }
+
+  /**
+   * Slide carousel to previous page
+   */
+  prev() {
+    const carousel = this.Carousel;
+
+    if (carousel && carousel.pages.length > 1) {
+      carousel.slidePrev();
+    }
+  }
+
+  /**
+   * Slide carousel to selected page with optional parameters
+   * Examples:
+   *    Fancybox.getInstance().jumpTo(2);
+   *    Fancybox.getInstance().jumpTo(3, {friction: 0})
+   * @param  {...any} args - Arguments for Carousel `slideTo` method
+   */
+  jumpTo(...args) {
+    if (this.Carousel) this.Carousel.slideTo(...args);
+  }
+
+  /**
+   * Start closing the current instance
+   * @param {Event} [event] - Optional click event
+   */
+  close(event) {
+    if (event) event.preventDefault();
+
+    // First, stop further execution if this instance is already closing
+    // (this can happen if, for example, user clicks close button multiple times really fast)
+    if (["closing", "customClosing", "destroy"].includes(this.state)) {
+      return;
+    }
+
+    // Allow callbacks and/or plugins to prevent closing
+    if (this.trigger("shouldClose", event) === false) {
+      return;
+    }
+
+    this.state = "closing";
+
+    this.Carousel.Panzoom.destroy();
+
+    this.detachEvents();
+
+    this.trigger("closing", event);
+
+    if (this.state === "destroy") {
+      return;
+    }
+
+    // Trigger default CSS closing animation for backdrop and interface elements
+    this.$container.setAttribute("aria-hidden", "true");
+
+    this.$container.classList.add("is-closing");
+
+    // Clear inactive slides
+    const currentSlide = this.getSlide();
+
+    this.Carousel.slides.forEach((slide) => {
+      if (slide.$content && slide.index !== currentSlide.index) {
+        this.Carousel.trigger("removeSlide", slide);
+      }
+    });
+
+    // Start default closing animation
+    if (this.state === "closing") {
+      const hideClass = currentSlide.hideClass === undefined ? this.option("hideClass") : currentSlide.hideClass;
+
+      this.animateCSS(
+        currentSlide.$content,
+        hideClass,
+        () => {
+          this.destroy();
+        },
+        true
+      );
+    }
+  }
+
+  /**
+   * Clean up after closing fancybox
+   */
+  destroy() {
+    if (this.state === "destroy") {
+      return;
+    }
+
+    this.state = "destroy";
+
+    this.trigger("destroy");
+
+    const $trigger = this.option("placeFocusBack") ? this.getSlide().$trigger : null;
+
+    // Destroy Carousel and then detach plugins;
+    // * Note: this order allows plugins to receive `removeSlide` event
+    this.Carousel.destroy();
+
+    this.detachPlugins();
+
+    this.Carousel = null;
+
+    this.options = {};
+    this.events = {};
+
+    this.$container.remove();
+
+    this.$container = this.$backdrop = this.$carousel = null;
+
+    if ($trigger) {
+      (0,_shared_utils_setFocusOn_js__WEBPACK_IMPORTED_MODULE_2__.setFocusOn)($trigger);
+    }
+
+    delete instances[this.id];
+
+    const nextInstance = Fancybox.getInstance();
+
+    if (nextInstance) {
+      nextInstance.focus();
+      return;
+    }
+
+    document.documentElement.classList.remove("with-fancybox");
+    document.body.classList.remove("is-using-mouse");
+
+    this.revealScrollbar();
+  }
+
+  /**
+   * Create new Fancybox instance with provided options
+   * Example:
+   *   Fancybox.show([{ src : 'https://lipsum.app/id/1/300x225' }]);
+   * @param {Array} items - Gallery items
+   * @param {Object} [options] - Optional custom options
+   * @returns {Object} Fancybox instance
+   */
+  static show(items, options = {}) {
+    return new Fancybox(items, options);
+  }
+
+  /**
+   * Starts Fancybox if event target matches any opener or target is `trigger element`
+   * @param {Event} event - Click event
+   * @param {Object} [options] - Optional custom options
+   */
+  static fromEvent(event, options = {}) {
+    //  Allow other scripts to prevent starting fancybox on click
+    if (event.defaultPrevented) {
+      return;
+    }
+
+    // Don't run if right-click
+    if (event.button && event.button !== 0) {
+      return;
+    }
+
+    // Ignore command/control + click
+    if (event.ctrlKey || event.metaKey || event.shiftKey) {
+      return;
+    }
+
+    let eventTarget = event.target;
+
+    // Support `trigger` element, e.g., start fancybox from different DOM element, for example,
+    // to have one preview image for hidden image gallery
+    let triggerGroupName;
+
+    if (
+      eventTarget.matches("[data-fancybox-trigger]") ||
+      (eventTarget = eventTarget.closest("[data-fancybox-trigger]"))
+    ) {
+      triggerGroupName = eventTarget && eventTarget.dataset && eventTarget.dataset.fancyboxTrigger;
+    }
+
+    if (triggerGroupName) {
+      const triggerItems = document.querySelectorAll(`[data-fancybox="${triggerGroupName}"]`);
+      const triggerIndex = parseInt(eventTarget.dataset.fancyboxIndex, 10) || 0;
+
+      eventTarget = triggerItems.length ? triggerItems[triggerIndex] : eventTarget;
+    }
+
+    if (!eventTarget) {
+      eventTarget = event.target;
+    }
+
+    // * Try to find matching openener
+    let matchingOpener;
+    let target;
+
+    Array.from(Fancybox.openers.keys())
+      .reverse()
+      .some((opener) => {
+        target = eventTarget;
+
+        let found = false;
+
+        try {
+          if (target instanceof Element && (typeof opener === "string" || opener instanceof String)) {
+            // Chain closest() to event.target to find and return the parent element,
+            // regardless if clicking on the child elements (icon, label, etc)
+            found = target.matches(opener) || (target = target.closest(opener));
+          }
+        } catch (error) {}
+
+        if (found) {
+          event.preventDefault();
+          matchingOpener = opener;
+          return true;
+        }
+
+        return false;
+      });
+
+    let rez = false;
+
+    if (matchingOpener) {
+      options.event = event;
+      options.target = target;
+
+      target.origTarget = event.target;
+
+      rez = Fancybox.fromOpener(matchingOpener, options);
+
+      // Check if the mouse is being used
+      // Waiting for better browser support for `:focus-visible` -
+      // https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo
+      const nextInstance = Fancybox.getInstance();
+
+      if (nextInstance && nextInstance.state === "ready" && event.detail) {
+        document.body.classList.add("is-using-mouse");
+      }
+    }
+
+    return rez;
+  }
+
+  /**
+   * Starts Fancybox using selector
+   * @param {String} opener - Valid CSS selector string
+   * @param {Object} [options] - Optional custom options
+   */
+  static fromOpener(opener, options = {}) {
+    // Callback function called once for each group element that
+    // 1) converts data attributes to boolean or JSON
+    // 2) removes values that could cause issues
+    const mapCallback = function (el) {
+      const falseValues = ["false", "0", "no", "null", "undefined"];
+      const trueValues = ["true", "1", "yes"];
+
+      const dataset = Object.assign({}, el.dataset);
+      const options = {};
+
+      for (let [key, value] of Object.entries(dataset)) {
+        if (key === "fancybox") {
+          continue;
+        }
+
+        if (key === "width" || key === "height") {
+          options[`_${key}`] = value;
+        } else if (typeof value === "string" || value instanceof String) {
+          if (falseValues.indexOf(value) > -1) {
+            options[key] = false;
+          } else if (trueValues.indexOf(options[key]) > -1) {
+            options[key] = true;
+          } else {
+            try {
+              options[key] = JSON.parse(value);
+            } catch (e) {
+              options[key] = value;
+            }
+          }
+        } else {
+          options[key] = value;
+        }
+      }
+
+      if (el instanceof Element) {
+        options.$trigger = el;
+      }
+
+      return options;
+    };
+
+    let items = [],
+      index = options.startIndex || 0,
+      target = options.target || null;
+
+    // Get options
+    // ===
+    options = (0,_shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_0__.extend)({}, options, Fancybox.openers.get(opener));
+
+    // Get matching nodes
+    // ===
+    const groupAll = options.groupAll === undefined ? false : options.groupAll;
+
+    const groupAttr = options.groupAttr === undefined ? "data-fancybox" : options.groupAttr;
+    const groupValue = groupAttr && target ? target.getAttribute(`${groupAttr}`) : "";
+
+    if (!target || groupValue || groupAll) {
+      items = [].slice.call(document.querySelectorAll(opener));
+    }
+
+    if (target && !groupAll) {
+      if (groupValue) {
+        items = items.filter((el) => el.getAttribute(`${groupAttr}`) === groupValue);
+      } else {
+        items = [target];
+      }
+    }
+
+    if (!items.length) {
+      return false;
+    }
+
+    // Exit if current instance is triggered from the same element
+    // ===
+    const currentInstance = Fancybox.getInstance();
+
+    if (currentInstance && items.indexOf(currentInstance.options.$trigger) > -1) {
+      return false;
+    }
+
+    // Start Fancybox
+    // ===
+
+    // Get index of current item in the gallery
+    index = target ? items.indexOf(target) : index;
+
+    // Convert items in a format supported by fancybox
+    items = items.map(mapCallback);
+
+    // * Create new fancybox instance
+    return new Fancybox(
+      items,
+      (0,_shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_0__.extend)({}, options, {
+        startIndex: index,
+        $trigger: target,
+      })
+    );
+  }
+
+  /**
+   * Attach a click handler function that starts Fancybox to the selected items, as well as to all future matching elements.
+   * @param {String} selector - Selector that should match trigger elements
+   * @param {Object} [options] - Custom options
+   */
+  static bind(selector, options = {}) {
+    function attachClickEvent() {
+      document.body.addEventListener("click", Fancybox.fromEvent, false);
+    }
+
+    if (!_shared_utils_canUseDOM_js__WEBPACK_IMPORTED_MODULE_1__.canUseDOM) {
+      return;
+    }
+
+    if (!Fancybox.openers.size) {
+      if (/complete|interactive|loaded/.test(document.readyState)) {
+        attachClickEvent();
+      } else {
+        document.addEventListener("DOMContentLoaded", attachClickEvent);
+      }
+    }
+
+    Fancybox.openers.set(selector, options);
+  }
+
+  /**
+   * Remove the click handler that was attached with `bind()`
+   * @param {String} selector - A selector which should match the one originally passed to .bind()
+   */
+  static unbind(selector) {
+    Fancybox.openers.delete(selector);
+
+    if (!Fancybox.openers.size) {
+      Fancybox.destroy();
+    }
+  }
+
+  /**
+   * Immediately destroy all instances (without closing animation) and clean up all bindings..
+   */
+  static destroy() {
+    let fb;
+
+    while ((fb = Fancybox.getInstance())) {
+      fb.destroy();
+    }
+
+    Fancybox.openers = new Map();
+
+    document.body.removeEventListener("click", Fancybox.fromEvent, false);
+  }
+
+  /**
+   * Retrieve instance by identifier or the top most instance, if identifier is not provided
+   * @param {String|Numeric} [id] - Optional instance identifier
+   */
+  static getInstance(id) {
+    if (id) {
+      return instances[id];
+    }
+
+    const instance = Object.values(instances)
+      .reverse()
+      .find((instance) => {
+        if (!["closing", "customClosing", "destroy"].includes(instance.state)) {
+          return instance;
+        }
+
+        return false;
+      });
+
+    return instance || null;
+  }
+
+  /**
+   * Close all or topmost currently active instance.
+   * @param {boolean} [all] - All or only topmost active instance
+   */
+  static close(all = true) {
+    let instance = null;
+
+    while ((instance = Fancybox.getInstance())) {
+      instance.close();
+
+      if (!all) return;
+    }
+  }
+
+  /**
+   * Slide topmost currently active instance to next page
+   */
+  static next() {
+    const instance = Fancybox.getInstance();
+
+    if (instance) {
+      instance.next();
+    }
+  }
+
+  /**
+   * Slide topmost currently active instance to previous page
+   */
+  static prev() {
+    const instance = Fancybox.getInstance();
+
+    if (instance) {
+      instance.prev();
+    }
+  }
+}
+
+// Expose version
+Fancybox.version = "__VERSION__";
+
+// Expose defaults
+Fancybox.defaults = defaults;
+
+// Expose openers
+Fancybox.openers = new Map();
+
+// Add default plugins
+Fancybox.Plugins = _plugins_index_js__WEBPACK_IMPORTED_MODULE_5__.Plugins;
+
+// Auto init with default options
+Fancybox.bind("[data-fancybox]");
+
+// Prepare plugins
+for (const [key, Plugin] of Object.entries(Fancybox.Plugins || {})) {
+  if (typeof Plugin.create === "function") {
+    Plugin.create(Fancybox);
+  }
+}
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Fancybox/l10n/en.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Fancybox/l10n/en.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  CLOSE: "Close",
+  NEXT: "Next",
+  PREV: "Previous",
+  MODAL: "You can close this modal content with the ESC key",
+  ERROR: "Something Went Wrong, Please Try Again Later",
+  IMAGE_ERROR: "Image Not Found",
+  ELEMENT_NOT_FOUND: "HTML Element Not Found",
+  AJAX_NOT_FOUND: "Error Loading AJAX : Not Found",
+  AJAX_FORBIDDEN: "Error Loading AJAX : Forbidden",
+  IFRAME_ERROR: "Error Loading Page",
+  TOGGLE_ZOOM: "Toggle zoom level",
+  TOGGLE_THUMBS: "Toggle thumbnails",
+  TOGGLE_SLIDESHOW: "Toggle slideshow",
+  TOGGLE_FULLSCREEN: "Toggle full-screen mode",
+  DOWNLOAD: "Download",
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Fancybox/plugins/Hash/Hash.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Fancybox/plugins/Hash/Hash.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Hash": () => (/* binding */ Hash)
+/* harmony export */ });
+/* harmony import */ var _shared_utils_canUseDOM_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../shared/utils/canUseDOM.js */ "./node_modules/@fancyapps/ui/src/shared/utils/canUseDOM.js");
+
+
+/**
+ * Helper method to split URL hash into useful pieces
+ */
+const getParsedURL = function () {
+  const hash = window.location.hash.substr(1),
+    tmp = hash.split("-"),
+    index = tmp.length > 1 && /^\+?\d+$/.test(tmp[tmp.length - 1]) ? parseInt(tmp.pop(-1), 10) || null : null,
+    slug = tmp.join("-");
+
+  return {
+    hash,
+    slug,
+    index,
+  };
+};
+
+class Hash {
+  constructor(fancybox) {
+    this.fancybox = fancybox;
+
+    for (const methodName of ["onChange", "onClosing"]) {
+      this[methodName] = this[methodName].bind(this);
+    }
+
+    this.events = {
+      initCarousel: this.onChange,
+      "Carousel.change": this.onChange,
+      closing: this.onClosing,
+    };
+
+    this.hasCreatedHistory = false;
+    this.origHash = "";
+    this.timer = null;
+  }
+
+  /**
+   * Process `Carousel.ready` and `Carousel.change` events to update URL hash
+   * @param {Object} fancybox
+   * @param {Object} carousel
+   */
+  onChange() {
+    const fancybox = this.fancybox;
+    const carousel = fancybox.Carousel;
+
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+
+    const firstRun = carousel.prevPage === null;
+
+    const slide = fancybox.getSlide();
+
+    const dataset = slide.$trigger && slide.$trigger.dataset;
+
+    const currentHash = window.location.hash.substr(1);
+
+    let newHash = false;
+
+    if (slide.slug) {
+      newHash = slide.slug;
+    } else {
+      let dataAttribute = dataset && dataset.fancybox;
+
+      if (dataAttribute && dataAttribute.length && dataAttribute !== "true") {
+        newHash = dataAttribute + (carousel.slides.length > 1 ? "-" + (slide.index + 1) : "");
+      }
+    }
+
+    if (firstRun) {
+      this.origHash = currentHash !== newHash ? this.origHash : "";
+    }
+
+    if (newHash && currentHash !== newHash) {
+      this.timer = setTimeout(() => {
+        try {
+          window.history[firstRun ? "pushState" : "replaceState"](
+            {},
+            document.title,
+            window.location.pathname + window.location.search + "#" + newHash
+          );
+
+          if (firstRun) {
+            this.hasCreatedHistory = true;
+          }
+        } catch (e) {}
+      }, 300);
+    }
+  }
+
+  /**
+   * Process `closing` event to clean up
+   */
+  onClosing() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+
+    // Skip if closing is triggered by pressing  browser back button or by changing hash manually
+    if (this.hasSilentClose === true) {
+      return;
+    }
+
+    // Simply make browser to move back one page in the session history,
+    // if new history entry is successfully created
+    if (!this.hasCreatedHistory) {
+      try {
+        window.history.replaceState(
+          {},
+          document.title,
+          window.location.pathname + window.location.search + (this.origHash ? "#" + this.origHash : "")
+        );
+
+        return;
+      } catch (e) {}
+    }
+
+    window.history.back();
+  }
+
+  attach(fancybox) {
+    fancybox.on(this.events);
+  }
+
+  detach(fancybox) {
+    fancybox.off(this.events);
+  }
+
+  /**
+   * Start fancybox from current URL hash,
+   * this will be called on page load OR/AND after changing URL hash
+   * @param {Class} Fancybox
+   */
+  static startFromUrl() {
+    if (!Hash.Fancybox || Hash.Fancybox.getInstance()) {
+      return;
+    }
+
+    const { hash, slug, index } = getParsedURL();
+
+    if (!slug) {
+      return;
+    }
+
+    // Support custom slug
+    // ===
+    let selectedElem = document.querySelector(`[data-slug="${hash}"]`);
+
+    if (selectedElem) {
+      selectedElem.dispatchEvent(new CustomEvent("click", { bubbles: true, cancelable: true }));
+    }
+
+    if (Hash.Fancybox.getInstance()) {
+      return;
+    }
+
+    // If elements are not found by custom slug, Use URL hash value as group name
+    // ===
+    const groupElems = document.querySelectorAll(`[data-fancybox="${slug}"]`);
+
+    if (!groupElems.length) {
+      return;
+    }
+
+    if (index === null && groupElems.length === 1) {
+      selectedElem = groupElems[0];
+    } else if (index) {
+      selectedElem = groupElems[index - 1];
+    }
+
+    if (selectedElem) {
+      selectedElem.dispatchEvent(new CustomEvent("click", { bubbles: true, cancelable: true }));
+    }
+  }
+
+  /**
+   * Handle `hash` change, change gallery item to current index or start/close current instance
+   */
+  static onHashChange() {
+    const { slug, index } = getParsedURL();
+
+    const instance = Hash.Fancybox.getInstance();
+
+    if (instance) {
+      // Look if this is inside currently active gallery
+      if (slug) {
+        const carousel = instance.Carousel;
+        /**
+         * Check if URL hash matches `data-slug` value of active element
+         */
+        for (let slide of carousel.slides) {
+          if (slide.slug && slide.slug === slug) {
+            return carousel.slideTo(slide.index);
+          }
+        }
+
+        /**
+         * Check if URL hash matches `data-fancybox` value of active element
+         */
+        const slide = instance.getSlide();
+        const dataset = slide.$trigger && slide.$trigger.dataset;
+
+        if (dataset && dataset.fancybox === slug) {
+          return carousel.slideTo(index - 1);
+        }
+      }
+
+      /**
+       * Close if no matching element found
+       */
+      instance.plugins.Hash.hasSilentClose = true;
+
+      instance.close();
+    }
+
+    /**
+     * Attempt to start
+     */
+
+    Hash.startFromUrl();
+  }
+
+  /**
+   * Add event bindings that will start new Fancybox instance based in the current URL
+   */
+  static create(Fancybox) {
+    Hash.Fancybox = Fancybox;
+
+    function proceed() {
+      window.addEventListener("hashchange", Hash.onHashChange, false);
+
+      Hash.startFromUrl();
+    }
+
+    if (_shared_utils_canUseDOM_js__WEBPACK_IMPORTED_MODULE_0__.canUseDOM) {
+      window.requestAnimationFrame(() => {
+        if (/complete|interactive|loaded/.test(document.readyState)) {
+          proceed();
+        } else {
+          document.addEventListener("DOMContentLoaded", proceed);
+        }
+      });
+    }
+  }
+
+  static destroy() {
+    window.removeEventListener("hashchange", Hash.onHashChange, false);
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Fancybox/plugins/Html/Html.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Fancybox/plugins/Html/Html.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Html": () => (/* binding */ Html)
+/* harmony export */ });
+/* harmony import */ var _shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../shared/utils/extend.js */ "./node_modules/@fancyapps/ui/src/shared/utils/extend.js");
+
+
+const buildURLQuery = (obj) => {
+  return Object.entries(obj)
+    .map((pair) => pair.map(encodeURIComponent).join("="))
+    .join("&");
+};
+
+const defaults = {
+  // General options for any video content (Youtube, Vimeo, HTML5 video)
+  video: {
+    autoplay: true,
+    ratio: 16 / 9,
+  },
+  // Youtube embed parameters
+  youtube: {
+    autohide: 1,
+    fs: 1,
+    rel: 0,
+    hd: 1,
+    wmode: "transparent",
+    enablejsapi: 1,
+    html5: 1,
+  },
+  // Vimeo embed parameters
+  vimeo: {
+    hd: 1,
+    show_title: 1,
+    show_byline: 1,
+    show_portrait: 0,
+    fullscreen: 1,
+  },
+  // HTML5 video parameters
+  html5video: {
+    tpl: `<video class="fancybox__html5video" playsinline controls controlsList="nodownload" poster="{{poster}}">
+  <source src="{{src}}" type="{{format}}" />Sorry, your browser doesn't support embedded videos.</video>`,
+    format: "",
+  },
+};
+
+class Html {
+  constructor(fancybox) {
+    this.fancybox = fancybox;
+
+    for (const methodName of [
+      "onInit",
+      "onReady",
+
+      "onCreateSlide",
+      "onRemoveSlide",
+
+      "onSelectSlide",
+      "onUnselectSlide",
+
+      "onRefresh",
+
+      // For communication with iframed video (youtube/vimeo)
+      "onMessage",
+    ]) {
+      this[methodName] = this[methodName].bind(this);
+    }
+
+    this.events = {
+      init: this.onInit,
+      ready: this.onReady,
+
+      "Carousel.createSlide": this.onCreateSlide,
+      "Carousel.removeSlide": this.onRemoveSlide,
+
+      "Carousel.selectSlide": this.onSelectSlide,
+      "Carousel.unselectSlide": this.onUnselectSlide,
+
+      "Carousel.refresh": this.onRefresh,
+    };
+  }
+
+  /**
+   * Check if each gallery item has type when fancybox starts
+   */
+  onInit() {
+    for (const slide of this.fancybox.items) {
+      this.processType(slide);
+    }
+  }
+
+  /**
+   * Set content type for the slide
+   * @param {Object} slide
+   */
+  processType(slide) {
+    // Add support for `new Fancybox({items : [{html : 'smth'}]});`
+    if (slide.html) {
+      slide.src = slide.html;
+      slide.type = "html";
+
+      delete slide.html;
+
+      return;
+    }
+
+    const src = slide.src || "";
+
+    let type = slide.type || this.fancybox.options.type,
+      rez = null;
+
+    if (src && typeof src !== "string") {
+      return;
+    }
+
+    if (
+      (rez = src.match(
+        /(?:youtube\.com|youtu\.be|youtube\-nocookie\.com)\/(?:watch\?(?:.*&)?v=|v\/|u\/|embed\/?)?(videoseries\?list=(?:.*)|[\w-]{11}|\?listType=(?:.*)&list=(?:.*))(?:.*)/i
+      ))
+    ) {
+      const params = buildURLQuery(this.fancybox.option("Html.youtube"));
+      const videoId = encodeURIComponent(rez[1]);
+
+      slide.videoId = videoId;
+      slide.src = `https://www.youtube-nocookie.com/embed/${videoId}?${params}`;
+      slide.thumb = slide.thumb || `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`;
+      slide.vendor = "youtube";
+
+      type = "video";
+    } else if ((rez = src.match(/^.+vimeo.com\/(?:\/)?([\d]+)(.*)?/))) {
+      const params = buildURLQuery(this.fancybox.option("Html.vimeo"));
+      const videoId = encodeURIComponent(rez[1]);
+
+      slide.videoId = videoId;
+      slide.src = `https://player.vimeo.com/video/${videoId}?${params}`;
+      slide.vendor = "vimeo";
+
+      type = "video";
+    } else if (
+      (rez = src.match(
+        /(?:maps\.)?google\.([a-z]{2,3}(?:\.[a-z]{2})?)\/(?:(?:(?:maps\/(?:place\/(?:.*)\/)?\@(.*),(\d+.?\d+?)z))|(?:\?ll=))(.*)?/i
+      ))
+    ) {
+      slide.src = `//maps.google.${rez[1]}/?ll=${(rez[2]
+        ? rez[2] + "&z=" + Math.floor(rez[3]) + (rez[4] ? rez[4].replace(/^\//, "&") : "")
+        : rez[4] + ""
+      ).replace(/\?/, "&")}&output=${rez[4] && rez[4].indexOf("layer=c") > 0 ? "svembed" : "embed"}`;
+
+      type = "map";
+    } else if ((rez = src.match(/(?:maps\.)?google\.([a-z]{2,3}(?:\.[a-z]{2})?)\/(?:maps\/search\/)(.*)/i))) {
+      slide.src = `//maps.google.${rez[1]}/maps?q=${rez[2].replace("query=", "q=").replace("api=1", "")}&output=embed`;
+
+      type = "map";
+    }
+
+    // Guess content type
+    if (!type) {
+      if (src.charAt(0) === "#") {
+        type = "inline";
+      } else if ((rez = src.match(/\.(mp4|mov|ogv|webm)((\?|#).*)?$/i))) {
+        type = "html5video";
+
+        slide.format = slide.format || "video/" + (rez[1] === "ogv" ? "ogg" : rez[1]);
+      } else if (src.match(/(^data:image\/[a-z0-9+\/=]*,)|(\.(jp(e|g|eg)|gif|png|bmp|webp|svg|ico)((\?|#).*)?$)/i)) {
+        type = "image";
+      } else if (src.match(/\.(pdf)((\?|#).*)?$/i)) {
+        type = "pdf";
+      }
+    }
+
+    slide.type = type || this.fancybox.option("defaultType", "image");
+
+    if (type === "html5video" || type === "video") {
+      slide.video = (0,_shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_0__.extend)({}, this.fancybox.option("Html.video"), slide.video);
+
+      if (slide._width && slide._height) {
+        slide.ratio = parseFloat(slide._width) / parseFloat(slide._height);
+      } else {
+        slide.ratio = slide.ratio || slide.video.ratio || defaults.video.ratio;
+      }
+    }
+  }
+
+  /**
+   * Start loading content when Fancybox is ready
+   */
+  onReady() {
+    this.fancybox.Carousel.slides.forEach((slide) => {
+      if (slide.$el) {
+        this.setContent(slide);
+
+        if (slide.index === this.fancybox.getSlide().index) {
+          this.playVideo(slide);
+        }
+      }
+    });
+  }
+
+  /**
+   * Process `Carousel.createSlide` event to create image content
+   * @param {Object} fancybox
+   * @param {Object} carousel
+   * @param {Object} slide
+   */
+  onCreateSlide(fancybox, carousel, slide) {
+    if (this.fancybox.state !== "ready") {
+      return;
+    }
+
+    this.setContent(slide);
+  }
+
+  /**
+   * Retrieve and set slide content
+   * @param {Object} slide
+   */
+  loadInlineContent(slide) {
+    let $content;
+
+    if (slide.src instanceof HTMLElement) {
+      $content = slide.src;
+    } else if (typeof slide.src === "string") {
+      const tmp = slide.src.split("#", 2);
+      const id = tmp.length === 2 && tmp[0] === "" ? tmp[1] : tmp[0];
+
+      $content = document.getElementById(id);
+    }
+
+    if ($content) {
+      if (slide.type === "clone" || $content.$placeHolder) {
+        $content = $content.cloneNode(true);
+        let attrId = $content.getAttribute("id");
+
+        attrId = attrId ? `${attrId}--clone` : `clone-${this.fancybox.id}-${slide.index}`;
+
+        $content.setAttribute("id", attrId);
+      } else {
+        const $placeHolder = document.createElement("div");
+        $placeHolder.classList.add("fancybox-placeholder");
+        $content.parentNode.insertBefore($placeHolder, $content);
+        $content.$placeHolder = $placeHolder;
+      }
+
+      this.fancybox.setContent(slide, $content);
+    } else {
+      this.fancybox.setError(slide, "{{ELEMENT_NOT_FOUND}}");
+    }
+  }
+
+  /**
+   * Makes AJAX request and sets response as slide content
+   * @param {Object} slide
+   */
+  loadAjaxContent(slide) {
+    const fancybox = this.fancybox;
+    const xhr = new XMLHttpRequest();
+
+    fancybox.showLoading(slide);
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (fancybox.state === "ready") {
+          fancybox.hideLoading(slide);
+
+          if (xhr.status === 200) {
+            fancybox.setContent(slide, xhr.responseText);
+          } else {
+            fancybox.setError(slide, xhr.status === 404 ? "{{AJAX_NOT_FOUND}}" : "{{AJAX_FORBIDDEN}}");
+          }
+        }
+      }
+    };
+
+    xhr.open("GET", slide.src);
+    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+    xhr.send(slide.ajax || null);
+
+    slide.xhr = xhr;
+  }
+
+  /**
+   * Creates iframe as slide content, preloads if needed before displaying
+   * @param {Object} slide
+   */
+  loadIframeContent(slide) {
+    const fancybox = this.fancybox;
+    const $iframe = document.createElement("iframe");
+
+    $iframe.className = "fancybox__iframe";
+
+    $iframe.setAttribute("id", `fancybox__iframe_${fancybox.id}_${slide.index}`);
+
+    $iframe.setAttribute("allow", "autoplay; fullscreen");
+    $iframe.setAttribute("scrolling", "auto");
+
+    slide.$iframe = $iframe;
+
+    if (slide.type !== "iframe" || slide.preload === false) {
+      $iframe.setAttribute("src", slide.src);
+
+      this.fancybox.setContent(slide, $iframe);
+
+      this.resizeIframe(slide);
+
+      return;
+    }
+
+    fancybox.showLoading(slide);
+
+    const $content = document.createElement("div");
+    $content.style.visibility = "hidden";
+
+    this.fancybox.setContent(slide, $content);
+
+    $content.appendChild($iframe);
+
+    $iframe.onerror = () => {
+      fancybox.setError(slide, "{{IFRAME_ERROR}}");
+    };
+
+    $iframe.onload = () => {
+      fancybox.hideLoading(slide);
+
+      let isFirstLoad = false;
+
+      if (!$iframe.isReady) {
+        $iframe.isReady = true;
+        isFirstLoad = true;
+      }
+
+      if (!$iframe.src.length) {
+        return;
+      }
+
+      $iframe.parentNode.style.visibility = "";
+
+      this.resizeIframe(slide);
+
+      if (isFirstLoad) {
+        fancybox.revealContent(slide);
+      }
+    };
+
+    $iframe.setAttribute("src", slide.src);
+  }
+
+  /**
+   * Set CSS max/min width/height properties of the content to have the correct aspect ratio
+   * @param {Object} slide
+   */
+  setAspectRatio(slide) {
+    const $content = slide.$content;
+    const ratio = slide.ratio;
+
+    if (!$content) {
+      return;
+    }
+
+    let width = slide._width;
+    let height = slide._height;
+
+    if (ratio || (width && height)) {
+      Object.assign($content.style, {
+        width: width && height ? "100%" : "",
+        height: width && height ? "100%" : "",
+        maxWidth: "",
+        maxHeight: "",
+      });
+
+      let maxWidth = $content.offsetWidth;
+      let maxHeight = $content.offsetHeight;
+
+      width = width || maxWidth;
+      height = height || maxHeight;
+
+      // Resize to fit
+      if (width > maxWidth || height > maxHeight) {
+        let maxRatio = Math.min(maxWidth / width, maxHeight / height);
+
+        width = width * maxRatio;
+        height = height * maxRatio;
+      }
+
+      // Recheck ratio
+      if (Math.abs(width / height - ratio) > 0.01) {
+        if (ratio < width / height) {
+          width = height * ratio;
+        } else {
+          height = width / ratio;
+        }
+      }
+
+      Object.assign($content.style, {
+        width: `${width}px`,
+        height: `${height}px`,
+      });
+    }
+  }
+
+  /**
+   * Adjust the width and height of the iframe according to the content dimensions, or defined sizes
+   * @param {Object} slide
+   */
+  resizeIframe(slide) {
+    const $iframe = slide.$iframe;
+
+    if (!$iframe) {
+      return;
+    }
+
+    let width_ = slide._width || 0;
+    let height_ = slide._height || 0;
+
+    if (width_ && height_) {
+      slide.autoSize = false;
+    }
+
+    const $parent = $iframe.parentNode;
+    const parentStyle = $parent.style;
+
+    if (slide.preload !== false && slide.autoSize !== false) {
+      try {
+        const compStyles = window.getComputedStyle($parent),
+          paddingX = parseFloat(compStyles.paddingLeft) + parseFloat(compStyles.paddingRight),
+          paddingY = parseFloat(compStyles.paddingTop) + parseFloat(compStyles.paddingBottom);
+
+        const document = $iframe.contentWindow.document,
+          $html = document.getElementsByTagName("html")[0],
+          $body = document.body;
+
+        // Get rid of vertical scrollbar
+        $body.style.overflow = "hidden";
+
+        width_ = width_ || $html.scrollWidth + paddingX;
+
+        parentStyle.width = `${width_}px`;
+
+        $body.style.overflow = "";
+
+        parentStyle.flex = "0 0 auto";
+        parentStyle.height = `${$body.scrollHeight}px`;
+
+        height_ = $html.scrollHeight + paddingY;
+      } catch (error) {
+        //
+      }
+    }
+
+    if (width_ || height_) {
+      const newStyle = {
+        flex: "0 1 auto",
+      };
+
+      if (width_) {
+        newStyle.width = `${width_}px`;
+      }
+
+      if (height_) {
+        newStyle.height = `${height_}px`;
+      }
+
+      Object.assign(parentStyle, newStyle);
+    }
+  }
+
+  /**
+   * Process `Carousel.onRefresh` event,
+   * trigger iframe autosizing and set content aspect ratio for each slide
+   * @param {Object} fancybox
+   * @param {Object} carousel
+   */
+  onRefresh(fancybox, carousel) {
+    carousel.slides.forEach((slide) => {
+      if (!slide.$el) {
+        return;
+      }
+
+      if (slide.$iframe) {
+        this.resizeIframe(slide);
+      }
+
+      if (slide.ratio) {
+        this.setAspectRatio(slide);
+      }
+    });
+  }
+
+  /**
+   * Process `Carousel.onCreateSlide` event to set content
+   * @param {Object} fancybox
+   * @param {Object} carousel
+   * @param {Object} slide
+   */
+  setContent(slide) {
+    if (!slide || slide.isDom) {
+      return;
+    }
+
+    switch (slide.type) {
+      case "html":
+        this.fancybox.setContent(slide, slide.src);
+        break;
+
+      case "html5video":
+        this.fancybox.setContent(
+          slide,
+          this.fancybox
+            .option("Html.html5video.tpl")
+            .replace(/\{\{src\}\}/gi, slide.src)
+            .replace("{{format}}", slide.format || (slide.html5video && slide.html5video.format) || "")
+            .replace("{{poster}}", slide.poster || slide.thumb || "")
+        );
+
+        break;
+
+      case "inline":
+      case "clone":
+        this.loadInlineContent(slide);
+        break;
+
+      case "ajax":
+        this.loadAjaxContent(slide);
+        break;
+
+      case "iframe":
+      case "pdf":
+      case "video":
+      case "map":
+        this.loadIframeContent(slide);
+
+        break;
+    }
+
+    if (slide.ratio) {
+      this.setAspectRatio(slide);
+    }
+  }
+
+  /**
+   * Process `Carousel.onSelectSlide` event to start video
+   * @param {Object} fancybox
+   * @param {Object} carousel
+   * @param {Object} slide
+   */
+  onSelectSlide(fancybox, carousel, slide) {
+    if (fancybox.state === "ready") {
+      this.playVideo(slide);
+    }
+  }
+
+  /**
+   * Attempts to begin playback of the media
+   * @param {Object} slide
+   */
+  playVideo(slide) {
+    if (slide.type === "html5video" && slide.video.autoplay) {
+      try {
+        const $video = slide.$el.querySelector("video");
+
+        if ($video) {
+          const promise = $video.play();
+
+          if (promise !== undefined) {
+            promise
+              .then(() => {
+                // Autoplay started
+              })
+              .catch((error) => {
+                // Autoplay was prevented.
+                $video.muted = true;
+                $video.play();
+              });
+          }
+        }
+      } catch (err) {}
+    }
+
+    if (slide.type !== "video" || !(slide.$iframe && slide.$iframe.contentWindow)) {
+      return;
+    }
+
+    // This function will be repeatedly called to check
+    // if video iframe has been loaded to send message to start the video
+    const poller = () => {
+      if (slide.state === "done" && slide.$iframe && slide.$iframe.contentWindow) {
+        let command;
+
+        if (slide.$iframe.isReady) {
+          if (slide.video && slide.video.autoplay) {
+            if (slide.vendor == "youtube") {
+              command = {
+                event: "command",
+                func: "playVideo",
+              };
+            } else {
+              command = {
+                method: "play",
+                value: "true",
+              };
+            }
+          }
+
+          if (command) {
+            slide.$iframe.contentWindow.postMessage(JSON.stringify(command), "*");
+          }
+
+          return;
+        }
+
+        if (slide.vendor === "youtube") {
+          command = {
+            event: "listening",
+            id: slide.$iframe.getAttribute("id"),
+          };
+
+          slide.$iframe.contentWindow.postMessage(JSON.stringify(command), "*");
+        }
+      }
+
+      slide.poller = setTimeout(poller, 250);
+    };
+
+    poller();
+  }
+
+  /**
+   * Process `Carousel.onUnselectSlide` event to pause video
+   * @param {Object} fancybox
+   * @param {Object} carousel
+   * @param {Object} slide
+   */
+  onUnselectSlide(fancybox, carousel, slide) {
+    if (slide.type === "html5video") {
+      try {
+        slide.$el.querySelector("video").pause();
+      } catch (error) {}
+
+      return;
+    }
+
+    let command = false;
+
+    if (slide.vendor == "vimeo") {
+      command = {
+        method: "pause",
+        value: "true",
+      };
+    } else if (slide.vendor === "youtube") {
+      command = {
+        event: "command",
+        func: "pauseVideo",
+      };
+    }
+
+    if (command && slide.$iframe && slide.$iframe.contentWindow) {
+      slide.$iframe.contentWindow.postMessage(JSON.stringify(command), "*");
+    }
+
+    clearTimeout(slide.poller);
+  }
+
+  /**
+   * Process `Carousel.onRemoveSlide` event to do clean up
+   * @param {Object} fancybox
+   * @param {Object} carousel
+   * @param {Object} slide
+   */
+  onRemoveSlide(fancybox, carousel, slide) {
+    // Abort ajax request if exists
+    if (slide.xhr) {
+      slide.xhr.abort();
+      slide.xhr = null;
+    }
+
+    // Unload iframe content if exists
+    if (slide.$iframe) {
+      slide.$iframe.onload = slide.$iframe.onerror = null;
+
+      slide.$iframe.src = "//about:blank";
+      slide.$iframe = null;
+    }
+
+    // Clear inline content
+    const $content = slide.$content;
+
+    if (slide.type === "inline" && $content) {
+      $content.classList.remove("fancybox__content");
+
+      if ($content.style.display !== "none") {
+        $content.style.display = "none";
+      }
+    }
+
+    if (slide.$closeButton) {
+      slide.$closeButton.remove();
+      slide.$closeButton = null;
+    }
+
+    const $placeHolder = $content && $content.$placeHolder;
+
+    if ($placeHolder) {
+      $placeHolder.parentNode.insertBefore($content, $placeHolder);
+      $placeHolder.remove();
+      $content.$placeHolder = null;
+    }
+  }
+
+  /**
+   * Process `window.message` event to mark video iframe element as `ready`
+   * @param {Object} e - Event
+   */
+  onMessage(e) {
+    try {
+      let data = JSON.parse(e.data);
+
+      if (e.origin === "https://player.vimeo.com") {
+        if (data.event === "ready") {
+          for (let $iframe of document.getElementsByClassName("fancybox__iframe")) {
+            if ($iframe.contentWindow === e.source) {
+              $iframe.isReady = 1;
+            }
+          }
+        }
+      } else if (e.origin === "https://www.youtube-nocookie.com") {
+        if (data.event === "onReady") {
+          document.getElementById(data.id).isReady = 1;
+        }
+      }
+    } catch (ex) {}
+  }
+
+  attach() {
+    this.fancybox.on(this.events);
+
+    window.addEventListener("message", this.onMessage, false);
+  }
+
+  detach() {
+    this.fancybox.off(this.events);
+
+    window.removeEventListener("message", this.onMessage, false);
+  }
+}
+
+// Expose defaults
+Html.defaults = defaults;
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Fancybox/plugins/Image/Image.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Fancybox/plugins/Image/Image.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Image": () => (/* binding */ Image)
+/* harmony export */ });
+/* harmony import */ var _shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../shared/utils/extend.js */ "./node_modules/@fancyapps/ui/src/shared/utils/extend.js");
+/* harmony import */ var _Panzoom_Panzoom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Panzoom/Panzoom.js */ "./node_modules/@fancyapps/ui/src/Panzoom/Panzoom.js");
+
+
+
+
+const defaults = {
+  // Class name for slide element indicating that content can be zoomed in
+  canZoomInClass: "can-zoom_in",
+
+  // Class name for slide element indicating that content can be zoomed out
+  canZoomOutClass: "can-zoom_out",
+
+  // Do zoom animation from thumbnail image when starting or closing fancybox
+  zoom: true,
+
+  // Animate opacity while zooming
+  zoomOpacity: "auto", // "auto" | true | false,
+
+  // Zoom animation friction
+  zoomFriction: 0.82,
+
+  // Disable zoom animation if thumbnail is visible only partly
+  ignoreCoveredThumbnail: false,
+
+  // Enable guestures
+  touch: true,
+
+  // Action to be performed when user clicks on the image
+  click: "toggleZoom", // "toggleZoom" | "next" | "close" | null
+
+  // Action to be performed when double-click event is detected on the image
+  doubleClick: null, // "toggleZoom" | null
+
+  // Action to be performed when user rotates a wheel button on a pointing device
+  wheel: "zoom", // "zoom" | "slide" | "close" | null
+
+  // How image should be resized to fit its container
+  fit: "contain", // "contain" | "contain-w" | "cover"
+
+  // Should create wrapping element around the image
+  wrap: false,
+
+  // Custom Panzoom options
+  Panzoom: {
+    ratio: 1,
+  },
+};
+
+class Image {
+  constructor(fancybox) {
+    this.fancybox = fancybox;
+
+    for (const methodName of [
+      // Fancybox
+      "onReady",
+      "onClosing",
+      "onDone",
+
+      // Fancybox.Carousel
+      "onPageChange",
+      "onCreateSlide",
+      "onRemoveSlide",
+
+      // Image load/error
+      "onImageStatusChange",
+    ]) {
+      this[methodName] = this[methodName].bind(this);
+    }
+
+    this.events = {
+      ready: this.onReady,
+      closing: this.onClosing,
+      done: this.onDone,
+
+      "Carousel.change": this.onPageChange,
+      "Carousel.createSlide": this.onCreateSlide,
+      "Carousel.removeSlide": this.onRemoveSlide,
+    };
+  }
+
+  /**
+   * Handle `ready` event to start loading content
+   */
+  onReady() {
+    this.fancybox.Carousel.slides.forEach((slide) => {
+      if (slide.$el) {
+        this.setContent(slide);
+      }
+    });
+  }
+
+  /**
+   * Handle `done` event to update cursor
+   * @param {Object} fancybox
+   * @param {Object} slide
+   */
+  onDone(fancybox, slide) {
+    this.handleCursor(slide);
+  }
+
+  /**
+   * Handle `closing` event to clean up all slides and to start zoom-out animation
+   * @param {Object} fancybox
+   */
+  onClosing(fancybox) {
+    clearTimeout(this.clickTimer);
+    this.clickTimer = null;
+
+    // Remove events
+    fancybox.Carousel.slides.forEach((slide) => {
+      if (slide.$image) {
+        slide.state = "destroy";
+      }
+
+      if (slide.Panzoom) {
+        slide.Panzoom.detachEvents();
+      }
+    });
+
+    // If possible, start the zoom animation, it will interrupt the default closing process
+    if (this.fancybox.state === "closing" && this.canZoom(fancybox.getSlide())) {
+      this.zoomOut();
+    }
+  }
+
+  /**
+   * Process `Carousel.createSlide` event to create image content
+   * @param {Object} fancybox
+   * @param {Object} carousel
+   * @param {Object} slide
+   */
+  onCreateSlide(fancybox, carousel, slide) {
+    if (this.fancybox.state !== "ready") {
+      return;
+    }
+
+    this.setContent(slide);
+  }
+
+  /**
+   * Handle `Carousel.removeSlide` event to do clean up the slide
+   * @param {Object} fancybox
+   * @param {Object} carousel
+   * @param {Object} slide
+   */
+  onRemoveSlide(fancybox, carousel, slide) {
+    if (slide.$image) {
+      slide.$el.classList.remove(fancybox.option("Image.canZoomInClass"));
+
+      slide.$image.remove();
+      slide.$image = null;
+    }
+
+    if (slide.Panzoom) {
+      slide.Panzoom.destroy();
+      slide.Panzoom = null;
+    }
+
+    if (slide.$el && slide.$el.dataset) {
+      delete slide.$el.dataset.imageFit;
+    }
+  }
+
+  /**
+   * Build DOM elements and add event listeners
+   * @param {Object} slide
+   */
+  setContent(slide) {
+    // Check if this slide should contain an image
+    if (slide.isDom || slide.html || (slide.type && slide.type !== "image")) {
+      return;
+    }
+
+    if (slide.$image) {
+      return;
+    }
+
+    slide.type = "image";
+    slide.state = "loading";
+
+    // * Build layout
+    // Container
+    const $content = document.createElement("div");
+    $content.style.visibility = "hidden";
+
+    // Image element
+    const $image = document.createElement("img");
+
+    $image.addEventListener("load", (event) => {
+      event.stopImmediatePropagation();
+
+      this.onImageStatusChange(slide);
+    });
+
+    $image.addEventListener("error", () => {
+      this.onImageStatusChange(slide);
+    });
+
+    $image.src = slide.src;
+    $image.alt = "";
+    $image.draggable = false;
+
+    $image.classList.add("fancybox__image");
+
+    if (slide.srcset) {
+      $image.setAttribute("srcset", slide.srcset);
+    }
+
+    if (slide.sizes) {
+      $image.setAttribute("sizes", slide.sizes);
+    }
+
+    slide.$image = $image;
+
+    const shouldWrap = this.fancybox.option("Image.wrap");
+
+    if (shouldWrap) {
+      const $wrap = document.createElement("div");
+      $wrap.classList.add(typeof shouldWrap === "string" ? shouldWrap : "fancybox__image-wrap");
+
+      $wrap.appendChild($image);
+
+      $content.appendChild($wrap);
+
+      slide.$wrap = $wrap;
+    } else {
+      $content.appendChild($image);
+    }
+
+    // Set data attribute if other that default
+    // for example, set `[data-image-fit="contain-w"]`
+    slide.$el.dataset.imageFit = this.fancybox.option("Image.fit");
+
+    // Append content
+    this.fancybox.setContent(slide, $content);
+
+    // Display loading icon
+    if ($image.complete || $image.error) {
+      this.onImageStatusChange(slide);
+    } else {
+      this.fancybox.showLoading(slide);
+    }
+  }
+
+  /**
+   * Handle image state change, display error or start revealing image
+   * @param {Object} slide
+   */
+  onImageStatusChange(slide) {
+    const $image = slide.$image;
+
+    if (!$image || slide.state !== "loading") {
+      return;
+    }
+
+    if (!($image.complete && $image.naturalWidth && $image.naturalHeight)) {
+      this.fancybox.setError(slide, "{{IMAGE_ERROR}}");
+
+      return;
+    }
+
+    this.fancybox.hideLoading(slide);
+
+    if (this.fancybox.option("Image.fit") === "contain") {
+      this.initSlidePanzoom(slide);
+    }
+
+    // Add `wheel` and `click` event handler
+    slide.$el.addEventListener("wheel", (event) => this.onWheel(slide, event), { passive: false });
+    slide.$content.addEventListener("click", (event) => this.onClick(slide, event), { passive: false });
+
+    this.revealContent(slide);
+  }
+
+  /**
+   * Make image zoomable and draggable using Panzoom
+   * @param {Object} slide
+   */
+  initSlidePanzoom(slide) {
+    if (slide.Panzoom) {
+      return;
+    }
+
+    //* Initialize Panzoom
+    slide.Panzoom = new _Panzoom_Panzoom_js__WEBPACK_IMPORTED_MODULE_1__.Panzoom(
+      slide.$el,
+      (0,_shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_0__.extend)(true, this.fancybox.option("Image.Panzoom", {}), {
+        viewport: slide.$wrap,
+        content: slide.$image,
+
+        width: slide._width,
+        height: slide._height,
+
+        wrapInner: false,
+
+        // Allow to select caption text
+        textSelection: true,
+
+        // Toggle gestures
+        touch: this.fancybox.option("Image.touch"),
+
+        // This will prevent click conflict with fancybox main carousel
+        panOnlyZoomed: true,
+
+        // Disable default click / wheel events as custom event listeners will replace them,
+        // because click and wheel events should work without Panzoom
+        click: false,
+        wheel: false,
+      })
+    );
+
+    slide.Panzoom.on("startAnimation", () => {
+      this.fancybox.trigger("Image.startAnimation", slide);
+    });
+
+    slide.Panzoom.on("endAnimation", () => {
+      if (slide.state === "zoomIn") {
+        this.fancybox.done(slide);
+      }
+
+      this.handleCursor(slide);
+
+      this.fancybox.trigger("Image.endAnimation", slide);
+    });
+
+    slide.Panzoom.on("afterUpdate", () => {
+      this.handleCursor(slide);
+
+      this.fancybox.trigger("Image.afterUpdate", slide);
+    });
+  }
+
+  /**
+   * Start zoom-in animation if possible, or simply reveal content
+   * @param {Object} slide
+   */
+  revealContent(slide) {
+    // Animate only on first run
+    if (
+      this.fancybox.Carousel.prevPage === null &&
+      slide.index === this.fancybox.options.startIndex &&
+      this.canZoom(slide)
+    ) {
+      this.zoomIn();
+    } else {
+      this.fancybox.revealContent(slide);
+    }
+  }
+
+  /**
+   * Get zoom info for selected slide
+   * @param {Object} slide
+   */
+  getZoomInfo(slide) {
+    const $thumb = slide.$thumb,
+      thumbRect = $thumb.getBoundingClientRect(),
+      thumbWidth = thumbRect.width,
+      thumbHeight = thumbRect.height,
+      //
+      contentRect = slide.$content.getBoundingClientRect(),
+      contentWidth = contentRect.width,
+      contentHeight = contentRect.height,
+      //
+      shiftedTop = contentRect.top - thumbRect.top,
+      shiftedLeft = contentRect.left - thumbRect.left;
+
+    // Check if need to update opacity
+    let opacity = this.fancybox.option("Image.zoomOpacity");
+
+    if (opacity === "auto") {
+      opacity = Math.abs(thumbWidth / thumbHeight - contentWidth / contentHeight) > 0.1;
+    }
+
+    return {
+      top: shiftedTop,
+      left: shiftedLeft,
+      scale: contentWidth && thumbWidth ? thumbWidth / contentWidth : 1,
+      opacity: opacity,
+    };
+  }
+
+  /**
+   * Determine if it is possible to do zoom-in animation
+   */
+  canZoom(slide) {
+    const fancybox = this.fancybox,
+      $container = fancybox.$container;
+
+    if (window.visualViewport && window.visualViewport.scale !== 1) {
+      return false;
+    }
+
+    if (slide.Panzoom && !slide.Panzoom.content.width) {
+      return false;
+    }
+
+    if (!fancybox.option("Image.zoom") || fancybox.option("Image.fit") !== "contain") {
+      return false;
+    }
+
+    const $thumb = slide.$thumb;
+
+    if (!$thumb || slide.state === "loading") {
+      return false;
+    }
+
+    // * Check if thumbnail image is really visible
+    $container.classList.add("fancybox__no-click");
+
+    const rect = $thumb.getBoundingClientRect();
+
+    let rez;
+
+    // Check if thumbnail image is actually visible on the screen
+    if (this.fancybox.option("Image.ignoreCoveredThumbnail")) {
+      const visibleTopLeft = document.elementFromPoint(rect.left + 1, rect.top + 1) === $thumb;
+      const visibleBottomRight = document.elementFromPoint(rect.right - 1, rect.bottom - 1) === $thumb;
+
+      rez = visibleTopLeft && visibleBottomRight;
+    } else {
+      rez = document.elementFromPoint(rect.left + rect.width * 0.5, rect.top + rect.height * 0.5) === $thumb;
+    }
+
+    $container.classList.remove("fancybox__no-click");
+
+    return rez;
+  }
+
+  /**
+   * Perform zoom-in animation
+   */
+  zoomIn() {
+    const fancybox = this.fancybox,
+      slide = fancybox.getSlide(),
+      Panzoom = slide.Panzoom;
+
+    const { top, left, scale, opacity } = this.getZoomInfo(slide);
+
+    slide.state = "zoomIn";
+
+    fancybox.trigger("reveal", slide);
+
+    // Scale and move to start position
+    Panzoom.panTo({
+      x: left * -1,
+      y: top * -1,
+      scale: scale,
+      friction: 0,
+      ignoreBounds: true,
+    });
+
+    slide.$content.style.visibility = "";
+
+    if (opacity === true) {
+      Panzoom.on("afterTransform", (panzoom) => {
+        if (slide.state === "zoomIn" || slide.state === "zoomOut") {
+          panzoom.$content.style.opacity = Math.min(1, 1 - (1 - panzoom.content.scale) / (1 - scale));
+        }
+      });
+    }
+
+    // Animate back to original position
+    Panzoom.panTo({
+      x: 0,
+      y: 0,
+      scale: 1,
+      friction: this.fancybox.option("Image.zoomFriction"),
+    });
+  }
+
+  /**
+   * Perform zoom-out animation
+   */
+  zoomOut() {
+    const fancybox = this.fancybox,
+      slide = fancybox.getSlide(),
+      Panzoom = slide.Panzoom;
+
+    if (!Panzoom) {
+      return;
+    }
+
+    slide.state = "zoomOut";
+    fancybox.state = "customClosing";
+
+    if (slide.$caption) {
+      slide.$caption.style.visibility = "hidden";
+    }
+
+    let friction = this.fancybox.option("Image.zoomFriction");
+
+    const animatePosition = (event) => {
+      const { top, left, scale, opacity } = this.getZoomInfo(slide);
+
+      // Increase speed on the first run if opacity is not animated
+      if (!event && !opacity) {
+        friction *= 0.82;
+      }
+
+      Panzoom.panTo({
+        x: left * -1,
+        y: top * -1,
+        scale,
+        friction,
+        ignoreBounds: true,
+      });
+
+      // Gradually increase speed
+      friction *= 0.98;
+    };
+
+    // Page scrolling will cause thumbnail to change position on the display,
+    // therefore animation end position has to be recalculated after each page scroll
+    window.addEventListener("scroll", animatePosition);
+
+    Panzoom.once("endAnimation", () => {
+      window.removeEventListener("scroll", animatePosition);
+      fancybox.destroy();
+    });
+
+    animatePosition();
+  }
+
+  /**
+   * Set the type of mouse cursor to indicate if content is zoomable
+   * @param {Object} slide
+   */
+  handleCursor(slide) {
+    if (slide.type !== "image" || !slide.$el) {
+      return;
+    }
+
+    const panzoom = slide.Panzoom;
+    const clickAction = this.fancybox.option("Image.click", false, slide);
+    const touchIsEnabled = this.fancybox.option("Image.touch");
+
+    const classList = slide.$el.classList;
+
+    const zoomInClass = this.fancybox.option("Image.canZoomInClass");
+    const zoomOutClass = this.fancybox.option("Image.canZoomOutClass");
+
+    if (panzoom && clickAction === "toggleZoom") {
+      const canZoomIn =
+        panzoom && panzoom.content.scale === 1 && panzoom.option("maxScale") - panzoom.content.scale > 0.01;
+
+      if (canZoomIn) {
+        classList.remove(zoomOutClass);
+        classList.add(zoomInClass);
+      } else if (panzoom.content.scale > 1 && !touchIsEnabled) {
+        classList.add(zoomOutClass);
+      }
+    } else if (clickAction === "close") {
+      classList.add(zoomOutClass);
+    }
+  }
+
+  /**
+   * Handle `wheel` event
+   * @param {Object} slide
+   * @param {Object} event
+   */
+  onWheel(slide, event) {
+    if (this.fancybox.state !== "ready") {
+      return;
+    }
+
+    if (this.fancybox.trigger("Image.wheel", event) === false) {
+      return;
+    }
+
+    switch (this.fancybox.option("Image.wheel")) {
+      case "zoom":
+        slide.Panzoom && slide.Panzoom.zoomWithWheel(event);
+
+        break;
+
+      case "close":
+        this.fancybox.close();
+
+        break;
+
+      case "slide":
+        this.fancybox[event.deltaY < 0 ? "prev" : "next"]();
+
+        break;
+    }
+  }
+
+  /**
+   * Handle `click` and `dblclick` events
+   * @param {Object} slide
+   * @param {Object} event
+   */
+  onClick(slide, event) {
+    // Check that clicks should be allowed
+    if (this.fancybox.state !== "ready") {
+      return;
+    }
+
+    const panzoom = slide.Panzoom;
+
+    if (
+      panzoom &&
+      (panzoom.dragPosition.midPoint ||
+        panzoom.dragOffset.x !== 0 ||
+        panzoom.dragOffset.y !== 0 ||
+        panzoom.dragOffset.scale !== 1)
+    ) {
+      return;
+    }
+
+    if (this.fancybox.Carousel.Panzoom.lockAxis) {
+      return false;
+    }
+
+    const process = (action) => {
+      switch (action) {
+        case "toggleZoom":
+          event.stopPropagation();
+
+          slide.Panzoom && slide.Panzoom.zoomWithClick(event);
+
+          break;
+
+        case "close":
+          this.fancybox.close();
+
+          break;
+
+        case "next":
+          event.stopPropagation();
+
+          this.fancybox.next();
+
+          break;
+      }
+    };
+
+    const clickAction = this.fancybox.option("Image.click");
+    const dblclickAction = this.fancybox.option("Image.doubleClick");
+
+    if (dblclickAction) {
+      if (this.clickTimer) {
+        clearTimeout(this.clickTimer);
+        this.clickTimer = null;
+
+        process(dblclickAction);
+      } else {
+        this.clickTimer = setTimeout(() => {
+          this.clickTimer = null;
+          process(clickAction);
+        }, 300);
+      }
+    } else {
+      process(clickAction);
+    }
+  }
+
+  /**
+   * Handle `Carousel.change` event to reset zoom level for any zoomed in/out content
+   * and to revel content of the current page
+   * @param {Object} fancybox
+   * @param {Object} carousel
+   */
+  onPageChange(fancybox, carousel) {
+    const currSlide = fancybox.getSlide();
+
+    carousel.slides.forEach((slide) => {
+      if (!slide.Panzoom || slide.state !== "done") {
+        return;
+      }
+
+      if (slide.index !== currSlide.index) {
+        slide.Panzoom.panTo({
+          x: 0,
+          y: 0,
+          scale: 1,
+          friction: 0.8,
+        });
+      }
+    });
+  }
+
+  attach() {
+    this.fancybox.on(this.events);
+  }
+
+  detach() {
+    this.fancybox.off(this.events);
+  }
+}
+
+// Expose defaults
+Image.defaults = defaults;
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Fancybox/plugins/ScrollLock/ScrollLock.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Fancybox/plugins/ScrollLock/ScrollLock.js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ScrollLock": () => (/* binding */ ScrollLock)
+/* harmony export */ });
+/* harmony import */ var _src_shared_utils_isScrollable_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../src/shared/utils/isScrollable.js */ "./node_modules/@fancyapps/ui/src/shared/utils/isScrollable.js");
+
+
+class ScrollLock {
+  constructor(fancybox) {
+    this.fancybox = fancybox;
+    this.viewport = null;
+
+    this.pendingUpdate = null;
+
+    for (const methodName of ["onReady", "onResize", "onTouchstart", "onTouchmove"]) {
+      this[methodName] = this[methodName].bind(this);
+    }
+  }
+
+  /**
+   * Process `initLayout` event to attach event listeners and resize viewport if needed
+   */
+  onReady() {
+    //* Support Visual Viewport API
+    // https://developer.mozilla.org/en-US/docs/Web/API/Visual_Viewport_API
+    const viewport = window.visualViewport;
+
+    if (viewport) {
+      this.viewport = viewport;
+      this.startY = 0;
+
+      viewport.addEventListener("resize", this.onResize);
+
+      this.updateViewport();
+    }
+
+    //* Prevent bouncing while scrolling on mobile devices
+    window.addEventListener("touchstart", this.onTouchstart, { passive: false });
+    window.addEventListener("touchmove", this.onTouchmove, { passive: false });
+  }
+
+  /**
+   * Handle `resize` event to call `updateViewport`
+   */
+  onResize() {
+    this.updateViewport();
+  }
+
+  /**
+   * Scale $container proportionally to actually fit inside browser,
+   * e.g., disable viewport zooming
+   */
+  updateViewport() {
+    const fancybox = this.fancybox,
+      viewport = this.viewport,
+      scale = viewport.scale || 1,
+      $container = fancybox.$container;
+
+    if (!$container) {
+      return;
+    }
+
+    let width = "",
+      height = "",
+      transform = "";
+
+    if (scale - 1 > 0.1) {
+      width = `${viewport.width * scale}px`;
+      height = `${viewport.height * scale}px`;
+      transform = `translate3d(${viewport.offsetLeft}px, ${viewport.offsetTop}px, 0) scale(${1 / scale})`;
+    }
+
+    $container.style.width = width;
+    $container.style.height = height;
+    $container.style.transform = transform;
+  }
+
+  /**
+   * Handle `touchstart` event to mark drag start position
+   * @param {Object} event
+   */
+  onTouchstart(event) {
+    this.startY = event.touches ? event.touches[0].screenY : event.screenY;
+  }
+
+  /**
+   * Handle `touchmove` event to fix scrolling on mobile devices (iOS)
+   * @param {Object} event
+   */
+  onTouchmove(event) {
+    const startY = this.startY;
+    const zoom = window.innerWidth / window.document.documentElement.clientWidth;
+
+    if (!event.cancelable) {
+      return;
+    }
+
+    if (event.touches.length > 1 || zoom !== 1) {
+      return;
+    }
+
+    const target = event.target;
+    const el = (0,_src_shared_utils_isScrollable_js__WEBPACK_IMPORTED_MODULE_0__.isScrollable)(target);
+
+    if (!el) {
+      event.preventDefault();
+      return;
+    }
+
+    const style = window.getComputedStyle(el);
+    const height = parseInt(style.getPropertyValue("height"), 10);
+
+    const curY = event.touches ? event.touches[0].screenY : event.screenY;
+
+    const isAtTop = startY <= curY && el.scrollTop === 0;
+    const isAtBottom = startY >= curY && el.scrollHeight - el.scrollTop === height;
+
+    if (isAtTop || isAtBottom) {
+      event.preventDefault();
+    }
+  }
+
+  /**
+   * Clean everything up
+   */
+  cleanup() {
+    if (this.pendingUpdate) {
+      cancelAnimationFrame(this.pendingUpdate);
+      this.pendingUpdate = null;
+    }
+
+    const viewport = this.viewport;
+
+    if (viewport) {
+      viewport.removeEventListener("resize", this.onResize);
+      this.viewport = null;
+    }
+
+    window.removeEventListener("touchstart", this.onTouchstart, false);
+    window.removeEventListener("touchmove", this.onTouchmove, false);
+  }
+
+  attach() {
+    this.fancybox.on("initLayout", this.onReady);
+  }
+
+  detach() {
+    this.fancybox.off("initLayout", this.onReady);
+
+    this.cleanup();
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Fancybox/plugins/Thumbs/Thumbs.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Fancybox/plugins/Thumbs/Thumbs.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Thumbs": () => (/* binding */ Thumbs)
+/* harmony export */ });
+/* harmony import */ var _shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../shared/utils/extend.js */ "./node_modules/@fancyapps/ui/src/shared/utils/extend.js");
+/* harmony import */ var _Carousel_Carousel_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Carousel/Carousel.js */ "./node_modules/@fancyapps/ui/src/Carousel/Carousel.js");
+
+
+
+const defaults = {
+  // The minimum number of images in the gallery to display thumbnails
+  minSlideCount: 2,
+
+  // Minimum screen height to display thumbnails
+  minScreenHeight: 500,
+
+  // Automatically show thumbnails when opened
+  autoStart: true,
+
+  // Keyboard shortcut to toggle thumbnail container
+  key: "t",
+
+  // Customize Carousel instance
+  Carousel: {},
+};
+
+class Thumbs {
+  constructor(fancybox) {
+    this.fancybox = fancybox;
+
+    this.$container = null;
+    this.state = "init";
+
+    for (const methodName of ["onPrepare", "onClosing", "onKeydown"]) {
+      this[methodName] = this[methodName].bind(this);
+    }
+
+    this.events = {
+      prepare: this.onPrepare,
+      closing: this.onClosing,
+      keydown: this.onKeydown,
+    };
+  }
+
+  /**
+   * Process `prepare` event to build the layout
+   */
+  onPrepare() {
+    // Get slides, skip if the total number is less than the minimum
+    const slides = this.getSlides();
+
+    if (slides.length < this.fancybox.option("Thumbs.minSlideCount")) {
+      this.state = "disabled";
+      return;
+    }
+
+    if (
+      this.fancybox.option("Thumbs.autoStart") === true &&
+      this.fancybox.Carousel.Panzoom.content.height >= this.fancybox.option("Thumbs.minScreenHeight")
+    ) {
+      this.build();
+    }
+  }
+
+  /**
+   * Process `closing` event to disable all events
+   */
+  onClosing() {
+    if (this.Carousel) {
+      this.Carousel.Panzoom.detachEvents();
+    }
+  }
+
+  /**
+   * Process `keydown` event to enable thumbnail list toggling using keyboard key
+   * @param {Object} fancybox
+   * @param {String} key
+   */
+  onKeydown(fancybox, key) {
+    if (key === fancybox.option("Thumbs.key")) {
+      this.toggle();
+    }
+  }
+
+  /**
+   * Build layout and init thumbnail Carousel
+   */
+  build() {
+    if (this.$container) {
+      return;
+    }
+
+    // Create wrapping element and append to layout
+    const $container = document.createElement("div");
+
+    $container.classList.add("fancybox__thumbs");
+
+    this.fancybox.$carousel.parentNode.insertBefore($container, this.fancybox.$carousel.nextSibling);
+
+    // Initialise thumbnail carousel with all slides
+    this.Carousel = new _Carousel_Carousel_js__WEBPACK_IMPORTED_MODULE_1__.Carousel(
+      $container,
+      (0,_shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_0__.extend)(
+        true,
+        {
+          Dots: false,
+          Navigation: false,
+          Sync: {
+            friction: 0,
+          },
+          infinite: false,
+          center: true,
+          fill: true,
+          dragFree: true,
+          slidesPerPage: 1,
+          preload: 1,
+        },
+        this.fancybox.option("Thumbs.Carousel"),
+        {
+          Sync: {
+            target: this.fancybox.Carousel,
+          },
+          slides: this.getSlides(),
+        }
+      )
+    );
+
+    // Slide carousel on wheel event
+    this.Carousel.Panzoom.on("wheel", (panzoom, event) => {
+      event.preventDefault();
+
+      this.fancybox[event.deltaY < 0 ? "prev" : "next"]();
+    });
+
+    this.$container = $container;
+
+    this.state = "visible";
+  }
+
+  /**
+   * Process all fancybox slides to get all thumbnail images
+   */
+  getSlides() {
+    const slides = [];
+
+    for (const slide of this.fancybox.items) {
+      const thumb = slide.thumb;
+
+      if (thumb) {
+        slides.push({
+          html: `<div class="fancybox__thumb" style="background-image:url('${thumb}')"></div>`,
+          customClass: `has-thumb has-${slide.type || "image"}`,
+        });
+      }
+    }
+
+    return slides;
+  }
+
+  /**
+   * Toggle visibility of thumbnail list
+   * Tip: you can use `Fancybox.getInstance().plugins.Thumbs.toggle()` from anywhere in your code
+   */
+  toggle() {
+    if (this.state === "visible") {
+      this.hide();
+    } else if (this.state === "hidden") {
+      this.show();
+    } else {
+      this.build();
+    }
+  }
+
+  /**
+   * Show thumbnail list
+   */
+  show() {
+    if (this.state === "hidden") {
+      this.$container.style.display = "";
+
+      this.Carousel.Panzoom.attachEvents();
+
+      this.state = "visible";
+    }
+  }
+
+  /**
+   * Hide thumbnail list
+   */
+  hide() {
+    if (this.state === "visible") {
+      this.Carousel.Panzoom.detachEvents();
+
+      this.$container.style.display = "none";
+
+      this.state = "hidden";
+    }
+  }
+
+  /**
+   * Reset the state
+   */
+  cleanup() {
+    if (this.Carousel) {
+      this.Carousel.destroy();
+      this.Carousel = null;
+    }
+
+    if (this.$container) {
+      this.$container.remove();
+      this.$container = null;
+    }
+
+    this.state = "init";
+  }
+
+  attach() {
+    this.fancybox.on(this.events);
+  }
+
+  detach() {
+    this.fancybox.off(this.events);
+
+    this.cleanup();
+  }
+}
+
+// Expose defaults
+Thumbs.defaults = defaults;
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Fancybox/plugins/Toolbar/Toolbar.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Fancybox/plugins/Toolbar/Toolbar.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Toolbar": () => (/* binding */ Toolbar)
+/* harmony export */ });
+/* harmony import */ var _shared_utils_isPlainObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../shared/utils/isPlainObject.js */ "./node_modules/@fancyapps/ui/src/shared/utils/isPlainObject.js");
+/* harmony import */ var _shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../shared/utils/extend.js */ "./node_modules/@fancyapps/ui/src/shared/utils/extend.js");
+/* harmony import */ var _shared_utils_Fullscreen_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../shared/utils/Fullscreen.js */ "./node_modules/@fancyapps/ui/src/shared/utils/Fullscreen.js");
+/* harmony import */ var _shared_utils_Slideshow_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../shared/utils/Slideshow.js */ "./node_modules/@fancyapps/ui/src/shared/utils/Slideshow.js");
+
+
+
+
+
+
+const defaults = {
+  // What toolbar items to display
+  display: [
+    "counter",
+    //"prev",
+    //"next",
+    //"download",
+    "zoom",
+    "slideshow",
+    "fullscreen",
+    "thumbs",
+    "close",
+  ],
+
+  // Only create a toolbar item if there is at least one image in the group
+  autoEnable: true,
+
+  // Toolbar items; can be links, buttons or `div` elements
+  items: {
+    counter: {
+      type: "div",
+      class: "fancybox__counter",
+      html: '<span data-fancybox-index=""></span>&nbsp;/&nbsp;<span data-fancybox-count=""></span>',
+      tabindex: -1,
+      position: "left",
+    },
+    prev: {
+      type: "button",
+      class: "fancybox__button--prev",
+      label: "PREV",
+      html: '<svg viewBox="0 0 24 24"><path d="M15 4l-8 8 8 8"/></svg>',
+      attr: { "data-fancybox-prev": "" },
+    },
+    next: {
+      type: "button",
+      class: "fancybox__button--next",
+      label: "NEXT",
+      html: '<svg viewBox="0 0 24 24"><path d="M8 4l8 8-8 8"/></svg>',
+      attr: { "data-fancybox-next": "" },
+    },
+    fullscreen: {
+      type: "button",
+      class: "fancybox__button--fullscreen",
+      label: "TOGGLE_FULLSCREEN",
+      html: `<svg viewBox="0 0 24 24">
+                <g><path d="M3 8 V3h5"></path><path d="M21 8V3h-5"></path><path d="M8 21H3v-5"></path><path d="M16 21h5v-5"></path></g>
+                <g><path d="M7 2v5H2M17 2v5h5M2 17h5v5M22 17h-5v5"/></g>
+            </svg>`,
+      click: function (event) {
+        event.preventDefault();
+
+        if (_shared_utils_Fullscreen_js__WEBPACK_IMPORTED_MODULE_2__.Fullscreen.element()) {
+          _shared_utils_Fullscreen_js__WEBPACK_IMPORTED_MODULE_2__.Fullscreen.deactivate();
+        } else {
+          _shared_utils_Fullscreen_js__WEBPACK_IMPORTED_MODULE_2__.Fullscreen.activate(this.fancybox.$container);
+        }
+      },
+    },
+    slideshow: {
+      type: "button",
+      class: "fancybox__button--slideshow",
+      label: "TOGGLE_SLIDESHOW",
+      html: `<svg viewBox="0 0 24 24">
+                <g><path d="M6 4v16"/><path d="M20 12L6 20"/><path d="M20 12L6 4"/></g>
+                <g><path d="M7 4v15M17 4v15"/></g>
+            </svg>`,
+      click: function (event) {
+        event.preventDefault();
+
+        this.Slideshow.toggle();
+      },
+    },
+    zoom: {
+      type: "button",
+      class: "fancybox__button--zoom",
+      label: "TOGGLE_ZOOM",
+      html: '<svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"></circle><path d="M16 16 L21 21"></svg>',
+      click: function (event) {
+        event.preventDefault();
+
+        const panzoom = this.fancybox.getSlide().Panzoom;
+
+        if (panzoom) {
+          panzoom.toggleZoom();
+        }
+      },
+    },
+    download: {
+      type: "link",
+      label: "DOWNLOAD",
+      class: "fancybox__button--download",
+      html: '<svg viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.62 2.48A2 2 0 004.56 21h14.88a2 2 0 001.94-1.51L22 17"/></svg>',
+      click: function (event) {
+        event.stopPropagation();
+      },
+    },
+    thumbs: {
+      type: "button",
+      label: "TOGGLE_THUMBS",
+      class: "fancybox__button--thumbs",
+      html: '<svg viewBox="0 0 24 24"><circle cx="4" cy="4" r="1" /><circle cx="12" cy="4" r="1" transform="rotate(90 12 4)"/><circle cx="20" cy="4" r="1" transform="rotate(90 20 4)"/><circle cx="4" cy="12" r="1" transform="rotate(90 4 12)"/><circle cx="12" cy="12" r="1" transform="rotate(90 12 12)"/><circle cx="20" cy="12" r="1" transform="rotate(90 20 12)"/><circle cx="4" cy="20" r="1" transform="rotate(90 4 20)"/><circle cx="12" cy="20" r="1" transform="rotate(90 12 20)"/><circle cx="20" cy="20" r="1" transform="rotate(90 20 20)"/></svg>',
+      click: function (event) {
+        event.stopPropagation();
+
+        const thumbs = this.fancybox.plugins.Thumbs;
+
+        if (thumbs) {
+          thumbs.toggle();
+        }
+      },
+    },
+    close: {
+      type: "button",
+      label: "CLOSE",
+      class: "fancybox__button--close",
+      html: '<svg viewBox="0 0 24 24"><path d="M20 20L4 4m16 0L4 20"></path></svg>',
+      tabindex: 0,
+      attr: { "data-fancybox-close": "" },
+    },
+  },
+};
+
+class Toolbar {
+  constructor(fancybox) {
+    this.fancybox = fancybox;
+
+    this.$container = null;
+    this.state = "init";
+
+    for (const methodName of [
+      "onInit",
+      "onPrepare",
+      "onDone",
+      "onKeydown",
+      "onClosing",
+      "onChange",
+      "onSettle",
+      "onRefresh",
+    ]) {
+      this[methodName] = this[methodName].bind(this);
+    }
+
+    this.events = {
+      init: this.onInit,
+      prepare: this.onPrepare,
+      done: this.onDone,
+      keydown: this.onKeydown,
+      closing: this.onClosing,
+
+      // Clear Slideshow when user strts to change current slide
+      "Carousel.change": this.onChange,
+
+      // Set timer after carousel changes current slide; deactive if last slide is reached
+      "Carousel.settle": this.onSettle,
+
+      // Deactivate Slideshow on user interaction
+      "Carousel.Panzoom.touchStart": () => this.onRefresh(),
+
+      "Image.startAnimation": (fancybox, slide) => this.onRefresh(slide),
+      "Image.afterUpdate": (fancybox, slide) => this.onRefresh(slide),
+    };
+  }
+
+  onInit() {
+    // Disable self if current group does not contain at least one image
+    if (this.fancybox.option("Toolbar.autoEnable")) {
+      let hasImage = false;
+
+      for (const item of this.fancybox.items) {
+        if (item.type === "image") {
+          hasImage = true;
+          break;
+        }
+      }
+
+      if (!hasImage) {
+        this.state = "disabled";
+        return;
+      }
+    }
+
+    // Disable the creation of a close button, if one exists in the toolbar
+    for (const key of this.fancybox.option("Toolbar.display")) {
+      const id = (0,_shared_utils_isPlainObject_js__WEBPACK_IMPORTED_MODULE_0__.isPlainObject)(key) ? key.id : key;
+
+      if (id === "close") {
+        this.fancybox.options.closeButton = false;
+
+        break;
+      }
+    }
+  }
+
+  onPrepare() {
+    const fancybox = this.fancybox;
+    // Skip if disabled
+    if (this.state !== "init") {
+      return;
+    }
+
+    this.build();
+
+    this.update();
+
+    this.Slideshow = new _shared_utils_Slideshow_js__WEBPACK_IMPORTED_MODULE_3__.Slideshow(fancybox);
+
+    if (!fancybox.Carousel.prevPage) {
+      if (fancybox.option("slideshow.autoStart")) {
+        this.Slideshow.activate();
+      }
+
+      if (fancybox.option("fullscreen.autoStart") && !_shared_utils_Fullscreen_js__WEBPACK_IMPORTED_MODULE_2__.Fullscreen.element()) {
+        try {
+          _shared_utils_Fullscreen_js__WEBPACK_IMPORTED_MODULE_2__.Fullscreen.activate(fancybox.$container);
+        } catch (error) {}
+      }
+    }
+  }
+
+  onFsChange() {
+    window.scrollTo(_shared_utils_Fullscreen_js__WEBPACK_IMPORTED_MODULE_2__.Fullscreen.pageXOffset, _shared_utils_Fullscreen_js__WEBPACK_IMPORTED_MODULE_2__.Fullscreen.pageYOffset);
+  }
+
+  onSettle() {
+    const fancybox = this.fancybox;
+    const slideshow = this.Slideshow;
+
+    if (slideshow && slideshow.isActive()) {
+      if (fancybox.getSlide().index === fancybox.Carousel.slides.length - 1 && !fancybox.option("infinite")) {
+        slideshow.deactivate();
+      } else if (fancybox.getSlide().state === "done") {
+        slideshow.setTimer();
+      }
+    }
+  }
+
+  onChange() {
+    this.update();
+
+    if (this.Slideshow && this.Slideshow.isActive()) {
+      this.Slideshow.clearTimer();
+    }
+  }
+
+  onDone(fancybox, slide) {
+    const slideshow = this.Slideshow;
+
+    if (slide.index === fancybox.getSlide().index) {
+      this.update();
+
+      if (slideshow && slideshow.isActive()) {
+        if (!fancybox.option("infinite") && slide.index === fancybox.Carousel.slides.length - 1) {
+          slideshow.deactivate();
+        } else {
+          slideshow.setTimer();
+        }
+      }
+    }
+  }
+
+  onRefresh(slide) {
+    if (!slide || slide.index === this.fancybox.getSlide().index) {
+      this.update();
+
+      if (this.Slideshow && this.Slideshow.isActive() && (!slide || slide.state === "done")) {
+        this.Slideshow.deactivate();
+      }
+    }
+  }
+
+  onKeydown(fancybox, key, event) {
+    if (key === " " && this.Slideshow) {
+      this.Slideshow.toggle();
+
+      event.preventDefault();
+    }
+  }
+
+  onClosing() {
+    if (this.Slideshow) {
+      this.Slideshow.deactivate();
+    }
+
+    document.removeEventListener("fullscreenchange", this.onFsChange);
+  }
+
+  /**
+   * Create link, button or `div` element for the toolbar
+   * @param {Object} obj
+   * @returns HTMLElement
+   */
+  createElement(obj) {
+    let $el;
+
+    if (obj.type === "div") {
+      $el = document.createElement("div");
+    } else {
+      $el = document.createElement(obj.type === "link" ? "a" : "button");
+      $el.classList.add("carousel__button");
+    }
+
+    $el.innerHTML = obj.html;
+
+    $el.setAttribute("tabindex", obj.tabindex || 0);
+
+    if (obj.class) {
+      $el.classList.add(...obj.class.split(" "));
+    }
+
+    for (let prop in obj.attr) {
+      $el.setAttribute(prop, obj[prop]);
+    }
+
+    if (obj.label) {
+      $el.setAttribute("title", this.fancybox.localize(`{{${obj.label}}}`));
+    }
+
+    if (obj.click) {
+      $el.addEventListener("click", obj.click.bind(this));
+    }
+
+    if (obj.id === "prev") {
+      $el.setAttribute("data-fancybox-prev", "");
+    }
+
+    if (obj.id === "next") {
+      $el.setAttribute("data-fancybox-next", "");
+    }
+
+    const $svg = $el.querySelector("svg");
+
+    if ($svg) {
+      $svg.setAttribute("role", "img");
+      $svg.setAttribute("tabindex", "-1");
+      $svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    }
+
+    return $el;
+  }
+
+  /**
+   * Create all DOM elements
+   */
+  build() {
+    this.cleanup();
+
+    const all_items = this.fancybox.option("Toolbar.items");
+    const all_groups = [
+      {
+        position: "left",
+        items: [],
+      },
+      {
+        position: "center",
+        items: [],
+      },
+      {
+        position: "right",
+        items: [],
+      },
+    ];
+
+    const thumbs = this.fancybox.plugins.Thumbs;
+
+    // 1st step - group toolbar elements by position
+    for (const key of this.fancybox.option("Toolbar.display")) {
+      let id, item;
+
+      if ((0,_shared_utils_isPlainObject_js__WEBPACK_IMPORTED_MODULE_0__.isPlainObject)(key)) {
+        id = key.id;
+        item = (0,_shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_1__.extend)({}, all_items[id], key);
+      } else {
+        id = key;
+        item = all_items[id];
+      }
+
+      if (["counter", "next", "prev", "slideshow"].includes(id) && this.fancybox.items.length < 2) {
+        continue;
+      }
+
+      if (id === "fullscreen") {
+        if (!document.fullscreenEnabled || window.fullScreen) {
+          continue;
+        }
+
+        document.addEventListener("fullscreenchange", this.onFsChange);
+      }
+
+      if (id === "thumbs" && (!thumbs || thumbs.state === "disabled")) {
+        continue;
+      }
+
+      if (!item) {
+        continue;
+      }
+
+      let position = item.position || "right";
+
+      let group = all_groups.find((obj) => obj.position === position);
+
+      if (group) {
+        group.items.push(item);
+      }
+    }
+
+    // 2st step - create DOM elements
+    const $container = document.createElement("div");
+    $container.classList.add("fancybox__toolbar");
+
+    for (const group of all_groups) {
+      if (group.items.length) {
+        const $wrap = document.createElement("div");
+        $wrap.classList.add("fancybox__toolbar__items");
+        $wrap.classList.add(`fancybox__toolbar__items--${group.position}`);
+
+        for (const obj of group.items) {
+          $wrap.appendChild(this.createElement(obj));
+        }
+
+        $container.appendChild($wrap);
+      }
+    }
+
+    // Add toolbar container to DOM
+    this.fancybox.$carousel.parentNode.insertBefore($container, this.fancybox.$carousel);
+
+    this.$container = $container;
+  }
+
+  /**
+   * Update element state depending on index of current slide
+   */
+  update() {
+    const slide = this.fancybox.getSlide();
+    const idx = slide.index;
+    const cnt = this.fancybox.items.length;
+
+    // Download links
+    // ====
+    const src = slide.downloadSrc || (slide.type === "image" && !slide.error ? slide.src : null);
+
+    for (const $el of this.fancybox.$container.querySelectorAll("a.fancybox__button--download")) {
+      if (src) {
+        $el.removeAttribute("disabled");
+        $el.removeAttribute("tabindex");
+
+        $el.setAttribute("href", src);
+        $el.setAttribute("download", src);
+        $el.setAttribute("target", "_blank");
+      } else {
+        $el.setAttribute("disabled", "");
+        $el.setAttribute("tabindex", -1);
+
+        $el.removeAttribute("href");
+        $el.removeAttribute("download");
+      }
+    }
+
+    // Zoom button
+    // ===
+    const panzoom = slide.Panzoom;
+    const canZoom = panzoom && panzoom.option("maxScale") > panzoom.option("baseScale");
+
+    for (const $el of this.fancybox.$container.querySelectorAll(".fancybox__button--zoom")) {
+      if (canZoom) {
+        $el.removeAttribute("disabled");
+      } else {
+        $el.setAttribute("disabled", "");
+      }
+    }
+
+    // Counter
+    // ====
+    for (const $el of this.fancybox.$container.querySelectorAll("[data-fancybox-index]")) {
+      $el.innerHTML = slide.index + 1;
+    }
+
+    for (const $el of this.fancybox.$container.querySelectorAll("[data-fancybox-count]")) {
+      $el.innerHTML = cnt;
+    }
+
+    // Disable previous/next links if gallery is not infinite and has reached start/end
+    // ===
+    if (!this.fancybox.option("infinite")) {
+      for (const $el of this.fancybox.$container.querySelectorAll("[data-fancybox-prev]")) {
+        if (idx === 0) {
+          $el.setAttribute("disabled", "");
+        } else {
+          $el.removeAttribute("disabled");
+        }
+      }
+
+      for (const $el of this.fancybox.$container.querySelectorAll("[data-fancybox-next]")) {
+        if (idx === cnt - 1) {
+          $el.setAttribute("disabled", "");
+        } else {
+          $el.removeAttribute("disabled");
+        }
+      }
+    }
+  }
+
+  cleanup() {
+    if (this.Slideshow && this.Slideshow.isActive()) {
+      this.Slideshow.clearTimer();
+    }
+
+    if (this.$container) {
+      this.$container.remove();
+    }
+
+    this.$container = null;
+  }
+
+  attach() {
+    this.fancybox.on(this.events);
+  }
+
+  detach() {
+    this.fancybox.off(this.events);
+
+    this.cleanup();
+  }
+}
+
+// Expose defaults
+Toolbar.defaults = defaults;
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Fancybox/plugins/index.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Fancybox/plugins/index.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Plugins": () => (/* binding */ Plugins)
+/* harmony export */ });
+/* harmony import */ var _ScrollLock_ScrollLock_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ScrollLock/ScrollLock.js */ "./node_modules/@fancyapps/ui/src/Fancybox/plugins/ScrollLock/ScrollLock.js");
+/* harmony import */ var _Thumbs_Thumbs_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Thumbs/Thumbs.js */ "./node_modules/@fancyapps/ui/src/Fancybox/plugins/Thumbs/Thumbs.js");
+/* harmony import */ var _Html_Html_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Html/Html.js */ "./node_modules/@fancyapps/ui/src/Fancybox/plugins/Html/Html.js");
+/* harmony import */ var _Image_Image_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Image/Image.js */ "./node_modules/@fancyapps/ui/src/Fancybox/plugins/Image/Image.js");
+/* harmony import */ var _Hash_Hash_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Hash/Hash.js */ "./node_modules/@fancyapps/ui/src/Fancybox/plugins/Hash/Hash.js");
+/* harmony import */ var _Toolbar_Toolbar_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Toolbar/Toolbar.js */ "./node_modules/@fancyapps/ui/src/Fancybox/plugins/Toolbar/Toolbar.js");
+
+
+
+
+
+
+
+const Plugins = {
+  ScrollLock: _ScrollLock_ScrollLock_js__WEBPACK_IMPORTED_MODULE_0__.ScrollLock,
+  Thumbs: _Thumbs_Thumbs_js__WEBPACK_IMPORTED_MODULE_1__.Thumbs,
+  Html: _Html_Html_js__WEBPACK_IMPORTED_MODULE_2__.Html,
+  Toolbar: _Toolbar_Toolbar_js__WEBPACK_IMPORTED_MODULE_5__.Toolbar,
+  Image: _Image_Image_js__WEBPACK_IMPORTED_MODULE_3__.Image,
+  Hash: _Hash_Hash_js__WEBPACK_IMPORTED_MODULE_4__.Hash,
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Panzoom/Panzoom.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Panzoom/Panzoom.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Panzoom": () => (/* binding */ Panzoom)
+/* harmony export */ });
+/* harmony import */ var _shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/utils/extend.js */ "./node_modules/@fancyapps/ui/src/shared/utils/extend.js");
+/* harmony import */ var _shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/utils/round.js */ "./node_modules/@fancyapps/ui/src/shared/utils/round.js");
+/* harmony import */ var _shared_utils_ResizeObserver_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/utils/ResizeObserver.js */ "./node_modules/@fancyapps/ui/src/shared/utils/ResizeObserver.js");
+/* harmony import */ var _shared_utils_PointerTracker_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/utils/PointerTracker.js */ "./node_modules/@fancyapps/ui/src/shared/utils/PointerTracker.js");
+/* harmony import */ var _shared_utils_isScrollable_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shared/utils/isScrollable.js */ "./node_modules/@fancyapps/ui/src/shared/utils/isScrollable.js");
+/* harmony import */ var _shared_utils_getTextNodeFromPoint_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../shared/utils/getTextNodeFromPoint.js */ "./node_modules/@fancyapps/ui/src/shared/utils/getTextNodeFromPoint.js");
+/* harmony import */ var _shared_utils_getDimensions_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../shared/utils/getDimensions.js */ "./node_modules/@fancyapps/ui/src/shared/utils/getDimensions.js");
+/* harmony import */ var _shared_Base_Base_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../shared/Base/Base.js */ "./node_modules/@fancyapps/ui/src/shared/Base/Base.js");
+/* harmony import */ var _plugins_index_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./plugins/index.js */ "./node_modules/@fancyapps/ui/src/Panzoom/plugins/index.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const defaults = {
+  // Enable touch guestures
+  touch: true,
+
+  // Enable zooming
+  zoom: true,
+
+  // Enable pinch gesture to zoom in/out using two fingers
+  pinchToZoom: true,
+
+  // Disable dragging if scale level is equal to value of `baseScale` option
+  panOnlyZoomed: false,
+
+  // Lock axis while dragging,
+  // possible values: false | "x" | "y" | "xy"
+  lockAxis: false,
+
+  // * All friction values are inside [0, 1) interval,
+  // * where 0 would change instantly, but 0.99 would update extremely slowly
+
+  // Friction while panning/dragging
+  friction: 0.64,
+
+  // Friction while decelerating after drag end
+  decelFriction: 0.88,
+
+  // Friction while scaling
+  zoomFriction: 0.74,
+
+  // Bounciness after hitting the edge
+  bounceForce: 0.2,
+
+  // Initial scale level
+  baseScale: 1,
+
+  // Minimum scale level
+  minScale: 1,
+
+  // Maximum scale level
+  maxScale: 2,
+
+  // Default scale step while zooming
+  step: 0.5,
+
+  // Allow to select text,
+  // if enabled, dragging will be disabled when text selection is detected
+  textSelection: false,
+
+  // Add `click` event listener,
+  // possible values: true | false | function | "toggleZoom"
+  click: "toggleZoom",
+
+  // Add `wheel` event listener,
+  // possible values: true | false | function |  "zoom"
+  wheel: "zoom",
+
+  // Value for zoom on mouse wheel
+  wheelFactor: 42,
+
+  // Number of wheel events after which it should stop preventing default behaviour of mouse wheel
+  wheelLimit: 5,
+
+  // Class name added to `$viewport` element to indicate if content is draggable
+  draggableClass: "is-draggable",
+
+  // Class name added to `$viewport` element to indicate that user is currently dragging
+  draggingClass: "is-dragging",
+
+  // Content will be scaled by this number,
+  // this can also be a function which should return a number, for example:
+  // ratio: function() { return 1 / (window.devicePixelRatio || 1) }
+  ratio: 1,
+};
+
+class Panzoom extends _shared_Base_Base_js__WEBPACK_IMPORTED_MODULE_7__.Base {
+  /**
+   * Panzoom constructor
+   * @constructs Panzoom
+   * @param {HTMLElement} $viewport Panzoom container
+   * @param {Object} [options] Options for Panzoom
+   */
+  constructor($container, options = {}) {
+    super((0,_shared_utils_extend_js__WEBPACK_IMPORTED_MODULE_0__.extend)(true, {}, defaults, options));
+
+    this.state = "init";
+
+    this.$container = $container;
+
+    // Bind event handlers for referencability
+    for (const methodName of ["onLoad", "onWheel", "onClick"]) {
+      this[methodName] = this[methodName].bind(this);
+    }
+
+    this.initLayout();
+
+    this.resetValues();
+
+    this.attachPlugins(Panzoom.Plugins);
+
+    this.trigger("init");
+
+    this.updateMetrics();
+
+    this.attachEvents();
+
+    this.trigger("ready");
+
+    if (this.option("centerOnStart") === false) {
+      this.state = "ready";
+    } else {
+      this.panTo({
+        friction: 0,
+      });
+    }
+  }
+
+  /**
+   * Create references to container, viewport and content elements
+   */
+  initLayout() {
+    const $container = this.$container;
+
+    // Make sure content element exists
+    if (!($container instanceof HTMLElement)) {
+      throw new Error("Panzoom: Container not found");
+    }
+
+    const $content = this.option("content") || $container.querySelector(".panzoom__content");
+
+    // Make sure content element exists
+    if (!$content) {
+      throw new Error("Panzoom: Content not found");
+    }
+
+    this.$content = $content;
+
+    let $viewport = this.option("viewport") || $container.querySelector(".panzoom__viewport");
+
+    if (!$viewport && this.option("wrapInner") !== false) {
+      $viewport = document.createElement("div");
+      $viewport.classList.add("panzoom__viewport");
+
+      $viewport.append(...$container.childNodes);
+
+      $container.appendChild($viewport);
+    }
+
+    this.$viewport = $viewport || $content.parentNode;
+  }
+
+  /**
+   * Restore instance variables to default values
+   */
+  resetValues() {
+    this.updateRate = this.option("updateRate", /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ? 250 : 24);
+
+    this.container = {
+      width: 0,
+      height: 0,
+    };
+
+    this.viewport = {
+      width: 0,
+      height: 0,
+    };
+
+    this.content = {
+      // Full content dimensions (naturalWidth/naturalHeight for images)
+      origWidth: 0,
+      origHeight: 0,
+
+      // Current dimensions of the content
+      width: 0,
+      height: 0,
+
+      // Current position; these values reflect CSS `transform` value
+      x: this.option("x", 0),
+      y: this.option("y", 0),
+
+      // Current scale; does not reflect CSS `transform` value
+      scale: this.option("baseScale"),
+    };
+
+    // End values of current pan / zoom animation
+    this.transform = {
+      x: 0,
+      y: 0,
+      scale: 1,
+    };
+
+    this.resetDragPosition();
+  }
+
+  /**
+   * Handle `load` event
+   * @param {Event} event
+   */
+  onLoad(event) {
+    this.updateMetrics();
+
+    this.panTo({ scale: this.option("baseScale"), friction: 0 });
+
+    this.trigger("load", event);
+  }
+
+  /**
+   * Handle `click` event
+   * @param {Event} event
+   */
+  onClick(event) {
+    if (event.defaultPrevented) {
+      return;
+    }
+
+    // Skip if text is selected
+    if (this.option("textSelection") && window.getSelection().toString().length) {
+      event.stopPropagation();
+      return;
+    }
+
+    const rect = this.$content.getClientRects()[0];
+
+    // Check if container has changed position (for example, when current instance is inside another one)
+    if (this.state !== "ready") {
+      if (
+        this.dragPosition.midPoint ||
+        Math.abs(rect.top - this.dragStart.rect.top) > 1 ||
+        Math.abs(rect.left - this.dragStart.rect.left) > 1
+      ) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        return;
+      }
+    }
+
+    if (this.trigger("click", event) === false) {
+      return;
+    }
+
+    if (this.option("zoom") && this.option("click") === "toggleZoom") {
+      event.preventDefault();
+      event.stopPropagation();
+
+      this.zoomWithClick(event);
+    }
+  }
+
+  /**
+   * Handle `wheel` event
+   * @param {Event} event
+   */
+  onWheel(event) {
+    if (this.trigger("wheel", event) === false) {
+      return;
+    }
+
+    if (this.option("zoom") && this.option("wheel")) {
+      this.zoomWithWheel(event);
+    }
+  }
+
+  /**
+   * Change zoom level depending on scroll direction
+   * @param {Event} event `wheel` event
+   */
+  zoomWithWheel(event) {
+    if (this.changedDelta === undefined) {
+      this.changedDelta = 0;
+    }
+
+    const delta = Math.max(-1, Math.min(1, -event.deltaY || -event.deltaX || event.wheelDelta || -event.detail));
+    const scale = this.content.scale;
+
+    let newScale = (scale * (100 + delta * this.option("wheelFactor"))) / 100;
+
+    if (
+      (delta < 0 && Math.abs(scale - this.option("minScale")) < 0.01) ||
+      (delta > 0 && Math.abs(scale - this.option("maxScale")) < 0.01)
+    ) {
+      this.changedDelta += Math.abs(delta);
+      newScale = scale;
+    } else {
+      this.changedDelta = 0;
+      newScale = Math.max(Math.min(newScale, this.option("maxScale")), this.option("minScale"));
+    }
+
+    if (this.changedDelta > this.option("wheelLimit")) {
+      return;
+    }
+
+    event.preventDefault();
+
+    if (newScale === scale) {
+      return;
+    }
+
+    const rect = this.$content.getBoundingClientRect();
+
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    this.zoomTo(newScale, { x, y });
+  }
+
+  /**
+   * Change zoom level depending on click coordinates
+   * @param {Event} event `click` event
+   */
+  zoomWithClick(event) {
+    const rect = this.$content.getClientRects()[0];
+
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    this.toggleZoom({ x, y });
+  }
+
+  /**
+   * Attach load, wheel and click event listeners, initialize `resizeObserver` and `PointerTracker`
+   */
+  attachEvents() {
+    this.$content.addEventListener("load", this.onLoad);
+
+    this.$container.addEventListener("wheel", this.onWheel, { passive: false });
+    this.$container.addEventListener("click", this.onClick, { passive: false });
+
+    this.initObserver();
+
+    const pointerTracker = new _shared_utils_PointerTracker_js__WEBPACK_IMPORTED_MODULE_3__.PointerTracker(this.$container, {
+      start: (pointer, event) => {
+        if (!this.option("touch")) {
+          return false;
+        }
+
+        if (this.velocity.scale < 0) {
+          return;
+        }
+
+        if (!pointerTracker.currentPointers.length) {
+          const ignoreClickedElement =
+            ["BUTTON", "TEXTAREA", "OPTION", "INPUT", "SELECT", "VIDEO"].indexOf(event.target.nodeName) !== -1;
+
+          if (ignoreClickedElement) {
+            return false;
+          }
+
+          // Allow text selection
+          if (this.option("textSelection") && (0,_shared_utils_getTextNodeFromPoint_js__WEBPACK_IMPORTED_MODULE_5__.getTextNodeFromPoint)(event.target, event.clientX, event.clientY)) {
+            return false;
+          }
+          // Allow scrolling
+          if ((0,_shared_utils_isScrollable_js__WEBPACK_IMPORTED_MODULE_4__.isScrollable)(event.target)) {
+            return false;
+          }
+        }
+
+        if (this.trigger("touchStart", event) === false) {
+          return false;
+        }
+
+        this.state = "pointerdown";
+
+        this.resetDragPosition();
+
+        this.dragPosition.midPoint = null;
+        this.dragPosition.time = Date.now();
+
+        return true;
+      },
+      move: (previousPointers, currentPointers, event) => {
+        if (this.state !== "pointerdown") {
+          return;
+        }
+
+        if (this.trigger("touchMove", event) == false) {
+          event.preventDefault();
+          return;
+        }
+
+        // Disable touch action if current zoom level is below base level
+        if (
+          currentPointers.length < 2 &&
+          this.option("panOnlyZoomed") == true &&
+          this.content.width <= this.viewport.width &&
+          this.content.height <= this.viewport.height &&
+          this.transform.scale <= this.option("baseScale")
+        ) {
+          return;
+        }
+
+        if (currentPointers.length > 1 && (!this.option("zoom") || this.option("pinchToZoom") === false)) {
+          return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        const prevMidpoint = (0,_shared_utils_PointerTracker_js__WEBPACK_IMPORTED_MODULE_3__.getMidpoint)(previousPointers[0], previousPointers[1]);
+        const newMidpoint = (0,_shared_utils_PointerTracker_js__WEBPACK_IMPORTED_MODULE_3__.getMidpoint)(currentPointers[0], currentPointers[1]);
+
+        const panX = newMidpoint.clientX - prevMidpoint.clientX;
+        const panY = newMidpoint.clientY - prevMidpoint.clientY;
+
+        const prevDistance = (0,_shared_utils_PointerTracker_js__WEBPACK_IMPORTED_MODULE_3__.getDistance)(previousPointers[0], previousPointers[1]);
+        const newDistance = (0,_shared_utils_PointerTracker_js__WEBPACK_IMPORTED_MODULE_3__.getDistance)(currentPointers[0], currentPointers[1]);
+
+        const scaleDiff = prevDistance ? newDistance / prevDistance : 1;
+
+        this.dragOffset.x += panX;
+        this.dragOffset.y += panY;
+
+        this.dragOffset.scale *= scaleDiff;
+
+        this.dragOffset.time = Date.now() - this.dragPosition.time;
+
+        const axisToLock = this.dragStart.scale === 1 && this.option("lockAxis");
+
+        if (axisToLock && !this.lockAxis) {
+          if (Math.abs(this.dragOffset.x) < 6 && Math.abs(this.dragOffset.y) < 6) {
+            return;
+          }
+
+          if (axisToLock === "xy") {
+            const angle = Math.abs((Math.atan2(this.dragOffset.y, this.dragOffset.x) * 180) / Math.PI);
+
+            this.lockAxis = angle > 45 && angle < 135 ? "y" : "x";
+          } else {
+            this.lockAxis = axisToLock;
+          }
+        }
+
+        if (this.lockAxis) {
+          this.dragOffset[this.lockAxis === "x" ? "y" : "x"] = 0;
+        }
+
+        this.$container.classList.add(this.option("draggingClass"));
+
+        if (!(this.transform.scale === this.option("baseScale") && this.lockAxis === "y")) {
+          this.dragPosition.x = this.dragStart.x + this.dragOffset.x;
+        }
+
+        if (!(this.transform.scale === this.option("baseScale") && this.lockAxis === "x")) {
+          this.dragPosition.y = this.dragStart.y + this.dragOffset.y;
+        }
+
+        this.dragPosition.scale = this.dragStart.scale * this.dragOffset.scale;
+
+        if (currentPointers.length > 1) {
+          const startPoint = (0,_shared_utils_PointerTracker_js__WEBPACK_IMPORTED_MODULE_3__.getMidpoint)(pointerTracker.startPointers[0], pointerTracker.startPointers[1]);
+
+          const xPos = startPoint.clientX - this.dragStart.rect.x;
+          const yPos = startPoint.clientY - this.dragStart.rect.y;
+
+          const { deltaX, deltaY } = this.getZoomDelta(this.content.scale * this.dragOffset.scale, xPos, yPos);
+
+          this.dragPosition.x -= deltaX;
+          this.dragPosition.y -= deltaY;
+
+          this.dragPosition.midPoint = newMidpoint;
+        } else {
+          this.setDragResistance();
+        }
+
+        // Update final position
+        this.transform = {
+          x: this.dragPosition.x,
+          y: this.dragPosition.y,
+          scale: this.dragPosition.scale,
+        };
+
+        this.startAnimation();
+      },
+      end: (pointer, event) => {
+        if (this.state !== "pointerdown") {
+          return;
+        }
+
+        this._dragOffset = { ...this.dragOffset };
+
+        if (pointerTracker.currentPointers.length) {
+          this.resetDragPosition();
+
+          return;
+        }
+
+        this.state = "decel";
+        this.friction = this.option("decelFriction");
+
+        this.recalculateTransform();
+
+        this.$container.classList.remove(this.option("draggingClass"));
+
+        if (this.trigger("touchEnd", event) === false) {
+          return;
+        }
+
+        if (this.state !== "decel") {
+          return;
+        }
+
+        // * Check if scaled content past limits
+
+        // Below minimum
+        const minScale = this.option("minScale");
+
+        if (this.transform.scale < minScale) {
+          this.zoomTo(minScale, { friction: 0.64 });
+
+          return;
+        }
+
+        // Exceed maximum
+        const maxScale = this.option("maxScale");
+
+        if (this.transform.scale - maxScale > 0.01) {
+          const last = this.dragPosition.midPoint || pointer;
+          const rect = this.$content.getClientRects()[0];
+
+          this.zoomTo(maxScale, {
+            friction: 0.64,
+            x: last.clientX - rect.left,
+            y: last.clientY - rect.top,
+          });
+
+          return;
+        }
+      },
+    });
+
+    this.pointerTracker = pointerTracker;
+  }
+
+  initObserver() {
+    if (this.resizeObserver) {
+      return;
+    }
+
+    this.resizeObserver = new _shared_utils_ResizeObserver_js__WEBPACK_IMPORTED_MODULE_2__.ResizeObserver(() => {
+      if (this.updateTimer) {
+        return;
+      }
+
+      this.updateTimer = setTimeout(() => {
+        const rect = this.$container.getBoundingClientRect();
+
+        if (!(rect.width && rect.height)) {
+          this.updateTimer = null;
+          return;
+        }
+
+        // Check to see if there are any changes
+        if (Math.abs(rect.width - this.container.width) > 1 || Math.abs(rect.height - this.container.height) > 1) {
+          if (this.isAnimating()) {
+            this.endAnimation(true);
+          }
+
+          this.updateMetrics();
+
+          this.panTo({
+            x: this.content.x,
+            y: this.content.y,
+            scale: this.option("baseScale"),
+            friction: 0,
+          });
+        }
+
+        this.updateTimer = null;
+      }, this.updateRate);
+    });
+
+    this.resizeObserver.observe(this.$container);
+  }
+
+  /**
+   * Restore drag related variables to default values
+   */
+  resetDragPosition() {
+    this.lockAxis = null;
+    this.friction = this.option("friction");
+
+    this.velocity = {
+      x: 0,
+      y: 0,
+      scale: 0,
+    };
+
+    const { x, y, scale } = this.content;
+
+    this.dragStart = {
+      rect: this.$content.getBoundingClientRect(),
+      x,
+      y,
+      scale,
+    };
+
+    this.dragPosition = {
+      ...this.dragPosition,
+      x,
+      y,
+      scale,
+    };
+
+    this.dragOffset = {
+      x: 0,
+      y: 0,
+      scale: 1,
+      time: 0,
+    };
+  }
+
+  /**
+   * Trigger update events before/after resizing content and viewport
+   */
+  updateMetrics(silently) {
+    if (silently !== true) {
+      this.trigger("beforeUpdate");
+    }
+
+    const $container = this.$container;
+    const $content = this.$content;
+    const $viewport = this.$viewport;
+
+    const contentIsImage = $content instanceof HTMLImageElement;
+    const contentIsZoomable = this.option("zoom");
+    const shouldResizeParent = this.option("resizeParent", contentIsZoomable);
+
+    let width = this.option("width");
+    let height = this.option("height");
+
+    let origWidth = width || (0,_shared_utils_getDimensions_js__WEBPACK_IMPORTED_MODULE_6__.getFullWidth)($content);
+    let origHeight = height || (0,_shared_utils_getDimensions_js__WEBPACK_IMPORTED_MODULE_6__.getFullHeight)($content);
+
+    Object.assign($content.style, {
+      width: width ? `${width}px` : "",
+      height: height ? `${height}px` : "",
+      maxWidth: "",
+      maxHeight: "",
+    });
+
+    if (shouldResizeParent) {
+      Object.assign($viewport.style, { width: "", height: "" });
+    }
+
+    const ratio = this.option("ratio");
+
+    origWidth = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(origWidth * ratio);
+    origHeight = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(origHeight * ratio);
+
+    width = origWidth;
+    height = origHeight;
+
+    const contentRect = $content.getBoundingClientRect();
+    const viewportRect = $viewport.getBoundingClientRect();
+
+    const containerRect = $viewport == $container ? viewportRect : $container.getBoundingClientRect();
+
+    let viewportWidth = Math.max($viewport.offsetWidth, (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(viewportRect.width));
+    let viewportHeight = Math.max($viewport.offsetHeight, (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(viewportRect.height));
+
+    let viewportStyles = window.getComputedStyle($viewport);
+    viewportWidth -= parseFloat(viewportStyles.paddingLeft) + parseFloat(viewportStyles.paddingRight);
+    viewportHeight -= parseFloat(viewportStyles.paddingTop) + parseFloat(viewportStyles.paddingBottom);
+
+    this.viewport.width = viewportWidth;
+    this.viewport.height = viewportHeight;
+
+    if (contentIsZoomable) {
+      if (Math.abs(origWidth - contentRect.width) > 0.1 || Math.abs(origHeight - contentRect.height) > 0.1) {
+        const rez = (0,_shared_utils_getDimensions_js__WEBPACK_IMPORTED_MODULE_6__.calculateAspectRatioFit)(
+          origWidth,
+          origHeight,
+          Math.min(origWidth, contentRect.width),
+          Math.min(origHeight, contentRect.height)
+        );
+
+        width = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(rez.width);
+        height = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(rez.height);
+      }
+
+      Object.assign($content.style, {
+        width: `${width}px`,
+        height: `${height}px`,
+        transform: "",
+      });
+    }
+
+    if (shouldResizeParent) {
+      Object.assign($viewport.style, { width: `${width}px`, height: `${height}px` });
+
+      this.viewport = { ...this.viewport, width, height };
+    }
+
+    if (contentIsImage && contentIsZoomable && typeof this.options.maxScale !== "function") {
+      const maxScale = this.option("maxScale");
+
+      this.options.maxScale = function () {
+        return this.content.origWidth > 0 && this.content.fitWidth > 0
+          ? this.content.origWidth / this.content.fitWidth
+          : maxScale;
+      };
+    }
+
+    this.content = {
+      ...this.content,
+      origWidth,
+      origHeight,
+      fitWidth: width,
+      fitHeight: height,
+      width,
+      height,
+      scale: 1,
+      isZoomable: contentIsZoomable,
+    };
+
+    this.container = { width: containerRect.width, height: containerRect.height };
+
+    if (silently !== true) {
+      this.trigger("afterUpdate");
+    }
+  }
+
+  /**
+   * Increase zoom level
+   * @param {Number} [step] Zoom ratio; `0.5` would increase scale from 1 to 1.5
+   */
+  zoomIn(step) {
+    this.zoomTo(this.content.scale + (step || this.option("step")));
+  }
+
+  /**
+   * Decrease zoom level
+   * @param {Number} [step] Zoom ratio; `0.5` would decrease scale from 1.5 to 1
+   */
+  zoomOut(step) {
+    this.zoomTo(this.content.scale - (step || this.option("step")));
+  }
+
+  /**
+   * Toggles zoom level between max and base levels
+   * @param {Object} [options] Additional options
+   */
+  toggleZoom(props = {}) {
+    const maxScale = this.option("maxScale");
+    const baseScale = this.option("baseScale");
+
+    const scale = this.content.scale > baseScale + (maxScale - baseScale) * 0.5 ? baseScale : maxScale;
+
+    this.zoomTo(scale, props);
+  }
+
+  /**
+   * Animate to given zoom level
+   * @param {Number} scale New zoom level
+   * @param {Object} [options] Additional options
+   */
+  zoomTo(scale = this.option("baseScale"), { x = null, y = null } = {}) {
+    scale = Math.max(Math.min(scale, this.option("maxScale")), this.option("minScale"));
+
+    // Adjust zoom position
+    const currentScale = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(this.content.scale / (this.content.width / this.content.fitWidth), 10000000);
+
+    if (x === null) {
+      x = this.content.width * currentScale * 0.5;
+    }
+
+    if (y === null) {
+      y = this.content.height * currentScale * 0.5;
+    }
+
+    const { deltaX, deltaY } = this.getZoomDelta(scale, x, y);
+
+    x = this.content.x - deltaX;
+    y = this.content.y - deltaY;
+
+    this.panTo({ x, y, scale, friction: this.option("zoomFriction") });
+  }
+
+  /**
+   * Calculate difference for top/left values if content would scale at given coordinates
+   * @param {Number} scale
+   * @param {Number} x
+   * @param {Number} y
+   * @returns {Object}
+   */
+  getZoomDelta(scale, x = 0, y = 0) {
+    const currentWidth = this.content.fitWidth * this.content.scale;
+    const currentHeight = this.content.fitHeight * this.content.scale;
+
+    const percentXInCurrentBox = x > 0 && currentWidth ? x / currentWidth : 0;
+    const percentYInCurrentBox = y > 0 && currentHeight ? y / currentHeight : 0;
+
+    const nextWidth = this.content.fitWidth * scale;
+    const nextHeight = this.content.fitHeight * scale;
+
+    const deltaX = (nextWidth - currentWidth) * percentXInCurrentBox;
+    const deltaY = (nextHeight - currentHeight) * percentYInCurrentBox;
+
+    return { deltaX, deltaY };
+  }
+
+  /**
+   * Animate to given positon and/or zoom level
+   * @param {Object} [options] Additional options
+   */
+  panTo({
+    x = this.content.x,
+    y = this.content.y,
+    scale,
+    friction = this.option("friction"),
+    ignoreBounds = false,
+  } = {}) {
+    scale = scale || this.content.scale || 1;
+
+    if (!ignoreBounds) {
+      const { boundX, boundY } = this.getBounds(scale);
+
+      if (boundX) {
+        x = Math.max(Math.min(x, boundX.to), boundX.from);
+      }
+
+      if (boundY) {
+        y = Math.max(Math.min(y, boundY.to), boundY.from);
+      }
+    }
+
+    this.friction = friction;
+
+    this.transform = {
+      ...this.transform,
+      x,
+      y,
+      scale,
+    };
+
+    if (friction) {
+      this.state = "panning";
+
+      this.velocity = {
+        x: (1 / this.friction - 1) * (x - this.content.x),
+        y: (1 / this.friction - 1) * (y - this.content.y),
+        scale: (1 / this.friction - 1) * (scale - this.content.scale),
+      };
+
+      this.startAnimation();
+    } else {
+      this.endAnimation();
+    }
+  }
+
+  /**
+   * Start animation loop
+   */
+  startAnimation() {
+    if (!this.rAF) {
+      this.trigger("startAnimation");
+    } else {
+      cancelAnimationFrame(this.rAF);
+    }
+
+    this.rAF = requestAnimationFrame(() => this.animate());
+  }
+
+  /**
+   * Process animation frame
+   */
+  animate() {
+    this.setEdgeForce();
+    this.setDragForce();
+
+    this.velocity.x *= this.friction;
+    this.velocity.y *= this.friction;
+
+    this.velocity.scale *= this.friction;
+
+    this.content.x += this.velocity.x;
+    this.content.y += this.velocity.y;
+
+    this.content.scale += this.velocity.scale;
+
+    if (this.isAnimating()) {
+      this.setTransform();
+    } else if (this.state !== "pointerdown") {
+      this.endAnimation();
+
+      return;
+    }
+
+    this.rAF = requestAnimationFrame(() => this.animate());
+  }
+
+  /**
+   * Calculate boundaries
+   */
+  getBounds(scale) {
+    let boundX = this.boundX;
+    let boundY = this.boundY;
+
+    if (boundX !== undefined && boundY !== undefined) {
+      return { boundX, boundY };
+    }
+
+    boundX = { from: 0, to: 0 };
+    boundY = { from: 0, to: 0 };
+
+    scale = scale || this.transform.scale;
+
+    const fitWidth = this.content.fitWidth;
+    const fitHeight = this.content.fitHeight;
+
+    const width = fitWidth * scale;
+    const height = fitHeight * scale;
+
+    const viewportWidth = this.viewport.width;
+    const viewportHeight = this.viewport.height;
+
+    if (fitWidth <= viewportWidth) {
+      const deltaX1 = (viewportWidth - width) * 0.5;
+      const deltaX2 = (width - fitWidth) * 0.5;
+
+      boundX.from = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(deltaX1 - deltaX2);
+      boundX.to = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(deltaX1 + deltaX2);
+    } else {
+      boundX.from = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(viewportWidth - width);
+    }
+
+    if (fitHeight <= viewportHeight) {
+      const deltaY1 = (viewportHeight - height) * 0.5;
+      const deltaY2 = (height - fitHeight) * 0.5;
+
+      boundY.from = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(deltaY1 - deltaY2);
+      boundY.to = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(deltaY1 + deltaY2);
+    } else {
+      boundY.from = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(viewportHeight - width);
+    }
+
+    return { boundX, boundY };
+  }
+
+  /**
+   * Change animation velocity if boundary is reached
+   */
+  setEdgeForce() {
+    if (this.state !== "decel") {
+      return;
+    }
+
+    const bounceForce = this.option("bounceForce");
+
+    const { boundX, boundY } = this.getBounds(Math.max(this.transform.scale, this.content.scale));
+
+    let pastLeft, pastRight, pastTop, pastBottom;
+
+    if (boundX) {
+      pastLeft = this.content.x < boundX.from;
+      pastRight = this.content.x > boundX.to;
+    }
+
+    if (boundY) {
+      pastTop = this.content.y < boundY.from;
+      pastBottom = this.content.y > boundY.to;
+    }
+
+    if (pastLeft || pastRight) {
+      const bound = pastLeft ? boundX.from : boundX.to;
+      const distance = bound - this.content.x;
+
+      let force = distance * bounceForce;
+
+      const restX = this.content.x + (this.velocity.x + force) / this.friction;
+
+      if (restX >= boundX.from && restX <= boundX.to) {
+        force += this.velocity.x;
+      }
+
+      this.velocity.x = force;
+
+      this.recalculateTransform();
+    }
+
+    if (pastTop || pastBottom) {
+      const bound = pastTop ? boundY.from : boundY.to;
+      const distance = bound - this.content.y;
+
+      let force = distance * bounceForce;
+
+      const restY = this.content.y + (force + this.velocity.y) / this.friction;
+
+      if (restY >= boundY.from && restY <= boundY.to) {
+        force += this.velocity.y;
+      }
+
+      this.velocity.y = force;
+
+      this.recalculateTransform();
+    }
+  }
+
+  /**
+   * Change dragging position if boundary is reached
+   */
+  setDragResistance() {
+    if (this.state !== "pointerdown") {
+      return;
+    }
+
+    const { boundX, boundY } = this.getBounds(this.dragPosition.scale);
+
+    let pastLeft, pastRight, pastTop, pastBottom;
+
+    if (boundX) {
+      pastLeft = this.dragPosition.x < boundX.from;
+      pastRight = this.dragPosition.x > boundX.to;
+    }
+
+    if (boundY) {
+      pastTop = this.dragPosition.y < boundY.from;
+      pastBottom = this.dragPosition.y > boundY.to;
+    }
+
+    if ((pastLeft || pastRight) && !(pastLeft && pastRight)) {
+      const bound = pastLeft ? boundX.from : boundX.to;
+      const distance = bound - this.dragPosition.x;
+
+      this.dragPosition.x = bound - distance * 0.3;
+    }
+
+    if ((pastTop || pastBottom) && !(pastTop && pastBottom)) {
+      const bound = pastTop ? boundY.from : boundY.to;
+      const distance = bound - this.dragPosition.y;
+
+      this.dragPosition.y = bound - distance * 0.3;
+    }
+  }
+
+  /**
+   * Set velocity to move content to drag position
+   */
+  setDragForce() {
+    if (this.state === "pointerdown") {
+      this.velocity.x = this.dragPosition.x - this.content.x;
+      this.velocity.y = this.dragPosition.y - this.content.y;
+      this.velocity.scale = this.dragPosition.scale - this.content.scale;
+    }
+  }
+
+  /**
+   * Update end values based on current velocity and friction;
+   */
+  recalculateTransform() {
+    this.transform.x = this.content.x + this.velocity.x / (1 / this.friction - 1);
+    this.transform.y = this.content.y + this.velocity.y / (1 / this.friction - 1);
+    this.transform.scale = this.content.scale + this.velocity.scale / (1 / this.friction - 1);
+  }
+
+  /**
+   * Check if content is currently animating
+   * @returns {Boolean}
+   */
+  isAnimating() {
+    return !!(
+      this.friction &&
+      (Math.abs(this.velocity.x) > 0.05 || Math.abs(this.velocity.y) > 0.05 || Math.abs(this.velocity.scale) > 0.05)
+    );
+  }
+
+  /**
+   * Set content `style.transform` value based on current animation frame
+   */
+  setTransform(final) {
+    let x, y, scale;
+
+    if (final) {
+      x = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(this.transform.x);
+      y = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(this.transform.y);
+
+      scale = this.transform.scale;
+
+      this.content = { ...this.content, x, y, scale };
+    } else {
+      x = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(this.content.x);
+      y = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(this.content.y);
+
+      scale = this.content.scale / (this.content.width / this.content.fitWidth);
+
+      this.content = { ...this.content, x, y };
+    }
+
+    this.trigger("beforeTransform");
+
+    x = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(this.content.x);
+    y = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(this.content.y);
+
+    if (final && this.option("zoom")) {
+      let width;
+      let height;
+
+      width = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(this.content.fitWidth * scale);
+      height = (0,_shared_utils_round_js__WEBPACK_IMPORTED_MODULE_1__.round)(this.content.fitHeight * scale);
+
+      this.content.width = width;
+      this.content.height = height;
+
+      this.transform = { ...this.transform, width, height, scale };
+
+      Object.assign(this.$content.style, {
+        width: `${width}px`,
+        height: `${height}px`,
+        maxWidth: "none",
+        maxHeight: "none",
+        transform: `translate3d(${x}px, ${y}px, 0) scale(1)`,
+      });
+    } else {
+      this.$content.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
+    }
+
+    this.trigger("afterTransform");
+  }
+
+  /**
+   * Stop animation loop
+   */
+  endAnimation(silently) {
+    cancelAnimationFrame(this.rAF);
+    this.rAF = null;
+
+    this.velocity = {
+      x: 0,
+      y: 0,
+      scale: 0,
+    };
+
+    this.setTransform(true);
+
+    this.state = "ready";
+
+    this.handleCursor();
+
+    if (silently !== true) {
+      this.trigger("endAnimation");
+    }
+  }
+
+  /**
+   * Update the class name depending on whether the content is scaled
+   */
+  handleCursor() {
+    const draggableClass = this.option("draggableClass");
+
+    if (!draggableClass || !this.option("touch")) {
+      return;
+    }
+
+    if (
+      this.option("panOnlyZoomed") == true &&
+      this.content.width <= this.viewport.width &&
+      this.content.height <= this.viewport.height &&
+      this.transform.scale <= this.option("baseScale")
+    ) {
+      this.$container.classList.remove(draggableClass);
+    } else {
+      this.$container.classList.add(draggableClass);
+    }
+  }
+
+  /**
+   * Remove observation and detach event listeners
+   */
+  detachEvents() {
+    this.$content.removeEventListener("load", this.onLoad);
+
+    this.$container.removeEventListener("wheel", this.onWheel, { passive: false });
+    this.$container.removeEventListener("click", this.onClick, { passive: false });
+
+    if (this.pointerTracker) {
+      this.pointerTracker.stop();
+      this.pointerTracker = null;
+    }
+
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+      this.resizeObserver = null;
+    }
+  }
+
+  /**
+   * Clean up
+   */
+  destroy() {
+    if (this.state === "destroy") {
+      return;
+    }
+
+    this.state = "destroy";
+
+    clearTimeout(this.updateTimer);
+    this.updateTimer = null;
+
+    cancelAnimationFrame(this.rAF);
+    this.rAF = null;
+
+    this.detachEvents();
+
+    this.detachPlugins();
+
+    this.resetDragPosition();
+  }
+}
+
+// Expose version
+Panzoom.version = "__VERSION__";
+
+// Static properties are a recent addition that dont work in all browsers yet
+Panzoom.Plugins = _plugins_index_js__WEBPACK_IMPORTED_MODULE_8__.Plugins;
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/Panzoom/plugins/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/Panzoom/plugins/index.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Plugins": () => (/* binding */ Plugins)
+/* harmony export */ });
+const Plugins = {};
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/Base/Base.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/Base/Base.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Base": () => (/* binding */ Base)
+/* harmony export */ });
+/* harmony import */ var _utils_extend_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/extend.js */ "./node_modules/@fancyapps/ui/src/shared/utils/extend.js");
+/* harmony import */ var _utils_resolve_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/resolve.js */ "./node_modules/@fancyapps/ui/src/shared/utils/resolve.js");
+/* harmony import */ var _utils_isPlainObject_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/isPlainObject.js */ "./node_modules/@fancyapps/ui/src/shared/utils/isPlainObject.js");
+
+
+
+
+/**
+ * Base class, all components inherit from this class
+ */
+class Base {
+  /**
+   * Base constructor
+   * @param {Object} [options] - Options as `key: value` pairs
+   */
+  constructor(options = {}) {
+    this.options = (0,_utils_extend_js__WEBPACK_IMPORTED_MODULE_0__.extend)(true, {}, options);
+
+    this.plugins = [];
+    this.events = {};
+
+    // * Prefill with initial events
+    for (const type of ["on", "once"]) {
+      for (const args of Object.entries(this.options[type] || {})) {
+        this[type](...args);
+      }
+    }
+  }
+
+  /**
+   * Retrieve option value by key, supports subkeys
+   * @param {String} key Option name
+   * @param {*} [fallback] Fallback value for non-existing key
+   * @returns {*}
+   */
+  option(key, fallback, ...rest) {
+    // Make sure it is string
+    key = String(key);
+
+    let value = (0,_utils_resolve_js__WEBPACK_IMPORTED_MODULE_1__.resolve)(key, this.options);
+
+    // Allow to have functions as options
+    if (typeof value === "function") {
+      value = value.call(this, this, ...rest);
+    }
+
+    return value === undefined ? fallback : value;
+  }
+
+  /**
+   * Simple l10n support - replaces object keys
+   * found in template with corresponding values
+   * @param {String} str String containing values to localize
+   * @param {Array} params Substitute parameters
+   * @returns {String}
+   */
+  localize(str, params = []) {
+    str = String(str).replace(/\{\{(\w+).?(\w+)?\}\}/g, (match, key, subkey) => {
+      let rez = "";
+
+      // Plugins have `Plugin.l10n.KEY`
+      if (subkey) {
+        rez = this.option(`${key[0] + key.toLowerCase().substring(1)}.l10n.${subkey}`);
+      } else if (key) {
+        rez = this.option(`l10n.${key}`);
+      }
+
+      if (!rez) {
+        rez = match;
+      }
+
+      for (let index = 0; index < params.length; index++) {
+        rez = rez.split(params[index][0]).join(params[index][1]);
+      }
+
+      return rez;
+    });
+
+    str = str.replace(/\{\{(.*)\}\}/, (match, key) => {
+      return key;
+    });
+
+    return str;
+  }
+
+  /**
+   * Subscribe to an event
+   * @param {String} name
+   * @param {Function} callback
+   * @returns {Object}
+   */
+  on(name, callback) {
+    if ((0,_utils_isPlainObject_js__WEBPACK_IMPORTED_MODULE_2__.isPlainObject)(name)) {
+      for (const args of Object.entries(name)) {
+        this.on(...args);
+      }
+
+      return this;
+    }
+
+    String(name)
+      .split(" ")
+      .forEach((item) => {
+        const listeners = (this.events[item] = this.events[item] || []);
+
+        if (listeners.indexOf(callback) == -1) {
+          listeners.push(callback);
+        }
+      });
+
+    return this;
+  }
+
+  /**
+   * Subscribe to an event only once
+   * @param {String} name
+   * @param {Function} callback
+   * @returns {Object}
+   */
+  once(name, callback) {
+    if ((0,_utils_isPlainObject_js__WEBPACK_IMPORTED_MODULE_2__.isPlainObject)(name)) {
+      for (const args of Object.entries(name)) {
+        this.once(...args);
+      }
+
+      return this;
+    }
+
+    String(name)
+      .split(" ")
+      .forEach((item) => {
+        const listener = (...details) => {
+          this.off(item, listener);
+          callback.call(this, this, ...details);
+        };
+
+        listener._ = callback;
+
+        this.on(item, listener);
+      });
+
+    return this;
+  }
+
+  /**
+   * Unsubscribe event with name and callback
+   * @param {String} name
+   * @param {Function} callback
+   * @returns {Object}
+   */
+  off(name, callback) {
+    if ((0,_utils_isPlainObject_js__WEBPACK_IMPORTED_MODULE_2__.isPlainObject)(name)) {
+      for (const args of Object.entries(name)) {
+        this.off(...args);
+      }
+
+      return;
+    }
+
+    name.split(" ").forEach((item) => {
+      const listeners = this.events[item];
+
+      if (!listeners || !listeners.length) {
+        return this;
+      }
+
+      let index = -1;
+
+      for (let i = 0, len = listeners.length; i < len; i++) {
+        const listener = listeners[i];
+
+        if (listener && (listener === callback || listener._ === callback)) {
+          index = i;
+          break;
+        }
+      }
+
+      if (index != -1) {
+        listeners.splice(index, 1);
+      }
+    });
+
+    return this;
+  }
+
+  /**
+   * Emit an event.
+   * If present, `"*"` handlers are invoked after name-matched handlers.
+   * @param {String} name
+   * @param  {...any} details
+   * @returns {Boolean}
+   */
+  trigger(name, ...details) {
+    for (const listener of [...(this.events[name] || [])].slice()) {
+      if (listener && listener.call(this, this, ...details) === false) {
+        return false;
+      }
+    }
+
+    // A wildcard "*" event type
+    for (const listener of [...(this.events["*"] || [])].slice()) {
+      if (listener && listener.call(this, name, this, ...details) === false) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  /**
+   * Add given plugins to this instance,
+   * this will end up calling `attach` method of each plugin
+   * @param {Object} Plugins
+   * @returns {Object}
+   */
+  attachPlugins(plugins) {
+    const newPlugins = {};
+
+    for (const [key, Plugin] of Object.entries(plugins || {})) {
+      // Check if this plugin is not disabled by option
+      if (this.options[key] !== false && !this.plugins[key]) {
+        // Populate options with defaults from the plugin
+        this.options[key] = (0,_utils_extend_js__WEBPACK_IMPORTED_MODULE_0__.extend)({}, Plugin.defaults || {}, this.options[key]);
+
+        // Initialise plugin
+        newPlugins[key] = new Plugin(this);
+      }
+    }
+
+    for (const [key, plugin] of Object.entries(newPlugins)) {
+      plugin.attach(this);
+    }
+
+    this.plugins = Object.assign({}, this.plugins, newPlugins);
+
+    return this;
+  }
+
+  /**
+   * Remove all plugin instances from this instance,
+   * this will end up calling `detach` method of each plugin
+   * @returns {Object}
+   */
+  detachPlugins() {
+    for (const key in this.plugins) {
+      let plugin;
+
+      if ((plugin = this.plugins[key]) && typeof plugin.detach === "function") {
+        plugin.detach(this);
+      }
+    }
+
+    this.plugins = {};
+
+    return this;
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/utils/Fullscreen.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/utils/Fullscreen.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Fullscreen": () => (/* binding */ Fullscreen)
+/* harmony export */ });
+const Fullscreen = {
+  pageXOffset: 0,
+  pageYOffset: 0,
+
+  element() {
+    return document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
+  },
+
+  activate(element) {
+    Fullscreen.pageXOffset = window.pageXOffset;
+    Fullscreen.pageYOffset = window.pageYOffset;
+
+    if (element.requestFullscreen) {
+      element.requestFullscreen(); // W3C spec
+    } else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen(); // Firefox
+    } else if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen(); // Safari
+    } else if (element.msRequestFullscreen) {
+      element.msRequestFullscreen(); // IE/Edge
+    }
+  },
+
+  deactivate() {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+  },
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/utils/PointerTracker.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/utils/PointerTracker.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PointerTracker": () => (/* binding */ PointerTracker),
+/* harmony export */   "getDistance": () => (/* binding */ getDistance),
+/* harmony export */   "getMidpoint": () => (/* binding */ getMidpoint)
+/* harmony export */ });
+/* harmony import */ var _clearTextSelection_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./clearTextSelection.js */ "./node_modules/@fancyapps/ui/src/shared/utils/clearTextSelection.js");
+
+
+class Pointer {
+  constructor(nativePointer) {
+    this.id = -1;
+
+    this.id = nativePointer.pointerId || nativePointer.identifier || -1;
+
+    this.pageX = nativePointer.pageX;
+    this.pageY = nativePointer.pageY;
+
+    this.clientX = nativePointer.clientX;
+    this.clientY = nativePointer.clientY;
+
+    this.nativePointer = nativePointer;
+  }
+}
+
+function getDistance(a, b) {
+  if (!b) {
+    return 0;
+  }
+
+  return Math.sqrt((b.clientX - a.clientX) ** 2 + (b.clientY - a.clientY) ** 2);
+}
+
+function getMidpoint(a, b) {
+  if (!b) {
+    return a;
+  }
+
+  return {
+    clientX: (a.clientX + b.clientX) / 2,
+    clientY: (a.clientY + b.clientY) / 2,
+  };
+}
+
+class PointerTracker {
+  constructor(element, { start = () => true, move = () => {}, end = () => {} } = {}) {
+    this.element = element;
+
+    this.startPointers = [];
+    this.currentPointers = [];
+
+    this.startCallback = start;
+    this.moveCallback = move;
+    this.endCallback = end;
+
+    this.onStart = (event) => {
+      if (event.button && event.button !== 0) {
+        return;
+      }
+
+      const pointer = new Pointer(event);
+
+      if (this.startCallback(pointer, event) === false) {
+        return false;
+      }
+
+      event.preventDefault();
+
+      (0,_clearTextSelection_js__WEBPACK_IMPORTED_MODULE_0__.clearTextSelection)();
+
+      this.currentPointers.push(pointer);
+      this.startPointers.push(pointer);
+
+      const capturingElement = event.target && "setPointerCapture" in event.target ? event.target : this.element;
+
+      capturingElement.setPointerCapture(event.pointerId);
+
+      this.element.addEventListener("pointermove", this.onMove);
+      this.element.addEventListener("pointerup", this.onEnd);
+      this.element.addEventListener("pointercancel", this.onEnd);
+    };
+
+    this.onMove = (event) => {
+      const previousPointers = this.currentPointers.slice();
+      const trackedChangedPointers = [];
+
+      for (const pointer of [new Pointer(event)]) {
+        const index = this.currentPointers.findIndex((p) => p.id === pointer.id);
+
+        if (index < 0) {
+          continue;
+        }
+
+        trackedChangedPointers.push(pointer);
+
+        this.currentPointers[index] = pointer;
+      }
+
+      if (trackedChangedPointers.length) {
+        this.moveCallback(previousPointers, this.currentPointers, event);
+      }
+    };
+
+    this.onEnd = (event) => {
+      const pointer = new Pointer(event);
+      const index = this.currentPointers.findIndex((p) => p.id === pointer.id);
+
+      if (index === -1) {
+        return false;
+      }
+
+      this.currentPointers.splice(index, 1);
+      this.startPointers.splice(index, 1);
+
+      this.endCallback(pointer, event);
+
+      if (!this.currentPointers.length) {
+        this.element.removeEventListener("pointermove", this.onMove);
+        this.element.removeEventListener("pointerup", this.onEnd);
+        this.element.removeEventListener("pointercancel", this.onEnd);
+      }
+    };
+
+    this.element.addEventListener("pointerdown", this.onStart);
+  }
+
+  stop() {
+    this.element.removeEventListener("pointerdown", this.onStart);
+    this.element.removeEventListener("pointermove", this.onMove);
+    this.element.removeEventListener("pointerup", this.onEnd);
+    this.element.removeEventListener("pointercancel", this.onEnd);
+  }
+}
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/utils/ResizeObserver.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/utils/ResizeObserver.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ResizeObserver": () => (/* binding */ ResizeObserver)
+/* harmony export */ });
+/**
+ * ResizeObserver Polyfill
+ */
+const ResizeObserver =
+  (typeof window !== "undefined" && window.ResizeObserver) ||
+  class {
+    constructor(callback) {
+      this.observables = [];
+      // Array of observed elements that looks like this:
+      // [{
+      //   el: domNode,
+      //   size: {height: x, width: y}
+      // }]
+      this.boundCheck = this.check.bind(this);
+      this.boundCheck();
+      this.callback = callback;
+    }
+
+    observe(el) {
+      if (this.observables.some((observable) => observable.el === el)) {
+        return;
+      }
+
+      const newObservable = {
+        el: el,
+        size: {
+          height: el.clientHeight,
+          width: el.clientWidth,
+        },
+      };
+
+      this.observables.push(newObservable);
+    }
+
+    unobserve(el) {
+      this.observables = this.observables.filter((obj) => obj.el !== el);
+    }
+
+    disconnect() {
+      this.observables = [];
+    }
+
+    check() {
+      const changedEntries = this.observables
+        .filter((obj) => {
+          const currentHeight = obj.el.clientHeight;
+          const currentWidth = obj.el.clientWidth;
+          if (obj.size.height !== currentHeight || obj.size.width !== currentWidth) {
+            obj.size.height = currentHeight;
+            obj.size.width = currentWidth;
+            return true;
+          }
+        })
+        .map((obj) => obj.el);
+
+      if (changedEntries.length > 0) {
+        this.callback(changedEntries);
+      }
+
+      window.requestAnimationFrame(this.boundCheck);
+    }
+  };
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/utils/Slideshow.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/utils/Slideshow.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Slideshow": () => (/* binding */ Slideshow)
+/* harmony export */ });
+class Slideshow {
+  constructor(fancybox) {
+    this.fancybox = fancybox;
+    this.active = false;
+
+    this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
+  }
+
+  isActive() {
+    return this.active;
+  }
+
+  setTimer() {
+    if (!this.active || this.timer) {
+      return;
+    }
+
+    const delay = this.fancybox.option("slideshow.delay", 3000);
+
+    this.timer = setTimeout(() => {
+      this.timer = null;
+
+      if (
+        !this.fancybox.option("infinite") &&
+        this.fancybox.getSlide().index === this.fancybox.Carousel.slides.length - 1
+      ) {
+        this.fancybox.jumpTo(0, { friction: 0 });
+      } else {
+        this.fancybox.next();
+      }
+    }, delay);
+
+    let $progress = this.$progress;
+
+    if (!$progress) {
+      $progress = document.createElement("div");
+      $progress.classList.add("fancybox__progress");
+
+      this.fancybox.$carousel.parentNode.insertBefore($progress, this.fancybox.$carousel);
+
+      this.$progress = $progress;
+
+      $progress.offsetHeight; /* trigger reflow */
+    }
+
+    $progress.style.transitionDuration = `${delay}ms`;
+    $progress.style.transform = "scaleX(1)";
+  }
+
+  clearTimer() {
+    clearTimeout(this.timer);
+    this.timer = null;
+
+    if (this.$progress) {
+      this.$progress.style.transitionDuration = "";
+      this.$progress.style.transform = "";
+
+      this.$progress.offsetHeight; /* trigger reflow */
+    }
+  }
+
+  activate() {
+    if (this.active) {
+      return;
+    }
+
+    this.active = true;
+    this.fancybox.$container.classList.add("has-slideshow");
+
+    if (this.fancybox.getSlide().state === "done") {
+      this.setTimer();
+    }
+
+    document.addEventListener("visibilitychange", this.handleVisibilityChange, false);
+  }
+
+  handleVisibilityChange() {
+    this.deactivate();
+  }
+
+  deactivate() {
+    this.active = false;
+
+    this.clearTimer();
+
+    this.fancybox.$container.classList.remove("has-slideshow");
+
+    document.removeEventListener("visibilitychange", this.handleVisibilityChange, false);
+  }
+
+  toggle() {
+    if (this.active) {
+      this.deactivate();
+    } else if (this.fancybox.Carousel.slides.length > 1) {
+      this.activate();
+    }
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/utils/canUseDOM.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/utils/canUseDOM.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "canUseDOM": () => (/* binding */ canUseDOM)
+/* harmony export */ });
+/**
+ * Detect if rendering from the client or the server
+ */
+const canUseDOM = !!(typeof window !== "undefined" && window.document && window.document.createElement);
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/utils/clearTextSelection.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/utils/clearTextSelection.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "clearTextSelection": () => (/* binding */ clearTextSelection)
+/* harmony export */ });
+/**
+ *  Deselect any text which may be selected on a page
+ */
+const clearTextSelection = () => {
+  const selection = window.getSelection ? window.getSelection() : document.selection;
+
+  if (selection && selection.rangeCount && selection.getRangeAt(0).getClientRects().length) {
+    if (selection.removeAllRanges) {
+      selection.removeAllRanges();
+    } else if (selection.empty) {
+      selection.empty();
+    }
+  }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/utils/extend.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/utils/extend.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "extend": () => (/* binding */ extend)
+/* harmony export */ });
+/* harmony import */ var _isPlainObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isPlainObject.js */ "./node_modules/@fancyapps/ui/src/shared/utils/isPlainObject.js");
+
+
+/**
+ * Merge the contents of two or more objects together into the first object.
+ * If passing "true" for first argument, the merge becomes recursive (aka. deep copy).
+ * @param  {...any} args
+ * @returns {Object}
+ */
+const extend = (...args) => {
+  let deep = false;
+
+  if (typeof args[0] == "boolean") {
+    deep = args.shift();
+  }
+
+  let result = args[0];
+
+  if (!result || typeof result !== "object") {
+    throw new Error("extendee must be an object");
+  }
+
+  const extenders = args.slice(1);
+  const len = extenders.length;
+
+  for (let i = 0; i < len; i++) {
+    const extender = extenders[i];
+
+    for (let key in extender) {
+      if (extender.hasOwnProperty(key)) {
+        const value = extender[key];
+
+        if (deep && (Array.isArray(value) || (0,_isPlainObject_js__WEBPACK_IMPORTED_MODULE_0__.isPlainObject)(value))) {
+          const base = Array.isArray(value) ? [] : {};
+
+          result[key] = extend(true, result.hasOwnProperty(key) ? result[key] : base, value);
+        } else {
+          result[key] = value;
+        }
+      }
+    }
+  }
+
+  return result;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/utils/getDimensions.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/utils/getDimensions.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getFullWidth": () => (/* binding */ getFullWidth),
+/* harmony export */   "getFullHeight": () => (/* binding */ getFullHeight),
+/* harmony export */   "calculateAspectRatioFit": () => (/* binding */ calculateAspectRatioFit)
+/* harmony export */ });
+/**
+ * Get actual width of the element, regardless of how much of content is currently visible
+ * @param {Element} elem
+ * @returns {Integer}
+ */
+const getFullWidth = (elem) => {
+  return Math.max(
+    parseFloat(elem.naturalWidth || 0),
+    parseFloat((elem.width && elem.width.baseVal && elem.width.baseVal.value) || 0),
+    parseFloat(elem.offsetWidth || 0),
+    parseFloat(elem.scrollWidth || 0)
+  );
+};
+
+/**
+ * Get actual height of the element, regardless of how much of content is currently visible
+ * @param {Element} elem
+ * @returns {Integer}
+ */
+const getFullHeight = (elem) => {
+  return Math.max(
+    parseFloat(elem.naturalHeight || 0),
+    parseFloat((elem.height && elem.height.baseVal && elem.height.baseVal.value) || 0),
+    parseFloat(elem.offsetHeight || 0),
+    parseFloat(elem.scrollHeight || 0)
+  );
+};
+
+/**
+ * Calculate bounding size to fit dimensions while preserving aspect ratio
+ * @param {Number} srcWidth
+ * @param {Number} srcHeight
+ * @param {Number} maxWidth
+ * @param {Number} maxHeight
+ * @returns {Object}
+ */
+const calculateAspectRatioFit = (srcWidth, srcHeight, maxWidth, maxHeight) => {
+  const ratio = Math.min(maxWidth / srcWidth || 0, maxHeight / srcHeight);
+
+  return { width: srcWidth * ratio || 0, height: srcHeight * ratio || 0 };
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/utils/getTextNodeFromPoint.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/utils/getTextNodeFromPoint.js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getTextNodeFromPoint": () => (/* binding */ getTextNodeFromPoint)
+/* harmony export */ });
+/**
+ * Get element child node at the given coordinates
+ * @param {Element} HTML element
+ * @param {Float|Integer} x
+ * @param {Float|Integer} y
+ * @returns {Node|Boolean}}
+ */
+const getTextNodeFromPoint = (element, x, y) => {
+  const nodes = element.childNodes;
+  const range = document.createRange();
+
+  for (let i = 0; i < nodes.length; i++) {
+    const node = nodes[i];
+
+    if (node.nodeType !== Node.TEXT_NODE) {
+      continue;
+    }
+
+    range.selectNodeContents(node);
+
+    const rect = range.getBoundingClientRect();
+
+    if (x >= rect.left && y >= rect.top && x <= rect.right && y <= rect.bottom) {
+      return node;
+    }
+  }
+
+  return false;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/utils/isPlainObject.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/utils/isPlainObject.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "isPlainObject": () => (/* binding */ isPlainObject)
+/* harmony export */ });
+/**
+ * Check to see if an object is a plain object (created using "{}" or "new Object").
+ * @param {*} obj Variable of any type
+ * @returns {Boolean}
+ */
+const isPlainObject = (obj) => {
+  return (
+    // separate from primitives
+    typeof obj === "object" &&
+    // is obvious
+    obj !== null &&
+    // separate instances (Array, DOM, ...)
+    obj.constructor === Object &&
+    // separate build-in like Math
+    Object.prototype.toString.call(obj) === "[object Object]"
+  );
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/utils/isScrollable.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/utils/isScrollable.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "hasScrollbars": () => (/* binding */ hasScrollbars),
+/* harmony export */   "isScrollable": () => (/* binding */ isScrollable)
+/* harmony export */ });
+/**
+ * Check if  element has scrollable content
+ * @param {Node} node
+ * @returns {Boolean}
+ */
+const hasScrollbars = function (node) {
+  const overflowY = getComputedStyle(node)["overflow-y"],
+    overflowX = getComputedStyle(node)["overflow-x"],
+    vertical = (overflowY === "scroll" || overflowY === "auto") && Math.abs(node.scrollHeight - node.clientHeight) > 1,
+    horizontal = (overflowX === "scroll" || overflowX === "auto") && Math.abs(node.scrollWidth - node.clientWidth) > 1;
+
+  return vertical || horizontal;
+};
+
+/**
+ * Check if element or one of the parents is scrollable
+ * @param {Node} node  DOM Node element
+ * @returns {Boolean}
+ */
+const isScrollable = function (node) {
+  if (!node || !(typeof node === "object" && node instanceof Element) || node === document.body) {
+    return false;
+  }
+
+  if (hasScrollbars(node)) {
+    return node;
+  }
+
+  return isScrollable(node.parentNode);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/utils/resolve.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/utils/resolve.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "resolve": () => (/* binding */ resolve)
+/* harmony export */ });
+/**
+ * Access nested JavaScript objects by string path.
+ * Example: `resolve("a.b.c", {a:{b:{c:"d"}})` would return `d`
+ * @param {String} path
+ * @param {Object} obj
+ * @returns {*}
+ */
+const resolve = function (path, obj) {
+  return path.split(".").reduce(function (prev, curr) {
+    return prev && prev[curr];
+  }, obj);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/utils/round.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/utils/round.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "round": () => (/* binding */ round)
+/* harmony export */ });
+/**
+ * Round half up; to be more specific and to ensure things like 1.005 round correctly
+ * @param {Float} value
+ * @param {Integer} precision
+ * @returns {Float}
+ */
+const round = (value, precision = 10000) => {
+  value = parseFloat(value) || 0;
+
+  return Math.round((value + Number.EPSILON) * precision) / precision;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/utils/setFocusOn.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/utils/setFocusOn.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FOCUSABLE_ELEMENTS": () => (/* binding */ FOCUSABLE_ELEMENTS),
+/* harmony export */   "setFocusOn": () => (/* binding */ setFocusOn)
+/* harmony export */ });
+/* harmony import */ var _canUseDOM_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./canUseDOM.js */ "./node_modules/@fancyapps/ui/src/shared/utils/canUseDOM.js");
+
+
+let preventScrollSupported = null;
+
+const FOCUSABLE_ELEMENTS = [
+  "a[href]",
+  "area[href]",
+  'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
+  "select:not([disabled]):not([aria-hidden])",
+  "textarea:not([disabled]):not([aria-hidden])",
+  "button:not([disabled]):not([aria-hidden])",
+  "iframe",
+  "object",
+  "embed",
+  "video",
+  "audio",
+  "[contenteditable]",
+  '[tabindex]:not([tabindex^="-"]):not([disabled]):not([aria-hidden])',
+];
+
+const setFocusOn = (node) => {
+  if (!node || !_canUseDOM_js__WEBPACK_IMPORTED_MODULE_0__.canUseDOM) {
+    return;
+  }
+
+  if (preventScrollSupported === null) {
+    document.createElement("div").focus({
+      get preventScroll() {
+        preventScrollSupported = true;
+
+        return false;
+      },
+    });
+  }
+
+  try {
+    if (node.setActive) {
+      // IE/Edge
+      node.setActive();
+    } else if (preventScrollSupported) {
+      // Modern browsers
+      node.focus({ preventScroll: true });
+    } else {
+      // Safari does not support `preventScroll` option
+      // https://bugs.webkit.org/show_bug.cgi?id=178583
+
+      // Save position
+      const scrollTop = window.pageXOffset || document.body.scrollTop;
+      const scrollLeft = window.pageYOffset || document.body.scrollLeft;
+
+      node.focus();
+
+      document.body.scrollTo({
+        top: scrollTop,
+        left: scrollLeft,
+        behavior: "auto",
+      });
+    }
+  } catch (e) {}
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@fancyapps/ui/src/shared/utils/throttle.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@fancyapps/ui/src/shared/utils/throttle.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "throttle": () => (/* binding */ throttle)
+/* harmony export */ });
+/**
+ * Throttling enforces a maximum number of times a function can be called over time
+ * @param {Function} func Callback function
+ * @param {Integer} limit Milliseconds
+ * @returns {Function}
+ */
+const throttle = (func, limit) => {
+  let lastCall = 0;
+
+  return function (...args) {
+    const now = new Date().getTime();
+
+    if (now - lastCall < limit) {
+      return;
+    }
+
+    lastCall = now;
+
+    return func(...args);
+  };
+};
 
 
 /***/ }),
@@ -23155,7 +31400,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _script_progressBar__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_script_progressBar__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _script_videosPlayer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./script/videosPlayer */ "./assets/js/script/videosPlayer.js");
 /* harmony import */ var _script_DropdownButtons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./script/DropdownButtons */ "./assets/js/script/DropdownButtons.js");
-/* harmony import */ var _script_featuredHome__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./script/featuredHome */ "./assets/js/script/featuredHome.js");
+/* harmony import */ var _components_qmiSearchFooterContent__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/qmiSearchFooterContent */ "./assets/js/components/qmiSearchFooterContent.js");
+/* harmony import */ var _script_detailPageGallery__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./script/detailPageGallery */ "./assets/js/script/detailPageGallery.js");
+/* harmony import */ var _components_generalScript__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/generalScript */ "./assets/js/components/generalScript.js");
+/* harmony import */ var _script_featuredHome__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./script/featuredHome */ "./assets/js/script/featuredHome.js");
+/* harmony import */ var _script_accordion__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./script/accordion */ "./assets/js/script/accordion.js");
+/* harmony import */ var _components_communityFilterContent__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/communityFilterContent */ "./assets/js/components/communityFilterContent.js");
+/* harmony import */ var _script_elevationGallery__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./script/elevationGallery */ "./assets/js/script/elevationGallery.js");
 // you can import modules from the theme lib or even from
 // NPM packages if they support it.
 
@@ -23173,21 +31424,33 @@ __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap
 
 
 
- // import footerCtaListing from './script/footerCtaListing';
+
+
+
+
+
+
+ // import homeDesignsSearchFooterContent from './components/homeDesignsSearchFooterContent';
 
  // Initialise our components on jQuery.ready…
 
 jQuery(function ($) {
   _components_AnimateOnPageLinks__WEBPACK_IMPORTED_MODULE_5__["default"].init();
   _components_SelectButtton__WEBPACK_IMPORTED_MODULE_6__["default"].init();
+  _components_communityFilterContent__WEBPACK_IMPORTED_MODULE_16__["default"].init();
+  _components_qmiSearchFooterContent__WEBPACK_IMPORTED_MODULE_11__["default"].init(); // homeDesignsSearchFooterContent.init();
 });
-_script_featuredHome__WEBPACK_IMPORTED_MODULE_11__["default"].init();
-_script_videosPlayer__WEBPACK_IMPORTED_MODULE_9__["default"].init();
-_script_DropdownButtons__WEBPACK_IMPORTED_MODULE_10__["default"].init();
-aos__WEBPACK_IMPORTED_MODULE_2___default().init();
 var observer = lozad__WEBPACK_IMPORTED_MODULE_1___default()(); // lazy loads elements with default selector as ".lozad"
 
-observer.observe(); // footerCtaListing.init();
+observer.observe();
+aos__WEBPACK_IMPORTED_MODULE_2___default().init();
+_script_accordion__WEBPACK_IMPORTED_MODULE_15__["default"].init();
+_components_generalScript__WEBPACK_IMPORTED_MODULE_13__["default"].init();
+_script_featuredHome__WEBPACK_IMPORTED_MODULE_14__["default"].init();
+_script_videosPlayer__WEBPACK_IMPORTED_MODULE_9__["default"].init();
+_script_DropdownButtons__WEBPACK_IMPORTED_MODULE_10__["default"].init();
+_script_detailPageGallery__WEBPACK_IMPORTED_MODULE_12__["default"].init();
+_script_elevationGallery__WEBPACK_IMPORTED_MODULE_17__["default"].init(); // footerCtaListing.init();
 
 var homeApp = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
   components: {
@@ -23255,8 +31518,7 @@ var AnimateOnPageLinks = {
           return $target_element.trigger('scrolled_to');
         });
       }
-    });
-    $('.facetwp-sort-select').select2();
+    }); // $('.facetwp-sort-select').select2();
   },
   is_excluded: function is_excluded($selector) {
     return !!$selector.data('toggle');
@@ -23280,18 +31542,578 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+// import { value } from 'lodash/seq';
+// import contains from '@popperjs/core/lib/dom-utils/contains';
+// import { style } from '@splidejs/splide/dist/types/utils';
 var $ = window.jQuery;
 var $window = window.$window || $(window);
 var SelectButton = {
-  init: function init() {// $(document).ready(function() {
-    //         $('.facetwp-sort-select').select2({
-    //             minimumResultsForSearch: Infinity,
-    //             width: '100%',
-    //         });
-    // });
+  init: function init() {
+    var getUrl = 'http://newhomeinc.test';
+
+    (function ($) {
+      $('.detail-page-cta-options').on('click', function () {
+        $('.detail-page-cta-slide-out').toggleClass('slidemodal-hidden');
+        $('.desktop-cta').toggleClass('global-cta');
+        $('.ask-a-question-component').toggleClass('global-cta');
+      });
+      $('.cta-close').on('click', function () {
+        $('.detail-page-cta-slide-out').toggleClass('slidemodal-hidden');
+        $('.desktop-cta').toggleClass('global-cta');
+        $('.ask-a-question-component').toggleClass('global-cta');
+      });
+      $('.ask-question a').on('click', function () {
+        // console.log( this.innerHTML );
+        $('.detail-page-cta-slide-out').toggleClass('slidemodal-hidden');
+        $('.desktop-cta').toggleClass('global-cta');
+        $('.ask-a-question-component').toggleClass('global-cta');
+      });
+      $(document).on('facetwp-loaded', function () {
+        var communitySearchPage = app_script_vars.community_search_page;
+        var searchPageFooterTitle = app_script_vars.community_search_page_title; // eslint-disable-next-line no-console
+        // console.log( communitySearchPage );
+
+        var displayCommunityBannerTitle = document.getElementById('community_banner_title');
+        var displayMainFooterContentTitle = document.getElementById('main-content-title');
+        var displayMainFooterContent = document.getElementById('main-footer-content');
+
+        (function ($) {
+          var checkedBoxFunction = document.querySelector('.facetwp-facet-location ');
+          var dropdownValue = $(this).data('.facetwp-facet-location .checked'); // const dropdownValue = document.querySelector( '.facetwp-facet-location .checked' );
+          // console.log( dropdownValue );
+
+          var selectedValue = $('.facetwp-facet-location .checked').data('value'); // eslint-disable-next-line no-console
+          // console.log( selectedValue );
+
+          var loadedContent = "".concat(getUrl, "/wp-json/wp/v2/metro-area?slug=").concat(selectedValue);
+
+          function loadMainFootercontent() {
+            if ($('.facetwp-facet-location ').has('.checked')) {
+              $.ajax({
+                url: loadedContent,
+                dataType: 'json',
+                success: function success(res) {
+                  $('#main-taxonomy-area').html(res);
+                  $.each(res, function (i, tax) {
+                    $('#main-taxonomy-area').html(tax); // eslint-disable-next-line no-console
+                    // console.log( tax.name );
+                    // eslint-disable-next-line camelcase
+
+                    if (selectedValue === '') {
+                      displayCommunityBannerTitle.innerText = 'NEW HOME COMMUNITIES';
+                      displayMainFooterContentTitle.innerText = searchPageFooterTitle;
+                      displayMainFooterContent.innerText = communitySearchPage;
+                    } else {
+                      displayCommunityBannerTitle.innerText = 'NEW HOME COMMUNITIES IN ' + tax.name;
+                      displayMainFooterContentTitle.innerText = tax.name;
+                      displayMainFooterContent.innerHTML = tax.description;
+                    }
+                  });
+                }
+              });
+            }
+          }
+
+          loadMainFootercontent();
+          $(document).on('click', '.facetwp-facet-location .checked', function () {
+            // eslint-disable-next-line camelcase
+            var data_value = $(this).attr('data-value');
+            var dataTexaonomies = "".concat(getUrl, "/wp-json/wp/v2/metro-area?slug=").concat(data_value);
+            $.ajax({
+              url: dataTexaonomies,
+              dataType: 'json',
+              success: function success(res) {
+                $('#main-taxonomy-area').html(res);
+                $.each(res, function (i, tax) {
+                  $('#main-taxonomy-area').html(tax); // eslint-disable-next-line no-console
+                  // console.log( tax.name );
+                  // eslint-disable-next-line camelcase
+
+                  if (data_value === '') {
+                    displayCommunityBannerTitle.innerText = 'NEW HOME COMMUNITIES';
+                    displayMainFooterContentTitle.innerText = searchPageFooterTitle;
+                    displayMainFooterContent.innerText = communitySearchPage;
+                  } else {
+                    displayCommunityBannerTitle.innerText = 'NEW HOME COMMUNITIES IN ' + tax.name;
+                    displayMainFooterContentTitle.innerText = tax.name;
+                    displayMainFooterContent.innerHTML = tax.description;
+                  }
+                });
+              }
+            });
+          });
+        })(jQuery);
+      });
+
+      function communitySliderout() {
+        var communityElement = document.getElementById('detail-page-cta');
+        var postId = communityElement.getAttribute('data-postid');
+        var postTilte = document.getElementById('cta-title');
+        var ulEle = document.getElementById('cta-contact-form');
+        var getDirection = document.getElementById('get_direction'); // const selfGuidedTourLink = document.getElementById( 'elf-guided_tour' );
+        // eslint-disable-next-line no-console
+
+        var communitiesData = 'http://newhomeinc.test/wp-json/wp/v2/communities/' + postId;
+        $.ajax({
+          url: communitiesData,
+          dataType: 'json',
+          // data: {
+          // 	/postId,
+          // },
+          success: function success(res) {
+            $('#detail-page-contact-slideout').html(res);
+            postTilte.innerText = res.title.rendered;
+
+            if (typeof res.acf.self_guided_tour !== 'undefined') {
+              var selfGuidedTourLi = document.createElement('li');
+              selfGuidedTourLi.setAttribute('class', 'self-guided_tour');
+              var selfGuidedTourLink = document.createElement('a');
+              selfGuidedTourLink.setAttribute('href', "".concat(res.acf.self_guided_tour));
+              selfGuidedTourLink.setAttribute('target', '_blank');
+              var selfGuidedTourText = document.createTextNode('Self Guided Tour');
+              selfGuidedTourLink.append(selfGuidedTourText);
+              selfGuidedTourLi.append(selfGuidedTourLink);
+              ulEle.appendChild(selfGuidedTourLi);
+            }
+
+            if (typeof res.acf.nhi_tour !== 'undefined') {
+              var NhiTourLi = document.createElement('li');
+              NhiTourLi.setAttribute('class', 'nhi-tour');
+              var NhiTourLink = document.createElement('a');
+              NhiTourLink.setAttribute('href', "".concat(res.acf.nhi_tour));
+              NhiTourLink.setAttribute('target', '_blank');
+              var nhiTourText = document.createTextNode('NHI Tour');
+              NhiTourLink.append(nhiTourText);
+              NhiTourLi.append(NhiTourLink);
+              ulEle.appendChild(NhiTourLi);
+            }
+
+            if (typeof res.acf.community_contact_form !== 'undefined') {
+              var AskLi = document.createElement('li');
+              AskLi.setAttribute('class', 'ask-question');
+              var askLink = document.createElement('a');
+              askLink.setAttribute('href', '#');
+              askLink.setAttribute('target', '_blank');
+              askLink.setAttribute('data-fancybox', 'dialog');
+              askLink.setAttribute('data-src', '#dialog-content');
+              var askText = document.createTextNode('Ask a Question');
+              askLink.append(askText);
+              AskLi.append(askLink);
+              ulEle.appendChild(AskLi);
+            }
+
+            if (res.acf.subdivision_google_map) {
+              getDirection.setAttribute('href', "https://www.google.com/maps?q=".concat(res.acf.subdivision_google_map.lat, ", ").concat(res.acf.subdivision_google_map.lng));
+              getDirection.innerText = "".concat(res.acf.subdivision_google_map.name, ", ").concat(res.acf.subdivision_google_map.city, ", ").concat(res.acf.subdivision_google_map.state, ", ").concat(res.acf.subdivision_google_map.post_code);
+            }
+          }
+        });
+      }
+
+      function homesSlideOut() {
+        var element = document.getElementById('detail-page-cta');
+        var homesPostId = element.getAttribute('data-postid');
+        var postTilte = document.getElementById('cta-title');
+        var ulEle = document.getElementById('cta-contact-form');
+        var getDirection = document.getElementById('get_direction'); // const selfGuidedTourLink = document.getElementById( 'elf-guided_tour' );
+        // eslint-disable-next-line no-console
+
+        var qmiHomes = getUrl + '/wp-json/wp/v2/homes/' + homesPostId;
+        $.ajax({
+          url: qmiHomes,
+          dataType: 'json',
+          data: {
+            homesPostId: homesPostId
+          },
+          success: function success(res) {
+            $('#detail-page-contact-slideout').html(res);
+            postTilte.innerText = res.title.rendered;
+
+            if (typeof res.acf.self_guided_tour !== 'undefined') {
+              var selfGuidedTourLi = document.createElement('li');
+              selfGuidedTourLi.setAttribute('class', 'self-guided_tour');
+              var selfGuidedTourLink = document.createElement('a');
+              selfGuidedTourLink.setAttribute('href', "".concat(res.acf.self_guided_tour));
+              selfGuidedTourLink.setAttribute('target', '_blank');
+              var selfGuidedTourText = document.createTextNode('Self Guided Tour');
+              selfGuidedTourLink.append(selfGuidedTourText);
+              selfGuidedTourLi.append(selfGuidedTourLink);
+              ulEle.appendChild(selfGuidedTourLi);
+            }
+
+            if (typeof res.acf.nhi_tour !== 'undefined') {
+              var NhiTourLi = document.createElement('li');
+              NhiTourLi.setAttribute('class', 'nhi-tour');
+              var NhiTourLink = document.createElement('a');
+              NhiTourLink.setAttribute('href', "".concat(res.acf.nhi_tour));
+              NhiTourLink.setAttribute('target', '_blank');
+              var nhiTourText = document.createTextNode('NHI Tour');
+              NhiTourLink.append(nhiTourText);
+              NhiTourLi.append(NhiTourLink);
+              ulEle.appendChild(NhiTourLi);
+            }
+
+            var AskLi = document.createElement('li');
+            AskLi.setAttribute('class', 'ask-question');
+            var askLink = document.createElement('a');
+            askLink.setAttribute('href', '#');
+            askLink.setAttribute('target', '_blank');
+            askLink.setAttribute('data-fancybox', 'dialog');
+            askLink.setAttribute('data-src', '#dialog-content');
+            var askText = document.createTextNode('Ask a Question');
+            askLink.append(askText);
+            AskLi.append(askLink);
+            ulEle.appendChild(AskLi);
+
+            if (res.acf.spec_google_map) {
+              getDirection.setAttribute('href', "https://www.google.com/maps?q=".concat(res.acf.spec_google_map.lat, ", ").concat(res.acf.spec_google_map.lng));
+              getDirection.innerText = "".concat(res.acf.spec_google_map.name, ", ").concat(res.acf.spec_google_map.city, ", ").concat(res.acf.spec_google_map.state, ", ").concat(res.acf.spec_google_map.post_code);
+            }
+          }
+        });
+      }
+
+      function homeDesignSlideout() {
+        var element = document.getElementById('detail-page-cta');
+        var homeDesignPostId = element.getAttribute('data-postid');
+        var postTilte = document.getElementById('cta-title');
+        var ulEle = document.getElementById('cta-contact-form');
+        var getDirection = document.getElementById('get_direction'); // const selfGuidedTourLink = document.getElementById( 'elf-guided_tour' );
+        // eslint-disable-next-line no-console
+
+        var homeDesign = getUrl + '/wp-json/wp/v2/home-design/' + homeDesignPostId;
+        $.ajax({
+          url: homeDesign,
+          dataType: 'json',
+          data: {
+            homeDesignPostId: homeDesignPostId
+          },
+          success: function success(res) {
+            $('#detail-page-contact-slideout').html(res);
+            postTilte.innerText = res.title.rendered;
+            console.log(res);
+
+            if (typeof res.acf.self_guided_tour !== 'undefined' && typeof res.acf.self_guided_tour !== ' ') {
+              var selfGuidedTourLi = document.createElement('li');
+              selfGuidedTourLi.setAttribute('class', 'self-guided_tour');
+              var selfGuidedTourLink = document.createElement('a');
+              selfGuidedTourLink.setAttribute('href', "".concat(res.acf.self_guided_tour));
+              selfGuidedTourLink.setAttribute('target', '_blank');
+              var selfGuidedTourText = document.createTextNode('Self Guided Tour');
+              selfGuidedTourLink.append(selfGuidedTourText);
+              selfGuidedTourLi.append(selfGuidedTourLink);
+              ulEle.appendChild(selfGuidedTourLi);
+            }
+
+            if (typeof res.acf.nhi_tour !== 'undefined') {
+              var NhiTourLi = document.createElement('li');
+              NhiTourLi.setAttribute('class', 'nhi-tour');
+              var NhiTourLink = document.createElement('a');
+              NhiTourLink.setAttribute('href', "".concat(res.acf.nhi_tour));
+              NhiTourLink.setAttribute('target', '_blank');
+              var nhiTourText = document.createTextNode('NHI Tour');
+              NhiTourLink.append(nhiTourText);
+              NhiTourLi.append(NhiTourLink);
+              ulEle.appendChild(NhiTourLi);
+            }
+
+            var AskLi = document.createElement('li');
+            AskLi.setAttribute('class', 'ask-question');
+            var askLink = document.createElement('a');
+            askLink.setAttribute('href', '#');
+            askLink.setAttribute('target', '_blank');
+            askLink.setAttribute('data-fancybox', 'dialog');
+            askLink.setAttribute('data-src', '#dialog-content');
+            var askText = document.createTextNode('Ask a Question');
+            askLink.append(askText);
+            AskLi.append(askLink);
+            ulEle.appendChild(AskLi);
+
+            if (res.acf.spec_google_map) {
+              getDirection.setAttribute('href', "https://www.google.com/maps?q=".concat(res.acf.spec_google_map.lat, ", ").concat(res.acf.spec_google_map.lng));
+              getDirection.innerText = "".concat(res.acf.spec_google_map.name, ", ").concat(res.acf.spec_google_map.city, ", ").concat(res.acf.spec_google_map.state, ", ").concat(res.acf.spec_google_map.post_code);
+            }
+          }
+        });
+      }
+
+      window.addEventListener('load', function (event) {
+        communitySliderout();
+        homesSlideOut();
+        homeDesignSlideout();
+      });
+      window.addEventListener('load', function (event) {
+        $('#cta-contact-form').on('click', function () {
+          // eslint-disable-next-line no-console
+          // console.log( this.innerHTML );
+          $('.detail-page-cta-slide-out').toggleClass('slidemodal-hidden');
+          $('.desktop-cta').toggleClass('global-cta');
+          $('.ask-a-question-component').toggleClass('global-cta');
+        });
+      });
+      $('.page-template-page-communities-map .main-map-view-component a').attr('href', 'communities');
+      $('.page-template-page-communities-map .main-map-view-component a .map-view-title').text('Grid View');
+      $('.page-template-page-homes-map .main-map-view-component a').attr('href', '/homes');
+      $('.page-template-page-homes-map .main-map-view-component a .map-view-title').text('Grid View'); // eslint-disable-next-line no-console
+    })(jQuery);
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SelectButton);
+
+/***/ }),
+
+/***/ "./assets/js/components/communityFilterContent.js":
+/*!********************************************************!*\
+  !*** ./assets/js/components/communityFilterContent.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var $ = window.jQuery;
+var $window = window.$window || $(window);
+var communityFilterContent = {
+  init: function init() {
+    $(document).on('facetwp-loaded', function () {
+      var communitySearchPage = app_script_vars.community_search_page;
+      var searchPageFooterTitle = app_script_vars.community_search_page_title; // eslint-disable-next-line no-console
+      // console.log( communitySearchPage );
+
+      var displayCommunityBannerTitle = document.getElementById('community_banner_title');
+      var displayMainFooterContentTitle = document.getElementById('main-content-title');
+      var displayMainFooterContent = document.getElementById('main-footer-content');
+
+      (function ($) {
+        var checkedBoxFunction = document.querySelector('.facetwp-facet-location ');
+        var dropdownValue = $(this).data('.facetwp-facet-location .checked'); // const dropdownValue = document.querySelector( '.facetwp-facet-location .checked' );
+        // console.log( dropdownValue );
+
+        var selectedValue = $('.facetwp-facet-location .checked').data('value'); // eslint-disable-next-line no-console
+        // console.log( selectedValue );
+
+        var loadedContent = "http://newhomeinc.test/wp-json/wp/v2/metro-area?slug=".concat(selectedValue);
+
+        function loadMainFootercontent() {
+          if ($('.facetwp-facet-location ').has('.checked')) {
+            $.ajax({
+              url: loadedContent,
+              dataType: 'json',
+              success: function success(res) {
+                $('#main-taxonomy-area').html(res);
+                $.each(res, function (i, tax) {
+                  $('#main-taxonomy-area').html(tax); // eslint-disable-next-line no-console
+                  // console.log( tax.name );
+                  // eslint-disable-next-line camelcase
+
+                  if (selectedValue === '') {
+                    displayCommunityBannerTitle.innerText = 'NEW HOME COMMUNITIES';
+                    displayMainFooterContentTitle.innerText = searchPageFooterTitle;
+                    displayMainFooterContent.innerHTML = communitySearchPage;
+                  } else {
+                    displayCommunityBannerTitle.innerText = 'NEW HOME COMMUNITIES IN ' + tax.name;
+                    displayMainFooterContentTitle.innerText = tax.name;
+                    displayMainFooterContent.innerHTML = tax.description;
+                  }
+                });
+              }
+            });
+          }
+        }
+
+        loadMainFootercontent();
+
+        function filterCommunityContent() {
+          // eslint-disable-next-line camelcase
+          var data_value = $(this).attr('data-value');
+          var dataTexaonomies = "http://newhomeinc.test/wp-json/wp/v2/metro-area?slug=".concat(data_value);
+          $.ajax({
+            url: dataTexaonomies,
+            dataType: 'json',
+            success: function success(res) {
+              $('#main-taxonomy-area').html(res);
+              $.each(res, function (i, tax) {
+                $('#main-taxonomy-area').html(tax); // eslint-disable-next-line no-console
+
+                console.log(tax.name); // eslint-disable-next-line camelcase
+
+                if (data_value === '') {
+                  displayCommunityBannerTitle.innerText = 'NEW HOME COMMUNITIES';
+                  displayMainFooterContentTitle.innerText = searchPageFooterTitle;
+                  displayMainFooterContent.innerHTML = communitySearchPage;
+                } else {
+                  displayCommunityBannerTitle.innerText = 'NEW HOME COMMUNITIES IN ' + tax.name;
+                  displayMainFooterContentTitle.innerText = tax.name;
+                  displayMainFooterContent.innerHTML = tax.description;
+                }
+              });
+            }
+          });
+        }
+
+        $(document).on('click', '.facetwp-facet-location .checked', function () {
+          filterCommunityContent();
+        });
+      })(jQuery);
+    });
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (communityFilterContent);
+
+/***/ }),
+
+/***/ "./assets/js/components/generalScript.js":
+/*!***********************************************!*\
+  !*** ./assets/js/components/generalScript.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var generalScript = {
+  init: function init() {// function updatedCommunityMapView() {
+    // 	const el = document.querySelector( '.page-template-page-communities-map .main-map-view-component' );
+    // 	// const elLink = document.querySelector( '.page-template-page-communities-map .main-map-view-component a' );
+    // 	// const elTag = document.querySelector( '.page-template-page-communities-map .main-map-view-component a .map-view-title' );
+    // 	// elLink.setAttribute( 'href', '/communities' );
+    //
+    // 	const updatehref = document.createElement( 'a' );
+    // 	updatehref.textContent = 'GRID View';
+    // 	updatehref.href = '/communities';
+    // 	// eslint-disable-next-line no-console
+    // 	console.log( updatehref );
+    // 	el.append( updatehref );
+    //
+    // 	// elTag.innerText = 'GRID View';
+    // 	// console.log( elLink );
+    //
+    // 	// eslint-disable-next-line no-console
+    //
+    // 	// const elLink = document.querySelector( '.main-map-view-component a' );
+    // 	//
+    // 	// // eslint-disable-next-line no-console
+    //
+    // 	// // const closetChildEl = el.closest( '.main-map-view-component' );
+    // 	// el.innerText = 'GRID View';
+    // 	// elLink.setAttribute( 'href', '/communities' );
+    // }
+    //
+    // window.addEventListener( 'load', ( event ) => {
+    // 	updatedCommunityMapView();
+    // } );
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (generalScript);
+
+/***/ }),
+
+/***/ "./assets/js/components/qmiSearchFooterContent.js":
+/*!********************************************************!*\
+  !*** ./assets/js/components/qmiSearchFooterContent.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var $ = window.jQuery;
+var $window = window.$window || $(window); // eslint-disable-next-line no-unused-vars
+
+var qmiSearchFooterContent = {
+  init: function init() {
+    $(document).on('facetwp-loaded', function () {
+      var homesSearchPage = app_script_vars.qmi_search_page_content;
+      var homesSearchPageFooterTitle = app_script_vars.homes_search_page_title; // eslint-disable-next-line no-console
+      // console.log( homesSearchPageFooterTitle );
+
+      var displayHomesBannerTitle = document.getElementById('homes_banner_title');
+      var displayMainFooterContentTitle = document.getElementById('qmi_main_footer_content_title');
+      var displayMainFooterContent = document.getElementById('main-footer-content');
+
+      (function ($) {
+        var checkedBoxFunction = document.querySelector('.facetwp-facet-qmi_location ');
+        var dropdownValue = document.querySelector('.facetwp-facet-qmi_location .checked'); // console.log( dropdownValue );
+
+        var selectedValue = $('.facetwp-facet-qmi_location .checked').data('value'); // const selectedValue = dropdownValue.getAttribute( 'data-value' );
+        // eslint-disable-next-line no-console
+        // console.log( selectedValue );
+
+        var loadedContent = "http://newhomeinc.test/wp-json/wp/v2/metro-area?slug=".concat(selectedValue);
+
+        function loadMainFootercontent() {
+          if ($('.facetwp-facet-qmi_location ').has('.checked')) {
+            $.ajax({
+              url: loadedContent,
+              dataType: 'json',
+              success: function success(res) {
+                $('#main-taxonomy-area').html(res);
+                $.each(res, function (i, tax) {
+                  $('#main-taxonomy-area').html(tax); // eslint-disable-next-line no-console
+                  // console.log( tax.name );
+                  // eslint-disable-next-line camelcase
+
+                  if (selectedValue === '') {
+                    displayHomesBannerTitle.innerText = 'NEW AVAILABLE HOMES';
+                    displayMainFooterContentTitle.innerText = homesSearchPageFooterTitle;
+                    displayMainFooterContent.innerHTML = homesSearchPage;
+                  } else {
+                    displayHomesBannerTitle.innerText = 'AVAILABLE HOMES IN ' + tax.name;
+                    displayMainFooterContentTitle.innerText = tax.name;
+                    displayMainFooterContent.innerHTML = tax.description;
+                  }
+                });
+              }
+            });
+          }
+        }
+
+        loadMainFootercontent();
+
+        function filterQmiContent() {
+          $(document).on('click', '.facetwp-facet-qmi_location .checked', function () {
+            // eslint-disable-next-line camelcase
+            var data_value = $(this).attr('data-value-tes');
+            var dataTexaonomies = "http://newhomeinc.test/wp-json/wp/v2/metro-area?slug=".concat(data_value);
+            $.ajax({
+              url: dataTexaonomies,
+              dataType: 'json',
+              success: function success(res) {
+                $('#main-taxonomy-area').html(res);
+                $.each(res, function (i, tax) {
+                  $('#main-taxonomy-area').html(tax); // eslint-disable-next-line no-console
+
+                  console.log(tax.name); // eslint-disable-next-line camelcase
+
+                  if (selectedValue === '') {
+                    displayHomesBannerTitle.innerText = 'NEW AVAILABLE HOMES';
+                    displayMainFooterContentTitle.innerText = homesSearchPageFooterTitle;
+                    displayMainFooterContent.innerHTML = homesSearchPage;
+                  } else {
+                    displayHomesBannerTitle.innerText = 'AVAILABLE HOMES IN ' + tax.name;
+                    displayMainFooterContentTitle.innerText = tax.name;
+                    displayMainFooterContent.innerHTML = tax.description;
+                  }
+                });
+              }
+            });
+          });
+        }
+
+        document.addEventListener('facetwp-loaded', function () {
+          filterQmiContent();
+        });
+      })(jQuery);
+    });
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (qmiSearchFooterContent);
 
 /***/ }),
 
@@ -23383,6 +32205,165 @@ var DropdownButtons = {
 
 /***/ }),
 
+/***/ "./assets/js/script/accordion.js":
+/*!***************************************!*\
+  !*** ./assets/js/script/accordion.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var accordion = {
+  init: function init() {
+    var btns = document.getElementsByClassName('accordion-button');
+
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function () {
+        var btnText = document.querySelector('.accordion-title'); //Add function here
+        // eslint-disable-next-line no-console
+        // console.log( this.innerHTML );
+        // if ( this.getAttribute( 'aria-expanded' ) === 'true' ) {
+        // 	btnText.style.display = 'none';
+        // } else {
+        // 	btnText.style.display = 'block';
+        // }
+      });
+    }
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (accordion);
+
+/***/ }),
+
+/***/ "./assets/js/script/detailPageGallery.js":
+/*!***********************************************!*\
+  !*** ./assets/js/script/detailPageGallery.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var lightgallery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lightgallery */ "./node_modules/lightgallery/lightgallery.es5.js");
+/* harmony import */ var lightgallery_plugins_zoom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lightgallery/plugins/zoom */ "./node_modules/lightgallery/plugins/zoom/lg-zoom.es5.js");
+/* harmony import */ var lightgallery_plugins_thumbnail__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lightgallery/plugins/thumbnail */ "./node_modules/lightgallery/plugins/thumbnail/lg-thumbnail.es5.js");
+/* harmony import */ var lightgallery_plugins_fullscreen__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lightgallery/plugins/fullscreen */ "./node_modules/lightgallery/plugins/fullscreen/lg-fullscreen.es5.js");
+/* harmony import */ var lightgallery_plugins_share__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lightgallery/plugins/share */ "./node_modules/lightgallery/plugins/share/lg-share.es5.js");
+
+
+ // eslint-disable-next-line no-duplicate-imports
+
+
+
+
+var detailPageGallery = {
+  init: function init() {
+    var detailPageGalleryData = app_script_vars.detail_page_gallery; // console.log( detailPageGalleryData );
+
+    var dynamicEl = [];
+    detailPageGalleryData.forEach(function (item) {
+      // console.log( item );
+      dynamicEl.push({
+        src: "".concat(item.sizes.large),
+        thumb: "".concat(item.sizes.large),
+        subHtml: "<h4>".concat(item.caption, "</h4><p>").concat(item.description, "</p>")
+      });
+    });
+    var $dynamicGallery = document.getElementById('detail-page-gallery');
+    var dynamicGallery = (0,lightgallery__WEBPACK_IMPORTED_MODULE_0__["default"])($dynamicGallery, {
+      cssEasing: 'cubic-bezier(0.680, -0.550, 0.265, 1.550)',
+      speed: 1000,
+      plugins: [lightgallery_plugins_fullscreen__WEBPACK_IMPORTED_MODULE_3__["default"], lightgallery_plugins_share__WEBPACK_IMPORTED_MODULE_4__["default"], lightgallery_plugins_fullscreen__WEBPACK_IMPORTED_MODULE_3__["default"], lightgallery_plugins_thumbnail__WEBPACK_IMPORTED_MODULE_2__["default"], lightgallery_plugins_zoom__WEBPACK_IMPORTED_MODULE_1__["default"]],
+      dynamic: true,
+      thumbnail: true,
+      dynamicEl: dynamicEl
+    });
+    $dynamicGallery.addEventListener('click', function () {
+      // Starts with third item.(Optional).
+      // This is useful if you want use dynamic mode with
+      // custom thumbnails (thumbnails outside gallery),
+      dynamicGallery.openGallery(2);
+    });
+    (0,lightgallery__WEBPACK_IMPORTED_MODULE_0__["default"])(document.getElementById('virtual-tour-url'), {
+      selector: 'this'
+    });
+    (0,lightgallery__WEBPACK_IMPORTED_MODULE_0__["default"])(document.getElementById('homes-floorplan-gallery'), {
+      // Target all images
+      selector: '.homes_floorplan-img',
+      // Add medium zoom plugin
+      plugins: [lightgallery_plugins_zoom__WEBPACK_IMPORTED_MODULE_1__["default"]]
+    }); // eslint-disable-next-line no-undef
+
+    var $lightgallery = $('#dynamic-gallery-demo');
+    $lightgallery.lightGallery();
+    var data = $lightgallery.data('lightGallery');
+    $lightgallery.on('onBeforeSlide.lg', function (event, prevIndex, index) {
+      var img = data.$items.eq(index).attr('data-src'); // eslint-disable-next-line no-undef
+
+      $('.lg-backdrop').css('background-image', 'url(' + img + ')');
+    });
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (detailPageGallery);
+
+/***/ }),
+
+/***/ "./assets/js/script/elevationGallery.js":
+/*!**********************************************!*\
+  !*** ./assets/js/script/elevationGallery.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _fancyapps_ui_src_Fancybox_Fancybox_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fancyapps/ui/src/Fancybox/Fancybox.js */ "./node_modules/@fancyapps/ui/src/Fancybox/Fancybox.js");
+
+var elevationGallery = {
+  init: function init() {
+    // Initialise Carousel
+    // eslint-disable-next-line no-undef
+    var mainCarousel = new Carousel(document.querySelector('#mainCarousel'), {
+      Dots: false
+    }); // Thumbnails
+    // eslint-disable-next-line no-undef
+
+    var thumbCarousel = new Carousel(document.querySelector('#thumbCarousel'), {
+      // Sync: {
+      // 	target: mainCarousel,
+      // 	friction: 0,
+      // },
+      Dots: false,
+      Navigation: false,
+      center: true,
+      slidesPerPage: 1,
+      infinite: false
+    }); // Customize Fancybox
+
+    _fancyapps_ui_src_Fancybox_Fancybox_js__WEBPACK_IMPORTED_MODULE_0__.Fancybox.bind('[data-fancybox="gallery"]', {
+      Carousel: {
+        on: {
+          change: function change(that) {
+            mainCarousel.slideTo(mainCarousel.findPageForSlide(that.page), {
+              friction: 0
+            });
+          }
+        }
+      }
+    });
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (elevationGallery);
+
+/***/ }),
+
 /***/ "./assets/js/script/featuredHome.js":
 /*!******************************************!*\
   !*** ./assets/js/script/featuredHome.js ***!
@@ -23418,6 +32399,72 @@ var featuredHome = {
       }).mount();
     });
     document.addEventListener('DOMContentLoaded', function () {
+      new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#card-slider-qmi', {
+        perPage: 3,
+        type: 'loop',
+        arrows: true,
+        gap: '0.3rem',
+        breakpoints: {
+          992: {
+            perPage: 2,
+            gap: '0.5rem'
+          },
+          768: {
+            perPage: 2,
+            gap: '0.5rem'
+          },
+          640: {
+            perPage: 1,
+            gap: '0.5rem'
+          }
+        }
+      }).mount();
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+      new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#community_floorplan', {
+        perPage: 3,
+        type: 'loop',
+        arrows: true,
+        gap: '0.3rem',
+        breakpoints: {
+          992: {
+            perPage: 2,
+            gap: '0.5rem'
+          },
+          768: {
+            perPage: 2,
+            gap: '0.5rem'
+          },
+          640: {
+            perPage: 1,
+            gap: '0.5rem'
+          }
+        }
+      }).mount();
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+      new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#homes_floorplan', {
+        perPage: 3,
+        type: 'loop',
+        arrows: true,
+        gap: '0.3rem',
+        breakpoints: {
+          992: {
+            perPage: 2,
+            gap: '0.5rem'
+          },
+          768: {
+            perPage: 2,
+            gap: '0.5rem'
+          },
+          640: {
+            perPage: 1,
+            gap: '0.5rem'
+          }
+        }
+      }).mount();
+    });
+    document.addEventListener('DOMContentLoaded', function () {
       new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#card-slider-2', {
         perPage: 3,
         type: 'loop',
@@ -23435,6 +32482,30 @@ var featuredHome = {
           }
         }
       }).mount();
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+      document.addEventListener('facetwp-loaded', function () {
+        var elms = document.getElementsByClassName('community_img_slider');
+
+        for (var i = 0; i < elms.length; i++) {
+          var splideElement = elms[i];
+          var splideDefaultOptions = {
+            type: 'loop',
+            rewind: true,
+            perPage: 1,
+            autoplay: false,
+            arrows: true,
+            pagination: false,
+            drag: true,
+            keyboard: true // heightRatio: 0.5,
+            // cover: true,
+
+          };
+          var splide = new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"](splideElement, splideDefaultOptions); // 3. mount/initialize this slider
+
+          splide.mount();
+        }
+      });
     });
     document.addEventListener('DOMContentLoaded', function () {
       document.addEventListener('facetwp-loaded', function () {
@@ -23525,12 +32596,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var lightgallery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lightgallery */ "./node_modules/lightgallery/lightgallery.es5.js");
 /* harmony import */ var lightgallery_plugins_video__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lightgallery/plugins/video */ "./node_modules/lightgallery/plugins/video/lg-video.es5.js");
+/* harmony import */ var _fancyapps_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fancyapps/ui */ "./node_modules/@fancyapps/ui/dist/fancybox.esm.js");
+
 
 
 var videosPlayer = {
   init: function init() {
     (0,lightgallery__WEBPACK_IMPORTED_MODULE_0__["default"])(document.getElementById('smart-tech-youtube-video'), {
       plugins: [lightgallery_plugins_video__WEBPACK_IMPORTED_MODULE_1__["default"]]
+    });
+    (0,lightgallery__WEBPACK_IMPORTED_MODULE_0__["default"])(document.getElementById('community_video-component'), {
+      plugins: [lightgallery_plugins_video__WEBPACK_IMPORTED_MODULE_1__["default"]]
+    });
+    (0,lightgallery__WEBPACK_IMPORTED_MODULE_0__["default"])(document.getElementById('open-website'), {
+      selector: 'this'
     });
   }
 };
@@ -31259,6 +40338,874 @@ function lightGallery(el, options) {
 
 /***/ }),
 
+/***/ "./node_modules/lightgallery/plugins/fullscreen/lg-fullscreen.es5.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/lightgallery/plugins/fullscreen/lg-fullscreen.es5.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/*!
+ * lightgallery | 2.3.0 | October 28th 2021
+ * http://www.lightgalleryjs.com/
+ * Copyright (c) 2020 Sachin Neravath;
+ * @license GPLv3
+ */
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+var fullscreenSettings = {
+    fullScreen: true,
+};
+
+var FullScreen = /** @class */ (function () {
+    function FullScreen(instance, $LG) {
+        // get lightGallery core plugin instance
+        this.core = instance;
+        this.$LG = $LG;
+        // extend module default settings with lightGallery core settings
+        this.settings = __assign(__assign({}, fullscreenSettings), this.core.settings);
+        return this;
+    }
+    FullScreen.prototype.init = function () {
+        var fullScreen = '';
+        if (this.settings.fullScreen) {
+            // check for fullscreen browser support
+            if (!document.fullscreenEnabled &&
+                !document.webkitFullscreenEnabled &&
+                !document.mozFullScreenEnabled &&
+                !document.msFullscreenEnabled) {
+                return;
+            }
+            else {
+                fullScreen =
+                    '<button type="button" aria-label="Toggle fullscreen" class="lg-fullscreen lg-icon"></button>';
+                this.core.$toolbar.append(fullScreen);
+                this.fullScreen();
+            }
+        }
+    };
+    FullScreen.prototype.isFullScreen = function () {
+        return (document.fullscreenElement ||
+            document.mozFullScreenElement ||
+            document.webkitFullscreenElement ||
+            document.msFullscreenElement);
+    };
+    FullScreen.prototype.requestFullscreen = function () {
+        var el = document.documentElement;
+        if (el.requestFullscreen) {
+            el.requestFullscreen();
+        }
+        else if (el.msRequestFullscreen) {
+            el.msRequestFullscreen();
+        }
+        else if (el.mozRequestFullScreen) {
+            el.mozRequestFullScreen();
+        }
+        else if (el.webkitRequestFullscreen) {
+            el.webkitRequestFullscreen();
+        }
+    };
+    FullScreen.prototype.exitFullscreen = function () {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+        else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+        else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        }
+        else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    };
+    // https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Using_full_screen_mode
+    FullScreen.prototype.fullScreen = function () {
+        var _this = this;
+        this.$LG(document).on("fullscreenchange.lg.global" + this.core.lgId + " \n            webkitfullscreenchange.lg.global" + this.core.lgId + " \n            mozfullscreenchange.lg.global" + this.core.lgId + " \n            MSFullscreenChange.lg.global" + this.core.lgId, function () {
+            if (!_this.core.lgOpened)
+                return;
+            _this.core.outer.toggleClass('lg-fullscreen-on');
+        });
+        this.core.outer
+            .find('.lg-fullscreen')
+            .first()
+            .on('click.lg', function () {
+            if (_this.isFullScreen()) {
+                _this.exitFullscreen();
+            }
+            else {
+                _this.requestFullscreen();
+            }
+        });
+    };
+    FullScreen.prototype.closeGallery = function () {
+        // exit from fullscreen if activated
+        if (this.isFullScreen()) {
+            this.exitFullscreen();
+        }
+    };
+    FullScreen.prototype.destroy = function () {
+        this.$LG(document).off("fullscreenchange.lg.global" + this.core.lgId + " \n            webkitfullscreenchange.lg.global" + this.core.lgId + " \n            mozfullscreenchange.lg.global" + this.core.lgId + " \n            MSFullscreenChange.lg.global" + this.core.lgId);
+    };
+    return FullScreen;
+}());
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FullScreen);
+//# sourceMappingURL=lg-fullscreen.es5.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lightgallery/plugins/share/lg-share.es5.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/lightgallery/plugins/share/lg-share.es5.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/*!
+ * lightgallery | 2.3.0 | October 28th 2021
+ * http://www.lightgalleryjs.com/
+ * Copyright (c) 2020 Sachin Neravath;
+ * @license GPLv3
+ */
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+}
+
+var shareSettings = {
+    share: true,
+    facebook: true,
+    facebookDropdownText: 'Facebook',
+    twitter: true,
+    twitterDropdownText: 'Twitter',
+    pinterest: true,
+    pinterestDropdownText: 'Pinterest',
+    additionalShareOptions: [],
+};
+
+function getFacebookShareLink(galleryItem) {
+    var facebookBaseUrl = '//www.facebook.com/sharer/sharer.php?u=';
+    return (facebookBaseUrl +
+        encodeURIComponent(galleryItem.facebookShareUrl || window.location.href));
+}
+
+function getTwitterShareLink(galleryItem) {
+    var twitterBaseUrl = '//twitter.com/intent/tweet?text=';
+    var url = encodeURIComponent(galleryItem.twitterShareUrl || window.location.href);
+    var text = galleryItem.tweetText;
+    return twitterBaseUrl + text + '&url=' + url;
+}
+
+function getPinterestShareLink(galleryItem) {
+    var pinterestBaseUrl = 'http://www.pinterest.com/pin/create/button/?url=';
+    var description = galleryItem.pinterestText;
+    var media = encodeURIComponent(galleryItem.src);
+    var url = encodeURIComponent(galleryItem.pinterestShareUrl || window.location.href);
+    return (pinterestBaseUrl +
+        url +
+        '&media=' +
+        media +
+        '&description=' +
+        description);
+}
+
+/**
+ * List of lightGallery events
+ * All events should be documented here
+ * Below interfaces are used to build the website documentations
+ * */
+var lGEvents = {
+    afterAppendSlide: 'lgAfterAppendSlide',
+    init: 'lgInit',
+    hasVideo: 'lgHasVideo',
+    containerResize: 'lgContainerResize',
+    updateSlides: 'lgUpdateSlides',
+    afterAppendSubHtml: 'lgAfterAppendSubHtml',
+    beforeOpen: 'lgBeforeOpen',
+    afterOpen: 'lgAfterOpen',
+    slideItemLoad: 'lgSlideItemLoad',
+    beforeSlide: 'lgBeforeSlide',
+    afterSlide: 'lgAfterSlide',
+    posterClick: 'lgPosterClick',
+    dragStart: 'lgDragStart',
+    dragMove: 'lgDragMove',
+    dragEnd: 'lgDragEnd',
+    beforeNextSlide: 'lgBeforeNextSlide',
+    beforePrevSlide: 'lgBeforePrevSlide',
+    beforeClose: 'lgBeforeClose',
+    afterClose: 'lgAfterClose',
+    rotateLeft: 'lgRotateLeft',
+    rotateRight: 'lgRotateRight',
+    flipHorizontal: 'lgFlipHorizontal',
+    flipVertical: 'lgFlipVertical',
+};
+
+var Share = /** @class */ (function () {
+    function Share(instance) {
+        this.shareOptions = [];
+        // get lightGallery core plugin instance
+        this.core = instance;
+        // extend module default settings with lightGallery core settings
+        this.settings = __assign(__assign({}, shareSettings), this.core.settings);
+        return this;
+    }
+    Share.prototype.init = function () {
+        if (!this.settings.share) {
+            return;
+        }
+        this.shareOptions = __spreadArrays(this.getDefaultShareOptions(), this.settings.additionalShareOptions);
+        this.setLgShareMarkup();
+        this.core.outer
+            .find('.lg-share .lg-dropdown')
+            .append(this.getShareListHtml());
+        this.core.LGel.on(lGEvents.afterSlide + ".share", this.onAfterSlide.bind(this));
+    };
+    Share.prototype.getShareListHtml = function () {
+        var shareHtml = '';
+        this.shareOptions.forEach(function (shareOption) {
+            shareHtml += shareOption.dropdownHTML;
+        });
+        return shareHtml;
+    };
+    Share.prototype.setLgShareMarkup = function () {
+        var _this = this;
+        this.core.$toolbar.append("<button type=\"button\" aria-label=\"Share\" aria-haspopup=\"true\" aria-expanded=\"false\" class=\"lg-share lg-icon\">\n                <ul class=\"lg-dropdown\" style=\"position: absolute;\"></ul></button>");
+        this.core.outer.append('<div class="lg-dropdown-overlay"></div>');
+        var $shareButton = this.core.outer.find('.lg-share');
+        $shareButton.first().on('click.lg', function () {
+            _this.core.outer.toggleClass('lg-dropdown-active');
+            if (_this.core.outer.hasClass('lg-dropdown-active')) {
+                _this.core.outer.attr('aria-expanded', true);
+            }
+            else {
+                _this.core.outer.attr('aria-expanded', false);
+            }
+        });
+        this.core.outer
+            .find('.lg-dropdown-overlay')
+            .first()
+            .on('click.lg', function () {
+            _this.core.outer.removeClass('lg-dropdown-active');
+            _this.core.outer.attr('aria-expanded', false);
+        });
+    };
+    Share.prototype.onAfterSlide = function (event) {
+        var _this = this;
+        var index = event.detail.index;
+        var currentItem = this.core.galleryItems[index];
+        setTimeout(function () {
+            _this.shareOptions.forEach(function (shareOption) {
+                var selector = shareOption.selector;
+                _this.core.outer
+                    .find(selector)
+                    .attr('href', shareOption.generateLink(currentItem));
+            });
+        }, 100);
+    };
+    Share.prototype.getShareListItemHTML = function (type, text) {
+        return "<li><a class=\"lg-share-" + type + "\" rel=\"noopener\" target=\"_blank\"><span class=\"lg-icon\"></span><span class=\"lg-dropdown-text\">" + text + "</span></a></li>";
+    };
+    Share.prototype.getDefaultShareOptions = function () {
+        return __spreadArrays((this.settings.facebook
+            ? [
+                {
+                    type: 'facebook',
+                    generateLink: getFacebookShareLink,
+                    dropdownHTML: this.getShareListItemHTML('facebook', this.settings.facebookDropdownText),
+                    selector: '.lg-share-facebook',
+                },
+            ]
+            : []), (this.settings.twitter
+            ? [
+                {
+                    type: 'twitter',
+                    generateLink: getTwitterShareLink,
+                    dropdownHTML: this.getShareListItemHTML('twitter', this.settings.twitterDropdownText),
+                    selector: '.lg-share-twitter',
+                },
+            ]
+            : []), (this.settings.pinterest
+            ? [
+                {
+                    type: 'pinterest',
+                    generateLink: getPinterestShareLink,
+                    dropdownHTML: this.getShareListItemHTML('pinterest', this.settings.pinterestDropdownText),
+                    selector: '.lg-share-pinterest',
+                },
+            ]
+            : []));
+    };
+    Share.prototype.destroy = function () {
+        this.core.outer.find('.lg-dropdown-overlay').remove();
+        this.core.outer.find('.lg-share').remove();
+        this.core.LGel.off('.lg.share');
+        this.core.LGel.off('.share');
+    };
+    return Share;
+}());
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Share);
+//# sourceMappingURL=lg-share.es5.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lightgallery/plugins/thumbnail/lg-thumbnail.es5.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/lightgallery/plugins/thumbnail/lg-thumbnail.es5.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/*!
+ * lightgallery | 2.3.0 | October 28th 2021
+ * http://www.lightgalleryjs.com/
+ * Copyright (c) 2020 Sachin Neravath;
+ * @license GPLv3
+ */
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+var thumbnailsSettings = {
+    thumbnail: true,
+    animateThumb: true,
+    currentPagerPosition: 'middle',
+    alignThumbnails: 'middle',
+    thumbWidth: 100,
+    thumbHeight: '80px',
+    thumbMargin: 5,
+    appendThumbnailsTo: '.lg-components',
+    toggleThumb: false,
+    enableThumbDrag: true,
+    enableThumbSwipe: true,
+    thumbnailSwipeThreshold: 10,
+    loadYouTubeThumbnail: true,
+    youTubeThumbSize: 1,
+};
+
+/**
+ * List of lightGallery events
+ * All events should be documented here
+ * Below interfaces are used to build the website documentations
+ * */
+var lGEvents = {
+    afterAppendSlide: 'lgAfterAppendSlide',
+    init: 'lgInit',
+    hasVideo: 'lgHasVideo',
+    containerResize: 'lgContainerResize',
+    updateSlides: 'lgUpdateSlides',
+    afterAppendSubHtml: 'lgAfterAppendSubHtml',
+    beforeOpen: 'lgBeforeOpen',
+    afterOpen: 'lgAfterOpen',
+    slideItemLoad: 'lgSlideItemLoad',
+    beforeSlide: 'lgBeforeSlide',
+    afterSlide: 'lgAfterSlide',
+    posterClick: 'lgPosterClick',
+    dragStart: 'lgDragStart',
+    dragMove: 'lgDragMove',
+    dragEnd: 'lgDragEnd',
+    beforeNextSlide: 'lgBeforeNextSlide',
+    beforePrevSlide: 'lgBeforePrevSlide',
+    beforeClose: 'lgBeforeClose',
+    afterClose: 'lgAfterClose',
+    rotateLeft: 'lgRotateLeft',
+    rotateRight: 'lgRotateRight',
+    flipHorizontal: 'lgFlipHorizontal',
+    flipVertical: 'lgFlipVertical',
+};
+
+var Thumbnail = /** @class */ (function () {
+    function Thumbnail(instance, $LG) {
+        this.thumbOuterWidth = 0;
+        this.thumbTotalWidth = 0;
+        this.translateX = 0;
+        this.thumbClickable = false;
+        // get lightGallery core plugin instance
+        this.core = instance;
+        this.$LG = $LG;
+        return this;
+    }
+    Thumbnail.prototype.init = function () {
+        // extend module default settings with lightGallery core settings
+        this.settings = __assign(__assign({}, thumbnailsSettings), this.core.settings);
+        this.thumbOuterWidth = 0;
+        this.thumbTotalWidth =
+            this.core.galleryItems.length *
+                (this.settings.thumbWidth + this.settings.thumbMargin);
+        // Thumbnail animation value
+        this.translateX = 0;
+        this.setAnimateThumbStyles();
+        if (!this.core.settings.allowMediaOverlap) {
+            this.settings.toggleThumb = false;
+        }
+        if (this.settings.thumbnail) {
+            this.build();
+            if (this.settings.animateThumb) {
+                if (this.settings.enableThumbDrag) {
+                    this.enableThumbDrag();
+                }
+                if (this.settings.enableThumbSwipe) {
+                    this.enableThumbSwipe();
+                }
+                this.thumbClickable = false;
+            }
+            else {
+                this.thumbClickable = true;
+            }
+            this.toggleThumbBar();
+            this.thumbKeyPress();
+        }
+    };
+    Thumbnail.prototype.build = function () {
+        var _this = this;
+        this.setThumbMarkup();
+        this.manageActiveClassOnSlideChange();
+        this.$lgThumb.first().on('click.lg touchend.lg', function (e) {
+            var $target = _this.$LG(e.target);
+            if (!$target.hasAttribute('data-lg-item-id')) {
+                return;
+            }
+            setTimeout(function () {
+                // In IE9 and bellow touch does not support
+                // Go to slide if browser does not support css transitions
+                if (_this.thumbClickable && !_this.core.lgBusy) {
+                    var index = parseInt($target.attr('data-lg-item-id'));
+                    _this.core.slide(index, false, true, false);
+                }
+            }, 50);
+        });
+        this.core.LGel.on(lGEvents.beforeSlide + ".thumb", function (event) {
+            var index = event.detail.index;
+            _this.animateThumb(index);
+        });
+        this.core.LGel.on(lGEvents.beforeOpen + ".thumb", function () {
+            _this.thumbOuterWidth = _this.core.outer.get().offsetWidth;
+        });
+        this.core.LGel.on(lGEvents.updateSlides + ".thumb", function () {
+            _this.rebuildThumbnails();
+        });
+        this.core.LGel.on(lGEvents.containerResize + ".thumb", function () {
+            if (!_this.core.lgOpened)
+                return;
+            setTimeout(function () {
+                _this.thumbOuterWidth = _this.core.outer.get().offsetWidth;
+                _this.animateThumb(_this.core.index);
+                _this.thumbOuterWidth = _this.core.outer.get().offsetWidth;
+            }, 50);
+        });
+    };
+    Thumbnail.prototype.setThumbMarkup = function () {
+        var thumbOuterClassNames = 'lg-thumb-outer ';
+        if (this.settings.alignThumbnails) {
+            thumbOuterClassNames += "lg-thumb-align-" + this.settings.alignThumbnails;
+        }
+        var html = "<div class=\"" + thumbOuterClassNames + "\">\n        <div class=\"lg-thumb lg-group\">\n        </div>\n        </div>";
+        this.core.outer.addClass('lg-has-thumb');
+        if (this.settings.appendThumbnailsTo === '.lg-components') {
+            this.core.$lgComponents.append(html);
+        }
+        else {
+            this.core.outer.append(html);
+        }
+        this.$thumbOuter = this.core.outer.find('.lg-thumb-outer').first();
+        this.$lgThumb = this.core.outer.find('.lg-thumb').first();
+        if (this.settings.animateThumb) {
+            this.core.outer
+                .find('.lg-thumb')
+                .css('transition-duration', this.core.settings.speed + 'ms')
+                .css('width', this.thumbTotalWidth + 'px')
+                .css('position', 'relative');
+        }
+        this.setThumbItemHtml(this.core.galleryItems);
+    };
+    Thumbnail.prototype.enableThumbDrag = function () {
+        var _this = this;
+        var thumbDragUtils = {
+            cords: {
+                startX: 0,
+                endX: 0,
+            },
+            isMoved: false,
+            newTranslateX: 0,
+            startTime: new Date(),
+            endTime: new Date(),
+            touchMoveTime: 0,
+        };
+        var isDragging = false;
+        this.$thumbOuter.addClass('lg-grab');
+        this.core.outer
+            .find('.lg-thumb')
+            .first()
+            .on('mousedown.lg.thumb', function (e) {
+            if (_this.thumbTotalWidth > _this.thumbOuterWidth) {
+                // execute only on .lg-object
+                e.preventDefault();
+                thumbDragUtils.cords.startX = e.pageX;
+                thumbDragUtils.startTime = new Date();
+                _this.thumbClickable = false;
+                isDragging = true;
+                // ** Fix for webkit cursor issue https://code.google.com/p/chromium/issues/detail?id=26723
+                _this.core.outer.get().scrollLeft += 1;
+                _this.core.outer.get().scrollLeft -= 1;
+                // *
+                _this.$thumbOuter
+                    .removeClass('lg-grab')
+                    .addClass('lg-grabbing');
+            }
+        });
+        this.$LG(window).on("mousemove.lg.thumb.global" + this.core.lgId, function (e) {
+            if (!_this.core.lgOpened)
+                return;
+            if (isDragging) {
+                thumbDragUtils.cords.endX = e.pageX;
+                thumbDragUtils = _this.onThumbTouchMove(thumbDragUtils);
+            }
+        });
+        this.$LG(window).on("mouseup.lg.thumb.global" + this.core.lgId, function () {
+            if (!_this.core.lgOpened)
+                return;
+            if (thumbDragUtils.isMoved) {
+                thumbDragUtils = _this.onThumbTouchEnd(thumbDragUtils);
+            }
+            else {
+                _this.thumbClickable = true;
+            }
+            if (isDragging) {
+                isDragging = false;
+                _this.$thumbOuter.removeClass('lg-grabbing').addClass('lg-grab');
+            }
+        });
+    };
+    Thumbnail.prototype.enableThumbSwipe = function () {
+        var _this = this;
+        var thumbDragUtils = {
+            cords: {
+                startX: 0,
+                endX: 0,
+            },
+            isMoved: false,
+            newTranslateX: 0,
+            startTime: new Date(),
+            endTime: new Date(),
+            touchMoveTime: 0,
+        };
+        this.$lgThumb.on('touchstart.lg', function (e) {
+            if (_this.thumbTotalWidth > _this.thumbOuterWidth) {
+                e.preventDefault();
+                thumbDragUtils.cords.startX = e.targetTouches[0].pageX;
+                _this.thumbClickable = false;
+                thumbDragUtils.startTime = new Date();
+            }
+        });
+        this.$lgThumb.on('touchmove.lg', function (e) {
+            if (_this.thumbTotalWidth > _this.thumbOuterWidth) {
+                e.preventDefault();
+                thumbDragUtils.cords.endX = e.targetTouches[0].pageX;
+                thumbDragUtils = _this.onThumbTouchMove(thumbDragUtils);
+            }
+        });
+        this.$lgThumb.on('touchend.lg', function () {
+            if (thumbDragUtils.isMoved) {
+                thumbDragUtils = _this.onThumbTouchEnd(thumbDragUtils);
+            }
+            else {
+                _this.thumbClickable = true;
+            }
+        });
+    };
+    // Rebuild thumbnails
+    Thumbnail.prototype.rebuildThumbnails = function () {
+        var _this = this;
+        // Remove transitions
+        this.$thumbOuter.addClass('lg-rebuilding-thumbnails');
+        setTimeout(function () {
+            _this.thumbTotalWidth =
+                _this.core.galleryItems.length *
+                    (_this.settings.thumbWidth + _this.settings.thumbMargin);
+            _this.$lgThumb.css('width', _this.thumbTotalWidth + 'px');
+            _this.$lgThumb.empty();
+            _this.setThumbItemHtml(_this.core.galleryItems);
+            _this.animateThumb(_this.core.index);
+        }, 50);
+        setTimeout(function () {
+            _this.$thumbOuter.removeClass('lg-rebuilding-thumbnails');
+        }, 200);
+    };
+    // @ts-check
+    Thumbnail.prototype.setTranslate = function (value) {
+        this.$lgThumb.css('transform', 'translate3d(-' + value + 'px, 0px, 0px)');
+    };
+    Thumbnail.prototype.getPossibleTransformX = function (left) {
+        if (left > this.thumbTotalWidth - this.thumbOuterWidth) {
+            left = this.thumbTotalWidth - this.thumbOuterWidth;
+        }
+        if (left < 0) {
+            left = 0;
+        }
+        return left;
+    };
+    Thumbnail.prototype.animateThumb = function (index) {
+        this.$lgThumb.css('transition-duration', this.core.settings.speed + 'ms');
+        if (this.settings.animateThumb) {
+            var position = 0;
+            switch (this.settings.currentPagerPosition) {
+                case 'left':
+                    position = 0;
+                    break;
+                case 'middle':
+                    position =
+                        this.thumbOuterWidth / 2 - this.settings.thumbWidth / 2;
+                    break;
+                case 'right':
+                    position = this.thumbOuterWidth - this.settings.thumbWidth;
+            }
+            this.translateX =
+                (this.settings.thumbWidth + this.settings.thumbMargin) * index -
+                    1 -
+                    position;
+            if (this.translateX > this.thumbTotalWidth - this.thumbOuterWidth) {
+                this.translateX = this.thumbTotalWidth - this.thumbOuterWidth;
+            }
+            if (this.translateX < 0) {
+                this.translateX = 0;
+            }
+            this.setTranslate(this.translateX);
+        }
+    };
+    Thumbnail.prototype.onThumbTouchMove = function (thumbDragUtils) {
+        thumbDragUtils.newTranslateX = this.translateX;
+        thumbDragUtils.isMoved = true;
+        thumbDragUtils.touchMoveTime = new Date().valueOf();
+        thumbDragUtils.newTranslateX -=
+            thumbDragUtils.cords.endX - thumbDragUtils.cords.startX;
+        thumbDragUtils.newTranslateX = this.getPossibleTransformX(thumbDragUtils.newTranslateX);
+        // move current slide
+        this.setTranslate(thumbDragUtils.newTranslateX);
+        this.$thumbOuter.addClass('lg-dragging');
+        return thumbDragUtils;
+    };
+    Thumbnail.prototype.onThumbTouchEnd = function (thumbDragUtils) {
+        thumbDragUtils.isMoved = false;
+        thumbDragUtils.endTime = new Date();
+        this.$thumbOuter.removeClass('lg-dragging');
+        var touchDuration = thumbDragUtils.endTime.valueOf() -
+            thumbDragUtils.startTime.valueOf();
+        var distanceXnew = thumbDragUtils.cords.endX - thumbDragUtils.cords.startX;
+        var speedX = Math.abs(distanceXnew) / touchDuration;
+        // Some magical numbers
+        // Can be improved
+        if (speedX > 0.15 &&
+            thumbDragUtils.endTime.valueOf() - thumbDragUtils.touchMoveTime < 30) {
+            speedX += 1;
+            if (speedX > 2) {
+                speedX += 1;
+            }
+            speedX =
+                speedX +
+                    speedX * (Math.abs(distanceXnew) / this.thumbOuterWidth);
+            this.$lgThumb.css('transition-duration', Math.min(speedX - 1, 2) + 'settings');
+            distanceXnew = distanceXnew * speedX;
+            this.translateX = this.getPossibleTransformX(this.translateX - distanceXnew);
+            this.setTranslate(this.translateX);
+        }
+        else {
+            this.translateX = thumbDragUtils.newTranslateX;
+        }
+        if (Math.abs(thumbDragUtils.cords.endX - thumbDragUtils.cords.startX) <
+            this.settings.thumbnailSwipeThreshold) {
+            this.thumbClickable = true;
+        }
+        return thumbDragUtils;
+    };
+    Thumbnail.prototype.getThumbHtml = function (thumb, index) {
+        var slideVideoInfo = this.core.galleryItems[index].__slideVideoInfo || {};
+        var thumbImg;
+        if (slideVideoInfo.youtube) {
+            if (this.settings.loadYouTubeThumbnail) {
+                thumbImg =
+                    '//img.youtube.com/vi/' +
+                        slideVideoInfo.youtube[1] +
+                        '/' +
+                        this.settings.youTubeThumbSize +
+                        '.jpg';
+            }
+            else {
+                thumbImg = thumb;
+            }
+        }
+        else {
+            thumbImg = thumb;
+        }
+        return "<div data-lg-item-id=\"" + index + "\" class=\"lg-thumb-item " + (index === this.core.index ? ' active' : '') + "\" \n        style=\"width:" + this.settings.thumbWidth + "px; height: " + this.settings.thumbHeight + ";\n            margin-right: " + this.settings.thumbMargin + "px;\">\n            <img data-lg-item-id=\"" + index + "\" src=\"" + thumbImg + "\" />\n        </div>";
+    };
+    Thumbnail.prototype.getThumbItemHtml = function (items) {
+        var thumbList = '';
+        for (var i = 0; i < items.length; i++) {
+            thumbList += this.getThumbHtml(items[i].thumb, i);
+        }
+        return thumbList;
+    };
+    Thumbnail.prototype.setThumbItemHtml = function (items) {
+        var thumbList = this.getThumbItemHtml(items);
+        this.$lgThumb.html(thumbList);
+    };
+    Thumbnail.prototype.setAnimateThumbStyles = function () {
+        if (this.settings.animateThumb) {
+            this.core.outer.addClass('lg-animate-thumb');
+        }
+    };
+    // Manage thumbnail active calss
+    Thumbnail.prototype.manageActiveClassOnSlideChange = function () {
+        var _this = this;
+        // manage active class for thumbnail
+        this.core.LGel.on(lGEvents.beforeSlide + ".thumb", function (event) {
+            var $thumb = _this.core.outer.find('.lg-thumb-item');
+            var index = event.detail.index;
+            $thumb.removeClass('active');
+            $thumb.eq(index).addClass('active');
+        });
+    };
+    // Toggle thumbnail bar
+    Thumbnail.prototype.toggleThumbBar = function () {
+        var _this = this;
+        if (this.settings.toggleThumb) {
+            this.core.outer.addClass('lg-can-toggle');
+            this.core.$toolbar.append('<button type="button" aria-label="Toggle thumbnails" class="lg-toggle-thumb lg-icon"></button>');
+            this.core.outer
+                .find('.lg-toggle-thumb')
+                .first()
+                .on('click.lg', function () {
+                _this.core.outer.toggleClass('lg-components-open');
+            });
+        }
+    };
+    Thumbnail.prototype.thumbKeyPress = function () {
+        var _this = this;
+        this.$LG(window).on("keydown.lg.thumb.global" + this.core.lgId, function (e) {
+            if (!_this.core.lgOpened || !_this.settings.toggleThumb)
+                return;
+            if (e.keyCode === 38) {
+                e.preventDefault();
+                _this.core.outer.addClass('lg-components-open');
+            }
+            else if (e.keyCode === 40) {
+                e.preventDefault();
+                _this.core.outer.removeClass('lg-components-open');
+            }
+        });
+    };
+    Thumbnail.prototype.destroy = function () {
+        if (this.settings.thumbnail) {
+            this.$LG(window).off(".lg.thumb.global" + this.core.lgId);
+            this.core.LGel.off('.lg.thumb');
+            this.core.LGel.off('.thumb');
+            this.$thumbOuter.remove();
+            this.core.outer.removeClass('lg-has-thumb');
+        }
+    };
+    return Thumbnail;
+}());
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Thumbnail);
+//# sourceMappingURL=lg-thumbnail.es5.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/lightgallery/plugins/video/lg-video.es5.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/lightgallery/plugins/video/lg-video.es5.js ***!
@@ -31762,6 +41709,979 @@ var Video = /** @class */ (function () {
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Video);
 //# sourceMappingURL=lg-video.es5.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lightgallery/plugins/zoom/lg-zoom.es5.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/lightgallery/plugins/zoom/lg-zoom.es5.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/*!
+ * lightgallery | 2.3.0 | October 28th 2021
+ * http://www.lightgalleryjs.com/
+ * Copyright (c) 2020 Sachin Neravath;
+ * @license GPLv3
+ */
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+var zoomSettings = {
+    scale: 1,
+    zoom: true,
+    actualSize: true,
+    showZoomInOutIcons: false,
+    actualSizeIcons: {
+        zoomIn: 'lg-zoom-in',
+        zoomOut: 'lg-zoom-out',
+    },
+    enableZoomAfter: 300,
+};
+
+/**
+ * List of lightGallery events
+ * All events should be documented here
+ * Below interfaces are used to build the website documentations
+ * */
+var lGEvents = {
+    afterAppendSlide: 'lgAfterAppendSlide',
+    init: 'lgInit',
+    hasVideo: 'lgHasVideo',
+    containerResize: 'lgContainerResize',
+    updateSlides: 'lgUpdateSlides',
+    afterAppendSubHtml: 'lgAfterAppendSubHtml',
+    beforeOpen: 'lgBeforeOpen',
+    afterOpen: 'lgAfterOpen',
+    slideItemLoad: 'lgSlideItemLoad',
+    beforeSlide: 'lgBeforeSlide',
+    afterSlide: 'lgAfterSlide',
+    posterClick: 'lgPosterClick',
+    dragStart: 'lgDragStart',
+    dragMove: 'lgDragMove',
+    dragEnd: 'lgDragEnd',
+    beforeNextSlide: 'lgBeforeNextSlide',
+    beforePrevSlide: 'lgBeforePrevSlide',
+    beforeClose: 'lgBeforeClose',
+    afterClose: 'lgAfterClose',
+    rotateLeft: 'lgRotateLeft',
+    rotateRight: 'lgRotateRight',
+    flipHorizontal: 'lgFlipHorizontal',
+    flipVertical: 'lgFlipVertical',
+};
+
+var Zoom = /** @class */ (function () {
+    function Zoom(instance, $LG) {
+        // get lightGallery core plugin instance
+        this.core = instance;
+        this.$LG = $LG;
+        this.settings = __assign(__assign({}, zoomSettings), this.core.settings);
+        return this;
+    }
+    // Append Zoom controls. Actual size, Zoom-in, Zoom-out
+    Zoom.prototype.buildTemplates = function () {
+        var zoomIcons = this.settings.showZoomInOutIcons
+            ? "<button id=\"" + this.core.getIdName('lg-zoom-in') + "\" type=\"button\" aria-label=\"Zoom in\" class=\"lg-zoom-in lg-icon\"></button><button id=\"" + this.core.getIdName('lg-zoom-out') + "\" type=\"button\" aria-label=\"Zoom out\" class=\"lg-zoom-out lg-icon\"></button>"
+            : '';
+        if (this.settings.actualSize) {
+            zoomIcons += "<button id=\"" + this.core.getIdName('lg-actual-size') + "\" type=\"button\" aria-label=\"View actual size\" class=\"" + this.settings.actualSizeIcons.zoomIn + " lg-icon\"></button>";
+        }
+        this.core.outer.addClass('lg-use-transition-for-zoom');
+        this.core.$toolbar.first().append(zoomIcons);
+    };
+    /**
+     * @desc Enable zoom option only once the image is completely loaded
+     * If zoomFromOrigin is true, Zoom is enabled once the dummy image has been inserted
+     *
+     * Zoom styles are defined under lg-zoomable CSS class.
+     */
+    Zoom.prototype.enableZoom = function (event) {
+        var _this = this;
+        // delay will be 0 except first time
+        var _speed = this.settings.enableZoomAfter + event.detail.delay;
+        // set _speed value 0 if gallery opened from direct url and if it is first slide
+        if (this.$LG('body').first().hasClass('lg-from-hash') &&
+            event.detail.delay) {
+            // will execute only once
+            _speed = 0;
+        }
+        else {
+            // Remove lg-from-hash to enable starting animation.
+            this.$LG('body').first().removeClass('lg-from-hash');
+        }
+        this.zoomableTimeout = setTimeout(function () {
+            if (!_this.isImageSlide()) {
+                return;
+            }
+            _this.core.getSlideItem(event.detail.index).addClass('lg-zoomable');
+            if (event.detail.index === _this.core.index) {
+                _this.setZoomEssentials();
+            }
+        }, _speed + 30);
+    };
+    Zoom.prototype.enableZoomOnSlideItemLoad = function () {
+        // Add zoomable class
+        this.core.LGel.on(lGEvents.slideItemLoad + ".zoom", this.enableZoom.bind(this));
+    };
+    Zoom.prototype.getModifier = function (rotateValue, axis, el) {
+        var originalRotate = rotateValue;
+        rotateValue = Math.abs(rotateValue);
+        var transformValues = this.getCurrentTransform(el);
+        if (!transformValues) {
+            return 1;
+        }
+        var modifier = 1;
+        if (axis === 'X') {
+            var flipHorizontalValue = Math.sign(parseFloat(transformValues[0]));
+            if (rotateValue === 0 || rotateValue === 180) {
+                modifier = 1;
+            }
+            else if (rotateValue === 90) {
+                if ((originalRotate === -90 && flipHorizontalValue === 1) ||
+                    (originalRotate === 90 && flipHorizontalValue === -1)) {
+                    modifier = -1;
+                }
+                else {
+                    modifier = 1;
+                }
+            }
+            modifier = modifier * flipHorizontalValue;
+        }
+        else {
+            var flipVerticalValue = Math.sign(parseFloat(transformValues[3]));
+            if (rotateValue === 0 || rotateValue === 180) {
+                modifier = 1;
+            }
+            else if (rotateValue === 90) {
+                var sinX = parseFloat(transformValues[1]);
+                var sinMinusX = parseFloat(transformValues[2]);
+                modifier = Math.sign(sinX * sinMinusX * originalRotate * flipVerticalValue);
+            }
+            modifier = modifier * flipVerticalValue;
+        }
+        return modifier;
+    };
+    Zoom.prototype.getImageSize = function ($image, rotateValue, axis) {
+        var imageSizes = {
+            y: 'offsetHeight',
+            x: 'offsetWidth',
+        };
+        if (Math.abs(rotateValue) === 90) {
+            // Swap axis
+            if (axis === 'x') {
+                axis = 'y';
+            }
+            else {
+                axis = 'x';
+            }
+        }
+        return $image[imageSizes[axis]];
+    };
+    Zoom.prototype.getDragCords = function (e, rotateValue) {
+        if (rotateValue === 90) {
+            return {
+                x: e.pageY,
+                y: e.pageX,
+            };
+        }
+        else {
+            return {
+                x: e.pageX,
+                y: e.pageY,
+            };
+        }
+    };
+    Zoom.prototype.getSwipeCords = function (e, rotateValue) {
+        var x = e.targetTouches[0].pageX;
+        var y = e.targetTouches[0].pageY;
+        if (rotateValue === 90) {
+            return {
+                x: y,
+                y: x,
+            };
+        }
+        else {
+            return {
+                x: x,
+                y: y,
+            };
+        }
+    };
+    Zoom.prototype.getDragAllowedAxises = function (rotateValue, scale) {
+        scale = scale || this.scale || 1;
+        var allowY = this.imageYSize * scale > this.containerRect.height;
+        var allowX = this.imageXSize * scale > this.containerRect.width;
+        if (rotateValue === 90) {
+            return {
+                allowX: allowY,
+                allowY: allowX,
+            };
+        }
+        else {
+            return {
+                allowX: allowX,
+                allowY: allowY,
+            };
+        }
+    };
+    /**
+     *
+     * @param {Element} el
+     * @return matrix(cos(X), sin(X), -sin(X), cos(X), 0, 0);
+     * Get the current transform value
+     */
+    Zoom.prototype.getCurrentTransform = function (el) {
+        if (!el) {
+            return;
+        }
+        var st = window.getComputedStyle(el, null);
+        var tm = st.getPropertyValue('-webkit-transform') ||
+            st.getPropertyValue('-moz-transform') ||
+            st.getPropertyValue('-ms-transform') ||
+            st.getPropertyValue('-o-transform') ||
+            st.getPropertyValue('transform') ||
+            'none';
+        if (tm !== 'none') {
+            return tm.split('(')[1].split(')')[0].split(',');
+        }
+        return;
+    };
+    Zoom.prototype.getCurrentRotation = function (el) {
+        if (!el) {
+            return 0;
+        }
+        var values = this.getCurrentTransform(el);
+        if (values) {
+            return Math.round(Math.atan2(parseFloat(values[1]), parseFloat(values[0])) *
+                (180 / Math.PI));
+            // If you want rotate in 360
+            //return (angle < 0 ? angle + 360 : angle);
+        }
+        return 0;
+    };
+    Zoom.prototype.setZoomEssentials = function () {
+        var $image = this.core
+            .getSlideItem(this.core.index)
+            .find('.lg-image')
+            .first();
+        var rotateEl = this.core
+            .getSlideItem(this.core.index)
+            .find('.lg-img-rotate')
+            .first()
+            .get();
+        this.rotateValue = this.getCurrentRotation(rotateEl);
+        this.imageYSize = this.getImageSize($image.get(), this.rotateValue, 'y');
+        this.imageXSize = this.getImageSize($image.get(), this.rotateValue, 'x');
+        this.containerRect = this.core.outer.get().getBoundingClientRect();
+        this.modifierX = this.getModifier(this.rotateValue, 'X', rotateEl);
+        this.modifierY = this.getModifier(this.rotateValue, 'Y', rotateEl);
+    };
+    /**
+     * @desc Image zoom
+     * Translate the wrap and scale the image to get better user experience
+     *
+     * @param {String} scale - Zoom decrement/increment value
+     */
+    Zoom.prototype.zoomImage = function (scale) {
+        // Find offset manually to avoid issue after zoom
+        var offsetX = (this.containerRect.width - this.imageXSize) / 2 +
+            this.containerRect.left;
+        var _a = this.core.mediaContainerPosition, top = _a.top, bottom = _a.bottom;
+        var topBottomSpacing = Math.abs(top - bottom) / 2;
+        var offsetY = (this.containerRect.height -
+            this.imageYSize -
+            topBottomSpacing * this.modifierX) /
+            2 +
+            this.scrollTop +
+            this.containerRect.top;
+        var originalX;
+        var originalY;
+        if (scale === 1) {
+            this.positionChanged = false;
+        }
+        var dragAllowedAxises = this.getDragAllowedAxises(Math.abs(this.rotateValue), scale);
+        var allowY = dragAllowedAxises.allowY, allowX = dragAllowedAxises.allowX;
+        if (this.positionChanged) {
+            originalX = this.left / (this.scale - 1);
+            originalY = this.top / (this.scale - 1);
+            this.pageX = Math.abs(originalX) + offsetX;
+            this.pageY = Math.abs(originalY) + offsetY;
+            this.positionChanged = false;
+        }
+        var possibleSwipeCords = this.getPossibleSwipeDragCords(this.rotateValue, scale);
+        var _x = offsetX - this.pageX;
+        var _y = offsetY - this.pageY;
+        var x = (scale - 1) * _x;
+        var y = (scale - 1) * _y;
+        if (allowX) {
+            if (this.isBeyondPossibleLeft(x, possibleSwipeCords.minX)) {
+                x = possibleSwipeCords.minX;
+            }
+            else if (this.isBeyondPossibleRight(x, possibleSwipeCords.maxX)) {
+                x = possibleSwipeCords.maxX;
+            }
+        }
+        else {
+            if (scale > 1) {
+                if (x < possibleSwipeCords.minX) {
+                    x = possibleSwipeCords.minX;
+                }
+                else if (x > possibleSwipeCords.maxX) {
+                    x = possibleSwipeCords.maxX;
+                }
+            }
+        }
+        if (allowY) {
+            if (this.isBeyondPossibleTop(y, possibleSwipeCords.minY)) {
+                y = possibleSwipeCords.minY;
+            }
+            else if (this.isBeyondPossibleBottom(y, possibleSwipeCords.maxY)) {
+                y = possibleSwipeCords.maxY;
+            }
+        }
+        else {
+            // If the translate value based on index of beyond the viewport, utilize the available space to prevent image being cut out
+            if (scale > 1) {
+                //If image goes beyond viewport top, use the minim possible translate value
+                if (y < possibleSwipeCords.minY) {
+                    y = possibleSwipeCords.minY;
+                }
+                else if (y > possibleSwipeCords.maxY) {
+                    y = possibleSwipeCords.maxY;
+                }
+            }
+        }
+        this.setZoomStyles({
+            x: x,
+            y: y,
+            scale: scale,
+        });
+    };
+    /**
+     * @desc apply scale3d to image and translate to image wrap
+     * @param {style} X,Y and scale
+     */
+    Zoom.prototype.setZoomStyles = function (style) {
+        var $image = this.core
+            .getSlideItem(this.core.index)
+            .find('.lg-image')
+            .first();
+        var $dummyImage = this.core.outer
+            .find('.lg-current .lg-dummy-img')
+            .first();
+        var $imageWrap = $image.parent();
+        this.scale = style.scale;
+        $image.css('transform', 'scale3d(' + style.scale + ', ' + style.scale + ', 1)');
+        $dummyImage.css('transform', 'scale3d(' + style.scale + ', ' + style.scale + ', 1)');
+        var transform = 'translate3d(' + style.x + 'px, ' + style.y + 'px, 0)';
+        $imageWrap.css('transform', transform);
+        this.left = style.x;
+        this.top = style.y;
+    };
+    /**
+     * @param index - Index of the current slide
+     * @param event - event will be available only if the function is called on clicking/taping the imags
+     */
+    Zoom.prototype.setActualSize = function (index, event) {
+        var _this = this;
+        // Allow zoom only on image
+        if (!this.isImageSlide() ||
+            this.core.outer.hasClass('lg-first-slide-loading')) {
+            return;
+        }
+        var scale = this.getCurrentImageActualSizeScale();
+        if (this.core.outer.hasClass('lg-zoomed')) {
+            this.scale = 1;
+        }
+        else {
+            this.scale = this.getScale(scale);
+        }
+        this.setPageCords(event);
+        this.beginZoom(this.scale);
+        this.zoomImage(this.scale);
+        setTimeout(function () {
+            _this.core.outer.removeClass('lg-grabbing').addClass('lg-grab');
+        }, 10);
+    };
+    Zoom.prototype.getNaturalWidth = function (index) {
+        var $image = this.core.getSlideItem(index).find('.lg-image').first();
+        var naturalWidth = this.core.galleryItems[index].width;
+        return naturalWidth
+            ? parseFloat(naturalWidth)
+            : $image.get().naturalWidth;
+    };
+    Zoom.prototype.getActualSizeScale = function (naturalWidth, width) {
+        var _scale;
+        var scale;
+        if (naturalWidth > width) {
+            _scale = naturalWidth / width;
+            scale = _scale || 2;
+        }
+        else {
+            scale = 1;
+        }
+        return scale;
+    };
+    Zoom.prototype.getCurrentImageActualSizeScale = function () {
+        var $image = this.core
+            .getSlideItem(this.core.index)
+            .find('.lg-image')
+            .first();
+        var width = $image.get().offsetWidth;
+        var naturalWidth = this.getNaturalWidth(this.core.index) || width;
+        return this.getActualSizeScale(naturalWidth, width);
+    };
+    Zoom.prototype.getPageCords = function (event) {
+        var cords = {};
+        if (event) {
+            cords.x = event.pageX || event.targetTouches[0].pageX;
+            cords.y = event.pageY || event.targetTouches[0].pageY;
+        }
+        else {
+            var containerRect = this.core.outer.get().getBoundingClientRect();
+            cords.x = containerRect.width / 2 + containerRect.left;
+            cords.y =
+                containerRect.height / 2 + this.scrollTop + containerRect.top;
+        }
+        return cords;
+    };
+    Zoom.prototype.setPageCords = function (event) {
+        var pageCords = this.getPageCords(event);
+        this.pageX = pageCords.x;
+        this.pageY = pageCords.y;
+    };
+    // If true, zoomed - in else zoomed out
+    Zoom.prototype.beginZoom = function (scale) {
+        this.core.outer.removeClass('lg-zoom-drag-transition lg-zoom-dragging');
+        if (scale > 1) {
+            this.core.outer.addClass('lg-zoomed');
+            var $actualSize = this.core.getElementById('lg-actual-size');
+            $actualSize
+                .removeClass(this.settings.actualSizeIcons.zoomIn)
+                .addClass(this.settings.actualSizeIcons.zoomOut);
+        }
+        else {
+            this.resetZoom();
+        }
+        return scale > 1;
+    };
+    Zoom.prototype.getScale = function (scale) {
+        var actualSizeScale = this.getCurrentImageActualSizeScale();
+        if (scale < 1) {
+            scale = 1;
+        }
+        else if (scale > actualSizeScale) {
+            scale = actualSizeScale;
+        }
+        return scale;
+    };
+    Zoom.prototype.init = function () {
+        var _this = this;
+        if (!this.settings.zoom) {
+            return;
+        }
+        this.buildTemplates();
+        this.enableZoomOnSlideItemLoad();
+        var tapped = null;
+        this.core.outer.on('dblclick.lg', function (event) {
+            if (!_this.$LG(event.target).hasClass('lg-image')) {
+                return;
+            }
+            _this.setActualSize(_this.core.index, event);
+        });
+        this.core.outer.on('touchstart.lg', function (event) {
+            var $target = _this.$LG(event.target);
+            if (event.targetTouches.length === 1 &&
+                $target.hasClass('lg-image')) {
+                if (!tapped) {
+                    tapped = setTimeout(function () {
+                        tapped = null;
+                    }, 300);
+                }
+                else {
+                    clearTimeout(tapped);
+                    tapped = null;
+                    event.preventDefault();
+                    _this.setActualSize(_this.core.index, event);
+                }
+            }
+        });
+        // Update zoom on resize and orientationchange
+        this.core.LGel.on(lGEvents.containerResize + ".zoom " + lGEvents.rotateRight + ".zoom " + lGEvents.rotateLeft + ".zoom " + lGEvents.flipHorizontal + ".zoom " + lGEvents.flipVertical + ".zoom", function () {
+            if (!_this.core.lgOpened || !_this.isImageSlide())
+                return;
+            _this.setPageCords();
+            _this.setZoomEssentials();
+            _this.zoomImage(_this.scale);
+        });
+        // Update zoom on resize and orientationchange
+        this.$LG(window).on("scroll.lg.zoom.global" + this.core.lgId, function () {
+            if (!_this.core.lgOpened)
+                return;
+            _this.scrollTop = _this.$LG(window).scrollTop();
+        });
+        this.core.getElementById('lg-zoom-out').on('click.lg', function () {
+            if (_this.core.outer.find('.lg-current .lg-image').get()) {
+                _this.scale -= _this.settings.scale;
+                _this.scale = _this.getScale(_this.scale);
+                _this.beginZoom(_this.scale);
+                _this.zoomImage(_this.scale);
+            }
+        });
+        this.core.getElementById('lg-zoom-in').on('click.lg', function () {
+            _this.zoomIn();
+        });
+        this.core.getElementById('lg-actual-size').on('click.lg', function () {
+            _this.setActualSize(_this.core.index);
+        });
+        this.core.LGel.on(lGEvents.beforeOpen + ".zoom", function () {
+            _this.core.outer.find('.lg-item').removeClass('lg-zoomable');
+        });
+        this.core.LGel.on(lGEvents.afterOpen + ".zoom", function () {
+            _this.scrollTop = _this.$LG(window).scrollTop();
+            // Set the initial value center
+            _this.pageX = _this.core.outer.width() / 2;
+            _this.pageY = _this.core.outer.height() / 2 + _this.scrollTop;
+            _this.scale = 1;
+        });
+        // Reset zoom on slide change
+        this.core.LGel.on(lGEvents.afterSlide + ".zoom", function (event) {
+            var prevIndex = event.detail.prevIndex;
+            _this.scale = 1;
+            _this.positionChanged = false;
+            _this.resetZoom(prevIndex);
+            if (_this.isImageSlide()) {
+                _this.setZoomEssentials();
+            }
+        });
+        // Drag option after zoom
+        this.zoomDrag();
+        this.pinchZoom();
+        this.zoomSwipe();
+        // Store the zoomable timeout value just to clear it while closing
+        this.zoomableTimeout = false;
+        this.positionChanged = false;
+    };
+    Zoom.prototype.zoomIn = function (scale) {
+        // Allow zoom only on image
+        if (!this.isImageSlide()) {
+            return;
+        }
+        if (scale) {
+            this.scale = scale;
+        }
+        else {
+            this.scale += this.settings.scale;
+        }
+        this.scale = this.getScale(this.scale);
+        this.beginZoom(this.scale);
+        this.zoomImage(this.scale);
+    };
+    // Reset zoom effect
+    Zoom.prototype.resetZoom = function (index) {
+        this.core.outer.removeClass('lg-zoomed lg-zoom-drag-transition');
+        var $actualSize = this.core.getElementById('lg-actual-size');
+        var $item = this.core.getSlideItem(index !== undefined ? index : this.core.index);
+        $actualSize
+            .removeClass(this.settings.actualSizeIcons.zoomOut)
+            .addClass(this.settings.actualSizeIcons.zoomIn);
+        $item.find('.lg-img-wrap').first().removeAttr('style');
+        $item.find('.lg-image').first().removeAttr('style');
+        this.scale = 1;
+        this.left = 0;
+        this.top = 0;
+        // Reset pagx pagy values to center
+        this.setPageCords();
+    };
+    Zoom.prototype.getTouchDistance = function (e) {
+        return Math.sqrt((e.targetTouches[0].pageX - e.targetTouches[1].pageX) *
+            (e.targetTouches[0].pageX - e.targetTouches[1].pageX) +
+            (e.targetTouches[0].pageY - e.targetTouches[1].pageY) *
+                (e.targetTouches[0].pageY - e.targetTouches[1].pageY));
+    };
+    Zoom.prototype.pinchZoom = function () {
+        var _this = this;
+        var startDist = 0;
+        var pinchStarted = false;
+        var initScale = 1;
+        var $item = this.core.getSlideItem(this.core.index);
+        this.core.$inner.on('touchstart.lg', function (e) {
+            $item = _this.core.getSlideItem(_this.core.index);
+            if (!_this.isImageSlide()) {
+                return;
+            }
+            if (e.targetTouches.length === 2 &&
+                !_this.core.outer.hasClass('lg-first-slide-loading') &&
+                (_this.$LG(e.target).hasClass('lg-item') ||
+                    $item.get().contains(e.target))) {
+                initScale = _this.scale || 1;
+                _this.core.outer.removeClass('lg-zoom-drag-transition lg-zoom-dragging');
+                _this.core.touchAction = 'pinch';
+                startDist = _this.getTouchDistance(e);
+            }
+        });
+        this.core.$inner.on('touchmove.lg', function (e) {
+            if (e.targetTouches.length === 2 &&
+                _this.core.touchAction === 'pinch' &&
+                (_this.$LG(e.target).hasClass('lg-item') ||
+                    $item.get().contains(e.target))) {
+                e.preventDefault();
+                var endDist = _this.getTouchDistance(e);
+                var distance = startDist - endDist;
+                if (!pinchStarted && Math.abs(distance) > 5) {
+                    pinchStarted = true;
+                }
+                if (pinchStarted) {
+                    _this.scale = Math.max(1, initScale + -distance * 0.008);
+                    _this.zoomImage(_this.scale);
+                }
+            }
+        });
+        this.core.$inner.on('touchend.lg', function (e) {
+            if (_this.core.touchAction === 'pinch' &&
+                (_this.$LG(e.target).hasClass('lg-item') ||
+                    $item.get().contains(e.target))) {
+                pinchStarted = false;
+                startDist = 0;
+                if (_this.scale <= 1) {
+                    _this.resetZoom();
+                }
+                else {
+                    _this.scale = _this.getScale(_this.scale);
+                    _this.zoomImage(_this.scale);
+                    _this.core.outer.addClass('lg-zoomed');
+                }
+                _this.core.touchAction = undefined;
+            }
+        });
+    };
+    Zoom.prototype.touchendZoom = function (startCoords, endCoords, allowX, allowY, touchDuration, rotateValue) {
+        var distanceXnew = endCoords.x - startCoords.x;
+        var distanceYnew = endCoords.y - startCoords.y;
+        var speedX = Math.abs(distanceXnew) / touchDuration + 1;
+        var speedY = Math.abs(distanceYnew) / touchDuration + 1;
+        if (speedX > 2) {
+            speedX += 1;
+        }
+        if (speedY > 2) {
+            speedY += 1;
+        }
+        distanceXnew = distanceXnew * speedX;
+        distanceYnew = distanceYnew * speedY;
+        var _LGel = this.core
+            .getSlideItem(this.core.index)
+            .find('.lg-img-wrap')
+            .first();
+        var distance = {};
+        distance.x = this.left + distanceXnew * this.modifierX;
+        distance.y = this.top + distanceYnew * this.modifierY;
+        var possibleSwipeCords = this.getPossibleSwipeDragCords(rotateValue);
+        if (Math.abs(distanceXnew) > 15 || Math.abs(distanceYnew) > 15) {
+            if (allowY) {
+                if (this.isBeyondPossibleTop(distance.y, possibleSwipeCords.minY)) {
+                    distance.y = possibleSwipeCords.minY;
+                }
+                else if (this.isBeyondPossibleBottom(distance.y, possibleSwipeCords.maxY)) {
+                    distance.y = possibleSwipeCords.maxY;
+                }
+            }
+            if (allowX) {
+                if (this.isBeyondPossibleLeft(distance.x, possibleSwipeCords.minX)) {
+                    distance.x = possibleSwipeCords.minX;
+                }
+                else if (this.isBeyondPossibleRight(distance.x, possibleSwipeCords.maxX)) {
+                    distance.x = possibleSwipeCords.maxX;
+                }
+            }
+            if (allowY) {
+                this.top = distance.y;
+            }
+            else {
+                distance.y = this.top;
+            }
+            if (allowX) {
+                this.left = distance.x;
+            }
+            else {
+                distance.x = this.left;
+            }
+            this.setZoomSwipeStyles(_LGel, distance);
+            this.positionChanged = true;
+        }
+    };
+    Zoom.prototype.getZoomSwipeCords = function (startCoords, endCoords, allowX, allowY, possibleSwipeCords) {
+        var distance = {};
+        if (allowY) {
+            distance.y =
+                this.top + (endCoords.y - startCoords.y) * this.modifierY;
+            if (this.isBeyondPossibleTop(distance.y, possibleSwipeCords.minY)) {
+                var diffMinY = possibleSwipeCords.minY - distance.y;
+                distance.y = possibleSwipeCords.minY - diffMinY / 6;
+            }
+            else if (this.isBeyondPossibleBottom(distance.y, possibleSwipeCords.maxY)) {
+                var diffMaxY = distance.y - possibleSwipeCords.maxY;
+                distance.y = possibleSwipeCords.maxY + diffMaxY / 6;
+            }
+        }
+        else {
+            distance.y = this.top;
+        }
+        if (allowX) {
+            distance.x =
+                this.left + (endCoords.x - startCoords.x) * this.modifierX;
+            if (this.isBeyondPossibleLeft(distance.x, possibleSwipeCords.minX)) {
+                var diffMinX = possibleSwipeCords.minX - distance.x;
+                distance.x = possibleSwipeCords.minX - diffMinX / 6;
+            }
+            else if (this.isBeyondPossibleRight(distance.x, possibleSwipeCords.maxX)) {
+                var difMaxX = distance.x - possibleSwipeCords.maxX;
+                distance.x = possibleSwipeCords.maxX + difMaxX / 6;
+            }
+        }
+        else {
+            distance.x = this.left;
+        }
+        return distance;
+    };
+    Zoom.prototype.isBeyondPossibleLeft = function (x, minX) {
+        return x >= minX;
+    };
+    Zoom.prototype.isBeyondPossibleRight = function (x, maxX) {
+        return x <= maxX;
+    };
+    Zoom.prototype.isBeyondPossibleTop = function (y, minY) {
+        return y >= minY;
+    };
+    Zoom.prototype.isBeyondPossibleBottom = function (y, maxY) {
+        return y <= maxY;
+    };
+    Zoom.prototype.isImageSlide = function () {
+        var currentItem = this.core.galleryItems[this.core.index];
+        return this.core.getSlideType(currentItem) === 'image';
+    };
+    Zoom.prototype.getPossibleSwipeDragCords = function (rotateValue, scale) {
+        var dataScale = scale || this.scale || 1;
+        var elDataScale = Math.abs(dataScale);
+        var _a = this.core.mediaContainerPosition, top = _a.top, bottom = _a.bottom;
+        var topBottomSpacing = Math.abs(top - bottom) / 2;
+        var minY = (this.imageYSize - this.containerRect.height) / 2 +
+            topBottomSpacing * this.modifierX;
+        var maxY = this.containerRect.height - this.imageYSize * elDataScale + minY;
+        var minX = (this.imageXSize - this.containerRect.width) / 2;
+        var maxX = this.containerRect.width - this.imageXSize * elDataScale + minX;
+        var possibleSwipeCords = {
+            minY: minY,
+            maxY: maxY,
+            minX: minX,
+            maxX: maxX,
+        };
+        if (Math.abs(rotateValue) === 90) {
+            possibleSwipeCords = {
+                minY: minX,
+                maxY: maxX,
+                minX: minY,
+                maxX: maxY,
+            };
+        }
+        return possibleSwipeCords;
+    };
+    Zoom.prototype.setZoomSwipeStyles = function (LGel, distance) {
+        LGel.css('transform', 'translate3d(' + distance.x + 'px, ' + distance.y + 'px, 0)');
+    };
+    Zoom.prototype.zoomSwipe = function () {
+        var _this = this;
+        var startCoords = {};
+        var endCoords = {};
+        var isMoved = false;
+        // Allow x direction drag
+        var allowX = false;
+        // Allow Y direction drag
+        var allowY = false;
+        var startTime = new Date();
+        var endTime = new Date();
+        var possibleSwipeCords;
+        var _LGel;
+        var $item = this.core.getSlideItem(this.core.index);
+        this.core.$inner.on('touchstart.lg', function (e) {
+            // Allow zoom only on image
+            if (!_this.isImageSlide()) {
+                return;
+            }
+            $item = _this.core.getSlideItem(_this.core.index);
+            if ((_this.$LG(e.target).hasClass('lg-item') ||
+                $item.get().contains(e.target)) &&
+                e.targetTouches.length === 1 &&
+                _this.core.outer.hasClass('lg-zoomed')) {
+                e.preventDefault();
+                startTime = new Date();
+                _this.core.touchAction = 'zoomSwipe';
+                _LGel = _this.core
+                    .getSlideItem(_this.core.index)
+                    .find('.lg-img-wrap')
+                    .first();
+                var dragAllowedAxises = _this.getDragAllowedAxises(Math.abs(_this.rotateValue));
+                allowY = dragAllowedAxises.allowY;
+                allowX = dragAllowedAxises.allowX;
+                if (allowX || allowY) {
+                    startCoords = _this.getSwipeCords(e, Math.abs(_this.rotateValue));
+                }
+                possibleSwipeCords = _this.getPossibleSwipeDragCords(_this.rotateValue);
+                // reset opacity and transition duration
+                _this.core.outer.addClass('lg-zoom-dragging lg-zoom-drag-transition');
+            }
+        });
+        this.core.$inner.on('touchmove.lg', function (e) {
+            if (e.targetTouches.length === 1 &&
+                _this.core.touchAction === 'zoomSwipe' &&
+                (_this.$LG(e.target).hasClass('lg-item') ||
+                    $item.get().contains(e.target))) {
+                e.preventDefault();
+                _this.core.touchAction = 'zoomSwipe';
+                endCoords = _this.getSwipeCords(e, Math.abs(_this.rotateValue));
+                var distance = _this.getZoomSwipeCords(startCoords, endCoords, allowX, allowY, possibleSwipeCords);
+                if (Math.abs(endCoords.x - startCoords.x) > 15 ||
+                    Math.abs(endCoords.y - startCoords.y) > 15) {
+                    isMoved = true;
+                    _this.setZoomSwipeStyles(_LGel, distance);
+                }
+            }
+        });
+        this.core.$inner.on('touchend.lg', function (e) {
+            if (_this.core.touchAction === 'zoomSwipe' &&
+                (_this.$LG(e.target).hasClass('lg-item') ||
+                    $item.get().contains(e.target))) {
+                _this.core.touchAction = undefined;
+                _this.core.outer.removeClass('lg-zoom-dragging');
+                if (!isMoved) {
+                    return;
+                }
+                isMoved = false;
+                endTime = new Date();
+                var touchDuration = endTime.valueOf() - startTime.valueOf();
+                _this.touchendZoom(startCoords, endCoords, allowX, allowY, touchDuration, _this.rotateValue);
+            }
+        });
+    };
+    Zoom.prototype.zoomDrag = function () {
+        var _this = this;
+        var startCoords = {};
+        var endCoords = {};
+        var isDragging = false;
+        var isMoved = false;
+        // Allow x direction drag
+        var allowX = false;
+        // Allow Y direction drag
+        var allowY = false;
+        var startTime;
+        var endTime;
+        var possibleSwipeCords;
+        var _LGel;
+        this.core.outer.on('mousedown.lg.zoom', function (e) {
+            // Allow zoom only on image
+            if (!_this.isImageSlide()) {
+                return;
+            }
+            var $item = _this.core.getSlideItem(_this.core.index);
+            if (_this.$LG(e.target).hasClass('lg-item') ||
+                $item.get().contains(e.target)) {
+                startTime = new Date();
+                _LGel = _this.core
+                    .getSlideItem(_this.core.index)
+                    .find('.lg-img-wrap')
+                    .first();
+                var dragAllowedAxises = _this.getDragAllowedAxises(Math.abs(_this.rotateValue));
+                allowY = dragAllowedAxises.allowY;
+                allowX = dragAllowedAxises.allowX;
+                if (_this.core.outer.hasClass('lg-zoomed')) {
+                    if (_this.$LG(e.target).hasClass('lg-object') &&
+                        (allowX || allowY)) {
+                        e.preventDefault();
+                        startCoords = _this.getDragCords(e, Math.abs(_this.rotateValue));
+                        possibleSwipeCords = _this.getPossibleSwipeDragCords(_this.rotateValue);
+                        isDragging = true;
+                        // ** Fix for webkit cursor issue https://code.google.com/p/chromium/issues/detail?id=26723
+                        _this.core.outer.get().scrollLeft += 1;
+                        _this.core.outer.get().scrollLeft -= 1;
+                        _this.core.outer
+                            .removeClass('lg-grab')
+                            .addClass('lg-grabbing lg-zoom-drag-transition lg-zoom-dragging');
+                        // reset opacity and transition duration
+                    }
+                }
+            }
+        });
+        this.$LG(window).on("mousemove.lg.zoom.global" + this.core.lgId, function (e) {
+            if (isDragging) {
+                isMoved = true;
+                endCoords = _this.getDragCords(e, Math.abs(_this.rotateValue));
+                var distance = _this.getZoomSwipeCords(startCoords, endCoords, allowX, allowY, possibleSwipeCords);
+                _this.setZoomSwipeStyles(_LGel, distance);
+            }
+        });
+        this.$LG(window).on("mouseup.lg.zoom.global" + this.core.lgId, function (e) {
+            if (isDragging) {
+                endTime = new Date();
+                isDragging = false;
+                _this.core.outer.removeClass('lg-zoom-dragging');
+                // Fix for chrome mouse move on click
+                if (isMoved &&
+                    (startCoords.x !== endCoords.x ||
+                        startCoords.y !== endCoords.y)) {
+                    endCoords = _this.getDragCords(e, Math.abs(_this.rotateValue));
+                    var touchDuration = endTime.valueOf() - startTime.valueOf();
+                    _this.touchendZoom(startCoords, endCoords, allowX, allowY, touchDuration, _this.rotateValue);
+                }
+                isMoved = false;
+            }
+            _this.core.outer.removeClass('lg-grabbing').addClass('lg-grab');
+        });
+    };
+    Zoom.prototype.closeGallery = function () {
+        this.resetZoom();
+    };
+    Zoom.prototype.destroy = function () {
+        // Unbind all events added by lightGallery zoom plugin
+        this.$LG(window).off(".lg.zoom.global" + this.core.lgId);
+        this.core.LGel.off('.lg.zoom');
+        this.core.LGel.off('.zoom');
+        clearTimeout(this.zoomableTimeout);
+        this.zoomableTimeout = false;
+    };
+    return Zoom;
+}());
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Zoom);
+//# sourceMappingURL=lg-zoom.es5.js.map
 
 
 /***/ }),

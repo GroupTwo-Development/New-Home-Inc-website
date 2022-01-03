@@ -23,8 +23,8 @@
                     </div>
                 </div>
             </div>
-            <div class="main-map-view-component">
-                <a href="#"><i class="fas fa-map-marker-alt"></i> Map View</a>
+            <div id="community-map-view" class="main-map-view-component">
+                <a href="/<?php echo esc_html('community-map'); ?>"><i class="fas fa-map-marker-alt"></i> <span class="map-view-title">Map View</span></a>
             </div>
         </div>
 	</div>

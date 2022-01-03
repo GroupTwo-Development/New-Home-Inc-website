@@ -9,10 +9,10 @@ use Inc\Base\BaseController;
 
 class CommunitiesRewritesRules extends BaseController{
 	public function register() {
-		add_action( 'generate_rewrite_rules', array($this, 'register_communities_rewrite_rules') );
-		add_filter( 'request', array($this, 'fix_communities_subcategory_query'), 10 );
-		add_filter( 'post_type_link', array($this, 'filter_communities_post_link'), 100, 3 );
-		add_filter( 'term_link', array($this, 'filter_communities_section_terms_link'), 100, 3 );
+//		add_action( 'generate_rewrite_rules', array($this, 'register_communities_rewrite_rules') );
+//		add_filter( 'request', array($this, 'fix_communities_subcategory_query'), 10 );
+//		add_filter( 'post_type_link', array($this, 'filter_communities_post_link'), 100, 3 );
+//		add_filter( 'term_link', array($this, 'filter_communities_section_terms_link'), 100, 3 );
 	}
 
 	public static function register_communities_rewrite_rules( $wp_rewrite ) {
@@ -60,7 +60,6 @@ class CommunitiesRewritesRules extends BaseController{
 	public static function communities_article_permalink( $article_id, $section_id = false, $leavename = false, $only_permalink = false ) {
 		$taxonomy = 'metro-area';
 		$article = get_post( $article_id );
-
 		$return = '<a href="';
 		$permalink = ( $section_id ) ? trailingslashit( get_term_link( intval( $section_id ), 'metro-area' ) ) : home_url( '/communities/' );
 		$permalink .= trailingslashit( ( $leavename ? "%$article->post_type%" : $article->post_name ) );

@@ -1,5 +1,5 @@
 const $ = window.jQuery;
-const $window = window.$window || $(window);
+const $window = window.$window || $( window );
 
 /**
  * Intercept clicks on any anchor tag and if the anchor is linking to an on page ID, animate the scroll to the targeted
@@ -13,55 +13,50 @@ const $window = window.$window || $(window);
  */
 const AnimateOnPageLinks = {
 
-    duration: 800,
-    offset: -100,
+	duration: 800,
+	offset: -100,
 
-    init () {
+	init() {
+		$( 'a' ).on( 'click', ( e ) => {
+			const $link = $( e.target );
 
-        $('a').on('click', (e) => {
+			if ( this.is_excluded( $link ) ) {
+				return;
+			}
 
-            let $link = $(e.target);
+			const href = $link.attr( 'href' );
 
-            if (this.is_excluded($link)) {
-                return;
-            }
+			if ( this.link_is_targeting_on_page_anchor( href ) ) {
+				const $target_element = $( href );
+				if ( ! $target_element.length ) {
+					return;
+				}
 
-            let href = $link.attr('href');
+				e.preventDefault();
 
-            if (this.link_is_targeting_on_page_anchor(href)) {
+				const offset = ( $target_element.data( 'scroll-to-offset' ) === undefined )
+					? this.offset
+					: $target_element.data( 'scroll-to-offset' );
 
-                let $target_element = $(href);
-                if (!$target_element.length) {
-                    return;
-                }
+				const scroll_top = $target_element.offset().top + offset;
 
-                e.preventDefault();
+				// subtract any additional height considerations to scroll_top (e.g; height of sticky header)
+				//scroll_top -= $('.sticky-page-header').outerHeight();
 
-                let offset = ($target_element.data('scroll-to-offset') === undefined)
-                    ? this.offset
-                    : $target_element.data('scroll-to-offset');
+				$( 'html, body' ).animate( { scrollTop: scroll_top }, this.duration, 'swing', () => $target_element.trigger( 'scrolled_to' ) );
+			}
+		} );
 
-                let scroll_top = $target_element.offset().top + offset;
+		// $('.facetwp-sort-select').select2();
+	},
 
-                // subtract any additional height considerations to scroll_top (e.g; height of sticky header)
-                //scroll_top -= $('.sticky-page-header').outerHeight();
+	is_excluded( $selector ) {
+		return !! $selector.data( 'toggle' );
+	},
 
-                $('html, body').animate({scrollTop: scroll_top}, this.duration, 'swing', () => $target_element.trigger('scrolled_to'));
-            }
-
-        });
-
-        $('.facetwp-sort-select').select2();
-
-    },
-
-    is_excluded ($selector) {
-        return !!$selector.data('toggle');
-    },
-
-    link_is_targeting_on_page_anchor (link) {
-        return /^#/.test(link);
-    }
+	link_is_targeting_on_page_anchor( link ) {
+		return /^#/.test( link );
+	},
 
 };
 

@@ -58,7 +58,7 @@ class CustomPostTypes extends BaseController{
 			"capability_type" => "post",
 			"map_meta_cap" => true,
 			"hierarchical" => false,
-			'rewrite' => array( 'slug' => 'communities', 'hierarchical' => true, 'with_front' => false ),
+			'rewrite' => array( 'slug' => 'communities/%metro-area%/', 'hierarchical' => true, 'with_front' => false ),
 			"query_var" => true,
 			"menu_position" => 10,
 			"menu_icon" => "dashicons-admin-multisite",
@@ -75,9 +75,11 @@ class CustomPostTypes extends BaseController{
 					'menu_name' => 'Metro Areas',
 					'singular_name' => 'Metro Category',
 					'all_items' => 'All Metros'
+
 				),
 				'public' => true,
 				'hierarchical' => true,
+				'show_in_rest' => true,
 				'show_ui' => true,
 				'rewrite' => array( 'slug' => 'metro-area', 'hierarchical' => true, 'with_front' => false ),
 			)
@@ -109,6 +111,7 @@ class CustomPostTypes extends BaseController{
 					'all_items' => 'All Features'
 				),
 				'public' => true,
+				"show_in_rest" => true,
 				'hierarchical' => true,
 				'show_in_menu'      => true, // Hides the term edit page.
 				'meta_box_cb'  => false,
@@ -176,7 +179,7 @@ class CustomPostTypes extends BaseController{
 				"capability_type" => "post",
 				"map_meta_cap" => true,
 				"hierarchical" => false,
-				"rewrite" => [ "slug" => "floorplan", "with_front" => false ],
+				"rewrite" => [ "slug" => "floorplan/%floorplan-category%/", "with_front" => false ],
 				"query_var" => true,
 				"menu_position" => 11,
 				"menu_icon" => "dashicons-text",
@@ -315,7 +318,7 @@ class CustomPostTypes extends BaseController{
 			"capability_type" => "post",
 			"map_meta_cap" => true,
 			"hierarchical" => false,
-			'rewrite' => array( 'slug' => 'home-item', 'hierarchical' => true, 'with_front' => false ),
+			'rewrite' => array( 'slug' => 'homes/%home-category%/', 'hierarchical' => true, 'with_front' => false ),
 			"query_var" => true,
 			"menu_position" => 11,
 			"menu_icon" => "dashicons-admin-home",

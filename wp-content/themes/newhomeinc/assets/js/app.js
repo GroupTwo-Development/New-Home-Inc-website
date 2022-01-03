@@ -3,44 +3,55 @@
 import { createApp } from 'vue';
 import lozad from 'lozad';
 import AOS from 'aos';
-import {Fancybox} from "@fancyapps/ui";
+import { Fancybox } from '@fancyapps/ui';
 
 window.Popper = require( '@popperjs/core' );
 require( 'bootstrap' );
 
-
 //Some convenient tools to get you started…
 import HelloWorld from './components/HelloWorld';
-import AnimateOnPageLinks from "./components/AnimateOnPageLinks";
-import SelectButton from "./components/SelectButtton";
+import AnimateOnPageLinks from './components/AnimateOnPageLinks';
+import SelectButton from './components/SelectButtton';
 import globalScript from './script/globalScript';
 import progressBar from './script/progressBar';
-import videosPlayer from "./script/videosPlayer";
-import DropdownButtons from "./script/DropdownButtons";
-// import footerCtaListing from './script/footerCtaListing';
+import videosPlayer from './script/videosPlayer';
+import DropdownButtons from './script/DropdownButtons';
+import qmiSearchFooterContent from './components/qmiSearchFooterContent';
+import detailPageGallery from './script/detailPageGallery';
+import generalScript from './components/generalScript';
 import featuredHome from './script/featuredHome';
-
+import accordion from './script/accordion';
+import communityFilterContent from './components/communityFilterContent';
+// import homeDesignsSearchFooterContent from './components/homeDesignsSearchFooterContent';
+import elevationGallery from './script/elevationGallery';
 
 // Initialise our components on jQuery.ready…
-jQuery(function ($) {
-    AnimateOnPageLinks.init();
-    SelectButton.init();
-});
+jQuery( function( $ ) {
+	AnimateOnPageLinks.init();
+	SelectButton.init();
+	communityFilterContent.init();
+	qmiSearchFooterContent.init();
+	// homeDesignsSearchFooterContent.init();
+} );
+
+const observer = lozad(); // lazy loads elements with default selector as ".lozad"
+observer.observe();
+AOS.init();
+accordion.init();
+generalScript.init();
 featuredHome.init();
 videosPlayer.init();
 DropdownButtons.init();
-AOS.init();
-const observer = lozad(); // lazy loads elements with default selector as ".lozad"
-observer.observe();
+
+detailPageGallery.init();
+elevationGallery.init();
+
 // footerCtaListing.init();
 
+const homeApp = createApp( {
+	components: {
+		HelloWorld,
+	},
+} );
 
-
-
-const homeApp = createApp({
-    components: {
-        HelloWorld,
-    }
-})
-
-homeApp.mount('#home-app');
+homeApp.mount( '#home-app' );

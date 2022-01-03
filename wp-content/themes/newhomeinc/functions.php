@@ -90,27 +90,3 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-
-//if ( is_admin_bar_showing() ) {     echo '<style type="text/css"> nav {margin-top: 32px;} </style>'; }
-//
-//
-//
-
-
-add_filter( 'generate_rewrite_rules', function ( $wp_rewrite ){
-	$wp_rewrite->rules = array_merge(
-		['my-custom-url/?$' => 'index.php?custom=1'],
-		$wp_rewrite->rules
-	);
-} );
-add_filter( 'query_vars', function( $query_vars ){
-	$query_vars[] = 'custom';
-	return $query_vars;
-} );
-add_action( 'template_redirect', function(){
-	$custom = intval( get_query_var( 'custom' ) );
-	if ( $custom ) {
-		include get_template_directory() . '/templates/custom.php';
-		die;
-	}
-} );

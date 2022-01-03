@@ -12,7 +12,7 @@
 ?>
 
 <?php
-    if(!is_post_type_archive('communities') && !is_post_type_archive('floorplans') && !is_archive()){
+    if(!is_post_type_archive('communities') && !is_post_type_archive('floorplans') && !is_archive() && !is_singular('communities') && !is_singular('homes') && !is_singular('home-design')){
 	    get_template_part('template-parts/components/global/footer/footer-cta');
     }
 ?>

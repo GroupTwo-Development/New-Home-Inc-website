@@ -1,5 +1,5 @@
 section#newsletter{
-  position: relative;
+  //position: relative;
   background-color: $primary_color_black;
   padding-top: 3rem;
   padding-bottom: 0.1rem;
@@ -7,7 +7,6 @@ section#newsletter{
     padding-top: 4rem;
   }
   .newsletter-content{
-    position: relative;
     display: flex;
     flex-flow: column;
     justify-content: center;

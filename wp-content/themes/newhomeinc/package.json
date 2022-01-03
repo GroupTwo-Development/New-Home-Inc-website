@@ -45,7 +45,7 @@
   },
   "main": "index.js",
   "dependencies": {
-    "@fancyapps/ui": "^4.0.10",
+    "@fancyapps/ui": "^4.0.12",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@popperjs/core": "^2.10.2",
     "@splidejs/splide": "^3.3.1",

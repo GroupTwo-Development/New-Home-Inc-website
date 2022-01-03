@@ -192,7 +192,7 @@ class FacetWP_Facet_Proximity_Core extends FacetWP_Facet
                     'source_other' => [
                         'label' => __( 'Longitude', 'fwp' ),
                         'notes' => '(Optional) use a separate longitude field',
-                        'html' => '<data-sources :facet="facet" settingName="source_other"></data-sources>'
+                        'html' => '<data-sources :facet="facet" setting-name="source_other"></data-sources>'
                     ]
                 ]
             ],

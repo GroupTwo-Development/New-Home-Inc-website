@@ -1,0 +1,36 @@
+#coming-soon-area{
+  position: relative;
+  header.coming-soon-header{
+    opacity: 0.89;
+    background-color: $primary_color_gray;
+    padding: 0.2rem 0;
+    span.coming-soon-title{
+      display: block;
+      text-align: center;
+      color: $primary_color_black;
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+  }
+  .coming-soon-main-area{
+    position: relative;
+    background-color: $primary_color_black;
+    padding: 1rem 0;
+    .main-content{
+     p{
+       color: $primary_color_white;
+       text-transform: uppercase;
+       text-align: left;
+       font-weight: 600;
+     }
+      .contact-form-area{
+        .hbspt-form{
+
+        }
+      }
+    }
+  }
+}
+
+

@@ -59,6 +59,7 @@
 			'baths' => get_field('spec_baths'),
 			'half_bath' => get_field('spec_half_baths'),
 			'sqft' => get_field('spec_sqft'),
+			'garage' => get_field('spec_garage'),
 			'price' => get_field('spec_price'),
 			'spec_city' => get_field('spec_city'),
 			'spec_state' => get_field('spec_state'),
@@ -66,6 +67,48 @@
 			'announcement' => get_field('announcement'),
 			'featured_image' => get_field('featured_image'),
 
+
 		);
 		return $homes_spec;
 	}
+
+
+function get_home_design_spec(): array {
+	$home_design_spec = array(
+		'min_bedroom' => get_field('min_bedrooms'),
+		'max_bedrooms' => get_field('max_bedrooms'),
+		'min_baths' => get_field('min_baths'),
+		'max_baths' => get_field('max_baths'),
+		'half_bath' => get_field('half_baths'),
+		'sqft' => get_field('base_sqft'),
+		'price' => get_field('base_price'),
+
+		'spec_city' => get_field('spec_city'),
+		'spec_state' => get_field('spec_state'),
+		'spec_zip' => get_field('spec_zip'),
+		'announcement' => get_field('announcement'),
+		'featured_image' => get_field('featured_image'),
+
+	);
+	return $home_design_spec;
+}
+
+function get_floorplan_location_spec(){
+	$floorplan_location_spec = array(
+		'min_bedroom' => get_field('min_bedrooms'),
+		'max_bedrooms' => get_field('max_bedrooms'),
+		'min_baths' => get_field('min_baths'),
+		'max_baths' => get_field('max_baths'),
+		'half_bath' => get_field('half_baths'),
+		'sqft' => get_field('base_sqft'),
+		'price' => get_field('base_price'),
+
+		'spec_city' => get_field('spec_city'),
+		'spec_state' => get_field('spec_state'),
+		'spec_zip' => get_field('spec_zip'),
+		'announcement' => get_field('announcement'),
+		'featured_image' => get_field('featured_image'),
+
+	);
+	return $floorplan_location_spec;
+}

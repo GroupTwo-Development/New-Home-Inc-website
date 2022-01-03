@@ -1,0 +1,38 @@
+nav.info-links{
+  background-color: $primary_color_black;
+  padding: 0.7rem 0;
+  .info-links-component{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    @include media-breakpoint-up(xl){
+      padding: 0.2rem 6rem;
+    }
+    a{
+      text-transform: uppercase;
+      color: $primary_color_white;
+      text-decoration: none;
+      outline: none;
+      letter-spacing: 0.1em;
+      font-weight: 300;
+      font-size: 100%;
+      margin-right: 2rem;
+      &:last-child{
+        margin-right: 0;
+      }
+      &:hover{
+        color: $primary_color_orange;
+      }
+    }
+  }
+  @include media-breakpoint-down(md){
+    display: none;
+  }
+}
+
+
+.btn-text b{display:inline}
+.btn-text:not(.collapsed)  span{display:none}
+.btn-text.collapsed b {display:none}

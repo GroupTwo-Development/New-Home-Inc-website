@@ -24,8 +24,8 @@
                 </div>
 
             </li>
-            <li class="map-view-item filter-item">
-                <a href="#"><i class="fas fa-map-marker-alt"></i> Map View</a>
+            <li class="map-view-item filter-item main-map-view-component">
+                <a href="/<?php echo esc_html('community-map'); ?>"><i class="fas fa-map-marker-alt"></i> <span class="map-view-title">Map View</span></a>
             </li>
         </ul>
     </div>

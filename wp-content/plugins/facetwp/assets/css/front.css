@@ -303,3 +303,15 @@
     background-repeat: no-repeat;
     background-position: right center;
 }
+
+/* Layout builder */
+
+.fwpl-layout, .fwpl-row {
+    display: grid;
+}
+
+@media (max-width: 480px) {
+    .fwpl-layout {
+        grid-template-columns: 1fr;
+    }
+}

@@ -10,8 +10,7 @@
     min-height: 5rem;
     max-height: 6rem;
     flex-flow: column;
-    justify-content: center;
-    align-content: center;
+    //align-content: center;
     //align-items: center;
     @include media-breakpoint-up(lg){
       height: 7rem;
@@ -32,7 +31,7 @@
     span#breadcrumbs{
       text-align: left;
       display: inline-block;
-      margin-top: 5px;
+      margin-top: 0.6rem;
       padding-bottom: 0.5rem;
       span{
         span{
@@ -40,9 +39,10 @@
           font-size: 0.90rem;
           a{
             color: $primary_color_orange;
-            text-transform: uppercase;
+            text-transform: capitalize;
             outline: none;
             text-decoration: none;
+            font-weight: 400;
           }
           span.breadcrumb_last{
             font-weight: 400;

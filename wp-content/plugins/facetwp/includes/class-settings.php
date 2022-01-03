@@ -191,7 +191,8 @@ class FacetWP_Settings
             'soft_limit' => [
                 'label' => __( 'Soft limit', 'fwp' ),
                 'notes' => 'Show a toggle link after this many choices',
-                'default' => 5
+                'default' => 5,
+                'show' => "facet.hierarchical != 'yes'"
             ],
             'source_other' => [
                 'label' => __( 'Other data source', 'fwp' ),
@@ -492,6 +493,7 @@ $false_value = isset( $atts['false_value'] ) ? $atts['false_value'] : 'no';
             'Post Type' => __( 'Post Type', 'fwp' ),
             'Post Date' => __( 'Post Date', 'fwp' ),
             'Post Modified' => __( 'Post Modified', 'fwp' ),
+            'Comment Count' => __( 'Comment Count', 'fwp' ),
             'Menu Order' => __( 'Menu Order', 'fwp' ),
             'Custom Fields' => __( 'Custom Fields', 'fwp' ),
             'Narrow results by' => __( 'Narrow results by', 'fwp' ),

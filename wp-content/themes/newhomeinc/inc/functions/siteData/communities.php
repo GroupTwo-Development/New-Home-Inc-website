@@ -40,3 +40,6 @@
         }
     }
     add_filter( 'pre_get_posts', 'communities_archive_per_page' );
+
+
+

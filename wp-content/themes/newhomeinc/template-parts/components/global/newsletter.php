@@ -1,5 +1,5 @@
 <section id="newsletter">
-    <div class="newsletter-inner" data-aos="fade-up">
+    <div class="newsletter-inner">
         <div class="container">
             <div class="newsletter-content">
                 <div class="newsletter-logo-area">

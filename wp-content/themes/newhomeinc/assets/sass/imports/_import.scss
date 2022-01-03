@@ -4,4 +4,18 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~@fancyapps/ui/dist/fancybox.css";
 @import "~aos/dist/aos.css";
-//@import "~lightgallery/css/lightgallery-bundle.css";
+@import "~@fancyapps/ui/dist/fancybox.css";
+
+a[data-fancybox] img {
+  cursor: zoom-in;
+}
+
+.fancybox__container {
+  --fancybox-thumbs-border-radius: 50%;
+  --fancybox-thumbs-ratio: 1;
+
+  --fancybox-thumbs-width: 50px;
+  --fancybox-thumbs-height: 50px;
+
+  --fancybox-accent-color: #F472B6;
+}

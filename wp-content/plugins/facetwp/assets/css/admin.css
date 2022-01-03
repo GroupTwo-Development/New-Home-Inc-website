@@ -580,6 +580,10 @@ a:hover {
     max-width: 360px;
 }
 
+.qb-wrap .v-select.vs--searchable {
+    min-width: 200px;
+}
+
 .qb-wrap .v-select.vs--unsearchable {
     vertical-align: top;
 }

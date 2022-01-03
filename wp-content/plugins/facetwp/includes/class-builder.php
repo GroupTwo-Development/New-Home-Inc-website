@@ -26,7 +26,6 @@ class FacetWP_Builder
         $css_class = empty( $settings['css_class'] ) ? '' : ' ' . $settings['css_class'];
 
         $this->css['.fwpl-layout'] = [
-            'display' => 'grid',
             'grid-template-columns' => trim( str_repeat( '1fr ', $settings['num_columns'] ) ),
             'grid-gap' => $settings['grid_gap'] . 'px'
         ];
@@ -80,7 +79,6 @@ class FacetWP_Builder
     function render_row( $row ) {
         $settings = $row['settings'];
 
-        $this->css['.fwpl-row'] = [ 'display' => 'grid' ];
         $this->css['.fwpl-row.' . $settings['name'] ] = $this->build_styles( $settings );
 
         $css_class = empty( $settings['css_class'] ) ? '' : ' ' . $settings['css_class'];
@@ -459,14 +457,6 @@ class FacetWP_Builder
         if ( ! empty( $this->custom_css ) ) {
             $output .= $this->custom_css . "\n";
         }
-
-        $output .= "
-@media (max-width: 480px) {
-    .fwpl-layout {
-        grid-template-columns: 1fr;
-    }
-}
-";
 
         $output .= "</style>\n";
 

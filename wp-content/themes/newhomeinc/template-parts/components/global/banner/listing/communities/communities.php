@@ -7,10 +7,23 @@
                         yoast_breadcrumb( '<span id="breadcrumbs">','</span>' );
                     }
                     ?>
-                    <span class="banner-title">NEW HOME COMMUNITIES</span>
+                    <span id="community_banner_title" class="banner-title">NEW HOME COMMUNITIES</span>
                 </div>
             </div>
         </div>
+<?php elseif (is_page_template( 'page-communities-map.php' )) : ?>
+    <div class="interior-page-banner">
+        <div class="container">
+            <div class="interior-banner-inner">
+				<?php
+				if ( function_exists('yoast_breadcrumb') ) {
+					yoast_breadcrumb( '<span id="breadcrumbs">','</span>' );
+				}
+				?>
+                <span id="community_banner_title" class="banner-title">NEW HOME COMMUNITIES</span>
+            </div>
+        </div>
+    </div>
 <?php elseif (is_post_type_archive('homes')) : ?>
     <div class="interior-page-banner">
         <div class="container">
@@ -20,7 +33,20 @@
 					yoast_breadcrumb( '<span id="breadcrumbs">','</span>' );
 				}
 				?>
-                <span class="banner-title">NEW AVAILABLE HOMES</span>
+                <span id="homes_banner_title" class="banner-title">NEW AVAILABLE HOMES</span>
+            </div>
+        </div>
+    </div>
+<?php elseif (is_page_template( 'page-homes-map.php' )) : ?>
+    <div class="interior-page-banner">
+        <div class="container">
+            <div class="interior-banner-inner">
+				<?php
+				if ( function_exists('yoast_breadcrumb') ) {
+					yoast_breadcrumb( '<span id="breadcrumbs">','</span>' );
+				}
+				?>
+                <span id="homes_banner_title" class="banner-title">NEW AVAILABLE HOMES</span>
             </div>
         </div>
     </div>
@@ -33,7 +59,7 @@
 					yoast_breadcrumb( '<span id="breadcrumbs">','</span>' );
 				}
 				?>
-                <span class="banner-title">NEW HOME FLOORPLANS</span>
+                <span id="floorplan_banner_title" class="banner-title">NEW HOME FLOORPLANS</span>
             </div>
         </div>
     </div>

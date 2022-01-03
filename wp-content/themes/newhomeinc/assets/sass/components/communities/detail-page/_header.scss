@@ -1,0 +1,88 @@
+.detail-page-banner{
+  position: relative;
+  padding: 0.6rem 0;
+  @include media-breakpoint-up(lg){
+    padding: 0;
+  }
+  .interior-banner-inner{
+    span#breadcrumbs{
+      text-align: left;
+      display: inline-block;
+      span{
+        span{
+          font-weight: 400;
+          font-size: 95%;
+          a{
+            color: $primary_color_orange;
+            text-transform: capitalize;
+            outline: none;
+            text-decoration: none;
+            font-weight: 400;
+          }
+          span.breadcrumb_last{
+            font-weight: 400;
+          }
+        }
+      }
+    }
+    .banner-inner-title-component{
+      padding-top: 0.5rem;
+      text-align: center;
+      @include media-breakpoint-up(lg){
+        padding-top: 0;
+      }
+      @include media-breakpoint-between(md, lg){
+        //padding-top: 0.9rem;
+        padding-bottom: 0.5rem;
+      }
+      @include media-breakpoint-between(lg, xl){
+        //padding-top: 0.9rem;
+        padding-bottom: 0.5rem;
+      }
+      @include media-breakpoint-up(xl){
+        padding-top: 0.9rem;
+        padding-bottom: 0.6rem;
+      }
+      .banner-title{
+        display: block;
+        font-weight: 600;
+        color: $primary_color_black;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        @include media-breakpoint-between(md, lg){
+          font-size: 1.8rem;
+        }
+        @include media-breakpoint-between(lg, xl){
+          font-size: 2rem;
+        }
+
+        @include media-breakpoint-up(xl){
+          font-size: 2.5em;
+        }
+      }
+      .community-location-area{
+        position: relative;
+        span.detail-header-location{
+          display: block;
+          color: $primary_color_black;
+          text-align: center;
+          font-size: 85%;
+          font-weight: normal;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          @include media-breakpoint-between(md, lg){
+            font-size: 90%;
+          }
+          @include media-breakpoint-between(lg, xl){
+            font-size: 95%;
+          }
+          @include media-breakpoint-up(xl){
+            font-size: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+

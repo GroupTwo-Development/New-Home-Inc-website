@@ -9,11 +9,12 @@ use Inc\Base\BaseController;
 
 class plansRewriteRules extends BaseController{
 	public function register() {
-		add_action( 'generate_rewrite_rules', array($this, 'register_floorplan_rewrite_rules') );
-		add_filter( 'request', array($this, 'fix_floorplan_subcategory_query'), 10 );
-		add_filter( 'post_type_link', array($this, 'filter_floorplan_post_link'), 100, 3 );
-		add_filter( 'term_link', array($this, 'filter_floorplan_section_terms_link'), 100, 3 );
+//		add_action( 'generate_rewrite_rules', array($this, 'register_floorplan_rewrite_rules') );
+//		add_filter( 'request', array($this, 'fix_floorplan_subcategory_query'), 10 );
+//		add_filter( 'post_type_link', array($this, 'filter_floorplan_post_link'), 100, 3 );
+//		add_filter( 'term_link', array($this, 'filter_floorplan_section_terms_link'), 100, 3 );
 	}
+
 
 	public  static function register_floorplan_rewrite_rules( $wp_rewrite ) {
 		$new_rules = array(

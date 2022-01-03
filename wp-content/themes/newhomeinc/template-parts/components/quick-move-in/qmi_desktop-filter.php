@@ -73,8 +73,8 @@
                     </div>
                 </div>
             </div>
-            <div class="main-map-view-component">
-                <a href="#"><i class="fas fa-map-marker-alt"></i> Map View</a>
+            <div class="main-map-view-component qmi-map">
+                <a href="/homes-map"><i class="fas fa-map-marker-alt"></i> <span class="map-view-title">Map View</span></a>
             </div>
         </div>
 	</div>

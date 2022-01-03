@@ -439,6 +439,7 @@
                             <option value="type">{{ 'Post Type' | i18n }}</option>
                             <option value="date">{{ 'Post Date' | i18n }}</option>
                             <option value="modified">{{ 'Post Modified' | i18n }}</option>
+                            <option value="comment_count">{{ 'Comment Count' | i18n }}</option>
                             <option value="menu_order">{{ 'Menu Order' | i18n }}</option>
                             <option value="post__in">post__in</option>
                         </optgroup>
@@ -496,6 +497,9 @@
                         :taggable="true"
                         :close-on-select="false"
                         :placeholder="getPlaceholder(row)">
+                        <div slot="no-options">
+                            Type a value, then press "Enter" to add it
+                        </div>
                     </v-select>
 
                     <span @click="deleteFilterCriteria(index)" class="qb-remove" v-html="FWP.svg['minus-circle']"></span>
@@ -1703,6 +1707,7 @@
                                     <option value="type">{{ 'Post Type' | i18n }}</option>
                                     <option value="date">{{ 'Post Date' | i18n }}</option>
                                     <option value="modified">{{ 'Post Modified' | i18n }}</option>
+                                    <option value="comment_count">{{ 'Comment Count' | i18n }}</option>
                                     <option value="menu_order">{{ 'Menu Order' | i18n }}</option>
                                     <option value="post__in">post__in</option>
                                 </optgroup>
