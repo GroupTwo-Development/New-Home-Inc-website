@@ -4,6 +4,7 @@ const $window = window.$window || $( window );
 // eslint-disable-next-line no-unused-vars
 const homeDesignsSearchFooterContent = {
 	init() {
+		const getUrl = 'https://newhomeinc1dev.wpengine.com';
 		$( document ).on( 'facetwp-loaded', function() {
 			const homesSearchPage = app_script_vars.floorplan_search_page_content;
 			const homesSearchPageFooterTitle = app_script_vars.floorplan_search_page_content_title;
@@ -23,7 +24,7 @@ const homeDesignsSearchFooterContent = {
 				// eslint-disable-next-line no-console
 				// console.log( selectedValue );
 
-				const loadedContent = 'http://newhomeinc.test/wp-json/wp/v2/communities/' + selectedValue;
+				const loadedContent = getUrl + '/wp-json/wp/v2/communities/' + selectedValue;
 
 				function loadMainFootercontent() {
 					if ( $( '.facetwp-facet-plan_community ' ).has( '.checked' ) ) {
@@ -62,7 +63,7 @@ const homeDesignsSearchFooterContent = {
 						const data_value = $( this ).attr( 'data-value' );
 						// eslint-disable-next-line no-console
 						console.log( data_value );
-						const dataTexaonomies = 'http://newhomeinc.test/wp-json/wp/v2/communities/' + selectedValue;
+						const dataTexaonomies = getUrl + '/wp-json/wp/v2/communities/' + selectedValue;
 
 						// eslint-disable-next-line no-console
 						console.log( dataTexaonomies );

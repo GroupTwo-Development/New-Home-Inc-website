@@ -7,7 +7,7 @@ const $window = window.$window || $( window );
 
 const SelectButton = {
 	init() {
-		const getUrl = 'http://newhomeinc1dev.wpengine.com';
+		const getUrl = 'https://newhomeinc1dev.wpengine.com';
 		( function( $ ) {
 			$( '.detail-page-cta-options' ).on( 'click', function() {
 				$( '.detail-page-cta-slide-out' ).toggleClass( 'slidemodal-hidden' );
@@ -118,7 +118,7 @@ const SelectButton = {
 				// const selfGuidedTourLink = document.getElementById( 'elf-guided_tour' );
 				// eslint-disable-next-line no-console
 
-				const communitiesData = 'http://newhomeinc.test/wp-json/wp/v2/communities/' + postId;
+				const communitiesData = getUrl + '/wp-json/wp/v2/communities/' + postId;
 
 				$.ajax( {
 					url: communitiesData,

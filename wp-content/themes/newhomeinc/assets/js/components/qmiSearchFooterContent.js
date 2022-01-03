@@ -4,6 +4,7 @@ const $window = window.$window || $( window );
 // eslint-disable-next-line no-unused-vars
 const qmiSearchFooterContent = {
 	init() {
+		const getUrl = 'https://newhomeinc1dev.wpengine.com';
 		$( document ).on( 'facetwp-loaded', function() {
 			const homesSearchPage = app_script_vars.qmi_search_page_content;
 			const homesSearchPageFooterTitle = app_script_vars.homes_search_page_title;
@@ -23,7 +24,7 @@ const qmiSearchFooterContent = {
 				// eslint-disable-next-line no-console
 				// console.log( selectedValue );
 
-				const loadedContent = `http://newhomeinc.test/wp-json/wp/v2/metro-area?slug=${ selectedValue }`;
+				const loadedContent = `${ getUrl }/wp-json/wp/v2/metro-area?slug=${ selectedValue }`;
 
 				function loadMainFootercontent() {
 					if ( $( '.facetwp-facet-qmi_location ' ).has( '.checked' ) ) {
@@ -58,7 +59,7 @@ const qmiSearchFooterContent = {
 					$( document ).on( 'click', '.facetwp-facet-qmi_location .checked', function() {
 						// eslint-disable-next-line camelcase
 						const data_value = $( this ).attr( 'data-value-tes' );
-						const dataTexaonomies = `http://newhomeinc.test/wp-json/wp/v2/metro-area?slug=${ data_value }`;
+						const dataTexaonomies = `${ getUrl }/wp-json/wp/v2/metro-area?slug=${ data_value }`;
 
 						$.ajax( {
 							url: dataTexaonomies,
@@ -71,7 +72,7 @@ const qmiSearchFooterContent = {
 									console.log( tax.name );
 									// eslint-disable-next-line camelcase
 									if ( selectedValue === '' ) {
-										displayHomesBannerTitle.innerText = 'NEW AVAILABLE HOMES';
+										displayHomesBannerTitle.innerText = 'AVAILABLE HOMES';
 										displayMainFooterContentTitle.innerText = homesSearchPageFooterTitle;
 										displayMainFooterContent.innerHTML = homesSearchPage;
 									} else {

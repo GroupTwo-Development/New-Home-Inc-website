@@ -533,6 +533,235 @@
     }
     .available-floorplans{
       .accordion-body{
+        .splide{
+          padding-bottom: 1.5rem;
+          .splide__arrows{
+            .splide__arrow svg{
+              fill: $primary_color_orange;
+            }
+          }
+          ul.splide__pagination{
+            li{
+              button.splide__pagination__page{
+                border: 0.5px solid $primary_color_black;
+                background: $primary_color_black;
+              }
+              button.is-active{
+                border-color: $primary_color_orange;
+                background: $primary_color_orange;
+              }
+            }
+          }
+          .card{
+            border: none;
+            box-shadow: 0 3px 10px rgb(0 0 0 / 16%);
+            position: relative;
+            overflow: hidden;
+            border: 0;
+            margin-bottom: 1rem;
+            &:hover{
+              border-bottom: 5px solid $primary_color_orange;
+              transition: 0.4s ease-in-out;
+              overflow: hidden;
+            }
+            a{
+              display: block;
+              outline: none;
+              color: $primary_color_black;
+              text-decoration: none;
+              .card-inner{
+                height: 434px;
+                .card-banner-announcement{
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                  width: 100%;
+                  overflow: hidden;
+                  z-index: 1;
+                  background-color: $primary_color_orange;
+                  height: 38px;
+                  display: flex;
+                  flex-flow: column;
+                  justify-content: center;
+                  align-items: center;
+                  align-content: center;
+                  span{
+                    display: block;
+                    color: $primary_color_white;
+                    letter-spacing: 0.2em;
+                    text-align: center;
+                    font-weight: 400;
+                    text-transform: uppercase;
+                    font-size: 1rem;
+                  }
+                }
+                .card-img{
+                  .splide{
+                    .splide__list{
+                      .splide__slide{
+                        img{
+                          object-fit: cover;
+                          //height: 230px;
+                        }
+                      }
+                    }
+                  }
+                  position: relative;
+                  img{
+                    object-fit: cover;
+                    height: 15.5rem;
+                    width: 100vw;
+                  }
+                }
+                .card-body{
+                  a.inner-body{
+                    display: block;
+                    text-decoration: none;
+                    outline: none;
+                    height: 100%;
+                    color: $primary_color_black;
+                  }
+                  position: relative;
+                  padding-top: 1rem;
+                  display: block;
+                  .card-body-top{
+                    .card-body-top-inner{
+                      display: flex;
+                      flex-flow: row;
+                      justify-content: space-between;
+                      align-items: center;
+                      align-content: center;
+                      width: 100%;
+                      .card-body-title-area{
+                        display: flex;
+                        flex-flow: column;
+                        text-align: left;
+                        justify-content: flex-start;
+                        align-content: flex-start;
+                        width: 70%;
+                        span.card-body-title{
+                          display: block;
+                          text-transform: capitalize;
+                          font-weight: 500;
+                          font-size: 90%;
+                        }
+                        span.card-body-location{
+                          font-size: 85%;
+                          white-space: nowrap;
+                        }
+                      }
+                      .card-body-price-area{
+                        display: flex;
+                        flex-flow: column;
+                        justify-content: space-between;
+                        align-content: flex-end;
+                        width: 30%;
+                        .card-body-price-label{
+                          display: block;
+                          text-transform: uppercase;
+                          font-weight: 500;
+                          text-align: right;
+                          font-family: $font__main;
+                        }
+                        span.card-body-price{
+                          display: block;
+                          color: $primary_color_orange;
+                          font-weight: 500;
+                          text-align: right;
+                        }
+                        span.call-for-price{
+                          display: block;
+                          color: #fc4f00;
+                          text-transform: uppercase;
+                          text-align: right;
+                          font-size: 78%;
+                          line-height: 20px;
+                        }
+                      }
+                    }
+                  }
+                  hr.listing-spec-hr{
+                    opacity: 1;
+                    background-color: #707070;
+                    height: 1.5px;
+                  }
+                  .card-body-bottom{
+                    display: flex;
+                    flex-flow: row;
+                    justify-content: space-around;
+                    align-content: center;
+                    align-items: center;
+                    width: 100%;
+                    .card-body-bottom-spec{
+                      display: flex;
+                      flex-flow: column;
+                      justify-content: space-between;
+                      align-content: center;
+                      align-items: center;
+                      span.card-body-bottom-label{
+                        display: block;
+                        color: $primary_color_orange;
+                        text-transform: uppercase;
+                      }
+                      span.card-body-bottom-data{
+                        display: block;
+                        font-weight: 400;
+                      }
+                    }
+                  }
+                }
+              }
+              .card-body{
+                .inner-body{
+                  .home_design{
+                    span.card-body-title{
+                      a{
+                        color: $primary_color_black;
+                        text-transform: capitalize;
+                        font-size: 1.1rem;
+                        text-decoration: none;
+                        outline: none;
+                        &:hover{
+                          color: $primary_color_orange;
+                        }
+                      }
+                    }
+                    .community-dropdown{
+                      position: relative;
+                      .dropdown{
+                        position: static;
+                        a{
+                          color: $primary_color_orange;
+                          outline: none;
+                          text-decoration: none;
+                          text-transform: uppercase;
+                          cursor: pointer;
+                          letter-spacing: 0.3px;
+                          font-weight: 400;
+                        }
+                        ul{
+                          border-radius: 0;
+                          border: 0;
+                          li{
+                            margin-bottom: 0.3rem;
+                            &:last-child{
+                              margin-bottom: 0;
+                            }
+                            a{
+                              color: $primary_color_black;
+                              font-size: 90%;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
         .homes-floorplan-gallery{
           ul{
             list-style: none;
@@ -840,7 +1069,8 @@
       }
     }
   }
-  
+
+
   .available-community-in-floorplan{
     position: relative;
     .available-community-in-floorplan-component{
@@ -879,7 +1109,7 @@
           min-width: 6rem;
           border-radius: 0;
           width: 21rem;
-          transform: translate3d(20px, 160px, 0px);
+          //transform: translate3d(20px, 160px, 0px) !important;
           border-color: $primary_color_orange;
           .show{
 
@@ -921,3 +1151,8 @@
 }
 
 
+span.coming-soon-status {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 500;
+}

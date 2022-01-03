@@ -31549,7 +31549,7 @@ var $ = window.jQuery;
 var $window = window.$window || $(window);
 var SelectButton = {
   init: function init() {
-    var getUrl = 'http://newhomeinc.test';
+    var getUrl = 'https://newhomeinc1dev.wpengine.com';
 
     (function ($) {
       $('.detail-page-cta-options').on('click', function () {
@@ -31653,7 +31653,7 @@ var SelectButton = {
         var getDirection = document.getElementById('get_direction'); // const selfGuidedTourLink = document.getElementById( 'elf-guided_tour' );
         // eslint-disable-next-line no-console
 
-        var communitiesData = 'http://newhomeinc.test/wp-json/wp/v2/communities/' + postId;
+        var communitiesData = getUrl + '/wp-json/wp/v2/communities/' + postId;
         $.ajax({
           url: communitiesData,
           dataType: 'json',
@@ -31877,6 +31877,7 @@ var $ = window.jQuery;
 var $window = window.$window || $(window);
 var communityFilterContent = {
   init: function init() {
+    var getUrl = 'https://newhomeinc1dev.wpengine.com';
     $(document).on('facetwp-loaded', function () {
       var communitySearchPage = app_script_vars.community_search_page;
       var searchPageFooterTitle = app_script_vars.community_search_page_title; // eslint-disable-next-line no-console
@@ -31894,7 +31895,7 @@ var communityFilterContent = {
         var selectedValue = $('.facetwp-facet-location .checked').data('value'); // eslint-disable-next-line no-console
         // console.log( selectedValue );
 
-        var loadedContent = "http://newhomeinc.test/wp-json/wp/v2/metro-area?slug=".concat(selectedValue);
+        var loadedContent = "".concat(getUrl, "/wp-json/wp/v2/metro-area?slug=").concat(selectedValue);
 
         function loadMainFootercontent() {
           if ($('.facetwp-facet-location ').has('.checked')) {
@@ -31928,7 +31929,7 @@ var communityFilterContent = {
         function filterCommunityContent() {
           // eslint-disable-next-line camelcase
           var data_value = $(this).attr('data-value');
-          var dataTexaonomies = "http://newhomeinc.test/wp-json/wp/v2/metro-area?slug=".concat(data_value);
+          var dataTexaonomies = "".concat(getUrl, "/wp-json/wp/v2/metro-area?slug=").concat(data_value);
           $.ajax({
             url: dataTexaonomies,
             dataType: 'json',
@@ -32028,6 +32029,7 @@ var $window = window.$window || $(window); // eslint-disable-next-line no-unused
 
 var qmiSearchFooterContent = {
   init: function init() {
+    var getUrl = 'https://newhomeinc1dev.wpengine.com';
     $(document).on('facetwp-loaded', function () {
       var homesSearchPage = app_script_vars.qmi_search_page_content;
       var homesSearchPageFooterTitle = app_script_vars.homes_search_page_title; // eslint-disable-next-line no-console
@@ -32045,7 +32047,7 @@ var qmiSearchFooterContent = {
         // eslint-disable-next-line no-console
         // console.log( selectedValue );
 
-        var loadedContent = "http://newhomeinc.test/wp-json/wp/v2/metro-area?slug=".concat(selectedValue);
+        var loadedContent = "".concat(getUrl, "/wp-json/wp/v2/metro-area?slug=").concat(selectedValue);
 
         function loadMainFootercontent() {
           if ($('.facetwp-facet-qmi_location ').has('.checked')) {
@@ -32080,7 +32082,7 @@ var qmiSearchFooterContent = {
           $(document).on('click', '.facetwp-facet-qmi_location .checked', function () {
             // eslint-disable-next-line camelcase
             var data_value = $(this).attr('data-value-tes');
-            var dataTexaonomies = "http://newhomeinc.test/wp-json/wp/v2/metro-area?slug=".concat(data_value);
+            var dataTexaonomies = "".concat(getUrl, "/wp-json/wp/v2/metro-area?slug=").concat(data_value);
             $.ajax({
               url: dataTexaonomies,
               dataType: 'json',
@@ -32092,7 +32094,7 @@ var qmiSearchFooterContent = {
                   console.log(tax.name); // eslint-disable-next-line camelcase
 
                   if (selectedValue === '') {
-                    displayHomesBannerTitle.innerText = 'NEW AVAILABLE HOMES';
+                    displayHomesBannerTitle.innerText = 'AVAILABLE HOMES';
                     displayMainFooterContentTitle.innerText = homesSearchPageFooterTitle;
                     displayMainFooterContent.innerHTML = homesSearchPage;
                   } else {

@@ -28,6 +28,11 @@ function newhomeinc_scripts() {
 
 
 	wp_enqueue_script( 'newhomeinc-app', get_template_directory_uri() . '/build/js/app.js', array(), _S_VERSION, true );
+	$variable_to_js = [
+		'ajax_url' => admin_url('admin-ajax.php')
+	];
+	wp_localize_script('newhomeinc-app', 'Theme_Variables', $variable_to_js);
+
 
 	wp_localize_script('newhomeinc-app', 'app_script_vars', array(
 			'community_search_page' => get_field("community_search_page_content",'option'),

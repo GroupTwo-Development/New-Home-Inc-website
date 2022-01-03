@@ -3,6 +3,8 @@ const $window = window.$window || $( window );
 
 const communityFilterContent = {
 	init() {
+		const getUrl = 'https://newhomeinc1dev.wpengine.com';
+
 		$( document ).on( 'facetwp-loaded', function() {
 			const communitySearchPage = app_script_vars.community_search_page;
 			const searchPageFooterTitle = app_script_vars.community_search_page_title;
@@ -22,7 +24,7 @@ const communityFilterContent = {
 				// eslint-disable-next-line no-console
 				// console.log( selectedValue );
 
-				const loadedContent = `http://newhomeinc.test/wp-json/wp/v2/metro-area?slug=${ selectedValue }`;
+				const loadedContent = `${ getUrl }/wp-json/wp/v2/metro-area?slug=${ selectedValue }`;
 
 				function loadMainFootercontent() {
 					if ( $( '.facetwp-facet-location ' ).has( '.checked' ) ) {
@@ -56,7 +58,7 @@ const communityFilterContent = {
 				function filterCommunityContent() {
 					// eslint-disable-next-line camelcase
 					const data_value = $( this ).attr( 'data-value' );
-					const dataTexaonomies = `http://newhomeinc.test/wp-json/wp/v2/metro-area?slug=${ data_value }`;
+					const dataTexaonomies = `${ getUrl }/wp-json/wp/v2/metro-area?slug=${ data_value }`;
 
 					$.ajax( {
 						url: dataTexaonomies,
