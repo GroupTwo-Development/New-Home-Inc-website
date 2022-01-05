@@ -5,7 +5,7 @@
 
                 <div class="dropdown">
                     <a class="dropdown-toggle"  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Filter
+                        Location
                     </a>
                     <ul class="dropdown-menu qmi-filter-item" aria-labelledby="dropdownMenuButton1">
                         <li>

@@ -9,7 +9,8 @@ window.Popper = require( '@popperjs/core' );
 require( 'bootstrap' );
 
 //Some convenient tools to get you started…
-import HelloWorld from './components/HelloWorld';
+// import FlyoutBtn from './components/FlyoutBtn';
+// import CommunityFlyout from './components/CommunityFlyout';
 import AnimateOnPageLinks from './components/AnimateOnPageLinks';
 import SelectButton from './components/SelectButtton';
 import globalScript from './script/globalScript';
@@ -34,6 +35,9 @@ jQuery( function( $ ) {
 	// homeDesignsSearchFooterContent.init();
 } );
 
+// const homeApp = createApp( CommunityFlyout );
+// homeApp.mount( '#community-flyout-app' );
+
 const observer = lozad(); // lazy loads elements with default selector as ".lozad"
 observer.observe();
 AOS.init();
@@ -48,10 +52,3 @@ elevationGallery.init();
 
 // footerCtaListing.init();
 
-const homeApp = createApp( {
-	components: {
-		HelloWorld,
-	},
-} );
-
-homeApp.mount( '#home-app' );

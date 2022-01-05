@@ -20,7 +20,7 @@ get_header();
 		    <?php get_template_part( 'template-parts/components/communities/filter_results');  ?>
 
             <div class="container pt-3">
-                <div class="row" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-offset=600" >
+                <div class="row">
                         <?php while ( have_posts() ) : the_post(); ?>
                                <?php get_template_part( 'template-parts/content', 'community'); ?>
 

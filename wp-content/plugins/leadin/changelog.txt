@@ -1,3 +1,14 @@
+= 8.4.463 (2021-12-16) =
+* Store activation time in the database. This will be needed to show contextual suggestions at the right time in the future.
+
+= 8.4.353 (2021-11-29) =
+* Add rel='noopener' to target _blank link
+
+= 8.4.344 (2021-11-23) =
+* Replace jQuery .unbind with .off
+* Replace rand with wp_rand
+* Fix Gutenberg block not showing due to a js error
+
 = 8.4.302 (2021-10-21) =
 * Fix for search function in HubSpot Gutenberg block
 
@@ -378,27 +389,4 @@
 
 = 7.5.4 (2019-06-25) =
 * Hotfix
-
-= 7.5.2 (2019-06-13) =
-* Add webpack and use ES6
-* Show "complete your signup" banner for WPEngine themes
-* Auto-generate assets and update styles for WPEngine themes
-* Handle messages timeout errors
-* Fix navigation in single page app
-* Enable non-HubSpot forms by default
-* Add forms tab in settings
-* Add form builder to WordPress
-
-= 7.5.1 (2019-05-28) =
-* Fix version flags
-* Add unit tests
-* Add languages
-
-= 7.5.0 (2019-05-21) =
-* Add banner to inform users if the version is outdated
-* Add notification that informs user if something is not working on our servers
-* Reload window when connection happens on a different tab
-* Reduce loading time for non authenticated users
-* Improve performances when navigating between pages
-* Add tests
 

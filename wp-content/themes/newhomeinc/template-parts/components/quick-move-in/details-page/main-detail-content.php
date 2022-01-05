@@ -17,11 +17,16 @@ $featured_image = get_field('featured_image');
 $call_for_pricing_phone = get_field('phone_number', 'option');
 $comm_banner_announcement = get_field('banner_announcement');
 $google_map = get_field('subdivision_google_map');
-if($google_map) :
+$google_map = get_field( 'spec_google_map' );
+if ( $google_map ) :
+
 	$address = '';
-	foreach( array('street_number', 'street_name') as $i => $k ) {
-		if( isset( $google_map[ $k ] ) ) {
-			$address .= sprintf( '<span class="segment-%s">%s</span>, ', $k, $google_map[ $k ] );
+	foreach ( array('street_number', 'street_name', 'city', 'state' ) as $i => $k ) {
+		$state_name = $google_map['state'];
+
+		if ( isset( $google_map[ $k ] ) ) {
+			$address = $google_map['city'];
+			$address .= ', ' . $state_name;
 		}
 	}
 	$address = trim( $address, ', ' );

@@ -44,13 +44,22 @@
       padding: 0;
       display: flex;
       flex-flow: row;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       align-content: center;
+      @include media-breakpoint-up(lg){
+        li{
+          margin-right: 1.5rem;
+          &:last-child{
+            margin-right: 0;
+          }
+        }
+      }
       @include media-breakpoint-down(lg){
         height: 40px;
       }
       li{
+
         &:last-child{
           margin-right: 0;
         }
@@ -91,7 +100,7 @@
         align-items: center;
         height: 40px;
         li{
-          margin-right: 0.5rem;
+          margin-right: 0.9rem;
           &:last-child{
             margin-right: 0;
           }

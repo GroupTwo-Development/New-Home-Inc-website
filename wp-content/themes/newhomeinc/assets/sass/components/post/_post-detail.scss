@@ -1,39 +1,47 @@
 .single_post-area{
   position: relative;
   article.post{
-    h1{
-      color: $primary_color_black;
-      text-transform: uppercase;
-      margin-bottom: 0.3rem;
-    }
-    .entry-meta{
-      position: relative;
-      padding-bottom: 0.5rem;
-      span.posted-on{
-        font-weight: 400;
+    header.entry-header{
+      @include media-breakpoint-up(lg){
+        padding-top: 2rem;
+      }
+      h1{
         color: $primary_color_black;
-        a{
+        text-transform: uppercase;
+        margin-bottom: 0.3rem;
+      }
+      .entry-meta{
+        position: relative;
+        padding-bottom: 0.5rem;
+        span.posted-on{
+          font-weight: 300;
+          display: inline-block;
           color: $primary_color_black;
-          text-decoration: underline;
-          outline: none;
-          &:hover{
-            color: $primary_color_orange;
+          a{
+            color: $primary_color_black;
+            text-decoration: none;
+            outline: none;
+            font-weight: 400;
+            &:hover{
+              color: $primary_color_orange;
+            }
+          }
+        }
+        span.cat-links{
+          color: $primary_color_black;
+          font-weight: 400;
+          a{
+            outline: none;
+            text-decoration: none;
+            color: $primary_color_black;
+            &:hover{
+              color: $primary_color_orange;
+            }
           }
         }
       }
-      span.cat-links{
-        color: $primary_color_black;
-        font-weight: 400;
-        a{
-          outline: none;
-          text-decoration: underline;
-          color: $primary_color_black;
-          &:hover{
-            color: $primary_color_orange;
-          }
-        }
-      }
     }
+
     .post-thumbnail{
       img{
         object-fit: cover;
@@ -60,6 +68,17 @@
       &:hover{
         color: $primary_color_orange;
       }
+    }
+  }
+}
+
+.post-navigation{
+  .nav-links{
+    a{
+      color: $primary_color_black;
+      outline: none;
+      text-decoration: none;
+      font-weight: 400;
     }
   }
 }

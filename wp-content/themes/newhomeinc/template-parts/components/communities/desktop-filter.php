@@ -5,7 +5,7 @@
                 <div class="location-filter">
                     <div class="dropdown">
                         <a class=" dropdown-toggle"  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            Filter
+                            Location
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 	                        <?php echo do_shortcode('[facetwp facet="location"]');?>

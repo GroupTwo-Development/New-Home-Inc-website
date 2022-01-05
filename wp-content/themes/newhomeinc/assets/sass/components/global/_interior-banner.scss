@@ -2,8 +2,10 @@
   position: relative;
   min-height: 5rem;
   max-height: 6rem;
+  margin-top: 3rem;
   @include media-breakpoint-up(lg){
     height: 7rem;
+    margin-top: 3.5rem;
   }
   .interior-banner-inner{
     display: flex;
@@ -54,14 +56,9 @@
 }
 
 header#masthead{
-  margin-bottom: 53px;
+  //margin-bottom: 53px;
   @include media-breakpoint-up(lg){
-    margin-top: 20px;
+    //margin-top: 20px;
+    //margin-bottom: 62px;
   }
 }
-
-//font-family: Stolzl;
-//font-weight: bold;
-//font-size: 52px;
-//text-align: left;
-//color: #000;

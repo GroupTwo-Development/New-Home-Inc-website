@@ -130,43 +130,52 @@ const SelectButton = {
 						$( '#detail-page-contact-slideout' ).html( res );
 						postTilte.innerText = res.title.rendered;
 
+						let CommunityFlyoutLinks = `<ul>`;
 						if ( typeof res.acf.self_guided_tour !== 'undefined' ) {
-							const selfGuidedTourLi = document.createElement( 'li' );
-							selfGuidedTourLi.setAttribute( 'class', 'self-guided_tour' );
-							const selfGuidedTourLink = document.createElement( 'a' );
-							selfGuidedTourLink.setAttribute( 'href', `${ res.acf.self_guided_tour }` );
-							selfGuidedTourLink.setAttribute( 'target', '_blank' );
-							const selfGuidedTourText = document.createTextNode( 'Self Guided Tour' );
-							selfGuidedTourLink.append( selfGuidedTourText );
-							selfGuidedTourLi.append( selfGuidedTourLink );
-							ulEle.appendChild( selfGuidedTourLi );
+							// const selfGuidedTourLi = document.createElement( 'li' );
+							// selfGuidedTourLi.setAttribute( 'class', 'self-guided_tour' );
+							// const selfGuidedTourLink = document.createElement( 'a' );
+							// selfGuidedTourLink.setAttribute( 'href', `${ res.acf.self_guided_tour }` );
+							// selfGuidedTourLink.setAttribute( 'target', '_blank' );
+							// const selfGuidedTourText = document.createTextNode( 'Self Guided Tour' );
+							// selfGuidedTourLink.append( selfGuidedTourText );
+							// selfGuidedTourLi.append( selfGuidedTourLink );
+							// ulEle.appendChild( selfGuidedTourLi );
+							CommunityFlyoutLinks += `<li class="self-guided-tour"><a href="${ res.acf.self_guided_tour }" target="_blank"><i class="fas fa-key"></i> <span class="link-title">Self Guided Tour</span></a></li>`;
 						}
 
 						if ( typeof res.acf.nhi_tour !== 'undefined' ) {
-							const NhiTourLi = document.createElement( 'li' );
-							NhiTourLi.setAttribute( 'class', 'nhi-tour' );
-							const NhiTourLink = document.createElement( 'a' );
-							NhiTourLink.setAttribute( 'href', `${ res.acf.nhi_tour }` );
-							NhiTourLink.setAttribute( 'target', '_blank' );
-							const nhiTourText = document.createTextNode( 'NHI Tour' );
-							NhiTourLink.append( nhiTourText );
-							NhiTourLi.append( NhiTourLink );
-							ulEle.appendChild( NhiTourLi );
+							// const NhiTourLi = document.createElement( 'li' );
+							// NhiTourLi.setAttribute( 'class', 'nhi-tour' );
+							// const NhiTourLink = document.createElement( 'a' );
+							// NhiTourLink.setAttribute( 'href', `${ res.acf.nhi_tour }` );
+							// NhiTourLink.setAttribute( 'target', '_blank' );
+							// const nhiTourText = document.createTextNode( 'NHI Tour' );
+							// NhiTourLink.append( nhiTourText );
+							// NhiTourLi.append( NhiTourLink );
+							// ulEle.appendChild( NhiTourLi );
+							CommunityFlyoutLinks += `<li class="nhi-tour"><a href="${ res.acf.nhi_tour }" target="_blank"><i class="fas fa-user"></i> <span class="link-title">NHI Tour</span></a></li>`;
 						}
 
 						if ( typeof res.acf.community_contact_form !== 'undefined' ) {
-							const AskLi = document.createElement( 'li' );
-							AskLi.setAttribute( 'class', 'ask-question' );
-							const askLink = document.createElement( 'a' );
-							askLink.setAttribute( 'href', '#' );
-							askLink.setAttribute( 'target', '_blank' );
-							askLink.setAttribute( 'data-fancybox', 'dialog' );
-							askLink.setAttribute( 'data-src', '#dialog-content' );
-							const askText = document.createTextNode( 'Ask a Question' );
-							askLink.append( askText );
-							AskLi.append( askLink );
-							ulEle.appendChild( AskLi );
+							// const AskLi = document.createElement( 'li' );
+							// AskLi.setAttribute( 'class', 'ask-question' );
+							// const askLink = document.createElement( 'a' );
+							// askLink.setAttribute( 'href', '#' );
+							// askLink.setAttribute( 'target', '_blank' );
+							// askLink.setAttribute( 'data-fancybox', 'dialog' );
+							// askLink.setAttribute( 'data-src', '#dialog-content' );
+							// const askText = document.createTextNode( 'Ask a Question' );
+							// askLink.append( askText );
+							// AskLi.append( askLink );
+							// ulEle.appendChild( AskLi );
+							CommunityFlyoutLinks += `<li class="ask-a-question-flyout"><a href="#" data-fancybox="dialog" data-src="#dialog-content"><i class="fas fa-question"></i> <span class="link-title">Ask a Question</span></a></li>`;
 						}
+
+						// eslint-disable-next-line no-unused-vars
+						CommunityFlyoutLinks += `</ul>`;
+
+						ulEle.innerHTML = CommunityFlyoutLinks;
 
 						if ( res.acf.subdivision_google_map ) {
 							getDirection.setAttribute( 'href', `https://www.google.com/maps?q=${ res.acf.subdivision_google_map.lat }, ${ res.acf.subdivision_google_map.lng }` );
@@ -263,7 +272,7 @@ const SelectButton = {
 						postTilte.innerText = res.title.rendered;
 						console.log( res );
 
-						if ( typeof res.acf.self_guided_tour !== 'undefined' && typeof res.acf.self_guided_tour !== ' ' ) {
+						if ( typeof res.acf.self_guided_tour !== 'undefined' && typeof res.acf.self_guided_tour !== '' ) {
 							const selfGuidedTourLi = document.createElement( 'li' );
 							selfGuidedTourLi.setAttribute( 'class', 'self-guided_tour' );
 							const selfGuidedTourLink = document.createElement( 'a' );

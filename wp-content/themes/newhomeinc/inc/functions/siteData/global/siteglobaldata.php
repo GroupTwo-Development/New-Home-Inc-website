@@ -153,3 +153,14 @@ function convertState($name) {
 } // end function convertState()
 
 
+//function posts_archive_per_page( $query ) {
+//	if( is_home() && $query->is_main_query()) {
+//        $query->set('post_type', ['post']);
+//		$query->set( 'posts_per_page', '6' );
+//		$query->set( 'orderby', 'title' );
+//		$query->set( 'order', 'ASC' );
+//	}
+//}
+//add_filter( 'pre_get_posts', 'posts_archive_per_page' );
+//
+//

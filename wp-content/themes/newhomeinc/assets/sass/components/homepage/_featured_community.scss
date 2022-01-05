@@ -1,7 +1,7 @@
 section#sectionThree{
   position: relative;
   header.section-header{
-    padding-bottom: 1.3rem;
+    padding-bottom: 2.5rem;
     text-align: center;
     @include media-breakpoint-up(lg){
       text-align: left;
@@ -29,7 +29,7 @@ section#sectionThree{
         top: 0;
         background-color: $primary_color_orange;
         height: 33px;
-        min-width: 150px;
+        min-width: 280px;
         padding-left: 5px;
         padding-right: 5px;
         span{

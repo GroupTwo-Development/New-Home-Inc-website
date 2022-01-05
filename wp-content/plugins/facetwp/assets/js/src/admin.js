@@ -1487,7 +1487,7 @@
                         </div>
                         <div class="table-row" v-show="template.modes.display == 'advanced'">
                             <div class="side-link">
-                                <a href="https://facetwp.com/documentation/templates/advanced-mode/" target="_blank">{{ 'Help' | i18n }}</a>
+                                <a href="https://facetwp.com/help-center/templates/advanced-mode/" target="_blank">{{ 'Help' | i18n }}</a>
                             </div>
                             <div class="row-label">{{ 'Display Code' | i18n }}</div>
                             <textarea v-model="template.template"></textarea>
@@ -1500,7 +1500,7 @@
                         </div>
                         <div class="table-row" v-show="template.modes.query == 'advanced'">
                             <div class="side-link">
-                                <a href="https://facetwp.com/documentation/templates/advanced-mode/" target="_blank">{{ 'Help' | i18n }}</a>
+                                <a href="https://facetwp.com/help-center/templates/advanced-mode/" target="_blank">{{ 'Help' | i18n }}</a>
                             </div>
                             <div class="row-label">{{ 'Query Arguments' | i18n }}</div>
                             <textarea v-model="template.query"></textarea>

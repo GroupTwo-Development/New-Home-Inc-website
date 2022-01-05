@@ -772,7 +772,7 @@
             justify-content: center;
             flex-wrap: wrap;
             li{
-              width: 50%;
+              width: 33.333%;
               figure{
                 img{
                   //width: 100%;
@@ -1043,7 +1043,12 @@
               span.location-subtitle{
                 color: $primary_color_black;
                 text-transform: uppercase;
-                font-size: 90%;
+                font-size: 100%;
+                a{
+                  color: $primary_color_orange;
+                  font-weight: 400;
+                  text-decoration: none;
+                }
               }
               @include media-breakpoint-up(lg){
                 padding-top: 2.5rem;

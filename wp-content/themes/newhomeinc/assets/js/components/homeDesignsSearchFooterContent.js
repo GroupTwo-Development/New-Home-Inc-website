@@ -41,7 +41,7 @@ const homeDesignsSearchFooterContent = {
 									console.log( community.title.rendered );
 									// eslint-disable-next-line camelcase
 									if ( selectedValue === '' ) {
-										displayHomesBannerTitle.innerText = 'NEW AVAILABLE HOMES';
+										displayHomesBannerTitle.innerText = 'AVAILABLE HOMES';
 										displayMainFooterContentTitle.innerText = homesSearchPageFooterTitle;
 										displayMainFooterContent.innerHTML = homesSearchPage;
 									} else {
@@ -79,7 +79,7 @@ const homeDesignsSearchFooterContent = {
 									console.log( community.title.rendered );
 									// eslint-disable-next-line camelcase
 									if ( selectedValue === '' ) {
-										displayHomesBannerTitle.innerText = 'NEW AVAILABLE HOMES';
+										displayHomesBannerTitle.innerText = 'AVAILABLE HOMES';
 										displayMainFooterContentTitle.innerText = homesSearchPageFooterTitle;
 										displayMainFooterContent.innerHTML = homesSearchPage;
 									} else {

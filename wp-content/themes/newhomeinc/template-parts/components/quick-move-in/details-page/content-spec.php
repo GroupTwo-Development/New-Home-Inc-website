@@ -243,73 +243,6 @@
 					</div>
 				</div>
 			<?php endif; ?>
-			<div class="accordion-item smart-features-accordion" id="smart-features-accordion">
-				<h2 class="accordion-header" id="headingTwo">
-					<button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-						<span class="accordion-title">Smart. Healthy. New.</span>
-					</button>
-				</h2>
-				<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#mainDetailAccordionComponent">
-					<div class="accordion-body">
-						<header class="accord-header-area">
-							<h2>Smart. Healthy. New.</h2>
-						</header>
-						<section class="smart-healthy-new-component">
-							<div class="smart-healthy-new-component-content">
-								<div class="smart-healthy-new-component-left">
-									<img src="/wp-content/uploads/2021/11/banner-logo.png" alt="" class="mart-healthy-new-component-logo img-fluid">
-								</div>
-								<div class="smart-healthy-new-component-right">
-									<div class="smart-healthy-new-component-right-content-left">
-										<div class="smart-healthy-new-component-right-content-top smart-features-items">
-											<h6>Smart Features</h6>
-											<?php
-											$terms = get_field('spec_smart_features');
-											if( $terms ): ?>
-												<ul>
-													<?php foreach( $terms as $term ): ?>
-														<li><?php echo esc_html( $term->name ); ?></li>
-													<?php endforeach; ?>
-												</ul>
-											<?php endif; ?>
-										</div>
-										<div class="smart-healthy-new-component-right-content-bottom smart-features-items">
-											<h6>New Features</h6>
-											<?php
-											$terms = get_field('spec_new_features');
-											if( $terms ): ?>
-												<ul>
-													<?php foreach( $terms as $term ): ?>
-														<li><?php echo esc_html( $term->name ); ?></li>
-													<?php endforeach; ?>
-												</ul>
-											<?php endif; ?>
-										</div>
-									</div>
-									<div class="smart-healthy-new-component-right-content-right">
-										<div class="smart-healthy-new-component-right-content smart-features-items">
-											<h6>Healthy Features</h6>
-											<?php
-											$terms = get_field('spec_healthy_features');
-											if( $terms ): ?>
-												<ul>
-													<?php foreach( $terms as $term ): ?>
-														<li><?php echo esc_html( $term->name ); ?></li>
-													<?php endforeach; ?>
-												</ul>
-											<?php endif; ?>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="learn-more-cta">
-								<a href="#">Learn More</a>
-							</div>
-						</section>
-					</div>
-				</div>
-			</div>
 			<?php if($community_qmi) : ?>
 				<div class="accordion-item available-homes" id="available-homes">
 					<h2 class="accordion-header" id="headingThree">
@@ -436,7 +369,7 @@
                                             alt="<?php echo $spec_virtual_tour_image['alt']; ?>"
                                     />
                                     <div class="overlay-area">
-                                        <span class="overlay-title">Click to view current site availability.</span>
+                                        <span class="overlay-title">Click to view Virtual Tour</span>
                                     </div>
                                 </a>
 

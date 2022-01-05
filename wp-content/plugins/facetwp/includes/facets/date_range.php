@@ -131,7 +131,7 @@ class FacetWP_Facet_Date_Range extends FacetWP_Facet
                 'items' => [
                     'format' => [
                         'label' => __( 'Display format', 'fwp' ),
-                        'notes' => 'See available <a href="https://facetwp.com/documentation/facets/facet-types/date-range/#tokens" target="_blank">formatting tokens</a>',
+                        'notes' => 'See available <a href="https://facetwp.com/help-center/facets/facet-types/date-range/#tokens" target="_blank">formatting tokens</a>',
                         'placeholder' => 'Y-m-d'
                     ]
                 ]

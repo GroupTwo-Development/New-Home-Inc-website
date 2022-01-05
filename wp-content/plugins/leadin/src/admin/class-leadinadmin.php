@@ -32,6 +32,7 @@ class LeadinAdmin {
 	public function __construct() {
 		add_action( 'plugins_loaded', array( $this, 'load_languages' ), 14 );
 		add_action( 'admin_init', array( $this, 'redirect_after_activation' ) );
+		add_action( 'admin_init', array( $this, 'store_activation_time' ) );
 		add_action( 'admin_init', array( $this, 'authorize' ) );
 		add_action( 'admin_menu', array( $this, 'build_menu' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -107,6 +108,15 @@ class LeadinAdmin {
 		} elseif ( Connection::is_disconnection_requested() ) {
 			Connection::disconnect();
 			Routing::redirect( MenuConstants::ROOT );
+		}
+	}
+
+	/**
+	 * Store activation time in a WP option.
+	 */
+	public function store_activation_time() {
+		if ( empty( get_option( 'leadin_activation_time' ) ) ) {
+			update_option( 'leadin_activation_time', time() );
 		}
 	}
 

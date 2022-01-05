@@ -18,15 +18,20 @@ get_header();
 	        <?php if ( have_posts() ) : ?>
 		        <?php  get_template_part( 'template-parts/components/global/banner/interior-banner');  ?>
 		        <?php get_template_part( 'template-parts/components/global/banner/post-filter');  ?>
-		        <?php while ( have_posts() ) : the_post(); ?>
+
                      <div id="blog-post-list">
                         <div class="container">
                             <div class="row align-items-center">
-                                <?php get_template_part( 'template-parts/content', 'blog' ); ?>
+
+		                        <?php while ( have_posts() ) : the_post(); ?>
+
+                                        <?php get_template_part( 'template-parts/content', 'blog' ); ?>
+
+		                        <?php endwhile; ?>
+
                             </div>
                         </div>
                      </div>
-		        <?php endwhile; ?>
                 <div class="container">
                     <?php echo do_shortcode('[facetwp pager="true"]'); ?>
                 </div>

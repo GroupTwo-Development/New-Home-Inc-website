@@ -27,15 +27,25 @@
     $call_for_pricing_phone = get_field('phone_number', 'option');
     $comm_banner_announcement = get_field('comm_banner_announcement');
     $google_map = get_field('subdivision_google_map');
-      if($google_map) :
-       $address = '';
-            foreach( array('street_number', 'street_name') as $i => $k ) {
-                if( isset( $google_map[ $k ] ) ) {
-                    $address .= sprintf( '<span class="segment-%s">%s</span>, ', $k, $google_map[ $k ] );
-                }
+
+    $google_map = get_field( 'subdivision_google_map' );
+    if ( $google_map ) :
+
+        $address = '';
+        foreach ( array('street_number', 'street_name', 'city', 'state' ) as $i => $k ) {
+            $state_name = $google_map['state'];
+
+            if ( isset( $google_map[ $k ] ) ) {
+                $address = $google_map['city'];
+	            $address .= ', '. convertState($state_name);
             }
-	      $address = trim( $address, ', ' );
-      endif;
+        }
+        $address = trim( $address, ', ' );
+    endif;
+
+
+
+
 
     $community_floorplans = get_field('community_floorplans');
     if($community_floorplans) :

@@ -138,8 +138,8 @@
             if ( isset( $google_map[ $k ] ) ) {
                 $address = $google_map['street_number'];
                 $address .= ' '.$google_map['street_name'];
-                $address .= ' '. $google_map['city'];
-                $address .= ' '. convertState($state_name);
+                $address .= ', '. $google_map['city'];
+                $address .= ', '. convertState($state_name);
                 $address .= ' '. $google_map['post_code'];
             }
         }
@@ -176,6 +176,13 @@
                                   <?php echo $subdescription; ?>
                               </section>
                         </div>
+                        <?php
+                            $smart_features = get_field('smart_features');
+                            $new_features = get_field('new_features');
+                            $healthy_features = get_field('healthy_features');
+
+                            if($smart_features && $new_features && $healthy_features )   :
+                        ?>
                         <div class="smart-features-accordion pt-4 pb-5">
                             <div class="accordion-body">
                                 <header class="accord-header-area-smart">
@@ -191,10 +198,10 @@
                                                 <div class="smart-healthy-new-component-right-content-top smart-features-items">
                                                     <h6>Smart Features</h6>
 								                    <?php
-								                    $terms = get_field('smart_features');
-								                    if( $terms ): ?>
+
+								                    if( $smart_features ): ?>
                                                         <ul>
-										                    <?php foreach( $terms as $term ): ?>
+										                    <?php foreach( $smart_features as $term ): ?>
                                                                 <li><?php echo esc_html( $term->name ); ?></li>
 										                    <?php endforeach; ?>
                                                         </ul>
@@ -203,10 +210,10 @@
                                                 <div class="smart-healthy-new-component-right-content-bottom smart-features-items">
                                                     <h6>New Features</h6>
 								                    <?php
-								                    $terms = get_field('new_features');
-								                    if( $terms ): ?>
+
+								                    if( $new_features ): ?>
                                                         <ul>
-										                    <?php foreach( $terms as $term ): ?>
+										                    <?php foreach( $new_features as $term ): ?>
                                                                 <li><?php echo esc_html( $term->name ); ?></li>
 										                    <?php endforeach; ?>
                                                         </ul>
@@ -217,10 +224,10 @@
                                                 <div class="smart-healthy-new-component-right-content smart-features-items">
                                                     <h6>Healthy Features</h6>
 								                    <?php
-								                    $terms = get_field('healthy_features');
-								                    if( $terms ): ?>
+
+								                    if( $healthy_features ): ?>
                                                         <ul>
-										                    <?php foreach( $terms as $term ): ?>
+										                    <?php foreach( $healthy_features as $term ): ?>
                                                                 <li><?php echo esc_html( $term->name ); ?></li>
 										                    <?php endforeach; ?>
                                                         </ul>
@@ -236,76 +243,10 @@
                                 </section>
                             </div>
                         </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             <?php endif; ?>
-<!--            <div class="accordion-item smart-features-accordion" id="smart-features-accordion">-->
-<!--                <h2 class="accordion-header" id="headingTwo">-->
-<!--                    <button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">-->
-<!--                        <span class="accordion-title">Smart. Healthy. New.</span>-->
-<!--                    </button>-->
-<!--                </h2>-->
-<!--                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#mainDetailAccordionComponent">-->
-<!--                    <div class="accordion-body">-->
-<!--                        <header class="accord-header-area">-->
-<!--                            <h2>Smart. Healthy. New.</h2>-->
-<!--                        </header>-->
-<!--                        <section class="smart-healthy-new-component">-->
-<!--                            <div class="smart-healthy-new-component-content">-->
-<!--                                <div class="smart-healthy-new-component-left">-->
-<!--                                    <img src="/wp-content/uploads/2021/11/banner-logo.png" alt="" class="mart-healthy-new-component-logo img-fluid">-->
-<!--                                </div>-->
-<!--                                <div class="smart-healthy-new-component-right">-->
-<!--                                    <div class="smart-healthy-new-component-right-content-left">-->
-<!--                                        <div class="smart-healthy-new-component-right-content-top smart-features-items">-->
-<!--                                            <h6>Smart Features</h6>-->
-<!--	                                        --><?php
-//	                                        $terms = get_field('smart_features');
-//	                                        if( $terms ): ?>
-<!--                                                <ul>-->
-<!--			                                        --><?php //foreach( $terms as $term ): ?>
-<!--                                                        <li>--><?php //echo esc_html( $term->name ); ?><!--</li>-->
-<!--			                                        --><?php //endforeach; ?>
-<!--                                                </ul>-->
-<!--	                                        --><?php //endif; ?>
-<!--                                        </div>-->
-<!--                                        <div class="smart-healthy-new-component-right-content-bottom smart-features-items">-->
-<!--                                            <h6>New Features</h6>-->
-<!--	                                        --><?php
-//	                                        $terms = get_field('new_features');
-//	                                        if( $terms ): ?>
-<!--                                                <ul>-->
-<!--			                                        --><?php //foreach( $terms as $term ): ?>
-<!--                                                        <li>--><?php //echo esc_html( $term->name ); ?><!--</li>-->
-<!--			                                        --><?php //endforeach; ?>
-<!--                                                </ul>-->
-<!--	                                        --><?php //endif; ?>
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="smart-healthy-new-component-right-content-right">-->
-<!--                                        <div class="smart-healthy-new-component-right-content smart-features-items">-->
-<!--                                            <h6>Healthy Features</h6>-->
-<!--	                                        --><?php
-//	                                        $terms = get_field('healthy_features');
-//	                                        if( $terms ): ?>
-<!--                                                <ul>-->
-<!--			                                        --><?php //foreach( $terms as $term ): ?>
-<!--                                                        <li>--><?php //echo esc_html( $term->name ); ?><!--</li>-->
-<!--			                                        --><?php //endforeach; ?>
-<!--                                                </ul>-->
-<!--	                                        --><?php //endif; ?>
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!---->
-<!--                            <div class="learn-more-cta">-->
-<!--                                <a href="#">Learn More</a>-->
-<!--                            </div>-->
-<!--                        </section>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
             <?php if($community_qmi) : ?>
                 <div class="accordion-item available-homes" id="available-homes">
                 <h2 class="accordion-header" id="headingThree">
@@ -447,7 +388,7 @@
                                                         data-sub-html="<h4>New Home Inc. - Video Gallery  |  Welcome to New Home Inc.</p>"
                                                 >
                                                     <img
-                                                            class="img-responsive"
+                                                            class="img-fluid"
                                                             src="https://img.youtube.com/vi/<?php echo $id; ?>/maxresdefault.jpg"
                                                             alt=""
                                                     />
@@ -546,7 +487,11 @@
                                             <header class="section-header">
                                                 <div class="inner-header-area">
                                                     <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span>
-                                                    <span class="location-subtitle">GET DIRECTIONS</span>
+                                                    <span class="location-subtitle">
+                                                         <a href="https://www.google.com/maps?q=<?php echo esc_attr($location['lat']); ?>,<?php echo esc_attr($location['lng']); ?>" target="_blank">
+                                                                <span class="title">GET DIRECTIONS</span>
+                                                            </a>
+                                                    </span>
                                                 </div>
                                             </header>
                                             <div class="main-content">

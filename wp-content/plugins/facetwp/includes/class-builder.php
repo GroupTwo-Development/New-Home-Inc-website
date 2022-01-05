@@ -14,6 +14,16 @@ class FacetWP_Builder
 
 
     /**
+     * Generate CSS class string (helper method)
+     * @since 3.9.3
+     */
+    function get_classes( $type, $settings ) {
+        $classes = [ $type, $settings['name'], $settings['css_class'] ];
+        return trim( implode( ' ', $classes ) );
+    }
+
+
+    /**
      * Generate the layout HTML
      * @since 3.2.0
      */
@@ -23,7 +33,6 @@ class FacetWP_Builder
         $counter = 0;
         $settings = $layout['settings'];
         $this->custom_css = $settings['custom_css'];
-        $css_class = empty( $settings['css_class'] ) ? '' : ' ' . $settings['css_class'];
 
         $this->css['.fwpl-layout'] = [
             'grid-template-columns' => trim( str_repeat( '1fr ', $settings['num_columns'] ) ),
@@ -32,7 +41,9 @@ class FacetWP_Builder
 
         $this->css['.fwpl-result'] = $this->build_styles( $settings );
 
-        $output = '<div class="fwpl-layout ' . $settings['name'] . $css_class . '">';
+        $classes = $this->get_classes( 'fwpl-layout', $settings );
+
+        $output = '<div class="' . $classes . '">';
 
         if ( have_posts() ) {
             while ( have_posts() ) : the_post();
@@ -81,8 +92,9 @@ class FacetWP_Builder
 
         $this->css['.fwpl-row.' . $settings['name'] ] = $this->build_styles( $settings );
 
-        $css_class = empty( $settings['css_class'] ) ? '' : ' ' . $settings['css_class'];
-        $output = '<div class="fwpl-row ' . $settings['name'] . $css_class . '">';
+        $classes = $this->get_classes( 'fwpl-row', $settings );
+
+        $output = '<div class="' . $classes . '">';
 
         foreach ( $row['items'] as $col ) {
             $output .= $this->render_col( $col );
@@ -103,8 +115,9 @@ class FacetWP_Builder
 
         $this->css['.fwpl-col.' . $settings['name'] ] = $this->build_styles( $settings );
 
-        $css_class = empty( $settings['css_class'] ) ? '' : ' ' . $settings['css_class'];
-        $output = '<div class="fwpl-col ' . $settings['name'] . $css_class . '">';
+        $classes = $this->get_classes( 'fwpl-col', $settings );
+
+        $output = '<div class="fwpl-col ' . $classes . '">';
 
         foreach ( $col['items'] as $item ) {
             if ( 'row' == $item['type'] ) {
@@ -243,7 +256,7 @@ class FacetWP_Builder
             $value = $this->linkify( $value, $settings['link'] );
         }
         elseif ( 'html' == $source ) {
-            $value = $settings['content'];
+            $value = do_shortcode( $settings['content'] );
         }
 
         // Date format
@@ -307,10 +320,16 @@ class FacetWP_Builder
         // Store the short-tag
         $this->data[ $name ] = $value;
 
+        // Build the list of CSS classes
+        $classes = $this->get_classes( 'fwpl-item', $settings );
+
+        if ( '' == $value ) {
+            $classes .= ' is-empty';
+        }
+
         // Prevent output
         if ( ! $settings['is_hidden'] ) {
-            $css_class = empty( $settings['css_class'] ) ? '' : ' ' . $settings['css_class'];
-            $output = '<div class="fwpl-item ' . $name . $css_class . '">' . $value . '</div>';
+            $output = '<div class="' . $classes . '">' . $value . '</div>';
         }
 
         return $output;

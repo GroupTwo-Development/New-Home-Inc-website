@@ -6,9 +6,11 @@ import {
 } from '../constants/leadinConfig';
 
 function getIframeHeight() {
-  const sideMenuHeight = document.getElementById('adminmenuwrap').offsetHeight;
-  const adminBarHeight =
-    document.getElementById('wpadminbar').offsetHeight || 0;
+  const adminMenuWrap = document.getElementById('adminmenuwrap');
+  const sideMenuHeight = adminMenuWrap ? adminMenuWrap.offsetHeight : 0;
+  const adminBar = document.getElementById('wpadminbar');
+  const adminBarHeight = (adminBar && adminBar.offsetHeight) || 0;
+
   if (window.innerHeight < sideMenuHeight) {
     return sideMenuHeight;
   } else {

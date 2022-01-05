@@ -132,7 +132,10 @@ class FacetWP_Display
             }
 
             // Load a11y?
-            if ( apply_filters( 'facetwp_load_a11y', false ) ) {
+            $a11y = FWP()->helper->get_setting( 'load_a11y', 'no' );
+            $a11y_hook = apply_filters( 'facetwp_load_a11y', false );
+
+            if ( 'yes' == $a11y || $a11y_hook ) {
                 $this->assets['accessibility.js'] = FACETWP_URL . '/assets/js/src/accessibility.js';
             }
 

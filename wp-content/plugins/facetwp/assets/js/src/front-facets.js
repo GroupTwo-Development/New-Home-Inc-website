@@ -137,9 +137,14 @@
             var num = $(this).find('.facetwp-checkbox').len();
             var $el = $(this).next('.facetwp-toggle');
             $el.text($el.text().replace('{num}', num));
+
+            // auto-expand if a checkbox within the overflow is checked
+            if (0 < $(this).find('.facetwp-checkbox.checked').len()) {
+                $el.trigger('click');
+            }
         });
 
-        // add toggle feature
+        // hierarchy expand / collapse buttons
         $('.facetwp-type-checkboxes').each(function() {
             var $facet = $(this);
             var name = $facet.attr('data-name');

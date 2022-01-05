@@ -39,7 +39,7 @@ const qmiSearchFooterContent = {
 									// console.log( tax.name );
 									// eslint-disable-next-line camelcase
 									if ( selectedValue === '' ) {
-										displayHomesBannerTitle.innerText = 'NEW AVAILABLE HOMES';
+										displayHomesBannerTitle.innerText = 'AVAILABLE HOMES';
 										displayMainFooterContentTitle.innerText = homesSearchPageFooterTitle;
 										displayMainFooterContent.innerHTML = homesSearchPage;
 									} else {

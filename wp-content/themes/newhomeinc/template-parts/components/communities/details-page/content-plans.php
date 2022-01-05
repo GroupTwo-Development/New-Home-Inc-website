@@ -10,7 +10,6 @@
                 <ul class="splide__list">
 					<?php foreach( $community_floorplans as $featured_post ):
 						$permalink = get_permalink( $featured_post->ID );
-						$title = get_the_title( $featured_post->ID );
 						$custom_field = get_field( 'field_name', $featured_post->ID );
 						$spec_data = get_floorplan_location_spec();
 
@@ -20,6 +19,7 @@
 						$featured_image = get_field('featured_image', $featured_post->ID);
 						$call_for_pricing_phone = get_field('phone_number', 'option', $featured_post->ID);
 						$comm_banner_announcement = get_field('banner_announcement', $featured_post->ID);
+						$title = get_field('plan_location_plan_name', $featured_post->ID);
 
 						$google_map = get_field('subdivision_google_map', $featured_post->ID);
 						if($google_map) :
@@ -73,7 +73,7 @@
 						?>
                         <li class="splide__slide">
                             <div class="card">
-                                <a href="<?php the_permalink(); ?>">
+                                <a href="<?php echo $permalink; ?>">
                                     <div class="card-inner">
 		                                <?php if($comm_banner_announcement) : ?>
                                             <div class="card-banner-announcement">

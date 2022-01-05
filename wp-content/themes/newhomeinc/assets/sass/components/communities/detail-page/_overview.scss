@@ -357,31 +357,57 @@
     transition: all ease-in-out 0.5s;
     position: relative;
     overflow: hidden;
-    min-width: 375px;
+    min-width: 350px;
     overflow-y: auto;
-    .cta-close{
-      position: relative;
-      display: flex;
-      justify-content: flex-end;
-      padding-top: 0.8rem;
-      padding-right: 1rem;
-      &:hover{
-        cursor: pointer;
-      }
-      span.icon-close{
-        background-color: $primary_color_white;
-        height: 30px;
-        width: 30px;
-        line-height: 30px;
-        border-radius: 50%;
-        color: $primary_color_black;
-        display: flex;
-        flex-flow: column;
-        justify-content: center;
-        text-align: center;
-        align-content: center;
-      }
+    @include media-breakpoint-up(lg){
+      width: 20vw;
     }
+    .flyout-title{
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      align-items: center;
+      align-content: center;
+      background-color: #FC4F00;
+      padding: 0.5rem 1.4rem;
+    }
+    .title{
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+    .flyout-intro-content{
+      padding: 1.5rem 1rem 0.5rem 1rem;
+    }
+    .flyout-intro-content p{
+      margin: 0;
+      font-weight: 200;
+      font-size: 90%;
+    }
+
+    //.cta-close{
+    //  position: relative;
+    //  display: flex;
+    //  justify-content: flex-end;
+    //  padding-top: 0.8rem;
+    //  padding-right: 1rem;
+    //  &:hover{
+    //    cursor: pointer;
+    //  }
+    //  span.icon-close{
+    //    background-color: $primary_color_white;
+    //    height: 30px;
+    //    width: 30px;
+    //    line-height: 30px;
+    //    border-radius: 50%;
+    //    color: $primary_color_black;
+    //    display: flex;
+    //    flex-flow: column;
+    //    justify-content: center;
+    //    text-align: center;
+    //    align-content: center;
+    //  }
+    //}
     .section-content{
       //width: 28vw;
       min-width: 350px;
@@ -455,14 +481,14 @@
 }
 
 .global-cta{
-  opacity: 0;
+  opacity: 1;
 }
 
 .slidemodal-hidden{
   width: 0;
   .cta-container{
-    width: 0px;
+    width: 0;
     transition: all ease-in-out 0.5s;
-    min-width: 0px;
+    min-width: 0;
   }
 }

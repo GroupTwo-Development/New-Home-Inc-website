@@ -6,18 +6,18 @@
   background-size: cover;
   height: calc(100vh - 82px);
   min-height: 450px;
+  margin-top: 3rem;
+  @include media-breakpoint-up(lg){
+    height: calc(100vh - 162px);
+    min-height: 710px;
+    margin-top: 1.9rem;
+  }
+  @include media-breakpoint-up(xl){
+    height: calc(100vh - 52px);
+  }
   @include media-breakpoint-between(md, lg){
     height: calc(100vh - 125px);
   }
-  //@include media-breakpoint-between(lg, xl){
-  //  height: 44rem;
-  //}
-  //@include media-breakpoint-between(xl, xxl){
-  //  height: 44.2rem;
-  //}
-  //@include media-breakpoint-up(xxl){
-  //  height: 57rem;
-  //}
   .banner-inner{
     display: flex;
     flex-flow: column;
@@ -29,8 +29,13 @@
     @include media-breakpoint-between(md, lg){
       height: calc(100vh - 260px);
     }
+
     @include media-breakpoint-up(lg){
       height: calc(100vh - 220px);
+    }
+
+    @include media-breakpoint-up(xl){
+      height: calc(100vh - 70px);
     }
     .homepage-banner-content{
       padding-top: 1.5rem;
@@ -62,22 +67,22 @@
         color: $primary_color_black;
         @include media-breakpoint-between(md, lg){
           font-size: 2.9rem;
-          text-shadow: 6px 6px 10px #fff;
+          text-shadow: 0.5px 1px 0 #000;
         }
         @include media-breakpoint-between(lg, xl){
           font-size: 3.5rem;
-          text-shadow: 6px 6px 10px #fff;
+          text-shadow: 0.5px 1px 0 #000;
         }
         @include media-breakpoint-between(xl, xxl){
           font-size: 4.2rem;
-          text-shadow: 6px 6px 10px #fff;
+          text-shadow: 0.5px 1px 0 #000;
           margin-bottom: -0.5rem;
         }
 
         @include media-breakpoint-up(xxl){
           font-size: 4.2rem;
           margin-bottom: -0.7rem;
-          text-shadow: 6px 6px 10px #fff;
+          text-shadow: 0.5px 1px 0 #000;
         }
       }
       span.banner-subtitle{
@@ -86,11 +91,12 @@
         color: $primary_color_orange;
         font-size: 1.125rem;
         text-align: center;
-        font-weight: 300;
+        font-weight: 500;
+        text-shadow: 0.5px 1px 0 #000;
         font-family: $font__main;
         @include media-breakpoint-between(md, lg){
           font-size: 1.3rem;
-          text-shadow: 6px 6px 10px #fff;
+          text-shadow: 0.5px 1px 0 #000;
         }
         @include media-breakpoint-between(lg, xl){
           font-size: 1.4rem;
@@ -145,7 +151,7 @@
           width: 8rem;
         }
         @include media-breakpoint-up(xl){
-          width: 9rem;
+          //width: 9rem;
         }
       }
     }

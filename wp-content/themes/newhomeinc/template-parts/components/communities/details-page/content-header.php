@@ -8,8 +8,7 @@ if ( $google_map ) :
 
 		if ( isset( $google_map[ $k ] ) ) {
 			$address = $google_map['city'];
-			$address .= ' '. convertState($state_name);
-			$address .= ' ' . $state_name;
+			$address .= ', ' . $state_name;
 		}
 	}
 	$address = trim( $address, ', ' );
@@ -23,6 +22,7 @@ endif;
 			if ( function_exists('yoast_breadcrumb') ) {
 				yoast_breadcrumb( '<span id="breadcrumbs">','</span>' );
 			}
+
 			?>
 			<div class="banner-inner-title-component">
                 <span id="community_banner_title" class="banner-title"><?php the_title(); ?></span>

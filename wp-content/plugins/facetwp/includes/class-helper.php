@@ -39,7 +39,7 @@ final class FacetWP_Helper
         }
 
         $uri = parse_url( $_SERVER['REQUEST_URI'] );
-        return trim( $uri['path'], '/' );
+        return isset( $uri['path'] ) ? trim( $uri['path'], '/' ) : '';
     }
 
 

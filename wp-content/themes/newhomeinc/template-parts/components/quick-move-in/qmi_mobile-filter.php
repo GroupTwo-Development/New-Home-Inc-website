@@ -5,7 +5,7 @@
 
                 <div class="dropdown">
                     <a class="dropdown-toggle"  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Filter
+                        Location
                     </a>
                     <ul class="dropdown-menu qmi-filter-item" aria-labelledby="dropdownMenuButton1">
                        <li>
@@ -49,7 +49,9 @@
 
             </li>
             <li class="map-view-item filter-item">
-                <a href="#"><i class="fas fa-map-marker-alt"></i> Map View</a>
+                <div class="main-map-view-component qmi-map">
+                    <a href="/homes-map"><i class="fas fa-map-marker-alt"></i> <span class="map-view-title">Map View</span></a>
+                </div>
             </li>
         </ul>
     </div>

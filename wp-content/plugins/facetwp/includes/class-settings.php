@@ -29,7 +29,7 @@ class FacetWP_Settings
                         'label' => __( 'URL prefix', 'fwp' ),
                         'html' => $this->get_setting_html( 'prefix', 'dropdown', [
                             'choices' => [ 'fwp_' => 'fwp_', '_' => '_' ]
-                        ] )
+                        ])
                     ],
                     'load_jquery' => [
                         'label' => __( 'Load jQuery?', 'fwp' ),
@@ -37,7 +37,15 @@ class FacetWP_Settings
                         'html' => $this->get_setting_html( 'load_jquery', 'toggle', [
                             'true_value' => 'yes',
                             'false_value' => 'no'
-                        ] )
+                        ])
+                    ],
+                    'load_a11y' => [
+                        'label' => __( 'Load a11y support?', 'fwp' ),
+                        'notes' => 'Improved accessibility for users with disabilities',
+                        'html' => $this->get_setting_html( 'load_a11y', 'toggle', [
+                            'true_value' => 'yes',
+                            'false_value' => 'no'
+                        ])
                     ],
                     'debug_mode' => [
                         'label' => __( 'Debug mode', 'fwp' ),
@@ -45,7 +53,7 @@ class FacetWP_Settings
                         'html' => $this->get_setting_html( 'debug_mode', 'toggle', [
                             'true_value' => 'on',
                             'false_value' => 'off'
-                        ] )
+                        ])
                     ]
                 ]
             ],

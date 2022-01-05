@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1>{{message}}</h1>
+    <h1>Hello World</h1>
   </div>
 </template>
 
 <script>
 export default {
   name: "HelloWorld",
-  data(){
+  setup(){
     return {
       message : 'New NHI Site'
     }
@@ -16,5 +16,8 @@ export default {
 </script>
 
 <style scoped>
+#community-flyout{
+  background-color: red;
+}
 
 </style>

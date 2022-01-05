@@ -4,82 +4,106 @@
     position: relative;
     padding-top: 1.5rem;
     @include media-breakpoint-up(lg){
-      padding-top: 2.5rem;
+      padding-top: 2.9rem;
     }
-    header.entry-header{
-      padding-bottom: 0.5rem;
-      h3{
-        text-transform: uppercase;
-        a{
-          color: $primary_color_black;
-          text-decoration: none;
-          outline: none;
-        }
+    .card{
+      border: none;
+      box-shadow: 0 3px 10px rgb(0 0 0 / 16%);
+      border-radius: 0;
+      margin-bottom: 2rem;
+      min-height: 35.5rem;
+      max-height: 35.5rem;
+      @include media-breakpoint-between(sm, md){
+        min-height: 37rem;
       }
-      .entry-meta{
-        color: $primary_color_black;
-        font-family: $font__main;
-        span.posted-on{
-          font-weight: 400;
-          color: $primary_color_black;
-          a{
-            color: $primary_color_black;
-            outline: none;
-            text-decoration: none;
+      @include media-breakpoint-between(md, lg){
+        min-height: 36.5rem;
+      }
+      .card-img{
+        border-radius: 0;
+        .post-thumbnail{
+          outline: none;
+          text-decoration: none;
+          display: block;
+          text-align: center;
+          width: 100%;
+          @include media-breakpoint-up(lg){
+            text-align: left;
           }
-        }
-        span.cat-links{
-          a{
-            color: $primary_color_black;
-            text-transform: capitalize;
-            outline: none;
-            text-decoration: underline;
-            font-weight: 400;
-            &:hover{
-              color: $primary_color_orange;
+          img{
+            object-fit: cover;
+            //width: 100vw;
+            //height: 20rem;
+            @include media-breakpoint-between(lg, xl){
+              //width: 100vw;
+              //height: 34.375rem;
+            }
+            @include media-breakpoint-up(xl){
+              //width: 100vw;
+              //height: 34.375rem;
             }
           }
         }
       }
-    }
-    .post-thumbnail{
-      outline: none;
-      text-decoration: none;
-      display: block;
-      text-align: center;
-      width: 100%;
-      @include media-breakpoint-up(lg){
-        text-align: left;
-      }
-      img{
-        object-fit: cover;
-        //width: 100vw;
-        //height: 20rem;
-        @include media-breakpoint-between(lg, xl){
-          width: 100vw;
-          height: 34.375rem;
+      .card-body{
+        header.entry-header{
+          h3{
+            text-transform: uppercase;
+            a{
+              color: $primary_color_black;
+              text-decoration: none;
+              outline: none;
+            }
+          }
+          .entry-meta{
+            color: $primary_color_black;
+            font-family: $font__main;
+            span.posted-on{
+              font-weight: 400;
+              color: $primary_color_black;
+              a{
+                color: $primary_color_black;
+                outline: none;
+                text-decoration: none;
+              }
+            }
+            span.cat-links{
+              a{
+                color: $primary_color_black;
+                text-transform: capitalize;
+                outline: none;
+                text-decoration: underline;
+                font-weight: 400;
+                font-size: 84%;
+                &:hover{
+                  color: $primary_color_orange;
+                }
+              }
+            }
+          }
         }
-        @include media-breakpoint-up(xl){
-          width: 100vw;
-          height: 34.375rem;
+        .entry-content{
+          position: relative;
+          color: $primary_color_black;
+          text-align: left;
+          margin: 0.5em 0 0;
+          p{
+            font-family: $font__main;
+          }
         }
-      }
-    }
-    .entry-content{
-      position: relative;
-      color: $primary_color_black;
-      p{
-        font-family: $font__main;
-      }
-    }
-    .entry-content-footer{
-      text-align: center;
-      @include media-breakpoint-up(lg){
-        padding: 1rem 0;
-      }
-      @include media-breakpoint-up(lg){
-        a{
-          margin: 0 auto;
+        .entry-content-footer{
+          text-align: left;
+          a{
+            margin: 1rem  0;
+          }
+          @include media-breakpoint-up(lg){
+            padding: 1rem 0;
+          }
+          @include media-breakpoint-up(lg){
+            a{
+              margin: 0 0;
+            }
+          }
         }
       }
     }

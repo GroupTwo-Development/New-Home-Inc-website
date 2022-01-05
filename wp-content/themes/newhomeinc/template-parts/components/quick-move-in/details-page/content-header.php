@@ -8,8 +8,7 @@ if ( $google_map ) :
 
 		if ( isset( $google_map[ $k ] ) ) {
 			$address = $google_map['city'];
-			$address .= ' '. convertState($state_name);
-			$address .= ' ' . $state_name;
+			$address .= ', ' . $state_name;
 		}
 	}
 	$address = trim( $address, ', ' );

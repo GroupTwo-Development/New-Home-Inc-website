@@ -32,7 +32,7 @@ class PageHooks {
 	private function get_random_number_string() {
 		$result = '';
 		for ( $i = 0; $i < 10; $i++ ) {
-			$result .= rand( 0, 9 );
+			$result .= wp_rand( 0, 9 );
 		}
 		return $result;
 	}
@@ -191,7 +191,7 @@ class PageHooks {
 						} else {
 							hbspt._wpFormsQueue.push(formDef);
 						}
-					}
+					};
 					if (!window.hbspt.forms.create) {
 						Object.defineProperty(window.hbspt.forms, 'create', {
 							configurable: true,

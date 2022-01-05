@@ -50,3 +50,13 @@
 /* Site Footer
 --------------------------------------------- */
 @import "footer/footerIndex";
+
+
+.admin-bar .navbar-fixed-top {
+  margin-top: 30px;
+}
+@media (max-width: 800px) {
+  .admin-bar .navbar-fixed-top {
+    margin-top: 46px;
+  }
+}
