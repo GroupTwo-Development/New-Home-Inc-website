@@ -71,7 +71,7 @@
 								$average_price = $min_price;
 								$max_price = max($array_price);
 							}
-							$display_average_price = ($min_price) ? '' .  esc_html('From the ') . esc_html('$') . number_format($average_price) . esc_html('s') :
+							$display_average_price = ($min_price) ? '' .  esc_html('From the ') . esc_html('$') . number_format($average_price) :
 								'' . '<span class="call-for-pricing">Coming Soon</span>';
 							?>
 							<li>

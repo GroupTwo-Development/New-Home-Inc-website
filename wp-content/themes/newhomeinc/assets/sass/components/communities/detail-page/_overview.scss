@@ -137,7 +137,6 @@
       span.spec-area-data{
         color: $primary_color_black;
         font-weight: 300;
-        font-size: 100%;
       }
     }
   }
@@ -150,11 +149,11 @@
       span.spec-area-label{
         color: $primary_color_orange;
         font-weight: 500;
-        font-size: 95%;
+        //font-size: 95%;
       }
       span.spec-area-data{
-        font-weight: 400;
-        font-size: 95%;
+        font-weight: 300;
+        //font-size: 95%;
       }
     }
   }
@@ -170,7 +169,7 @@
       span.spec-area-label{
         color: $primary_color_orange;
         font-weight: 500;
-        font-size: 95%;
+        //font-size: 95%;
       }
       ul{
         list-style: none;

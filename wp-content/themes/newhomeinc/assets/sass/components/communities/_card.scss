@@ -84,15 +84,12 @@
                 text-align: left;
                 justify-content: flex-start;
                 align-content: flex-start;
-                width: 70%;
-                span.card-body-title{
-                  display: block;
-                  text-transform: capitalize;
-                  font-weight: 500;
-                  font-size: 90%;
+                width: 64%;
+                h6{
+                  margin-bottom: 0.2rem;
                 }
                 span.card-body-location{
-                  font-size: 85%;
+                  //font-size: 85%;
                   white-space: nowrap;
                 }
               }
@@ -101,7 +98,7 @@
                 flex-flow: column;
                 justify-content: space-between;
                 align-content: flex-end;
-                width: 30%;
+                width: 36%;
                 .card-body-price-label{
                   display: block;
                   text-transform: uppercase;
@@ -148,6 +145,7 @@
                 display: block;
                 color: $primary_color_orange;
                 text-transform: uppercase;
+                font-weight: 500;
               }
               span.card-body-bottom-data{
                 display: block;
@@ -160,11 +158,11 @@
     .card-body{
       .inner-body{
         .home_design{
-          span.card-body-title{
+          h6{
+            margin-bottom: 0.2rem;
             a{
               color: $primary_color_black;
               text-transform: capitalize;
-              font-size: 1.1rem;
               text-decoration: none;
               outline: none;
               &:hover{

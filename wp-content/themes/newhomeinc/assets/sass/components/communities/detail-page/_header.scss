@@ -31,19 +31,20 @@
       padding-top: 0.5rem;
       text-align: center;
       @include media-breakpoint-up(lg){
-        padding-top: 0;
+        padding-top: 1rem;
+        padding-bottom: 1.5rem;
       }
       @include media-breakpoint-between(md, lg){
         //padding-top: 0.9rem;
-        padding-bottom: 0.5rem;
+        padding: 1rem 0;
       }
       @include media-breakpoint-between(lg, xl){
         //padding-top: 0.9rem;
-        padding-bottom: 0.5rem;
+        //padding-bottom: 0.5rem;
       }
       @include media-breakpoint-up(xl){
-        padding-top: 0.9rem;
-        padding-bottom: 0.6rem;
+        //padding-top: 0.9rem;
+        //padding-bottom: 0.6rem;
       }
       .banner-title{
         display: block;
@@ -52,14 +53,14 @@
         text-transform: uppercase;
         font-size: 1.2rem;
         @include media-breakpoint-between(md, lg){
-          font-size: 1.8rem;
+          font-size: 2.2rem;
         }
         @include media-breakpoint-between(lg, xl){
-          font-size: 2rem;
+          font-size: 2.7rem;
         }
 
         @include media-breakpoint-up(xl){
-          font-size: 2.5em;
+          font-size: 2.9em;
         }
       }
       .community-location-area{
@@ -68,18 +69,18 @@
           display: block;
           color: $primary_color_black;
           text-align: center;
-          font-size: 85%;
+          //font-size: 85%;
           font-weight: normal;
           letter-spacing: 0.1em;
           text-transform: uppercase;
           @include media-breakpoint-between(md, lg){
-            font-size: 90%;
+            font-size: 1rem;
           }
           @include media-breakpoint-between(lg, xl){
-            font-size: 95%;
+            font-size: 1.1rem;
           }
           @include media-breakpoint-up(xl){
-            font-size: 100%;
+            font-size: 1.3rem;
           }
         }
       }

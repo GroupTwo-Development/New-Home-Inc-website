@@ -139,7 +139,7 @@ get_header();
 				                if(!empty($array_baths_max)){
 					                $max_baths = max($array_baths_max);
 				                }
-				                $display_max_baths = ($max_baths && $half_baths == 1) ? '' . $max_baths . esc_html('.5') : '';
+				                $display_max_baths = ($max_baths && $half_baths == 1) ? '' . $max_baths . esc_html('.5') : $max_baths;
 
 				                //TODO GET MIN and MAX sqft
 				                $array_sqft = array_unique($array_sqft);

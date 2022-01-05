@@ -21,12 +21,14 @@ $google_map = get_field( 'spec_google_map' );
 if ( $google_map ) :
 
 	$address = '';
-	foreach ( array('street_number', 'street_name', 'city', 'state' ) as $i => $k ) {
+	foreach ( array('street_number', 'street_name', 'city', 'state', 'post_code' ) as $i => $k ) {
 		$state_name = $google_map['state'];
 
 		if ( isset( $google_map[ $k ] ) ) {
-			$address = $google_map['city'];
-			$address .= ', ' . $state_name;
+            $address = $google_map['street_number'];
+            $address .= ' ' . $google_map['street_name'];
+			$address .= ', '. convertState($state_name);
+			$address .= ', '. $google_map['post_code'];
 		}
 	}
 	$address = trim( $address, ', ' );
@@ -78,7 +80,7 @@ if(!empty($base_sqft)){
 				<div class="spec-detail-area">
 					<div class="spec-title-price-area">
 						<div class="spec-title-location">
-							<span class="title"><?php the_title(); ?></span>
+							<h5><?php the_title(); ?></h5>
 							<span class="location"><?php echo $address; ?></span>
 							<hr class="spec-area-component-hr">
 						</div>

@@ -40,7 +40,7 @@
 
    $base_price = get_field('base_price');
    if(isset($base_price)){
-	   $display_average_price = ($base_price) ? '' . esc_html('$') . number_format($base_price) . esc_html('s') :
+	   $display_average_price = ($base_price) ? '' . esc_html('$') . number_format($base_price)  :
 		   '' . '<span class="call-for-pricing">Coming Soon</span>';
    }
 
@@ -92,7 +92,7 @@
                             <div class="card-body-top">
                                 <div class="card-body-top-inner home_design">
                                     <div class="card-body-title-area">
-                                        <span class="card-body-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></span>
+                                        <h6><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
                                         <?php $home_design_community_floorplan = get_field('home_design_community_floorplan'); ?>
                                         <?php if($home_design_community_floorplan) :
                                                 $total_community_count = count($home_design_community_floorplan)
@@ -126,6 +126,7 @@
                                            <span class="card-body-price-label">From</span>
                                            <span class="card-body-price"><?php echo $display_average_price; ?></span>
                                        <?php else : ?>
+                                           <span class="card-body-price-label">Price</span>
                                            <span class="card-body-price"><?php echo $display_average_price; ?></span>
                                         <?php endif; ?>
                                     </div>

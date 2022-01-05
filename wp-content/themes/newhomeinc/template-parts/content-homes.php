@@ -37,7 +37,7 @@ $spec_data = get_featured_homes_spec();
 
                 if( isset( $google_map[ $k ] ) ) {
 	                $address = $google_map['city'];
-	                $address .= ' '. convertState($state_name);
+	                $address .= ', '. convertState($state_name);
 	                $address .= ' '. $google_map['post_code'];
                 }
             }
@@ -78,7 +78,7 @@ $spec_data = get_featured_homes_spec();
         $max_price = max($array_price);
     }
 
-    $display_average_price = ($min_price) ? '' . esc_html('$') . number_format($average_price) . esc_html('s') :
+    $display_average_price = ($min_price) ? '' . esc_html('$') . number_format($average_price):
         '' . '<span class="call-for-price">Call For Pricing</span>';
 
     //TODO  Get the min bedrooms
@@ -144,7 +144,7 @@ $spec_data = get_featured_homes_spec();
                             <div class="card-body-top">
                                 <div class="card-body-top-inner">
                                     <div class="card-body-title-area">
-                                        <span class="card-body-title"><?php the_title(); ?></span>
+                                        <h6><?php the_title(); ?></h6>
                                         <span class="card-body-location"><?php echo $address; ?></span>
                                     </div>
                                     <div class="card-body-price-area">
@@ -158,6 +158,7 @@ $spec_data = get_featured_homes_spec();
                                             <span class="card-body-price-label">Price</span>
                                             <span class="card-body-price <?php echo $price_empty; ?>"><?php echo (!empty($spec_data['price'])) ? '' . esc_html('$').number_format($spec_data['price'] ) : ' Coming Soon'?></span>
                                         <?php else : ?>
+                                            <span class="card-body-price-label">Price</span>
                                             <span class="card-body-price <?php echo $price_empty; ?>"><?php echo (!empty($spec_data['price'])) ? '' . esc_html('$').number_format($spec_data['price'] ) : ' Coming Soon'?></span>
                                         <?php endif; ?>
                                     </div>

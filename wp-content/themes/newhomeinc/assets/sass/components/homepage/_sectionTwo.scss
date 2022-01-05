@@ -122,38 +122,37 @@ section#sectionTwo{
                 width: 70%;
                 h6{
                   text-transform: capitalize;
-                  font-weight: 600;
                   margin-bottom: 0;
-                  @include media-breakpoint-between(sm, md){
-                    font-size: 0.90rem;
-                  }
-                  @include media-breakpoint-between(md, lg){
-                    font-size: 0.92rem;
-                  }
-                 @include media-breakpoint-between(lg, xl){
-                   font-size: 0.80rem;
-                 }
-                  @include media-breakpoint-up(xl){
-                    font-size: 1rem;
-                  }
+                 // @include media-breakpoint-between(sm, md){
+                 //   font-size: 0.90rem;
+                 // }
+                 // @include media-breakpoint-between(md, lg){
+                 //   font-size: 0.92rem;
+                 // }
+                 //@include media-breakpoint-between(lg, xl){
+                 //  font-size: 0.80rem;
+                 //}
+                 // @include media-breakpoint-up(xl){
+                 //   font-size: 1rem;
+                 // }
                 }
                 span.featured-home-address{
-                  font-size: 0.95rem;
-                  @include media-breakpoint-between(lg, xl){
-                    font-size: 0.85rem;
-                  }
+                  //font-size: 0.95rem;
+                  //@include media-breakpoint-between(lg, xl){
+                  //  font-size: 0.85rem;
+                  //}
                 }
               }
               .featured-home-price{
                 width: 30%;
                 span.call-for-pricing{
-                  font-size: 0.80rem;
+                  //font-size: 0.80rem;
                   text-align: right;
                 }
                 span{
                   display: block;
                   color: $primary_color_orange;
-                  font-weight: 600;
+                  font-weight: 500;
                   text-transform: uppercase;
                   text-align: right;
                 }
@@ -187,12 +186,13 @@ section#sectionTwo{
                   span.spec-name{
                     color: $primary_color_orange;
                     text-transform: uppercase;
-                    font-weight: 600;
+                    font-weight: 500;
                     text-align: center;
                   }
                   span.spec-data{
                     display: block;
                     text-align: center;
+                    font-weight: 400;
                   }
                 }
               }

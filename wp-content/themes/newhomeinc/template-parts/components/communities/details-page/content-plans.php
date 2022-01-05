@@ -35,7 +35,7 @@
 
 						$base_price = get_field('base_price', $featured_post->ID);
 						if(isset($base_price)){
-							$display_average_price = ($base_price) ? '' . esc_html('$') . number_format($base_price) . esc_html('s') :
+							$display_average_price = ($base_price) ? '' . esc_html('$') . number_format($base_price) :
 								'' . '<span class="call-for-pricing">Coming Soon</span>';
 						}
 
@@ -90,7 +90,7 @@
                                                 <div class="card-body-top">
                                                     <div class="card-body-top-inner home_design">
                                                         <div class="card-body-title-area">
-                                                            <span class="card-body-title"><?php echo esc_html( $title ); ?></span>
+                                                            <h6><?php echo esc_html( $title ); ?></h6>
 
                                                         </div>
                                                         <div class="card-body-price-area">

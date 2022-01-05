@@ -12803,52 +12803,6 @@ textarea {
   font-weight: 400;
 }
 
-/* Declare a font size multiplier variable */
-:root {
-  --text-multiplier: 1;
-}
-
-/* Increase the size of the multiplier on bigger screens */
-@media (min-width: 768px) {
-  :root {
-    --text-multiplier: 1.1;
-  }
-}
-@media (min-width: 992px) {
-  :root {
-    --text-multiplier: 1.1;
-  }
-}
-@media (min-width: 1200px) {
-  :root {
-    --text-multiplier: 1.1;
-  }
-}
-/* Declare text styles using calc() function and the multiplier */
-h1, .h1 {
-  font-size: calc(1.5em * var(--text-multiplier));
-}
-
-h2, .h2 {
-  font-size: calc(1.4em * var(--text-multiplier));
-}
-
-h3, .h3 {
-  font-size: calc(1.3em * var(--text-multiplier));
-}
-
-h4, .h4 {
-  font-size: calc(1.2em * var(--text-multiplier));
-}
-
-h5, .h5 {
-  font-size: calc(1.1em * var(--text-multiplier));
-}
-
-h6, .h6 {
-  font-size: calc(1em * var(--text-multiplier));
-}
-
 p {
   margin-bottom: 1.5em;
 }
@@ -14358,48 +14312,18 @@ section#sectionTwo .splide .card a .card-container .card-body .card-body-title-p
 }
 section#sectionTwo .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area h6, section#sectionTwo .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area .h6 {
   text-transform: capitalize;
-  font-weight: 600;
   margin-bottom: 0;
-}
-@media (min-width: 576px) and (max-width: 767.98px) {
-  section#sectionTwo .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area h6, section#sectionTwo .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area .h6 {
-    font-size: 0.9rem;
-  }
-}
-@media (min-width: 768px) and (max-width: 991.98px) {
-  section#sectionTwo .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area h6, section#sectionTwo .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area .h6 {
-    font-size: 0.92rem;
-  }
-}
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  section#sectionTwo .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area h6, section#sectionTwo .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area .h6 {
-    font-size: 0.8rem;
-  }
-}
-@media (min-width: 1200px) {
-  section#sectionTwo .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area h6, section#sectionTwo .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area .h6 {
-    font-size: 1rem;
-  }
-}
-section#sectionTwo .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area span.featured-home-address {
-  font-size: 0.95rem;
-}
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  section#sectionTwo .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area span.featured-home-address {
-    font-size: 0.85rem;
-  }
 }
 section#sectionTwo .splide .card a .card-container .card-body .card-body-title-price-area .featured-home-price {
   width: 30%;
 }
 section#sectionTwo .splide .card a .card-container .card-body .card-body-title-price-area .featured-home-price span.call-for-pricing {
-  font-size: 0.8rem;
   text-align: right;
 }
 section#sectionTwo .splide .card a .card-container .card-body .card-body-title-price-area .featured-home-price span {
   display: block;
   color: #fc4f00;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
   text-align: right;
 }
@@ -14433,12 +14357,13 @@ section#sectionTwo .splide .card a .card-container .card-body .card-body-homes-s
 section#sectionTwo .splide .card a .card-container .card-body .card-body-homes-spec ul li span.spec-name {
   color: #fc4f00;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
   text-align: center;
 }
 section#sectionTwo .splide .card a .card-container .card-body .card-body-homes-spec ul li span.spec-data {
   display: block;
   text-align: center;
+  font-weight: 400;
 }
 section#sectionTwo .section-btn-area {
   text-align: center;
@@ -15403,16 +15328,12 @@ section.main-filter-components .qmi-filter-components .main-map-view-component {
   text-align: left;
   justify-content: flex-start;
   align-content: flex-start;
-  width: 70%;
+  width: 64%;
 }
-#main-spec .card .card-inner .card-body .card-body-top .card-body-top-inner .card-body-title-area span.card-body-title {
-  display: block;
-  text-transform: capitalize;
-  font-weight: 500;
-  font-size: 90%;
+#main-spec .card .card-inner .card-body .card-body-top .card-body-top-inner .card-body-title-area h6, #main-spec .card .card-inner .card-body .card-body-top .card-body-top-inner .card-body-title-area .h6 {
+  margin-bottom: 0.2rem;
 }
 #main-spec .card .card-inner .card-body .card-body-top .card-body-top-inner .card-body-title-area span.card-body-location {
-  font-size: 85%;
   white-space: nowrap;
 }
 #main-spec .card .card-inner .card-body .card-body-top .card-body-top-inner .card-body-price-area {
@@ -15420,7 +15341,7 @@ section.main-filter-components .qmi-filter-components .main-map-view-component {
   flex-flow: column;
   justify-content: space-between;
   align-content: flex-end;
-  width: 30%;
+  width: 36%;
 }
 #main-spec .card .card-inner .card-body .card-body-top .card-body-top-inner .card-body-price-area .card-body-price-label {
   display: block;
@@ -15467,19 +15388,22 @@ section.main-filter-components .qmi-filter-components .main-map-view-component {
   display: block;
   color: #fc4f00;
   text-transform: uppercase;
+  font-weight: 500;
 }
 #main-spec .card .card-inner .card-body .card-body-bottom .card-body-bottom-spec span.card-body-bottom-data {
   display: block;
   font-weight: 400;
 }
-#main-spec .card .card-body .inner-body .home_design span.card-body-title a {
+#main-spec .card .card-body .inner-body .home_design h6, #main-spec .card .card-body .inner-body .home_design .h6 {
+  margin-bottom: 0.2rem;
+}
+#main-spec .card .card-body .inner-body .home_design h6 a, #main-spec .card .card-body .inner-body .home_design .h6 a {
   color: #000;
   text-transform: capitalize;
-  font-size: 1.1rem;
   text-decoration: none;
   outline: none;
 }
-#main-spec .card .card-body .inner-body .home_design span.card-body-title a:hover {
+#main-spec .card .card-body .inner-body .home_design h6 a:hover, #main-spec .card .card-body .inner-body .home_design .h6 a:hover {
   color: #fc4f00;
 }
 #main-spec .card .card-body .inner-body .home_design .community-dropdown {
@@ -15708,23 +15632,13 @@ section.main-filter-components .qmi-filter-components .main-map-view-component {
 }
 @media (min-width: 992px) {
   .detail-page-banner .interior-banner-inner .banner-inner-title-component {
-    padding-top: 0;
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
   }
 }
 @media (min-width: 768px) and (max-width: 991.98px) {
   .detail-page-banner .interior-banner-inner .banner-inner-title-component {
-    padding-bottom: 0.5rem;
-  }
-}
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .detail-page-banner .interior-banner-inner .banner-inner-title-component {
-    padding-bottom: 0.5rem;
-  }
-}
-@media (min-width: 1200px) {
-  .detail-page-banner .interior-banner-inner .banner-inner-title-component {
-    padding-top: 0.9rem;
-    padding-bottom: 0.6rem;
+    padding: 1rem 0;
   }
 }
 .detail-page-banner .interior-banner-inner .banner-inner-title-component .banner-title {
@@ -15736,17 +15650,17 @@ section.main-filter-components .qmi-filter-components .main-map-view-component {
 }
 @media (min-width: 768px) and (max-width: 991.98px) {
   .detail-page-banner .interior-banner-inner .banner-inner-title-component .banner-title {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
   }
 }
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .detail-page-banner .interior-banner-inner .banner-inner-title-component .banner-title {
-    font-size: 2rem;
+    font-size: 2.7rem;
   }
 }
 @media (min-width: 1200px) {
   .detail-page-banner .interior-banner-inner .banner-inner-title-component .banner-title {
-    font-size: 2.5em;
+    font-size: 2.9em;
   }
 }
 .detail-page-banner .interior-banner-inner .banner-inner-title-component .community-location-area {
@@ -15756,24 +15670,23 @@ section.main-filter-components .qmi-filter-components .main-map-view-component {
   display: block;
   color: #000;
   text-align: center;
-  font-size: 85%;
   font-weight: normal;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 @media (min-width: 768px) and (max-width: 991.98px) {
   .detail-page-banner .interior-banner-inner .banner-inner-title-component .community-location-area span.detail-header-location {
-    font-size: 90%;
+    font-size: 1rem;
   }
 }
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .detail-page-banner .interior-banner-inner .banner-inner-title-component .community-location-area span.detail-header-location {
-    font-size: 95%;
+    font-size: 1.1rem;
   }
 }
 @media (min-width: 1200px) {
   .detail-page-banner .interior-banner-inner .banner-inner-title-component .community-location-area span.detail-header-location {
-    font-size: 100%;
+    font-size: 1.3rem;
   }
 }
 
@@ -16038,7 +15951,6 @@ nav.info-links .info-links-component a:hover {
 .main-detail-spec-area .spec-area-container-bottom .spec-area-component span.spec-area-data {
   color: #000;
   font-weight: 300;
-  font-size: 100%;
 }
 .main-detail-spec-area .spec-area-container-community {
   position: relative;
@@ -16050,11 +15962,9 @@ nav.info-links .info-links-component a:hover {
 .main-detail-spec-area .spec-area-container-community .spec-area-component span.spec-area-label {
   color: #fc4f00;
   font-weight: 500;
-  font-size: 95%;
 }
 .main-detail-spec-area .spec-area-container-community .spec-area-component span.spec-area-data {
-  font-weight: 400;
-  font-size: 95%;
+  font-weight: 300;
 }
 .main-detail-spec-area .spec-area-container-floorplans {
   position: relative;
@@ -16069,7 +15979,6 @@ nav.info-links .info-links-component a:hover {
 .main-detail-spec-area .spec-area-container-floorplans .spec-area-component span.spec-area-label {
   color: #fc4f00;
   font-weight: 500;
-  font-size: 95%;
 }
 .main-detail-spec-area .spec-area-container-floorplans .spec-area-component ul {
   list-style: none;
@@ -16895,48 +16804,18 @@ nav.info-links .info-links-component a:hover {
 }
 #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area h6, #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area .h6 {
   text-transform: capitalize;
-  font-weight: 600;
   margin-bottom: 0;
-}
-@media (min-width: 576px) and (max-width: 767.98px) {
-  #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area h6, #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area .h6 {
-    font-size: 0.9rem;
-  }
-}
-@media (min-width: 768px) and (max-width: 991.98px) {
-  #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area h6, #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area .h6 {
-    font-size: 0.92rem;
-  }
-}
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area h6, #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area .h6 {
-    font-size: 0.8rem;
-  }
-}
-@media (min-width: 1200px) {
-  #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area h6, #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area .h6 {
-    font-size: 1rem;
-  }
-}
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area span.featured-home-address {
-  font-size: 0.95rem;
-}
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area span.featured-home-address {
-    font-size: 0.85rem;
-  }
 }
 #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .featured-home-price {
   width: 30%;
 }
 #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .featured-home-price span.call-for-pricing {
-  font-size: 0.8rem;
   text-align: right;
 }
 #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .featured-home-price span {
   display: block;
   color: #fc4f00;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
   text-align: right;
 }
@@ -17086,7 +16965,6 @@ nav.info-links .info-links-component a:hover {
   font-size: 90%;
 }
 #main-detail-content-area .accordion .available-floorplans .accordion-body .splide .card a .card-inner .card-body .card-body-top .card-body-top-inner .card-body-title-area span.card-body-location {
-  font-size: 85%;
   white-space: nowrap;
 }
 #main-detail-content-area .accordion .available-floorplans .accordion-body .splide .card a .card-inner .card-body .card-body-top .card-body-top-inner .card-body-price-area {
@@ -17169,7 +17047,7 @@ nav.info-links .info-links-component a:hover {
   text-transform: uppercase;
   cursor: pointer;
   letter-spacing: 0.3px;
-  font-weight: 400;
+  font-weight: 500;
 }
 #main-detail-content-area .accordion .available-floorplans .accordion-body .splide .card a .card-body .inner-body .home_design .community-dropdown .dropdown ul {
   border-radius: 0;
@@ -17183,7 +17061,6 @@ nav.info-links .info-links-component a:hover {
 }
 #main-detail-content-area .accordion .available-floorplans .accordion-body .splide .card a .card-body .inner-body .home_design .community-dropdown .dropdown ul li a {
   color: #000;
-  font-size: 90%;
 }
 #main-detail-content-area .accordion .available-floorplans .accordion-body .homes-floorplan-gallery ul {
   list-style: none;
@@ -17687,7 +17564,6 @@ span.coming-soon-status {
   font-size: 90%;
 }
 .gm-style .gm-style-iw-c .gm-style-iw-d .card .card-body .card-body-top .card-body-top-inner .card-body-title-area span.card-body-location {
-  font-size: 85%;
   white-space: nowrap;
 }
 .gm-style .gm-style-iw-c .gm-style-iw-d .card .card-body .card-body-top .card-body-top-inner .card-body-price-area {

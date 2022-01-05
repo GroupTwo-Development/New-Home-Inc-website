@@ -117,7 +117,8 @@
     if(!empty($array_baths_max)){
         $max_baths = max($array_baths_max);
     }
-    $display_max_baths = ($max_baths && $half_baths == 1) ? '' . $max_baths . esc_html('.5') : '';
+    $display_max_baths = ($max_baths && $half_baths == 1) ? '' . $max_baths . esc_html('.5') : $max_baths;
+
 
     //TODO GET MIN and MAX sqft
     $array_sqft = array_unique($array_sqft);
@@ -147,7 +148,7 @@
                             <div class="card-body-top">
                                 <div class="card-body-top-inner">
                                     <div class="card-body-title-area">
-                                        <span class="card-body-title"><?php the_title(); ?></span>
+                                        <h6><?php the_title(); ?></h6>
                                         <span class="card-body-location"><?php echo $address; ?></span>
                                     </div>
                                     <div class="card-body-price-area">
@@ -155,6 +156,7 @@
                                            <span class="card-body-price-label">From</span>
                                            <span class="card-body-price"><?php echo $display_average_price; ?></span>
                                        <?php else : ?>
+                                           <span class="card-body-price-label">Price</span>
                                            <span class="card-body-price"><?php echo $display_average_price; ?></span>
                                         <?php endif; ?>
                                     </div>

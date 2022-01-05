@@ -28,7 +28,7 @@
 
     $base_price = get_field('base_price');
     if(isset($base_price)){
-        $display_average_price = ($base_price) ? '' . esc_html('$') . number_format($base_price) . esc_html('s') :
+        $display_average_price = ($base_price) ? '' . esc_html('$') . number_format($base_price) :
             '' . '<span class="call-for-pricing">Coming Soon</span>';
     }
 
@@ -79,7 +79,7 @@
 				<div class="spec-detail-area">
 					<div class="spec-title-price-area">
 						<div class="spec-title-location">
-							<span class="title"><?php the_title(); ?></span>
+							<h5><?php the_title(); ?></h5>
 <!--							<span class="location">--><?php //echo $address; ?><!--</span>-->
 							<hr class="spec-area-component-hr">
 						</div>
