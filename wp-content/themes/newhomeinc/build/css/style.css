@@ -19151,6 +19151,11 @@ section#newsletter .newsletter-content .newsletters-form-area .newsletter-form f
     margin-top: 46px;
   }
 }
+.read-link {
+  color: #333;
+  text-decoration: none;
+}
+
 /*--------------------------------------------------------------
 # Plugins
 --------------------------------------------------------------*/

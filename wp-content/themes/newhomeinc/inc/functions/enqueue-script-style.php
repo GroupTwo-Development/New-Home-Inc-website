@@ -46,10 +46,10 @@ function newhomeinc_scripts() {
 		)
 	);
 
-	wp_register_script('gmaps-init', get_template_directory_uri() . '/build/js/RenderGooglemaps.js', array('jquery'), '', true);
+	wp_register_script('gmaps-init', get_template_directory_uri() . '/build/js/RenderGooglemaps.js', array('jquery'), '', false);
 	wp_enqueue_script('gmaps-init');
 
-	wp_register_script('google-map', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBXu99Chr6rm7G5cgyA2upf7Vj0JTKfjL4&callback ', array('jquery'), '', true);
+	wp_register_script('google-map', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBXu99Chr6rm7G5cgyA2upf7Vj0JTKfjL4&callback ', array('jquery'), '', false);
 	wp_enqueue_script('google-map');
 
 	wp_enqueue_script( 'newhomeinc-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
