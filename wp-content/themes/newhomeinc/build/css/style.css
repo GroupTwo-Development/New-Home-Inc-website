@@ -14791,17 +14791,7 @@ section#sectionFour .section-four-inner-area .section-four-inner-content-area .s
   position: relative;
 }
 section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-right img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  height: 13.313rem;
-  display: block;
-  margin: 0 auto;
   z-index: 5;
-}
-@media (min-width: 992px) {
-  section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-right img {
-    height: 15rem;
-  }
 }
 section#sectionFour .section-four-inner-area .footer-pattern-bg {
   position: relative;

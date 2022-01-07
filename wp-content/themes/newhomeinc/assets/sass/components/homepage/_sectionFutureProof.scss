@@ -199,14 +199,14 @@ section#sectionFour{
         text-align: center;
         position: relative;
         img{
-          object-fit: cover;
-          height: 13.313rem;
-          display: block;
-          margin: 0 auto;
+          //object-fit: cover;
+          //height: 13.313rem;
+          //display: block;
+          //margin: 0 auto;
           z-index: 5;
-          @include media-breakpoint-up(lg){
-            height: 15rem;
-          }
+          //@include media-breakpoint-up(lg){
+          //  height: 15rem;
+          //}
         }
       }
     }
