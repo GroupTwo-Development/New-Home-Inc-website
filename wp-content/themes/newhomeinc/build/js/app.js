@@ -31658,9 +31658,10 @@ var SelectButton = {
           success: function success(res) {
             $('#detail-page-contact-slideout').html(res);
             postTilte.innerText = res.title.rendered;
+            console.log(res);
             var CommunityFlyoutLinks = "<ul>";
 
-            if (typeof res.acf.self_guided_tour !== 'undefined') {
+            if (res.acf.self_guided_tour !== '') {
               // const selfGuidedTourLi = document.createElement( 'li' );
               // selfGuidedTourLi.setAttribute( 'class', 'self-guided_tour' );
               // const selfGuidedTourLink = document.createElement( 'a' );
@@ -31673,7 +31674,7 @@ var SelectButton = {
               CommunityFlyoutLinks += "<li class=\"self-guided-tour\"><a href=\"".concat(res.acf.self_guided_tour, "\" target=\"_blank\"><i class=\"fas fa-key\"></i> <span class=\"link-title\">Self Guided Tour</span></a></li>");
             }
 
-            if (typeof res.acf.nhi_tour !== 'undefined') {
+            if (res.acf.nhi_tour !== '') {
               // const NhiTourLi = document.createElement( 'li' );
               // NhiTourLi.setAttribute( 'class', 'nhi-tour' );
               // const NhiTourLink = document.createElement( 'a' );
@@ -31703,11 +31704,15 @@ var SelectButton = {
 
 
             CommunityFlyoutLinks += "</ul>";
-            ulEle.innerHTML = CommunityFlyoutLinks;
+            ulEle.innerHTML = CommunityFlyoutLinks; // eslint-disable-next-line valid-typeof
 
-            if (res.acf.subdivision_google_map) {
+            if (!res.acf.subdivision_google_map === null) {
+              // eslint-disable-next-line no-console
+              var getDirectionDiv = document.getElementById('get_direction_text');
               getDirection.setAttribute('href', "https://www.google.com/maps?q=".concat(res.acf.subdivision_google_map.lat, ", ").concat(res.acf.subdivision_google_map.lng));
-              getDirection.innerText = "".concat(res.acf.subdivision_google_map.name, ", ").concat(res.acf.subdivision_google_map.city, ", ").concat(res.acf.subdivision_google_map.state, ", ").concat(res.acf.subdivision_google_map.post_code);
+              getDirection.innerText = "".concat(res.acf.subdivision_google_map.street_number, " ").concat(res.acf.subdivision_google_map.street_name, ", ").concat(res.acf.subdivision_google_map.city, ", ").concat(res.acf.subdivision_google_map.state, ", ").concat(res.acf.subdivision_google_map.post_code);
+              var getFirectionText = "<span class=\"cta-location-area\">Get Directions</span>";
+              getDirectionDiv.innerHTML = getFirectionText;
             }
           }
         });

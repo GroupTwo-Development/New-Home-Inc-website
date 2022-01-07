@@ -151,6 +151,7 @@ get_header();
 				                $display_sqft = ($array_sqft) ? number_format($min_sqft) . esc_html('-') . number_format($max_sqft) : '';
 
 				                ?>
+                            <?php if($location) : ?>
                                 <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
                                     <div class="card <?php echo $coming_soon_class; ?>">
                                         <?php if($comm_banner_announcement) : ?>
@@ -199,6 +200,7 @@ get_header();
                                         </div>
                                     </div>
                                 </div>
+                            <?php endif; ?>
 			                <?php endwhile; wp_reset_postdata(); // End of the loop. ?>
                         </div>
                     </div>

@@ -129,9 +129,10 @@ const SelectButton = {
 					success( res ) {
 						$( '#detail-page-contact-slideout' ).html( res );
 						postTilte.innerText = res.title.rendered;
+						console.log( res );
 
 						let CommunityFlyoutLinks = `<ul>`;
-						if ( typeof res.acf.self_guided_tour !== 'undefined' ) {
+						if ( res.acf.self_guided_tour !== '' ) {
 							// const selfGuidedTourLi = document.createElement( 'li' );
 							// selfGuidedTourLi.setAttribute( 'class', 'self-guided_tour' );
 							// const selfGuidedTourLink = document.createElement( 'a' );
@@ -144,7 +145,7 @@ const SelectButton = {
 							CommunityFlyoutLinks += `<li class="self-guided-tour"><a href="${ res.acf.self_guided_tour }" target="_blank"><i class="fas fa-key"></i> <span class="link-title">Self Guided Tour</span></a></li>`;
 						}
 
-						if ( typeof res.acf.nhi_tour !== 'undefined' ) {
+						if ( res.acf.nhi_tour !== '' ) {
 							// const NhiTourLi = document.createElement( 'li' );
 							// NhiTourLi.setAttribute( 'class', 'nhi-tour' );
 							// const NhiTourLink = document.createElement( 'a' );
@@ -177,9 +178,16 @@ const SelectButton = {
 
 						ulEle.innerHTML = CommunityFlyoutLinks;
 
-						if ( res.acf.subdivision_google_map ) {
+						// eslint-disable-next-line valid-typeof
+						if ( ! res.acf.subdivision_google_map === null ) {
+							// eslint-disable-next-line no-console
+
+							const getDirectionDiv = document.getElementById( 'get_direction_text' );
 							getDirection.setAttribute( 'href', `https://www.google.com/maps?q=${ res.acf.subdivision_google_map.lat }, ${ res.acf.subdivision_google_map.lng }` );
-							getDirection.innerText = `${ res.acf.subdivision_google_map.name }, ${ res.acf.subdivision_google_map.city }, ${ res.acf.subdivision_google_map.state }, ${ res.acf.subdivision_google_map.post_code }`;
+							getDirection.innerText = `${ res.acf.subdivision_google_map.street_number } ${ res.acf.subdivision_google_map.street_name }, ${ res.acf.subdivision_google_map.city }, ${ res.acf.subdivision_google_map.state }, ${ res.acf.subdivision_google_map.post_code }`;
+
+							const getFirectionText = `<span class="cta-location-area">Get Directions</span>`;
+							getDirectionDiv.innerHTML = getFirectionText;
 						}
 					},
 				} );

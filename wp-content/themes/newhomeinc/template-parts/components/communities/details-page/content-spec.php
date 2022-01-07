@@ -489,8 +489,8 @@
                                                     <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span>
                                                     <span class="location-subtitle">
                                                          <a href="https://www.google.com/maps?q=<?php echo esc_attr($location['lat']); ?>,<?php echo esc_attr($location['lng']); ?>" target="_blank">
-                                                                <span class="title">GET DIRECTIONS</span>
-                                                            </a>
+                                                            <span class="title">GET DIRECTIONS</span>
+                                                        </a>
                                                     </span>
                                                 </div>
                                             </header>

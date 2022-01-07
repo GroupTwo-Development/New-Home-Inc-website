@@ -85,8 +85,8 @@ $post_id = $post->ID;
                <div id ="cta-contact-form" class="cta-contact-option"></div>
                <h6 id="cta-title"></h6>
                <div class="cta-location">
-                   <span class="cta-location-area">Get Directions:</span>
-                   <a  id="get_direction" href="https://www.google.com/maps?q=40.378580,-75.304110">Address</a></span>
+                   <a  id="get_direction" href="https://www.google.com/maps?q=40.378580,-75.304110"></a>
+                    <div id="get_direction_text"></div>
                </div>
            </div>
        </div>

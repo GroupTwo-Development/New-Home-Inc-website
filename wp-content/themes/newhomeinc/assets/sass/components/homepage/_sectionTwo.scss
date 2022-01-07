@@ -51,6 +51,7 @@ section#sectionTwo{
       @include media-breakpoint-up(xl){
         height: 30rem;
       }
+
       a{
         transition-property: background-color;
         transition-duration: 1s;
@@ -69,7 +70,9 @@ section#sectionTwo{
           height: 30rem;
         }
         &:hover{
-          border: 0.8px solid $primary_color_orange;
+          border-bottom: 5px solid $primary_color_orange;
+          transition: 0.4s ease-in-out;
+          overflow: hidden;
         }
         color: $primary_color_black;
         .featured-home-announcement-card-banner{

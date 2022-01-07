@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="site-footer-logo">
-                        <img class="lozad"  data-src="<?php echo $footer_logo['url']; ?>" alt="<?php echo $footer_logo['alt']; ?>">
+                        <img class="lozad img-fluid"  data-src="<?php echo $footer_logo['url']; ?>" alt="<?php echo $footer_logo['alt']; ?>">
                     </div>
                 </div>
                 <div class="col-lg-3">

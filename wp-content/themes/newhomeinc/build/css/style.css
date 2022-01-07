@@ -13206,7 +13206,7 @@ nav#mobile-navbar .mobile-navbar-component .mobile-navbar-component-toggle .is-a
 #mainNav .navbar-main-menu .desktop-menu-element ul.navbar-nav li a {
   outline: none;
   text-decoration: none;
-  font-weight: 400;
+  font-weight: 300;
   font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue";
   text-align: left;
   color: #fff;
@@ -14005,7 +14005,7 @@ section#footer-cta-area .splide .splide__list a .card .footer-cta-meta span {
   display: block;
   text-align: center;
   height: 3.125rem;
-  width: 14.25rem;
+  width: 15.25rem;
   line-height: 3.125rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -14098,7 +14098,20 @@ section#footer-cta-area .splide .splide__list a .card .footer-cta-meta span {
 }
 @media (min-width: 992px) {
   #homepage-sectionOne .homepage-sectionOne-content {
-    padding-bottom: 4rem;
+    margin-top: 8rem;
+    padding-top: 0;
+  }
+}
+@media (min-width: 1200px) {
+  #homepage-sectionOne .homepage-sectionOne-content {
+    margin-top: 9rem;
+    padding-top: 0;
+  }
+}
+@media (min-width: 1400px) {
+  #homepage-sectionOne .homepage-sectionOne-content {
+    margin-top: 12rem;
+    padding-top: 0;
   }
 }
 #homepage-sectionOne .homepage-sectionOne-content hr.site-hr {
@@ -14153,27 +14166,20 @@ section#footer-cta-area .splide .splide__list a .card .footer-cta-meta span {
   padding-bottom: 1rem;
   text-align: center;
 }
-@media (min-width: 1200px) and (max-width: 1399.98px) {
+@media (min-width: 992px) {
   #homepage-sectionOne .homepage-sectionOne-img {
-    padding-top: 6rem;
+    margin-top: 8rem;
   }
 }
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
   #homepage-sectionOne .homepage-sectionOne-img {
-    padding-top: 7rem;
+    margin-top: 7rem;
   }
 }
 #homepage-sectionOne .homepage-sectionOne-img img {
   -o-object-fit: contain;
      object-fit: contain;
 }
-@media (min-width: 1200px) {
-  #homepage-sectionOne .homepage-sectionOne-img img {
-    height: 37rem;
-    width: 30.625rem;
-  }
-}
-
 section#sectionTwo {
   position: relative;
 }
@@ -14257,7 +14263,9 @@ section#sectionTwo .splide .card a {
   }
 }
 section#sectionTwo .splide .card a:hover {
-  border: 0.8px solid #fc4f00;
+  border-bottom: 5px solid #fc4f00;
+  transition: 0.4s ease-in-out;
+  overflow: hidden;
 }
 section#sectionTwo .splide .card a .featured-home-announcement-card-banner {
   position: absolute;
@@ -14624,6 +14632,7 @@ section#sectionFour .section-four-inner-area .container .section-four-inner .sec
   font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue";
   line-height: 55px;
   letter-spacing: 0.1px;
+  font-weight: 800;
 }
 @media (min-width: 992px) {
   section#sectionFour .section-four-inner-area .container .section-four-inner .section-four-inner-right span.section-title {
@@ -14732,7 +14741,7 @@ section#sectionFour .section-four-inner-area .section-four-inner-content-area .s
   }
 }
 section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header ul.section-four-inner-content-list li {
-  margin-bottom: 1.1rem;
+  margin-bottom: 1.5rem;
   display: flex;
   flex-flow: row;
   justify-content: flex-start;
@@ -15073,10 +15082,13 @@ section.main-filter-components .inner-filter-components .main-inner-filter-compo
   padding: 0.2rem 0.5rem;
 }
 section.main-filter-components .inner-filter-components .main-inner-filter-component .location-filter .dropdown ul.dropdown-menu {
-  border: 0;
+  border: 2px solid #fc4f00;
   border-radius: 0;
-  width: 15rem;
+  min-width: 19rem;
   padding-left: 0.5rem;
+}
+section.main-filter-components .inner-filter-components .main-inner-filter-component .location-filter .dropdown ul.dropdown-menu .facetwp-facet {
+  margin-bottom: 0;
 }
 section.main-filter-components .inner-filter-components .main-inner-filter-component .location-filter .dropdown ul.dropdown-menu .facetwp-facet .facetwp-radio {
   margin-bottom: 6px;
@@ -16177,7 +16189,7 @@ nav.info-links .info-links-component a:hover {
   transition: all ease-in-out 0.5s;
   position: relative;
   overflow: hidden;
-  min-width: 350px;
+  min-width: 293px;
   overflow-y: auto;
 }
 @media (min-width: 992px) {
@@ -16199,81 +16211,64 @@ nav.info-links .info-links-component a:hover {
   text-transform: uppercase;
   font-weight: 400;
 }
+.detail-page-cta-slide-out .cta-container .cta-close {
+  cursor: pointer;
+}
 .detail-page-cta-slide-out .cta-container .flyout-intro-content {
-  padding: 1.5rem 1rem 0.5rem 1rem;
+  padding: 1.5rem 1rem 0.1rem 1rem;
 }
 .detail-page-cta-slide-out .cta-container .flyout-intro-content p {
   margin: 0;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 90%;
 }
 .detail-page-cta-slide-out .cta-container .section-content {
   min-width: 350px;
   background-color: #000;
-  margin-top: 10%;
+  margin-top: 20px;
 }
-.detail-page-cta-slide-out .cta-container .section-content header.cta-header {
-  padding-left: 5%;
-}
-.detail-page-cta-slide-out .cta-container .section-content header.cta-header span.cta-sub-title {
-  color: #fff;
-  padding-bottom: 0.5rem;
-  display: block;
-}
-.detail-page-cta-slide-out .cta-container .section-content header.cta-header h6, .detail-page-cta-slide-out .cta-container .section-content header.cta-header .h6 {
-  color: #fff;
-}
-.detail-page-cta-slide-out .cta-container .section-content hr.cta-hr {
-  opacity: 1;
-  background-color: #fff;
-  margin: 0;
-}
-.detail-page-cta-slide-out .cta-container .section-content .cta-body-area ul.cta-contact-option {
+.detail-page-cta-slide-out .cta-container .section-content .cta-body-area ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  background-color: #fc4f00;
 }
-.detail-page-cta-slide-out .cta-container .section-content .cta-body-area ul.cta-contact-option li {
-  border-bottom: 1px solid #fff;
-  padding: 0.5rem 0;
+.detail-page-cta-slide-out .cta-container .section-content .cta-body-area ul li {
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #fc4f00;
+  padding: 0.3rem 0;
 }
-.detail-page-cta-slide-out .cta-container .section-content .cta-body-area ul.cta-contact-option li:hover {
-  background-color: #fff;
+.detail-page-cta-slide-out .cta-container .section-content .cta-body-area ul li:first-child {
+  padding-top: 0.6rem;
+  border-top: 1px solid #fc4f00;
 }
-.detail-page-cta-slide-out .cta-container .section-content .cta-body-area ul.cta-contact-option li:hover a {
-  color: #000;
-  transition: 0.5s ease-in-out;
-}
-.detail-page-cta-slide-out .cta-container .section-content .cta-body-area ul.cta-contact-option li a {
+.detail-page-cta-slide-out .cta-container .section-content .cta-body-area ul li a {
+  padding: 0 1.4rem;
   color: #fff;
-  outline: none;
   text-decoration: none;
-  padding-left: 5%;
+  outline: none;
+  font-weight: 300;
 }
-.detail-page-cta-slide-out .cta-container .section-content .cta-body-area ul.cta-contact-option li:last-child {
+.detail-page-cta-slide-out .cta-container .section-content .cta-body-area h6, .detail-page-cta-slide-out .cta-container .section-content .cta-body-area .h6 {
+  padding-top: 1rem;
+  padding-left: 1.4rem;
   margin-bottom: 0;
 }
 .detail-page-cta-slide-out .cta-container .section-content .cta-location {
-  padding-left: 5%;
-  padding-top: 1.5rem;
-}
-.detail-page-cta-slide-out .cta-container .section-content .cta-location span.cta-location-area {
-  display: block;
-  color: #fff;
+  padding-left: 1.4rem;
+  padding-right: 1.4rem;
 }
 .detail-page-cta-slide-out .cta-container .section-content .cta-location a {
   color: #fff;
   text-decoration: none;
   outline: none;
-  padding-right: 8rem;
   display: block;
   padding-top: 0.5rem;
+  font-weight: 300;
+  padding-right: 2.5rem;
+  margin-bottom: 0.5rem;
 }
-@media (min-width: 768px) {
-  .detail-page-cta-slide-out .cta-container .section-content .cta-location a {
-    padding-right: 14rem;
-  }
+.detail-page-cta-slide-out .cta-container .section-content .cta-location a:hover {
+  color: #fc4f00;
 }
 
 .global-cta {
@@ -19031,7 +19026,6 @@ section#newsletter .newsletter-content .newsletters-form-area .newsletter-form f
 #colophon .site-footer-logo img {
   -o-object-fit: contain;
      object-fit: contain;
-  height: 40px;
   width: 100%;
 }
 #colophon .site-footer-phone-area {

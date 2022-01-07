@@ -40,7 +40,16 @@
       padding-top: 8rem;
     }
     @include media-breakpoint-up(lg){
-      padding-bottom: 4rem;
+      margin-top: 8rem;
+      padding-top: 0;
+    }
+    @include media-breakpoint-up(xl){
+      margin-top: 9rem;
+      padding-top: 0;
+    }
+    @include media-breakpoint-up(xxl){
+      margin-top: 12rem;
+      padding-top: 0;
     }
     hr.site-hr{
       opacity: 1;
@@ -107,18 +116,24 @@
   .homepage-sectionOne-img{
     padding-bottom: 1rem;
     text-align: center;
-    @include media-breakpoint-between(xl, xxl){
-      padding-top: 6rem;
+    @include media-breakpoint-up(lg){
+      margin-top: 8rem;
     }
-
-    @include media-breakpoint-up(xxl){
-      padding-top: 7rem;
+    @include media-breakpoint-up(xl){
+      margin-top: 7rem;
     }
+    //@include media-breakpoint-between(xl, xxl){
+    //  padding-top: 6rem;
+    //}
+    //
+    //@include media-breakpoint-up(xxl){
+    //  padding-top: 7rem;
+    //}
     img{
       object-fit: contain;
       @include media-breakpoint-up(xl){
-        height: 37rem;
-        width: 30.625rem;
+        //height: 37rem;
+        //width: 30.625rem;
       }
     }
   }

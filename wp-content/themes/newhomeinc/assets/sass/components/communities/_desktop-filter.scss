@@ -34,13 +34,14 @@ section.main-filter-components{
             padding: 0.2rem 0.5rem;
           }
           ul.dropdown-menu{
-            border: 0;
+            border: 2px solid #fc4f00;
             border-radius: 0;
-            width: 15rem;
+            min-width: 19rem;
             //background-color: $primary_color_orange;
             //color: $primary_color_white;
             padding-left: 0.5rem;
             .facetwp-facet{
+              margin-bottom: 0;
               .facetwp-radio{
                 margin-bottom: 6px;
               }
