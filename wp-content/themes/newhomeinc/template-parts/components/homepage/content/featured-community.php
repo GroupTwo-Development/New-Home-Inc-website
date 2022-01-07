@@ -30,9 +30,7 @@
                             $average_price = number_format($min_price);
 	                        $max_price = max($community_price_range);
                         }
-
-
-
+                        
                     $plan_type_name = get_field('community_type');
                     $plan_type_options = ($plan_type_name) ? '' . esc_html($plan_type_name['value']) : 'homes';
                     $get_featured_community_image = get_field('featured_image');
