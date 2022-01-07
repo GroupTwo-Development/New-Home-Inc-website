@@ -17,7 +17,7 @@ get_header();
 
 	<main id="primary" class="site-main">
 		<?php  get_template_part( 'template-parts/components/global/banner/banner-dynamic-title');  ?>
-		<?php get_template_part( 'template-parts/components/navigations/smart-tech');  ?>
+		<?php get_template_part( 'template-parts/components/navigations/gallery');  ?>
 		<?php interior_hero_bg_image('page_banner') ; ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 			<section id="gallery" class="gallery-component pt-5">
