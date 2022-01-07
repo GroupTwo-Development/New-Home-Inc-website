@@ -12800,11 +12800,12 @@ textarea {
   font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue";
   font-size: 1rem;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 p {
   margin-bottom: 1.5em;
+  font-weight: 300;
 }
 
 dfn,
@@ -14221,6 +14222,7 @@ section#sectionTwo .splide .card {
   overflow: hidden;
   border: 0;
   margin-bottom: 1rem;
+  margin-left: 2px;
 }
 @media (max-width: 575.98px) {
   section#sectionTwo .splide .card {
@@ -14702,23 +14704,21 @@ section#sectionFour .section-four-inner-area .section-four-inner-content-area .s
     font-size: 1.9rem;
   }
 }
-section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header h6, section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header .h6 {
+section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header h2, section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header .h2 {
   text-align: center;
   text-transform: capitalize;
-  font-size: 1.3rem;
   font-weight: normal;
 }
 @media (min-width: 768px) and (max-width: 991.98px) {
-  section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header h6, section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header .h6 {
+  section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header h2, section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header .h2 {
     text-align: left;
     padding-left: 39px;
   }
 }
 @media (min-width: 992px) {
-  section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header h6, section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header .h6 {
+  section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header h2, section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header .h2 {
     text-align: left;
     padding-left: 39px;
-    font-size: 1.5rem;
   }
 }
 section#sectionFour .section-four-inner-area .section-four-inner-content-area .section-four-inner-content-left header ul.section-four-inner-content-list {
@@ -16671,6 +16671,11 @@ nav.info-links .info-links-component a:hover {
 #main-detail-content-area .accordion .available-homes {
   position: relative;
 }
+@media (min-width: 992px) {
+  #main-detail-content-area .accordion .available-homes .accordion-body {
+    padding: 0.5rem 0;
+  }
+}
 #main-detail-content-area .accordion .available-homes .accordion-body .accord-header-area {
   padding-bottom: 1rem;
 }
@@ -16694,31 +16699,45 @@ nav.info-links .info-links-component a:hover {
   border-color: #fc4f00;
   background: #fc4f00;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li.is-active {
+  margin-left: 3px;
+}
+@media (min-width: 992px) {
+  #main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li {
+    padding-right: 5px;
+  }
+  #main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li:first-child {
+    padding-right: 5px;
+  }
+  #main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li:last-child {
+    padding-right: 0;
+  }
+}
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card {
   border-radius: 0;
   background: #fff;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.16);
   position: relative;
   overflow: hidden;
-  border: 0;
+  border: 0.5px solid #e2e2e2;
   margin-bottom: 1rem;
 }
 @media (max-width: 575.98px) {
-  #main-detail-content-area .accordion .available-homes .accordion-body .splide .card {
+  #main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card {
     height: 30rem;
   }
 }
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  #main-detail-content-area .accordion .available-homes .accordion-body .splide .card {
+  #main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card {
     height: 31rem;
   }
 }
 @media (min-width: 1200px) {
-  #main-detail-content-area .accordion .available-homes .accordion-body .splide .card {
+  #main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card {
     height: 30rem;
   }
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a {
   transition-property: background-color;
   transition-duration: 1s;
   transition-timing-function: linear;
@@ -16729,24 +16748,26 @@ nav.info-links .info-links-component a:hover {
   color: #000;
 }
 @media (max-width: 575.98px) {
-  #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a {
+  #main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a {
     height: 26rem;
   }
 }
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a {
+  #main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a {
     height: 31rem;
   }
 }
 @media (min-width: 1200px) {
-  #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a {
+  #main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a {
     height: 30rem;
   }
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a:hover {
-  border: 0.8px solid #fc4f00;
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a:hover {
+  border-bottom: 5px solid #fc4f00;
+  transition: 0.4s ease-in-out;
+  overflow: hidden;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .featured-home-announcement-card-banner {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .featured-home-announcement-card-banner {
   position: absolute;
   top: 0;
   left: 0;
@@ -16762,30 +16783,30 @@ nav.info-links .info-links-component a:hover {
   align-items: center;
   align-content: center;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .featured-home-announcement-card-banner span {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .featured-home-announcement-card-banner span {
   display: block;
   color: #fff;
   letter-spacing: 0.1em;
   text-align: center;
   font-weight: 400;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container {
   position: relative;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .featured-home-card-header .card-img {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .featured-home-card-header .card-img {
   position: relative;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .featured-home-card-header .card-img img {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .featured-home-card-header .card-img img {
   -o-object-fit: cover;
      object-fit: cover;
   height: 17.3rem;
 }
 @media (min-width: 1200px) {
-  #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .featured-home-card-header .card-img img {
+  #main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .featured-home-card-header .card-img img {
     height: 17.8rem;
   }
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-title-price-area {
   display: flex;
   flex-flow: row;
   justify-content: space-between;
@@ -16793,37 +16814,37 @@ nav.info-links .info-links-component a:hover {
   align-items: center;
   width: 100%;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-title-price-area .card-title-area {
   text-align: left;
   width: 70%;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area h6, #main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .card-title-area .h6 {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-title-price-area .card-title-area h6, #main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-title-price-area .card-title-area .h6 {
   text-transform: capitalize;
   margin-bottom: 0;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .featured-home-price {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-title-price-area .featured-home-price {
   width: 30%;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .featured-home-price span.call-for-pricing {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-title-price-area .featured-home-price span.call-for-pricing {
   text-align: right;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-title-price-area .featured-home-price span {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-title-price-area .featured-home-price span {
   display: block;
   color: #fc4f00;
   font-weight: 500;
   text-transform: uppercase;
   text-align: right;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body hr.featured-homes-hr {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .card-body hr.featured-homes-hr {
   opacity: 1;
   height: 2px;
   background-color: #707070;
   border-radius: 20px;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-homes-spec {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-homes-spec {
   padding-top: 0.6rem;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-homes-spec ul {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-homes-spec ul {
   list-style: none;
   margin: 0;
   padding: 0 2rem;
@@ -16833,7 +16854,7 @@ nav.info-links .info-links-component a:hover {
   align-items: center;
   align-content: center;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-homes-spec ul li {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-homes-spec ul li {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -16841,13 +16862,13 @@ nav.info-links .info-links-component a:hover {
   align-items: center;
   color: #000;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-homes-spec ul li span.spec-name {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-homes-spec ul li span.spec-name {
   color: #fc4f00;
   text-transform: uppercase;
   font-weight: 600;
   text-align: center;
 }
-#main-detail-content-area .accordion .available-homes .accordion-body .splide .card a .card-container .card-body .card-body-homes-spec ul li span.spec-data {
+#main-detail-content-area .accordion .available-homes .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-homes-spec ul li span.spec-data {
   display: block;
   text-align: center;
 }
@@ -16864,6 +16885,179 @@ nav.info-links .info-links-component a:hover {
 #main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__pagination li button.is-active {
   border-color: #fc4f00;
   background: #fc4f00;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li.is-active {
+  margin-left: 3px;
+}
+@media (min-width: 992px) {
+  #main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li {
+    padding-right: 3px;
+  }
+  #main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li:first-child {
+    padding-right: 5px;
+  }
+  #main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li:last-child {
+    padding-right: 0;
+  }
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card {
+  border-radius: 0;
+  background: #fff;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.16);
+  position: relative;
+  overflow: hidden;
+  border: 0.5px solid #e2e2e2;
+  margin-bottom: 1rem;
+}
+@media (max-width: 575.98px) {
+  #main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card {
+    height: 30rem;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card {
+    height: 31rem;
+  }
+}
+@media (min-width: 1200px) {
+  #main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card {
+    height: 30rem;
+  }
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a {
+  transition-property: background-color;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+  display: block;
+  outline: none;
+  text-decoration: none;
+  position: relative;
+  color: #000;
+}
+@media (max-width: 575.98px) {
+  #main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a {
+    height: 26rem;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a {
+    height: 31rem;
+  }
+}
+@media (min-width: 1200px) {
+  #main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a {
+    height: 30rem;
+  }
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a:hover {
+  border-bottom: 5px solid #fc4f00;
+  transition: 0.4s ease-in-out;
+  overflow: hidden;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .featured-home-announcement-card-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+  background-color: #fc4f00;
+  height: 42px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .featured-home-announcement-card-banner span {
+  display: block;
+  color: #fff;
+  letter-spacing: 0.1em;
+  text-align: center;
+  font-weight: 400;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container {
+  position: relative;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .featured-home-card-header .card-img {
+  position: relative;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .featured-home-card-header .card-img img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 17.3rem;
+}
+@media (min-width: 1200px) {
+  #main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .featured-home-card-header .card-img img {
+    height: 17.8rem;
+  }
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-title-price-area {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-title-price-area .card-title-area {
+  text-align: left;
+  width: 70%;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-title-price-area .card-title-area h6, #main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-title-price-area .card-title-area .h6 {
+  text-transform: capitalize;
+  margin-bottom: 0;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-title-price-area .featured-home-price {
+  width: 30%;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-title-price-area .featured-home-price span.call-for-pricing {
+  text-align: right;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-title-price-area .featured-home-price span {
+  display: block;
+  color: #fc4f00;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: right;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .card-body hr.featured-homes-hr {
+  opacity: 1;
+  height: 2px;
+  background-color: #707070;
+  border-radius: 20px;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-homes-spec {
+  padding-top: 0.6rem;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-homes-spec ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 2rem;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-homes-spec ul li {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  color: #000;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-homes-spec ul li span.spec-name {
+  color: #fc4f00;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+}
+#main-detail-content-area .accordion .available-floorplans .accordion-body .splide ul.splide__list li .card a .card-container .card-body .card-body-homes-spec ul li span.spec-data {
+  display: block;
+  text-align: center;
 }
 #main-detail-content-area .accordion .available-floorplans .accordion-body .splide .card {
   border: none;
@@ -17482,6 +17676,7 @@ span.coming-soon-status {
 }
 .gm-style .gm-style-iw-c .gm-style-iw-d {
   overflow: hidden !important;
+  min-height: 19rem;
 }
 .gm-style .gm-style-iw-c .gm-style-iw-d .card {
   border: none;
@@ -17525,6 +17720,7 @@ span.coming-soon-status {
   width: 100%;
 }
 .gm-style .gm-style-iw-c .gm-style-iw-d .card .card-body {
+  padding: 1rem 0.5rem;
   position: relative;
   padding-top: 1rem;
   display: block;
@@ -18560,20 +18756,6 @@ header.modal-header-title span.modal-teammate-title {
 #trade-partners .trade-partner-section-img {
   margin-bottom: 2rem;
 }
-#trade-partners .trade-partner-section-img img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  height: 20rem;
-  display: block;
-  margin: 0 auto;
-}
-@media (min-width: 992px) {
-  #trade-partners .trade-partner-section-img img {
-    margin: auto 0 auto auto;
-    height: 22rem;
-  }
-}
-
 /* Comments
 --------------------------------------------- */
 .comment-content a {

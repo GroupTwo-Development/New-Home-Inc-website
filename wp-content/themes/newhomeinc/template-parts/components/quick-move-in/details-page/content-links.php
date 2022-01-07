@@ -23,6 +23,7 @@ $get_directions_content = $homes_get_directions_group['get_directions_content'];
 
 
 ?>
+<?php if($subdescription && $homes_floorplans && $spec_virtual_tour_image && $spec_video && $location) : ?>
 <nav id="info-links" class="info-links">
 	<div class="container">
 		<div class="info-links-component">
@@ -47,3 +48,4 @@ $get_directions_content = $homes_get_directions_group['get_directions_content'];
 		</div>
 	</div>
 </nav>
+<?php endif; ?>

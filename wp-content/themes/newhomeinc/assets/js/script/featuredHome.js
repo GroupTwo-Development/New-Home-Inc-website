@@ -7,7 +7,7 @@ const featuredHome = {
 				perPage: 3,
 				type: 'loop',
 				arrows: true,
-				gap: '2rem',
+				gap: '6px',
 				breakpoints: {
 					992: {
 						perPage: 2,
@@ -27,7 +27,7 @@ const featuredHome = {
 				perPage: 3,
 				type: 'loop',
 				arrows: true,
-				gap: '0.3rem',
+				// gap: '0.3rem',
 				breakpoints: {
 					992: {
 						perPage: 2,
@@ -50,7 +50,7 @@ const featuredHome = {
 				perPage: 3,
 				type: 'loop',
 				arrows: true,
-				gap: '0.3rem',
+				// gap: '0.3rem',
 				breakpoints: {
 					992: {
 						perPage: 2,

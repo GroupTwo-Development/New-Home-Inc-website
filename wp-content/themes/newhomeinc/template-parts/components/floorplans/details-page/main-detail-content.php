@@ -88,6 +88,7 @@
 								<span class="spec-area-price-label">FROM</span>
 								<span class="spec-area-price"><?php echo $display_average_price; ?></span>
 							<?php else : ?>
+                                <span class="spec-area-price-label">PRICE</span>
 								<span class="spec-area-price"><?php echo $display_average_price; ?></span>
 							<?php endif; ?>
 						</div>

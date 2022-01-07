@@ -73,6 +73,8 @@
 
     }
 
+    $main_title = get_field('plan_name');
+
 ?>
 
 <div class="col-md-6 col-lg-6 col-xl-4">
@@ -92,7 +94,7 @@
                             <div class="card-body-top">
                                 <div class="card-body-top-inner home_design">
                                     <div class="card-body-title-area">
-                                        <h6><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
+                                        <h6><a href="<?php the_permalink(); ?>"><?php echo $main_title; ?></a></h6>
                                         <?php $home_design_community_floorplan = get_field('home_design_community_floorplan'); ?>
                                         <?php if($home_design_community_floorplan) :
                                                 $total_community_count = count($home_design_community_floorplan)

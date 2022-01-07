@@ -125,13 +125,13 @@ header.modal-header-title {
   .trade-partner-section-img{
     margin-bottom: 2rem;
     img{
-      object-fit: cover;
-      height: 20rem;
-      display: block; margin: 0 auto;
-      @include media-breakpoint-up(lg){
-        margin: auto 0 auto auto;
-        height: 22rem;
-      }
+      //object-fit: cover;
+      //height: 20rem;
+      //display: block; margin: 0 auto;
+      //@include media-breakpoint-up(lg){
+      //  margin: auto 0 auto auto;
+      //  height: 22rem;
+      //}
     }
   }
 }

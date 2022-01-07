@@ -1,6 +1,6 @@
 <?php $get_featured_homes = homepage_get_featured_post_types('homes', 'featured_home', '-1');?>
 <?php if($get_featured_homes) : ?>
-    <section id="sectionTwo" class="sectionTwo  pb-5" data-aos="fade-up"
+    <section id="sectionTwo" class="sectionTwo  pb-5"
              data-aos-anchor-placement="top-bottom">
         <div class="container">
             <header class="section-header">

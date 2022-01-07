@@ -41,7 +41,7 @@
                                 <header>
                                     <hr class="process-hr">
                                     <span class="subtitle">Down to a science</span>
-                                    <h6>How it Works</h6>
+                                    <h2>How it Works</h2>
                                     <?php
                                         $process = array(
                                            'Choose Your Community',

@@ -177,9 +177,9 @@
                               </section>
                         </div>
                         <?php
-                            $smart_features = get_field('smart_features');
-                            $new_features = get_field('new_features');
-                            $healthy_features = get_field('healthy_features');
+                            $smart_features = get_field('com_smart_features');
+                            $new_features = get_field('com_new_features');
+                            $healthy_features = get_field('com_healthy_features');
 
                             if($smart_features && $new_features && $healthy_features )   :
                         ?>

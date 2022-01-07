@@ -42,6 +42,7 @@ section#sectionTwo{
       overflow: hidden;
       border: 0;
       margin-bottom: 1rem;
+      margin-left: 2px;
       @include media-breakpoint-down(sm){
         height: 30rem;
       }
