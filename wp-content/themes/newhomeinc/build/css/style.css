@@ -12803,6 +12803,10 @@ textarea {
   font-weight: 300;
 }
 
+h1, .h1 {
+  font-weight: 500;
+}
+
 p {
   margin-bottom: 1.5em;
   font-weight: 300;
@@ -14144,7 +14148,7 @@ section#footer-cta-area .splide .splide__list a .card .footer-cta-meta span {
 }
 #homepage-sectionOne .homepage-sectionOne-content h1, #homepage-sectionOne .homepage-sectionOne-content .h1 {
   text-transform: capitalize;
-  font-weight: 400;
+  font-weight: 500;
   color: #000;
 }
 @media (min-width: 992px) {
@@ -15111,9 +15115,9 @@ section.main-filter-components .inner-filter-components .main-inner-filter-compo
   padding: 0.2rem 0.5rem;
 }
 section.main-filter-components .inner-filter-components .main-inner-filter-component .sorting-filter .dropdown ul.dropdown-menu {
-  border: 0;
   border-radius: 0;
-  width: 15rem;
+  min-width: 15rem;
+  border: 2px solid #fc4f00;
   padding-left: 0.5rem;
 }
 section.main-filter-components .inner-filter-components .main-inner-filter-component .sorting-filter .dropdown ul.dropdown-menu .facetwp-facet .facetwp-radio {
@@ -15232,7 +15236,11 @@ section.main-filter-components .qmi-filter-components .main-inner-filter-compone
   color: #fff;
 }
 section.main-filter-components .qmi-filter-components .main-inner-filter-component .sorting-filter .dropdown ul.dropdown-menu {
-  width: 8rem;
+  min-width: 13rem;
+  border: 2px solid #fc4f00;
+}
+section.main-filter-components .qmi-filter-components .main-inner-filter-component .sorting-filter .dropdown ul.dropdown-menu .facetwp-sort-radio {
+  cursor: pointer;
 }
 section.main-filter-components .qmi-filter-components .main-map-view-component {
   width: 17%;
@@ -18260,7 +18268,7 @@ button.gm-ui-hover-effect {
 }
 #warranty-section .warranty-section-content h1, #warranty-section .warranty-section-content .h1 {
   text-transform: capitalize;
-  font-weight: 400;
+  font-weight: 500;
   color: #000;
 }
 @media (min-width: 992px) {

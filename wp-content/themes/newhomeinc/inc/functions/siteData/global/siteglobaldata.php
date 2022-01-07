@@ -164,3 +164,89 @@ function posts_archive_per_page( $query ) {
 add_filter( 'pre_get_posts', 'posts_archive_per_page' );
 
 
+
+
+add_filter( 'facetwp_sort_options', function( $options, $params ) {
+    if(is_post_type_archive('homes')){
+	    $options['homes_price_DESC'] = [
+		    'label' => 'Price (High to Low)',
+		    'query_args' => [
+			    'post_type' => 'homes',
+			    'orderby' => 'meta_value_num',
+			    'meta_key' => 'spec_price',
+			    'order' => 'DESC',
+		    ]
+	    ];
+	    $options['homes_price'] = [
+		    'label' => 'Price (Low to High)',
+		    'query_args' => [
+			    'post_type' => 'homes',
+			    'orderby' => 'meta_value_num',
+			    'meta_key' => 'spec_price',
+			    'order' => 'ASC',
+		    ]
+	    ];
+
+	    $options['homes_sqft'] = [
+		    'label' => 'Square Feet',
+		    'query_args' => [
+			    'post_type' => 'homes',
+			    'orderby' => 'meta_value_num',
+			    'meta_key' => 'spec_sqft',
+			    'order' => 'DESC',
+		    ]
+	    ];
+	    unset( $options['title_desc'] );
+	    unset( $options['date_desc'] );
+	    unset( $options['date_asc'] );
+    } else if(is_post_type_archive('home-design')){
+	    $options['base_price'] = [
+		    'label' => 'Price (High to Low)',
+		    'query_args' => [
+			    'post_type' => 'home-design',
+			    'orderby' => 'meta_value_num',
+			    'meta_key' => 'base_price',
+			    'order' => 'DESC',
+		    ]
+	    ];
+	    $options['base_price_ASC'] = [
+		    'label' => 'Price (Low to High)',
+		    'query_args' => [
+			    'post_type' => 'home-design',
+			    'orderby' => 'meta_value_num',
+			    'meta_key' => 'base_price',
+			    'order' => 'ASC',
+		    ]
+	    ];
+
+	    $options['plans_base_sqft'] = [
+		    'label' => 'Square Feet',
+		    'query_args' => [
+			    'post_type' => 'home-design',
+			    'orderby' => 'meta_value_num',
+			    'meta_key' => 'base_sqft',
+			    'order' => 'DESC',
+		    ]
+	    ];
+	    unset( $options['title_desc'] );
+	    unset( $options['date_desc'] );
+	    unset( $options['date_asc'] );
+
+    } else if(is_post_type_archive('communities')){
+//	    $options['community_base_price'] = [
+//		    'label' => 'Price (High to Low)',
+//		    'query_args' => [
+//			    'post_type' => 'floorplan',
+//			    'orderby' => 'meta_value_num',
+//			    'meta_key' => 'base_price',
+//			    'order' => 'DESC',
+//		    ]
+//	    ];
+    }
+//	unset( $options['title_desc'] );
+//	unset( $options['date_desc'] );
+//	unset( $options['date_asc'] );
+	return $options;
+}, 10, 2 );
+
+
