@@ -40,6 +40,7 @@
 					'menu-1' => esc_html__( 'Primary', 'newhomeinc' ),
 					'menu-2' => esc_html__( 'Smart Techs', 'newhomeinc' ),
 					'search-page-menu' => esc_html__( 'Search Pages Menu', 'newhomeinc' ),
+					'gallery' => esc_html__( 'Gallery Pages', 'newhomeinc' ),
 				)
 			);
 

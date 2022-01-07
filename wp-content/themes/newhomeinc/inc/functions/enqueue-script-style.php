@@ -91,3 +91,8 @@ function prefix_prevent_scroll_zoom_on_facet_map( $args ) {
 	$args['init']['scrollwheel'] = false;
 	return $args;
 }
+
+function tn_custom_excerpt_length( $length ) {
+	return 19;
+}
+add_filter( 'excerpt_length', 'tn_custom_excerpt_length', 999 );

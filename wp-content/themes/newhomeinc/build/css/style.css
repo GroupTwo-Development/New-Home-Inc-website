@@ -17871,7 +17871,6 @@ button.gm-ui-hover-effect {
   border-radius: 0;
   margin-bottom: 2rem;
   min-height: 35.5rem;
-  max-height: 35.5rem;
 }
 @media (min-width: 576px) and (max-width: 767.98px) {
   .blog-index #blog-post-list .card {
@@ -17902,10 +17901,16 @@ button.gm-ui-hover-effect {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.blog-index #blog-post-list .card .card-body header.entry-header h3, .blog-index #blog-post-list .card .card-body header.entry-header .h3 {
+.blog-index #blog-post-list .card .card-body {
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+}
+.blog-index #blog-post-list .card .card-body header.entry-header h5, .blog-index #blog-post-list .card .card-body header.entry-header .h5 {
   text-transform: uppercase;
 }
-.blog-index #blog-post-list .card .card-body header.entry-header h3 a, .blog-index #blog-post-list .card .card-body header.entry-header .h3 a {
+.blog-index #blog-post-list .card .card-body header.entry-header h5 a, .blog-index #blog-post-list .card .card-body header.entry-header .h5 a {
   color: #000;
   text-decoration: none;
   outline: none;

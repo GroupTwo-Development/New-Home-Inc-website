@@ -15,7 +15,7 @@
         </div>
         <div class="card-body">
             <header class="entry-header">
-                <?php the_title( '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
+                <?php the_title( '<h5 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h5>' ); ?>
                 <div class="entry-meta">
                     <?php
                     newhomeinc_posted_on();

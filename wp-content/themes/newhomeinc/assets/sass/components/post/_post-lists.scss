@@ -12,7 +12,7 @@
       border-radius: 0;
       margin-bottom: 2rem;
       min-height: 35.5rem;
-      max-height: 35.5rem;
+      //max-height: 35.5rem;
       @include media-breakpoint-between(sm, md){
         min-height: 37rem;
       }
@@ -46,8 +46,12 @@
         }
       }
       .card-body{
+        flex-flow: column;
+        justify-content: space-evenly;
+        align-items: center;
+        align-content: center;
         header.entry-header{
-          h3{
+          h5{
             text-transform: uppercase;
             a{
               color: $primary_color_black;
