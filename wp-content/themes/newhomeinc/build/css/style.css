@@ -18783,7 +18783,12 @@ header.modal-header-title span.modal-teammate-title {
 }
 @media (min-width: 1200px) {
   .process-area {
-    margin-top: 2rem;
+    margin-top: 6rem;
+  }
+}
+@media (min-width: 1400px) {
+  .process-area {
+    margin-top: 3rem;
   }
 }
 .process-area .process-section-content {

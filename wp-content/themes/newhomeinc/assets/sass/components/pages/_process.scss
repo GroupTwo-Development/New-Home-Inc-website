@@ -5,7 +5,11 @@
     margin-top: 2rem;
   }
   @include media-breakpoint-up(xl){
-    margin-top: 2rem;
+    margin-top: 6rem;
+  }
+
+  @include media-breakpoint-up(xxl){
+    margin-top: 3rem;
   }
 
   .process-section-content{
