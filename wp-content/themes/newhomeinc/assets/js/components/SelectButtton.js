@@ -29,6 +29,7 @@ const SelectButton = {
 			} );
 
 			$( document ).on( 'facetwp-loaded', function() {
+				collapse_init();
 				const communitySearchPage = app_script_vars.community_search_page;
 				const searchPageFooterTitle = app_script_vars.community_search_page_title;
 				// eslint-disable-next-line no-console
@@ -324,13 +325,13 @@ const SelectButton = {
 			}
 
 			window.addEventListener( 'load', ( event ) => {
+				collapse_init();
 				communitySliderout();
 				homesSlideOut();
 				homeDesignSlideout();
 			} );
 
 			window.addEventListener( 'load', ( event ) => {
-				collapse_init();
 				$( '#cta-contact-form' ).on( 'click', function() {
 					// eslint-disable-next-line no-console
 					// console.log( this.innerHTML );

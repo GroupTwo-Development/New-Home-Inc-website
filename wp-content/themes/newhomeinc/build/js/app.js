@@ -31564,6 +31564,7 @@ var SelectButton = {
         $('.ask-a-question-component').toggleClass('global-cta');
       });
       $(document).on('facetwp-loaded', function () {
+        collapse_init();
         var communitySearchPage = app_script_vars.community_search_page;
         var searchPageFooterTitle = app_script_vars.community_search_page_title; // eslint-disable-next-line no-console
         // console.log( communitySearchPage );
@@ -31845,12 +31846,12 @@ var SelectButton = {
       }
 
       window.addEventListener('load', function (event) {
+        collapse_init();
         communitySliderout();
         homesSlideOut();
         homeDesignSlideout();
       });
       window.addEventListener('load', function (event) {
-        collapse_init();
         $('#cta-contact-form').on('click', function () {
           // eslint-disable-next-line no-console
           // console.log( this.innerHTML );
