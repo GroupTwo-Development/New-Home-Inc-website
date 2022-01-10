@@ -31627,7 +31627,7 @@ var SelectButton = {
                   if (data_value === '') {
                     displayCommunityBannerTitle.innerText = 'NEW HOME COMMUNITIES';
                     displayMainFooterContentTitle.innerText = searchPageFooterTitle;
-                    displayMainFooterContent.innerText = communitySearchPage;
+                    displayMainFooterContent.innerHTML = communitySearchPage;
                   } else {
                     displayCommunityBannerTitle.innerText = 'NEW HOME COMMUNITIES IN ' + tax.name;
                     displayMainFooterContentTitle.innerText = tax.name;
@@ -31658,7 +31658,6 @@ var SelectButton = {
           success: function success(res) {
             $('#detail-page-contact-slideout').html(res);
             postTilte.innerText = res.title.rendered;
-            console.log(res);
             var CommunityFlyoutLinks = "<ul>";
 
             if (res.acf.self_guided_tour !== '') {
@@ -31851,6 +31850,7 @@ var SelectButton = {
         homeDesignSlideout();
       });
       window.addEventListener('load', function (event) {
+        collapse_init();
         $('#cta-contact-form').on('click', function () {
           // eslint-disable-next-line no-console
           // console.log( this.innerHTML );
@@ -32108,7 +32108,9 @@ var qmiSearchFooterContent = {
                   } else {
                     displayHomesBannerTitle.innerText = 'AVAILABLE HOMES IN ' + tax.name;
                     displayMainFooterContentTitle.innerText = tax.name;
-                    displayMainFooterContent.innerHTML = tax.description;
+                    displayMainFooterContent.innerHTML = tax.description; // eslint-disable-next-line no-console
+
+                    console.log(tax.description);
                   }
                 });
               }

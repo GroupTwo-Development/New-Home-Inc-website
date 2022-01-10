@@ -52,6 +52,7 @@
       font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue";
       line-height: 30px;
       letter-spacing: 0.1px;
+      font-weight: 800;
       @include media-breakpoint-up(lg){
         font-size: 6rem;
         line-height: 50px;
@@ -64,10 +65,10 @@
     }
     h3{
       text-transform: uppercase;
-      @include media-breakpoint-up(xl){
-        line-height: 60px;
-        margin-top: 10px;
-      }
+      //@include media-breakpoint-up(xl){
+      //  line-height: 60px;
+      //  margin-top: 10px;
+      //}
     }
     .content-area{
       @include media-breakpoint-up(lg){
@@ -75,7 +76,6 @@
       }
       p{
         font-family: $font__main;
-        font-weight: normal
       }
     }
   }

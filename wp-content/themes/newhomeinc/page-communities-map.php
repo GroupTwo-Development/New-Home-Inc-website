@@ -103,7 +103,7 @@ get_header();
 					                $max_price = max($array_price);
 				                }
 
-				                $display_average_price = ($min_price) ? '' . esc_html('$') . number_format($average_price) . esc_html('s') :
+				                $display_average_price = ($min_price) ? '' . esc_html('$') . number_format($average_price)  :
 					                '' . '<span class="call-for-pricing">Coming Soon</span>';
 
 				                //TODO  Get the min bedrooms
@@ -168,7 +168,7 @@ get_header();
                                                 <div class="card-body-top">
                                                     <div class="card-body-top-inner">
                                                         <div class="card-body-title-area">
-                                                            <span class="card-body-title"><?php the_title(); ?></span>
+                                                            <h6><?php the_title(); ?></h6>
                                                             <span class="card-body-location"><?php echo $address; ?></span>
                                                         </div>
                                                         <div class="card-body-price-area">

@@ -21,6 +21,10 @@
       }
       .card-img{
         border-radius: 0;
+        @include media-breakpoint-up(lg){
+          position: relative;
+          min-height: 16rem;
+        }
         .post-thumbnail{
           outline: none;
           text-decoration: none;
@@ -34,10 +38,14 @@
             object-fit: cover;
             //width: 100vw;
             //height: 20rem;
-            @include media-breakpoint-between(lg, xl){
-              //width: 100vw;
-              //height: 34.375rem;
+            @include media-breakpoint-up(lg){
+              min-height: 15.6rem;
+              height: 16rem;
             }
+            //@include media-breakpoint-between(lg, xl){
+            //  min-height: 15.6rem;
+            //  height: 16rem;
+            //}
             @include media-breakpoint-up(xl){
               //width: 100vw;
               //height: 34.375rem;
@@ -46,9 +54,10 @@
         }
       }
       .card-body{
+        display: flex;
         flex-flow: column;
         justify-content: space-evenly;
-        align-items: center;
+        //align-items: center;
         align-content: center;
         header.entry-header{
           h5{

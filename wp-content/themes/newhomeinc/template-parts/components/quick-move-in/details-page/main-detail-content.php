@@ -27,8 +27,9 @@ if ( $google_map ) :
 		if ( isset( $google_map[ $k ] ) ) {
             $address = $google_map['street_number'];
             $address .= ' ' . $google_map['street_name'];
+            $address .= ', ' . $google_map['city'];
 			$address .= ', '. convertState($state_name);
-			$address .= ', '. $google_map['post_code'];
+			$address .= ' '. $google_map['post_code'];
 		}
 	}
 	$address = trim( $address, ', ' );

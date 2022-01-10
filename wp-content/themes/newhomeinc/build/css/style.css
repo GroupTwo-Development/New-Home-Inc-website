@@ -15574,6 +15574,7 @@ section.main-filter-components .qmi-filter-components .main-map-view-component {
   font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue";
   line-height: 30px;
   letter-spacing: 0.1px;
+  font-weight: 800;
 }
 @media (min-width: 992px) {
   #search-page-footer-content .footer-content-area span.intro-search-page-sub-title {
@@ -15591,12 +15592,6 @@ section.main-filter-components .qmi-filter-components .main-map-view-component {
 #search-page-footer-content .footer-content-area h3, #search-page-footer-content .footer-content-area .h3 {
   text-transform: uppercase;
 }
-@media (min-width: 1200px) {
-  #search-page-footer-content .footer-content-area h3, #search-page-footer-content .footer-content-area .h3 {
-    line-height: 60px;
-    margin-top: 10px;
-  }
-}
 @media (min-width: 992px) {
   #search-page-footer-content .footer-content-area .content-area {
     padding-top: 1rem;
@@ -15604,7 +15599,6 @@ section.main-filter-components .qmi-filter-components .main-map-view-component {
 }
 #search-page-footer-content .footer-content-area .content-area p {
   font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue";
-  font-weight: normal;
 }
 
 .detail-page-banner {
@@ -17883,6 +17877,12 @@ button.gm-ui-hover-effect {
 .blog-index #blog-post-list .card .card-img {
   border-radius: 0;
 }
+@media (min-width: 992px) {
+  .blog-index #blog-post-list .card .card-img {
+    position: relative;
+    min-height: 16rem;
+  }
+}
 .blog-index #blog-post-list .card .card-img .post-thumbnail {
   outline: none;
   text-decoration: none;
@@ -17899,10 +17899,16 @@ button.gm-ui-hover-effect {
   -o-object-fit: cover;
      object-fit: cover;
 }
+@media (min-width: 992px) {
+  .blog-index #blog-post-list .card .card-img .post-thumbnail img {
+    min-height: 15.6rem;
+    height: 16rem;
+  }
+}
 .blog-index #blog-post-list .card .card-body {
+  display: flex;
   flex-flow: column;
   justify-content: space-evenly;
-  align-items: center;
   align-content: center;
 }
 .blog-index #blog-post-list .card .card-body header.entry-header h5, .blog-index #blog-post-list .card .card-body header.entry-header .h5 {

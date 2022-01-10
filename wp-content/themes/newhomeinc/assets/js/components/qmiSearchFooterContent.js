@@ -79,6 +79,8 @@ const qmiSearchFooterContent = {
 										displayHomesBannerTitle.innerText = 'AVAILABLE HOMES IN ' + tax.name;
 										displayMainFooterContentTitle.innerText = tax.name;
 										displayMainFooterContent.innerHTML = tax.description;
+										// eslint-disable-next-line no-console
+										console.log( tax.description );
 									}
 								} );
 							},

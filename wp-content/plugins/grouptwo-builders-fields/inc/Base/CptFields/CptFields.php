@@ -749,8 +749,8 @@ Specifies if the sales office is outside the community. If it is, <SubAddress> i
 						'placeholder' => '',
 						'prepend' => '',
 						'append' => '',
-						'min' => 5,
-						'max' => 5,
+//						'min' => 5,
+//						'max' => 5,
 						'step' => '',
 					),
 					array(
@@ -6720,15 +6720,6 @@ Specifies if the sales office is outside the community. If it is, <SubAddress> i
 						'type' => 'number',
 						'instructions' => '',
 						'required' => 0,
-						'conditional_logic' => array(
-							array(
-								array(
-									'field' => 'field_616d74c70fc91',
-									'operator' => '==',
-									'value' => 'Yes',
-								),
-							),
-						),
 						'wrapper' => array(
 							'width' => '',
 							'class' => '',
@@ -6738,8 +6729,6 @@ Specifies if the sales office is outside the community. If it is, <SubAddress> i
 						'placeholder' => '',
 						'prepend' => '',
 						'append' => '',
-						'min' => 5,
-						'max' => 5,
 						'step' => '',
 					),
 					array(

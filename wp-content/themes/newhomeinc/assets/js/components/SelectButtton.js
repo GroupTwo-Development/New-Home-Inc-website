@@ -96,7 +96,7 @@ const SelectButton = {
 									if ( data_value === '' ) {
 										displayCommunityBannerTitle.innerText = 'NEW HOME COMMUNITIES';
 										displayMainFooterContentTitle.innerText = searchPageFooterTitle;
-										displayMainFooterContent.innerText = communitySearchPage;
+										displayMainFooterContent.innerHTML = communitySearchPage;
 									} else {
 										displayCommunityBannerTitle.innerText = 'NEW HOME COMMUNITIES IN ' + tax.name;
 										displayMainFooterContentTitle.innerText = tax.name;
@@ -129,7 +129,6 @@ const SelectButton = {
 					success( res ) {
 						$( '#detail-page-contact-slideout' ).html( res );
 						postTilte.innerText = res.title.rendered;
-						console.log( res );
 
 						let CommunityFlyoutLinks = `<ul>`;
 						if ( res.acf.self_guided_tour !== '' ) {
@@ -331,6 +330,7 @@ const SelectButton = {
 			} );
 
 			window.addEventListener( 'load', ( event ) => {
+				collapse_init();
 				$( '#cta-contact-form' ).on( 'click', function() {
 					// eslint-disable-next-line no-console
 					// console.log( this.innerHTML );
