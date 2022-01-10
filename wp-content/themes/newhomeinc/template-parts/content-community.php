@@ -100,7 +100,7 @@
         $max_bed = max($array_beds_max);
     }
 
-    $display_max_beds = ($max_bed) ? '' . $max_bed : '';
+    $display_max_beds = ($max_bed) ? '' . $max_bed : esc_html('-');
 
 
     //TODO GET MIN BATHS
@@ -127,7 +127,7 @@
         $min_sqft = min($array_sqft);
 	    $max_sqft = max($array_sqft);
     }
-    $display_sqft = ($array_sqft) ? number_format($min_sqft) . esc_html('-') . number_format($max_sqft) : '';
+    $display_sqft = ($array_sqft) ? number_format($min_sqft) . esc_html('-') . number_format($max_sqft) : esc_html('-') ;
 
 ?>
 
@@ -169,8 +169,13 @@
                                     <span class="card-body-bottom-data"><?php echo $display_min_beds; ?><?php echo $display_max_beds; ?></span>
                                 </div>
                                 <div class="card-body-bottom-spec">
-                                    <span class="card-body-bottom-label"><?php echo esc_html('BATHS') ?></span>
-                                    <span class="card-body-bottom-data"><?php echo $display_min_baths; ?><?php echo $display_max_baths; ?></span>
+                                    <?php if($display_min_beds && $display_max_beds) : ?>
+                                        <span class="card-body-bottom-label"><?php echo esc_html('BATHS') ?></span>
+                                        <span class="card-body-bottom-data"><?php echo $display_min_baths; ?><?php echo $display_max_baths; ?></span>
+                                        <?php else : ?>
+                                        <span class="card-body-bottom-label"><?php echo esc_html('BATHS') ?></span>
+                                        <span class="card-body-bottom-data"><?php echo esc_html('-'); ?></span>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="card-body-bottom-spec">
                                     <span class="card-body-bottom-label"><?php echo esc_html('SQ FT') ?></span>

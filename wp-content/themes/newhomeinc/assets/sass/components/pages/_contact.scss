@@ -62,7 +62,8 @@
       line-height: 24px;
       font-weight: normal;
       @include media-breakpoint-up(lg){
-        text-align: left;
+        text-align: center;
+        padding: 0 7rem;
       }
     }
   }

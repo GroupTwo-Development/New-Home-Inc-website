@@ -60,6 +60,8 @@ const SelectButton = {
 									$.each( res, function( i, tax ) {
 										$( '#main-taxonomy-area' ).html( tax );
 										// eslint-disable-next-line no-console
+										console.log( tax );
+										// eslint-disable-next-line no-console
 										// console.log( tax.name );
 										// eslint-disable-next-line camelcase
 										if ( selectedValue === '' ) {
@@ -69,7 +71,7 @@ const SelectButton = {
 										} else {
 											displayCommunityBannerTitle.innerText = 'NEW HOME COMMUNITIES IN ' + tax.name;
 											displayMainFooterContentTitle.innerText = tax.name;
-											displayMainFooterContent.innerHTML = tax.description;
+											displayMainFooterContent.innerText = tax.description;
 										}
 									} );
 								},
@@ -101,7 +103,7 @@ const SelectButton = {
 									} else {
 										displayCommunityBannerTitle.innerText = 'NEW HOME COMMUNITIES IN ' + tax.name;
 										displayMainFooterContentTitle.innerText = tax.name;
-										displayMainFooterContent.innerHTML = tax.description;
+										displayMainFooterContent.innerText = tax.description;
 									}
 								} );
 							},

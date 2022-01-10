@@ -66,19 +66,19 @@
       }
     }
     .post-thumbnail{
-      img{
-        object-fit: cover;
-        //width: 100vw;
-        //height: 20rem;
-        @include media-breakpoint-between(lg, xl){
-          width: 100vw;
-          height: 34.375rem;
-        }
-        @include media-breakpoint-up(xl){
-          width: 100vw;
-          height: 34.375rem;
-        }
-      }
+      //img{
+      //  object-fit: cover;
+      //  //width: 100vw;
+      //  //height: 20rem;
+      //  @include media-breakpoint-between(lg, xl){
+      //    //width: 100vw;
+      //    //height: 34.375rem;
+      //  }
+      //  @include media-breakpoint-up(xl){
+      //    //width: 100vw;
+      //    //height: 34.375rem;
+      //  }
+      //}
     }
     .entry-content-footer{
       text-align: center;

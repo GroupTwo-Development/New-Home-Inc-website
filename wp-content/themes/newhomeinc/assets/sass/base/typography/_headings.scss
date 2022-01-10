@@ -1,47 +1,46 @@
 h1{
   font-weight: 500;
 }
+h1, .h1 {
+  font-size: calc(1.375rem + 1.5vw);
+}
+@media (min-width: 1200px) {
+  h1, .h1 {
+    font-size: 2.5rem;
+  }
+}
 
-///* Declare a font size multiplier variable */
-//:root {
-//	--text-multiplier: 1;
-//}
+h2, .h2 {
+  font-size: calc(1.625rem + 0.9vw);
+}
+@media (min-width: 1200px) {
+  h2, .h2 {
+    font-size: 2rem;
+  }
+}
 
+h3, .h3 {
+  font-size: calc(1.3rem + 0.6vw);
+}
+@media (min-width: 1200px) {
+  h3, .h3 {
+    font-size: 1.75rem;
+  }
+}
 
-///* Increase the size of the multiplier on bigger screens */
-//@include media-breakpoint-up(md){
-//	:root{
-//		--text-multiplier: 1.1;
-//	}
-//}
-//
-//@include media-breakpoint-up(lg){
-//	:root{
-//		--text-multiplier: 1.1;
-//	}
-//}
-//
-//@include media-breakpoint-up(xl){
-//	:root{
-//		--text-multiplier: 1.1;
-//	}
-//}
-///* Declare text styles using calc() function and the multiplier */
-//h1 {
-//	font-size: calc(2em * var(--text-multiplier));
-//}
-//h2 {
-//	font-size: calc(1.9em * var(--text-multiplier));
-//}
-//h3 {
-//	font-size: calc(1.3em * var(--text-multiplier));
-//}
-//h4 {
-//	font-size: calc(1.2em * var(--text-multiplier));
-//}
-//h5 {
-//	font-size: calc(1.1em * var(--text-multiplier));
-//}
-//h6 {
-//	font-size: calc(1em * var(--text-multiplier));
-//}
+h4, .h4 {
+  font-size: calc(1.275rem + 0.3vw);
+}
+@media (min-width: 1200px) {
+  h4, .h4 {
+    font-size: 1.5rem;
+  }
+}
+
+h5, .h5 {
+  font-size: 1.25rem;
+}
+
+h6, .h6 {
+  font-size: 1rem;
+}

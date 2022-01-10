@@ -10,11 +10,11 @@
 	</div>
 	<div class="container">
 		<div class="row align-items-center">
-			<div class="col-lg-12">
+			<div class="offset-lg-1 col-lg-10 offset-lg-1">
 				<div class="warranty-section-content">
 					<hr class="site-hr sectionOne-hr">
 					<h2><?php echo $title; ?></h2>
-					<div class="content">
+					<div class="content contact-content-area">
 						<?php echo  $page_content; ?>
 					</div>
 				</div>
@@ -23,10 +23,14 @@
 	</div>
 </section>
 <?php $contact_form = get_field('contact_form'); ?>
-<section class="contact-form">
-    <div class="container">
-        <div class="main-contact-form">
-            <?php echo $contact_form; ?>
-        </div>
+<div class="row">
+    <div class="offset-lg-2  col-lg-8 offset-lg-2">
+        <section class="contact-form">
+            <div class="container">
+                <div class="main-contact-form">
+				    <?php echo $contact_form; ?>
+                </div>
+            </div>
+        </section>
     </div>
-</section>
+</div>

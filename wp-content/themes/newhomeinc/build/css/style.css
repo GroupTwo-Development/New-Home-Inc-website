@@ -12807,6 +12807,50 @@ h1, .h1 {
   font-weight: 500;
 }
 
+h1, .h1 {
+  font-size: calc(1.375rem + 1.5vw);
+}
+
+@media (min-width: 1200px) {
+  h1, .h1 {
+    font-size: 2.5rem;
+  }
+}
+h2, .h2 {
+  font-size: calc(1.625rem + 0.9vw);
+}
+
+@media (min-width: 1200px) {
+  h2, .h2 {
+    font-size: 2rem;
+  }
+}
+h3, .h3 {
+  font-size: calc(1.3rem + 0.6vw);
+}
+
+@media (min-width: 1200px) {
+  h3, .h3 {
+    font-size: 1.75rem;
+  }
+}
+h4, .h4 {
+  font-size: calc(1.275rem + 0.3vw);
+}
+
+@media (min-width: 1200px) {
+  h4, .h4 {
+    font-size: 1.5rem;
+  }
+}
+h5, .h5 {
+  font-size: 1.25rem;
+}
+
+h6, .h6 {
+  font-size: 1rem;
+}
+
 p {
   margin-bottom: 1.5em;
   font-weight: 300;
@@ -13684,25 +13728,17 @@ section#footer-cta-area .splide .splide__list a .card .footer-cta-meta span {
 .interior-page-banner {
   position: relative;
   min-height: 5rem;
-  max-height: 6rem;
   margin-top: 3rem;
 }
 @media (min-width: 992px) {
   .interior-page-banner {
-    height: 7rem;
     margin-top: 3.5rem;
   }
 }
 .interior-page-banner .interior-banner-inner {
   display: flex;
   min-height: 5rem;
-  max-height: 6rem;
   flex-flow: column;
-}
-@media (min-width: 992px) {
-  .interior-page-banner .interior-banner-inner {
-    height: 7rem;
-  }
 }
 .interior-page-banner .interior-banner-inner span.banner-title {
   display: block;
@@ -13716,7 +13752,8 @@ section#footer-cta-area .splide .splide__list a .card .footer-cta-meta span {
 }
 @media (min-width: 992px) {
   .interior-page-banner .interior-banner-inner span.banner-title {
-    font-size: 2.5rem;
+    margin-top: 1rem;
+    font-size: 2rem;
   }
 }
 .interior-page-banner .interior-banner-inner span#breadcrumbs {
@@ -13810,6 +13847,7 @@ section#footer-cta-area .splide .splide__list a .card .footer-cta-meta span {
   color: #fff;
   outline: none;
   text-decoration: none;
+  text-transform: uppercase;
 }
 #post-filter .post-filter-inner .categories-menu li a:hover {
   color: #fc4f00;
@@ -18026,22 +18064,6 @@ button.gm-ui-hover-effect {
 .single_post-area article.post header.entry-header .entry-meta span.cat-links a:hover {
   color: #fc4f00;
 }
-.single_post-area article.post .post-thumbnail img {
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .single_post-area article.post .post-thumbnail img {
-    width: 100vw;
-    height: 34.375rem;
-  }
-}
-@media (min-width: 1200px) {
-  .single_post-area article.post .post-thumbnail img {
-    width: 100vw;
-    height: 34.375rem;
-  }
-}
 .single_post-area .post-navigation-area {
   position: relative;
 }
@@ -18136,22 +18158,6 @@ button.gm-ui-hover-effect {
 .post-archive-area article.post header.entry-header .entry-meta span.cat-links a:hover {
   color: #fc4f00;
 }
-.post-archive-area article.post .post-thumbnail img {
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .post-archive-area article.post .post-thumbnail img {
-    width: 100vw;
-    height: 34.375rem;
-  }
-}
-@media (min-width: 1200px) {
-  .post-archive-area article.post .post-thumbnail img {
-    width: 100vw;
-    height: 34.375rem;
-  }
-}
 .post-archive-area article.post .entry-content-footer {
   text-align: center;
   padding-top: 1rem;
@@ -18199,7 +18205,7 @@ button.gm-ui-hover-effect {
 }
 #warranty-section .pattern-bg svg {
   position: absolute;
-  top: -171px;
+  top: -218px;
   left: -48px;
   z-index: -1;
   overflow: hidden;
@@ -18213,7 +18219,7 @@ button.gm-ui-hover-effect {
 }
 @media (min-width: 992px) and (max-width: 1199.98px) {
   #warranty-section .pattern-bg svg {
-    top: -170px;
+    top: -216px;
     left: -42px;
     width: 25rem;
   }
@@ -18228,7 +18234,7 @@ button.gm-ui-hover-effect {
 @media (min-width: 1400px) {
   #warranty-section .pattern-bg svg {
     width: 32rem;
-    top: -125px;
+    top: -223px;
     left: -45px;
   }
 }
@@ -18628,7 +18634,8 @@ section.smart-tech-video .smart-tech-youtube-video a:hover img {
 }
 @media (min-width: 992px) {
   #contact-section .warranty-section-content .content {
-    text-align: left;
+    text-align: center;
+    padding: 0 7rem;
   }
 }
 
@@ -18765,6 +18772,79 @@ header.modal-header-title span.modal-teammate-title {
 #trade-partners .trade-partner-section-img {
   margin-bottom: 2rem;
 }
+.process-area {
+  position: relative;
+  margin-top: 1.5rem;
+}
+@media (min-width: 992px) {
+  .process-area {
+    margin-top: 2rem;
+  }
+}
+@media (min-width: 1200px) {
+  .process-area {
+    margin-top: 2rem;
+  }
+}
+.process-area .process-section-content {
+  background-color: #f6f6f6;
+  padding: 2.5rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 992px) {
+  .process-area .process-section-content {
+    height: 20.5rem;
+  }
+}
+.process-area .process-section-content hr.site-hr {
+  opacity: 1;
+  background-color: #000;
+  height: 4px;
+  width: 130px;
+  margin: auto 0 0.9rem 0;
+}
+.process-area .process-section-content .icon-steps-area {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+.process-area .process-section-content .icon-steps-area .icon {
+  height: 62px;
+  width: 62px;
+  position: relative;
+}
+.process-area .process-section-content .step-title {
+  margin-left: 0.5rem;
+}
+.process-area .process-section-content .step-title span.title {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 300;
+  color: #fc4f00;
+  font-size: 1.3rem;
+}
+.process-area .process-section-content .main-content {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+.process-area .process-section-content .main-content align h2, .process-area .process-section-content .main-content align .h2 {
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+.process-area .process-section-content .main-content a {
+  outline: none;
+  color: #fc4f00;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-decoration: none;
+  padding-bottom: 0.5rem;
+}
+
 /* Comments
 --------------------------------------------- */
 .comment-content a {

@@ -67,6 +67,7 @@
           color: $primary_color_white;
           outline: none;
           text-decoration: none;
+          text-transform: uppercase;
           &:hover{
             color: $primary_color_orange;
             transition: 0.3s;

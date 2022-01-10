@@ -69,7 +69,7 @@
         $min_bed = min($array_beds_min);
     }
 
-    $display_min_beds = ($min_bed) ? '' . $min_bed . esc_html('-') : '';
+    $display_min_beds = ($min_bed) ? '' . $min_bed . esc_html('-') : esc_html('-');
 
 
 
@@ -125,7 +125,7 @@
         $max_garage = max($array_garage_max);
     }
 
-    $display_max_garage = ($max_garage) ? '' . $max_garage  : '';
+    $display_max_garage = ($max_garage) ? '' . $max_garage  : esc_html('-');
 
 
     $google_map = get_field( 'subdivision_google_map' );

@@ -35,7 +35,7 @@
 
 	<?php newhomeinc_post_thumbnail(); ?>
 
-	<div class="entry-content">
+	<div class="entry-content blog-content">
 		<?php
 		the_content(
 			sprintf(

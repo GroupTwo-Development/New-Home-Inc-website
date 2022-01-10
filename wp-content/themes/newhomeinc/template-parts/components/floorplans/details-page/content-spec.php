@@ -70,7 +70,8 @@ $spec_data = get_featured_homes_spec();
                             <div class="accordion-body">
                                 <section class="about-inner-content">
                                     <header class="accord-header-area">
-                                        <h1><?php echo esc_html('About'); ?> <?php the_title(); ?></h1>
+                                        <?php $plan_name = get_field('plan_location_plan_name'); ?>
+                                        <h1><?php echo esc_html('About'); ?> <?php echo $plan_name; ?></h1>
                                     </header>
                                     <?php echo $plan_description; ?>
                                 </section>

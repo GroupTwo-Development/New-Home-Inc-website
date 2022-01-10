@@ -17,7 +17,7 @@
     position: relative;
     svg{
       position: absolute;
-      top: -171px;
+      top: -218px;
       left: -48px;
       z-index: -1;
       overflow: hidden;
@@ -27,7 +27,7 @@
         width: 27rem;
       }
       @include media-breakpoint-between(lg, xl){
-        top: -170px;
+        top: -216px;
         left: -42px;
         width: 25rem;
       }
@@ -38,7 +38,7 @@
       }
       @include media-breakpoint-up(xxl){
         width: 32rem;
-        top: -125px;
+        top: -223px;
         left: -45px;
       }
     }
