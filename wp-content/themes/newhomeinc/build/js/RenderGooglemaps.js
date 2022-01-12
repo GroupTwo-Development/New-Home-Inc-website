@@ -61,7 +61,7 @@
 		const marker = new google.maps.Marker( {
 			position: latLng,
 			map,
-			icon: '/wp-content/uploads/2021/12/google-map-marker-2.png',
+			icon: 'https://newhomeinc1dev.wpengine.com/wp-content/uploads/2022/01/google-map-marker.png',
 		} );
 
 		// Append to reference for later use.

@@ -31405,7 +31405,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _script_featuredHome__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./script/featuredHome */ "./assets/js/script/featuredHome.js");
 /* harmony import */ var _script_accordion__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./script/accordion */ "./assets/js/script/accordion.js");
 /* harmony import */ var _components_communityFilterContent__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/communityFilterContent */ "./assets/js/components/communityFilterContent.js");
-/* harmony import */ var _script_elevationGallery__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./script/elevationGallery */ "./assets/js/script/elevationGallery.js");
+/* harmony import */ var _components_communityFlyoutSlider__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/communityFlyoutSlider */ "./assets/js/components/communityFlyoutSlider.js");
+/* harmony import */ var _components_homesFlyoutSlider__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/homesFlyoutSlider */ "./assets/js/components/homesFlyoutSlider.js");
+/* harmony import */ var _components_homeDesignFlyoutSlider__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/homeDesignFlyoutSlider */ "./assets/js/components/homeDesignFlyoutSlider.js");
+/* harmony import */ var _components_communityFloorplanFlyoutSlider__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/communityFloorplanFlyoutSlider */ "./assets/js/components/communityFloorplanFlyoutSlider.js");
+/* harmony import */ var _script_elevationGallery__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./script/elevationGallery */ "./assets/js/script/elevationGallery.js");
 // you can import modules from the theme lib or even from
 // NPM packages if they support it.
 
@@ -31430,6 +31434,10 @@ __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap
 
 
 
+
+
+
+
  // import homeDesignsSearchFooterContent from './components/homeDesignsSearchFooterContent';
 
  // Initialise our components on jQuery.ready…
@@ -31438,7 +31446,11 @@ jQuery(function ($) {
   _components_AnimateOnPageLinks__WEBPACK_IMPORTED_MODULE_4__["default"].init();
   _components_SelectButtton__WEBPACK_IMPORTED_MODULE_5__["default"].init();
   _components_communityFilterContent__WEBPACK_IMPORTED_MODULE_15__["default"].init();
-  _components_qmiSearchFooterContent__WEBPACK_IMPORTED_MODULE_10__["default"].init(); // homeDesignsSearchFooterContent.init();
+  _components_qmiSearchFooterContent__WEBPACK_IMPORTED_MODULE_10__["default"].init();
+  _components_communityFlyoutSlider__WEBPACK_IMPORTED_MODULE_16__["default"].init();
+  _components_homesFlyoutSlider__WEBPACK_IMPORTED_MODULE_17__["default"].init();
+  _components_homeDesignFlyoutSlider__WEBPACK_IMPORTED_MODULE_18__["default"].init();
+  _components_communityFloorplanFlyoutSlider__WEBPACK_IMPORTED_MODULE_19__["default"].init(); // homeDesignsSearchFooterContent.init();
 }); // const homeApp = createApp( CommunityFlyout );
 // homeApp.mount( '#community-flyout-app' );
 
@@ -31452,7 +31464,7 @@ _script_featuredHome__WEBPACK_IMPORTED_MODULE_13__["default"].init();
 _script_videosPlayer__WEBPACK_IMPORTED_MODULE_8__["default"].init();
 _script_DropdownButtons__WEBPACK_IMPORTED_MODULE_9__["default"].init();
 _script_detailPageGallery__WEBPACK_IMPORTED_MODULE_11__["default"].init();
-_script_elevationGallery__WEBPACK_IMPORTED_MODULE_16__["default"].init(); // footerCtaListing.init();
+_script_elevationGallery__WEBPACK_IMPORTED_MODULE_20__["default"].init(); // footerCtaListing.init();
 
 /***/ }),
 
@@ -31642,216 +31654,8 @@ var SelectButton = {
           });
         })(jQuery);
       });
-
-      function communitySliderout() {
-        var communityElement = document.getElementById('detail-page-cta');
-        var postId = communityElement.getAttribute('data-postid');
-        var postTilte = document.getElementById('cta-title');
-        var ulEle = document.getElementById('cta-contact-form');
-        var getDirection = document.getElementById('get_direction'); // const selfGuidedTourLink = document.getElementById( 'elf-guided_tour' );
-        // eslint-disable-next-line no-console
-
-        var communitiesData = getUrl + '/wp-json/wp/v2/communities/' + postId;
-        $.ajax({
-          url: communitiesData,
-          dataType: 'json',
-          // data: {
-          // 	/postId,
-          // },
-          success: function success(res) {
-            $('#detail-page-contact-slideout').html(res);
-            postTilte.innerText = res.title.rendered;
-            var CommunityFlyoutLinks = "<ul>";
-
-            if (res.acf.self_guided_tour !== '') {
-              // const selfGuidedTourLi = document.createElement( 'li' );
-              // selfGuidedTourLi.setAttribute( 'class', 'self-guided_tour' );
-              // const selfGuidedTourLink = document.createElement( 'a' );
-              // selfGuidedTourLink.setAttribute( 'href', `${ res.acf.self_guided_tour }` );
-              // selfGuidedTourLink.setAttribute( 'target', '_blank' );
-              // const selfGuidedTourText = document.createTextNode( 'Self Guided Tour' );
-              // selfGuidedTourLink.append( selfGuidedTourText );
-              // selfGuidedTourLi.append( selfGuidedTourLink );
-              // ulEle.appendChild( selfGuidedTourLi );
-              CommunityFlyoutLinks += "<li class=\"self-guided-tour\"><a href=\"".concat(res.acf.self_guided_tour, "\" target=\"_blank\"><i class=\"fas fa-key\"></i> <span class=\"link-title\">Self Guided Tour</span></a></li>");
-            }
-
-            if (res.acf.nhi_tour !== '') {
-              // const NhiTourLi = document.createElement( 'li' );
-              // NhiTourLi.setAttribute( 'class', 'nhi-tour' );
-              // const NhiTourLink = document.createElement( 'a' );
-              // NhiTourLink.setAttribute( 'href', `${ res.acf.nhi_tour }` );
-              // NhiTourLink.setAttribute( 'target', '_blank' );
-              // const nhiTourText = document.createTextNode( 'NHI Tour' );
-              // NhiTourLink.append( nhiTourText );
-              // NhiTourLi.append( NhiTourLink );
-              // ulEle.appendChild( NhiTourLi );
-              CommunityFlyoutLinks += "<li class=\"nhi-tour\"><a href=\"".concat(res.acf.nhi_tour, "\" target=\"_blank\"><i class=\"fas fa-user\"></i> <span class=\"link-title\">NHI Tour</span></a></li>");
-            }
-
-            if (typeof res.acf.community_contact_form !== 'undefined') {
-              // const AskLi = document.createElement( 'li' );
-              // AskLi.setAttribute( 'class', 'ask-question' );
-              // const askLink = document.createElement( 'a' );
-              // askLink.setAttribute( 'href', '#' );
-              // askLink.setAttribute( 'target', '_blank' );
-              // askLink.setAttribute( 'data-fancybox', 'dialog' );
-              // askLink.setAttribute( 'data-src', '#dialog-content' );
-              // const askText = document.createTextNode( 'Ask a Question' );
-              // askLink.append( askText );
-              // AskLi.append( askLink );
-              // ulEle.appendChild( AskLi );
-              CommunityFlyoutLinks += "<li class=\"ask-a-question-flyout\"><a href=\"#\" data-fancybox=\"dialog\" data-src=\"#dialog-content\"><i class=\"fas fa-question\"></i> <span class=\"link-title\">Ask a Question</span></a></li>";
-            } // eslint-disable-next-line no-unused-vars
-
-
-            CommunityFlyoutLinks += "</ul>";
-            ulEle.innerHTML = CommunityFlyoutLinks; // eslint-disable-next-line valid-typeof
-
-            if (!res.acf.subdivision_google_map === null) {
-              // eslint-disable-next-line no-console
-              var getDirectionDiv = document.getElementById('get_direction_text');
-              getDirection.setAttribute('href', "https://www.google.com/maps?q=".concat(res.acf.subdivision_google_map.lat, ", ").concat(res.acf.subdivision_google_map.lng));
-              getDirection.innerText = "".concat(res.acf.subdivision_google_map.street_number, " ").concat(res.acf.subdivision_google_map.street_name, ", ").concat(res.acf.subdivision_google_map.city, ", ").concat(res.acf.subdivision_google_map.state, ", ").concat(res.acf.subdivision_google_map.post_code);
-              var getFirectionText = "<span class=\"cta-location-area\">Get Directions</span>";
-              getDirectionDiv.innerHTML = getFirectionText;
-            }
-          }
-        });
-      }
-
-      function homesSlideOut() {
-        var element = document.getElementById('detail-page-cta');
-        var homesPostId = element.getAttribute('data-postid');
-        var postTilte = document.getElementById('cta-title');
-        var ulEle = document.getElementById('cta-contact-form');
-        var getDirection = document.getElementById('get_direction'); // const selfGuidedTourLink = document.getElementById( 'elf-guided_tour' );
-        // eslint-disable-next-line no-console
-
-        var qmiHomes = getUrl + '/wp-json/wp/v2/homes/' + homesPostId;
-        $.ajax({
-          url: qmiHomes,
-          dataType: 'json',
-          data: {
-            homesPostId: homesPostId
-          },
-          success: function success(res) {
-            $('#detail-page-contact-slideout').html(res);
-            postTilte.innerText = res.title.rendered;
-
-            if (typeof res.acf.self_guided_tour !== 'undefined') {
-              var selfGuidedTourLi = document.createElement('li');
-              selfGuidedTourLi.setAttribute('class', 'self-guided_tour');
-              var selfGuidedTourLink = document.createElement('a');
-              selfGuidedTourLink.setAttribute('href', "".concat(res.acf.self_guided_tour));
-              selfGuidedTourLink.setAttribute('target', '_blank');
-              var selfGuidedTourText = document.createTextNode('Self Guided Tour');
-              selfGuidedTourLink.append(selfGuidedTourText);
-              selfGuidedTourLi.append(selfGuidedTourLink);
-              ulEle.appendChild(selfGuidedTourLi);
-            }
-
-            if (typeof res.acf.nhi_tour !== 'undefined') {
-              var NhiTourLi = document.createElement('li');
-              NhiTourLi.setAttribute('class', 'nhi-tour');
-              var NhiTourLink = document.createElement('a');
-              NhiTourLink.setAttribute('href', "".concat(res.acf.nhi_tour));
-              NhiTourLink.setAttribute('target', '_blank');
-              var nhiTourText = document.createTextNode('NHI Tour');
-              NhiTourLink.append(nhiTourText);
-              NhiTourLi.append(NhiTourLink);
-              ulEle.appendChild(NhiTourLi);
-            }
-
-            var AskLi = document.createElement('li');
-            AskLi.setAttribute('class', 'ask-question');
-            var askLink = document.createElement('a');
-            askLink.setAttribute('href', '#');
-            askLink.setAttribute('target', '_blank');
-            askLink.setAttribute('data-fancybox', 'dialog');
-            askLink.setAttribute('data-src', '#dialog-content');
-            var askText = document.createTextNode('Ask a Question');
-            askLink.append(askText);
-            AskLi.append(askLink);
-            ulEle.appendChild(AskLi);
-
-            if (res.acf.spec_google_map) {
-              getDirection.setAttribute('href', "https://www.google.com/maps?q=".concat(res.acf.spec_google_map.lat, ", ").concat(res.acf.spec_google_map.lng));
-              getDirection.innerText = "".concat(res.acf.spec_google_map.name, ", ").concat(res.acf.spec_google_map.city, ", ").concat(res.acf.spec_google_map.state, ", ").concat(res.acf.spec_google_map.post_code);
-            }
-          }
-        });
-      }
-
-      function homeDesignSlideout() {
-        var element = document.getElementById('detail-page-cta');
-        var homeDesignPostId = element.getAttribute('data-postid');
-        var postTilte = document.getElementById('cta-title');
-        var ulEle = document.getElementById('cta-contact-form');
-        var getDirection = document.getElementById('get_direction'); // const selfGuidedTourLink = document.getElementById( 'elf-guided_tour' );
-        // eslint-disable-next-line no-console
-
-        var homeDesign = getUrl + '/wp-json/wp/v2/home-design/' + homeDesignPostId;
-        $.ajax({
-          url: homeDesign,
-          dataType: 'json',
-          data: {
-            homeDesignPostId: homeDesignPostId
-          },
-          success: function success(res) {
-            $('#detail-page-contact-slideout').html(res);
-            postTilte.innerText = res.title.rendered;
-            console.log(res);
-
-            if (typeof res.acf.self_guided_tour !== 'undefined' && typeof res.acf.self_guided_tour !== '') {
-              var selfGuidedTourLi = document.createElement('li');
-              selfGuidedTourLi.setAttribute('class', 'self-guided_tour');
-              var selfGuidedTourLink = document.createElement('a');
-              selfGuidedTourLink.setAttribute('href', "".concat(res.acf.self_guided_tour));
-              selfGuidedTourLink.setAttribute('target', '_blank');
-              var selfGuidedTourText = document.createTextNode('Self Guided Tour');
-              selfGuidedTourLink.append(selfGuidedTourText);
-              selfGuidedTourLi.append(selfGuidedTourLink);
-              ulEle.appendChild(selfGuidedTourLi);
-            }
-
-            if (typeof res.acf.nhi_tour !== 'undefined') {
-              var NhiTourLi = document.createElement('li');
-              NhiTourLi.setAttribute('class', 'nhi-tour');
-              var NhiTourLink = document.createElement('a');
-              NhiTourLink.setAttribute('href', "".concat(res.acf.nhi_tour));
-              NhiTourLink.setAttribute('target', '_blank');
-              var nhiTourText = document.createTextNode('NHI Tour');
-              NhiTourLink.append(nhiTourText);
-              NhiTourLi.append(NhiTourLink);
-              ulEle.appendChild(NhiTourLi);
-            }
-
-            var AskLi = document.createElement('li');
-            AskLi.setAttribute('class', 'ask-question');
-            var askLink = document.createElement('a');
-            askLink.setAttribute('href', '#');
-            askLink.setAttribute('target', '_blank');
-            askLink.setAttribute('data-fancybox', 'dialog');
-            askLink.setAttribute('data-src', '#dialog-content');
-            var askText = document.createTextNode('Ask a Question');
-            askLink.append(askText);
-            AskLi.append(askLink);
-            ulEle.appendChild(AskLi);
-
-            if (res.acf.spec_google_map) {
-              getDirection.setAttribute('href', "https://www.google.com/maps?q=".concat(res.acf.spec_google_map.lat, ", ").concat(res.acf.spec_google_map.lng));
-              getDirection.innerText = "".concat(res.acf.spec_google_map.name, ", ").concat(res.acf.spec_google_map.city, ", ").concat(res.acf.spec_google_map.state, ", ").concat(res.acf.spec_google_map.post_code);
-            }
-          }
-        });
-      }
-
       window.addEventListener('load', function (event) {
         collapse_init();
-        communitySliderout();
-        homesSlideOut();
-        homeDesignSlideout();
       });
       window.addEventListener('load', function (event) {
         $('#cta-contact-form').on('click', function () {
@@ -31976,6 +31780,206 @@ var communityFilterContent = {
 
 /***/ }),
 
+/***/ "./assets/js/components/communityFloorplanFlyoutSlider.js":
+/*!****************************************************************!*\
+  !*** ./assets/js/components/communityFloorplanFlyoutSlider.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var $ = window.jQuery;
+var $window = window.$window || $(window);
+var communityFloorplanFlyoutSlider = {
+  init: function init() {
+    var getUrl = 'https://newhomeinc1dev.wpengine.com'; // eslint-disable-next-line no-shadow
+
+    (function ($) {
+      function communityFloorplanSliderout() {
+        var communityFloorplanElement = document.getElementById('detail-page-cta');
+        var communityFloorplanPostId = communityFloorplanElement.getAttribute('data-postid');
+        var postTilte = document.getElementById('cta-title');
+        var ulEle = document.getElementById('cta-contact-form');
+        var getDirection = document.getElementById('get_direction'); // const selfGuidedTourLink = document.getElementById( 'elf-guided_tour' );
+        // eslint-disable-next-line no-console
+
+        var communityFloorplanData = getUrl + '/wp-json/wp/v2/floorplan/' + communityFloorplanPostId;
+        $.ajax({
+          url: communityFloorplanData,
+          dataType: 'json',
+          // data: {
+          // 	/postId,
+          // },
+          success: function success(res) {
+            $('#detail-page-contact-slideout').html(res);
+            postTilte.innerText = res.acf.plan_location_plan_name; // eslint-disable-next-line no-console
+
+            console.log(res);
+            var homesFlyoutLinks = "<ul>";
+
+            if (res.acf.self_guided_tour !== '') {
+              // const selfGuidedTourLi = document.createElement( 'li' );
+              // selfGuidedTourLi.setAttribute( 'class', 'self-guided_tour' );
+              // const selfGuidedTourLink = document.createElement( 'a' );
+              // selfGuidedTourLink.setAttribute( 'href', `${ res.acf.self_guided_tour }` );
+              // selfGuidedTourLink.setAttribute( 'target', '_blank' );
+              // const selfGuidedTourText = document.createTextNode( 'Self Guided Tour' );
+              // selfGuidedTourLink.append( selfGuidedTourText );
+              // selfGuidedTourLi.append( selfGuidedTourLink );
+              // ulEle.appendChild( selfGuidedTourLi );
+              homesFlyoutLinks += "<li class=\"self-guided-tour\"><a href=\"".concat(res.acf.self_guided_tour, "\" target=\"_blank\"><i class=\"fas fa-key\"></i> <span class=\"link-title\">Self Guided Tour</span></a></li>");
+            }
+
+            if (res.acf.nhi_tour !== '') {
+              // const NhiTourLi = document.createElement( 'li' );
+              // NhiTourLi.setAttribute( 'class', 'nhi-tour' );
+              // const NhiTourLink = document.createElement( 'a' );
+              // NhiTourLink.setAttribute( 'href', `${ res.acf.nhi_tour }` );
+              // NhiTourLink.setAttribute( 'target', '_blank' );
+              // const nhiTourText = document.createTextNode( 'NHI Tour' );
+              // NhiTourLink.append( nhiTourText );
+              // NhiTourLi.append( NhiTourLink );
+              // ulEle.appendChild( NhiTourLi );
+              homesFlyoutLinks += "<li class=\"nhi-tour\"><a href=\"".concat(res.acf.nhi_tour, "\" target=\"_blank\"><i class=\"fas fa-user\"></i> <span class=\"link-title\">NHI Tour</span></a></li>");
+            }
+
+            homesFlyoutLinks += "<li class=\"ask-a-question-flyout\"><a href=\"#\" data-fancybox=\"dialog\" data-src=\"#dialog-content\"><i class=\"fas fa-question\"></i> <span class=\"link-title\">Ask a Question</span></a></li>"; // eslint-disable-next-line no-unused-vars
+
+            homesFlyoutLinks += "</ul>";
+            ulEle.innerHTML = homesFlyoutLinks; // eslint-disable-next-line valid-typeof
+            // if ( res.acf.subdivision_google_map !== undefined ) {
+            // 	// eslint-disable-next-line no-console
+            //
+            // 	const getDirectionDiv = document.getElementById( 'get_direction_text' );
+            // 	getDirection.setAttribute( 'href', `https://www.google.com/maps?q=${ res.acf.subdivision_google_map.lat }, ${ res.acf.subdivision_google_map.lng }` );
+            // 	getDirection.innerText = `${ res.acf.subdivision_google_map.street_number } ${ res.acf.subdivision_google_map.street_name }, ${ res.acf.subdivision_google_map.city }, ${ res.acf.subdivision_google_map.state }, ${ res.acf.subdivision_google_map.post_code }`;
+            //
+            // 	const getFirectionText = `<span class="cta-location-area">Get Directions</span>`;
+            // 	getDirectionDiv.innerHTML = getFirectionText;
+            // }
+
+            var getDirectionDiv = document.getElementById('get_direction_text');
+            getDirection.setAttribute('href', "https://www.google.com/maps?q=".concat(res.acf.spec_google_map.lat, ", ").concat(res.acf.spec_google_map.lng));
+            getDirection.innerText = "".concat(res.acf.spec_google_map.street_number, " ").concat(res.acf.spec_google_map.street_name, ", ").concat(res.acf.spec_google_map.city, ", ").concat(res.acf.spec_google_map.state, ", ").concat(res.acf.spec_google_map.post_code);
+            var getFirectionText = "<span class=\"cta-location-area\">Get Directions</span>";
+            getDirectionDiv.innerHTML = getFirectionText;
+          }
+        });
+      }
+
+      window.addEventListener('load', function (event) {
+        communityFloorplanSliderout();
+      }); // eslint-disable-next-line no-undef
+    })(jQuery);
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (communityFloorplanFlyoutSlider);
+
+/***/ }),
+
+/***/ "./assets/js/components/communityFlyoutSlider.js":
+/*!*******************************************************!*\
+  !*** ./assets/js/components/communityFlyoutSlider.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var $ = window.jQuery;
+var $window = window.$window || $(window);
+var communityFlyoutSlider = {
+  init: function init() {
+    var getUrl = 'https://newhomeinc1dev.wpengine.com'; // eslint-disable-next-line no-shadow
+
+    (function ($) {
+      function communitySliderout() {
+        var communityElement = document.getElementById('detail-page-cta');
+        var postId = communityElement.getAttribute('data-postid');
+        var postTilte = document.getElementById('cta-title');
+        var ulEle = document.getElementById('cta-contact-form');
+        var getDirection = document.getElementById('get_direction'); // const selfGuidedTourLink = document.getElementById( 'elf-guided_tour' );
+        // eslint-disable-next-line no-console
+
+        var communitiesData = getUrl + '/wp-json/wp/v2/communities/' + postId;
+        $.ajax({
+          url: communitiesData,
+          dataType: 'json',
+          // data: {
+          // 	/postId,
+          // },
+          success: function success(res) {
+            $('#detail-page-contact-slideout').html(res);
+            postTilte.innerText = res.title.rendered; // eslint-disable-next-line no-console
+
+            console.log(res);
+            var CommunityFlyoutLinks = "<ul>";
+
+            if (res.acf.self_guided_tour !== '') {
+              // const selfGuidedTourLi = document.createElement( 'li' );
+              // selfGuidedTourLi.setAttribute( 'class', 'self-guided_tour' );
+              // const selfGuidedTourLink = document.createElement( 'a' );
+              // selfGuidedTourLink.setAttribute( 'href', `${ res.acf.self_guided_tour }` );
+              // selfGuidedTourLink.setAttribute( 'target', '_blank' );
+              // const selfGuidedTourText = document.createTextNode( 'Self Guided Tour' );
+              // selfGuidedTourLink.append( selfGuidedTourText );
+              // selfGuidedTourLi.append( selfGuidedTourLink );
+              // ulEle.appendChild( selfGuidedTourLi );
+              CommunityFlyoutLinks += "<li class=\"self-guided-tour\"><a href=\"".concat(res.acf.self_guided_tour, "\" target=\"_blank\"><i class=\"fas fa-key\"></i> <span class=\"link-title\">Self Guided Tour</span></a></li>");
+            }
+
+            if (res.acf.nhi_tour !== '') {
+              // const NhiTourLi = document.createElement( 'li' );
+              // NhiTourLi.setAttribute( 'class', 'nhi-tour' );
+              // const NhiTourLink = document.createElement( 'a' );
+              // NhiTourLink.setAttribute( 'href', `${ res.acf.nhi_tour }` );
+              // NhiTourLink.setAttribute( 'target', '_blank' );
+              // const nhiTourText = document.createTextNode( 'NHI Tour' );
+              // NhiTourLink.append( nhiTourText );
+              // NhiTourLi.append( NhiTourLink );
+              // ulEle.appendChild( NhiTourLi );
+              CommunityFlyoutLinks += "<li class=\"nhi-tour\"><a href=\"".concat(res.acf.nhi_tour, "\" target=\"_blank\"><i class=\"fas fa-user\"></i> <span class=\"link-title\">NHI Tour</span></a></li>");
+            }
+
+            CommunityFlyoutLinks += "<li class=\"ask-a-question-flyout\"><a href=\"#\" data-fancybox=\"dialog\" data-src=\"#dialog-content\"><i class=\"fas fa-question\"></i> <span class=\"link-title\">Ask a Question</span></a></li>"; // eslint-disable-next-line no-unused-vars
+
+            CommunityFlyoutLinks += "</ul>";
+            ulEle.innerHTML = CommunityFlyoutLinks; // eslint-disable-next-line valid-typeof
+            // if ( res.acf.subdivision_google_map !== undefined ) {
+            // 	// eslint-disable-next-line no-console
+            //
+            // 	const getDirectionDiv = document.getElementById( 'get_direction_text' );
+            // 	getDirection.setAttribute( 'href', `https://www.google.com/maps?q=${ res.acf.subdivision_google_map.lat }, ${ res.acf.subdivision_google_map.lng }` );
+            // 	getDirection.innerText = `${ res.acf.subdivision_google_map.street_number } ${ res.acf.subdivision_google_map.street_name }, ${ res.acf.subdivision_google_map.city }, ${ res.acf.subdivision_google_map.state }, ${ res.acf.subdivision_google_map.post_code }`;
+            //
+            // 	const getFirectionText = `<span class="cta-location-area">Get Directions</span>`;
+            // 	getDirectionDiv.innerHTML = getFirectionText;
+            // }
+
+            var getDirectionDiv = document.getElementById('get_direction_text');
+            getDirection.setAttribute('href', "https://www.google.com/maps?q=".concat(res.acf.subdivision_google_map.lat, ", ").concat(res.acf.subdivision_google_map.lng));
+            getDirection.innerText = "".concat(res.acf.subdivision_google_map.street_number, " ").concat(res.acf.subdivision_google_map.street_name, ", ").concat(res.acf.subdivision_google_map.city, ", ").concat(res.acf.subdivision_google_map.state, ", ").concat(res.acf.subdivision_google_map.post_code);
+            var getFirectionText = "<span class=\"cta-location-area\">Get Directions</span>";
+            getDirectionDiv.innerHTML = getFirectionText;
+          }
+        });
+      }
+
+      window.addEventListener('load', function (event) {
+        communitySliderout();
+      }); // eslint-disable-next-line no-undef
+    })(jQuery);
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (communityFlyoutSlider);
+
+/***/ }),
+
 /***/ "./assets/js/components/generalScript.js":
 /*!***********************************************!*\
   !*** ./assets/js/components/generalScript.js ***!
@@ -32021,6 +32025,206 @@ var generalScript = {
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (generalScript);
+
+/***/ }),
+
+/***/ "./assets/js/components/homeDesignFlyoutSlider.js":
+/*!********************************************************!*\
+  !*** ./assets/js/components/homeDesignFlyoutSlider.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var $ = window.jQuery;
+var $window = window.$window || $(window);
+var homeDesignFlyoutSlider = {
+  init: function init() {
+    var getUrl = 'https://newhomeinc1dev.wpengine.com'; // eslint-disable-next-line no-shadow
+
+    (function ($) {
+      function homeDesignSliderout() {
+        var homeDesignElement = document.getElementById('detail-page-cta');
+        var homeDesignPostId = homeDesignElement.getAttribute('data-postid');
+        var postTilte = document.getElementById('cta-title');
+        var ulEle = document.getElementById('cta-contact-form');
+        var getDirection = document.getElementById('get_direction'); // const selfGuidedTourLink = document.getElementById( 'elf-guided_tour' );
+        // eslint-disable-next-line no-console
+
+        var homeDesignData = getUrl + '/wp-json/wp/v2/home-design/' + homeDesignPostId;
+        $.ajax({
+          url: homeDesignData,
+          dataType: 'json',
+          // data: {
+          // 	/postId,
+          // },
+          success: function success(res) {
+            $('#detail-page-contact-slideout').html(res);
+            postTilte.innerText = res.title.rendered; // eslint-disable-next-line no-console
+
+            console.log(res);
+            var homesFlyoutLinks = "<ul>";
+
+            if (res.acf.self_guided_tour !== '') {
+              // const selfGuidedTourLi = document.createElement( 'li' );
+              // selfGuidedTourLi.setAttribute( 'class', 'self-guided_tour' );
+              // const selfGuidedTourLink = document.createElement( 'a' );
+              // selfGuidedTourLink.setAttribute( 'href', `${ res.acf.self_guided_tour }` );
+              // selfGuidedTourLink.setAttribute( 'target', '_blank' );
+              // const selfGuidedTourText = document.createTextNode( 'Self Guided Tour' );
+              // selfGuidedTourLink.append( selfGuidedTourText );
+              // selfGuidedTourLi.append( selfGuidedTourLink );
+              // ulEle.appendChild( selfGuidedTourLi );
+              homesFlyoutLinks += "<li class=\"self-guided-tour\"><a href=\"".concat(res.acf.self_guided_tour, "\" target=\"_blank\"><i class=\"fas fa-key\"></i> <span class=\"link-title\">Self Guided Tour</span></a></li>");
+            }
+
+            if (res.acf.nhi_tour !== '') {
+              // const NhiTourLi = document.createElement( 'li' );
+              // NhiTourLi.setAttribute( 'class', 'nhi-tour' );
+              // const NhiTourLink = document.createElement( 'a' );
+              // NhiTourLink.setAttribute( 'href', `${ res.acf.nhi_tour }` );
+              // NhiTourLink.setAttribute( 'target', '_blank' );
+              // const nhiTourText = document.createTextNode( 'NHI Tour' );
+              // NhiTourLink.append( nhiTourText );
+              // NhiTourLi.append( NhiTourLink );
+              // ulEle.appendChild( NhiTourLi );
+              homesFlyoutLinks += "<li class=\"nhi-tour\"><a href=\"".concat(res.acf.nhi_tour, "\" target=\"_blank\"><i class=\"fas fa-user\"></i> <span class=\"link-title\">NHI Tour</span></a></li>");
+            }
+
+            homesFlyoutLinks += "<li class=\"ask-a-question-flyout\"><a href=\"#\" data-fancybox=\"dialog\" data-src=\"#dialog-content\"><i class=\"fas fa-question\"></i> <span class=\"link-title\">Ask a Question</span></a></li>"; // eslint-disable-next-line no-unused-vars
+
+            homesFlyoutLinks += "</ul>";
+            ulEle.innerHTML = homesFlyoutLinks; // eslint-disable-next-line valid-typeof
+            // if ( res.acf.subdivision_google_map !== undefined ) {
+            // 	// eslint-disable-next-line no-console
+            //
+            // 	const getDirectionDiv = document.getElementById( 'get_direction_text' );
+            // 	getDirection.setAttribute( 'href', `https://www.google.com/maps?q=${ res.acf.subdivision_google_map.lat }, ${ res.acf.subdivision_google_map.lng }` );
+            // 	getDirection.innerText = `${ res.acf.subdivision_google_map.street_number } ${ res.acf.subdivision_google_map.street_name }, ${ res.acf.subdivision_google_map.city }, ${ res.acf.subdivision_google_map.state }, ${ res.acf.subdivision_google_map.post_code }`;
+            //
+            // 	const getFirectionText = `<span class="cta-location-area">Get Directions</span>`;
+            // 	getDirectionDiv.innerHTML = getFirectionText;
+            // }
+
+            var getDirectionDiv = document.getElementById('get_direction_text');
+            getDirection.setAttribute('href', "https://www.google.com/maps?q=".concat(res.acf.spec_google_map.lat, ", ").concat(res.acf.spec_google_map.lng));
+            getDirection.innerText = "".concat(res.acf.spec_google_map.street_number, " ").concat(res.acf.spec_google_map.street_name, ", ").concat(res.acf.spec_google_map.city, ", ").concat(res.acf.spec_google_map.state, ", ").concat(res.acf.spec_google_map.post_code);
+            var getFirectionText = "<span class=\"cta-location-area\">Get Directions</span>";
+            getDirectionDiv.innerHTML = getFirectionText;
+          }
+        });
+      }
+
+      window.addEventListener('load', function (event) {
+        homeDesignSliderout();
+      }); // eslint-disable-next-line no-undef
+    })(jQuery);
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (homeDesignFlyoutSlider);
+
+/***/ }),
+
+/***/ "./assets/js/components/homesFlyoutSlider.js":
+/*!***************************************************!*\
+  !*** ./assets/js/components/homesFlyoutSlider.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var $ = window.jQuery;
+var $window = window.$window || $(window);
+var homesFlyoutSlider = {
+  init: function init() {
+    var getUrl = 'https://newhomeinc1dev.wpengine.com'; // eslint-disable-next-line no-shadow
+
+    (function ($) {
+      function homesSliderout() {
+        var homesElement = document.getElementById('detail-page-cta');
+        var homesPostId = homesElement.getAttribute('data-postid');
+        var postTilte = document.getElementById('cta-title');
+        var ulEle = document.getElementById('cta-contact-form');
+        var getDirection = document.getElementById('get_direction'); // const selfGuidedTourLink = document.getElementById( 'elf-guided_tour' );
+        // eslint-disable-next-line no-console
+
+        var qmiHomes = getUrl + '/wp-json/wp/v2/homes/' + homesPostId;
+        $.ajax({
+          url: qmiHomes,
+          dataType: 'json',
+          // data: {
+          // 	/postId,
+          // },
+          success: function success(res) {
+            $('#detail-page-contact-slideout').html(res);
+            postTilte.innerText = res.title.rendered; // eslint-disable-next-line no-console
+
+            console.log(res);
+            var homesFlyoutLinks = "<ul>";
+
+            if (res.acf.self_guided_tour !== '') {
+              // const selfGuidedTourLi = document.createElement( 'li' );
+              // selfGuidedTourLi.setAttribute( 'class', 'self-guided_tour' );
+              // const selfGuidedTourLink = document.createElement( 'a' );
+              // selfGuidedTourLink.setAttribute( 'href', `${ res.acf.self_guided_tour }` );
+              // selfGuidedTourLink.setAttribute( 'target', '_blank' );
+              // const selfGuidedTourText = document.createTextNode( 'Self Guided Tour' );
+              // selfGuidedTourLink.append( selfGuidedTourText );
+              // selfGuidedTourLi.append( selfGuidedTourLink );
+              // ulEle.appendChild( selfGuidedTourLi );
+              homesFlyoutLinks += "<li class=\"self-guided-tour\"><a href=\"".concat(res.acf.self_guided_tour, "\" target=\"_blank\"><i class=\"fas fa-key\"></i> <span class=\"link-title\">Self Guided Tour</span></a></li>");
+            }
+
+            if (res.acf.nhi_tour !== '') {
+              // const NhiTourLi = document.createElement( 'li' );
+              // NhiTourLi.setAttribute( 'class', 'nhi-tour' );
+              // const NhiTourLink = document.createElement( 'a' );
+              // NhiTourLink.setAttribute( 'href', `${ res.acf.nhi_tour }` );
+              // NhiTourLink.setAttribute( 'target', '_blank' );
+              // const nhiTourText = document.createTextNode( 'NHI Tour' );
+              // NhiTourLink.append( nhiTourText );
+              // NhiTourLi.append( NhiTourLink );
+              // ulEle.appendChild( NhiTourLi );
+              homesFlyoutLinks += "<li class=\"nhi-tour\"><a href=\"".concat(res.acf.nhi_tour, "\" target=\"_blank\"><i class=\"fas fa-user\"></i> <span class=\"link-title\">NHI Tour</span></a></li>");
+            }
+
+            homesFlyoutLinks += "<li class=\"ask-a-question-flyout\"><a href=\"#\" data-fancybox=\"dialog\" data-src=\"#dialog-content\"><i class=\"fas fa-question\"></i> <span class=\"link-title\">Ask a Question</span></a></li>"; // eslint-disable-next-line no-unused-vars
+
+            homesFlyoutLinks += "</ul>";
+            ulEle.innerHTML = homesFlyoutLinks; // eslint-disable-next-line valid-typeof
+            // if ( res.acf.subdivision_google_map !== undefined ) {
+            // 	// eslint-disable-next-line no-console
+            //
+            // 	const getDirectionDiv = document.getElementById( 'get_direction_text' );
+            // 	getDirection.setAttribute( 'href', `https://www.google.com/maps?q=${ res.acf.subdivision_google_map.lat }, ${ res.acf.subdivision_google_map.lng }` );
+            // 	getDirection.innerText = `${ res.acf.subdivision_google_map.street_number } ${ res.acf.subdivision_google_map.street_name }, ${ res.acf.subdivision_google_map.city }, ${ res.acf.subdivision_google_map.state }, ${ res.acf.subdivision_google_map.post_code }`;
+            //
+            // 	const getFirectionText = `<span class="cta-location-area">Get Directions</span>`;
+            // 	getDirectionDiv.innerHTML = getFirectionText;
+            // }
+
+            var getDirectionDiv = document.getElementById('get_direction_text');
+            getDirection.setAttribute('href', "https://www.google.com/maps?q=".concat(res.acf.spec_google_map.lat, ", ").concat(res.acf.spec_google_map.lng));
+            getDirection.innerText = "".concat(res.acf.spec_google_map.street_number, " ").concat(res.acf.spec_google_map.street_name, ", ").concat(res.acf.spec_google_map.city, ", ").concat(res.acf.spec_google_map.state, ", ").concat(res.acf.spec_google_map.post_code);
+            var getFirectionText = "<span class=\"cta-location-area\">Get Directions</span>";
+            getDirectionDiv.innerHTML = getFirectionText;
+          }
+        });
+      }
+
+      window.addEventListener('load', function (event) {
+        homesSliderout();
+      }); // eslint-disable-next-line no-undef
+    })(jQuery);
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (homesFlyoutSlider);
 
 /***/ }),
 
@@ -32282,11 +32486,11 @@ var detailPageGallery = {
 
     var dynamicEl = [];
     detailPageGalleryData.forEach(function (item) {
-      // console.log( item );
+      // eslint-disable-next-line no-console
+      console.log(item);
       dynamicEl.push({
         src: "".concat(item.sizes.large),
-        thumb: "".concat(item.sizes.large),
-        subHtml: "<h4>".concat(item.caption, "</h4><p>").concat(item.description, "</p>")
+        thumb: "".concat(item.sizes.large)
       });
     });
     var $dynamicGallery = document.getElementById('detail-page-gallery');
@@ -32302,7 +32506,7 @@ var detailPageGallery = {
       // Starts with third item.(Optional).
       // This is useful if you want use dynamic mode with
       // custom thumbnails (thumbnails outside gallery),
-      dynamicGallery.openGallery(2);
+      dynamicGallery.openGallery(0);
     });
     (0,lightgallery__WEBPACK_IMPORTED_MODULE_0__["default"])(document.getElementById('virtual-tour-url'), {
       selector: 'this'

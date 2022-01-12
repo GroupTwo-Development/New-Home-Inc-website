@@ -14,11 +14,11 @@ const detailPageGallery = {
 		const dynamicEl = [];
 
 		detailPageGalleryData.forEach( ( item ) => {
-			// console.log( item );
+			// eslint-disable-next-line no-console
+			console.log( item );
 			dynamicEl.push( {
 				src: `${ item.sizes.large }`,
 				thumb: `${ item.sizes.large }`,
-				subHtml: `<h4>${ item.caption }</h4><p>${ item.description }</p>`,
 			} );
 		} );
 
@@ -37,7 +37,7 @@ const detailPageGallery = {
 			// Starts with third item.(Optional).
 			// This is useful if you want use dynamic mode with
 			// custom thumbnails (thumbnails outside gallery),
-			dynamicGallery.openGallery( 2 );
+			dynamicGallery.openGallery( 0 );
 		} );
 
 		lightGallery( document.getElementById( 'virtual-tour-url' ), {

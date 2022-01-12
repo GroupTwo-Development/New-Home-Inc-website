@@ -23,6 +23,10 @@ import generalScript from './components/generalScript';
 import featuredHome from './script/featuredHome';
 import accordion from './script/accordion';
 import communityFilterContent from './components/communityFilterContent';
+import communityFlyoutSlider from './components/communityFlyoutSlider';
+import homesFlyoutSlider from './components/homesFlyoutSlider';
+import homeDesignFlyoutSlider from './components/homeDesignFlyoutSlider';
+import communityFloorplanFlyoutSlider from './components/communityFloorplanFlyoutSlider';
 // import homeDesignsSearchFooterContent from './components/homeDesignsSearchFooterContent';
 import elevationGallery from './script/elevationGallery';
 
@@ -32,6 +36,10 @@ jQuery( function( $ ) {
 	SelectButton.init();
 	communityFilterContent.init();
 	qmiSearchFooterContent.init();
+	communityFlyoutSlider.init();
+	homesFlyoutSlider.init();
+	homeDesignFlyoutSlider.init();
+	communityFloorplanFlyoutSlider.init();
 	// homeDesignsSearchFooterContent.init();
 } );
 

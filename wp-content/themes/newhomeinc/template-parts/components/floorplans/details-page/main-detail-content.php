@@ -133,13 +133,13 @@
                         <div class="create-home-model-component">
                             <ul class="model-home-el">
                                 <li>
-                                    <img class="img-fluid" src="/wp-content/uploads/2021/12/house3.png" alt="">
+                                    <img class="img-fluid" src="/wp-content/uploads/2022/01/house3-1.png" alt="">
                                 </li>
                                 <li>
-                                    <img class="img-fluid" src="/wp-content/uploads/2021/12/house2.png" alt="">
+                                    <img class="img-fluid" src="/wp-content/uploads/2022/01/house1-1.png" alt="">
                                 </li>
                                 <li>
-                                    <img class="img-fluid" src="/wp-content/uploads/2021/12/house1.png" alt="">
+                                    <img class="img-fluid" src="/wp-content/uploads/2022/01/house2-1.png" alt="">
                                 </li>
                             </ul>
                         </div>
@@ -189,29 +189,27 @@ $post_id = $post->ID;
 var_dump($post_id);
 ?>
 <div id="detail-page-cta" class="detail-page-cta-slide-out slidemodal-hidden" data-postid="<?php echo get_the_id(); ?>">
-	<div class="cta-container">
-		<div class="cta-close"><span class="icon-close">X</span></div>
-		<div class="section-content">
+    <div class="cta-container">
+        <div class="flyout-title">
+            <span class="title">Schedule A Meeting</span>
+            <div class="cta-close"><span class="icon-close">X</span></div>
+        </div>
+        <div class="flyout-intro-content">
+            <p>Interested in this beautiful floorplan?
+                Connect with your NHI Sales Agent to get most details.</p>
+        </div>
 
-			<header class="cta-header">
-				<span class="cta-sub-title">Schedule Options</span>
-				<h6 id="cta-title"></h6>
-				<p>
-					Interested in this beautiful community?
-					Connect with your NHI Sales Agent to get most details.
-				</p>
-			</header>
-			<hr class="cta-hr">
-			<div class="cta-body-area">
-				<ul id ="cta-contact-form" class="cta-contact-option"></ul>
-				<hr class="cta-hr">
-				<div class="cta-location">
-					<span class="cta-location-area">Get Directions:</span>
-					<a  id="get_direction" href="https://www.google.com/maps?q=40.378580,-75.304110">Address</a></span>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="section-content">
+            <div class="cta-body-area">
+                <div id ="cta-contact-form" class="cta-contact-option"></div>
+                <h6 id="cta-title"></h6>
+                <div class="cta-location">
+                    <a  id="get_direction" href="https://www.google.com/maps?q=40.378580,-75.304110"></a>
+                    <div id="get_direction_text"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 

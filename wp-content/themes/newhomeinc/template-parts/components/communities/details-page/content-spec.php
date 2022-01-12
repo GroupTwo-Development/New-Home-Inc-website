@@ -167,7 +167,7 @@
                            <span class="accordion-title">About</span>
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#mainDetailAccordionComponent">
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#mainDetailAccordionComponent">
                         <div class="accordion-body">
                               <section class="about-inner-content">
                                   <header class="accord-header-area">
@@ -446,65 +446,9 @@
             <?php endif; ?>
 
 
-	        <?php
-	        $location = get_field('subdivision_google_map');
-	        $community_get_directions_group = get_field('get_directions');
-	        $get_direction_title = $community_get_directions_group['get_direction_title'];
-
-	        $get_directions_content = $community_get_directions_group['get_directions_content'];
-	        ?>
-	        <?php if($location && $get_direction_title && $get_directions_content) : ?>
-                <div id="location" class="accordion-item location">
-                    <h2 class="accordion-header" id="headingseven">
-                        <button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapseseven" aria-expanded="false" aria-controls="collapseseven">
-                            <span class="accordion-title">Location</span>
-                        </button>
-                    </h2>
-                    <div id="collapseseven" class="accordion-collapse collapse" aria-labelledby="headingseven" data-bs-parent="#mainDetailAccordionComponent">
-                        <div class="accordion-body">
-                            <header class="accord-header-area">
-                                <h2> Location</h2>
-                            </header>
-                            <div class="location-component">
-                                <div class="row g-0">
-                                    <div class="col-lg-6">
-                                        <div class="location-component-map">
-                                            <?php
-
-                                            if( $location ): ?>
-                                                <div class="acf-map" data-zoom="10">
-                                                    <div class="marker" data-lat="<?php echo esc_attr($location['lat']); ?>" data-lng="<?php echo esc_attr($location['lng']); ?>">
-                                                        <a href="https://www.google.com/maps?q=<?php echo esc_attr($location['lat']); ?>,<?php echo esc_attr($location['lng']); ?>" target="_blank">
-                                                            <span class="title">Get Direction to <?php the_title(); ?></span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="get-direction-content">
-                                            <header class="section-header">
-                                                <div class="inner-header-area">
-                                                    <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span>
-                                                    <span class="location-subtitle">
-                                                         <a href="https://www.google.com/maps?q=<?php echo esc_attr($location['lat']); ?>,<?php echo esc_attr($location['lng']); ?>" target="_blank">
-                                                            <span class="title">GET DIRECTIONS</span>
-                                                        </a>
-                                                    </span>
-                                                </div>
-                                            </header>
-                                            <div class="main-content">
-                                                <h6><?php echo $get_direction_title; ?></h6>
-                                                <?php echo $get_directions_content; ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+	        <?php $location = get_field('subdivision_google_map'); ?>
+	        <?php if($location) : ?>
+                <?php require_once ('content-map.php'); ?>
 	        <?php endif; ?>
         </div>
     </div>
