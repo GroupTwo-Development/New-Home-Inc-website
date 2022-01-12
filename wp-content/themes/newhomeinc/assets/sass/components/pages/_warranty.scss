@@ -106,3 +106,34 @@
 
 }
 
+.virtual-page{
+  position: relative;
+  margin-top: 1rem;
+  .virtual-content{
+    position: relative;
+    header{
+      text-align: center;
+    }
+    .embed-container{
+      position: relative;
+      min-height: 13rem;
+      @include media-breakpoint-between(sm, md){
+        min-height: 17rem;
+      }
+      @include media-breakpoint-between(md, lg){
+        min-height: 24.5rem;
+      }
+      @include media-breakpoint-between(lg, xl){
+        min-height: 33rem;
+      }
+      @include media-breakpoint-up(xl){
+        min-height: 40rem;
+      }
+      @include media-breakpoint-up(xxl){
+        min-height: 46rem;
+      }
+    }
+
+  }
+}
+

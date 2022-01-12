@@ -126,7 +126,7 @@ const SelectButton = {
 				} );
 			} );
 
-			$( '.page-template-page-communities-map .main-map-view-component a' ).attr( 'href', 'communities' );
+			$( '.page-template-page-communities-map .main-map-view-component a' ).attr( 'href', '/communities' );
 			$( '.page-template-page-communities-map .main-map-view-component a .map-view-title' ).text( 'Grid View' );
 
 			$( '.page-template-page-homes-map .main-map-view-component a' ).attr( 'href', '/homes' );

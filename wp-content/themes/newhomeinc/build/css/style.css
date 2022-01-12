@@ -18297,6 +18297,46 @@ button.gm-ui-hover-effect {
   }
 }
 
+.virtual-page {
+  position: relative;
+  margin-top: 1rem;
+}
+.virtual-page .virtual-content {
+  position: relative;
+}
+.virtual-page .virtual-content header {
+  text-align: center;
+}
+.virtual-page .virtual-content .embed-container {
+  position: relative;
+  min-height: 13rem;
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .virtual-page .virtual-content .embed-container {
+    min-height: 17rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .virtual-page .virtual-content .embed-container {
+    min-height: 24.5rem;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .virtual-page .virtual-content .embed-container {
+    min-height: 33rem;
+  }
+}
+@media (min-width: 1200px) {
+  .virtual-page .virtual-content .embed-container {
+    min-height: 40rem;
+  }
+}
+@media (min-width: 1400px) {
+  .virtual-page .virtual-content .embed-container {
+    min-height: 46rem;
+  }
+}
+
 section#intro-content {
   position: relative;
   text-align: center;

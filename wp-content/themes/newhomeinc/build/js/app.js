@@ -31666,7 +31666,7 @@ var SelectButton = {
           $('.ask-a-question-component').toggleClass('global-cta');
         });
       });
-      $('.page-template-page-communities-map .main-map-view-component a').attr('href', 'communities');
+      $('.page-template-page-communities-map .main-map-view-component a').attr('href', '/communities');
       $('.page-template-page-communities-map .main-map-view-component a .map-view-title').text('Grid View');
       $('.page-template-page-homes-map .main-map-view-component a').attr('href', '/homes');
       $('.page-template-page-homes-map .main-map-view-component a .map-view-title').text('Grid View'); // eslint-disable-next-line no-console

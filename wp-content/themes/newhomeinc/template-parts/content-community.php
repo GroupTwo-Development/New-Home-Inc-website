@@ -13,7 +13,8 @@
 
         //    $post_community_data = get_post_communities_type('communities', -1);
         global  $count; //Hey WP, refer to that global var in functions!
-        $array_sqft = [];
+        $min_array_sqft = [];
+        $max_array_sqft = [];
         $array_beds_min = [];
         $array_beds_max= [];
         $array_baths_min = [];
@@ -45,8 +46,6 @@
 
 
 
-
-
         $community_floorplans = get_field('community_floorplans');
         if($community_floorplans) :
                 foreach ($community_floorplans as $plans) :
@@ -59,23 +58,12 @@
 
                     $bathroom_group = get_field('bathrooms', $plans->ID);
 
+
                     $min_baths = $bathroom_group['min_baths'];
 	                array_push($array_baths_min, $min_baths);
 
 	                $max_baths = $bathroom_group['max_baths'];
 	                array_push($array_baths_max, $max_baths);
-
-
-
-
-
-
-//                    $min_baths = get_field('min_baths', $plans->ID);
-//                    array_push($array_baths_min, $min_baths);
-//
-//                    $max_baths = get_field('max_baths', $plans->ID);
-//                    array_push($array_baths_max, $max_baths);
-
 
 
                     $min_half_baths = $bathroom_group['min_half_baths'];
@@ -84,8 +72,15 @@
                     $base_price = get_field('base_price', $plans->ID);
                     array_push($array_price, $base_price);
 
-                    $base_sqft = get_field('base_sqft', $plans->ID);
-                    array_push($array_sqft, $base_sqft);
+
+	                $base_sqft_group = get_field('base_sqft_group', $plans->ID);
+
+                    $min_base_sqft = $base_sqft_group['min_sqft'];
+                    array_push($min_array_sqft, $min_base_sqft);
+
+                    $max_base_sqft = $base_sqft_group['max_sqft'];
+                    array_push($max_array_sqft, $max_base_sqft);
+
                 endforeach;
         endif;
 
@@ -165,14 +160,30 @@
 
 
 
-        //TODO GET MIN and MAX sqft
-        $array_sqft = array_unique($array_sqft);
-        sort($array_sqft);
-        if(!empty(floatval($array_sqft))){
-            $min_sqft = min($array_sqft);
-            $max_sqft = max($array_sqft);
+        //TODO GET MIN  sqft
+        $min_array_sqft = array_unique($min_array_sqft);
+        sort($min_array_sqft);
+        if(!empty($min_array_sqft)){
+            $min_sqft = min($min_array_sqft);
         }
-        $display_sqft = ($array_sqft) ? number_format($min_sqft) . esc_html('-') . number_format($max_sqft) : esc_html('-') ;
+
+
+        //TODO GET MAX  sqft
+        $max_array_sqft = array_unique($max_array_sqft);
+        sort($max_array_sqft);
+        if(!empty($max_array_sqft)){
+            $max_sqft = max($max_array_sqft);
+        }
+
+        if($min_sqft && $max_sqft){
+	        $display_sqft = number_format($min_sqft) . esc_html('-') . number_format($max_sqft);
+        }elseif (!empty($min_sqft) && empty($max_sqft)){
+	        $display_sqft = number_format(floatval($min_sqft));
+        } elseif ($max_sqft && empty($min_sqft)){
+	        $display_sqft = number_format($max_sqft);
+        } else {
+            $display_sqft = esc_html('-');
+        }
 
 ?>
 
