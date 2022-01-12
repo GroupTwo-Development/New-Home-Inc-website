@@ -30,7 +30,7 @@ $get_directions_content = $homes_get_directions_group['get_directions_content'];
 $elevation_image = get_field('elevation_image');
 
 ?>
-<?php if($plan_description && $floorplan_gallery && $spec_virtual_tour_image && $home_design_video) : ?>
+<?php if($plan_description || $floorplan_gallery || $spec_virtual_tour_image || $home_design_video) : ?>
     <nav id="info-links" class="info-links">
         <div class="container">
             <div class="info-links-component">

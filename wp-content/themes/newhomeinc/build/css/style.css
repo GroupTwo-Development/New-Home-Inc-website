@@ -19247,7 +19247,7 @@ section#newsletter .newsletter-content .newsletters-form-area .newsletter-form f
 #desktop-cta {
   background-color: #fc4f00;
   position: fixed;
-  right: 0;
+  left: 0;
   bottom: 12.25rem;
   z-index: 1095;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.16);

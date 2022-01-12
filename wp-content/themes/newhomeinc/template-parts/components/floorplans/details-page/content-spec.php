@@ -265,7 +265,7 @@ $spec_data = get_featured_homes_spec();
                                             alt="<?php echo $spec_virtual_tour_image['alt']; ?>"
                                         />
                                         <div class="overlay-area">
-                                            <span class="overlay-title">Click to view current site availability.</span>
+                                            <span class="overlay-title">Click to view in full screen.</span>
                                         </div>
                                     </a>
 

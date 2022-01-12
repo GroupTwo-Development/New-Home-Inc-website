@@ -18,7 +18,7 @@ $coming_soon_community = get_field( 'coming_soon_community' );
 ?>
 <?php if($coming_soon_community == 'yes') :  ?>
 
-<?php else : ?>
+<?php elseif($subdescription || $community_floorplans || $community_qmi || $video_community) : ?>
     <nav id="info-links" class="info-links">
         <div class="container">
             <div class="info-links-component">
@@ -38,10 +38,10 @@ $coming_soon_community = get_field( 'coming_soon_community' );
                     <a href="#community_video" id="" class="videos nav-info-link">VIDEO</a>
 				<?php endif; ?>
 
-
 				<?php if($community_lot_map_image && $community_lot_map_url) : ?>
                     <a href="#community-lot" id="" class="community-map nav-info-link">COMMUNITY MAP</a>
 				<?php endif; ?>
+
 
 				<?php if($location && $get_direction_title && $get_directions_content) : ?>
                     <a href="#location" id="" class="community-map nav-info-link">Location</a>
@@ -49,4 +49,6 @@ $coming_soon_community = get_field( 'coming_soon_community' );
             </div>
         </div>
     </nav>
+<?php else : ?>
+
 <?php endif; ?>

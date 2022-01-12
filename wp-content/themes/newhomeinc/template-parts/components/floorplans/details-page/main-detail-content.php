@@ -186,7 +186,7 @@
 <?php
 global $post;
 $post_id = $post->ID;
-var_dump($post_id);
+//var_dump($post_id);
 ?>
 <div id="detail-page-cta" class="detail-page-cta-slide-out slidemodal-hidden" data-postid="<?php echo get_the_id(); ?>">
     <div class="cta-container">
