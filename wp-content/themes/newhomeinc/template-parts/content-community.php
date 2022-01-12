@@ -58,7 +58,6 @@
 
                     $bathroom_group = get_field('bathrooms', $plans->ID);
 
-
                     $min_baths = $bathroom_group['min_baths'];
 	                array_push($array_baths_min, $min_baths);
 

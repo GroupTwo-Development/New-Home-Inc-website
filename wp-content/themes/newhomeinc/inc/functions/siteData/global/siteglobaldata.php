@@ -168,6 +168,7 @@ add_filter( 'pre_get_posts', 'posts_archive_per_page' );
 
 add_filter( 'facetwp_sort_options', function( $options, $params ) {
     if(is_post_type_archive('homes')){
+
 	    $options['homes_price_DESC'] = [
 		    'label' => 'Price (High to Low)',
 		    'query_args' => [
@@ -200,6 +201,13 @@ add_filter( 'facetwp_sort_options', function( $options, $params ) {
 	    unset( $options['date_desc'] );
 	    unset( $options['date_asc'] );
     } else if(is_post_type_archive('home-design')){
+	    $options['title_asc'] = [
+		    'label' => __( 'Plan Name (A-Z)', 'fwp' ),
+		    'query_args' => [
+			    'orderby' => 'title',
+			    'order' => 'ASC',
+		    ]
+	    ];
 	    $options['base_price'] = [
 		    'label' => 'Price (High to Low)',
 		    'query_args' => [
