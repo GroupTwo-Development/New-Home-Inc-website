@@ -48,7 +48,9 @@ const featuredHome = {
 		document.addEventListener( 'DOMContentLoaded', function() {
 			new Splide( '#community_floorplan', {
 				perPage: 3,
-				type: 'loop',
+				type: 'slide',
+				focus: 'center',
+				trimSpace: true,
 				arrows: true,
 				// gap: '0.3rem',
 				breakpoints: {

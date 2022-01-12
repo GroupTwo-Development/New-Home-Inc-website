@@ -1,8 +1,8 @@
 <?php
     $featured_image = get_field('featured_image');
 
-    $img_src = wp_get_attachment_image_url( $featured_image['id'], 'medium' );
-    $img_srcset = wp_get_attachment_image_srcset( $featured_image['id'], 'medium' );
+    $img_src = wp_get_attachment_image_url( $featured_image['id'], 'Large' );
+    $img_srcset = wp_get_attachment_image_srcset( $featured_image['id'], 'Large' );
 ?>
 <?php if($featured_image) : ?>
     <div class="main-gallery_area"  data-aos="zoom-in-up" data-aos-duration="800">

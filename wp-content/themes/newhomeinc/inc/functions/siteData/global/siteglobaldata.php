@@ -237,6 +237,7 @@ add_filter( 'facetwp_sort_options', function( $options, $params ) {
 		    ]
 	    ];
 	    unset( $options['title_desc'] );
+        unset( $options['default'] );
 	    unset( $options['date_desc'] );
 	    unset( $options['date_asc'] );
 

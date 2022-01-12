@@ -32642,7 +32642,9 @@ var featuredHome = {
     document.addEventListener('DOMContentLoaded', function () {
       new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#community_floorplan', {
         perPage: 3,
-        type: 'loop',
+        type: 'slide',
+        focus: 'center',
+        trimSpace: true,
         arrows: true,
         // gap: '0.3rem',
         breakpoints: {
