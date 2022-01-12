@@ -134,13 +134,13 @@ $plan_location_plan_name = get_field('plan_location_plan_name');
                             <div class="create-home-model-component">
                                 <ul class="model-home-el">
                                     <li>
-                                        <img class="img-fluid" src="/wp-content/uploads/2021/12/house3.png" alt="">
+                                        <img class="img-fluid" src="/wp-content/uploads/2022/01/house3-1.png" alt="">
                                     </li>
                                     <li>
-                                        <img class="img-fluid" src="/wp-content/uploads/2021/12/house2.png" alt="">
+                                        <img class="img-fluid" src="/wp-content/uploads/2022/01/house1-1.png" alt="">
                                     </li>
                                     <li>
-                                        <img class="img-fluid" src="/wp-content/uploads/2021/12/house1.png" alt="">
+                                        <img class="img-fluid" src="/wp-content/uploads/2022/01/house2-1.png" alt="">
                                     </li>
                                 </ul>
                             </div>

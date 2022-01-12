@@ -70,7 +70,6 @@ section#sectionFour{
             }
             p{
               color: $primary_color_black;
-              font-weight: normal;
               text-align: center;
               font-family: $font__main;
               @include media-breakpoint-up(lg){

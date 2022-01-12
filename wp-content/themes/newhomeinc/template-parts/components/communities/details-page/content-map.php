@@ -30,7 +30,7 @@
 			<span class="accordion-title">Location</span>
 		</button>
 	</h2>
-	<div id="collapseseven" class="accordion-collapse collapse show" aria-labelledby="headingseven" data-bs-parent="#mainDetailAccordionComponent">
+	<div id="collapseseven" class="accordion-collapse collapse" aria-labelledby="headingseven" data-bs-parent="#mainDetailAccordionComponent">
 		<div class="accordion-body">
 			<header class="accord-header-area">
 				<h2> Location</h2>

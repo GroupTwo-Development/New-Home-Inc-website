@@ -66,7 +66,7 @@
                             </div>
                         </div>
                     </div>
-            <?php endforeach;?>
+            <?php endforeach; wp_reset_postdata();?>
 
         </div>
     </section>

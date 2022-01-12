@@ -167,7 +167,7 @@
                            <span class="accordion-title">About</span>
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#mainDetailAccordionComponent">
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#mainDetailAccordionComponent">
                         <div class="accordion-body">
                               <section class="about-inner-content">
                                   <header class="accord-header-area">

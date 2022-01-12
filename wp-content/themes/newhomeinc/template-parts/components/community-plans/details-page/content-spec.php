@@ -146,7 +146,7 @@ $spec_data = get_featured_homes_spec();
                             <span class="accordion-title">Available Homes</span>
                         </button>
                     </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse " aria-labelledby="headingThree" data-bs-parent="#mainDetailAccordionComponent">
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#mainDetailAccordionComponent">
                         <div class="accordion-body">
                             <header class="accord-header-area">
                                 <h2> Available Homes</h2>

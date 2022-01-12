@@ -1,3 +1,17 @@
+<?php
+
+    $home_page_section_two_title = get_field('home_page_section_two_title');
+    $home_page_section_two_content = get_field('home_page_section_two_content');
+    $section_image_future_proof = get_field('section_image_future_proof');
+    $home_page_section_two_cta = get_field('home_page_section_two_cta');
+
+
+    $home_page_section_three_subtitle = get_field('home_page_section_three_subtitle');
+    $home_page_section_three_title = get_field('home_page_section_three_title');
+    $home_page_section_three_cta = get_field('home_page_section_three_cta');
+    $home_page_section_three_our_process_steps = get_field('home_page_section_three_our_process_steps');
+    $section_image_our_process = get_field('section_image_our_process');
+?>
 <section id="sectionFour" class="pb-5">
 	<div class="container">
 		<div class="section-four-inner-area pt-5 pb-5">
@@ -10,20 +24,18 @@
                         <div class="row">
                             <div class="col-lg-6 order-2 order-md-1">
                                 <div class="section-four-inner-left">
-                                    <img class="lozad img-fluid" data-src="/wp-content/uploads/2021/11/test-1.jpg" alt="">
+                                    <img class="lozad img-fluid" data-src="<?php echo $section_image_future_proof['url']; ?>" alt="<?php echo $section_image_future_proof['alt']; ?>">
                                 </div>
                             </div>
                             <div class="col-lg-6 order-1 order-md-2">
                                 <div class="section-four-inner-right">
                                     <hr class="section-top-hr">
-                                    <span class="section-title">FUTURE PROOF</span>
+                                    <span class="section-title"><?php echo $home_page_section_two_title; ?></span>
                                     <div class="section-content-area">
-                                        <p>
-                                            We’re drawing from our decades of experience and homeowner feedback to innovate for the future. We’re not only creating homes that meet the needs of today’s families, we are “future-proofing” them to evolve WITH you, over time.
-                                        </p>
+                                        <?php echo $home_page_section_two_content; ?>
 
                                         <div class="section-btn-area">
-                                            <a href="#" class="section-btn future-proof-btn">Our Designs</a>
+                                            <a href="<?php echo $home_page_section_two_cta['url']; ?>" class="section-btn future-proof-btn"><?php echo $home_page_section_two_cta['title']; ?></a>
                                         </div>
                                     </div>
 
@@ -37,37 +49,47 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="section-four-inner-content-left">
+                                <?php
 
+                                $home_page_section_two_title = get_field('home_page_section_two_title');
+                                    $home_page_section_three_subtitle = get_field('home_page_section_three_subtitle');
+                                    $home_page_section_three_title = get_field('home_page_section_three_title');
+                                    $home_page_section_three_cta = get_field('home_page_section_three_cta');
+                                    $home_page_section_three_our_process_steps = get_field('home_page_section_three_our_process_steps');
+                                    $section_image_our_process = get_field('section_image_our_process');
+                                ?>
                                 <header>
                                     <hr class="process-hr">
-                                    <span class="subtitle">Down to a science</span>
-                                    <h2>How it Works</h2>
+                                    <span class="subtitle"><?php echo $home_page_section_three_subtitle; ?></span>
+                                    <h2><?php echo $home_page_section_three_title; ?></h2>
+
                                     <?php
                                         $process = array(
                                            'Choose Your Community',
 	                                        'Choose your professionally designed Showcase Home',
                                             'Move In!',
                                         );
-                                        $process_count = 0
+
                                     ?>
                                     <ul class="section-four-inner-content-list">
-                                        <?php if(!empty($process)) : ?>
-                                            <?php foreach ($process as $a_process) :
-                                                $process_count++;
+                                        <?php if($home_page_section_three_our_process_steps) : ?>
+                                            <?php foreach ($home_page_section_three_our_process_steps as $a_process) :
+                                                $process_count = 1 ;
+                                                $textContent = $a_process['home_page_section_three_process_step']
                                             ?>
-                                                <li><i class="count"><?php echo $process_count ?></i><span class="item"><?php echo $a_process; ?></span></li>
+                                                <li><i class="count"><?php echo $process_count ?></i><span class="item"><?php echo $textContent; ?></span></li>
                                             <?php endforeach; $process_count++ ?>
                                         <?php endif; ?>
                                     </ul>
                                     <div class="section-btn-area">
-                                        <a href="#" class="section-btn section-four_btn">Our Process</a>
+                                        <a href="<?php echo $home_page_section_three_cta['url']; ?>" class="section-btn section-four_btn"><?php echo $home_page_section_three_cta['title']; ?></a>
                                     </div>
                                 </header>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="section-four-inner-content-right">
-                                <img class="lozad img-fluid" data-src="wp-content/uploads/2021/11/AdobeStock_281439614-Converted-01.png" alt="">
+                                <img class="lozad img-fluid" data-src="<?php echo $section_image_our_process['url']; ?>" alt="">
                             </div>
                         </div>
                     </div>
