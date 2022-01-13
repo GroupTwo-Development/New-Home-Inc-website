@@ -72,7 +72,6 @@
 
 
         $bathroom_group = get_field('bathrooms');
-
         $min_baths = $bathroom_group['min_baths'];
         $max_baths = $bathroom_group['max_baths'];
         $min_half_baths = $bathroom_group['min_half_baths'];
@@ -88,15 +87,36 @@
 	        $max_baths = $max_baths;
         }
 
-        //TODO GET MIN  HALF BATHS
-        if(!empty($min_half_baths)){
-	        $min_half_baths = $min_half_baths;
-        }
-
-        //TODO GET MIN  HALF BATHS
-        if(!empty($min_half_baths)){
+        if(!empty($min_half_baths) && isset($min_half_baths)){
             $min_half_baths = $min_half_baths;
         }
+
+        if(!empty($max_half_baths) && isset($max_half_baths)){
+            $max_half_baths = $max_half_baths;
+        }
+
+        if($min_baths && $max_baths){
+            $display_bath = $min_baths . esc_html('-') . $max_baths;
+            if($min_half_baths && $max_half_baths){
+	            $display_bath = $min_baths . esc_html('.5') . esc_html('-') . $max_baths . esc_html('.5') ;
+            }
+        }elseif ($min_baths && !$max_baths){
+            $display_bath = $min_baths;
+            if($min_half_baths){
+	            $display_bath = $min_baths . esc_html('.5');
+            }
+        }elseif ($max_baths && empty($min_baths)){
+	        $display_bath = $max_baths;
+            if($max_half_baths){
+	            $display_bath = $max_baths . esc_html('.5');
+            }
+        } else{
+            $display_bath = esc_html('-');
+        }
+
+
+
+
 
 
 
@@ -112,19 +132,19 @@
             $min_base_sqft = $min_base_sqft;
         }
 
+
         if(!empty($max_base_sqft) && isset($max_base_sqft)){
             $max_base_sqft = $max_base_sqft;
         }
 
-
         if($min_base_sqft && $max_base_sqft){
-	        $display_sqft = number_format($min_base_sqft) . esc_html('-') . number_format($max_base_sqft);
-        }elseif($min_base_sqft && empty($max_base_sqft)){
-            $display_sqft = number_format($min_base_sqft);
-        }elseif ($max_base_sqft && empty($min_base_sqft)){
-            $display_sqft = number_format($max_base_sqft);
-        }else{
-            $display_sqft =  esc_html('-');
+                $display_sqft = number_format($min_base_sqft) . esc_html('-') . number_format($max_base_sqft);
+            }elseif($min_base_sqft && empty($max_base_sqft)){
+                $display_sqft = number_format($min_base_sqft);
+            }elseif ($max_base_sqft && empty($min_base_sqft)){
+                $display_sqft = number_format($max_base_sqft);
+            }else{
+                $display_sqft =  esc_html('-');
         }
 
     $main_title = get_field('plan_name');
@@ -197,7 +217,7 @@
                                 <div class="card-body-bottom-spec">
                                     <span class="card-body-bottom-label"><?php echo esc_html('BATHS') ?></span>
 
-                                    <span class="card-body-bottom-data"><?php echo $display_min_baths; ?><?php echo $display_max_baths; ?></span>
+                                    <span class="card-body-bottom-data"><?php echo $display_bath; ?></span>
 
                                 </div>
                                 <div class="card-body-bottom-spec">

@@ -66,3 +66,18 @@
     }
   }
 }
+
+#main-detail-content-area{
+  position: relative;
+
+  .ScrollTarget{
+    position: absolute;
+    display: block;
+    top: -265px;
+  }
+  .ScrollTarget-2{
+    position: absolute;
+    display: block;
+    top: -100px;
+  }
+}

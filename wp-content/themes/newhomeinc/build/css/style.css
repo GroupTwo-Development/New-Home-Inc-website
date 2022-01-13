@@ -15803,6 +15803,20 @@ section.main-filter-components .qmi-filter-components .main-map-view-component {
   transition: 0.3s ease-in-out;
 }
 
+#main-detail-content-area {
+  position: relative;
+}
+#main-detail-content-area .ScrollTarget {
+  position: absolute;
+  display: block;
+  top: -265px;
+}
+#main-detail-content-area .ScrollTarget-2 {
+  position: absolute;
+  display: block;
+  top: -100px;
+}
+
 nav.info-links {
   background-color: #000;
   padding: 0.7rem 0;

@@ -26,7 +26,7 @@ $coming_soon_community = get_field( 'coming_soon_community' );
                     <a data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" href="#about-content-area" class="overview nav-info-link">OVERVIEW</a>
 				<?php endif; ?>
 				<?php if($community_qmi) :  ?>
-                    <a data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" href="#collapseThree" id="" class="homes nav-info-link">AVAILABLE HOMES</a>
+                    <a data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" href="#community_homes" id="" class="homes nav-info-link">AVAILABLE HOMES</a>
 				<?php endif; ?>
 
 				<?php if($community_floorplans) :  ?>

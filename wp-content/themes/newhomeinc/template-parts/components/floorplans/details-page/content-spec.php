@@ -29,11 +29,11 @@ if(!empty($min_baths) && !empty($max_baths) && !empty($half_baths)){
 	$display_max_baths = ($max_baths) ? '' . $max_baths : '';
 }
 
-$base_sqft = get_field('base_sqft');
-if(!empty($base_sqft)){
-	$display_sqft = number_format($base_sqft);
-
-}
+//$base_sqft = get_field('base_sqft');
+//if(!empty($base_sqft)){
+//	$display_sqft = number_format($base_sqft);
+//
+//}
 
 $plan_description = get_field('plan_description');
 
@@ -212,12 +212,12 @@ $spec_data = get_featured_homes_spec();
                                                                                 </li>
                                                                                 <li>
                                                                                     <span class="spec-name">BATHS</span>
-                                                                                    <?php $half_bath = $spec_data['half_bath']; ?>
-                                                                                    <span class="spec-data"><?php echo $spec_data['baths'] ?><?php echo ($half_bath == 1) ? ''.esc_html('.5') : '' ?></span>
+
+                                                                                    <span class="spec-data"></span>
                                                                                 </li>
                                                                                 <li>
                                                                                     <span class="spec-name">SQ FT</span>
-                                                                                    <span class="spec-data"><?php echo number_format($spec_data['sqft']) ?></span>
+                                                                                    <span class="spec-data"></span>
                                                                                 </li>
                                                                             </ul>
                                                                         </div>

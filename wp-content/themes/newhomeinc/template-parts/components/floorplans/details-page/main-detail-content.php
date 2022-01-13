@@ -40,31 +40,85 @@
         $display_max_beds = ($max_bedrooms) ? '' . $max_bedrooms : '';
     }
 
-    $min_baths = get_field('min_baths');
-    $max_baths = get_field('max_baths');
-    $half_baths = get_field('half_baths');
-    if(!empty($min_baths) && !empty($max_baths) && !empty($half_baths)){
-        $display_min_bathrooms = $min_baths;
-        $display_max_bathrooms = $max_baths;
-        $display_min_baths = ($min_baths) ? '' . $min_baths . esc_html('-') : '';
-        $display_max_baths = ($max_baths && $half_baths == 1) ? '' . $max_baths . esc_html('.5') : '';
-    } elseif (empty($min_baths) && !empty($max_baths) && !empty($half_baths)){
-        $display_max_baths = ($max_baths && $half_baths == 1) ? '' . $max_baths . esc_html('.5') : '';
-    } elseif (!empty($min_baths) && !empty($max_baths) && empty($half_baths)){
-        $display_min_baths = ($min_baths) ? '' . $min_baths . esc_html('-') : '';
-        $display_max_baths = ($max_baths) ? '' . $max_baths : '';
+    $bathroom_group = get_field('bathrooms');
+    $min_baths = $bathroom_group['min_baths'];
+    $max_baths = $bathroom_group['max_baths'];
+    $min_half_baths = $bathroom_group['min_half_baths'];
+    $max_half_baths = $bathroom_group['max_half_baths'];
+
+    //TODO GET MIN BATHS
+    if(!empty($min_baths)){
+        $min_baths = $min_baths;
     }
 
-    $base_sqft = get_field('base_sqft');
-    if(!empty($base_sqft)){
-        $display_sqft = number_format($base_sqft);
-
+    //TODO GET Max BATHS
+    if(!empty($max_baths)){
+        $max_baths = $max_baths;
     }
+
+    if(!empty($min_half_baths) && isset($min_half_baths)){
+        $min_half_baths = $min_half_baths;
+    }
+
+    if(!empty($max_half_baths) && isset($max_half_baths)){
+        $max_half_baths = $max_half_baths;
+    }
+
+    if($min_baths && $max_baths){
+        $display_bath = $min_baths . esc_html('-') . $max_baths;
+        if($min_half_baths && $max_half_baths){
+            $display_bath = $min_baths . esc_html('.5') . esc_html('-') . $max_baths . esc_html('.5') ;
+        }
+    }elseif ($min_baths && !$max_baths){
+        $display_bath = $min_baths;
+        if($min_half_baths){
+            $display_bath = $min_baths . esc_html('.5');
+        }
+    }elseif ($max_baths && empty($min_baths)){
+        $display_bath = $max_baths;
+        if($max_half_baths){
+            $display_bath = $max_baths . esc_html('.5');
+        }
+    } else{
+        $display_bath = esc_html('-');
+    }
+
 
     $get_min_garage = get_field('min_garage');
     $get_max_garage = get_field('max_garage');
-    $display_min_garage = ($get_min_garage) ?  esc_html('-')  . ' ' .  $get_min_garage: '';
-    $display_max_garage = ($get_max_garage) ? '' . $get_max_garage : '';
+     if($get_min_garage && $get_max_garage){
+         $display_garage = $get_min_garage . esc_html('-') . $get_max_garage. esc_html( 'Car' );
+     }elseif ($get_min_garage && empty($get_max_garage)){
+         $display_garage = $get_min_garage . esc_html( 'Car' );
+     } elseif ($get_max_garage && empty($get_min_garage)){
+	     $display_garage = $get_max_garage . esc_html( 'Car' );
+     }else{
+	     $display_garage = esc_html( '-' );
+     }
+
+
+    $base_sqft_group = get_field('base_sqft_group');
+    $min_base_sqft = $base_sqft_group['min_sqft'];
+    $max_base_sqft = $base_sqft_group['max_sqft'];
+
+    if(!empty($min_base_sqft) && isset($min_base_sqft)){
+        $min_base_sqft = $min_base_sqft;
+    }
+
+
+    if(!empty($max_base_sqft) && isset($max_base_sqft)){
+        $max_base_sqft = $max_base_sqft;
+    }
+
+    if($min_base_sqft && $max_base_sqft){
+        $display_sqft = number_format($min_base_sqft) . esc_html('-') . number_format($max_base_sqft);
+    }elseif($min_base_sqft && empty($max_base_sqft)){
+        $display_sqft = number_format($min_base_sqft);
+    }elseif ($max_base_sqft && empty($min_base_sqft)){
+        $display_sqft = number_format($max_base_sqft);
+    }else{
+        $display_sqft =  esc_html('-');
+    }
 
     global $post;
     $post_id = $post->ID;
@@ -102,18 +156,16 @@
 					</div>
 					<div class="spec-area-component">
 						<span class="spec-area-label"><?php echo esc_html('BATHS') ?></span>
-						<span class="spec-area-data"><?php echo $display_min_baths; ?><?php echo $display_max_baths; ?></span>
+						<span class="spec-area-data"><?php echo $display_bath; ?></span>
 					</div>
 					<div class="spec-area-component">
 						<span class="spec-area-label"><?php echo esc_html('SQ FT') ?></span>
 						<span class="spec-area-data"><?php echo $display_sqft; ?></span>
 					</div>
-					<?php if($get_min_garage && $get_max_garage) : ?>
 						<div class="spec-area-component">
 							<span class="spec-area-label"><?php echo esc_html('GARAGE') ?></span>
-							<span class="spec-area-data"><?php echo $display_max_garage; ?><?php echo $display_min_garage; ?> <?php echo esc_html('Car') ?></span>
+							<span class="spec-area-data"><?php echo $display_garage; ?></span>
 						</div>
-					<?php endif; ?>
 				</div>
 
                 <hr class="spec-area-hr">

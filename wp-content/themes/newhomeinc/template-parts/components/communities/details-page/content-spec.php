@@ -216,7 +216,8 @@
     <div class="container">
         <div class="accordion accordion-flush" id="mainDetailAccordionComponent">
             <?php if($subdescription) : ?>
-                <div class="accordion-item about-content-area" id="about-content-area">
+                <div class="ScrollTarget" id="about-content-area"></div>
+                <div class="accordion-item about-content-area" id="">
                     <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                            <span class="accordion-title">About</span>
@@ -303,7 +304,9 @@
                 </div>
             <?php endif; ?>
             <?php if($community_qmi) : ?>
-                <div class="accordion-item available-homes" id="community_homes">
+
+                <div class="accordion-item available-homes" id="">
+                    <div class="ScrollTarget" id="community_homes"></div>
                 <h2 class="accordion-header" id="headingThree">
                     <button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         <span class="accordion-title">Available Homes</span>
@@ -392,7 +395,8 @@
             <?php endif; ?>
 
 	        <?php if($community_floorplans) : ?>
-                <div class="accordion-item available-floorplans" id="community_floorplans">
+                <div class="ScrollTarget-2" id="community_floorplans"></div>
+                <div class="accordion-item available-floorplans">
                     <h2 class="accordion-header" id="headingfour">
                         <button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
                             <span class="accordion-title">Floorplans</span>
@@ -469,7 +473,7 @@
             <?php if($community_lot_map_image && $community_lot_map_url) : ?>
                 <div id="community-lot" class="accordion-item community-lot">
                     <h2 class="accordion-header" id="headingsix">
-                        <button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesixt" aria-expanded="false" aria-controls="collapsesix">
+                        <button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesix" aria-expanded="false" aria-controls="collapsesix">
                             <span class="accordion-title">Community Map</span>
                         </button>
                     </h2>
