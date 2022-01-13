@@ -11,6 +11,10 @@
     white-space: nowrap;
     height: 1.5rem;
     width: 100%;
+    @include media-breakpoint-down(md){
+      overflow-x: scroll;
+      overflow-y: hidden;
+    }
     ul.smart-tech{
       list-style: none;
       margin: 0;
