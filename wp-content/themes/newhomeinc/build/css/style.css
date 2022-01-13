@@ -13337,8 +13337,6 @@ nav#mobile-navbar .mobile-navbar-component .mobile-navbar-component-toggle .is-a
 }
 #smart-tech-menu-area .smart-tech-inner {
   position: relative;
-  overflow-x: scroll;
-  overflow-y: hidden;
   white-space: nowrap;
   height: 1.5rem;
   width: 100%;
