@@ -13,7 +13,7 @@
 
     //    $post_community_data = get_post_communities_type('communities', -1);
     global  $count; //Hey WP, refer to that global var in functions!
-    $array_sqft = [];
+
     $array_beds_min = [];
     $array_beds_max= [];
     $array_baths_min = [];
@@ -67,11 +67,65 @@
 	    $display_max_baths = ($max_baths) ? '' . $max_baths : '';
     }
 
-    $base_sqft = get_field('base_sqft');
-    if(!empty($base_sqft)){
-        $display_sqft = number_format($base_sqft);
 
-    }
+
+
+
+        $bathroom_group = get_field('bathrooms');
+
+        $min_baths = $bathroom_group['min_baths'];
+        $max_baths = $bathroom_group['max_baths'];
+        $min_half_baths = $bathroom_group['min_half_baths'];
+        $max_half_baths = $bathroom_group['max_half_baths'];
+
+        //TODO GET MIN BATHS
+        if(!empty($min_baths)){
+	        $min_baths = $min_baths;
+        }
+
+        //TODO GET Max BATHS
+        if(!empty($max_baths)){
+	        $max_baths = $max_baths;
+        }
+
+        //TODO GET MIN  HALF BATHS
+        if(!empty($min_half_baths)){
+	        $min_half_baths = $min_half_baths;
+        }
+
+        //TODO GET MIN  HALF BATHS
+        if(!empty($min_half_baths)){
+            $min_half_baths = $min_half_baths;
+        }
+
+
+
+
+
+
+
+        $base_sqft_group = get_field('base_sqft_group');
+        $min_base_sqft = $base_sqft_group['min_sqft'];
+        $max_base_sqft = $base_sqft_group['max_sqft'];
+
+        if(!empty($min_base_sqft) && isset($min_base_sqft)){
+            $min_base_sqft = $min_base_sqft;
+        }
+
+        if(!empty($max_base_sqft) && isset($max_base_sqft)){
+            $max_base_sqft = $max_base_sqft;
+        }
+
+
+        if($min_base_sqft && $max_base_sqft){
+	        $display_sqft = number_format($min_base_sqft) . esc_html('-') . number_format($max_base_sqft);
+        }elseif($min_base_sqft && empty($max_base_sqft)){
+            $display_sqft = number_format($min_base_sqft);
+        }elseif ($max_base_sqft && empty($min_base_sqft)){
+            $display_sqft = number_format($max_base_sqft);
+        }else{
+            $display_sqft =  esc_html('-');
+        }
 
     $main_title = get_field('plan_name');
 

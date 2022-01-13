@@ -58,21 +58,23 @@
 						</div>
 					</div>
 					<div class="col-lg-6">
-						<div class="get-direction-content">
-							<header class="section-header">
-								<div class="inner-header-area">
-									<span class="location-icon"><i class="fas fa-map-marker-alt"></i></span>
-									<h5><a href="https://www.google.com/maps?q=<?php echo esc_attr($location['lat']); ?>,<?php echo esc_attr($location['lng']); ?>" target="_blank">GET DIRECTIONS</a></h5>
-								</div>
-								<address>
-									<?php echo $address; ?>
-								</address>
+						<div class="container">
+                            <div class="get-direction-content">
+                                <header class="section-header">
+                                    <div class="inner-header-area">
+                                        <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span>
+                                        <h5><a href="https://www.google.com/maps?q=<?php echo esc_attr($location['lat']); ?>,<?php echo esc_attr($location['lng']); ?>" target="_blank">GET DIRECTIONS</a></h5>
+                                    </div>
+                                    <address>
+										<?php echo $address; ?>
+                                    </address>
 
-							</header>
-							<div class="main-content">
-								<?php echo $get_directions_content; ?>
-							</div>
-						</div>
+                                </header>
+                                <div class="main-content">
+									<?php echo $get_directions_content; ?>
+                                </div>
+                            </div>
+                        </div>
 					</div>
 				</div>
 			</div>

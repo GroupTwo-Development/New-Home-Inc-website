@@ -12783,6 +12783,7 @@ template {
 
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 /*--------------------------------------------------------------
@@ -15053,6 +15054,7 @@ section.mobile-filter ul.qmi-filters li ul.qmi-filter-item li .facetwp-facet-hom
   align-items: center;
   white-space: nowrap;
   margin-bottom: 0.5rem;
+  flex-wrap: wrap;
 }
 #applied-filter .filter-results-content .facetwp-selections ul li span.facetwp-selection-label {
   color: #000;
@@ -15750,9 +15752,14 @@ section.main-filter-components .qmi-filter-components .main-map-view-component {
     max-height: 85vh;
   }
 }
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .main-gallery_area .detail-page-gallery {
+    max-height: 68.3vh;
+  }
+}
 @media (min-width: 1200px) {
   .main-gallery_area .detail-page-gallery {
-    height: 791px;
+    max-height: 67vh;
   }
 }
 @media (min-width: 768px) {
@@ -15776,15 +15783,20 @@ section.main-filter-components .qmi-filter-components .main-map-view-component {
   bottom: 0;
   right: 0;
   overflow: hidden;
+  height: 90.5px;
+  width: 90.5px;
+  background-color: #e2e2e2;
 }
 .main-gallery_area .detail-page-gallery .gallery-icon img {
   -o-object-fit: contain;
      object-fit: contain;
-  height: 2.813rem;
+  height: 90px;
   width: 100%;
 }
 .main-gallery_area .detail-page-gallery .gallery-icon img:hover {
   border: 1px solid #fc4f00;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
 }
 
 nav.info-links {
@@ -17536,11 +17548,6 @@ nav.info-links .info-links-component a:hover {
 #main-detail-content-area .accordion .location .accordion-body .location-component .get-direction-content {
   padding: 2.5rem 2rem;
 }
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  #main-detail-content-area .accordion .location .accordion-body .location-component .get-direction-content {
-    padding: 0 2rem;
-  }
-}
 #main-detail-content-area .accordion .location .accordion-body .location-component .get-direction-content header.section-header {
   margin-bottom: 0.5rem;
 }
@@ -18575,6 +18582,29 @@ section.smart-tech-video .smart-tech-youtube-video a:hover img {
 
 .lg-backdrop {
   z-index: 1090 !important;
+}
+
+.floorplan-virtual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  min-height: 15rem;
+  width: 100%;
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .floorplan-virtual {
+    min-height: 23rem;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .floorplan-virtual {
+    min-height: 32rem;
+  }
+}
+@media (min-width: 1200px) {
+  .floorplan-virtual {
+    min-height: 38rem;
+  }
 }
 
 #contact-section {

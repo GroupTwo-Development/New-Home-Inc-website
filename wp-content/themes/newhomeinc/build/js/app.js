@@ -31669,7 +31669,19 @@ var SelectButton = {
       $('.page-template-page-communities-map .main-map-view-component a').attr('href', '/communities');
       $('.page-template-page-communities-map .main-map-view-component a .map-view-title').text('Grid View');
       $('.page-template-page-homes-map .main-map-view-component a').attr('href', '/homes');
-      $('.page-template-page-homes-map .main-map-view-component a .map-view-title').text('Grid View'); // eslint-disable-next-line no-console
+      $('.page-template-page-homes-map .main-map-view-component a .map-view-title').text('Grid View'); //
+      // $( '.js-scroll' ).click( function() {
+      // 	const headerHeight = 400;
+      //
+      // 	$( 'html, body' ).animate( {
+      // 		scrollTop: $( $.attr( this, 'href' ) ).offset().top - headerHeight,
+      // 	}, 500 );
+      // 	return false;
+      // } );
+      // eslint-disable-next-line no-console
+      // const scrollSpy = new bootstrap.ScrollSpy( document.body, {
+      // 	target: '#quicklink-nav"',
+      // } );
     })(jQuery);
   }
 };

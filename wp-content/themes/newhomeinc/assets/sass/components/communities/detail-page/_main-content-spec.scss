@@ -1245,7 +1245,7 @@
           .get-direction-content{
             padding: 2.5rem 2rem;
             @include media-breakpoint-between(lg, xl){
-              padding: 0 2rem;
+              //padding: 0 2rem;
             }
             header.section-header{
               margin-bottom: 0.5rem;

@@ -14,10 +14,16 @@
       max-height: 85vh;
     }
     @include media-breakpoint-between(lg, xl){
+      max-height: 68.3vh;
+    }
+    @include media-breakpoint-up(xl){
+      max-height: 67vh;
+    }
+    @include media-breakpoint-between(lg, xl){
       //height: 700px;
     }
     @include media-breakpoint-up(xl){
-      height: 791px;
+      //height: 791px;
     }
     @include media-breakpoint-up(xxl){
     }
@@ -44,12 +50,17 @@
       bottom: 0;
       right: 0;
       overflow: hidden;
+      height: 90.5px;
+      width: 90.5px;
+      background-color: $primary_color_gray;
       img{
         object-fit: contain;
-        height: 2.813rem;
+        height: 90px;
         width: 100%;
         &:hover{
           border: 1px solid $primary_color_orange;
+          cursor: pointer;
+          transition: 0.3s ease-in-out;
         }
       }
     }

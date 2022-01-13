@@ -70,13 +70,19 @@ $spec_data = get_featured_homes_spec();
                             <div class="accordion-body">
                                 <section class="about-inner-content">
                                     <header class="accord-header-area">
-                                        <?php $plan_name = get_field('plan_location_plan_name'); ?>
+                                        <?php $plan_name = get_field('plan_name'); ?>
                                         <h1><?php echo esc_html('About'); ?> <?php echo $plan_name; ?></h1>
                                     </header>
                                     <?php echo $plan_description; ?>
                                 </section>
                             </div>
-                            <div class="smart-features-accordion pt-4 pb-5">
+                            <?php
+                                $terms_smart = get_field('plan_smart_features');
+                                $terms_new = get_field('plan_new_features');
+                                $terms_healthy = get_field('plan_healthy_features');
+                            ?>
+                            <?php if($terms_smart && $terms_healthy && $terms_new) : ?>
+                                <div class="smart-features-accordion pt-4 pb-5">
                                 <div class="accordion-body">
                                     <header class="accord-header-area-smart">
                                         <h2>Smart. Healthy. New.</h2>
@@ -136,6 +142,7 @@ $spec_data = get_featured_homes_spec();
                                     </section>
                                 </div>
                             </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endif; ?>

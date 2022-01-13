@@ -241,3 +241,20 @@ section.smart-tech-video{
 .lg-backdrop{
   z-index: 1090 !important;
 }
+
+.floorplan-virtual{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  min-height: 15rem;
+  width: 100%;
+  @include media-breakpoint-between(md, lg){
+    min-height: 23rem;
+  }
+  @include media-breakpoint-between(lg, xl){
+    min-height: 32rem;
+  }
+  @include media-breakpoint-up(xl){
+    min-height: 38rem;
+  }
+}

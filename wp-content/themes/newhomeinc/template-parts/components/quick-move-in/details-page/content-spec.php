@@ -180,7 +180,13 @@
 								<?php echo $subdescription; ?>
 							</section>
 						</div>
-                        <div class="smart-features-accordion pt-4 pb-5">
+						<?php
+                            $terms_smart = get_field('spec_smart_features');
+                            $terms_new = get_field('spec_new_features');
+                            $terms_healthy = get_field('spec_healthy_features');
+						?>
+						<?php if($terms_smart && $terms_healthy && $terms_new) : ?>
+                            <div class="smart-features-accordion pt-4 pb-5">
                             <div class="accordion-body">
                                 <header class="accord-header-area-smart">
                                     <h2>Smart. Healthy. New.</h2>
@@ -240,6 +246,7 @@
                                 </section>
                             </div>
                         </div>
+                        <?php endif; ?>
 					</div>
 				</div>
 			<?php endif; ?>
@@ -433,62 +440,9 @@
 				</div>
 			<?php endif; ?>
 
-
-			<?php
-			$location = get_field('spec_google_map');
-			$homes_get_directions_group = get_field('get_directions');
-			$get_direction_title = $homes_get_directions_group['get_directions_headline'];
-
-			$get_directions_content = $homes_get_directions_group['get_directions_content'];
-			?>
-			<?php if($location && $get_direction_title && $get_directions_content) : ?>
-				<div id="location" class="accordion-item location">
-					<h2 class="accordion-header" id="headingseven">
-						<button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapseseven" aria-expanded="false" aria-controls="collapseseven">
-							<span class="accordion-title">Location</span>
-						</button>
-					</h2>
-					<div id="collapseseven" class="accordion-collapse collapse" aria-labelledby="headingseven" data-bs-parent="#mainDetailAccordionComponent">
-						<div class="accordion-body">
-							<header class="accord-header-area">
-								<h2> Location</h2>
-							</header>
-							<div class="location-component">
-								<div class="row g-0">
-									<div class="col-lg-6">
-										<div class="location-component-map">
-											<?php
-
-											if( $location ): ?>
-												<div class="acf-map" data-zoom="10">
-													<div class="marker" data-lat="<?php echo esc_attr($location['lat']); ?>" data-lng="<?php echo esc_attr($location['lng']); ?>">
-														<a href="https://www.google.com/maps?q=<?php echo esc_attr($location['lat']); ?>,<?php echo esc_attr($location['lng']); ?>" target="_blank">
-															<span class="title">Get Direction to <?php the_title(); ?></span>
-														</a>
-													</div>
-												</div>
-											<?php endif; ?>
-										</div>
-									</div>
-									<div class="col-lg-6">
-										<div class="get-direction-content">
-											<header class="section-header">
-												<div class="inner-header-area">
-													<span class="location-icon"><i class="fas fa-map-marker-alt"></i></span>
-													<span class="location-subtitle">GET DIRECTIONS</span>
-												</div>
-											</header>
-											<div class="main-content">
-												<h6><?php echo $get_direction_title; ?></h6>
-												<?php echo $get_directions_content; ?>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			<?php $location = get_field('spec_google_map'); ?>
+			<?php if($location) : ?>
+				<?php require_once ('content-map.php'); ?>
 			<?php endif; ?>
 		</div>
 	</div>

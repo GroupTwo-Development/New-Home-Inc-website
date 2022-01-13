@@ -28,22 +28,12 @@
 						<span class="spec-area-data"><?php echo $display_min_beds; ?><?php echo $display_max_beds; ?></span>
 					</div>
 					<div class="spec-area-component">
-                        <?php if($display_min_baths && $display_max_baths) : ?>
 						<span class="spec-area-label"><?php echo esc_html('BATHS') ?></span>
-						<span class="spec-area-data"><?php echo $display_min_baths; ?><?php echo $display_max_baths; ?></span>
-                        <?php else : ?>
-                            <span class="spec-area-label"><?php echo esc_html('BATHS') ?></span>
-                            <span class="spec-area-data"><?php echo esc_html('-'); ?></span>
-                        <?php endif; ?>
+						<span class="spec-area-data"><?php echo $display_bath;  ?></span>
 					</div>
 					<div class="spec-area-component">
-                        <?php if($display_sqft) : ?>
-                            <span class="spec-area-label"><?php echo esc_html('SQ FT') ?></span>
-                            <span class="spec-area-data"><?php echo $display_sqft; ?></span>
-                            <?php else : ?>
-                            <span class="spec-area-label"><?php echo esc_html('SQ FT') ?></span>
-                            <span class="spec-area-data"><?php echo esc_html('-'); ?></span>
-                        <?php endif; ?>
+                        <span class="spec-area-label"><?php echo esc_html('SQ FT') ?></span>
+                        <span class="spec-area-data"><?php echo $display_sqft; ?></span>
 					</div>
 					<div class="spec-area-component">
 						<span class="spec-area-label"><?php echo esc_html('GARAGE') ?></span>

@@ -2,7 +2,8 @@
 
     //    $post_community_data = get_post_communities_type('communities', -1);
     global  $count; //Hey WP, refer to that global var in functions!
-    $array_sqft = [];
+    $min_array_sqft = [];
+    $max_array_sqft = [];
     $array_beds_min = [];
     $array_beds_max= [];
     $array_baths_min = [];
@@ -27,19 +28,29 @@
             $max_bedrooms = get_field('max_bedrooms', $plans->ID);
             array_push($array_beds_max, $max_bedrooms);
 
-            $min_baths = get_field('min_baths', $plans->ID);
-            array_push($array_baths_min, $min_baths);
+	        $bathroom_group = get_field('bathrooms', $plans->ID);
 
-            $max_baths = get_field('max_baths', $plans->ID);
-            array_push($array_baths_max, $max_baths);
+	        $min_baths = $bathroom_group['min_baths'];
+	        array_push($array_baths_min, $min_baths);
 
-            $half_baths = get_field('half_baths', $plans->ID);
+	        $max_baths = $bathroom_group['max_baths'];
+	        array_push($array_baths_max, $max_baths);
+
+
+	        $min_half_baths = $bathroom_group['min_half_baths'];
+	        $max_half_baths = $bathroom_group['max_half_baths'];
 
             $base_price = get_field('base_price', $plans->ID);
             array_push($array_price, $base_price);
 
-            $base_sqft = get_field('base_sqft', $plans->ID);
-            array_push($array_sqft, $base_sqft);
+
+	        $base_sqft_group = get_field('base_sqft_group', $plans->ID);
+
+	        $min_base_sqft = $base_sqft_group['min_sqft'];
+	        array_push($min_array_sqft, $min_base_sqft);
+
+	        $max_base_sqft = $base_sqft_group['max_sqft'];
+	        array_push($max_array_sqft, $max_base_sqft);
 
 
             $min_garage_data = get_field('min_garage', $plans->ID);
@@ -88,8 +99,12 @@
     sort($array_baths_min);
     if(!empty($array_baths_min)){
         $min_baths = min($array_baths_min);
+
     }
-    $display_min_baths = ($min_baths) ? '' . $min_baths . esc_html('-') : '';
+
+    $display_min_baths = (!empty($min_half_baths)) ? '' . $min_baths . esc_html('.5') . esc_html('-') :  $min_baths . esc_html('-');
+    $display_only_min_full_half_baths = (!empty($min_half_baths)) ? '' . $min_baths . esc_html('.5') :  $min_baths;
+
 
     //TODO GET MAX BATHS
     $array_baths_max = array_unique($array_baths_max);
@@ -97,18 +112,31 @@
     if(!empty($array_baths_max)){
         $max_baths = max($array_baths_max);
     }
-    $display_max_baths = ($max_baths && $half_baths == 1) ? '' . $max_baths . esc_html('.5') : '';
+    $display_max_baths = (!empty($max_half_baths)) ? '' . $max_baths . esc_html('.5') : $max_baths;
 
-
-
-    //TODO GET MIN and MAX sqft
-    $array_sqft = array_unique($array_sqft);
-    sort($array_sqft);
-    if(!empty(floatval($array_sqft))){
-        $min_sqft = min($array_sqft);
-        $max_sqft = max($array_sqft);
+    if($min_baths && $max_baths){
+        $display_bath = $min_baths . esc_html('-') . $max_baths;
+        if($min_half_baths && $max_half_baths){
+            $display_bath = $min_baths .  esc_html('.5') . esc_html('-') . $max_baths . esc_html('.5');
+        } elseif ($min_half_baths && empty($max_half_baths)){
+            $display_bath = $min_baths .  esc_html('.5') . esc_html('-') . $max_baths;
+        } elseif ($max_half_baths && empty($min_half_baths)){
+            $display_bath = $min_baths . esc_html('-') . $max_baths . esc_html('.5');
+        }
+    }elseif ($min_baths && empty($max_baths)){
+        $display_bath = $min_baths;
+        if($min_half_baths){
+            $display_bath = $min_baths . esc_html('.5');
+        }
+    } elseif ($max_baths && empty($min_baths)){
+        $display_bath = $max_baths;
+        if($max_half_baths) {
+            $display_bath = $max_baths . esc_html('.5');
+        }
+    } else{
+        $display_bath = esc_html('-');
     }
-    $display_sqft = ($array_sqft) ? number_format($min_sqft) . esc_html('-') . number_format($max_sqft) : '';
+
 
     //TODO GET MIN Garage from array
     $array_garage_min = array_unique($array_garage_min);
@@ -152,12 +180,39 @@
 
     $community_floorplans = get_field('community_floorplans');
 
+
+    //TODO GET MIN  sqft
+    $min_array_sqft = array_unique($min_array_sqft);
+    sort($min_array_sqft);
+    if(!empty($min_array_sqft)){
+        $min_sqft = min($min_array_sqft);
+    }
+
+
+    //TODO GET MAX  sqft
+    $max_array_sqft = array_unique($max_array_sqft);
+    sort($max_array_sqft);
+    if(!empty($max_array_sqft)){
+        $max_sqft = max($max_array_sqft);
+    }
+
+    if($min_sqft && $max_sqft){
+        $display_sqft = number_format($min_sqft) . esc_html('-') . number_format($max_sqft);
+    }elseif (!empty($min_sqft) && empty($max_sqft)){
+        $display_sqft = number_format(floatval($min_sqft));
+    } elseif ($max_sqft && empty($min_sqft)){
+        $display_sqft = number_format($max_sqft);
+    } else {
+        $display_sqft = esc_html('-');
+    }
+
+
 ?>
 <?php require_once ('content-coming-soon.php'); ?>
 <?php require_once ('main-detail-content.php'); ?>
 
 
-<div id="main-detail-content-area"  data-aos="fade-up" data-aos-duration="900" data-spy="scroll" data-target="#info-links" data-offset="0">
+<div id="main-detail-content-area" data-bs-offset="-500"  data-aos="fade-up" data-aos-duration="900" data-spy="scroll" data-target="#info-links" data-offset="0">
     <div class="container">
         <div class="accordion accordion-flush" id="mainDetailAccordionComponent">
             <?php if($subdescription) : ?>
@@ -248,7 +303,7 @@
                 </div>
             <?php endif; ?>
             <?php if($community_qmi) : ?>
-                <div class="accordion-item available-homes" id="available-homes">
+                <div class="accordion-item available-homes" id="community_homes">
                 <h2 class="accordion-header" id="headingThree">
                     <button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         <span class="accordion-title">Available Homes</span>
@@ -337,7 +392,7 @@
             <?php endif; ?>
 
 	        <?php if($community_floorplans) : ?>
-                <div class="accordion-item available-floorplans" id="available-floorplans">
+                <div class="accordion-item available-floorplans" id="community_floorplans">
                     <h2 class="accordion-header" id="headingfour">
                         <button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
                             <span class="accordion-title">Floorplans</span>
@@ -414,7 +469,7 @@
             <?php if($community_lot_map_image && $community_lot_map_url) : ?>
                 <div id="community-lot" class="accordion-item community-lot">
                     <h2 class="accordion-header" id="headingsix">
-                        <button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesix" aria-expanded="false" aria-controls="collapsesix">
+                        <button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesixt" aria-expanded="false" aria-controls="collapsesix">
                             <span class="accordion-title">Community Map</span>
                         </button>
                     </h2>

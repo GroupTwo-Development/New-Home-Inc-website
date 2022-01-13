@@ -12,7 +12,7 @@
                  sizes="(max-width: 50em) 100vw, 680px" alt="">
 <!--            <img class="img-fluid" src="--><?php //echo $featured_image['url']; ?><!--"  alt="--><?php //echo $featured_image['alt']; ?><!--"/>-->
             <div id="gallery_zoom-icon" class="gallery-icon">
-                <img src="/wp-content/uploads/2022/01/gallery-zoom-icon.png" class="img-fluid" alt="detail gallery icon" role="img">
+                <img src="https://newhomeinc1dev.wpengine.com/wp-content/uploads/2022/01/icon-camera.png" class="img-fluid" alt="gallery icon" role="img">
             </div>
         </div>
     </div>
