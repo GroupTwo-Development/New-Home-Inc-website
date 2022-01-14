@@ -17686,10 +17686,13 @@ span.coming-soon-status {
   background-color: #000;
   padding: 1rem 0;
 }
+#coming-soon-area .coming-soon-main-area .main-content {
+  text-align: center;
+}
 #coming-soon-area .coming-soon-main-area .main-content p {
   color: #fff;
   text-transform: uppercase;
-  text-align: left;
+  text-align: center;
   font-weight: 600;
 }
 .marker {
@@ -19387,31 +19390,29 @@ section#newsletter .newsletter-content .newsletters-form-area .newsletter-form f
 #colophon .site-footer-address-area ul {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0.5rem 0;
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   justify-content: center;
+  align-content: center;
+  align-items: center;
 }
-#colophon .site-footer-address-area ul li {
-  border-right: 0.5px solid #fc4f00;
-  padding: 0 0.3rem;
-  display: inline-block;
-  font-style: normal;
-  font-weight: 200;
-  font-size: 0.85rem;
-  line-height: 9px;
-  margin: 0.625rem 0;
-}
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  #colophon .site-footer-address-area ul li {
-    line-height: 0.95rem;
+@media (min-width: 992px) {
+  #colophon .site-footer-address-area ul {
+    flex-flow: row;
+    justify-content: flex-start;
+    align-content: center;
+    width: 100%;
   }
-}
-#colophon .site-footer-address-area ul li:last-child {
-  border-right: 0;
-}
-#colophon .site-footer-address-area ul li span {
-  display: block;
+  #colophon .site-footer-address-area ul li {
+    border-right: 0.5px solid #fc4f00;
+    margin-right: 0.5rem;
+  }
+  #colophon .site-footer-address-area ul li:last-child {
+    margin-right: 0;
+    border-right: 0;
+    margin-left: 0.5rem;
+  }
 }
 #colophon .site-footer-social-media {
   position: relative;

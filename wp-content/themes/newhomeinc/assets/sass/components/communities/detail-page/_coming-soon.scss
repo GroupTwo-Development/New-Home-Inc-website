@@ -18,10 +18,11 @@
     background-color: $primary_color_black;
     padding: 1rem 0;
     .main-content{
+      text-align: center;
      p{
        color: $primary_color_white;
        text-transform: uppercase;
-       text-align: left;
+       text-align: center;
        font-weight: 600;
      }
       .contact-form-area{

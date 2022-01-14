@@ -3,6 +3,30 @@ import Splide from '@splidejs/splide';
 const featuredHome = {
 	init() {
 		document.addEventListener( 'DOMContentLoaded', function() {
+			new Splide( '#community_floorplan', {
+				perPage: 3,
+				type: 'slide',
+				focus: 'center',
+				arrows: true,
+				gap: '6px',
+				breakpoints: {
+					992: {
+						perPage: 2,
+						// gap: '0.5rem',
+					},
+					768: {
+						perPage: 2,
+						// gap: '0.5rem',
+					},
+					640: {
+						perPage: 1,
+						// gap: '0.5rem',
+					},
+				},
+			} ).mount();
+		} );
+
+		document.addEventListener( 'DOMContentLoaded', function() {
 			new Splide( '#card-slider', {
 				perPage: 3,
 				type: 'slide',
@@ -48,33 +72,10 @@ const featuredHome = {
 		} );
 
 		document.addEventListener( 'DOMContentLoaded', function() {
-			new Splide( '#community_floorplan', {
+			new Splide( '#homes_floorplan', {
 				perPage: 3,
 				type: 'slide',
 				focus: 'center',
-				arrows: true,
-				// gap: '0.3rem',
-				breakpoints: {
-					992: {
-						perPage: 2,
-						gap: '0.5rem',
-					},
-					768: {
-						perPage: 2,
-						gap: '0.5rem',
-					},
-					640: {
-						perPage: 1,
-						gap: '0.5rem',
-					},
-				},
-			} ).mount();
-		} );
-
-		document.addEventListener( 'DOMContentLoaded', function() {
-			new Splide( '#homes_floorplan', {
-				perPage: 3,
-				type: 'loop',
 				arrows: true,
 				gap: '0.3rem',
 				breakpoints: {
@@ -97,7 +98,8 @@ const featuredHome = {
 		document.addEventListener( 'DOMContentLoaded', function() {
 			new Splide( '#card-slider-2', {
 				perPage: 3,
-				type: 'loop',
+				type: 'slide',
+				focus: 'center',
 				arrows: true,
 				gap: '2rem',
 				breakpoints: {

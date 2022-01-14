@@ -32611,6 +32611,29 @@ __webpack_require__.r(__webpack_exports__);
 var featuredHome = {
   init: function init() {
     document.addEventListener('DOMContentLoaded', function () {
+      new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#community_floorplan', {
+        perPage: 3,
+        type: 'slide',
+        focus: 'center',
+        arrows: true,
+        gap: '6px',
+        breakpoints: {
+          992: {
+            perPage: 2 // gap: '0.5rem',
+
+          },
+          768: {
+            perPage: 2 // gap: '0.5rem',
+
+          },
+          640: {
+            perPage: 1 // gap: '0.5rem',
+
+          }
+        }
+      }).mount();
+    });
+    document.addEventListener('DOMContentLoaded', function () {
       new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#card-slider', {
         perPage: 3,
         type: 'slide',
@@ -32654,32 +32677,10 @@ var featuredHome = {
       }).mount();
     });
     document.addEventListener('DOMContentLoaded', function () {
-      new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#community_floorplan', {
+      new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#homes_floorplan', {
         perPage: 3,
         type: 'slide',
         focus: 'center',
-        arrows: true,
-        // gap: '0.3rem',
-        breakpoints: {
-          992: {
-            perPage: 2,
-            gap: '0.5rem'
-          },
-          768: {
-            perPage: 2,
-            gap: '0.5rem'
-          },
-          640: {
-            perPage: 1,
-            gap: '0.5rem'
-          }
-        }
-      }).mount();
-    });
-    document.addEventListener('DOMContentLoaded', function () {
-      new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#homes_floorplan', {
-        perPage: 3,
-        type: 'loop',
         arrows: true,
         gap: '0.3rem',
         breakpoints: {
@@ -32701,7 +32702,8 @@ var featuredHome = {
     document.addEventListener('DOMContentLoaded', function () {
       new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#card-slider-2', {
         perPage: 3,
-        type: 'loop',
+        type: 'slide',
+        focus: 'center',
         arrows: true,
         gap: '2rem',
         breakpoints: {

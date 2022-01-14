@@ -43,7 +43,9 @@
 				<hr class="spec-area-hr">
 			</div>
 			<div class="col-lg-6 col-md-6">
-				<?php $anticipated_sales_opening = get_field('anticipated_sales_opening');
+				<?php
+                $coming_soon_content_area_group = get_field('coming_soon_content_area');
+                $anticipated_sales_opening = $coming_soon_content_area_group['anticipated_sales_opening'];
              
                 ?>
                 <?php $coming_soon_community = get_field('coming_soon_community'); ?>
