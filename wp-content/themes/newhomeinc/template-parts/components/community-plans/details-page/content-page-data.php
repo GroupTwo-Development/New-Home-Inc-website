@@ -52,4 +52,6 @@ $spec_data = get_featured_homes_spec();
 $spec_virtual_tour_group = get_field('virtual_tour');
 $spec_virtual_tour_url = $spec_virtual_tour_group['virtualtour_url'];
 
+$plan_location_plan_name = get_field('plan_location_plan_name');
+
 ?>

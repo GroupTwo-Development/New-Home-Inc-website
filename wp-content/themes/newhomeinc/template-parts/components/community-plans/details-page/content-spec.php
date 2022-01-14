@@ -17,7 +17,7 @@
                         <div class="accordion-body">
                             <section class="about-inner-content">
                                 <header class="accord-header-area">
-                                    <h1><?php echo esc_html('About'); ?> <?php the_title(); ?></h1>
+                                    <h1><?php echo esc_html('About'); ?> <?php echo $plan_location_plan_name; ?></h1>
                                 </header>
 								<?php echo $plan_description; ?>
                             </section>

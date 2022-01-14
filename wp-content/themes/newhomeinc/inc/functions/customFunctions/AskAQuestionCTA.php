@@ -61,7 +61,7 @@ class globalCta{
                                 </li>
                                 <li>
 									<?php if($email) : ?>
-                                        <a href="mailto:<?php echo $email; ?>">
+                                        <a data-bs-toggle="modal" href="#ctamodal">
                                             <span class="phone-icon aaq-option-icon"><i class="fas fa-envelope"></i></span>
                                             <span class="aaq-text">Email</span>
                                         </a>
@@ -97,7 +97,7 @@ class globalCta{
                         </a>
                     </li>
                     <li class="email">
-                        <a href="mailto:<?php echo $email; ?>">
+                        <a data-bs-toggle="modal" href="#ctamodal">
                             <span><i class="fas fa-envelope"></i></span>
                             <span class="title">Email</span>
                         </a>
