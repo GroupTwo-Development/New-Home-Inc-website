@@ -57,8 +57,8 @@ add_action( 'wp_head', function() {
 function homes_archive_per_page( $query ) {
 	if( $query->is_main_query()  && is_post_type_archive( 'homes' ) ) {
 		$query->set( 'posts_per_page', '-1' );
-		$query->set( 'orderby', 'title' );
-		$query->set( 'order', 'DESC' );
+		$query->set( 'orderby', 'publish_date' );
+		$query->set( 'order', 'ASC' );
 	}
 }
 add_filter( 'pre_get_posts', 'homes_archive_per_page' );
@@ -66,8 +66,8 @@ add_filter( 'pre_get_posts', 'homes_archive_per_page' );
 function home_design_archive_per_page( $query ) {
 	if( $query->is_main_query()  && is_post_type_archive( 'home-design' ) ) {
 		$query->set( 'posts_per_page', '-1' );
-		$query->set( 'orderby', 'title' );
-		$query->set( 'order', 'DESC' );
+		$query->set( 'orderby', 'date' );
+		$query->set( 'order', 'ASC' );
 	}
 }
 add_filter( 'pre_get_posts', 'home_design_archive_per_page' );
@@ -197,7 +197,8 @@ add_filter( 'facetwp_sort_options', function( $options, $params ) {
 			    'order' => 'DESC',
 		    ]
 	    ];
-	    unset( $options['title_desc'] );
+	    unset( $options['default'] );
+        unset( $options['title_desc'] );
 	    unset( $options['date_desc'] );
 	    unset( $options['date_asc'] );
     } else if(is_post_type_archive('home-design')){
