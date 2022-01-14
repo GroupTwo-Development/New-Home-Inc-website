@@ -32613,7 +32613,8 @@ var featuredHome = {
     document.addEventListener('DOMContentLoaded', function () {
       new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#card-slider', {
         perPage: 3,
-        type: 'loop',
+        type: 'slide',
+        focus: 'center',
         arrows: true,
         gap: '6px',
         breakpoints: {
@@ -32632,7 +32633,8 @@ var featuredHome = {
     document.addEventListener('DOMContentLoaded', function () {
       new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#card-slider-qmi', {
         perPage: 3,
-        type: 'loop',
+        type: 'slide',
+        focus: 'center',
         arrows: true,
         // gap: '0.3rem',
         breakpoints: {
@@ -32656,7 +32658,6 @@ var featuredHome = {
         perPage: 3,
         type: 'slide',
         focus: 'center',
-        trimSpace: true,
         arrows: true,
         // gap: '0.3rem',
         breakpoints: {

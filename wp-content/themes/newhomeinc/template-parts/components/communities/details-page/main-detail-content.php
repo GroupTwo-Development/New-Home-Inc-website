@@ -43,12 +43,16 @@
 				<hr class="spec-area-hr">
 			</div>
 			<div class="col-lg-6 col-md-6">
+				<?php $anticipated_sales_opening = get_field('anticipated_sales_opening');
+             
+                ?>
                 <?php $coming_soon_community = get_field('coming_soon_community'); ?>
 				<div class="detail-page-cta-area">
 					<?php if($coming_soon_community == 'yes') :  ?>
+
 					    <div class="detail-page-cta-inner">
 						<h6>ANTICIPATED SALES OPENING</h6>
-                        <span class="coming-soon-status">SUMMER 2021</span>
+                        <span class="coming-soon-status"><?php echo $anticipated_sales_opening; ?></span>
 					</div>
                     <?php else : ?>
                         <div class="detail-page-cta-inner">

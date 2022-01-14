@@ -5,8 +5,9 @@ $plan_description = get_field('plan_description');
 
 
 
-$interactive_floorplan_group = get_field('interactive_home_design_floorplan');
-$floorplan_gallery = $interactive_floorplan_group['interactive_floorplan_covered_image'];
+$interactive_floorplan_group = get_field('interactive_floorplan');
+
+$floorplan_gallery = $interactive_floorplan_group['interactive_floorplan_gallery'];
 $floorplan_url = $interactive_floorplan_group['interactive_floorplan_url'];
 
 
@@ -30,7 +31,7 @@ $get_directions_content = $homes_get_directions_group['get_directions_content'];
 $elevation_image = get_field('elevation_image');
 
 ?>
-<?php //if($plan_description || $floorplan_gallery || $spec_virtual_tour_image || $home_design_video) : ?>
+<?php if($plan_description || $floorplan_gallery || $spec_virtual_tour_image || $home_design_video || $floorplan_url ) : ?>
     <nav id="info-links" class="info-links">
         <div class="container">
             <div class="info-links-component">
@@ -55,5 +56,5 @@ $elevation_image = get_field('elevation_image');
             </div>
         </div>
     </nav>
-
+<?php endif; ?>
 

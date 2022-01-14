@@ -94,7 +94,8 @@
                 </div>
 			<?php endif; ?>
 
-			<?php if($floorplan_gallery) : ?>
+			<?php
+            if($floorplan_gallery) : ?>
 				<?php require_once ('content-plans.php'); ?>
 			<?php endif; ?>
 

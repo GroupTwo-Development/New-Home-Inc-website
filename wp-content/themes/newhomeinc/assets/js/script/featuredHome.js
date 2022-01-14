@@ -5,7 +5,8 @@ const featuredHome = {
 		document.addEventListener( 'DOMContentLoaded', function() {
 			new Splide( '#card-slider', {
 				perPage: 3,
-				type: 'loop',
+				type: 'slide',
+				focus: 'center',
 				arrows: true,
 				gap: '6px',
 				breakpoints: {
@@ -25,7 +26,8 @@ const featuredHome = {
 		document.addEventListener( 'DOMContentLoaded', function() {
 			new Splide( '#card-slider-qmi', {
 				perPage: 3,
-				type: 'loop',
+				type: 'slide',
+				focus: 'center',
 				arrows: true,
 				// gap: '0.3rem',
 				breakpoints: {
@@ -50,7 +52,6 @@ const featuredHome = {
 				perPage: 3,
 				type: 'slide',
 				focus: 'center',
-				trimSpace: true,
 				arrows: true,
 				// gap: '0.3rem',
 				breakpoints: {

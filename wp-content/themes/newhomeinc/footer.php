@@ -12,7 +12,7 @@
 ?>
 
 <?php
-    if(!is_post_type_archive('communities') && !is_post_type_archive('floorplans') && !is_archive() && !is_singular('communities') && !is_singular('homes') && !is_singular('home-design')  && !is_singular('homes') && !is_page_template('page-homes-map.php') && !is_page_template('page-communities-map.php')){
+    if(!is_post_type_archive('communities') && !is_post_type_archive('floorplans') && !is_archive() && !is_singular('communities') && !is_singular('homes') && !is_singular('home-design')  && !is_singular('homes') && !is_page_template('page-homes-map.php') && !is_page_template('page-communities-map.php') && !is_singular('floorplan')){
 	    get_template_part('template-parts/components/global/footer/footer-cta');
     }
 ?>
