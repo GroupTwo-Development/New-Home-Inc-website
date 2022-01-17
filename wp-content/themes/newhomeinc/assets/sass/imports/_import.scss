@@ -11,11 +11,11 @@ a[data-fancybox] img {
 }
 
 .fancybox__container {
-  --fancybox-thumbs-border-radius: 50%;
-  --fancybox-thumbs-ratio: 1;
+  //--fancybox-thumbs-border-radius: 50%;
+  //--fancybox-thumbs-ratio: 1;
+  //
+  //--fancybox-thumbs-width: 50px;
+  //--fancybox-thumbs-height: 50px;
 
-  --fancybox-thumbs-width: 50px;
-  --fancybox-thumbs-height: 50px;
-
-  --fancybox-accent-color: #F472B6;
+  --fancybox-accent-color: $primary_color_orange;
 }

@@ -57,8 +57,8 @@ add_action( 'wp_head', function() {
 function homes_archive_per_page( $query ) {
 	if( $query->is_main_query()  && is_post_type_archive( 'homes' ) ) {
 		$query->set( 'posts_per_page', '-1' );
-		$query->set( 'orderby', 'publish_date' );
-		$query->set( 'order', 'ASC' );
+		$query->set( 'orderby', 'title' );
+		$query->set( 'order', 'DESC' );
 	}
 }
 add_filter( 'pre_get_posts', 'homes_archive_per_page' );
@@ -66,8 +66,8 @@ add_filter( 'pre_get_posts', 'homes_archive_per_page' );
 function home_design_archive_per_page( $query ) {
 	if( $query->is_main_query()  && is_post_type_archive( 'home-design' ) ) {
 		$query->set( 'posts_per_page', '-1' );
-		$query->set( 'orderby', 'date' );
-		$query->set( 'order', 'ASC' );
+		$query->set( 'orderby', 'title' );
+		$query->set( 'order', 'DESC' );
 	}
 }
 add_filter( 'pre_get_posts', 'home_design_archive_per_page' );
@@ -157,111 +157,10 @@ function posts_archive_per_page( $query ) {
 	if( is_home() && $query->is_main_query()) {
         $query->set('post_type', ['post']);
 		$query->set( 'posts_per_page', '6' );
-		$query->set( 'orderby', 'date' );
-		$query->set( 'order', 'DESC' );
+		$query->set( 'orderby', 'title' );
+		$query->set( 'order', 'ASC' );
 	}
 }
 add_filter( 'pre_get_posts', 'posts_archive_per_page' );
 
-
-
-
-add_filter( 'facetwp_sort_options', function( $options, $params ) {
-    if(is_post_type_archive('homes')){
-
-	    $options['homes_price_DESC'] = [
-		    'label' => 'Price (High to Low)',
-		    'query_args' => [
-			    'post_type' => 'homes',
-			    'orderby' => 'meta_value_num',
-			    'meta_key' => 'spec_price',
-			    'order' => 'DESC',
-		    ]
-	    ];
-	    $options['homes_price'] = [
-		    'label' => 'Price (Low to High)',
-		    'query_args' => [
-			    'post_type' => 'homes',
-			    'orderby' => 'meta_value_num',
-			    'meta_key' => 'spec_price',
-			    'order' => 'ASC',
-		    ]
-	    ];
-
-	    $options['homes_sqft'] = [
-		    'label' => 'Square Feet',
-		    'query_args' => [
-			    'post_type' => 'homes',
-			    'orderby' => 'meta_value_num',
-			    'meta_key' => 'spec_sqft',
-			    'order' => 'DESC',
-		    ]
-	    ];
-	    unset( $options['default'] );
-        unset( $options['title_desc'] );
-	    unset( $options['date_desc'] );
-	    unset( $options['date_asc'] );
-    } else if(is_post_type_archive('home-design')){
-	    $options['title_asc'] = [
-		    'label' => __( 'Plan Name (A-Z)', 'fwp' ),
-		    'query_args' => [
-			    'orderby' => 'title',
-			    'order' => 'ASC',
-		    ]
-	    ];
-	    $options['base_price'] = [
-		    'label' => 'Price (High to Low)',
-		    'query_args' => [
-			    'post_type' => 'home-design',
-			    'orderby' => 'meta_value_num',
-			    'meta_key' => 'base_price',
-			    'order' => 'DESC',
-		    ]
-	    ];
-	    $options['base_price_ASC'] = [
-		    'label' => 'Price (Low to High)',
-		    'query_args' => [
-			    'post_type' => 'home-design',
-			    'orderby' => 'meta_value_num',
-			    'meta_key' => 'base_price',
-			    'order' => 'ASC',
-		    ]
-	    ];
-
-	    $options['plans_base_sqft'] = [
-		    'label' => 'Square Feet',
-		    'query_args' => [
-			    'post_type' => 'home-design',
-			    'orderby' => 'meta_value_num',
-			    'meta_key' => 'base_sqft',
-			    'order' => 'DESC',
-		    ]
-	    ];
-	    unset( $options['title_desc'] );
-        unset( $options['default'] );
-	    unset( $options['date_desc'] );
-	    unset( $options['date_asc'] );
-
-    } else if(is_post_type_archive('communities')){
-//	    $options['community_base_price'] = [
-//		    'label' => 'Price (High to Low)',
-//		    'query_args' => [
-//			    'post_type' => 'floorplan',
-//			    'orderby' => 'meta_value_num',
-//			    'meta_key' => 'base_price',
-//			    'order' => 'DESC',
-//		    ]
-//	    ];
-    }
-//	unset( $options['title_desc'] );
-//	unset( $options['date_desc'] );
-//	unset( $options['date_asc'] );
-	return $options;
-}, 10, 2 );
-
-
-remove_filter( 'pre_term_description', 'wp_filter_kses' );
-remove_filter( 'pre_link_description', 'wp_filter_kses' );
-remove_filter( 'pre_link_notes', 'wp_filter_kses' );
-remove_filter( 'term_description', 'wp_kses_data' );
 

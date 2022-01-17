@@ -5,6 +5,8 @@ $plan_description = get_field('plan_description');
 
 
 
+
+
 $interactive_floorplan_group = get_field('interactive_home_design_floorplan');
 $floorplan_gallery = $interactive_floorplan_group['interactive_floorplan_covered_image'];
 $floorplan_url = $interactive_floorplan_group['interactive_floorplan_url'];
@@ -13,7 +15,6 @@ $floorplan_url = $interactive_floorplan_group['interactive_floorplan_url'];
 
 
 $spec_virtual_tour_group = get_field('virtual_tour');
-$spec_virtual_tour_image = $spec_virtual_tour_group['virtual_tour_covered_image'];
 $spec_virtual_tour_url = $spec_virtual_tour_group['virtualtour_url'];
 
 
@@ -30,18 +31,18 @@ $get_directions_content = $homes_get_directions_group['get_directions_content'];
 $elevation_image = get_field('elevation_image');
 
 ?>
-<?php if($plan_description && $floorplan_gallery && $spec_virtual_tour_image && $home_design_video && $elevation_image) : ?>
+<?php if($plan_description || $floorplan_gallery || $spec_virtual_tour_image || $home_design_video || $elevation_image) : ?>
     <nav id="info-links" class="info-links">
         <div class="container">
             <div class="info-links-component">
 				<?php if($plan_description) :  ?>
                     <a href="#about-content-area" class="overview nav-info-link">ABOUT</a>
 				<?php endif; ?>
-				<?php if($floorplan_gallery && $floorplan_url) :  ?>
+				<?php if($floorplan_gallery || $floorplan_url) :  ?>
                     <a href="#available-floorplans" id="" class="homes nav-info-link">FLOORPLANS</a>
 				<?php endif; ?>
 
-				<?php if($spec_virtual_tour_image && $spec_virtual_tour_url) : ?>
+				<?php if($spec_virtual_tour_url) : ?>
                     <a href="#community-lot" id="" class="community-map nav-info-link">Virtual Tour</a>
 				<?php endif; ?>
 

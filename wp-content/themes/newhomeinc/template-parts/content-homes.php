@@ -27,7 +27,7 @@ $spec_data = get_featured_homes_spec();
     $community_gallery = get_field('gallery');
     $featured_image = get_field('featured_image');
     $call_for_pricing_phone = get_field('phone_number', 'option');
-    $comm_banner_announcement = get_field('announcement');
+
     $google_map = get_field('spec_google_map');
       if($google_map) :
 
@@ -125,17 +125,20 @@ $spec_data = get_featured_homes_spec();
     }
     $display_sqft = ($array_sqft) ? number_format($min_sqft) . esc_html('-') . number_format($max_sqft) : '';
 
+    $comm_banner_announcement = get_field('announcement');
+    $home_statu = get_field('spec_status');
+    if($home_statu){
+        $display_banner_status  = '<div class="card-banner-announcement"><span class="announcement">' . $home_statu . '</span></div>';
+    }elseif ($comm_banner_announcement && empty($home_statu)){
+	    $display_banner_status  = '<div class="card-banner-announcement"><span class="announcement">' . $comm_banner_announcement . '</span></div>';
+    }
 ?>
 
 <div class="col-md-6 col-lg-6 col-xl-4">
     <div id="main-spec"  id="post-<?php the_ID(); ?> <?php echo $coming_soon_class; ?>" <?php post_class(); ?>>
             <div class="card <?php echo $coming_soon_class; ?>">
                 <div class="card-inner">
-                    <?php if($comm_banner_announcement) : ?>
-                        <div class="card-banner-announcement">
-                            <span class="announcement"><?php echo $comm_banner_announcement; ?></span>
-                        </div>
-                    <?php endif; ?>
+                        <?php echo $display_banner_status;  ?>
                     <div class="card-img">
                         <?php community_gallery('gallery', 'featured_image') ?>
                     </div>

@@ -12454,11 +12454,7 @@ a[data-fancybox] img {
 }
 
 .fancybox__container {
-  --fancybox-thumbs-border-radius: 50%;
-  --fancybox-thumbs-ratio: 1;
-  --fancybox-thumbs-width: 50px;
-  --fancybox-thumbs-height: 50px;
-  --fancybox-accent-color: #F472B6;
+  --fancybox-accent-color: $primary_color_orange;
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -15805,16 +15801,6 @@ section.main-filter-components .qmi-filter-components .main-map-view-component {
 
 #main-detail-content-area {
   position: relative;
-}
-#main-detail-content-area .ScrollTarget {
-  position: absolute;
-  display: block;
-  top: -265px;
-}
-#main-detail-content-area .ScrollTarget-2 {
-  position: absolute;
-  display: block;
-  top: -100px;
 }
 
 nav.info-links {

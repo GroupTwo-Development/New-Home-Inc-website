@@ -243,43 +243,10 @@ $spec_data = get_featured_homes_spec();
 
                 <?php
                     $spec_virtual_tour_group = get_field('virtual_tour');
-                    $spec_virtual_tour_image = $spec_virtual_tour_group['virtual_tour_covered_image'];
                     $spec_virtual_tour_url = $spec_virtual_tour_group['virtualtour_url'];
                 ?>
-                <?php if($spec_virtual_tour_image && $spec_virtual_tour_url) : ?>
-                    <div id="community-lot" class="accordion-item community-lot">
-                        <h2 class="accordion-header" id="headingsix">
-                            <button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesix" aria-expanded="false" aria-controls="collapsesix">
-                                <span class="accordion-title">Virtual Tour</span>
-                            </button>
-                        </h2>
-                        <div id="collapsesix" class="accordion-collapse collapse" aria-labelledby="headingsix" data-bs-parent="#mainDetailAccordionComponent">
-                            <div class="accordion-body">
-                                <header class="accord-header-area">
-                                    <h2>Virtual Tour</h2>
-                                </header>
-                                <div class="community_map-component">
-
-                                    <a
-                                        href="javascript:void(0)"
-                                        data-iframe="true"
-                                        id="virtual-tour-url"
-                                        data-src="<?php echo $spec_virtual_tour_url?>"
-                                    >
-                                        <img
-                                            class="img-fluid"
-                                            src="<?php echo $spec_virtual_tour_image['url']; ?>"
-                                            alt="<?php echo $spec_virtual_tour_image['alt']; ?>"
-                                        />
-                                        <div class="overlay-area">
-                                            <span class="overlay-title">Click to view in full screen.</span>
-                                        </div>
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <?php if($spec_virtual_tour_url) : ?>
+	                <?php require_once ('content-virtual-tour.php'); ?>
                 <?php endif; ?>
 
                 <?php
@@ -337,35 +304,7 @@ $spec_data = get_featured_homes_spec();
 
                 <?php $elevation_image = get_field('elevation_image'); ?>
                 <?php if($elevation_image) : ?>
-                    <div id="elevation" class="accordion-item location elevation-gallery">
-                        <h2 class="accordion-header" id="headingseven">
-                            <button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapseseven" aria-expanded="false" aria-controls="collapseseven">
-                                <span class="accordion-title">Elevation</span>
-                            </button>
-                        </h2>
-                        <div id="collapseseven" class="accordion-collapse collapse" aria-labelledby="headingseven" data-bs-parent="#mainDetailAccordionComponent">
-                            <div class="accordion-body">
-                                <header class="accord-header-area">
-                                    <h2> Elevation</h2>
-                                </header>
-                                <div class="elevation-component">
-                                    <div class="row g-0">
-                                        <div class="col-lg-12">
-                                            <div class="elevation-gallery-area pt-2 pb-3">
-                                                <div class="flex flex-wrap gap-5 justify-center max-w-5xl mx-auto px-6 elevation-gallery-item">
-                                                    <?php  foreach ($elevation_image as $single_image) : ?>
-                                                        <a data-fancybox="gallery" href="<?php echo esc_url($single_image['url']); ?>">
-                                                            <img class="rounded" src="<?php echo esc_url($single_image['sizes']['thumbnail']); ?>"  alt="<?php echo $single_image['alt']; ?>"/>
-                                                        </a>
-                                                    <?php endforeach; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+	                <?php require_once ('content-elevation.php'); ?>
                 <?php endif; ?>
             </div>
         </div>

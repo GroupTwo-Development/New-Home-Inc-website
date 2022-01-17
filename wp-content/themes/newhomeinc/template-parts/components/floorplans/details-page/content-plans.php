@@ -18,7 +18,7 @@
                     $floorplan_gallery = $interactive_floorplan_group['interactive_floorplan_covered_image'];
                     $floorplan_url = $interactive_floorplan_group['interactive_floorplan_url'];
                 ?>
-				<?php if( $floorplan_gallery ): ?>
+				<?php if( $floorplan_gallery || $floorplan_url ): ?>
 					<div id="homes-floorplan-gallery" class="homes-floorplan-gallery">
 						<ul class="homes_floorplan_gallery_ele">
 							<?php foreach( $floorplan_gallery as $image ): ?>

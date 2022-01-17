@@ -87,7 +87,7 @@
     $get_min_garage = get_field('min_garage');
     $get_max_garage = get_field('max_garage');
      if($get_min_garage && $get_max_garage){
-         $display_garage = $get_min_garage . esc_html('-') . $get_max_garage. esc_html( 'Car' );
+         $display_garage = $get_min_garage . esc_html('-') . $get_max_garage . esc_html( 'Car' );
      }elseif ($get_min_garage && empty($get_max_garage)){
          $display_garage = $get_min_garage . esc_html( 'Car' );
      } elseif ($get_max_garage && empty($get_min_garage)){
