@@ -204,25 +204,25 @@ $post_id = $post->ID;
 <?php
     $home_design_contact_form = get_field('home_design_contact_form');
     $site_modal_contact_form = get_field('site_modal_contact_form', 'option');
+    if($home_design_contact_form){
+        $display_contact_form = $home_design_contact_form;
+    }elseif ($site_modal_contact_form && empty($home_design_contact_form)){
+        $display_contact_form = $site_modal_contact_form;
+    }elseif ($home_design_contact_form && $site_modal_contact_form){
+	    $display_contact_form = $home_design_contact_form;
+    }
+
+
 ?>
 
-<?php if($home_design_contact_form) : ?>
+
 	<div id="dialog-content" style="display:none;max-width:500px;">
 		<header>
 			<h6><?php echo the_title(); ?></h6>
 		</header>
 		<hr>
-		<?php echo $home_design_contact_form; ?>
+		<?php echo $display_contact_form; ?>
 		<hr>
 	</div>
-<?php else: ?>
-    <div id="dialog-content" style="display:none;max-width:500px;">
-        <header>
-            <h6><?php echo the_title(); ?></h6>
-        </header>
-        <hr>
-		<?php echo $site_modal_contact_form; ?>
-        <hr>
-    </div>
-<?php endif; ?>
+
 

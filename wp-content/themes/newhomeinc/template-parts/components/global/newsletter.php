@@ -11,7 +11,7 @@
                     </div>
                     <div class="newsletter-form">
 <!--                        [contact-form-7 id="1633" title="NewsLetter"]-->
-					    <?php echo do_shortcode('[hubspot type=form portal=19648772 id=33f4a52f-11d5-4cb6-8c3d-2df4a404c084]'); ?>
+					    <?php echo do_shortcode('[hubspot type="form" portal="19648772" id="33f4a52f-11d5-4cb6-8c3d-2df4a404c084"]'); ?>
                     </div>
                 </div>
             </div>

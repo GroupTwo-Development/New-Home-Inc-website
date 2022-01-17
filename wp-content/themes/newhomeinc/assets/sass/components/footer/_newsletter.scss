@@ -7,12 +7,13 @@ section#newsletter{
     padding-top: 4rem;
   }
   .newsletter-content{
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+    //display: flex;
+    //flex-flow: column;
+    //justify-content: center;
+    //align-content: center;
+    //align-items: center;
     width: 100%;
+
     @include media-breakpoint-up(lg){
       justify-content: flex-start;
       align-items: baseline;
@@ -50,80 +51,123 @@ section#newsletter{
       }
       .newsletter-form{
         position: relative;
-        form{
-          .newsletter{
-            padding-bottom: 1rem;
-            display: flex;
-            flex-flow: column;
-            justify-content: space-between;
-            align-items: center;
-            align-content: center;
-            @include media-breakpoint-up(lg){
-              flex-flow: row;
-            }
-            .newsletter-item{
-              margin-bottom: 1.3rem;
-              @include media-breakpoint-up(lg){
-                width: 33.33%;
-                margin-right: 0.7rem;
-                &:last-child{
-                  margin-right: 0;
-                }
-              }
-              input{
-                border-radius: 0;
-                background-color: transparent;
-                border: 0;
-                border-bottom: 0.5px solid $primary_color_orange !important;
-                color: $primary_color_white;
-                @include media-breakpoint-up(lg){
-                  padding-bottom: 20px;
-                }
-                &::placeholder{
-                  color: $primary_color_white;
-                  text-transform: capitalize;
-                  font-family: $font__main;
-                  font-weight: 200;
-                }
-                &:focus{
-                  outline: none !important;
-                  border: 0;
-                  box-shadow: none;
-                  border-bottom: 1px solid $primary_color_orange !important;
-                }
-                &:focus-visible{
-                  outline: none;
-                  border: 0;
-                }
-              }
-            }
+        iframe{
+          input#firstname-33f4a52f-11d5-4cb6-8c3d-2df4a404c084 {
+            border-top: 0;
+            background: transparent;
           }
-          p{
-            display: block;
-            input.wpcf7-submit{
-              border: 2px solid $primary_color_orange;
+          form{
+            input#firstname-33f4a52f-11d5-4cb6-8c3d-2df4a404c084{
+              border-radius: 0;
               background-color: transparent;
-              border-radius: 25px;
+              border: 0;
+              border-bottom: 0.5px solid $primary_color_orange !important;
               color: $primary_color_white;
-              text-align: center;
-              width: 127px;
-              height: 43px;
-              text-transform: uppercase;
-              margin: 0 auto;
-              display: block;
               @include media-breakpoint-up(lg){
-                margin: auto 30px auto auto;
-                width: 160px;
+                padding-bottom: 20px;
               }
-              &:hover{
-                background-color: $primary_color_white;
-                color: $primary_color_orange;
+              &::placeholder{
+                color: $primary_color_white;
+                text-transform: capitalize;
+                font-family: $font__main;
+                font-weight: 200;
+              }
+              &:focus{
+                outline: none !important;
+                border: 0;
+                box-shadow: none;
+                border-bottom: 1px solid $primary_color_orange !important;
+              }
+              &:focus-visible{
+                outline: none;
+                border: 0;
               }
             }
           }
         }
+        //form{
+        //  .newsletter{
+        //    padding-bottom: 1rem;
+        //    //display: flex;
+        //    //flex-flow: column;
+        //    //justify-content: space-between;
+        //    //align-items: center;
+        //    //align-content: center;
+        //    @include media-breakpoint-up(lg){
+        //      flex-flow: row;
+        //    }
+        //    input.hs-input{
+        //      border-radius: 0;
+        //      background-color: transparent;
+        //      border: 0;
+        //      border-bottom: 0.5px solid $primary_color_orange !important;
+        //      color: $primary_color_white;
+        //      @include media-breakpoint-up(lg){
+        //        padding-bottom: 20px;
+        //      }
+        //      &::placeholder{
+        //        color: $primary_color_white;
+        //        text-transform: capitalize;
+        //        font-family: $font__main;
+        //        font-weight: 200;
+        //      }
+        //      &:focus{
+        //        outline: none !important;
+        //        border: 0;
+        //        box-shadow: none;
+        //        border-bottom: 1px solid $primary_color_orange !important;
+        //      }
+        //      &:focus-visible{
+        //        outline: none;
+        //        border: 0;
+        //      }
+        //    }
+        //    //.newsletter-item{
+        //    //  margin-bottom: 1.3rem;
+        //    //  @include media-breakpoint-up(lg){
+        //    //    width: 33.33%;
+        //    //    margin-right: 0.7rem;
+        //    //    &:last-child{
+        //    //      margin-right: 0;
+        //    //    }
+        //    //  }
+        //    //
+        //    //}
+        //  }
+        //  p{
+        //    display: block;
+        //    input.wpcf7-submit{
+        //      border: 2px solid $primary_color_orange;
+        //      background-color: transparent;
+        //      border-radius: 25px;
+        //      color: $primary_color_white;
+        //      text-align: center;
+        //      width: 127px;
+        //      height: 43px;
+        //      text-transform: uppercase;
+        //      margin: 0 auto;
+        //      display: block;
+        //      @include media-breakpoint-up(lg){
+        //        margin: auto 30px auto auto;
+        //        width: 160px;
+        //      }
+        //      &:hover{
+        //        background-color: $primary_color_white;
+        //        color: $primary_color_orange;
+        //      }
+        //    }
+        //  }
+        //}
       }
     }
   }
 }
+input#firstname-33f4a52f-11d5-4cb6-8c3d-2df4a404c084 {
+  border-top: 0;
+  background: transparent !important;
+}
 
+.hs-input:not([type=file]) {
+
+  background: transparent !important;
+}

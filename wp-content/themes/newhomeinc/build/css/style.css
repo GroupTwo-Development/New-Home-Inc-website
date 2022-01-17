@@ -19136,11 +19136,6 @@ section#newsletter {
   }
 }
 section#newsletter .newsletter-content {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
   width: 100%;
 }
 @media (min-width: 992px) {
@@ -19191,32 +19186,11 @@ section#newsletter .newsletter-content .newsletters-form-area .newsletter-title 
 section#newsletter .newsletter-content .newsletters-form-area .newsletter-form {
   position: relative;
 }
-section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter {
-  padding-bottom: 1rem;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form iframe input#firstname-33f4a52f-11d5-4cb6-8c3d-2df4a404c084 {
+  border-top: 0;
+  background: transparent;
 }
-@media (min-width: 992px) {
-  section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter {
-    flex-flow: row;
-  }
-}
-section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item {
-  margin-bottom: 1.3rem;
-}
-@media (min-width: 992px) {
-  section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item {
-    width: 33.33%;
-    margin-right: 0.7rem;
-  }
-  section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item:last-child {
-    margin-right: 0;
-  }
-}
-section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item input {
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form iframe form input#firstname-33f4a52f-11d5-4cb6-8c3d-2df4a404c084 {
   border-radius: 0;
   background-color: transparent;
   border: 0;
@@ -19224,62 +19198,46 @@ section#newsletter .newsletter-content .newsletters-form-area .newsletter-form f
   color: #fff;
 }
 @media (min-width: 992px) {
-  section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item input {
+  section#newsletter .newsletter-content .newsletters-form-area .newsletter-form iframe form input#firstname-33f4a52f-11d5-4cb6-8c3d-2df4a404c084 {
     padding-bottom: 20px;
   }
 }
-section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item input::-moz-placeholder {
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form iframe form input#firstname-33f4a52f-11d5-4cb6-8c3d-2df4a404c084::-moz-placeholder {
   color: #fff;
   text-transform: capitalize;
   font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue";
   font-weight: 200;
 }
-section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item input:-ms-input-placeholder {
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form iframe form input#firstname-33f4a52f-11d5-4cb6-8c3d-2df4a404c084:-ms-input-placeholder {
   color: #fff;
   text-transform: capitalize;
   font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue";
   font-weight: 200;
 }
-section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item input::placeholder {
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form iframe form input#firstname-33f4a52f-11d5-4cb6-8c3d-2df4a404c084::placeholder {
   color: #fff;
   text-transform: capitalize;
   font-family: stolzl, sans-serif, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue";
   font-weight: 200;
 }
-section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item input:focus {
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form iframe form input#firstname-33f4a52f-11d5-4cb6-8c3d-2df4a404c084:focus {
   outline: none !important;
   border: 0;
   box-shadow: none;
   border-bottom: 1px solid #fc4f00 !important;
 }
-section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form .newsletter .newsletter-item input:focus-visible {
+section#newsletter .newsletter-content .newsletters-form-area .newsletter-form iframe form input#firstname-33f4a52f-11d5-4cb6-8c3d-2df4a404c084:focus-visible {
   outline: none;
   border: 0;
 }
-section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form p {
-  display: block;
+
+input#firstname-33f4a52f-11d5-4cb6-8c3d-2df4a404c084 {
+  border-top: 0;
+  background: transparent !important;
 }
-section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form p input.wpcf7-submit {
-  border: 2px solid #fc4f00;
-  background-color: transparent;
-  border-radius: 25px;
-  color: #fff;
-  text-align: center;
-  width: 127px;
-  height: 43px;
-  text-transform: uppercase;
-  margin: 0 auto;
-  display: block;
-}
-@media (min-width: 992px) {
-  section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form p input.wpcf7-submit {
-    margin: auto 30px auto auto;
-    width: 160px;
-  }
-}
-section#newsletter .newsletter-content .newsletters-form-area .newsletter-form form p input.wpcf7-submit:hover {
-  background-color: #fff;
-  color: #fc4f00;
+
+.hs-input:not([type=file]) {
+  background: transparent !important;
 }
 
 #desktop-cta {
