@@ -15,7 +15,7 @@ $spec_virtual_tour_url = $spec_virtual_tour_group['virtualtour_url'];
                 <h2>Virtual Tour</h2>
             </header>
             <div class="floorplan-virtual">
-                <iframe src="https://my.matterport.com/show/?m=iFYLPPx7djT" width="100%" height="100%"  class="img-fluid" frameborder="0"></iframe>
+                <iframe src="<?php echo $spec_virtual_tour_url; ?>" width="100%" height="100%"  class="img-fluid" frameborder="0"></iframe>
             </div>
         </div>
     </div>
