@@ -1,29 +1,29 @@
 <?php
-$community_floorplans = get_field('community_floorplans');
-$subdescription = get_field('homes_description');
+    $community_floorplans = get_field('community_floorplans');
+    $subdescription = get_field('homes_description');
 
 
 
-$homes_floorplans = get_field('homes_floorplans');
+    $homes_floorplans = get_field('homes_floorplans');
 
 
-$spec_video = get_field('spec_video');
+    $spec_video = get_field('spec_video');
 
-$spec_virtual_tour_group = get_field('spec_virtual_tour');
-$spec_virtual_tour_image = $spec_virtual_tour_group['spec_virtual_tour_covered_image'];
-$spec_virtual_tour_url = $spec_virtual_tour_group['spec_virtual_tour_url'];
+    $spec_virtual_tour_group = get_field('spec_virtual_tour');
+    $spec_virtual_tour_image = $spec_virtual_tour_group['spec_virtual_tour_covered_image'];
+    $spec_virtual_tour_url = $spec_virtual_tour_group['spec_virtual_tour_url'];
 
-$location = get_field('spec_google_map');
+    $location = get_field('spec_google_map');
 
-$homes_get_directions_group = get_field('get_directions');
+    $homes_get_directions_group = get_field('get_directions');
 
-$get_direction_title = $homes_get_directions_group['get_directions_headline'];
+    $get_direction_title = $homes_get_directions_group['get_directions_headline'];
 
-$get_directions_content = $homes_get_directions_group['get_directions_content'];
+    $get_directions_content = $homes_get_directions_group['get_directions_content'];
 
 
 ?>
-<?php //if($subdescription && $homes_floorplans && $spec_virtual_tour_image && $spec_video && $location) : ?>
+<?php if($subdescription || $homes_floorplans || $spec_virtual_tour_image || $spec_video || $location) : ?>
 <nav id="info-links" class="info-links">
 	<div class="container">
 		<div class="info-links-component">
@@ -42,10 +42,10 @@ $get_directions_content = $homes_get_directions_group['get_directions_content'];
 				<a href="#community_video" id="" class="videos nav-info-link">VIDEO</a>
 			<?php endif; ?>
 
-			<?php if($location && $get_direction_title && $get_directions_content) : ?>
+			<?php if($location) : ?>
 				<a href="#location" id="" class="community-map nav-info-link">Location</a>
 			<?php endif; ?>
 		</div>
 	</div>
 </nav>
-<?php //endif; ?>
+<?php endif; ?>

@@ -30,8 +30,10 @@ $get_direction_title = $homes_get_directions_group['get_directions_headline'];
 $get_directions_content = $homes_get_directions_group['get_directions_content'];
 $elevation_image = get_field('elevation_image');
 
+$home_design_community = get_field('home_designs_community');
+
 ?>
-<?php if($plan_description || $floorplan_gallery || $spec_virtual_tour_image || $home_design_video || $elevation_image) : ?>
+<?php if($plan_description || $floorplan_gallery || $spec_virtual_tour_image || $home_design_video || $elevation_image || $home_design_community) : ?>
     <nav id="info-links" class="info-links">
         <div class="container">
             <div class="info-links-component">
@@ -54,7 +56,9 @@ $elevation_image = get_field('elevation_image');
                     <a href="#elevation" id="" class="community-map nav-info-link">ELEVATIONS</a>
 				<?php endif; ?>
 
-                <a href="#communities" id="" class="community-map nav-info-link">COMMUNITIES</a>
+                <?php if($home_design_community) : ?>
+                    <a href="#communities" id="" class="community-map nav-info-link">COMMUNITIES</a>
+                <?php endif; ?>
 
             </div>
         </div>
