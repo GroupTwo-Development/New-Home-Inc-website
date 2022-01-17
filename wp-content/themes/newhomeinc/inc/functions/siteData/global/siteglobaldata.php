@@ -57,7 +57,7 @@ add_action( 'wp_head', function() {
 function homes_archive_per_page( $query ) {
 	if( $query->is_main_query()  && is_post_type_archive( 'homes' ) ) {
 		$query->set( 'posts_per_page', '-1' );
-		$query->set( 'orderby', 'title' );
+		$query->set( 'orderby', 'publish_date' );
 		$query->set( 'order', 'DESC' );
 	}
 }

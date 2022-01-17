@@ -13349,7 +13349,7 @@ nav#mobile-navbar .mobile-navbar-component .mobile-navbar-component-toggle .is-a
   padding: 0;
   display: flex;
   flex-flow: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   height: 1.5rem;
 }
