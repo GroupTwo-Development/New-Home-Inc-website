@@ -17540,6 +17540,7 @@ nav.info-links .info-links-component a:hover {
   border-radius: 0;
   border: 0;
   margin-top: 0;
+  min-height: 300px;
 }
 #main-detail-content-area .accordion .location .accordion-body .location-component .location-component-map .acf-map .gm-style-iw-d {
   min-height: auto;
