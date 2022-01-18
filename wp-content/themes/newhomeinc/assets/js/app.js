@@ -41,6 +41,7 @@ jQuery( function( $ ) {
 	homeDesignFlyoutSlider.init();
 	communityFloorplanFlyoutSlider.init();
 	// homeDesignsSearchFooterContent.init();
+	globalScript.init();
 } );
 
 // const homeApp = createApp( CommunityFlyout );

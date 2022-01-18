@@ -44,7 +44,7 @@
 
                         <div class="col-lg-6 first-order-<?php echo $generate_classes++; ?>">
                             <div class="main-content-img">
-                                <img class="img-fluid lozad" data-src="<?php echo $images['url']; ?>" alt="<?php echo $images['alt']; ?>">
+                                <p> <?php echo $images; ?> </p>
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                    <div class="row odds d-flex justify-content-center mobile-order-two-<?php echo $generate_classes++; ?>">
                        <div class="col-lg-6 first-order-<?php echo $generate_classes++; ?>">
                            <div class="main-content-img">
-                               <img class="img-fluid lozad" data-src="<?php echo $images['url']; ?>" alt="<?php echo $images['alt']; ?>">
+                               <p> <?php echo $images; ?> </p>
                            </div>
                        </div>
 

@@ -31451,6 +31451,8 @@ jQuery(function ($) {
   _components_homesFlyoutSlider__WEBPACK_IMPORTED_MODULE_17__["default"].init();
   _components_homeDesignFlyoutSlider__WEBPACK_IMPORTED_MODULE_18__["default"].init();
   _components_communityFloorplanFlyoutSlider__WEBPACK_IMPORTED_MODULE_19__["default"].init(); // homeDesignsSearchFooterContent.init();
+
+  _script_globalScript__WEBPACK_IMPORTED_MODULE_6___default().init();
 }); // const homeApp = createApp( CommunityFlyout );
 // homeApp.mount( '#community-flyout-app' );
 
