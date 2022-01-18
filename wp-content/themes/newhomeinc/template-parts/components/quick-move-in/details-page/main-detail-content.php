@@ -204,14 +204,12 @@ $post_id = $post->ID;
 <?php
     $home_design_contact_form = get_field('home_design_contact_form');
     $site_modal_contact_form = get_field('site_modal_contact_form', 'option');
+    $default_contact_form = do_shortcode('[hubspot type="form" portal="19648772" id="5c6fddc8-a542-455c-b224-640a3a2fa27b"]');
     if($home_design_contact_form){
         $display_contact_form = $home_design_contact_form;
-    }elseif ($site_modal_contact_form && empty($home_design_contact_form)){
-        $display_contact_form = $site_modal_contact_form;
-    }elseif ($home_design_contact_form && $site_modal_contact_form){
-	    $display_contact_form = $home_design_contact_form;
+    }else{
+        $display_contact_form = $default_contact_form;
     }
-
 
 ?>
 

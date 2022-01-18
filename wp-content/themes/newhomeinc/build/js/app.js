@@ -31876,7 +31876,7 @@ var communityFloorplanFlyoutSlider = {
             var getDirectionDiv = document.getElementById('get_direction_text');
             getDirection.setAttribute('href', "https://www.google.com/maps?q=".concat(res.acf.spec_google_map.lat, ", ").concat(res.acf.spec_google_map.lng));
             getDirection.innerText = "".concat(res.acf.spec_google_map.street_number, " ").concat(res.acf.spec_google_map.street_name, ", ").concat(res.acf.spec_google_map.city, ", ").concat(res.acf.spec_google_map.state, ", ").concat(res.acf.spec_google_map.post_code);
-            var getFirectionText = "<span class=\"cta-location-area\">Get Directions</span>";
+            var getFirectionText = "<a target=\"_blank\" href=\"https://www.google.com/maps?q=".concat(res.acf.spec_google_map.lat, ", ").concat(res.acf.spec_google_map.lng, "\" class=\"cta-location-area\">Get Directions</a>");
             getDirectionDiv.innerHTML = getFirectionText;
           }
         });
@@ -32224,7 +32224,7 @@ var homesFlyoutSlider = {
             var getDirectionDiv = document.getElementById('get_direction_text');
             getDirection.setAttribute('href', "https://www.google.com/maps?q=".concat(res.acf.spec_google_map.lat, ", ").concat(res.acf.spec_google_map.lng));
             getDirection.innerText = "".concat(res.acf.spec_google_map.street_number, " ").concat(res.acf.spec_google_map.street_name, ", ").concat(res.acf.spec_google_map.city, ", ").concat(res.acf.spec_google_map.state, ", ").concat(res.acf.spec_google_map.post_code);
-            var getFirectionText = "<span class=\"cta-location-area\">Get Directions</span>";
+            var getFirectionText = "<a  href=\"https://www.google.com/maps?q=".concat(res.acf.spec_google_map.lat, ", ").concat(res.acf.spec_google_map.lng, "\"  target=\"_blank\" class=\"cta-location-area\">Get Directions</a>");
             getDirectionDiv.innerHTML = getFirectionText;
           }
         });

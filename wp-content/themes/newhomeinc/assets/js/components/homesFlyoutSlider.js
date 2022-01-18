@@ -79,7 +79,7 @@ const homesFlyoutSlider = {
 						getDirection.setAttribute( 'href', `https://www.google.com/maps?q=${ res.acf.spec_google_map.lat }, ${ res.acf.spec_google_map.lng }` );
 						getDirection.innerText = `${ res.acf.spec_google_map.street_number } ${ res.acf.spec_google_map.street_name }, ${ res.acf.spec_google_map.city }, ${ res.acf.spec_google_map.state }, ${ res.acf.spec_google_map.post_code }`;
 
-						const getFirectionText = `<span class="cta-location-area">Get Directions</span>`;
+						const getFirectionText = `<a  href="https://www.google.com/maps?q=${ res.acf.spec_google_map.lat }, ${ res.acf.spec_google_map.lng }"  target="_blank" class="cta-location-area">Get Directions</a>`;
 						getDirectionDiv.innerHTML = getFirectionText;
 					},
 				} );
