@@ -161,11 +161,11 @@
 <?php require_once ('main-detail-content.php'); ?>
 
 
-<div id="main-detail-content-area"  data-aos="fade-up" data-aos-duration="900" data-spy="scroll" data-target="#info-links" data-offset="0">
+<div id="main-detail-content-area"  data-bs-spy="scroll" data-bs-target="#info-links" data-bs-offset="0" class="scrollspy-example" data-aos="fade-up" data-aos-duration="900">
 	<div class="container">
 		<div class="accordion accordion-flush" id="mainDetailAccordionComponent">
 			<?php if($subdescription) : ?>
-				<div class="accordion-item about-content-area" id="about-content-area">
+				<div class="accordion-item about-content-area ScrollTarget" id="about-content-area">
 					<h2 class="accordion-header" id="headingOne">
 						<button class="accordion-button btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 							<span class="accordion-title">About</span>
@@ -253,11 +253,11 @@
 			<?php if($community_qmi) : ?>
 				<div class="accordion-item available-homes" id="available-homes">
 					<h2 class="accordion-header" id="headingThree">
-						<button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						<button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#available-homes" aria-expanded="false" aria-controls="available-homes">
 							<span class="accordion-title">Available Homes</span>
 						</button>
 					</h2>
-					<div id="collapseThree" class="accordion-collapse collapse " aria-labelledby="headingThree" data-bs-parent="#mainDetailAccordionComponent">
+					<div id="available-homes" class="accordion-collapse collapse " aria-labelledby="headingThree" data-bs-parent="#mainDetailAccordionComponent">
 						<div class="accordion-body">
 							<header class="accord-header-area">
 								<h2> Available Homes</h2>

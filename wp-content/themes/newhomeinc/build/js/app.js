@@ -31395,21 +31395,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SelectButtton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/SelectButtton */ "./assets/js/components/SelectButtton.js");
 /* harmony import */ var _script_globalScript__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./script/globalScript */ "./assets/js/script/globalScript.js");
 /* harmony import */ var _script_globalScript__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_script_globalScript__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _script_progressBar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./script/progressBar */ "./assets/js/script/progressBar.js");
-/* harmony import */ var _script_progressBar__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_script_progressBar__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _script_videosPlayer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./script/videosPlayer */ "./assets/js/script/videosPlayer.js");
-/* harmony import */ var _script_DropdownButtons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./script/DropdownButtons */ "./assets/js/script/DropdownButtons.js");
-/* harmony import */ var _components_qmiSearchFooterContent__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/qmiSearchFooterContent */ "./assets/js/components/qmiSearchFooterContent.js");
-/* harmony import */ var _script_detailPageGallery__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./script/detailPageGallery */ "./assets/js/script/detailPageGallery.js");
-/* harmony import */ var _components_generalScript__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/generalScript */ "./assets/js/components/generalScript.js");
-/* harmony import */ var _script_featuredHome__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./script/featuredHome */ "./assets/js/script/featuredHome.js");
-/* harmony import */ var _script_accordion__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./script/accordion */ "./assets/js/script/accordion.js");
-/* harmony import */ var _components_communityFilterContent__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/communityFilterContent */ "./assets/js/components/communityFilterContent.js");
-/* harmony import */ var _components_communityFlyoutSlider__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/communityFlyoutSlider */ "./assets/js/components/communityFlyoutSlider.js");
-/* harmony import */ var _components_homesFlyoutSlider__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/homesFlyoutSlider */ "./assets/js/components/homesFlyoutSlider.js");
-/* harmony import */ var _components_homeDesignFlyoutSlider__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/homeDesignFlyoutSlider */ "./assets/js/components/homeDesignFlyoutSlider.js");
-/* harmony import */ var _components_communityFloorplanFlyoutSlider__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/communityFloorplanFlyoutSlider */ "./assets/js/components/communityFloorplanFlyoutSlider.js");
-/* harmony import */ var _script_elevationGallery__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./script/elevationGallery */ "./assets/js/script/elevationGallery.js");
+/* harmony import */ var _script_videosPlayer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./script/videosPlayer */ "./assets/js/script/videosPlayer.js");
+/* harmony import */ var _script_DropdownButtons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./script/DropdownButtons */ "./assets/js/script/DropdownButtons.js");
+/* harmony import */ var _components_qmiSearchFooterContent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/qmiSearchFooterContent */ "./assets/js/components/qmiSearchFooterContent.js");
+/* harmony import */ var _script_detailPageGallery__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./script/detailPageGallery */ "./assets/js/script/detailPageGallery.js");
+/* harmony import */ var _components_generalScript__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/generalScript */ "./assets/js/components/generalScript.js");
+/* harmony import */ var _script_featuredHome__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./script/featuredHome */ "./assets/js/script/featuredHome.js");
+/* harmony import */ var _script_accordion__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./script/accordion */ "./assets/js/script/accordion.js");
+/* harmony import */ var _components_communityFilterContent__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/communityFilterContent */ "./assets/js/components/communityFilterContent.js");
+/* harmony import */ var _components_communityFlyoutSlider__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/communityFlyoutSlider */ "./assets/js/components/communityFlyoutSlider.js");
+/* harmony import */ var _components_homesFlyoutSlider__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/homesFlyoutSlider */ "./assets/js/components/homesFlyoutSlider.js");
+/* harmony import */ var _components_homeDesignFlyoutSlider__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/homeDesignFlyoutSlider */ "./assets/js/components/homeDesignFlyoutSlider.js");
+/* harmony import */ var _components_communityFloorplanFlyoutSlider__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/communityFloorplanFlyoutSlider */ "./assets/js/components/communityFloorplanFlyoutSlider.js");
+/* harmony import */ var _script_elevationGallery__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./script/elevationGallery */ "./assets/js/script/elevationGallery.js");
 // you can import modules from the theme lib or even from
 // NPM packages if they support it.
 
@@ -31425,7 +31423,7 @@ __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap
 
 
 
-
+ // import progressBar from './script/progressBar';
 
 
 
@@ -31445,14 +31443,13 @@ __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap
 jQuery(function ($) {
   _components_AnimateOnPageLinks__WEBPACK_IMPORTED_MODULE_4__["default"].init();
   _components_SelectButtton__WEBPACK_IMPORTED_MODULE_5__["default"].init();
-  _components_communityFilterContent__WEBPACK_IMPORTED_MODULE_15__["default"].init();
-  _components_qmiSearchFooterContent__WEBPACK_IMPORTED_MODULE_10__["default"].init();
-  _components_communityFlyoutSlider__WEBPACK_IMPORTED_MODULE_16__["default"].init();
-  _components_homesFlyoutSlider__WEBPACK_IMPORTED_MODULE_17__["default"].init();
-  _components_homeDesignFlyoutSlider__WEBPACK_IMPORTED_MODULE_18__["default"].init();
-  _components_communityFloorplanFlyoutSlider__WEBPACK_IMPORTED_MODULE_19__["default"].init(); // homeDesignsSearchFooterContent.init();
-
-  _script_globalScript__WEBPACK_IMPORTED_MODULE_6___default().init();
+  _components_communityFilterContent__WEBPACK_IMPORTED_MODULE_14__["default"].init();
+  _components_qmiSearchFooterContent__WEBPACK_IMPORTED_MODULE_9__["default"].init();
+  _components_communityFlyoutSlider__WEBPACK_IMPORTED_MODULE_15__["default"].init();
+  _components_homesFlyoutSlider__WEBPACK_IMPORTED_MODULE_16__["default"].init();
+  _components_homeDesignFlyoutSlider__WEBPACK_IMPORTED_MODULE_17__["default"].init();
+  _components_communityFloorplanFlyoutSlider__WEBPACK_IMPORTED_MODULE_18__["default"].init();
+  _components_generalScript__WEBPACK_IMPORTED_MODULE_11__["default"].init(); // homeDesignsSearchFooterContent.init();
 }); // const homeApp = createApp( CommunityFlyout );
 // homeApp.mount( '#community-flyout-app' );
 
@@ -31460,13 +31457,13 @@ var observer = lozad__WEBPACK_IMPORTED_MODULE_1___default()(); // lazy loads ele
 
 observer.observe();
 aos__WEBPACK_IMPORTED_MODULE_2___default().init();
-_script_accordion__WEBPACK_IMPORTED_MODULE_14__["default"].init();
-_components_generalScript__WEBPACK_IMPORTED_MODULE_12__["default"].init();
-_script_featuredHome__WEBPACK_IMPORTED_MODULE_13__["default"].init();
-_script_videosPlayer__WEBPACK_IMPORTED_MODULE_8__["default"].init();
-_script_DropdownButtons__WEBPACK_IMPORTED_MODULE_9__["default"].init();
-_script_detailPageGallery__WEBPACK_IMPORTED_MODULE_11__["default"].init();
-_script_elevationGallery__WEBPACK_IMPORTED_MODULE_20__["default"].init(); // footerCtaListing.init();
+_script_accordion__WEBPACK_IMPORTED_MODULE_13__["default"].init(); // generalScript.init();
+
+_script_featuredHome__WEBPACK_IMPORTED_MODULE_12__["default"].init();
+_script_videosPlayer__WEBPACK_IMPORTED_MODULE_7__["default"].init();
+_script_DropdownButtons__WEBPACK_IMPORTED_MODULE_8__["default"].init();
+_script_detailPageGallery__WEBPACK_IMPORTED_MODULE_10__["default"].init();
+_script_elevationGallery__WEBPACK_IMPORTED_MODULE_19__["default"].init(); // footerCtaListing.init();
 
 /***/ }),
 
@@ -31977,8 +31974,8 @@ var communityFlyoutSlider = {
 
             var getDirectionDiv = document.getElementById('get_direction_text');
             getDirection.setAttribute('href', "https://www.google.com/maps?q=".concat(res.acf.subdivision_google_map.lat, ", ").concat(res.acf.subdivision_google_map.lng));
-            getDirection.innerText = "".concat(res.acf.subdivision_google_map.street_number, " ").concat(res.acf.subdivision_google_map.street_name, ", ").concat(res.acf.subdivision_google_map.city, ", ").concat(res.acf.subdivision_google_map.state, ", ").concat(res.acf.subdivision_google_map.post_code);
-            var getFirectionText = "<span class=\"cta-location-area\">Get Directions</span>";
+            getDirection.innerText = 'Get Directions';
+            var getFirectionText = "<span class=\"cta-location-area\">".concat(res.acf.subdivision_google_map.city, ", ").concat(res.acf.subdivision_google_map.state, ", ").concat(res.acf.subdivision_google_map.post_code, "</span>");
             getDirectionDiv.innerHTML = getFirectionText;
           }
         });
@@ -32005,37 +32002,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+var $ = window.jQuery;
+var $window = window.$window || $(window);
 var generalScript = {
-  init: function init() {// function updatedCommunityMapView() {
-    // 	const el = document.querySelector( '.page-template-page-communities-map .main-map-view-component' );
-    // 	// const elLink = document.querySelector( '.page-template-page-communities-map .main-map-view-component a' );
-    // 	// const elTag = document.querySelector( '.page-template-page-communities-map .main-map-view-component a .map-view-title' );
-    // 	// elLink.setAttribute( 'href', '/communities' );
-    //
-    // 	const updatehref = document.createElement( 'a' );
-    // 	updatehref.textContent = 'GRID View';
-    // 	updatehref.href = '/communities';
-    // 	// eslint-disable-next-line no-console
-    // 	console.log( updatehref );
-    // 	el.append( updatehref );
-    //
-    // 	// elTag.innerText = 'GRID View';
-    // 	// console.log( elLink );
-    //
-    // 	// eslint-disable-next-line no-console
-    //
-    // 	// const elLink = document.querySelector( '.main-map-view-component a' );
-    // 	//
-    // 	// // eslint-disable-next-line no-console
-    //
-    // 	// // const closetChildEl = el.closest( '.main-map-view-component' );
-    // 	// el.innerText = 'GRID View';
-    // 	// elLink.setAttribute( 'href', '/communities' );
-    // }
-    //
-    // window.addEventListener( 'load', ( event ) => {
-    // 	updatedCommunityMapView();
-    // } );
+  init: function init() {
+    window.onscroll = function () {
+      myFunction();
+    }; // Get the header
+
+
+    var header = document.getElementById('info-links'); // Get the offset position of the navbar
+
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', function () {
+      var acc = document.getElementsByClassName('accordion');
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener('click', function () {
+          this.classList.toggle('active');
+          var panel = this.nextElementSibling;
+
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+          }
+        });
+      }
+    });
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (generalScript);
@@ -32225,8 +32229,8 @@ var homesFlyoutSlider = {
 
             var getDirectionDiv = document.getElementById('get_direction_text');
             getDirection.setAttribute('href', "https://www.google.com/maps?q=".concat(res.acf.spec_google_map.lat, ", ").concat(res.acf.spec_google_map.lng));
-            getDirection.innerText = "".concat(res.acf.spec_google_map.street_number, " ").concat(res.acf.spec_google_map.street_name, ", ").concat(res.acf.spec_google_map.city, ", ").concat(res.acf.spec_google_map.state, ", ").concat(res.acf.spec_google_map.post_code);
-            var getFirectionText = "<a  href=\"https://www.google.com/maps?q=".concat(res.acf.spec_google_map.lat, ", ").concat(res.acf.spec_google_map.lng, "\"  target=\"_blank\" class=\"cta-location-area\">Get Directions</a>");
+            getDirection.innerText = 'Get Directions ';
+            var getFirectionText = "<span class=\"cta-location-area\">".concat(res.acf.spec_google_map.city, ", ").concat(res.acf.spec_google_map.state, ", ").concat(res.acf.spec_google_map.post_code, "</span>");
             getDirectionDiv.innerHTML = getFirectionText;
           }
         });
@@ -32614,14 +32618,18 @@ var featuredHome = {
   init: function init() {
     document.addEventListener('DOMContentLoaded', function () {
       new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#community_floorplan', {
-        perPage: 3,
         type: 'slide',
+        perPage: 3,
+        perMove: 1,
+        pagination: false,
+        arrows: false,
         focus: 'center',
-        arrows: true,
-        gap: '6px',
+        // gap: '6px',
+        gap: '3rem',
         breakpoints: {
           992: {
-            perPage: 2 // gap: '0.5rem',
+            perPage: 2,
+            perMove: 1 // gap: '0.5rem',
 
           },
           768: {
@@ -32819,16 +32827,6 @@ window.addEventListener('DOMContentLoaded', function (event) {
 
   truncateCommunityFloorplanBreadcrumb();
 });
-
-/***/ }),
-
-/***/ "./assets/js/script/progressBar.js":
-/*!*****************************************!*\
-  !*** ./assets/js/script/progressBar.js ***!
-  \*****************************************/
-/***/ (() => {
-
-
 
 /***/ }),
 

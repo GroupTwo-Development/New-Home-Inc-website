@@ -1,75 +1,75 @@
 
 <?php
 
-//    $post_community_data = get_post_communities_type('communities', -1);
-global  $count; //Hey WP, refer to that global var in functions!
-$array_sqft = [];
-$array_beds_min = [];
-$array_beds_max= [];
-$array_baths_min = [];
-$array_baths_max = [];
-$array_price = [];
+    //    $post_community_data = get_post_communities_type('communities', -1);
+    global  $count; //Hey WP, refer to that global var in functions!
+    $array_sqft = [];
+    $array_beds_min = [];
+    $array_beds_max= [];
+    $array_baths_min = [];
+    $array_baths_max = [];
+    $array_price = [];
 
-$coming_soon_community = get_field('coming_soon_community');
-$coming_soon_class = ($coming_soon_community == 'yes') ? ''.'coming_soon_community':'';
-$community_gallery = get_field('gallery');
-$featured_image = get_field('featured_image');
-$call_for_pricing_phone = get_field('phone_number', 'option');
-$comm_banner_announcement = get_field('banner_announcement');
-$google_map = get_field('subdivision_google_map');
-$google_map = get_field( 'spec_google_map' );
-if ( $google_map ) :
+    $coming_soon_community = get_field('coming_soon_community');
+    $coming_soon_class = ($coming_soon_community == 'yes') ? ''.'coming_soon_community':'';
+    $community_gallery = get_field('gallery');
+    $featured_image = get_field('featured_image');
+    $call_for_pricing_phone = get_field('phone_number', 'option');
+    $comm_banner_announcement = get_field('banner_announcement');
+    $google_map = get_field('subdivision_google_map');
+    $google_map = get_field( 'spec_google_map' );
+    if ( $google_map ) :
 
-	$address = '';
-	foreach ( array('street_number', 'street_name', 'city', 'state', 'post_code' ) as $i => $k ) {
-		$state_name = $google_map['state'];
+        $address = '';
+        foreach ( array('street_number', 'street_name', 'city', 'state', 'post_code' ) as $i => $k ) {
+            $state_name = $google_map['state'];
 
-		if ( isset( $google_map[ $k ] ) ) {
-            $address = $google_map['street_number'];
-            $address .= ' ' . $google_map['street_name'];
-            $address .= ', ' . $google_map['city'];
-			$address .= ', '. convertState($state_name);
-			$address .= ' '. $google_map['post_code'];
-		}
-	}
-	$address = trim( $address, ', ' );
-endif;
-
-
-$base_price = get_field('base_price');
-if(isset($base_price)){
-	$display_average_price = ($base_price) ? '' . esc_html('$') . number_format($base_price) . esc_html('s') :
-		'' . '<span class="call-for-pricing">Coming Soon</span>';
-}
+            if ( isset( $google_map[ $k ] ) ) {
+                $address = $google_map['street_number'];
+                $address .= ' ' . $google_map['street_name'];
+                $address .= ', ' . $google_map['city'];
+                $address .= ', '. convertState($state_name);
+                $address .= ' '. $google_map['post_code'];
+            }
+        }
+        $address = trim( $address, ', ' );
+    endif;
 
 
-$min_bedrooms = get_field('min_bedrooms');
-$max_bedrooms = get_field('max_bedrooms');
-if($min_bedrooms && $max_bedrooms){
-	$display_min_beds = ($min_bedrooms) ? '' . $min_bedrooms . esc_html('-') : '';
-	$display_max_beds = ($max_bedrooms) ? '' . $max_bedrooms : '';
-}
+    $base_price = get_field('base_price');
+    if(isset($base_price)){
+        $display_average_price = ($base_price) ? '' . esc_html('$') . number_format($base_price) . esc_html('s') :
+            '' . '<span class="call-for-pricing">Coming Soon</span>';
+    }
 
-$min_baths = get_field('min_baths');
-$max_baths = get_field('max_baths');
-$half_baths = get_field('half_baths');
-if(!empty($min_baths) && !empty($max_baths) && !empty($half_baths)){
-	$display_min_bathrooms = $min_baths;
-	$display_max_bathrooms = $max_baths;
-	$display_min_baths = ($min_baths) ? '' . $min_baths . esc_html('-') : '';
-	$display_max_baths = ($max_baths && $half_baths == 1) ? '' . $max_baths . esc_html('.5') : '';
-} elseif (empty($min_baths) && !empty($max_baths) && !empty($half_baths)){
-	$display_max_baths = ($max_baths && $half_baths == 1) ? '' . $max_baths . esc_html('.5') : '';
-} elseif (!empty($min_baths) && !empty($max_baths) && empty($half_baths)){
-	$display_min_baths = ($min_baths) ? '' . $min_baths . esc_html('-') : '';
-	$display_max_baths = ($max_baths) ? '' . $max_baths : '';
-}
 
-$base_sqft = get_field('base_sqft');
-if(!empty($base_sqft)){
-	$display_sqft = number_format($base_sqft);
+    $min_bedrooms = get_field('min_bedrooms');
+    $max_bedrooms = get_field('max_bedrooms');
+    if($min_bedrooms && $max_bedrooms){
+        $display_min_beds = ($min_bedrooms) ? '' . $min_bedrooms . esc_html('-') : '';
+        $display_max_beds = ($max_bedrooms) ? '' . $max_bedrooms : '';
+    }
 
-}
+    $min_baths = get_field('min_baths');
+    $max_baths = get_field('max_baths');
+    $half_baths = get_field('half_baths');
+    if(!empty($min_baths) && !empty($max_baths) && !empty($half_baths)){
+        $display_min_bathrooms = $min_baths;
+        $display_max_bathrooms = $max_baths;
+        $display_min_baths = ($min_baths) ? '' . $min_baths . esc_html('-') : '';
+        $display_max_baths = ($max_baths && $half_baths == 1) ? '' . $max_baths . esc_html('.5') : '';
+    } elseif (empty($min_baths) && !empty($max_baths) && !empty($half_baths)){
+        $display_max_baths = ($max_baths && $half_baths == 1) ? '' . $max_baths . esc_html('.5') : '';
+    } elseif (!empty($min_baths) && !empty($max_baths) && empty($half_baths)){
+        $display_min_baths = ($min_baths) ? '' . $min_baths . esc_html('-') : '';
+        $display_max_baths = ($max_baths) ? '' . $max_baths : '';
+    }
+
+    $base_sqft = get_field('base_sqft');
+    if(!empty($base_sqft)){
+        $display_sqft = number_format($base_sqft);
+
+    }
 
 ?>
 
@@ -191,9 +191,9 @@ $post_id = $post->ID;
             <div class="cta-body-area">
                 <div id ="cta-contact-form" class="cta-contact-option"></div>
                 <h6 id="cta-title"></h6>
-                <div class="cta-location">
-                    <a  id="get_direction" href="https://www.google.com/maps?q=40.378580,-75.304110"></a>
+                <div class="cta-location pt-3">
                     <div id="get_direction_text"></div>
+                    <a  id="get_direction" href="https://www.google.com/maps?q=40.378580,-75.304110"></a>
                 </div>
             </div>
         </div>

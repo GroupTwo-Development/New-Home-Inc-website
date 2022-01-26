@@ -8,8 +8,9 @@
     <div class="main-gallery_area"  data-aos="zoom-in-up" data-aos-duration="800">
         <div id="detail-page-gallery" class="detail-page-gallery">
             <img src="<?php echo esc_url( $img_src ); ?>"
+                 class="img-fluid"
                  srcset="<?php echo esc_attr( $img_srcset ); ?>"
-                 sizes="(max-width: 50em) 100vw, 680px" alt="">
+                 alt="">
 <!--            <img class="img-fluid" src="--><?php //echo $featured_image['url']; ?><!--"  alt="--><?php //echo $featured_image['alt']; ?><!--"/>-->
             <div id="gallery_zoom-icon" class="gallery-icon">
                 <img src="https://newhomeinc1dev.wpengine.com/wp-content/uploads/2022/01/icon-camera.png" class="img-fluid" alt="gallery icon" role="img">

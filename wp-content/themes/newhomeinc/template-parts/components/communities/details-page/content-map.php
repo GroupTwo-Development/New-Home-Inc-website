@@ -24,18 +24,8 @@
 
 	$spec_data = get_featured_homes_spec();
 ?>
-<div id="location" class="accordion-item location">
-	<h2 class="accordion-header" id="headingseven">
-		<button class="accordion-button collapsed btn-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapseseven" aria-expanded="false" aria-controls="collapseseven">
-			<span class="accordion-title">Location</span>
-		</button>
-	</h2>
-	<div id="collapseseven" class="accordion-collapse collapse" aria-labelledby="headingseven" data-bs-parent="#mainDetailAccordionComponent">
-		<div class="accordion-body">
-			<header class="accord-header-area">
-				<h2> Location</h2>
-			</header>
-			<div class="location-component">
+
+    <div class="location-component">
 				<div class="row g-0">
 					<div class="col-lg-6">
 						<div class="location-component-map">
@@ -78,6 +68,3 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-</div>

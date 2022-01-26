@@ -1,6 +1,4 @@
-<header class="accord-header-area">
-    <h2>Floorplans</h2>
-</header>
+
 <div class="community-floorplans-component">
 	<?php
 	$community_floorplans = get_field('community_floorplans');

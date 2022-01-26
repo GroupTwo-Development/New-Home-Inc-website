@@ -38,7 +38,7 @@
 	                $call_for_pricing_phone = get_field('phone_number', 'option');
 
 	                $display_average_price = ($min_price) ? '' . esc_html('Brand New '. $plan_type_options . ' from ') . '$' . $average_price :
-                        esc_html('Brand new '. $plan_type_options . '. ')  . '<a class="featured-community_call-for-price" href="tel:'. $call_for_pricing_phone .'">Coming Soon</a>';
+                        esc_html('Brand New '. $plan_type_options . '. ')  . '<a class="featured-community_call-for-price" href="tel:'. $call_for_pricing_phone .'">Coming Soon</a>';
 
                 ?>
 

@@ -4,7 +4,7 @@ const $window = window.$window || $( window );
 // eslint-disable-next-line no-unused-vars
 const homeDesignsSearchFooterContent = {
 	init() {
-		const getUrl = 'https://newhomeinc1dev.wpengine.com';
+		const getUrl = 'https://newhomeinc.com';
 		$( document ).on( 'facetwp-loaded', function() {
 			const homesSearchPage = app_script_vars.floorplan_search_page_content;
 			const homesSearchPageFooterTitle = app_script_vars.floorplan_search_page_content_title;

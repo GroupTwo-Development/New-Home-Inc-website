@@ -14,7 +14,7 @@ require( 'bootstrap' );
 import AnimateOnPageLinks from './components/AnimateOnPageLinks';
 import SelectButton from './components/SelectButtton';
 import globalScript from './script/globalScript';
-import progressBar from './script/progressBar';
+// import progressBar from './script/progressBar';
 import videosPlayer from './script/videosPlayer';
 import DropdownButtons from './script/DropdownButtons';
 import qmiSearchFooterContent from './components/qmiSearchFooterContent';
@@ -40,8 +40,8 @@ jQuery( function( $ ) {
 	homesFlyoutSlider.init();
 	homeDesignFlyoutSlider.init();
 	communityFloorplanFlyoutSlider.init();
+	generalScript.init();
 	// homeDesignsSearchFooterContent.init();
-	globalScript.init();
 } );
 
 // const homeApp = createApp( CommunityFlyout );
@@ -51,13 +51,12 @@ const observer = lozad(); // lazy loads elements with default selector as ".loza
 observer.observe();
 AOS.init();
 accordion.init();
-generalScript.init();
+// generalScript.init();
 featuredHome.init();
 videosPlayer.init();
 DropdownButtons.init();
 
 detailPageGallery.init();
 elevationGallery.init();
-
 // footerCtaListing.init();
 

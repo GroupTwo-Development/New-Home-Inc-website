@@ -3,7 +3,7 @@ const $window = window.$window || $( window );
 
 const homeDesignFlyoutSlider = {
 	init() {
-		const getUrl = 'https://newhomeinc1dev.wpengine.com';
+		const getUrl = 'https://newhomeinc.com';
 		// eslint-disable-next-line no-shadow
 		( function( $ ) {
 			function homeDesignSliderout() {

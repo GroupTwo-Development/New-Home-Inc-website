@@ -3,7 +3,7 @@ const $window = window.$window || $( window );
 
 const communityFlyoutSlider = {
 	init() {
-		const getUrl = 'https://newhomeinc1dev.wpengine.com';
+		const getUrl = 'https://newhomeinc.com';
 		// eslint-disable-next-line no-shadow
 		( function( $ ) {
 			function communitySliderout() {
@@ -77,9 +77,9 @@ const communityFlyoutSlider = {
 
 						const getDirectionDiv = document.getElementById( 'get_direction_text' );
 						getDirection.setAttribute( 'href', `https://www.google.com/maps?q=${ res.acf.subdivision_google_map.lat }, ${ res.acf.subdivision_google_map.lng }` );
-						getDirection.innerText = `${ res.acf.subdivision_google_map.street_number } ${ res.acf.subdivision_google_map.street_name }, ${ res.acf.subdivision_google_map.city }, ${ res.acf.subdivision_google_map.state }, ${ res.acf.subdivision_google_map.post_code }`;
+						getDirection.innerText = 'Get Directions';
 
-						const getFirectionText = `<span class="cta-location-area">Get Directions</span>`;
+						const getFirectionText = `<span class="cta-location-area">${ res.acf.subdivision_google_map.city }, ${ res.acf.subdivision_google_map.state }, ${ res.acf.subdivision_google_map.post_code }</span>`;
 						getDirectionDiv.innerHTML = getFirectionText;
 					},
 				} );

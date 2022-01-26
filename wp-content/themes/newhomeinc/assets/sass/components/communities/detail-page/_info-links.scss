@@ -18,7 +18,10 @@ nav.info-links{
       letter-spacing: 0.1em;
       font-weight: 300;
       font-size: 100%;
-      margin-right: 2rem;
+      margin-right: 1.5rem;
+      @include media-breakpoint-between(lg, xl){
+        margin-right: 1rem;
+      }
       &:last-child{
         margin-right: 0;
       }

@@ -44,7 +44,7 @@ get_header();
                             <div class="container">
                                 <div class="footer-content-area">
                                     <span class="intro-search-page-sub-title">Discover</span>
-                                    <h3 id="home_design_footer-main-content-title"><?php  echo $home_designs_search_page_content_title; ?></h3>
+                                    <h1 id="home_design_footer-main-content-title"><?php  echo $home_designs_search_page_content_title; ?></h1>
                                     <div id="home_design_footer-main-content" class="content-area"><?php  echo $home_designs_search_page_content; ?></div>
                                 </div>
                             </div>

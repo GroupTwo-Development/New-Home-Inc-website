@@ -56,7 +56,7 @@ $spec_data = get_featured_homes_spec();
 <?php require_once ('main-detail-content.php'); ?>
 
 
-    <div id="main-detail-content-area" data-aos="fade-up" data-aos-duration="900" data-target="#info-links" data-offset="0">
+    <div id="main-detail-content-area" data-bs-spy="scroll" data-bs-target="#info-links" data-bs-offset="0" class="scrollspy-example" data-aos="fade-up" data-aos-duration="900">
         <div class="container">
             <div class="accordion accordion-flush" id="mainDetailAccordionComponent">
                 <?php if($plan_description) : ?>
@@ -235,8 +235,12 @@ $spec_data = get_featured_homes_spec();
                         </div>
                     </div>
                 <?php endif; ?>
+                <?php
+                $interactive_floorplan_group = get_field('interactive_home_design_floorplan');
 
-                <?php if($floorplan_gallery) : ?>
+                $floorplan_url = $interactive_floorplan_group['interactive_floorplan_url'];
+                ?>
+                <?php if($floorplan_gallery || $floorplan_url ) : ?>
                     <?php require_once ('content-plans.php'); ?>
                 <?php endif; ?>
 

@@ -3,7 +3,7 @@ const $window = window.$window || $( window );
 
 const communityFilterContent = {
 	init() {
-		const getUrl = 'https://newhomeinc1dev.wpengine.com';
+		const getUrl = 'https://newhomeinc.com';
 
 		$( document ).on( 'facetwp-loaded', function() {
 			const communitySearchPage = app_script_vars.community_search_page;

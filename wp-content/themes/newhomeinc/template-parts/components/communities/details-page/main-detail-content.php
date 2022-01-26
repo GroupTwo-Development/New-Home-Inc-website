@@ -1,5 +1,5 @@
 
-<section class="main-detail-spec-area mt-lg-3" id="overview pt-5 pb-5"  data-aos="fade-up" data-aos-duration="900">
+<div id="overview"  class="main-detail-spec-area mt-lg-3"   data-aos="fade-up" data-aos-duration="900">
 	<div class="container">
 		<div class="row d-flex align-content-center align-items-center">
 			<div class="col-lg-6 col-md-6">
@@ -7,7 +7,7 @@
 					<div class="spec-title-price-area">
 						<div class="spec-title-location">
 							<h5><?php the_title(); ?></h5>
-							<span class="location"><?php echo $address; ?></span>
+							<span class="location"><?php echo $display_city_state; ?></span>
 							<hr class="spec-area-component-hr">
 						</div>
 						<div class="spec-area-price">
@@ -68,7 +68,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</div>
 
 
 <?php
@@ -90,9 +90,10 @@ $post_id = $post->ID;
            <div class="cta-body-area">
                <div id ="cta-contact-form" class="cta-contact-option"></div>
                <h6 id="cta-title"></h6>
-               <div class="cta-location">
+               <div class="cta-location pt-2">
+                   <div id="get_direction_text"></div>
                    <a  id="get_direction" href="https://www.google.com/maps?q=40.378580,-75.304110"></a>
-                    <div id="get_direction_text"></div>
+
                </div>
            </div>
        </div>

@@ -43,7 +43,7 @@ get_header();
                         <div class="container">
                             <div class="footer-content-area">
                                 <span class="intro-search-page-sub-title">Discover</span>
-                                <h3 id="main-content-title"><?php echo $community_search_page_content_title; ?></h3>
+                                <h1 id="main-content-title"><?php echo $community_search_page_content_title; ?></h1>
                                 <div id="main-footer-content" class="content-area">
 							        <?php echo $community_search_page_content; ?>
                                 </div>

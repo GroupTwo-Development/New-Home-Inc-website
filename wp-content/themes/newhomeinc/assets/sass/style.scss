@@ -59,8 +59,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 /* Normalize
 --------------------------------------------- */
-@import "imports/import";
 @import "generic/normalize";
+@import "imports/import";
 
 
 /* Box sizing
@@ -102,4 +102,14 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /* Alignments
 --------------------------------------------- */
 @import "utilities/alignments";
+
+.sticky {
+  position: fixed;
+  top: 74px;
+  width: 100%;
+  z-index: 998;
+
+}
+
+
 

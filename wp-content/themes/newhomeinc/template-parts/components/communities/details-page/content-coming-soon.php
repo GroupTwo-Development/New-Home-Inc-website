@@ -10,7 +10,7 @@
     $coming_soon_contact_form = $coming_soon_content_area_group['coming_soon_contact_form'];
 
 ?>
-<?php if($coming_soon_community == 'yes') :  ?>
+<?php if($coming_soon_community == 'yes' && $coming_soon_announcements) :  ?>
 <section id="coming-soon-area" class="coming-soon-area">
     <header class="coming-soon-header">
         <span class="coming-soon-title"><?php echo $coming_soon_headline; ?></span>
@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="main-content">
+                    <div class="main-content pt-5">
                         <p><?php echo $coming_soon_announcements; ?> </p>
                         <div class="contact-form-area">
                             <?php echo $coming_soon_contact_form; ?>

@@ -16,9 +16,8 @@ get_header();
 		<?php get_template_part( 'template-parts/components/communities/details-page/content', 'gallery'); ?>
 		<?php get_template_part( 'template-parts/components/communities/details-page/content', 'links'); ?>
 	        <?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'template-parts/components/communities/details-page/content', 'spec'); ?>
+			<?php get_template_part( 'template-parts/components/communities/details-page/content', 'mainSpec'); ?>
 	        <?php endwhile; // End of the loop.?>
-
 	</main><!-- #main -->
 <?php
 get_footer();

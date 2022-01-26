@@ -242,19 +242,19 @@ section.smart-tech-video{
   z-index: 1090 !important;
 }
 
-.floorplan-virtual{
+.virtual-tour-component{
   position: relative;
   display: flex;
   justify-content: center;
   min-height: 15rem;
   width: 100%;
   @include media-breakpoint-between(md, lg){
-    min-height: 23rem;
+    min-height: 25rem;
   }
   @include media-breakpoint-between(lg, xl){
-    min-height: 32rem;
+    min-height: 25rem;
   }
   @include media-breakpoint-up(xl){
-    min-height: 38rem;
+    min-height: 25rem;
   }
 }

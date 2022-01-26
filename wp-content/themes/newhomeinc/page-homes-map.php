@@ -233,7 +233,7 @@ get_header();
                     <div class="container">
                         <div class="footer-content-area">
                             <span class="intro-search-page-sub-title">Discover</span>
-                            <h3 id="qmi_main_footer_content_title"></h3>
+                            <h1 id="qmi_main_footer_content_title"></h1>
                             <div id="main-footer-content" class="content-area"></div>
                         </div>
                     </div>
