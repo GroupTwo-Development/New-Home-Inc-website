@@ -261,7 +261,7 @@
                     <button class="accordion"><span class="title">Community Map</span></button>
                     <div class="accordion-panel">
                         <header class="accord-header-area">
-                            <h2><?php echo esc_html('community-map'); ?></h2>
+                            <h2><?php echo esc_html('Community Map'); ?></h2>
                         </header>
                         <div class="row">
                             <div class="offset-lg-3 col-lg-6 col-offset-3">
