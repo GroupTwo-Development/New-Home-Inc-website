@@ -53,7 +53,7 @@ const homeDesignFlyoutSlider = {
 							// NhiTourLink.append( nhiTourText );
 							// NhiTourLi.append( NhiTourLink );
 							// ulEle.appendChild( NhiTourLi );
-							homesFlyoutLinks += `<li class="nhi-tour"><a href="${ res.acf.nhi_tour }" target="_blank"><i class="fas fa-user"></i> <span class="link-title">NHI Tour</span></a></li>`;
+							homesFlyoutLinks += `<li class="nhi-tour"><a href="${ res.acf.nhi_tour }" target="_blank"><i class="fas fa-user"></i> <span class="link-title">${ res.acf.nhi_tour_text !== undefined ? res.acf.nhi_tour_text : 'Schedule a Meeting' }</span></a></li>`;
 						}
 
 						homesFlyoutLinks += `<li class="ask-a-question-flyout"><a href="#" data-fancybox="dialog" data-src="#dialog-content"><i class="fas fa-question"></i> <span class="link-title">Ask a Question</span></a></li>`;

@@ -3,7 +3,7 @@ const $window = window.$window || $( window );
 
 const communityFlyoutSlider = {
 	init() {
-		const getUrl = 'https://newhomeinc.com';
+		const getUrl = 'http://newhomeinc.test';
 		// eslint-disable-next-line no-shadow
 		( function( $ ) {
 			function communitySliderout() {
@@ -53,7 +53,12 @@ const communityFlyoutSlider = {
 							// NhiTourLink.append( nhiTourText );
 							// NhiTourLi.append( NhiTourLink );
 							// ulEle.appendChild( NhiTourLi );
-							CommunityFlyoutLinks += `<li class="nhi-tour"><a href="${ res.acf.nhi_tour }" target="_blank"><i class="fas fa-user"></i> <span class="link-title">NHI Tour</span></a></li>`;
+							// if ( res.acf.nhi_tour_text !== '' ) {
+							// 	const displayText = res.acf.nhi_tour_text;
+							// } else {
+							// 	const displayText = 'Schedule Meeting';
+							// }
+							CommunityFlyoutLinks += `<li class="nhi-tour"><a href="${ res.acf.nhi_tour }" target="_blank"><i class="fas fa-user"></i> <span class="link-title">${ res.acf.nhi_tour_text !== undefined ? res.acf.nhi_tour_text : 'Schedule a Meeting' }</span></a></li>`;
 						}
 
 						CommunityFlyoutLinks += `<li class="ask-a-question-flyout"><a href="#" data-fancybox="dialog" data-src="#dialog-content"><i class="fas fa-question"></i> <span class="link-title">Ask a Question</span></a></li>`;

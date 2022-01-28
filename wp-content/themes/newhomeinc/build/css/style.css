@@ -13677,6 +13677,18 @@ a.section-btn:hover {
   opacity: 0.9 !important;
 }
 
+.page-content {
+  position: relative;
+  text-align: center;
+  padding: 3rem 0;
+}
+.page-content .page-header {
+  text-align: center;
+}
+.page-content a.section-btn {
+  margin: 0 auto;
+}
+
 section#footer-cta-area {
   position: relative;
 }
