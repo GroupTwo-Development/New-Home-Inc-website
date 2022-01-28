@@ -56,6 +56,7 @@
 
 <div id="detail-page-content">
 	<section id="overview" class="overview">
+        <div class="pt-4"></div>
 		<div class="container">
 			<?php require_once ('main-detail-content.php'); ?>
 		</div>

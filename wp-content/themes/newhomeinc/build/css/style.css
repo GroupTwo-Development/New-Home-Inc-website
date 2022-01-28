@@ -13743,7 +13743,7 @@ section#footer-cta-area .splide .splide__list a .card .footer-cta-meta span {
   min-height: 5rem;
   flex-flow: column;
 }
-.interior-page-banner .interior-banner-inner span.banner-title {
+.interior-page-banner .interior-banner-inner h1.banner-title, .interior-page-banner .interior-banner-inner .banner-title.h1 {
   display: block;
   text-align: center;
   color: #000;
@@ -13754,7 +13754,7 @@ section#footer-cta-area .splide .splide__list a .card .footer-cta-meta span {
   padding-bottom: 14px;
 }
 @media (min-width: 992px) {
-  .interior-page-banner .interior-banner-inner span.banner-title {
+  .interior-page-banner .interior-banner-inner h1.banner-title, .interior-page-banner .interior-banner-inner .banner-title.h1 {
     margin-top: 1rem;
     font-size: 2rem;
   }
@@ -13976,7 +13976,7 @@ section#footer-cta-area .splide .splide__list a .card .footer-cta-meta span {
     padding-top: 2.3rem;
   }
 }
-#homepage-banner .banner-inner .homepage-banner-content span.banner-title {
+#homepage-banner .banner-inner .homepage-banner-content .banner-title {
   text-align: center;
   display: block;
   font-size: 1.813rem;
@@ -13985,26 +13985,26 @@ section#footer-cta-area .splide .splide__list a .card .footer-cta-meta span {
   color: #000;
 }
 @media (min-width: 768px) and (max-width: 991.98px) {
-  #homepage-banner .banner-inner .homepage-banner-content span.banner-title {
+  #homepage-banner .banner-inner .homepage-banner-content .banner-title {
     font-size: 2.9rem;
     text-shadow: 0.5px 1px 0 #000;
   }
 }
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  #homepage-banner .banner-inner .homepage-banner-content span.banner-title {
+  #homepage-banner .banner-inner .homepage-banner-content .banner-title {
     font-size: 3.5rem;
     text-shadow: 0.5px 1px 0 #000;
   }
 }
 @media (min-width: 1200px) and (max-width: 1399.98px) {
-  #homepage-banner .banner-inner .homepage-banner-content span.banner-title {
+  #homepage-banner .banner-inner .homepage-banner-content .banner-title {
     font-size: 4.2rem;
     text-shadow: 0.5px 1px 0 #000;
     margin-bottom: -0.5rem;
   }
 }
 @media (min-width: 1400px) {
-  #homepage-banner .banner-inner .homepage-banner-content span.banner-title {
+  #homepage-banner .banner-inner .homepage-banner-content .banner-title {
     font-size: 4.2rem;
     margin-bottom: -0.7rem;
     text-shadow: 0.5px 1px 0 #000;

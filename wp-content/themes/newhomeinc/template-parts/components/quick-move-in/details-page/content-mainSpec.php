@@ -94,20 +94,41 @@ require_once ('qmi_data.php'); ?>
         </section>
     <?php endif; ?>
 
-
-    <section id="virtual-tour" class="section-virtual-tour">
-        <div class="container">
-            <div class="accordion-content">
-                <button class="accordion"><span class="title">Virtual Tour</span></button>
-                <div class="accordion-panel">
-                    <header class="accord-header-area">
-                        <h2><?php echo esc_html('Virtual Tour'); ?></h2>
-                    </header>
-                    <?php require_once ('content-plans.php'); ?>
+	<?php if($floorplan_url) : ?>
+        <section id="floorplan" class="floorplan">
+            <div class="container">
+                <div class="accordion-content">
+                    <button class="accordion"><span class="title">Floorplans</span></button>
+                    <div class="accordion-panel">
+                        <header class="accord-header-area">
+                            <h2><?php echo esc_html('Floorplans'); ?></h2>
+                        </header>
+						<?php require_once ('content-interactive-plan.php'); ?>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+	<?php endif; ?>
+
+	<?php
+	$spec_virtual_tour_group = get_field('spec_virtual_tour');
+	$spec_virtual_tour_url = $spec_virtual_tour_group['spec_virtual_tour_url'];
+	?>
+    <?php if($spec_virtual_tour_url) : ?>
+        <section id="virtual-tour" class="section-virtual-tour">
+            <div class="container">
+                <div class="accordion-content">
+                    <button class="accordion"><span class="title">Virtual Tour</span></button>
+                    <div class="accordion-panel">
+                        <header class="accord-header-area">
+                            <h2><?php echo esc_html('Virtual Tour'); ?></h2>
+                        </header>
+                        <?php require_once ('content-virtual-tour.php'); ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <?php endif; ?>
 
 	<?php
 	$video_community = get_field('spec_video');

@@ -6,7 +6,7 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="offset-lg-2 col-lg-8 offset-lg-2">
+                    <div class="offset-lg-1 col-lg-10 offset-lg-1">
                         <div id="community_floorplan" class="splide">
                             <div class="splide__track">
                                 <ul class="splide__list">

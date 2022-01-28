@@ -160,9 +160,9 @@
 			<div class="col-lg-6 col-md-6">
 				<div class="detail-page-cta-area">
                     <div class="detail-page-cta-inner">
-                        <h6>SCHEDULE A MEETING</h6>
+<!--                        <h6>SCHEDULE A MEETING</h6>-->
                         <button type="button" class="detail-page-cta-options">
-                            SCHEDULE OPTIONS
+                            CONTACT US
                         </button>
                     </div>
 				</div>
@@ -184,7 +184,7 @@ $post_id = $post->ID;
         </div>
         <div class="flyout-intro-content">
             <p>Interested in this beautiful home?
-                Connect with your NHI Sales Agent to get most details.</p>
+                Connect with your NHI Sales Agent to get more details.</p>
         </div>
 
         <div class="section-content">

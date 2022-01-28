@@ -33,7 +33,7 @@ $elevation_image = get_field('elevation_image');
 $home_design_community = get_field('home_designs_community');
 
 ?>
-<?php //if($plan_description || $floorplan_gallery || $spec_virtual_tour_image || $home_design_video || $elevation_image || $home_design_community) : ?>
+<?php if($plan_description || $floorplan_gallery || $spec_virtual_tour_image || $home_design_video || $elevation_image || $home_design_community) : ?>
 <!--    <nav id="info-links" class="info-links">-->
 <!--        <div class="container">-->
 <!--            <div class="info-links-component">-->
@@ -63,23 +63,36 @@ $home_design_community = get_field('home_designs_community');
 <!--            </div>-->
 <!--        </div>-->
 <!--    </nav>-->
-<?php //else : ?>
+
 <!---->
-<?php //endif; ?>
 
 
 <nav id="info-links" class="info-links">
     <div class="container">
         <div class="info-links-component">
             <a  href="#overview" class="overview nav-info-link">overview</a>
-            <a  href="#about" class="overview nav-info-link">About</a>
+	        <?php if($plan_description) :  ?>
+             <a  href="#about" class="overview nav-info-link">About</a>
+	        <?php endif; ?>
+	        <?php if($floorplan_gallery || $floorplan_url) :  ?>
             <a  href="#floorplan" class="nav-info-link">Floorlan</a>
+            <?php endif; ?>
+            <?php if($spec_virtual_tour_url) : ?>
             <a  href="#virtual-tour" class="nav-info-link">Virtual Tour</a>
+            <?php endif; ?>
+            <?php if($home_design_video) :  ?>
             <a  href="#video" class="nav-info-link">VIDEO</a>
+            <?php endif; ?>
+            <?php if($elevation_image) : ?>
             <a  href="#elevation" class="nav-info-link">Elevation</a>
+            <?php endif; ?>
+            <?php if($home_design_community) : ?>
             <a  href="#communities" class="nav-info-link">Communities</a>
+            <?php endif; ?>
         </div>
     </div>
 </nav>
+<?php endif; ?>
+
 
 

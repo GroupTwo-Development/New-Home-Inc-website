@@ -1,7 +1,7 @@
 
 <div id="overview"  class="main-detail-spec-area mt-lg-3"   data-aos="fade-up" data-aos-duration="900">
 	<div class="container">
-		<div class="row d-flex align-content-center align-items-center">
+		<div class="row d-flex align-content-center align-items-center pt-5">
 			<div class="col-lg-6 col-md-6">
 				<div class="spec-detail-area">
 					<div class="spec-title-price-area">
@@ -58,9 +58,9 @@
 					</div>
                     <?php else : ?>
                         <div class="detail-page-cta-inner">
-                            <h6>SCHEDULE A MEETING</h6>
+<!--                            <h6>SCHEDULE A MEETING</h6>-->
                             <button type="button" class="detail-page-cta-options">
-                                SCHEDULE OPTIONS
+                                CONTACT US
                             </button>
                         </div>
                     <?php endif; ?>
@@ -83,7 +83,7 @@ $post_id = $post->ID;
         </div>
         <div class="flyout-intro-content">
             <p>Interested in this beautiful community?
-                Connect with your NHI Sales Agent to get most details.</p>
+                Connect with your NHI Sales Agent to get more details.</p>
         </div>
 
        <div class="section-content">

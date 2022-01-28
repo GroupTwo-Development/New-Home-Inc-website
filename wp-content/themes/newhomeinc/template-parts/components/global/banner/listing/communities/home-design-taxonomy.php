@@ -6,7 +6,7 @@
 				yoast_breadcrumb( '<span id="breadcrumbs">','</span>' );
 			}
 			?>
-            <span class="banner-title">NEW HOME FLOORPLANS IN <?php single_cat_title(); ?></span>
+            <h1 class="banner-title">NEW HOME FLOORPLANS IN <?php single_cat_title(); ?></h1>
         </div>
     </div>
 </div>

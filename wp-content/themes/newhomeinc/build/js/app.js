@@ -31555,7 +31555,7 @@ var $ = window.jQuery;
 var $window = window.$window || $(window);
 var SelectButton = {
   init: function init() {
-    var getUrl = 'https://newhomeinc1dev.wpengine.com';
+    var getUrl = 'https://newhomeinc.com';
 
     (function ($) {
       $('.detail-page-cta-options').on('click', function () {
@@ -31703,7 +31703,7 @@ var $ = window.jQuery;
 var $window = window.$window || $(window);
 var communityFilterContent = {
   init: function init() {
-    var getUrl = 'https://newhomeinc1dev.wpengine.com';
+    var getUrl = 'https://newhomeinc.com';
     $(document).on('facetwp-loaded', function () {
       var communitySearchPage = app_script_vars.community_search_page;
       var searchPageFooterTitle = app_script_vars.community_search_page_title; // eslint-disable-next-line no-console
@@ -31806,7 +31806,7 @@ var $ = window.jQuery;
 var $window = window.$window || $(window);
 var communityFloorplanFlyoutSlider = {
   init: function init() {
-    var getUrl = 'https://newhomeinc1dev.wpengine.com'; // eslint-disable-next-line no-shadow
+    var getUrl = 'https://newhomeinc.com'; // eslint-disable-next-line no-shadow
 
     (function ($) {
       function communityFloorplanSliderout() {
@@ -31906,7 +31906,7 @@ var $ = window.jQuery;
 var $window = window.$window || $(window);
 var communityFlyoutSlider = {
   init: function init() {
-    var getUrl = 'https://newhomeinc1dev.wpengine.com'; // eslint-disable-next-line no-shadow
+    var getUrl = 'https://newhomeinc.com'; // eslint-disable-next-line no-shadow
 
     (function ($) {
       function communitySliderout() {
@@ -32061,7 +32061,7 @@ var $ = window.jQuery;
 var $window = window.$window || $(window);
 var homeDesignFlyoutSlider = {
   init: function init() {
-    var getUrl = 'https://newhomeinc1dev.wpengine.com'; // eslint-disable-next-line no-shadow
+    var getUrl = 'https://newhomeinc.com'; // eslint-disable-next-line no-shadow
 
     (function ($) {
       function homeDesignSliderout() {
@@ -32161,7 +32161,7 @@ var $ = window.jQuery;
 var $window = window.$window || $(window);
 var homesFlyoutSlider = {
   init: function init() {
-    var getUrl = 'https://newhomeinc1dev.wpengine.com'; // eslint-disable-next-line no-shadow
+    var getUrl = 'https://newhomeinc.com'; // eslint-disable-next-line no-shadow
 
     (function ($) {
       function homesSliderout() {
@@ -32262,7 +32262,7 @@ var $window = window.$window || $(window); // eslint-disable-next-line no-unused
 
 var qmiSearchFooterContent = {
   init: function init() {
-    var getUrl = 'https://newhomeinc1dev.wpengine.com';
+    var getUrl = 'https://newhomeinc.com';
     $(document).on('facetwp-loaded', function () {
       var homesSearchPage = app_script_vars.qmi_search_page_content;
       var homesSearchPageFooterTitle = app_script_vars.homes_search_page_title; // eslint-disable-next-line no-console
@@ -32618,18 +32618,15 @@ var featuredHome = {
   init: function init() {
     document.addEventListener('DOMContentLoaded', function () {
       new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#community_floorplan', {
-        type: 'slide',
         perPage: 3,
-        perMove: 1,
-        pagination: false,
-        arrows: false,
+        type: 'loop',
+        perMove: 2,
         focus: 'center',
-        // gap: '6px',
-        gap: '3rem',
+        arrows: true,
+        gap: '6px',
         breakpoints: {
           992: {
-            perPage: 2,
-            perMove: 1 // gap: '0.5rem',
+            perPage: 2 // gap: '0.5rem',
 
           },
           768: {

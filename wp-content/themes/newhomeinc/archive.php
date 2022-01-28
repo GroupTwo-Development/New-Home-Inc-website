@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main blog-index">
         <div class="interior-page-banner">
             <div class="container">
                 <div class="interior-banner-inner">
@@ -28,33 +28,38 @@ get_header();
 		<?php get_template_part( 'template-parts/components/global/banner/blog-post-filter');  ?>
 
 
-        <div class="post-archive-area">
-	        <?php if ( have_posts() ) : ?>
+        <div id="blog-post-list">
+            <div class="container">
+                <div class="row align-items-center">
+	                 <?php if ( have_posts() ) : ?>
 
-                <div class="container">
-	                <?php
-	                /* Start the Loop */
-	                while ( have_posts() ) :
-		                the_post();
+                    <div class="container">
+                        <?php
+                        /* Start the Loop */
+                        while ( have_posts() ) :
+                            the_post();
 
-		                /*
-						 * Include the Post-Type-specific template for the content.
-						 * If you want to override this in a child theme, then include a file
-						 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-						 */
-		                get_template_part( 'template-parts/content', 'archive');
+                            /*
+                             * Include the Post-Type-specific template for the content.
+                             * If you want to override this in a child theme, then include a file
+                             * called content-___.php (where ___ is the Post Type name) and that will be used instead.
+                             */
+                            get_template_part( 'template-parts/content', 'archive');
 
-	                endwhile;
+                        endwhile;
 
-	                the_posts_navigation();
+                        the_posts_navigation();
 
-	                else :
+                        else :
 
-		                get_template_part( 'template-parts/content', 'none' );
+                            get_template_part( 'template-parts/content', 'none' );
 
-	                endif;
-	                ?>
+                        endif;
+                        ?>
+                    </div>
                 </div>
+            </div>
+        </div>
         </div>
 	</main><!-- #main -->
 

@@ -226,6 +226,9 @@ $homes_floorplans = get_field('homes_floorplans');
 
 $spec_data = get_featured_homes_spec();
 
+$interactive_floorplan_group = get_field('interactive_floorplan');
 
+//$floorplan_gallery = $interactive_floorplan_group['interactive_floorplan_covered_image'];
+$floorplan_url = $interactive_floorplan_group['interactive_floorplan_url'];
 
 ?>

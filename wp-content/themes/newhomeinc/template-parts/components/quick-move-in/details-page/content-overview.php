@@ -76,7 +76,7 @@ if(!empty($base_sqft)){
 
 <section class="main-detail-spec-area mt-lg-3" id="overview pt-5 pb-5"  data-aos="fade-up" data-aos-duration="900">
 	<div class="container">
-		<div class="row d-flex align-content-center align-items-center">
+		<div class="row d-flex align-content-center align-items-center pt-5">
 			<div class="col-lg-6 col-md-6">
 				<div class="spec-detail-area">
 					<div class="spec-title-price-area">

@@ -10,9 +10,9 @@
            </div>
 
             <?php if(is_singular('post')) : ?>
-                 <span class="banner-title">NEW HOME INC.  <?php echo esc_html('BLOG') ?></span>
+                 <h1 class="banner-title">NEW HOME INC.  <?php echo esc_html('BLOG') ?></h1>
             <?php else : ?>
-                <span class="banner-title">NEW HOME INC.  <?php single_post_title(); ?></span>
+                <h1 class="banner-title">NEW HOME INC.  <?php single_post_title(); ?></h1>
             <?php endif; ?>
         </div>
 	</div>

@@ -4,19 +4,15 @@ const featuredHome = {
 	init() {
 		document.addEventListener( 'DOMContentLoaded', function() {
 			new Splide( '#community_floorplan', {
-				type: 'slide',
 				perPage: 3,
-				perMove: 1,
-				pagination: false,
-				arrows: false,
+				type: 'loop',
+				perMove: 2,
 				focus: 'center',
-
-				// gap: '6px',
-				gap: '3rem',
+				arrows: true,
+				gap: '6px',
 				breakpoints: {
 					992: {
 						perPage: 2,
-						perMove: 1,
 						// gap: '0.5rem',
 					},
 					768: {
@@ -171,6 +167,7 @@ const featuredHome = {
 			} );
 		} );
 	},
+
 };
 
 export default featuredHome;

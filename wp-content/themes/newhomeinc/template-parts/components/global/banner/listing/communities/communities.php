@@ -7,7 +7,7 @@
                         yoast_breadcrumb( '<span id="breadcrumbs">','</span>' );
                     }
                     ?>
-                    <span id="community_banner_title" class="banner-title">NEW HOME COMMUNITIES</span>
+                    <h1 id="community_banner_title" class="banner-title">NEW HOME COMMUNITIES</h1>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
 					yoast_breadcrumb( '<span id="breadcrumbs">','</span>' );
 				}
 				?>
-                <span id="community_banner_title" class="banner-title">NEW HOME COMMUNITIES</span>
+                <h1 id="community_banner_title" class="banner-title">NEW HOME COMMUNITIES</h1>
             </div>
         </div>
     </div>

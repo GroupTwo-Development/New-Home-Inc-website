@@ -41,7 +41,7 @@
                     <a  href="#community-map" class="nav-info-link">COMMUNITY MAP</a>
 	            <?php endif; ?>
 
-	            <?php if($location && $get_direction_title && $get_directions_content) : ?>
+	            <?php if($location && $get_directions_content) : ?>
                     <a  href="#location" class="nav-info-link">Location</a>
 	            <?php endif; ?>
             </div>

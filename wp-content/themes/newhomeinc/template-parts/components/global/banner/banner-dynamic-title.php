@@ -6,7 +6,7 @@
 		        yoast_breadcrumb( '<span id="breadcrumbs">','</span>' );
 	        }
 	        ?>
-            <span class="banner-title"><?php single_post_title(); ?></span>
+            <h1 class="banner-title"><?php single_post_title(); ?></h1>
         </div>
 	</div>
 </div>
