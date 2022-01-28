@@ -33,7 +33,7 @@
 					yoast_breadcrumb( '<span id="breadcrumbs">','</span>' );
 				}
 				?>
-                <span id="homes_banner_title" class="banner-title">NEW AVAILABLE HOMES</span>
+                <h1 id="homes_banner_title" class="banner-title">NEW AVAILABLE HOMES</h1>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
 					yoast_breadcrumb( '<span id="breadcrumbs">','</span>' );
 				}
 				?>
-                <span id="homes_banner_title" class="banner-title">NEW AVAILABLE HOMES</span>
+                <h1 id="homes_banner_title" class="banner-title">NEW AVAILABLE HOMES</h1>
             </div>
         </div>
     </div>

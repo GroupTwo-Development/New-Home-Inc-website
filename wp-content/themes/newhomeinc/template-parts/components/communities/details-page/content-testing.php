@@ -62,9 +62,9 @@
                                     </div>
 						        <?php else : ?>
                                     <div class="detail-page-cta-inner">
-                                        <h6>SCHEDULE A MEETING</h6>
+<!--                                        <h6>SCHEDULE A MEETING</h6>-->
                                         <button type="button" class="detail-page-cta-options">
-                                            SCHEDULE OPTIONS
+                                            CONTACT US
                                         </button>
                                     </div>
 						        <?php endif; ?>
