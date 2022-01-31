@@ -5,7 +5,7 @@ const featuredHome = {
 		document.addEventListener( 'DOMContentLoaded', function() {
 			new Splide( '#community_floorplan', {
 				perPage: 3,
-				type: 'loop',
+				type: 'slide',
 				perMove: 2,
 				focus: 'center',
 				arrows: true,

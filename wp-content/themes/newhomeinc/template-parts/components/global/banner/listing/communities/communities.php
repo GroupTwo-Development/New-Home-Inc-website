@@ -59,7 +59,7 @@
 					yoast_breadcrumb( '<span id="breadcrumbs">','</span>' );
 				}
 				?>
-                <span id="floorplan_banner_title" class="banner-title">NEW HOME FLOORPLANS</span>
+                <h1 id="floorplan_banner_title" class="banner-title">NEW HOME FLOORPLANS</h1>
             </div>
         </div>
     </div>

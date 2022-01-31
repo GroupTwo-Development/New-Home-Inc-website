@@ -32624,7 +32624,7 @@ var featuredHome = {
     document.addEventListener('DOMContentLoaded', function () {
       new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#community_floorplan', {
         perPage: 3,
-        type: 'loop',
+        type: 'slide',
         perMove: 2,
         focus: 'center',
         arrows: true,
