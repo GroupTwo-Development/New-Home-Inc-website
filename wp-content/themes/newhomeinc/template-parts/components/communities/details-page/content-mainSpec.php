@@ -108,7 +108,7 @@
                             <?php if( $community_qmi ): ?>
                                <div class="container">
                                    <div class="row">
-                                       <div class="offset-lg-1 col-lg-10 offset-lg-1">
+                                       <div class="col-lg-12">
                                            <div class="available-homes-area">
                                                <div id="card-slider-qmi" class="splide">
                                                    <div class="splide__track">

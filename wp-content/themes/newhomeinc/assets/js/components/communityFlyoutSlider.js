@@ -3,7 +3,7 @@ const $window = window.$window || $( window );
 
 const communityFlyoutSlider = {
 	init() {
-		const getUrl = 'http://newhomeinc.test';
+		const getUrl = 'https://newhomeinc.com';
 		// eslint-disable-next-line no-shadow
 		( function( $ ) {
 			function communitySliderout() {

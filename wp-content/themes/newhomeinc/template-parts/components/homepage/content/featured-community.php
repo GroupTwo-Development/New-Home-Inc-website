@@ -5,7 +5,7 @@
 
 <?php if($get_featured_community) : ?>
 
-    <section id="sectionThree" class="sectionThree featuredCommunity pb-5">
+    <section id="sectionThree" class="sectionThree featuredCommunity">
         <div class="container">
             <header class="section-header">
                 <h2>Featured Community</h2>

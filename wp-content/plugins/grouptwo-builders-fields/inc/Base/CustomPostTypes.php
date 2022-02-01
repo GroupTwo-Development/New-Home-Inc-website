@@ -216,7 +216,7 @@ class CustomPostTypes extends BaseController{
 		$labels = [
 			"name" => __( "Home Designs", "newhomeinc" ),
 			"singular_name" => __( "Home Design", "newhomeinc" ),
-			"menu_name" => __( "Home Designs", "newhomeinc" ),
+			"menu_name" => __( "Home Design", "newhomeinc" ),
 			"all_items" => __( "All Home Designs", "newhomeinc" ),
 			"add_new" => __( "Add new", "newhomeinc" ),
 			"add_new_item" => __( "Add new Home Design", "newhomeinc" ),
@@ -233,7 +233,7 @@ class CustomPostTypes extends BaseController{
 			"remove_featured_image" => __( "Remove featured image for this Home Design", "newhomeinc" ),
 			"use_featured_image" => __( "Use as featured image for this Home Design", "newhomeinc" ),
 			"archives" => __( "Home Design archives", "newhomeinc" ),
-			"insert_into_item" => __( "Insert into home design", "newhomeinc" ),
+			"insert_into_item" => __( "Insert into Home Design", "newhomeinc" ),
 			"uploaded_to_this_item" => __( "Upload to this Home Design", "newhomeinc" ),
 			"filter_items_list" => __( "Filter Home Designs list", "newhomeinc" ),
 			"items_list_navigation" => __( "Home Designs list navigation", "newhomeinc" ),

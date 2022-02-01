@@ -11,7 +11,7 @@ require( 'bootstrap' );
 //Some convenient tools to get you started…
 // import FlyoutBtn from './components/FlyoutBtn';
 // import CommunityFlyout from './components/CommunityFlyout';
-import AnimateOnPageLinks from './components/AnimateOnPageLinks';
+// import AnimateOnPageLinks from './components/AnimateOnPageLinks';
 import SelectButton from './components/SelectButtton';
 import globalScript from './script/globalScript';
 // import progressBar from './script/progressBar';
@@ -27,12 +27,12 @@ import communityFlyoutSlider from './components/communityFlyoutSlider';
 import homesFlyoutSlider from './components/homesFlyoutSlider';
 import homeDesignFlyoutSlider from './components/homeDesignFlyoutSlider';
 import communityFloorplanFlyoutSlider from './components/communityFloorplanFlyoutSlider';
-// import homeDesignsSearchFooterContent from './components/homeDesignsSearchFooterContent';
+import homeDesignsSearchFooterContent from './components/homeDesignsSearchFooterContent';
 import elevationGallery from './script/elevationGallery';
 
 // Initialise our components on jQuery.ready…
 jQuery( function( $ ) {
-	AnimateOnPageLinks.init();
+	// AnimateOnPageLinks.init();
 	SelectButton.init();
 	communityFilterContent.init();
 	qmiSearchFooterContent.init();
@@ -40,8 +40,8 @@ jQuery( function( $ ) {
 	homesFlyoutSlider.init();
 	homeDesignFlyoutSlider.init();
 	communityFloorplanFlyoutSlider.init();
-	generalScript.init();
-	// homeDesignsSearchFooterContent.init();
+	// generalScript.init();
+	homeDesignsSearchFooterContent.init();
 } );
 
 // const homeApp = createApp( CommunityFlyout );
@@ -49,12 +49,14 @@ jQuery( function( $ ) {
 
 const observer = lozad(); // lazy loads elements with default selector as ".lozad"
 observer.observe();
+
 AOS.init();
-accordion.init();
-// generalScript.init();
+// accordion.init();
+//
 featuredHome.init();
 videosPlayer.init();
 DropdownButtons.init();
+generalScript.init();
 
 detailPageGallery.init();
 elevationGallery.init();

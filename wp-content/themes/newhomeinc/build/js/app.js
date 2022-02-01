@@ -31391,22 +31391,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! aos */ "./node_modules/aos/dist/aos.js");
 /* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(aos__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _fancyapps_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fancyapps/ui */ "./node_modules/@fancyapps/ui/dist/fancybox.esm.js");
-/* harmony import */ var _components_AnimateOnPageLinks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/AnimateOnPageLinks */ "./assets/js/components/AnimateOnPageLinks.js");
-/* harmony import */ var _components_SelectButtton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/SelectButtton */ "./assets/js/components/SelectButtton.js");
-/* harmony import */ var _script_globalScript__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./script/globalScript */ "./assets/js/script/globalScript.js");
-/* harmony import */ var _script_globalScript__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_script_globalScript__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _script_videosPlayer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./script/videosPlayer */ "./assets/js/script/videosPlayer.js");
-/* harmony import */ var _script_DropdownButtons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./script/DropdownButtons */ "./assets/js/script/DropdownButtons.js");
-/* harmony import */ var _components_qmiSearchFooterContent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/qmiSearchFooterContent */ "./assets/js/components/qmiSearchFooterContent.js");
-/* harmony import */ var _script_detailPageGallery__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./script/detailPageGallery */ "./assets/js/script/detailPageGallery.js");
-/* harmony import */ var _components_generalScript__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/generalScript */ "./assets/js/components/generalScript.js");
-/* harmony import */ var _script_featuredHome__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./script/featuredHome */ "./assets/js/script/featuredHome.js");
-/* harmony import */ var _script_accordion__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./script/accordion */ "./assets/js/script/accordion.js");
-/* harmony import */ var _components_communityFilterContent__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/communityFilterContent */ "./assets/js/components/communityFilterContent.js");
-/* harmony import */ var _components_communityFlyoutSlider__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/communityFlyoutSlider */ "./assets/js/components/communityFlyoutSlider.js");
-/* harmony import */ var _components_homesFlyoutSlider__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/homesFlyoutSlider */ "./assets/js/components/homesFlyoutSlider.js");
-/* harmony import */ var _components_homeDesignFlyoutSlider__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/homeDesignFlyoutSlider */ "./assets/js/components/homeDesignFlyoutSlider.js");
-/* harmony import */ var _components_communityFloorplanFlyoutSlider__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/communityFloorplanFlyoutSlider */ "./assets/js/components/communityFloorplanFlyoutSlider.js");
+/* harmony import */ var _components_SelectButtton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/SelectButtton */ "./assets/js/components/SelectButtton.js");
+/* harmony import */ var _script_globalScript__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./script/globalScript */ "./assets/js/script/globalScript.js");
+/* harmony import */ var _script_globalScript__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_script_globalScript__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _script_videosPlayer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./script/videosPlayer */ "./assets/js/script/videosPlayer.js");
+/* harmony import */ var _script_DropdownButtons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./script/DropdownButtons */ "./assets/js/script/DropdownButtons.js");
+/* harmony import */ var _components_qmiSearchFooterContent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/qmiSearchFooterContent */ "./assets/js/components/qmiSearchFooterContent.js");
+/* harmony import */ var _script_detailPageGallery__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./script/detailPageGallery */ "./assets/js/script/detailPageGallery.js");
+/* harmony import */ var _components_generalScript__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/generalScript */ "./assets/js/components/generalScript.js");
+/* harmony import */ var _script_featuredHome__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./script/featuredHome */ "./assets/js/script/featuredHome.js");
+/* harmony import */ var _script_accordion__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./script/accordion */ "./assets/js/script/accordion.js");
+/* harmony import */ var _components_communityFilterContent__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/communityFilterContent */ "./assets/js/components/communityFilterContent.js");
+/* harmony import */ var _components_communityFlyoutSlider__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/communityFlyoutSlider */ "./assets/js/components/communityFlyoutSlider.js");
+/* harmony import */ var _components_homesFlyoutSlider__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/homesFlyoutSlider */ "./assets/js/components/homesFlyoutSlider.js");
+/* harmony import */ var _components_homeDesignFlyoutSlider__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/homeDesignFlyoutSlider */ "./assets/js/components/homeDesignFlyoutSlider.js");
+/* harmony import */ var _components_communityFloorplanFlyoutSlider__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/communityFloorplanFlyoutSlider */ "./assets/js/components/communityFloorplanFlyoutSlider.js");
+/* harmony import */ var _components_homeDesignsSearchFooterContent__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/homeDesignsSearchFooterContent */ "./assets/js/components/homeDesignsSearchFooterContent.js");
 /* harmony import */ var _script_elevationGallery__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./script/elevationGallery */ "./assets/js/script/elevationGallery.js");
 // you can import modules from the theme lib or even from
 // NPM packages if they support it.
@@ -31419,7 +31419,7 @@ window.Popper = __webpack_require__(/*! @popperjs/core */ "./node_modules/@poppe
 __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js"); //Some convenient tools to get you started…
 // import FlyoutBtn from './components/FlyoutBtn';
 // import CommunityFlyout from './components/CommunityFlyout';
-
+// import AnimateOnPageLinks from './components/AnimateOnPageLinks';
 
 
 
@@ -31436,104 +31436,36 @@ __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap
 
 
 
- // import homeDesignsSearchFooterContent from './components/homeDesignsSearchFooterContent';
+
 
  // Initialise our components on jQuery.ready…
 
 jQuery(function ($) {
-  _components_AnimateOnPageLinks__WEBPACK_IMPORTED_MODULE_4__["default"].init();
-  _components_SelectButtton__WEBPACK_IMPORTED_MODULE_5__["default"].init();
-  _components_communityFilterContent__WEBPACK_IMPORTED_MODULE_14__["default"].init();
-  _components_qmiSearchFooterContent__WEBPACK_IMPORTED_MODULE_9__["default"].init();
-  _components_communityFlyoutSlider__WEBPACK_IMPORTED_MODULE_15__["default"].init();
-  _components_homesFlyoutSlider__WEBPACK_IMPORTED_MODULE_16__["default"].init();
-  _components_homeDesignFlyoutSlider__WEBPACK_IMPORTED_MODULE_17__["default"].init();
-  _components_communityFloorplanFlyoutSlider__WEBPACK_IMPORTED_MODULE_18__["default"].init();
-  _components_generalScript__WEBPACK_IMPORTED_MODULE_11__["default"].init(); // homeDesignsSearchFooterContent.init();
+  // AnimateOnPageLinks.init();
+  _components_SelectButtton__WEBPACK_IMPORTED_MODULE_4__["default"].init();
+  _components_communityFilterContent__WEBPACK_IMPORTED_MODULE_13__["default"].init();
+  _components_qmiSearchFooterContent__WEBPACK_IMPORTED_MODULE_8__["default"].init();
+  _components_communityFlyoutSlider__WEBPACK_IMPORTED_MODULE_14__["default"].init();
+  _components_homesFlyoutSlider__WEBPACK_IMPORTED_MODULE_15__["default"].init();
+  _components_homeDesignFlyoutSlider__WEBPACK_IMPORTED_MODULE_16__["default"].init();
+  _components_communityFloorplanFlyoutSlider__WEBPACK_IMPORTED_MODULE_17__["default"].init(); // generalScript.init();
+
+  _components_homeDesignsSearchFooterContent__WEBPACK_IMPORTED_MODULE_18__["default"].init();
 }); // const homeApp = createApp( CommunityFlyout );
 // homeApp.mount( '#community-flyout-app' );
 
 var observer = lozad__WEBPACK_IMPORTED_MODULE_1___default()(); // lazy loads elements with default selector as ".lozad"
 
 observer.observe();
-aos__WEBPACK_IMPORTED_MODULE_2___default().init();
-_script_accordion__WEBPACK_IMPORTED_MODULE_13__["default"].init(); // generalScript.init();
+aos__WEBPACK_IMPORTED_MODULE_2___default().init(); // accordion.init();
+//
 
-_script_featuredHome__WEBPACK_IMPORTED_MODULE_12__["default"].init();
-_script_videosPlayer__WEBPACK_IMPORTED_MODULE_7__["default"].init();
-_script_DropdownButtons__WEBPACK_IMPORTED_MODULE_8__["default"].init();
-_script_detailPageGallery__WEBPACK_IMPORTED_MODULE_10__["default"].init();
+_script_featuredHome__WEBPACK_IMPORTED_MODULE_11__["default"].init();
+_script_videosPlayer__WEBPACK_IMPORTED_MODULE_6__["default"].init();
+_script_DropdownButtons__WEBPACK_IMPORTED_MODULE_7__["default"].init();
+_components_generalScript__WEBPACK_IMPORTED_MODULE_10__["default"].init();
+_script_detailPageGallery__WEBPACK_IMPORTED_MODULE_9__["default"].init();
 _script_elevationGallery__WEBPACK_IMPORTED_MODULE_19__["default"].init(); // footerCtaListing.init();
-
-/***/ }),
-
-/***/ "./assets/js/components/AnimateOnPageLinks.js":
-/*!****************************************************!*\
-  !*** ./assets/js/components/AnimateOnPageLinks.js ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-var $ = window.jQuery;
-var $window = window.$window || $(window);
-/**
- * Intercept clicks on any anchor tag and if the anchor is linking to an on page ID, animate the scroll to the targeted
- * element.
- *
- * This only works if the href contains a value beginning with '#'. e.g; #about-section. You can modify this behaviour
- * by changing the this.link_is_targeting_on_page_anchor() method.
- *
- * If the clicked element has a `data-toggle=xxx` attribute, it won't be handled. You can modify this behaviour by
- * changing the this.is_excluded() method.
- */
-
-var AnimateOnPageLinks = {
-  duration: 800,
-  offset: -100,
-  init: function init() {
-    var _this = this;
-
-    $('a').on('click', function (e) {
-      var $link = $(e.target);
-
-      if (_this.is_excluded($link)) {
-        return;
-      }
-
-      var href = $link.attr('href');
-
-      if (_this.link_is_targeting_on_page_anchor(href)) {
-        var $target_element = $(href);
-
-        if (!$target_element.length) {
-          return;
-        }
-
-        e.preventDefault();
-        var offset = $target_element.data('scroll-to-offset') === undefined ? _this.offset : $target_element.data('scroll-to-offset');
-        var scroll_top = $target_element.offset().top + offset; // subtract any additional height considerations to scroll_top (e.g; height of sticky header)
-        //scroll_top -= $('.sticky-page-header').outerHeight();
-
-        $('html, body').animate({
-          scrollTop: scroll_top
-        }, _this.duration, 'swing', function () {
-          return $target_element.trigger('scrolled_to');
-        });
-      }
-    }); // $('.facetwp-sort-select').select2();
-  },
-  is_excluded: function is_excluded($selector) {
-    return !!$selector.data('toggle');
-  },
-  link_is_targeting_on_page_anchor: function link_is_targeting_on_page_anchor(link) {
-    return /^#/.test(link);
-  }
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AnimateOnPageLinks);
 
 /***/ }),
 
@@ -31906,7 +31838,7 @@ var $ = window.jQuery;
 var $window = window.$window || $(window);
 var communityFlyoutSlider = {
   init: function init() {
-    var getUrl = 'http://newhomeinc.test'; // eslint-disable-next-line no-shadow
+    var getUrl = 'https://newhomeinc.com'; // eslint-disable-next-line no-shadow
 
     (function ($) {
       function communitySliderout() {
@@ -32007,8 +31939,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-var $ = window.jQuery;
-var $window = window.$window || $(window);
+// const $ = window.jQuery;
+// const $window = window.$window || $( window );
 var generalScript = {
   init: function init() {
     window.onscroll = function () {
@@ -32148,6 +32080,118 @@ var homeDesignFlyoutSlider = {
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (homeDesignFlyoutSlider);
+
+/***/ }),
+
+/***/ "./assets/js/components/homeDesignsSearchFooterContent.js":
+/*!****************************************************************!*\
+  !*** ./assets/js/components/homeDesignsSearchFooterContent.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var $ = window.jQuery;
+var $window = window.$window || $(window); // eslint-disable-next-line no-unused-vars
+
+var homeDesignsSearchFooterContent = {
+  init: function init() {
+    var getUrl = 'https://newhomeinc.com';
+    $(document).on('facetwp-loaded', function () {
+      var homesSearchPage = app_script_vars.floorplan_search_page_content;
+      var homesSearchPageFooterTitle = app_script_vars.floorplan_search_page_content_title; // eslint-disable-next-line no-console
+      // console.log( homesSearchPageFooterTitle );
+
+      var displayHomesBannerTitle = document.getElementById('homes_banner_title');
+      var displayMainFooterContentTitle = document.getElementById('home_designs_main_footer_content_title');
+      var displayMainFooterContent = document.getElementById('main-footer-content');
+
+      (function ($) {
+        var checkedBoxFunction = document.querySelector('.facetwp-facet-plan_community ');
+        var dropdownValue = document.querySelector('.facetwp-facet-plan_community .checked'); // console.log( dropdownValue );
+
+        var selectedValue = $('.facetwp-facet-plan_community .checked').data('value'); // const selectedValue = dropdownValue.getAttribute( 'data-value' );
+        // eslint-disable-next-line no-console
+        // console.log( selectedValue );
+
+        var loadedContent = getUrl + '/wp-json/wp/v2/communities/' + selectedValue;
+
+        function loadMainFootercontent() {
+          if ($('.facetwp-facet-plan_community ').has('.checked')) {
+            $.ajax({
+              url: loadedContent,
+              dataType: 'json',
+              success: function success(res) {
+                $('#main-taxonomy-area').html(res); // eslint-disable-next-line no-console
+
+                console.log(res);
+                $.each(res, function (i, community) {
+                  $('#main-taxonomy-area').html(community); // eslint-disable-next-line no-console
+
+                  console.log(community.title.rendered); // eslint-disable-next-line camelcase
+
+                  if (selectedValue === '') {
+                    displayHomesBannerTitle.innerText = 'AVAILABLE HOMES';
+                    displayMainFooterContentTitle.innerText = homesSearchPageFooterTitle;
+                    displayMainFooterContent.innerHTML = homesSearchPage;
+                  } else {
+                    displayHomesBannerTitle.innerText = 'AVAILABLE HOMES IN ' + community.title.rendered;
+                    displayMainFooterContentTitle.innerText = community.title.rendered;
+                    displayMainFooterContent.innerHTML = community.acf.subdescription;
+                  }
+                });
+              }
+            });
+          }
+        }
+
+        loadMainFootercontent();
+
+        function filterQmiContent() {
+          $(document).on('click', '.facetwp-facet-plan_community .checked', function () {
+            // eslint-disable-next-line camelcase
+            var data_value = $(this).attr('data-value'); // eslint-disable-next-line no-console
+
+            console.log(data_value);
+            var dataTexaonomies = getUrl + '/wp-json/wp/v2/communities/' + selectedValue; // eslint-disable-next-line no-console
+
+            console.log(dataTexaonomies);
+            $.ajax({
+              url: dataTexaonomies,
+              dataType: 'json',
+              success: function success(res) {
+                $('#main-taxonomy-area').html(res);
+                $.each(res, function (i, community) {
+                  $('#main-taxonomy-area').html(community); // eslint-disable-next-line no-console
+
+                  console.log(community.title.rendered); // eslint-disable-next-line camelcase
+
+                  if (selectedValue === '') {
+                    displayHomesBannerTitle.innerText = 'AVAILABLE HOMES';
+                    displayMainFooterContentTitle.innerText = homesSearchPageFooterTitle;
+                    displayMainFooterContent.innerHTML = homesSearchPage;
+                  } else {
+                    displayHomesBannerTitle.innerText = 'AVAILABLE HOMES IN ' + community.title.rendered;
+                    displayMainFooterContentTitle.innerText = community.title.rendered;
+                    displayMainFooterContent.innerHTML = community.acf.subdescription;
+                  }
+                });
+              }
+            });
+          });
+        }
+
+        document.addEventListener('facetwp-loaded', function () {
+          filterQmiContent();
+        });
+      })(jQuery);
+    });
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (homeDesignsSearchFooterContent);
 
 /***/ }),
 
@@ -32624,11 +32668,12 @@ var featuredHome = {
     document.addEventListener('DOMContentLoaded', function () {
       new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#community_floorplan', {
         perPage: 3,
-        type: 'slide',
-        perMove: 2,
-        focus: 'center',
-        arrows: true,
-        gap: '6px',
+        pagination: 'slide',
+        // type: 'slide',
+        // perMove: 2,
+        // focus: 'center',
+        // arrows: true,
+        // gap: '6px',
         breakpoints: {
           992: {
             perPage: 2 // gap: '0.5rem',
@@ -32668,8 +32713,9 @@ var featuredHome = {
     document.addEventListener('DOMContentLoaded', function () {
       new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"]('#card-slider-qmi', {
         perPage: 3,
-        type: 'slide',
-        focus: 'center',
+        // type: 'slide',
+        // focus: 'center',
+        pagination: 'slide',
         arrows: true,
         // gap: '0.3rem',
         breakpoints: {

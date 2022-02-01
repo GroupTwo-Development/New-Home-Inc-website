@@ -23,7 +23,7 @@ final class Init
 			Base\CommunityAdminColumn::class,
 
 
-			Base\plansRewriteRules::class,
+//			Base\plansRewriteRules::class,
 
 			Base\filterfloorplanTaxonomies::class,
 			Base\customAdminColumnsFloorplan::class,
@@ -31,7 +31,7 @@ final class Init
 
 			Base\customAdminColumnsHomes::class,
 			Base\CommunitiesRewritesRules::class,
-			Base\homesRewriteRules::class,
+//			Base\homesRewriteRules::class,
 			Base\ConvertCommunityPostToTaxonomies::class
 		];
 	}

@@ -5,11 +5,12 @@ const featuredHome = {
 		document.addEventListener( 'DOMContentLoaded', function() {
 			new Splide( '#community_floorplan', {
 				perPage: 3,
-				type: 'slide',
-				perMove: 2,
-				focus: 'center',
-				arrows: true,
-				gap: '6px',
+				pagination: 'slide',
+				// type: 'slide',
+				// perMove: 2,
+				// focus: 'center',
+				// arrows: true,
+				// gap: '6px',
 				breakpoints: {
 					992: {
 						perPage: 2,
@@ -51,8 +52,9 @@ const featuredHome = {
 		document.addEventListener( 'DOMContentLoaded', function() {
 			new Splide( '#card-slider-qmi', {
 				perPage: 3,
-				type: 'slide',
-				focus: 'center',
+				// type: 'slide',
+				// focus: 'center',
+				pagination: 'slide',
 				arrows: true,
 				// gap: '0.3rem',
 				breakpoints: {
