@@ -17,7 +17,7 @@ get_header();
 	<main id="primary" class="site-main blog-index">
 	        <?php if ( have_posts() ) : ?>
 		        <?php  get_template_part( 'template-parts/components/global/banner/interior-banner');  ?>
-<!--		        --><?php //get_template_part( 'template-parts/components/global/banner/post-filter');  ?>
+		        <?php get_template_part( 'template-parts/components/global/banner/post-filter');  ?>
 
                      <div id="blog-post-list">
                         <div class="container">
